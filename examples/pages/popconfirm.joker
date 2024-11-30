@@ -1,0 +1,168 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Popconfirm 气泡确认框</h2>
+<p>点击元素，弹出气泡确认框。</p>
+<h3>基础用法</h3>
+<p>Popconfirm 的属性与 Popover 很类似，因此对于重复属性，请参考 Popover 的文档，在此文档中不做详尽解释，在 Popconfirm 中，只有 <code>title</code> 属性可用。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-popconfirm title=&quot;你确定要删除此数据吗？&quot; @cancel=&quot;cancel&quot; @confirm=&quot;confirm&quot;&gt;
+        &lt;jk-button&gt;删除&lt;/jk-button&gt;
+    &lt;/jk-popconfirm&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    cancel() {
+        Message.warning(&quot;取消&quot;);
+    }
+    confirm() {
+        Message.success(&quot;确定&quot;);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>自定义</h3>
+<p>可以在 Popconfirm 中自定义内容。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-popconfirm
+        title=&quot;你确定要删除此数据吗？&quot;
+        confirm-button-text=&quot;好的&quot;
+        cancel-button-text=&quot;不用了&quot;
+        icon=&quot;jk-icon-info&quot;
+        icon-color=&quot;red&quot;&gt;
+        &lt;jk-button&gt;删除&lt;/jk-button&gt;
+    &lt;/jk-popconfirm&gt;
+&lt;/template&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>confirm-button-text</td>
+<td>确认按钮文字</td>
+<td>String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cancel-button-text</td>
+<td>取消按钮文字</td>
+<td>String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>confirm-button-type</td>
+<td>确认按钮类型</td>
+<td>String</td>
+<td>—</td>
+<td>Primary</td>
+</tr>
+<tr>
+<td>cancel-button-type</td>
+<td>取消按钮类型</td>
+<td>String</td>
+<td>—</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>Icon</td>
+<td>String</td>
+<td>—</td>
+<td>jk-icon-question</td>
+</tr>
+<tr>
+<td>icon-color</td>
+<td>Icon 颜色</td>
+<td>String</td>
+<td>—</td>
+<td>#f90</td>
+</tr>
+</tbody>
+</table>
+<h3>Section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>触发 Popconfirm 显示的 HTML 元素</td>
+</tr>
+</tbody>
+</table>
+<h3>Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>confirm</td>
+<td>点击确认按钮时触发</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>点击取消按钮时触发</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo2 from '../components/popconfirm/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/popconfirm/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

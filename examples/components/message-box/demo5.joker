@@ -1,0 +1,27 @@
+<template>
+    <DemoRow>
+        <jk-link type="primary" @click="open">同时打开多个窗口</jk-link>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { MessageBox } from "../../../src";
+
+export default class extends Component {
+    open() {
+        MessageBox.alert("我是提示框1", "温馨提示");
+        MessageBox.alert("我是提示框2", "温馨提示");
+        MessageBox.alert("我是提示框3", "温馨提示");
+        MessageBox.confirm("我是中间确认框后面还剩余两个弹窗，是否要执行closeAll，关闭所有弹窗？", "温馨提示", {
+            callback(action) {
+                if (action === "confirm") {
+                    MessageBox.closeAll();
+                }
+            }
+        });
+        MessageBox.alert("我是提示框4", "温馨提示");
+        MessageBox.alert("我是提示框5", "温馨提示");
+    }
+}
+</script>
+

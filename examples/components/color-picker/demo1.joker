@@ -1,0 +1,25 @@
+<template>
+    <DemoRow>
+        <jk-color-picker value="@model.color" @change="handleChange" />
+        <p>
+            @model.color
+        </p>
+    </DemoRow>
+    <DemoRow>
+        <jk-color-picker value="#409EFF" />
+    </DemoRow>
+</template>
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        color: ""
+    };
+
+    handleChange(e: VNode.Event<string>) {
+        this.model.color = e.data;
+    }
+}
+</script>

@@ -1,0 +1,40 @@
+<template>
+    <div class="demo-image__placeholder">
+        <div class="block">
+            <p class="demonstration">默认</p>
+            <jk-image src="@model.src" style="width: 300px;height:200px;"></jk-image>
+        </div>
+        <div class="block">
+            <p class="demonstration">自定义</p>
+            <jk-image src="@model.src" style="width: 300px;height:200px;">
+                @section("placeholder") {
+                    加载中
+                    <span class="dot">...</span>
+                }
+            </jk-image>
+        </div>
+    </div>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        src: "https://picsum.photos/200/300?random=2"
+    };
+}
+</script>
+<style lang="scss" scoped>
+.demo-image__placeholder {
+    display: flex;
+    .block {
+        padding: 30px 0;
+        text-align: center;
+        border-right: 1px solid #eff2f6;
+        flex: 1;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+}
+</style>

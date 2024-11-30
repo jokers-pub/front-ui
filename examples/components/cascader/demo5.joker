@@ -1,0 +1,23 @@
+<template>
+    <div class="demoContainer">
+        <DemoRow>
+            <jk-cascader multiple options="@options"></jk-cascader>
+        </DemoRow>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { mock } from "./mock";
+export default class extends Component {
+    options = mock();
+}
+</script>
+
+
+<style lang="scss" scoped>
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 320px;
+    }
+}
+</style>

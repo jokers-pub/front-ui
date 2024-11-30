@@ -1,0 +1,20 @@
+<template>
+    <jk-checkbox-group value="@model.checkList">
+        <jk-checkbox label="复选框 A"></jk-checkbox>
+        <jk-checkbox label="复选框 B"></jk-checkbox>
+        <jk-checkbox label="复选框 C"></jk-checkbox>
+        <jk-checkbox label="禁用" disabled></jk-checkbox>
+        <jk-checkbox label="选中且禁用" disabled></jk-checkbox>
+    </jk-checkbox-group>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+export default class extends Component {
+    model = {
+        checkList: ["选中且禁用", "复选框 A"],
+        checkAll: false,
+        indeterminate: false
+    };
+}
+</script>

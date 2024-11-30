@@ -1,0 +1,189 @@
+<template>
+    <div ref="container" class="jk-scrollbar-bar is-@bar.key" size="@props.size" @mousedown="handleBarMousedown">
+        <div class="thumb" ref="thumb" @mousedown="handleThumbMousedown" style="@style"></div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+const BAR_MAP = {
+    vertical: {
+        offset: "offsetHeight",
+        scroll: "scrollTop",
+        scrollSize: "scrollHeight",
+        size: "height",
+        key: "vertical",
+        axis: "Y",
+        client: "clientY",
+        direction: "top"
+    },
+    horizontal: {
+        offset: "offsetWidth",
+        scroll: "scrollLeft",
+        scrollSize: "scrollWidth",
+        size: "width",
+        key: "horizontal",
+        axis: "X",
+        client: "clientX",
+        direction: "left"
+    }
+};
+
+function renderThumbStyle(move: string, size: string, bar: (typeof BAR_MAP)["horizontal"]) {
+    let translate = `translate${bar.axis}(${move}%)`;
+
+    let style: string[] = [];
+
+    if (size !== undefined && size !== "") {
+        style.push(`${bar.size}:${size}`);
+    }
+    style.push(`transform:${translate}`);
+    style.push(`-ms-transform:${translate}`);
+    style.push(`-webkit-transform:${translate}`);
+
+    return style.join(";");
+}
+
+export default class extends Component<{
+    vertical: boolean;
+    size: string;
+    move: string;
+}> {
+    model = {};
+
+    get bar() {
+        return BAR_MAP[this.props.vertical ? "vertical" : "horizontal"];
+    }
+
+    get style() {
+        return renderThumbStyle(this.props.move!, this.props.size!, this.bar);
+    }
+
+    get wrap() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("scrollbar");
+        })?.component?.wrapEl;
+    }
+
+    barData: Record<string, any> = {};
+
+    handleBarMousedown(e: VNode.Event) {
+        let wrapEl = this.wrap;
+
+        if (wrapEl) {
+            let target = e.event.target as HTMLElement;
+            let offset = Math.abs((<any>target.getBoundingClientRect())[this.bar.direction] - e.event[this.bar.client]);
+            let thumbHalf = this.$getRef("thumb")?.output[this.bar.offset] / 2;
+            let thumbPositionPercentage =
+                ((offset - thumbHalf) * 100) / this.$getRef("container")?.output[this.bar.offset];
+            wrapEl[this.bar.scroll] = (thumbPositionPercentage * wrapEl[this.bar.scrollSize]) / 100;
+        }
+    }
+    handleThumbMousedown(e: VNode.Event) {
+        let event = e.event as MouseEvent;
+
+        if (event.ctrlKey || event.button === 2) {
+            return;
+        }
+
+        this.startDrag(event);
+
+        this.barData[this.bar.axis] =
+            (<any>event.currentTarget)[this.bar.offset] -
+            ((<any>event)[this.bar.client] - (<any>event.currentTarget).getBoundingClientRect()[this.bar.direction]);
+    }
+
+    cursorDown = false;
+
+    startDrag(e: MouseEvent) {
+        e.stopImmediatePropagation();
+
+        this.cursorDown = true;
+
+        document.addEventListener("mousemove", this.mouseMoveDocument);
+        document.addEventListener("mouseup", this.mouseUpDocumnet);
+
+        document.onselectstart = () => false;
+    }
+
+    mouseMoveDocument(e: MouseEvent) {
+        if (this.cursorDown === false) return;
+
+        let prevPage = this.barData[this.bar.axis];
+
+        if (!prevPage) return;
+
+        let offset =
+            (this.$getRef("container")?.output.getBoundingClientRect()[this.bar.direction] -
+                (<any>e)[this.bar.client]) *
+            -1;
+        let thumbClickPosition = this.$getRef("thumb")?.output[this.bar.offset] - prevPage;
+
+        let thumbPositionPercentage =
+            ((offset - thumbClickPosition) * 100) / this.$getRef("container")?.output[this.bar.offset];
+
+        let wrapEl = this.wrap;
+        wrapEl[this.bar.scroll] = (thumbPositionPercentage * wrapEl[this.bar.scrollSize]) / 100;
+    }
+    mouseUpDocumnet(e: MouseEvent) {
+        this.cursorDown = false;
+
+        this.barData[this.bar.axis] = 0;
+
+        document.removeEventListener("mousemove", this.mouseMoveDocument);
+
+        document.onselectstart = null;
+    }
+
+    beforeDestroy() {
+        document.removeEventListener("mouseup", this.mouseUpDocumnet);
+        document.removeEventListener("mousemove", this.mouseMoveDocument);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-scrollbar-bar {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    z-index: 1;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 120ms ease-out;
+
+    &.is-horizontal {
+        height: 6px;
+        width: 100%;
+
+        .thumb {
+            height: 100%;
+        }
+    }
+
+    &.is-vertical {
+        width: 6px;
+        top: 2px;
+
+        .thumb {
+            width: 100%;
+        }
+    }
+
+    .thumb {
+        position: relative;
+        display: block;
+        width: 0;
+        height: 0;
+        cursor: pointer;
+        border-radius: inherit;
+        background-color: var(--jk-scrollbar-background-color);
+        transition: 0.3s background-color;
+
+        &:hover {
+            background-color: var(--jk-scrollbar-hover-background-color);
+        }
+    }
+}
+</style>

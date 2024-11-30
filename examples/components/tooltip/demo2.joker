@@ -1,0 +1,11 @@
+<template>
+    <jk-tooltip content="默认主题" placement="top">
+        <jk-button>默认主题</jk-button>
+    </jk-tooltip>
+    <jk-tooltip content="Light主题" effect="light">
+        <jk-button>Light</jk-button>
+    </jk-tooltip>
+    <jk-tooltip content="Error主题" effect="error">
+        <jk-button>Error</jk-button>
+    </jk-tooltip>
+</template>

@@ -1,0 +1,305 @@
+<template>
+    @if(model.show) {
+        <div
+            class="jk-popover jk-popper"
+            append-to="body"
+            ref="popper"
+            id="@id"
+            role="tooltip"
+            style="@({ width: props.width })"
+            @mouseleave="handlePopoverMouseLeave"
+            @mouseenter="handlePopoverMouseEnter"
+            @click.outside="handlePopoverOutsideClick"
+            transition-name="jk-fade-in">
+            @if(props.title) {
+                <div class="title">
+                    @props.title
+                </div>
+            }
+            @if($sections.default) {
+                @RenderSection()
+            }
+            else {
+                @props.content
+            }
+        </div>
+    }
+    <template ref="content">
+        @RenderSection("reference")
+    </template>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { debounce, guid, logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+import { Popper } from "../utils/popper";
+
+export default class extends Component<{
+    trigger: string;
+    title: string;
+    content: string;
+    openDelay: number;
+    closeDelay: number;
+    disabled: boolean;
+    placement: string;
+    offset: number;
+    width: string;
+}> {
+    propsOption = {
+        closeDelay: 200,
+        trigger: "click",
+        openDelay: {
+            type: Number,
+            default: 0
+        },
+        placement: "top",
+        offset: {
+            type: Number,
+            default: 0
+        }
+    };
+    model = {
+        expectedState: false,
+        show: false
+    };
+
+    id = `jk-popover-${guid(4)}`;
+    timeout?: number;
+    popperHandler?: Popper;
+    firstElement?: HTMLElement;
+
+    debounceClose = debounce(this.props.closeDelay!, () => this.hidePopover());
+
+    mounted() {
+        this.firstElement = this.$getRef<VNode.Component>("content")?.firstElement?.output;
+
+        if (this.firstElement === undefined) {
+            logger.error(LOGTAG, "[popover]未找到参考Element元素");
+
+            return;
+        }
+
+        this.firstElement.setAttribute("aria-describedby", this.id);
+
+        //手动
+        if (this.props.trigger === "manual") return;
+
+        if (this.props.trigger === "click") {
+            this.firstElement.addEventListener("click", this.show, false);
+        } else if (this.props.trigger === "hover") {
+            this.firstElement.addEventListener("mouseenter", this.show, false);
+            this.firstElement.addEventListener("mouseleave", this.delayHide, false);
+        }
+    }
+
+    async show(e: any) {
+        if (this.props.disabled) return;
+
+        this.setShowState(true);
+
+        this.showPopover();
+
+        this.popperHandler?.update();
+
+        if (e) {
+            e.stopPropagation();
+        }
+    }
+
+    delayHide() {
+        this.setShowState(false);
+        this.debounceClose();
+    }
+
+    hide() {
+        this.setShowState(false);
+        this.hidePopover();
+    }
+
+    handleReferenceClick(e: Event) {
+        this.setShowState(true);
+
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    handlePopoverOutsideClick() {
+        if (this.props.trigger === "manual") return;
+
+        this.delayHide();
+    }
+
+    handlePopoverMouseEnter() {
+        this.setShowState(true);
+    }
+
+    handlePopoverMouseLeave() {
+        if (this.props.trigger === "manual") return;
+
+        if (this.props.trigger === "hover") {
+            this.delayHide();
+        }
+    }
+
+    setShowState(val: boolean) {
+        this.model.expectedState = val;
+    }
+
+    showPopover() {
+        if (!this.model.expectedState) return;
+
+        clearTimeout(this.timeout);
+
+        this.timeout = setTimeout(async () => {
+            this.model.show = true;
+
+            await this.$updatedRender();
+            let popperEl = this.$getRef("popper")?.output;
+            if (this.firstElement && popperEl && !this.popperHandler) {
+                this.popperHandler = new Popper(this.firstElement, popperEl, {
+                    placement: this.props.placement,
+                    offset: this.props.offset
+                });
+
+                this.$trigger("show");
+            }
+        }, this.props.openDelay);
+    }
+
+    hidePopover() {
+        if (this.model.expectedState) return;
+
+        clearTimeout(this.timeout);
+
+        this.model.show = false;
+
+        this.popperHandler?.destroy();
+        this.popperHandler = undefined;
+
+        this.$trigger("hide");
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+        if (this.props.trigger === "click") {
+            this.firstElement?.removeEventListener("click", this.handleReferenceClick);
+        } else if (this.props.trigger === "hover") {
+            this.firstElement?.removeEventListener("mouseenter", this.show);
+            this.firstElement?.removeEventListener("mouseleave", this.delayHide);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-popover {
+    position: absolute;
+    border-radius: 4px;
+    padding: 12px;
+    z-index: $--index-popper;
+    line-height: 1.4;
+    min-width: 150px;
+    text-align: justify;
+    word-wrap: break-all;
+    background: #fff;
+    font-size: 14px;
+    color: var(--jk-color-text-regular);
+    box-shadow: var(--jk-box-shadow-light);
+    border: solid 1px var(--jk-border-lighter);
+    .title {
+        color: var(--jk-color-text-primary);
+        font-size: 16px;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+    .popper_arrow,
+    .popper_arrow::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
+    .popper_arrow {
+        border-width: 6px;
+    }
+
+    .popper_arrow::after {
+        content: " ";
+        border-width: 5px;
+    }
+
+    &[x-placement^="top"] {
+        margin-bottom: 12px;
+        .popper_arrow {
+            bottom: -6px;
+            border-bottom-width: 0;
+            border-top-color: #fff;
+
+            &::after {
+                bottom: 1px;
+                margin-left: -5px;
+                border-bottom-width: 0;
+                border-top-color: #fff;
+            }
+        }
+    }
+
+    &[x-placement^="bottom"] {
+        margin-top: 12px;
+        .popper_arrow {
+            top: -6px;
+            border-top-width: 0;
+            border-bottom-color: #fff;
+
+            &::after {
+                top: 1px;
+                margin-left: -5px;
+                border-top-width: 0;
+
+                border-bottom-color: #fff;
+            }
+        }
+    }
+
+    &[x-placement^="right"] {
+        margin-left: 12px;
+        .popper_arrow {
+            left: -6px;
+            border-left-width: 0;
+            border-right-color: #fff;
+
+            &::after {
+                left: 1px;
+                bottom: -5px;
+                border-left-width: 0;
+                border-right-color: #fff;
+            }
+        }
+    }
+
+    &[x-placement^="left"] {
+        margin-right: 12px;
+        .popper_arrow {
+            right: -6px;
+            border-right-width: 0;
+            border-left-color: #fff;
+
+            &::after {
+                right: 1px;
+                bottom: -5px;
+                margin-left: -5px;
+                border-right-width: 0;
+                border-left-color: #fff;
+            }
+        }
+    }
+    &:focus:hover {
+        outline-width: 0;
+    }
+}
+</style>

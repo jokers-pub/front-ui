@@ -1,0 +1,249 @@
+<template>
+    <label
+        class="@(['jk-checkbox-button', size, { 'is-disabled': isDisabled, 'is-focus': model.focus, 'is-checked': value }])"
+        role="checkbox"
+        aria-checked="@value"
+        aria-disabled="@isDisabled"
+        tabindex="@tabIndex"
+        @keydown.space.stop.prevent="handleKeydown">
+        <input
+            ref="checkbox"
+            type="checkbox"
+            value="@(props.label)"
+            name="@props.name"
+            disabled="@isDisabled"
+            tabindex="-1"
+            autocomplete="off"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+        />
+        <span class="target" @keydown.stop>
+            @RenderSection()
+            @if(!($sections && $sections.default)) {
+                @props.label
+            }
+        </span>
+    </label>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { componentName } from "../utils";
+
+export default class extends FormCtrl<{
+    value: string | number | boolean;
+    label: string | number | boolean;
+    disabled: boolean;
+    name: string;
+}> {
+    model: { value?: string | number | boolean; focus: boolean; disabled: boolean } = {
+        value: undefined,
+        focus: false,
+        disabled: false
+    };
+
+    mounted() {
+        this.$syncProp("disabled");
+
+        this.$watch(
+            () => {
+                return this.value === this.props.label;
+            },
+            (val) => {
+                this.$getRef("checkbox")!.output.checked = val;
+            }
+        );
+
+        //设置默认
+        this.$getRef("checkbox")!.output.checked = !!this.value;
+    }
+
+    get group(): VNode.Component | undefined {
+        return this.$rootVNode?.closest((n) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("checkbox-group");
+        });
+    }
+
+    get value() {
+        return this.group ? this.group.component.model.value.indexOf(this.props.value) > -1 : this.model.value;
+    }
+
+    set value(val: string | number | boolean | undefined) {
+        if (this.group) {
+            this.group.component.checked(this.props.label, val);
+        } else {
+            this.model.value = val;
+        }
+
+        this.$getRef<VNode.Element>("checkbox")!.output.checked = !!this.model.value;
+    }
+
+    get isLimitDisabled() {
+        if (this.group) {
+            const { max, min } = this.group.component.props;
+            const checkedList = this.group.component.model.value;
+            return (
+                (!!(max || min) && checkedList.length >= max && !this.value) ||
+                (checkedList.length <= min && this.value)
+            );
+        }
+        return false;
+    }
+
+    get isDisabled() {
+        return this.group?.component?.props.disabled ?? (this.model.disabled || this.isLimitDisabled);
+    }
+
+    get tabIndex() {
+        return this.isDisabled || (this.group && this.value !== this.props.label) ? -1 : 0;
+    }
+
+    get size() {
+        return this.group?.component.props.size || this.sizeClass;
+    }
+
+    handleKeydown(e: VNode.Event) {
+        if (!this.isDisabled) {
+            this.value = !this.value;
+        }
+    }
+    handleFocus(e: VNode.Node) {
+        this.model.focus = true;
+    }
+    handleBlur(e: VNode.Node) {
+        this.model.focus = false;
+    }
+    handleChange(e: VNode.Event) {
+        this.value = !this.value;
+        this.group?.component.handleChange(e);
+        this.$trigger("change", this.value);
+
+        this.triggerValidate();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+@mixin set-size($padding-vertical, $padding-horizontal, $font-size) {
+    padding: $padding-vertical $padding-horizontal;
+    font-size: $font-size;
+}
+
+.jk-checkbox-button {
+    position: relative;
+    display: inline-block;
+    outline: none;
+
+    .target {
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        vertical-align: middle;
+        background: var(--jk-button-default-background-color);
+        border: solid 1px var(--jk-border-color-base);
+        color: var(--jk-button-default-font-color);
+        font-weight: 500;
+        border-left: 0;
+        text-align: center;
+        box-sizing: border-box;
+        outline: none;
+        margin: 0;
+        position: relative;
+        cursor: pointer;
+        transition: $--all-transition;
+        -webkit-appearance: none;
+
+        @include set-size(12px, 20px, 14px);
+
+        &:hover {
+            color: var(--jk-color-primary);
+        }
+
+        & [class*="-icon-"] {
+            line-height: 0.9;
+
+            & + span {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    &.is-checked {
+        .target {
+            color: var(--jk-button-font-color);
+            background-color: var(--jk-color-primary);
+            border-color: var(--jk-color-primary);
+            box-shadow: -1px 0 0 0 #8cc5ff;
+        }
+    }
+
+    &.is-disabled {
+        .target {
+            color: var(--jk-color-text-placeholder);
+            cursor: not-allowed;
+            background-image: none;
+            background-color: #fff;
+            border-color: var(--jk-border-color-lighter);
+            box-shadow: none;
+        }
+
+        &.is-checked {
+            .target {
+                background-color: var(--jk-border-color-extra-light);
+            }
+        }
+    }
+
+    input {
+        opacity: 0;
+        outline: none;
+        position: absolute;
+        z-index: -1;
+    }
+
+    &:first-child {
+        .target {
+            border-left: $--border-base;
+            border-radius: 4px 0 0 4px;
+            box-shadow: none !important;
+        }
+    }
+
+    &:last-child {
+        .target {
+            border-radius: 0 4px 4px 0;
+        }
+    }
+
+    &:first-child:last-child {
+        .target {
+            border-radius: 4px;
+        }
+    }
+
+    &.medium {
+        .target {
+            @include set-size(10px, 20px, 14px);
+        }
+    }
+
+    &.small {
+        .target {
+            @include set-size(9px, 15px, 12px);
+        }
+    }
+
+    &.mini {
+        .target {
+            @include set-size(7px, 15px, 12px);
+        }
+    }
+
+    &:focus:not(.is-focus):not(:active):not(.is-disabled) {
+        box-shadow: 0 0 2px 2px var(--jk-color-primary);
+    }
+}
+</style>

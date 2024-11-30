@@ -1,0 +1,8 @@
+<template>
+    <i class="jk-icon-@props.name @(props.class||'')" />
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{ name: string; class: string }> {}
+</script>

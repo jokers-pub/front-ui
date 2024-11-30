@@ -1,0 +1,18 @@
+<template>
+    <jk-button @click="showLoading()">点击我进行全屏Loading</jk-button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Loading } from "../../../src/index";
+export default class extends Component {
+    showLoading() {
+        let $loading = Loading({
+            fullscreen: true
+        });
+
+        setTimeout(() => {
+            $loading.close();
+        }, 2000);
+    }
+}
+</script>

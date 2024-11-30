@@ -1,0 +1,17 @@
+<template>
+    <div style="width:180px">
+        <jk-password value="@model.val" placeholder="请输入密码" />
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        val: "123123"
+    };
+}
+</script>
+
+<style scoped>
+</style>

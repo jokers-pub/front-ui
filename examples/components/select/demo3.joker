@@ -1,0 +1,10 @@
+<template>
+    <DemoRow>
+        <jk-select placeholder="请选择" clearable>
+            <jk-option label="鱼香肉丝" value="1" />
+            <jk-option label="红烧排骨" value="2" />
+            <jk-option label="辣椒炒肉" value="3" />
+            <jk-option label="鱼香茄子" value="4" />
+        </jk-select>
+    </DemoRow>
+</template>

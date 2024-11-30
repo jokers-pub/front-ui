@@ -1,0 +1,142 @@
+<template>
+    @if(!props.hidden) {
+        <JokerButton
+            icon="@props.icon"
+            @click="selectFile"
+            type="@props.btnType"
+            size="@props.btnSize"
+            disabled="@props.disabled">
+            @if($sections.default) {
+                @RenderSection()
+            }
+            @if(!$sections.default) {
+                @props.title
+            }
+        </JokerButton>
+    }
+    @if(model.show) {
+        <input
+            style="display:none"
+            type="file"
+            accept="@accept"
+            multiple="@props.multiple"
+            ref="upload"
+            @change="handleFileChange"
+        />
+    }
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import JokerButton from "../button/index.joker";
+import { Message } from "../message";
+import { FormCtrl } from "../form/form-ctrl";
+
+export default class extends FormCtrl<{
+    icon: string;
+    btnType: string;
+    title: string;
+    btnSize: string;
+    disabled: boolean;
+    hidden: boolean;
+    //上传属性
+    multiple: boolean;
+    maxFileCount?: number;
+    mimeType?: string | string[];
+    maxFileSize?: number;
+}> {
+    propsOption = {
+        btnType: "primary",
+        title: "选择文件",
+        maxFileCount: Number,
+        maxFileSize: Number
+    };
+
+    model = {
+        show: false
+    };
+
+    components = {
+        JokerButton
+    };
+
+    get accept() {
+        if (this.props.mimeType) {
+            return Array.isArray(this.props.mimeType) ? this.props.mimeType.join(",") : this.props.mimeType;
+        }
+    }
+
+    reloadUpload() {
+        this.model.show = false;
+        this.model.show = true;
+    }
+
+    async selectFile() {
+        this.reloadUpload();
+        await this.$updatedRender();
+        this.$getRef("upload").output.click();
+    }
+
+    handleFileChange(e: VNode.Event) {
+        if (this.props.disabled) return;
+        let files: FileList = e.event.target.files;
+
+        if (this.props.multiple && this.props.maxFileCount && this.props.maxFileCount < files.length) {
+            Message({
+                message: `请选择最多选择${this.props.maxFileCount}个文件`,
+                type: "warning"
+            });
+            return;
+        }
+
+        let mimeType = this.props.mimeType
+            ? Array.isArray(this.props.mimeType)
+                ? this.props.mimeType
+                : [this.props.mimeType]
+            : undefined;
+
+        let successFiles: Array<any> = [];
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+
+            if (mimeType && mimeType.length) {
+                let accept = false;
+                for (let mime of mimeType) {
+                    if (mime.endsWith("/*")) {
+                        let start = mime.slice(0, -1);
+                        if (file.type.startsWith(start)) {
+                            accept = true;
+                            break;
+                        }
+                    } else if (mime === file.type) {
+                        accept = true;
+                        break;
+                    }
+                }
+
+                if (accept === false) {
+                    Message({
+                        message: `${file.name}不是被允许的上传类型，可上传类型有：${mimeType.join(",")}，请重新选择。`,
+                        type: "warning"
+                    });
+                    continue;
+                }
+            }
+
+            if (this.props.maxFileSize && file.size / 1024 > this.props.maxFileSize) {
+                Message({
+                    message: `${file.name}文件超出了限制大小：${this.props.maxFileSize}kb`,
+                    type: "warning"
+                });
+                continue;
+            }
+
+            successFiles.push(file);
+        }
+
+        this.value = successFiles;
+
+        this.$trigger("change", this.value);
+    }
+}
+</script>
+

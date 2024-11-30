@@ -1,0 +1,150 @@
+<template>
+    @if(props.isHeader) {
+        @if(!props.column.hideCheckAll) {
+            <JokerCheckbox
+                indeterminate="@model.headerIndeterminate"
+                value="@model.headerChecked"
+                @change="handleHeaderCheckChange"
+            />
+        }
+    }
+    else {
+        <JokerCheckbox value="@selectedRowChecked" @change="handleCheckChange" disabled="@disabled" />
+    }
+</template>
+<script>
+import { Component, VNode, combinedReply } from "@joker.front/core";
+import JokerCheckbox from "../../checkbox/checkbox.joker";
+import { componentName } from "../../utils";
+import { debounce, remove } from "@joker.front/shared";
+import { CHECK_ROW_KEY, ColumnType } from "../store";
+
+export default class extends Component<{
+    isHeader: boolean;
+    row: any;
+    column: ColumnType;
+}> {
+    components = {
+        JokerCheckbox
+    };
+    model = {
+        headerChecked: false,
+        headerIndeterminate: false
+    };
+    mounted() {
+        if (!this.props.isHeader && this.props.column.key) {
+            let [checked] = this.$watch(
+                () => this.props.row[this.props.column.key],
+                (val) => {
+                    this.setCheckBoxState(!!val, false);
+                }
+            );
+
+            this.setCheckBoxState(!!checked, false);
+        }
+
+        if (this.props.isHeader) {
+            this.$watch(
+                () => this.table.store.data.selectedRows,
+                () => {
+                    this.initHeaderState();
+                }
+            );
+        }
+    }
+
+    initHeaderState = debounce(80, () => {
+        if (!this.$root) return;
+
+        let state = this.getTableCheckState();
+        this.model.headerChecked =
+            (state.checkedCount > 0 || state.disabledCount > 0) && state.hasNotChcekedCount === 0;
+        this.model.headerIndeterminate = state.checkedCount > 0 && state.hasNotChcekedCount > 0;
+    });
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get selectedRowChecked() {
+        return this.props.row[CHECK_ROW_KEY];
+    }
+
+    get disabled() {
+        if (this.props.column?.disabledMethod) {
+            if (this.props.column.disabledMethod(this.props.row) === true) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    getTableCheckState() {
+        let checkedCount = 0;
+        let hasNotChcekedCount = 0;
+        let disabledCount = 0;
+        if (this.table?.store?.data.originalTableData) {
+            this.table.store.data.originalTableData.forEach((n: any) => {
+                //选中或行禁用
+                if (n[CHECK_ROW_KEY]) {
+                    checkedCount++;
+                } else if (this.props.column?.disabledMethod?.(n)) {
+                    disabledCount++;
+                } else {
+                    hasNotChcekedCount++;
+                }
+            });
+        }
+
+        return {
+            checkedCount,
+            hasNotChcekedCount,
+            disabledCount
+        };
+    }
+
+    setCheckBoxState(checked: boolean, notify = true) {
+        if (this.table?.store) {
+            if (checked) {
+                if (!this.table.store.data.selectedRows.includes(this.props.row)) {
+                    this.table.store.data.selectedRows.push(this.props.row);
+                    this.props.row[CHECK_ROW_KEY] = true;
+                }
+            } else {
+                remove(this.table.store.data.selectedRows, this.props.row);
+                this.props.row[CHECK_ROW_KEY] = false;
+            }
+
+            notify && this.table?.triggerSelectedRowChange();
+        }
+    }
+    handleCheckChange(e: VNode.Event<boolean>) {
+        this.setCheckBoxState(e.data);
+    }
+
+    handleHeaderCheckChange(e: VNode.Event<boolean>) {
+        if (this.table?.store?.data.originalTableData) {
+            let isChange = false;
+            combinedReply(() => {
+                this.table.store.data.originalTableData.forEach((n: any) => {
+                    if (this.props.column?.disabledMethod?.(n)) return;
+                    if (e.data) {
+                        if (!n[CHECK_ROW_KEY]) {
+                            this.table!.store.data.selectedRows.push(n);
+                            n[CHECK_ROW_KEY] = true;
+                        }
+                    } else {
+                        remove(this.table!.store.data.selectedRows, n);
+                        n[CHECK_ROW_KEY] = false;
+                    }
+                    isChange = true;
+                });
+            });
+            isChange && this.table?.triggerSelectedRowChange();
+        }
+    }
+}
+</script>

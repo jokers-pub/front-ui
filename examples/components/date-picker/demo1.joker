@@ -1,0 +1,54 @@
+<template>
+    <DemoRow>
+        <jk-date-picker placeholder="请选择日期"></jk-date-picker>
+    </DemoRow>
+    <DemoRow>
+        <jk-date-picker
+            placeholder="带快捷命令的日期选择"
+            shortcuts="@shortcuts"
+            format="YYYY年MM月DD日"
+            value="2023-09-27"
+            disabledDate="@disabledDate"></jk-date-picker>
+    </DemoRow>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    shortcuts = [
+        {
+            text: "今天",
+            onClick: (callBack: Function) => {
+                callBack(new Date());
+            }
+        },
+        {
+            text: "昨天",
+            onClick: (callBack: Function) => {
+                let date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24);
+
+                callBack(date);
+            }
+        },
+        {
+            text: "一周前",
+            onClick(callBack: Function) {
+                let date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+
+                callBack(date);
+            }
+        }
+    ];
+
+    disabledDate(date: Date) {
+        return this.getDateValue(date) > this.getDateValue(new Date());
+    }
+
+    getDateValue(date: Date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+}
+</script>

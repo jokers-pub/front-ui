@@ -1,0 +1,212 @@
+<template>
+    <div
+        class="jk-popper jk-picker-time-select-panel"
+        transition-name="jk-zoom-in-top"
+        ref="popper"
+        append-to="body"
+        style="width:@(pickerWidth)px">
+        <JokerScrollbar noresize ref="scrollbar" wrapClass="jk-picker-time-select-panel-content">
+            @for(let item of items) {
+                <div
+                    class="@({
+                        'jk-picker-time-select-panel-item': true,
+                        'is-selected': model.value === item.value,
+                        'is-disabled': item.disabled,
+                        'is-default': props.defaultValue === item.value
+                    })"
+                    @click="handleClick(item)">
+                    @item.value
+                </div>
+            }
+        </JokerScrollbar>
+    </div>
+</template>
+<script>
+import { PickerPanel } from "./base";
+import JokerScrollbar from "../../scrollbar/index.joker";
+import { VNode } from "@joker.front/core";
+import { TimeMode, compareTime, parseTime } from "../utils";
+
+export default class extends PickerPanel<{
+    start: string;
+    end: string;
+    step: string;
+    maxTime: string;
+    minTime: string;
+    value: string;
+    valueFormat: string;
+    defaultValue: string;
+}> {
+    model = {
+        value: ""
+    };
+    components = {
+        JokerScrollbar
+    };
+
+    propsOption = {
+        start: "09:00",
+        end: "18:00",
+        step: "00:30",
+        minTime: "-1:-1",
+        maxTime: "100:100",
+        valueFormat: "HH:mm"
+    };
+
+    created() {
+        this.$syncProp("value");
+
+        this.$watch(
+            () => this.model.value,
+            (val) => {
+                if (!val) return;
+
+                //堆栈后执行
+                setTimeout(() => {
+                    this.scrollToOption();
+                });
+            }
+        );
+    }
+    popperHtmlElement!: HTMLElement;
+
+    mounted() {
+        this.popperHtmlElement = this.$getRef("popper")?.output;
+        let selected =
+            this.popperHtmlElement.querySelector(".jk-picker-time-select-panel-item.is-selected") ||
+            this.popperHtmlElement.querySelector(".jk-picker-time-select-panel-item.is-default") ||
+            this.popperHtmlElement.querySelector(".jk-picker-time-select-panel-item:not(.is-disabled)");
+
+        if (selected) {
+            this.scrollToOption(selected);
+        }
+    }
+
+    //pick 对接事件，用于键盘导航
+    navigateItem(e: VNode.Event) {
+        let keyCode = e.event.keyCode;
+
+        if (keyCode === 38 || keyCode === 40) {
+            let offset = keyCode === 40 ? 1 : -1;
+            let items = this.items;
+            let length = items.length;
+            let total = length;
+            let currentIndex = items.map((n) => n.value).indexOf(this.model.value);
+
+            while (total >= 0) {
+                currentIndex = (currentIndex + offset + length) % length;
+
+                if (!items[currentIndex].disabled) {
+                    this.$trigger("pick", { value: items[currentIndex].value });
+                    return;
+                }
+                total--;
+            }
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }
+
+    get items() {
+        let start = this.props.start;
+        let end = this.props.end;
+        let step = this.props.step;
+
+        let result: any[] = [];
+        if (start && end && step) {
+            let current = start;
+
+            while (compareTime(current, end, this.props.valueFormat!) <= 0) {
+                result.push({
+                    value: current,
+                    disabled:
+                        compareTime(current, this.props.minTime!, this.props.valueFormat!) <= 0 ||
+                        compareTime(current, this.props.maxTime!, this.props.valueFormat!) >= 0
+                });
+
+                current = this.nextTime(current, step);
+            }
+        }
+        return result;
+    }
+
+    scrollToOption(item?: Element) {
+        let aimItem = item ?? this.popperHtmlElement.querySelector(".jk-picker-time-select-panel-item.is-selected");
+
+        if (aimItem) {
+            this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(aimItem);
+        }
+    }
+
+    handleClick(e: VNode.Event, item: any) {
+        if (!item.disabled) {
+            this.$trigger("pick", { value: item.value, close: true });
+        }
+    }
+
+    isValidValue(val: string) {
+        return this.items.some((n) => n.value === val && !n.disabled);
+    }
+
+    private formatTime(time: Omit<TimeMode, "seconds">) {
+        return `${time.hours.toString().padStart(2, "0")}:${time.minutes.toString().padStart(2, "0")}`;
+    }
+
+    private nextTime(time: string, step: string) {
+        let timeValue = parseTime(time, "HH:mm");
+        let stepValue = parseTime(step, "HH:mm");
+
+        let next: Omit<TimeMode, "seconds"> = {
+            hours: timeValue.hours,
+            minutes: timeValue.minutes
+        };
+
+        next.minutes += stepValue.minutes;
+        next.hours += stepValue.hours;
+
+        next.hours += Math.floor(next.minutes / 60);
+        next.minutes = next.minutes % 60;
+
+        return this.formatTime(next);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-picker-time-select-panel {
+    color: var(--jk-color-text-regular);
+    border: 1px solid var(--jk-border-color-light);
+    box-shadow: var(--jk-box-shadow-light);
+    background: #fff;
+    border-radius: 4px;
+    line-height: 30px;
+    margin: 5px 0;
+
+    :deep(.jk-picker-time-select-panel-content) {
+        max-height: 200px;
+        margin: 0;
+    }
+
+    .jk-picker-time-select-panel-item {
+        padding: 8px 10px;
+        font-size: 14px;
+        line-height: 20px;
+
+        &.is-selected:not(.is-disabled) {
+            color: var(--jk-color-primary);
+            font-weight: bold;
+        }
+
+        &.is-disabled {
+            color: var(--jk-border-color-light);
+            cursor: not-allowed !important;
+        }
+
+        &:hover {
+            background-color: var(--jk-background-color-base);
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+</style>

@@ -1,0 +1,17 @@
+<template>
+    <div class="item">
+        <jk-badge isDot>数据查询</jk-badge>
+    </div>
+    <div class="item">
+        <jk-badge isDot>
+            <jk-button type="primary" icon="jk-icon-share"></jk-button>
+        </jk-badge>
+    </div>
+</template>
+
+<style scoped>
+.item {
+    display: inline-block;
+    margin-right: 40px;
+}
+</style>

@@ -1,0 +1,24 @@
+<template>
+    <div>
+        <DemoRow><jk-progress textInside strokeWidth="@model.strokeWidth1" percentage="@model.percentage1"></jk-progress></DemoRow>
+        <DemoRow><jk-progress textInside strokeWidth="@model.strokeWidth2" percentage="@model.percentage2" status="success"></jk-progress></DemoRow>
+        <DemoRow><jk-progress textInside strokeWidth="@model.strokeWidth3" percentage="@model.percentage3" status="warning"></jk-progress></DemoRow>
+        <jk-progress textInside strokeWidth="@model.strokeWidth4" percentage="@model.percentage4" status="exception"></jk-progress>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        percentage1: 70,
+        percentage2: 100,
+        percentage3: 80,
+        percentage4: 50,
+        strokeWidth1: 26,
+        strokeWidth2: 24,
+        strokeWidth3: 22,
+        strokeWidth4: 20
+    };
+}
+</script>

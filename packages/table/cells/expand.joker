@@ -1,0 +1,52 @@
+<template>
+    @if(!props.isHeader) {
+        <i class="expand @expandClass" @click="handleClick"></i>
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { ColumnType, Store } from "../store";
+import { componentName } from "../../utils";
+import { remove } from "@joker.front/shared";
+
+export default class extends Component<{
+    isHeader: boolean;
+    column: ColumnType;
+    row: any;
+}> {
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get expandClass() {
+        let store = this.table?.store as Store;
+
+        return store.data.expandRows.includes(this.props.row!) ? "jk-icon-arrow-down" : "jk-icon-arrow-right";
+    }
+
+    handleClick() {
+        let store = this.table?.store as Store;
+
+        let expand = false;
+        if (store.data.expandRows.includes(this.props.row!)) {
+            remove(store.data.expandRows, this.props.row!);
+        } else {
+            expand = true;
+            store.data.expandRows.push(this.props.row!);
+        }
+
+        this.table?.$trigger("expand-change", {
+            row: this.props.row,
+            expand
+        });
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.expand {
+    cursor: pointer;
+}
+</style>

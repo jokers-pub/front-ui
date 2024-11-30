@@ -1,0 +1,24 @@
+<template>
+    <jk-form inline>
+        <jk-form-item label="活动名称">
+            <jk-input name="name" placeholder="请输入活动名称" />
+        </jk-form-item>
+        <jk-form-item label="活动区域">
+            <jk-select name="area" placeholder="请选择活动区域">
+                <jk-option label="山东" value="shandong" />
+                <jk-option label="北京" value="beijing" />
+            </jk-select>
+        </jk-form-item>
+        <jk-form-item label="活动时间">
+            <jk-date-picker
+                name="date"
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </jk-form-item>
+        <jk-form-item>
+            <jk-button type="primary">查询</jk-button>
+        </jk-form-item>
+    </jk-form>
+</template>

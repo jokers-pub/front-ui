@@ -1,0 +1,17 @@
+<template>
+    <jk-button @click="open">偏移警告</jk-button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Notification } from "../../../src";
+export default class extends Component {
+    open() {
+        Notification({
+            offset: 100,
+            title: "提示",
+            message: "我是一个提示"
+        });
+    }
+}
+</script>
+

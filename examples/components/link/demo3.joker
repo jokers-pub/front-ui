@@ -1,0 +1,13 @@
+<template>
+    <div class="demo-container">
+        <jk-link underline="@false">无下划线</jk-link>
+        <jk-link>有下划线</jk-link>
+    </div>
+</template>
+<style scoped lang="scss">
+.demo-container {
+    :deep(.jk-link) {
+        margin-right: 5px;
+    }
+}
+</style>

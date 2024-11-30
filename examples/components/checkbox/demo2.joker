@@ -1,0 +1,4 @@
+<template>
+    <jk-checkbox disabled value>备选项1</jk-checkbox>
+    <jk-checkbox disabled value="@false">备选项2</jk-checkbox>
+</template>

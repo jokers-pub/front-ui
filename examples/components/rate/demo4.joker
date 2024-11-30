@@ -1,0 +1,3 @@
+<template>
+    <jk-rate allow-half show-score />
+</template>

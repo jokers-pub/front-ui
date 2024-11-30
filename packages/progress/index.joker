@@ -1,0 +1,379 @@
+<template>
+    <div
+        class="@([
+            'jk-progress',
+            '' + props.type,
+            props.status ? 'is-' + props.status : '',
+            {
+                'without-text': !props.showText,
+                'text-inside': props.textInside
+            },
+            props.class
+        ])"
+        role="progressbar"
+        aria-valuenow="@props.percentage"
+        aria-valuemin="0"
+        aria-valuemax="100">
+        @if(props.type === "line") {
+            <div class="bar">
+                <div class="bar-outer" style="@({ height: props.strokeWidth + 'px' })">
+                    <div class="bar-inner" style="@barStyle">
+                        @if(props.showText && props.textInside) {
+                            <div class="bar-innerText">
+                                @content
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else {
+            <div class="circle" style="@({ height: props.width + 'px', width: props.width + 'px' })">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        class="circle-track"
+                        d="@trackPath"
+                        stroke="#e5e9f2"
+                        stroke-width="@relativeStrokeWidth"
+                        fill="none"
+                        style="@(trailPathStyle)"
+                    />
+                    <path
+                        class="circle-path"
+                        d="@trackPath"
+                        stroke="@stroke"
+                        fill="none"
+                        stroke-linecap="@strokeLinecap"
+                        stroke-width="@(props.percentage ? relativeStrokeWidth : 0)"
+                        style="@(circlePathStyle)"
+                    />
+                </svg>
+            </div>
+        }
+        @if(props.showText && !props.textInside) {
+            <div class="text" style="@({ fontSize: progressTextSize + 'px' })">
+                @if(!props.status) {
+                    <span>@content</span>
+                }
+                else {
+                    <i class="@iconClass"></i>
+                }
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { componentName } from "../utils/index";
+
+export default class extends Component<{
+    type: string;
+    percentage: number;
+    status: string;
+    strokeWidth: number;
+    strokeLinecap: string;
+    textInside: boolean;
+    width: number;
+    class: string;
+    showText: boolean;
+    color: string | any[] | ((val: number) => "");
+    format: (val: number) => "";
+}> {
+    propsOption = {
+        type: {
+            default: "line",
+            validator: (val: string): boolean => ["line", "circle", "dashboard"].includes(val)
+        },
+        percentage: {
+            default: 0,
+            required: true,
+            validator: (val: number): boolean => val >= 0 && val <= 100
+        },
+        status: {
+            default: "",
+            validator: (val: string): boolean => ["success", "exception", "warning"].includes(val)
+        },
+        strokeWidth: 6,
+        strokeLinecap: "round",
+        width: 126,
+        showText: true,
+        color: ""
+    };
+    name = componentName("progress");
+    model = {};
+
+    get barStyle() {
+        let style = [
+            "width:" + this.props.percentage + "%",
+            "background-color:" + this.getCurrentColor(<number>this.props.percentage)
+        ];
+        return style.join(";");
+    }
+
+    get relativeStrokeWidth() {
+        return ((<number>this.props.strokeWidth / <number>this.props.width) * 100).toFixed(1);
+    }
+
+    get radius() {
+        if (this.props.type === "circle" || this.props.type === "dashboard") {
+            return parseInt((50 - parseFloat(this.relativeStrokeWidth) / 2).toString(), 10);
+        } else {
+            return 0;
+        }
+    }
+
+    get trackPath() {
+        let radius = this.radius;
+        let isDashboard = this.props.type === "dashboard";
+        return [
+            "M 50 50",
+            `m 0 ${isDashboard ? "" : "-"}${radius}`,
+            `a ${radius} ${radius} 0 1 1 0 ${isDashboard ? "-" : ""}${radius * 2}`,
+            `a ${radius} ${radius} 0 1 1 0 ${isDashboard ? "" : "-"}${radius * 2}`
+        ].join(" ");
+    }
+
+    get perimeter() {
+        return 2 * Math.PI * this.radius;
+    }
+
+    get rate() {
+        return this.props.type === "dashboard" ? 0.75 : 1;
+    }
+
+    get strokeDashoffset() {
+        const offset = (-1 * this.perimeter * (1 - this.rate)) / 2;
+        return `${offset}px`;
+    }
+
+    get trailPathStyle() {
+        return {
+            strokeDasharray: `${this.perimeter * this.rate}px, ${this.perimeter}px`,
+            strokeDashoffset: this.strokeDashoffset
+        };
+    }
+
+    get circlePathStyle() {
+        return {
+            strokeDasharray: `${this.perimeter * this.rate * (<number>this.props.percentage / 100)}px, ${
+                this.perimeter
+            }px`,
+            strokeDashoffset: this.strokeDashoffset,
+            transition: "stroke-dasharray 0.6s ease 0s, stroke 0.6s ease"
+        };
+    }
+
+    get stroke() {
+        let ret;
+        if (this.props.color) {
+            ret = this.getCurrentColor(<number>this.props.percentage);
+        } else {
+            switch (this.props.status) {
+                case "success":
+                    ret = "#13ce66";
+                    break;
+                case "exception":
+                    ret = "#ff4949";
+                    break;
+                case "warning":
+                    ret = "#e6a23c";
+                    break;
+                default:
+                    ret = "#20a0ff";
+            }
+        }
+        return ret;
+    }
+
+    get iconClass() {
+        if (this.props.status === "warning") {
+            return "jk-icon-warning";
+        }
+        if (this.props.type === "line") {
+            return this.props.status === "success" ? "jk-icon-circle-check" : "jk-icon-circle-close";
+        } else {
+            return this.props.status === "success" ? "jk-icon-check" : "jk-icon-close";
+        }
+    }
+
+    get progressTextSize() {
+        return this.props.type === "line"
+            ? 12 + <number>this.props.strokeWidth * 0.4
+            : <number>this.props.width * 0.111111 + 2;
+    }
+
+    get content() {
+        if (typeof this.props.format === "function") {
+            return this.props.format(<number>this.props.percentage) || "";
+        } else {
+            return `${this.props.percentage}%`;
+        }
+    }
+
+    getCurrentColor(percentage: number): string {
+        if (typeof this.props.color === "function") {
+            return this.props.color(percentage);
+        } else if (Array.isArray(this.props.color)) {
+            return this.getLevelColor(percentage);
+        } else {
+            return <string>this.props.color;
+        }
+    }
+
+    getLevelColor(percentage: number): string {
+        const colorArray = this.getColorArray().sort((a: any, b: any) => a.percentage - b.percentage);
+
+        for (let i = 0; i < colorArray.length; i++) {
+            if (colorArray[i].percentage > percentage) {
+                return colorArray[i].color;
+            }
+        }
+        return colorArray[colorArray.length - 1].color;
+    }
+
+    getColorArray() {
+        const color = <any[]>this.props.color;
+        const span = 100 / color?.length;
+        return color.map((seriesColor: any, index: number) => {
+            if (typeof seriesColor === "string") {
+                return {
+                    color: seriesColor,
+                    percentage: (index + 1) * span
+                };
+            }
+            return seriesColor;
+        });
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-progress {
+    position: relative;
+    line-height: 1;
+    .text {
+        font-size: 14px;
+        color: #606266;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        line-height: 1;
+        i {
+            vertical-align: middle;
+            display: block;
+        }
+    }
+    &.circle,
+    &.dashboard {
+        display: inline-block;
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            transform: translateY(-50%);
+            i {
+                vertical-align: middle;
+                display: inline-block;
+            }
+        }
+    }
+    &.without-text {
+        .text {
+            display: none;
+        }
+        .bar {
+            padding-right: 0;
+            margin-right: 0;
+            display: block;
+        }
+    }
+    &.text-inside {
+        .bar {
+            padding-right: 0;
+            margin-right: 0;
+        }
+    }
+    &.is-success {
+        .bar-outer {
+            .bar-inner {
+                background-color: #67c23a;
+            }
+            .text {
+                color: #67c23a;
+            }
+        }
+    }
+    &.is-warning {
+        .bar-outer {
+            .bar-inner {
+                background-color: #e6a23c;
+            }
+            .text {
+                color: #e6a23c;
+            }
+        }
+    }
+    &.is-exception {
+        .bar-outer {
+            .bar-inner {
+                background-color: #f56c6c;
+            }
+            .text {
+                color: #f56c6c;
+            }
+        }
+    }
+    .circle {
+        svg,
+        path {
+            // display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .bar {
+        padding-right: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        margin-right: -55px;
+        box-sizing: border-box;
+        .bar-outer {
+            height: 6px;
+            border-radius: 100px;
+            background-color: #ebeef5;
+            overflow: hidden;
+            position: relative;
+            vertical-align: middle;
+        }
+        .bar-inner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: #409eff;
+            text-align: right;
+            border-radius: 100px;
+            line-height: 1;
+            white-space: nowrap;
+            transition: width 0.6s ease;
+            &:after {
+                display: inline-block;
+                content: "";
+                height: 100%;
+                vertical-align: middle;
+            }
+            .bar-innerText {
+                display: inline-block;
+                vertical-align: middle;
+                color: #fff;
+                font-size: 12px;
+                margin: 0 5px;
+            }
+        }
+    }
+}
+</style>

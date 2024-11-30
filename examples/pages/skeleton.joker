@@ -1,0 +1,330 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Skeleton 骨架屏</h2>
+<p>在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。</p>
+<h3>基础用法</h3>
+<p>基础的骨架效果。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-skeleton /&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>更多参数</h3>
+<p>可以配置骨架屏段落数量，以便更接近真实渲染效果。首行会被渲染一个长度 33% 的段首。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-skeleton rows=&quot;6&quot; count=&quot;2&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>动画效果</h3>
+<p>显示动画效果。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>自定义样式</h3>
+<p>Joker-UI 提供的排版模式有时候并不满足要求，当您想要用自己定义的模板时，可以通过一个具名 Section 来自己设定模板。</p>
+<p>我们提供了不同的模板单元可供使用，具体可选值请看 API 详细描述。 建议在描述模板的时候，尽量靠近真实的 DOM 结构，这样可以避免 DOM 高度差距引起的抖动。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">
+&lt;template&gt;
+    &lt;jk-skeleton style=&quot;width: 240px&quot;&gt;
+        @section(&quot;template&quot;) {
+            &lt;jk-skeleton-item variant=&quot;image&quot; style=&quot;width: 240px; height: 240px;&quot; /&gt;
+            &lt;div style=&quot;padding: 14px;&quot;&gt;
+                &lt;jk-skeleton-item variant=&quot;p&quot; style=&quot;width: 50%&quot; /&gt;
+                &lt;div style=&quot;display: flex; align-items: center; justify-content: space-between;margin-top: 16px&quot;&gt;
+                    &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;margin-right: 16px;&quot; /&gt;
+                    &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;width: 30%;&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        }
+    &lt;/jk-skeleton&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Loading 状态</h3>
+<p>当 Loading 结束之后，我们往往需要显示真实的 UI，可以通过 loading 的值来控制是否显示真实的 DOM。然后通过 具名 Section 来设置当 loading 结束之后需要展示的 UI。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div style=&quot;width: 240px&quot;&gt;
+        &lt;p&gt;
+            &lt;label style=&quot;margin-right: 16px;&quot;&gt;切换 Loading&lt;/label&gt;
+            &lt;jk-switch value=&quot;@model.loading&quot; @change=&quot;switchChange&quot; /&gt;
+        &lt;/p&gt;
+        &lt;jk-skeleton style=&quot;width: 240px&quot; loading=&quot;@model.loading&quot; animated&gt;
+            @section(&quot;template&quot;) {
+                &lt;jk-skeleton-item variant=&quot;image&quot; style=&quot;width: 240px; height: 240px;&quot; /&gt;
+                &lt;div style=&quot;padding: 14px;&quot;&gt;
+                    &lt;jk-skeleton-item variant=&quot;h3&quot; style=&quot;width: 50%;&quot; /&gt;
+                    &lt;div
+                        style=&quot;display: flex; align-items: center; justify-content: space-between; margin-top: 16px; height: 16px;&quot;&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;margin-right: 16px;&quot; /&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;width: 30%;&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            }
+            &lt;img src=&quot;/static/skeleton/horse.png&quot; style=&quot;width:240px&quot; /&gt;
+        &lt;/jk-skeleton&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = { loading: true };
+    currentDate?: string = &quot;2021-06-01&quot;;
+
+    switchChange(e: VNode.Event) {
+        this.model.loading = e.data!;
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>渲染多条数据</h3>
+<p>大多时候, 骨架屏都被用来渲染列表, 当我们需要在从服务器获取数据的时候来渲染一个假的 UI。利用 count 这个属性就能控制渲染多少条假的数据在页面上。</p>
+<p>请注意, 请尽可能的将 count 的大小保持在最小状态, 即使是假的 UI, DOM 元素多了之后, 照样会引起性能问题, 并且在骨架屏销毁时所消耗的时间也会更长(相对的)。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div style=&quot;width: 400px&quot;&gt;
+        &lt;p&gt;
+            &lt;jk-button @click=&quot;setLoading&quot;&gt;点我重新加载&lt;/jk-button&gt;
+        &lt;/p&gt;
+        &lt;jk-skeleton style=&quot;width:400px&quot; loading=&quot;@model.loading&quot; animated count=&quot;3&quot;&gt;
+            @section(&quot;template&quot;) {
+                &lt;jk-skeleton-item variant=&quot;image&quot; style=&quot;width: 400px; height: 267px;&quot; /&gt;
+                &lt;div style=&quot;padding: 14px;&quot;&gt;
+                    &lt;jk-skeleton-item variant=&quot;h3&quot; style=&quot;width: 50%;&quot; /&gt;
+                    &lt;div
+                        style=&quot;display: flex; align-items: center; justify-content: space-between; margin-top: 16px; height: 16px;&quot;&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;margin-right: 16px;&quot; /&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;width: 30%;&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            }
+            @section(&quot;default&quot;) {
+                &lt;img src=&quot;/static/skeleton/horse.png&quot; style=&quot;width:240px;margin-bottom:10px;&quot; /&gt;
+                &lt;img src=&quot;/static/skeleton/tiger.png&quot; style=&quot;width:240px;margin-bottom:10px;&quot; /&gt;
+                &lt;img src=&quot;/static/skeleton/rabbit.png&quot; style=&quot;width:240px;margin-bottom:10px;&quot; /&gt;
+            }
+        &lt;/jk-skeleton&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = { loading: false };
+    currentDate?: string = &quot;2021-06-01&quot;;
+    setLoading() {
+        this.model.loading = true;
+        setTimeout(() =&gt; (this.model.loading = false), 2000);
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>防止渲染抖动</h3>
+<p>有的时候，API 的请求回来的特别快，往往骨架占位刚刚被渲染，真实的数据就已经回来了，用户的界面会突然一闪，此时为了避免这种情况，就需要通过 throttle 属性来避免这个问题。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div style=&quot;width: 240px&quot;&gt;
+        &lt;p&gt;
+            &lt;label style=&quot;margin-right: 16px;&quot;&gt;切换 Loading&lt;/label&gt;
+            &lt;jk-switch value=&quot;@model.loading&quot; @change=&quot;switchChange&quot; /&gt;
+        &lt;/p&gt;
+        &lt;jk-skeleton style=&quot;width: 240px&quot; loading=&quot;@model.loading&quot; animated throttle=&quot;500&quot;&gt;
+            @section(&quot;template&quot;) {
+                &lt;jk-skeleton-item variant=&quot;image&quot; style=&quot;width: 240px; height: 240px;&quot; /&gt;
+                &lt;div style=&quot;padding: 14px;&quot;&gt;
+                    &lt;jk-skeleton-item variant=&quot;h3&quot; style=&quot;width: 50%;&quot; /&gt;
+                    &lt;div
+                        style=&quot;display: flex; align-items: center; justify-content: space-between; margin-top: 16px; height: 16px;&quot;&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;margin-right: 16px;&quot; /&gt;
+                        &lt;jk-skeleton-item variant=&quot;text&quot; style=&quot;width: 30%;&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            }
+            &lt;img src=&quot;/static/skeleton/horse.png&quot; style=&quot;width:240px&quot; /&gt;
+        &lt;/jk-skeleton&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = { loading: true };
+    currentDate?: string = &quot;2021-06-01&quot;;
+
+    switchChange(e: VNode.Event) {
+        this.model.loading = e.data!;
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>Skeleton 属性</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>animated</td>
+<td>是否使用动画</td>
+<td>boolean</td>
+<td>true / false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>count</td>
+<td>渲染多少个 template, 建议使用尽可能小的数字</td>
+<td>number</td>
+<td>integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否显示 skeleton 骨架屏</td>
+<td>boolean</td>
+<td>true / false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>骨架屏段落数量</td>
+<td>number</td>
+<td>正整数</td>
+<td>4</td>
+</tr>
+<tr>
+<td>throttle</td>
+<td>延迟占位 DOM 渲染的时间, 单位是毫秒</td>
+<td>number</td>
+<td>正整数</td>
+<td>0</td>
+</tr>
+<tr>
+<td>style</td>
+<td>行内样式表</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>SkeletonItem 属性</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>variant</td>
+<td>当前显示的占位元素的样式</td>
+<td>Enum(string)</td>
+<td>p / h1 / h3 / text / caption / button / image / circle / rect</td>
+<td>text</td>
+</tr>
+<tr>
+<td>style</td>
+<td>行内样式表</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义样式</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>Skeleton section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>name</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>用来展示真实 UI</td>
+</tr>
+<tr>
+<td>template</td>
+<td>用来展示自定义占位符</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo7 from '../components/skeleton/demo7.joker';
+import DEMO_JOKER_demo6 from '../components/skeleton/demo6.joker';
+import DEMO_JOKER_demo5 from '../components/skeleton/demo5.joker';
+import DEMO_JOKER_demo4 from '../components/skeleton/demo4.joker';
+import DEMO_JOKER_demo3 from '../components/skeleton/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/skeleton/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/skeleton/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

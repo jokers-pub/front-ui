@@ -1,0 +1,60 @@
+<template>
+    <div class="collapse">
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { VNode, Component } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    accordion: Boolean;
+    value: string | Array<string>;
+}> {
+    name = componentName("collapse");
+
+    model = {
+        activeNames: this.props.value ? [].concat(this.props.value) : []
+    };
+
+    setActiveNames(names) {
+        names = [].concat(names);
+        let value = this.props.accordion ? names[0] : names;
+        this.model.activeNames = names;
+
+        let children =
+            this.$rootVNode?.find((n) => {
+                return n instanceof VNode.Component && n.component?.name === componentName("collapse-item");
+            }) || [];
+
+        children.forEach((child: any) => {
+            let index = this.model.activeNames.indexOf(child.component.props.name);
+            if (index > -1) {
+                child.component.setIsActive(true);
+            } else {
+                child.component.setIsActive(false);
+            }
+        });
+
+        this.$trigger("change", value);
+    }
+
+    refreshChildren(child) {
+        if (this.props.accordion) {
+            this.setActiveNames(
+                this.model.activeNames[0] && this.model.activeNames[0] === child.props.name ? "" : child.props.name
+            );
+        } else {
+            let activeNames = this.model.activeNames.slice(0);
+            let index = activeNames.indexOf(child.props.name);
+
+            if (index > -1) {
+                activeNames.splice(index, 1);
+            } else {
+                activeNames.push(child.props.name);
+            }
+            this.setActiveNames(activeNames);
+        }
+    }
+}
+</script>

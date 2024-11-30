@@ -1,0 +1,54 @@
+<template>
+    <div class="radio">
+        排序：
+        <div class="group">
+            <jk-radio-group value="@model.reverse" @change="radioChange">
+                <jk-radio value="@true">倒序</jk-radio>
+                <jk-radio value="@false">正序</jk-radio>
+            </jk-radio-group>
+        </div>
+    </div>
+    <jk-timeline>
+        @for(let item of model.activities) {
+            <jk-timeline-item timestamp="@item.timestamp">
+                @item.content
+            </jk-timeline-item>
+        }
+    </jk-timeline>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        reverse: true,
+        activities: [
+            {
+                content: "活动按期开始",
+                timestamp: "2023-08-15"
+            },
+            {
+                content: "通过审核",
+                timestamp: "2018-04-13"
+            },
+            {
+                content: "创建成功",
+                timestamp: "2018-04-11"
+            }
+        ]
+    };
+
+    radioChange() {
+        this.model.activities = this.model.activities.reverse();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.radio {
+    margin-bottom: 20px;
+    .group {
+        display: inline-block;
+    }
+}
+</style>

@@ -1,0 +1,61 @@
+<template>
+    <div class="demo-container" style="width:200px;">
+        <DemoRow>
+            <jk-number hiddenControls placeholder="请输入内容" />
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="medium" placeholder="请输入内容" />
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="small" placeholder="请输入内容" />
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="mini" placeholder="请输入内容" />
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls placeholder="请输入内容">
+                @section("prepend") {
+                    字号
+                }
+                @section("append") {
+                    px
+                }
+            </jk-number>
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="medium" placeholder="请输入内容">
+                @section("prepend") {
+                    字号
+                }
+                @section("append") {
+                    px
+                }
+            </jk-number>
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="small" placeholder="请输入内容">
+                @section("prepend") {
+                    字号
+                }
+                @section("append") {
+                    px
+                }
+            </jk-number>
+        </DemoRow>
+        <DemoRow>
+            <jk-number hiddenControls size="mini" placeholder="请输入内容">
+                @section("prepend") {
+                    字号
+                }
+                @section("append") {
+                    px
+                }
+            </jk-number>
+        </DemoRow>
+    </div>
+</template>
+<style lang="scss" scoped>
+:deep(.demo-container .jk-number) {
+    margin-right: 15px;
+}
+</style>

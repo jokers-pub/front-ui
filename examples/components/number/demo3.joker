@@ -1,0 +1,7 @@
+<template>
+    <div style="width:200px;">
+        <DemoRow>
+            <jk-number value="1" step="2" />
+        </DemoRow>
+    </div>
+</template>

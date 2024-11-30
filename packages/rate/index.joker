@@ -1,0 +1,314 @@
+<template>
+    <div
+        class="@(['jk-rate', props.disabled && 'is-disabled', props.class])"
+        role="slider"
+        aria-valuenow="@model.currentValue"
+        aria-valuetext="@text"
+        aria-valuemin="0"
+        aria-valuemax="@props.max">
+        @for(let i = 0; i < props.max; i++) {
+            <span
+                class="item"
+                @mousemove="handleMouseMove(i + 1)"
+                @mouseleave="resetCurrentValue"
+                @click="handleClick(i + 1)">
+                <i class="icon @(classes[i]||'') @(model.hoverIndex===i+1?'is-hover':'')" style="@getIconStyle(i+1)">
+                    @if(showDecimalIcon(i + 1)) {
+                        <i class="decimal @decimalIconClass" style="@decimalStyle"></i>
+                    }
+                </i>
+            </span>
+        }
+        @if(props.showText || props.showScore) {
+            <span class="text" style="color:@props.textColor">@text</span>
+        }
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { isObject } from "@joker.front/shared";
+
+export default class extends FormCtrl<{
+    lowThreshold: number;
+    highThreshold: number;
+    colors: string[] | object;
+    class: string;
+    max: number;
+    voidColor: string;
+    disabledVoidColor: string;
+    iconClasses: string[] | object;
+    voidIconClass: string;
+    disabledVoidIconClass: string;
+    allowHalf: boolean;
+    showText: boolean;
+    showScore: boolean;
+    textColor: string;
+    texts: string[];
+    scoreTemplate: string;
+}> {
+    propsOption = {
+        value: 0,
+        lowThreshold: 2,
+        highThreshold: 4,
+        max: 5,
+        colors: ["#F7BA2A", "#F7BA2A", "#F7BA2A"],
+        voidColor: "#C6D1DE",
+        disabledVoidColor: "#EFF2F7",
+        iconClasses: ["jk-icon-star-on", "jk-icon-star-on", "jk-icon-star-on"],
+        voidIconClass: "jk-icon-star-off",
+        disabledVoidIconClass: "jk-icon-star-on",
+        textColor: "#1f2d3d",
+        texts: ["极差", "失望", "一般", "满意", "惊喜"],
+        scoreTemplate: "{value}"
+    };
+
+    mounted() {
+        this.$watch(
+            () => this.props.value,
+            (val) => {
+                this.model.currentValue = val;
+                this.model.pointerAtLeftHalf = val !== Math.floor(val);
+            }
+        );
+
+        this.model.currentValue = this.props.value;
+    }
+    model = {
+        pointerAtLeftHalf: true,
+        hoverIndex: -1,
+        //临时值/过程值，不代表最终值，
+        currentValue: 0
+    };
+
+    get text() {
+        if (this.props.showScore) {
+            return this.props.scoreTemplate?.replace(
+                /\{\s*value\s*\}/,
+                this.props.disabled ? this.value : this.model.currentValue
+            );
+        } else if (this.props.showText) {
+            return this.props.texts?.[Math.ceil(this.model.currentValue) - 1];
+        }
+        return "";
+    }
+
+    get colorMap() {
+        if (Array.isArray(this.props.colors)) {
+            return {
+                [this.props.lowThreshold!]: this.props.colors[0],
+                [this.props.highThreshold!]: { value: this.props.colors[1], excluded: true },
+                [this.props.max!]: this.props.colors[2]
+            };
+        }
+        return this.props.colors!;
+    }
+
+    get classMap() {
+        if (Array.isArray(this.props.iconClasses)) {
+            return {
+                [this.props.lowThreshold!]: this.props.iconClasses![0],
+                [this.props.highThreshold!]: { value: this.props.iconClasses![1], excluded: true },
+                [this.props.max!]: this.props.iconClasses![2]
+            };
+        }
+        return this.props.iconClasses!;
+    }
+
+    get activeClass() {
+        return this.getValueFromMap(this.model.currentValue, this.classMap);
+    }
+
+    get voidClass() {
+        return (this.props.disabled ? this.props.disabledVoidIconClass : this.props.voidIconClass) || "";
+    }
+
+    get activeColor() {
+        return this.getValueFromMap(this.model.currentValue, this.colorMap);
+    }
+
+    get valueDecimal() {
+        return this.value * 100 - Math.floor(this.value) * 100;
+    }
+
+    get decimalIconClass() {
+        return this.getValueFromMap(this.value, this.classMap);
+    }
+
+    get decimalStyle() {
+        let width: string | undefined = undefined;
+
+        if (this.props.disabled) {
+            width = `${this.valueDecimal}%`;
+        } else if (this.props.allowHalf) {
+            width = "50%";
+        }
+
+        return {
+            color: this.activeColor,
+            width
+        };
+    }
+
+    get classes() {
+        let result: string[] = [];
+
+        let i = 0;
+        let threshold = this.model.currentValue;
+        if (this.props.allowHalf && this.model.currentValue !== Math.floor(this.model.currentValue)) {
+            threshold--;
+        }
+
+        for (; i < threshold; i++) {
+            result.push(this.activeClass);
+        }
+
+        for (; i < this.props.max!; i++) {
+            result.push(this.voidClass);
+        }
+
+        return result;
+    }
+
+    showDecimalIcon(i: number) {
+        let showWhenDisabled = this.props.disabled && this.valueDecimal > 0 && i - 1 < this.value && i > this.value;
+
+        let showWhenAllowHalf =
+            this.props.allowHalf &&
+            this.model.pointerAtLeftHalf &&
+            i - 0.5 <= this.model.currentValue &&
+            i > this.model.currentValue;
+
+        return showWhenDisabled || showWhenAllowHalf;
+    }
+
+    getIconStyle(i: number) {
+        let voidColor = this.props.disabled ? this.props.disabledVoidColor : this.props.voidColor;
+
+        return {
+            color: i <= this.model.currentValue ? this.activeColor : voidColor
+        };
+    }
+
+    getValueFromMap(value: number, map: object) {
+        let matchedKeys = Object.keys(map)
+            .map((m) => Number(m))
+            .filter((key) => {
+                //@ts-ignore
+                let val = map[key];
+                let excluded = isObject(val) ? val.excluded : false;
+                return excluded ? value < key : value <= key;
+            })
+            .sort((a, b) => a - b);
+        //@ts-ignore
+        let matchedValue = map[matchedKeys[0]];
+        return isObject(matchedValue) ? matchedValue.value : matchedValue || "";
+    }
+
+    resetCurrentValue() {
+        if (this.props.disabled) return;
+
+        if (this.props.allowHalf) {
+            this.model.pointerAtLeftHalf = this.value !== Math.floor(this.value);
+        }
+
+        this.model.currentValue = this.value;
+        this.model.hoverIndex = -1;
+    }
+
+    selectValue(val: number) {
+        if (this.props.disabled) return;
+        let oldVal = this.value;
+
+        //如果是小数（半选）则替换值（值来源mousemove）
+        if (this.props.allowHalf && this.model.pointerAtLeftHalf) {
+            val = this.model.currentValue;
+        }
+
+        if (oldVal !== val) {
+            this.value = val;
+
+            this.$trigger("change", this.value);
+        }
+    }
+
+    handleMouseMove(e: VNode.Event, i: number) {
+        if (this.props.disabled) return;
+
+        if (this.props.allowHalf) {
+            let target: HTMLElement = e.event.target;
+
+            if (target.classList.contains("item")) {
+                target = target.querySelector("icon")!;
+            }
+
+            if (target.classList.contains("decimal")) {
+                target = target.parentElement!;
+            }
+
+            this.model.pointerAtLeftHalf = e.event.offsetX * 2 <= target.clientWidth;
+            this.model.currentValue = this.model.pointerAtLeftHalf ? i - 0.5 : i;
+        } else {
+            this.model.currentValue = i;
+        }
+
+        this.model.hoverIndex = i;
+    }
+
+    handleClick(e: VNode.Event, i: number) {
+        this.selectValue(i);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-rate {
+    height: 20px;
+    line-height: 1;
+
+    &:focus,
+    &:active {
+        outline-width: 0;
+    }
+
+    .item {
+        display: inline-block;
+        position: relative;
+        font-size: 0;
+        vertical-align: middle;
+        cursor: pointer;
+
+        .icon {
+            position: relative;
+            display: inline-block;
+            font-size: 18px;
+            margin-right: 6px;
+            color: var(--jk-color-text-placeholder);
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.15);
+            }
+
+            .decimal {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .text {
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    &.is-disabled {
+        .item {
+            cursor: auto;
+        }
+    }
+}
+</style>

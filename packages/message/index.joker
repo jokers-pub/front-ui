@@ -1,0 +1,220 @@
+<template>
+    <div
+        ref="contianer"
+        class="@([
+            'jk-message',
+            props.type && !props.iconClass ? props.type : '',
+            props.center ? 'is-center' : '',
+            props.closable ? 'is-closable' : '',
+            props.customClass
+        ])"
+        transition-name="jk-message-fade"
+        style="top:@(model.offset)px;z-index:@zIndex"
+        role="alert"
+        @mouseenter="clearTimer"
+        @mouseleave="startTimer">
+        @if(props.iconClass) {
+            <i class="@props.iconClass"></i>
+        }
+        else {
+            <i class="@typeClass"></i>
+        }
+        <p class="content">
+            @if(props.useHtml) {
+                @Html(props.message)
+            }
+            else {
+                @props.message
+            }
+        </p>
+        @if(props.closable) {
+            <i class="close jk-icon-close" @click="close"></i>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { zIndexManage } from "../utils/zindex";
+import { PropsOption } from "./index";
+
+export default class extends Component<PropsOption> {
+    propsOption = {
+        message: "",
+        type: "info",
+        duration: 3000,
+        offset: 20
+    };
+
+    model = {
+        offset: this.props.offset
+    };
+
+    zIndex = zIndexManage.nextZIndex();
+
+    id = this.props.id!;
+
+    get offsetHeight() {
+        return this.$getRef("contianer")?.output.offsetHeight || 0;
+    }
+
+    get typeClass() {
+        return this.props.type && !this.props.iconClass ? `icon jk-icon-${this.props.type}` : "";
+    }
+
+    setOffset(offset: number) {
+        this.model.offset = offset;
+    }
+
+    closed = false;
+
+    timer?: number;
+
+    close() {
+        if (this.closed) return;
+
+        this.closed = true;
+
+        this.props.onClose?.();
+
+        this.$trigger("close");
+
+        this.$destroy(true);
+    }
+
+    clearTimer() {
+        window.clearTimeout(this.timer);
+    }
+
+    startTimer() {
+        if (this.props.duration) {
+            this.timer = setTimeout(() => {
+                if (this.closed === false) {
+                    this.close();
+                }
+            }, this.props.duration);
+        }
+    }
+
+    keydown(e: KeyboardEvent) {
+        if (e.key === "Escape") {
+            if (this.closed === false) {
+                this.close();
+            }
+        }
+    }
+
+    mounted() {
+        this.startTimer();
+
+        window.addEventListener("keydown", this.keydown);
+    }
+
+    beforeDestroy() {
+        window.removeEventListener("keydown", this.keydown);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-message {
+    min-width: 380px;
+    box-sizing: border-box;
+    border: solid 1px var(--jk-border-color-lighter);
+    border-radius: 4px;
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    background-color: var(--jk-message-background-color);
+    transition: opacity 0.3s, transform 0.4s, top 0.4s;
+    overflow: hidden;
+    padding: 15px 15px 15px 20px;
+    display: flex;
+    align-items: center;
+
+    &.is-center {
+        justify-content: center;
+    }
+
+    &.is-closable {
+        .content {
+            padding-right: 16px;
+        }
+    }
+
+    .content {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1;
+
+        &:focus {
+            outline-width: 0;
+        }
+    }
+
+    .icon {
+        margin-right: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: var(--jk-color-text-placeholder);
+        font-size: 16px;
+
+        &:focus {
+            outline-width: 0;
+        }
+
+        &:hover {
+            color: var(--jk-color-text-secondary);
+        }
+    }
+
+    &.info {
+        .content,
+        .icon {
+            color: var(--jk-color-info);
+        }
+    }
+
+    &.success {
+        background-color: var(--jk-color-success-light-9);
+        border-color: var(--jk-color-success-light-8);
+
+        .content,
+        .icon {
+            color: var(--jk-color-success);
+        }
+    }
+
+    &.warning {
+        background-color: var(--jk-color-warning-light-9);
+        border-color: var(--jk-color-warning-light-8);
+
+        .content,
+        .icon {
+            color: var(--jk-color-warning);
+        }
+    }
+
+    &.error {
+        background-color: var(--jk-color-danger-light-9);
+        border-color: var(--jk-color-danger-light-8);
+
+        .content,
+        .icon {
+            color: var(--jk-color-danger);
+        }
+    }
+
+    &.jk-message-fade-enter-from,
+    &.jk-message-fade-leave-to {
+        opacity: 0;
+    }
+}
+</style>

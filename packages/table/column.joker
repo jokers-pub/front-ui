@@ -1,0 +1,103 @@
+<template>
+    @RenderSection()
+</template>
+<script>
+import { Component, VNode, observer } from "@joker.front/core";
+import { ColumnType, Store } from "./store/index";
+import { componentName } from "../utils";
+
+let seed = 0;
+
+export default class extends Component<ColumnType> {
+    name = componentName("table-column");
+
+    id = "column_" + seed++;
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get parent() {
+        return this.$rootVNode?.parent?.parent?.closest<VNode.Component>(
+            (n) =>
+                n instanceof VNode.Component &&
+                (n.component.name === componentName("table") || n.component.name === componentName("table-column"))
+        );
+    }
+
+    get store(): Store {
+        return this.table?.store;
+    }
+
+    created() {
+        this.columnConfig = observer({
+            id: this.id,
+            //做命名兼容
+            filterMethod: this.props.filterMethod,
+            sortMethod: this.props.sortMethod,
+            _sectionTd: this.$sections.td,
+            _sectionTh: this.$sections.th,
+            _sectionExpand: this.$sections.expand,
+            ...this.props
+        });
+
+        switch (this.props.type) {
+            case "selection":
+                this.columnConfig.width ??= 45;
+                break;
+            case "index":
+                this.columnConfig.width ??= 50;
+                break;
+            case "expand":
+                this.columnConfig.width ??= 50;
+                break;
+            default:
+                break;
+        }
+
+        let needSyncKeys: Array<keyof ColumnType> = [
+            "index",
+            "label",
+            "class",
+            "type",
+            "fixed",
+            "sortable",
+            "sortMethod",
+            "filter",
+            "filterMethod",
+            "width"
+        ];
+
+        needSyncKeys.forEach((n) => {
+            this.$watch(
+                () => this.props[n],
+                () => {
+                    //@ts-ignore
+                    this.columnConfig[n] = this.props[n];
+                }
+            );
+        });
+    }
+
+    columnConfig!: ColumnType;
+
+    mounted() {
+        let parent = this.parent!;
+
+        this.store?.appendColumn(
+            this.columnConfig,
+            parent.component === this.table ? undefined : parent.component.columnConfig
+        );
+    }
+
+    beforeDestroy() {
+        let parent = this.parent!;
+        this.store?.removeColumn(
+            this.columnConfig,
+            parent.component === this.table ? undefined : parent.component.columnConfig
+        );
+    }
+}
+</script>

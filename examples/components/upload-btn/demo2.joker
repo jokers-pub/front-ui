@@ -1,0 +1,18 @@
+<template>
+    <DemoRow>
+        <jk-upload-btn multiple @change="handleClick">多选文件上传</jk-upload-btn>
+    </DemoRow>
+    <DemoRow>
+        <jk-upload-btn multiple @change="handleClick" maxFileCount="2">最多选择2个</jk-upload-btn>
+    </DemoRow>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Message } from "../../../src";
+
+export default class extends Component {
+    handleClick(e: VNode.Event<Array<File>>) {
+        Message(`选中了${e.data.length}个文件`);
+    }
+}
+</script>

@@ -1,0 +1,66 @@
+<template>
+    <div
+        class="@({ 'jk-dropdown-item': true, 'is-divided': props.divided, 'is-disabled': props.disabled })"
+        @click="handleClick">
+        @if(props.icon) {
+            <i class="@props.icon"></i>
+        }
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    icon: string;
+    disabled: boolean;
+    divided: boolean;
+}> {
+    model = {};
+
+    get menu() {
+        return this.$rootVNode.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("dropdown-menu")
+        );
+    }
+
+    handleClick() {
+        if (this.props.disabled) return;
+        this.menu?.component.close();
+        this.$trigger("click");
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-dropdown-item {
+    list-style: none;
+    line-height: 36px;
+    padding: 0 20px;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    color: var(--jk-color-regular);
+
+    &:not(.is-disabled):hover,
+    &:focus {
+        background-color: var(--jk-color-primary-light-9);
+        color: var(--jk-color-primary);
+    }
+    i {
+        margin-right: 5px;
+    }
+
+    &.is-divided {
+        height: 0;
+        margin: 3px 0;
+        border-bottom: solid 1px var(--jk-border-color-lighter);
+    }
+
+    &.is-disabled {
+        cursor: not-allowed;
+        color: var(--jk-color-text-placeholder);
+    }
+}
+</style>

@@ -1,0 +1,54 @@
+<template>
+    @if(!props.isHeader) {
+        <JokerRadio hideLable value="@selectedRowIndex" @change="handleRadioChange" disabled="@disabled" />
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerRadio from "../../radio/radio.joker";
+import { componentName } from "../../utils";
+import { CHECK_ROW_KEY, ColumnType } from "../store";
+
+export default class extends Component<{
+    isHeader: boolean;
+    row: any;
+    column: ColumnType;
+}> {
+    components = {
+        JokerRadio
+    };
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get selectedRowIndex() {
+        if (this.table.store.data.tableData) {
+            return this.props.row[CHECK_ROW_KEY];
+        }
+        return false;
+    }
+
+    get disabled() {
+        if (this.props.column?.disabledMethod) {
+            if (this.props.column?.disabledMethod(this.props.row) === true) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    handleRadioChange() {
+        let oldRow = this.table!.store!.data.selectedRows?.[0];
+        if (oldRow) {
+            oldRow[CHECK_ROW_KEY] = false;
+        }
+        this.table!.store!.data.selectedRows = [this.props.row];
+        this.props.row[CHECK_ROW_KEY] = true;
+
+        this.table?.triggerSelectedRowChange();
+    }
+}
+</script>

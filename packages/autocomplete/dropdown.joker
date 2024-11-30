@@ -1,0 +1,101 @@
+<template>
+    <div
+        ref="container"
+        append-to="body"
+        class="jk-autocomplete-dropdown jk-popper @(props.multiple?'is-multiple':'')"
+        style="@({ minWidth: minWidth })"
+        @click.outside="handleClickOutside">
+        <jk-scrollbar
+            tag="ul"
+            ref="scrollbar"
+            wrap-class="jk-autocomplete-dropdown-wrap"
+            view-class="jk-autocomplete-dropdown-list">
+            @RenderSection()
+        </jk-scrollbar>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Popper } from "../utils/popper";
+import { VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{}> {
+    private popperHandler?: Popper;
+
+    mounted() {
+        let popper = this.$getRef("container")?.output;
+        let reference = this.autocomplete?.component?.inputContainerEl;
+
+        if (popper && reference) {
+            this.popperHandler = new Popper(reference, popper, {
+                placement: "bottom-start",
+                boundariesPadding: 0
+            });
+        }
+    }
+
+    updatePopper() {
+        this.popperHandler?.update();
+    }
+
+    get autocomplete() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("autocomplete");
+        });
+    }
+
+    get minWidth() {
+        return this.autocomplete?.component?.model.inputWidth + "px";
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+    }
+
+    handleClickOutside(e: VNode.Event) {
+        let container = this.autocomplete?.component.containerEl as HTMLElement;
+
+        //点击input 内
+        if (container && container.contains(e.event.target)) {
+            return;
+        }
+
+        this.autocomplete?.component.hide();
+    }
+
+    scrollToSelectedOption() {
+        let select = this.autocomplete?.component;
+
+        if (!select) return;
+
+        let selectOption = this.$getRef("container")?.output.querySelector(".is-hover");
+
+        if (selectOption) {
+            this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(selectOption);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-autocomplete-dropdown {
+    border: solid 1px var(--jk-border-color-light);
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: var(--jk-box-shadow-light);
+    box-sizing: border-box;
+    margin: 5px 0;
+
+    :deep(.jk-autocomplete-dropdown-wrap) {
+        max-height: 274px;
+    }
+
+    :deep(.jk-autocomplete-dropdown-list) {
+        list-style: none;
+        padding: 6px 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+</style>

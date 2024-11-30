@@ -1,0 +1,112 @@
+<template>
+    <div class="jk-color-panel" ref="container" style="background:@model.background">
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="cursor" style="top:@(model.cursorTop+'px');left:@(model.cursorLeft+'px')">
+            <div></div>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, combinedReply } from "@joker.front/core";
+import { Color } from "@joker.front/shared";
+import { draggable } from "../utils/draggable";
+
+export default class extends Component<{ color: Color }> {
+    model = {
+        cursorTop: 0,
+        cursorLeft: 0,
+        background: "hsl(0,100%,50%)"
+    };
+
+    update() {
+        let el = this.$getRef("container")?.output;
+        let s = this.props.color!.s;
+        let v = this.props.color!.v;
+
+        this.model.cursorLeft = (s * el.clientWidth) / 100;
+        this.model.cursorTop = ((100 - v) * el.clientHeight) / 100;
+
+        this.model.background = `hsl(${this.props.color!.h},100%,50%)`;
+    }
+
+    mounted() {
+        let el = this.$getRef("container")?.output;
+        draggable(el, {
+            drag: (e) => {
+                this.handleDrag(e);
+            },
+            end: (e) => {
+                this.handleDrag(e);
+            }
+        });
+
+        this.$watch(
+            () => this.props.color?.value,
+            () => {
+                this.update();
+            }
+        );
+
+        this.update();
+    }
+
+    handleDrag(e: MouseEvent) {
+        let el = this.$getRef("container")?.output;
+        let rect = el.getBoundingClientRect();
+
+        let left = e.clientX - rect.left;
+        let top = e.clientY - rect.top;
+
+        left = Math.max(0, left);
+        left = Math.min(left, rect.width);
+
+        top = Math.max(0, top);
+        top = Math.min(top, rect.height);
+
+        this.model.cursorLeft = left;
+        this.model.cursorTop = top;
+
+        combinedReply(() => {
+            this.props.color?.setVal("s", (left / rect.width) * 100);
+            this.props.color?.setVal("v", 100 - (top / rect.height) * 100);
+        });
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-color-panel {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    margin-right: 8px;
+    .white,
+    .black {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .white {
+        background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+    }
+    .black {
+        background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+    }
+    .cursor {
+        position: absolute;
+
+        div {
+            cursor: head;
+            width: 4px;
+            height: 4px;
+            box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            transform: translate(-2px -2px);
+        }
+    }
+}
+</style>

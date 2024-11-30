@@ -1,0 +1,5 @@
+<template>
+    <div style="width:180px">
+        <jk-input placeholder="请输入内容" disabled />
+    </div>
+</template>

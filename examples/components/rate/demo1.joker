@@ -1,0 +1,28 @@
+<template>
+    <div class="row">
+        <span>默认不区分颜色：</span>
+        <jk-rate />
+    </div>
+    <div class="row">
+        <span>区分颜色：</span>
+        <jk-rate colors="@(['#99A9BF', '#F7BA2A', '#FF9900'])" />
+    </div>
+</template>
+<style scoped lang="scss">
+.row {
+    padding: 30px 24px;
+    overflow: hidden;
+    border-bottom: 1px solid #eff2f6;
+
+    span {
+        font-size: 14px;
+        color: #8492a6;
+        line-height: 44px;
+        font-size: 16px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+</style>

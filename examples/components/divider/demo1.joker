@@ -1,0 +1,14 @@
+<template>
+    <p>你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。</p>
+    <jk-divider />
+    <p>好好地享受青春,你无法比此刻更年轻了。</p>
+    <jk-divider />
+    <p>幸好我爱笑,生活才没那么糟糕。</p>
+    <jk-divider />
+    <p>能瞬间改变你心情的人,对你一定很重要吧。</p>
+</template>
+<style scoped lang="scss">
+p {
+    line-height: 30px;
+}
+</style>

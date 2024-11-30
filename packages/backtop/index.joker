@@ -1,0 +1,123 @@
+<template>
+    @if(model.visible) {
+        <div @click.stop="handleClick" style="@({ right: styleRight, bottom: styleBottom })" class="jk-backtop">
+            @if($sections.default) {
+                @RenderSection()
+            }
+            else {
+                <jk-icon name="caret-top"></jk-icon>
+            }
+        </div>
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { throttle } from "@joker.front/shared";
+
+let cubic = (value: number) => Math.pow(value, 3);
+let easeInOutCubic = (value: number) => (value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2);
+
+export default class extends Component<{
+    visibilityHeight: number;
+    target: string;
+    right: number;
+    bottom: number;
+}> {
+    propsOption = {
+        visibilityHeight: {
+            type: Number,
+            default: 200
+        },
+        right: {
+            type: Number,
+            default: 40
+        },
+        bottom: {
+            type: Number,
+            default: 40
+        }
+    };
+    model = { visible: false };
+    el: any = undefined;
+    container: any = undefined;
+    throttledScrollHandler: any = undefined;
+
+    mounted() {
+        this.init();
+        this.throttledScrollHandler = throttle(300, this.onScroll.bind(this));
+        this.container!.addEventListener("scroll", this.throttledScrollHandler);
+    }
+
+    beforeDestroy() {
+        this.container.removeEventListener("scroll", this.throttledScrollHandler);
+    }
+
+    get styleBottom() {
+        return `${this.props.bottom}px`;
+    }
+
+    get styleRight() {
+        return `${this.props.right}px`;
+    }
+
+    init() {
+        this.container = document;
+        this.el = document.documentElement;
+        if (this.props.target) {
+            this.el = document.querySelector(this.props.target);
+            if (!this.el) {
+                throw new Error(`target is not existed: ${this.props.target}`);
+            }
+            this.container = this.el;
+        }
+    }
+
+    onScroll() {
+        let scrollTop = this.el.scrollTop;
+        this.model.visible = scrollTop >= this.props.visibilityHeight!;
+    }
+
+    handleClick(e: VNode.Event) {
+        this.scrollToTop();
+        this.$trigger("click", e);
+    }
+
+    scrollToTop() {
+        let el = this.el;
+        let beginTime = Date.now();
+        let beginValue = el.scrollTop;
+        let rAF = window.requestAnimationFrame || ((func) => setTimeout(func, 16));
+        let frameFunc = () => {
+            let progress = (Date.now() - beginTime) / 500;
+            if (progress < 1) {
+                el.scrollTop = beginValue * (1 - easeInOutCubic(progress));
+                rAF(frameFunc);
+            } else {
+                el.scrollTop = 0;
+            }
+        };
+        rAF(frameFunc);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-backtop {
+    position: fixed;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #409eff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    z-index: 5;
+    &:hover {
+        background-color: #f2f6fc;
+    }
+}
+</style>

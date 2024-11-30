@@ -1,0 +1,55 @@
+<template>
+    <div class="row">
+        <span>默认：</span>
+        <jk-slider></jk-slider>
+    </div>
+    <div class="row">
+        <span>默认值：</span>
+        <jk-slider value="30"></jk-slider>
+    </div>
+    <div class="row">
+        <span>关闭Tooltip：</span>
+        <jk-slider value="30" showTooltip="@false"></jk-slider>
+    </div>
+    <div class="row">
+        <span>格式化Tooltip：</span>
+        <jk-slider value="30" formatTooltip="@formatTooltip"></jk-slider>
+    </div>
+    <div class="row">
+        <span>默认值：</span>
+        <jk-slider value="30" disabled></jk-slider>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    formatTooltip(val: number) {
+        return val + "%";
+    }
+}
+</script>
+<style scoped lang="scss">
+.row {
+    padding: 30px 24px;
+    overflow: hidden;
+    border-bottom: 1px solid #eff2f6;
+
+    span {
+        font-size: 14px;
+        color: #8492a6;
+        line-height: 44px;
+        font-size: 16px;
+    }
+
+    :deep(.jk-slider) {
+        float: right;
+        width: 70%;
+        margin-right: 20px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+</style>

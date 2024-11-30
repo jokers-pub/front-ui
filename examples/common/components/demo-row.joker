@@ -1,0 +1,11 @@
+<template>
+    <div class="DemoRow">
+        @RenderSection()
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.DemoRow {
+    margin-bottom: 20px;
+}
+</style>

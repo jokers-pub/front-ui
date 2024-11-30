@@ -1,0 +1,200 @@
+<template>
+    <div
+        class="jk-form-item @(props.required?'is-required':'') @sizeClass @(props.class||'') @(props.inline?'inline':'')">
+        @if(props.label || $sections.label) {
+            <label style="@labelStyle">
+                @if($sections.label) {
+                    @RenderSection("label")
+                }
+                else {
+                    @props.label
+                }
+                @if(props.tip) {
+                    <jk-tooltip content="@props.tip" size="mini" placement="top">
+                        <i class="tip jk-icon-info" />
+                    </jk-tooltip>
+                }
+            </label>
+        }
+        <div class="content" style="@contentStyle">
+            @RenderSection()
+            @if(model.errorMessage) {
+                @if($sections.error) {
+                    @RenderSection("error", model.errorMessage)
+                }
+                else {
+                    <div class="error">
+                        @model.errorMessage
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+const DEFAULT_LABEL_WIDTH = "80px";
+
+export default class extends Component<{
+    label: string;
+    labelWidth: string;
+    required: boolean;
+    class: string;
+    tip: string;
+    inline;
+}> {
+    model = {
+        errorMessage: undefined as string | undefined
+    };
+
+    name = componentName("form-item");
+
+    get form() {
+        let form = this.$rootVNode.closest<VNode.Component>(
+            (m) => m instanceof VNode.Component && m.component.name === componentName("form")
+        )?.component;
+
+        return form;
+    }
+
+    get labelStyle() {
+        if (this.form?.props.labelPosition === "top") return {};
+
+        let labelWidth = this.props.labelWidth || this.form?.props.labelWidth || DEFAULT_LABEL_WIDTH;
+
+        return {
+            width: labelWidth
+        };
+    }
+
+    get contentStyle() {
+        if (this.form?.props.labelPosition === "top" || this.form?.props.inline || this.props.inline) return {};
+
+        let labelWidth = this.props.labelWidth || this.form?.props.labelWidth || DEFAULT_LABEL_WIDTH;
+
+        return {
+            marginLeft: labelWidth
+        };
+    }
+
+    get sizeClass() {
+        return this.form?.props.size || "";
+    }
+
+    clearErrorMessage() {
+        this.model.errorMessage = undefined;
+    }
+
+    showErrorMessage(message: string) {
+        this.model.errorMessage = message;
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/mixins.scss";
+
+.jk-form-item {
+    margin-bottom: 15px;
+    text-align: left;
+    :deep(.jk-form-item) {
+        margin-bottom: 0;
+    }
+
+    @include clearfix;
+
+    > label {
+        text-align: right;
+        vertical-align: middle;
+        float: left;
+        font-size: 14px;
+        color: var(--jk-color-text-regular);
+        line-height: 40px;
+        padding: 0 12px 0 0;
+        box-sizing: border-box;
+
+        .tip {
+            margin-left: 5px;
+        }
+    }
+
+    > .content {
+        line-height: 40px;
+        position: relative;
+        font-size: 14px;
+        @include clearfix;
+
+        > .error {
+            color: var(--jk-color-danger);
+            font-size: 12px;
+            line-height: 1;
+            padding-top: 4px;
+        }
+    }
+
+    &.is-required {
+        > label {
+            &::before {
+                content: "*";
+                color: var(--jk-color-danger);
+                margin-right: 4px;
+            }
+        }
+    }
+
+    &.medium {
+        > label {
+            line-height: 36px;
+        }
+        > .content {
+            line-height: 36px;
+        }
+    }
+
+    &.small {
+        margin-bottom: 18px;
+        > label {
+            line-height: 32px;
+        }
+        > .content {
+            line-height: 32px;
+
+            .error {
+                padding-top: 2px;
+            }
+        }
+    }
+
+    &.mini {
+        margin-bottom: 18px;
+        > label {
+            line-height: 28px;
+        }
+        > .content {
+            line-height: 28px;
+
+            .error {
+                padding-top: 1px;
+            }
+        }
+    }
+
+    &.inline {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: top;
+
+        > label {
+            float: none;
+            display: inline-block;
+        }
+
+        > .content {
+            vertical-align: top;
+            display: inline-block;
+        }
+    }
+}
+</style>

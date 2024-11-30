@@ -1,0 +1,28 @@
+<template>
+    <div class="demo-container">
+        <DemoRow>
+            属性方式：
+            <jk-input placeholder="请选择日期" suffix-icon="jk-icon-date" />
+            <jk-input placeholder="请输入内容" prefix-icon="jk-icon-search" />
+        </DemoRow>
+        <DemoRow>
+            section方式：
+            <jk-input placeholder="请选择日期">
+                @section("suffix") {
+                    <i class="jk-icon-date" />
+                }
+            </jk-input>
+            <jk-input placeholder="请输入内容">
+                @section("prefix") {
+                    <i class="jk-icon-search" />
+                }
+            </jk-input>
+        </DemoRow>
+    </div>
+</template>
+<style lang="scss" scoped>
+:deep(.demo-container .jk-input) {
+    width: 180px;
+    margin-right: 15px;
+}
+</style>

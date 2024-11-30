@@ -1,0 +1,57 @@
+<template>
+    <jk-scrollbar ref="scrollbar" height="300px" @scroll="handleScroll">
+        <div ref="list">
+            @for(let i = 0; i < 30; i++) {
+                <p class="scrollbar-demo-item">
+                    @i
+                </p>
+            }
+        </div>
+    </jk-scrollbar>
+    <DemoRow>
+        <jk-slider max="@model.max" value="@model.scrollTop" formatTooltip="@formatTooltip" @input="handleSliderInput"
+        />
+    </DemoRow>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        scrollTop: 0,
+        max: 0
+    };
+
+    mounted() {
+        this.model.max = this.$getRef("list")!.output.clientHeight - 300;
+    }
+
+    handleScroll(e: VNode.Event<any>) {
+        this.model.scrollTop = e.data.top;
+    }
+
+    handleSliderInput(e: VNode.Event) {
+        this.$getRef<VNode.Component>("scrollbar")?.component.scrollTo({
+            top: e.data
+        });
+    }
+
+    formatTooltip(val: number) {
+        return val + "px";
+    }
+}
+</script>
+
+<style scoped>
+.scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+}
+</style>

@@ -1,0 +1,106 @@
+<template>
+    <div class="jk-badge">
+        @RenderSection()
+        <sup
+            style="@(!props.hidden && (content || content === 0 || props.isDot) ? 'display:inline-block' : 'display:none')"
+            text="@content"
+            class="@([
+                'content',
+                'content-' + props.type,
+                {
+                    'is-fixed': $sections.default,
+                    'is-dot': props.isDot
+                }
+            ])">
+            @content
+        </sup>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { componentName } from "../utils/index";
+
+export default class extends Component<{
+    value: string | number;
+    max: number;
+    isDot: boolean;
+    hidden: boolean;
+    type: string;
+}> {
+    name = componentName("badge");
+    propsOption = {
+        type: {
+            validator(val: string) {
+                return ["primary", "success", "warning", "info", "danger"].includes(val);
+            }
+        }
+    };
+
+    get content() {
+        if (this.props.isDot) return;
+
+        const value = this.props.value;
+        const max = this.props.max;
+        if (typeof value === "number" && typeof max === "number") {
+            return max < value ? max + "+" : value;
+        }
+        return value;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-badge {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    .content {
+        background-color: #f56c6c;
+        border-radius: 10px;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        height: 18px;
+        line-height: 18px;
+        padding: 0 6px;
+        text-align: center;
+        white-space: nowrap;
+        border: 1px solid #fff;
+        &.is-fixed {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            transform: translateY(-50%) translateX(100%);
+            &.is-dot {
+                right: 5px;
+            }
+        }
+        &.is-dot {
+            height: 8px;
+            width: 8px;
+            padding: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+        &.content-primary {
+            background-color: #409eff;
+        }
+
+        &.content-success {
+            background-color: #67c23a;
+        }
+
+        &.content-warning {
+            background-color: #e6a23c;
+        }
+
+        &.content-info {
+            background-color: #909399;
+        }
+
+        &.content-danger {
+            background-color: #f56c6c;
+        }
+    }
+}
+</style>

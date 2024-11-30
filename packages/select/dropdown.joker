@@ -1,0 +1,149 @@
+<template>
+    <div
+        ref="container"
+        append-to="body"
+        class="jk-select-dropdown jk-popper @(props.multiple?'is-multiple':'')"
+        style="@({ minWidth: minWidth, display: model.display })"
+        @click.outside="handleClickOutside">
+        <jk-scrollbar
+            tag="ul"
+            ref="scrollbar"
+            wrap-class="jk-select-dropdown-wrap"
+            view-class="jk-select-dropdown-list">
+            @RenderSection()
+        </jk-scrollbar>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Popper } from "../utils/popper";
+import { VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    multiple: boolean;
+}> {
+    model = {
+        display: "none"
+    };
+    private popperHandler?: Popper;
+
+    initPopper() {
+        this.popperHandler?.destroy();
+
+        let popper = this.$getRef("container")?.output;
+        let reference = this.select?.component?.inputContainerEl;
+
+        if (popper && reference) {
+            this.popperHandler = new Popper(reference, popper, {
+                placement: "bottom-start",
+                boundariesPadding: 0
+            });
+        }
+    }
+
+    mounted() {
+        this.select && (this.select.component.model.dropdownInit = true);
+        this.$watch(
+            () => this.select?.component.model.showPanel,
+            (val) => {
+                this.changeVisible(val);
+            }
+        );
+
+        this.changeVisible(this.select?.component.model.showPanel);
+    }
+
+    changeVisible(val: boolean) {
+        if (val) {
+            this.model.display = "block";
+            this.initPopper();
+            this.$nodeTransition(this.$getRef("container")!, "enter", "jk-zoom-in-top");
+
+            this.scrollToSelectedOption();
+        } else if (this.model.display !== "none") {
+            this.$nodeTransition(this.$getRef("container")!, "leave", "jk-zoom-in-top", () => {
+                this.model.display = "none";
+                this.popperHandler?.destroy();
+            });
+        }
+    }
+
+    updatePopper() {
+        this.popperHandler?.update();
+    }
+
+    get select() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("select");
+        });
+    }
+    get minWidth() {
+        return this.select?.component?.model.inputWidth + "px";
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+    }
+
+    handleClickOutside(e: VNode.Event) {
+        let container = this.select?.component.containerEl as HTMLElement;
+
+        //点击input 内
+        if (container && container.contains(e.event.target)) {
+            return;
+        }
+
+        this.select?.component.hide();
+    }
+
+    scrollToSelectedOption() {
+        let select = this.select?.component;
+
+        if (!select) return;
+
+        let value = select.value;
+
+        //如果有选中值 && 非多选
+        if (value && !select.props.multiple) {
+            let selectOption = this.$getRef("container")?.find((m) => {
+                return (
+                    m instanceof VNode.Component &&
+                    m.component.name === componentName("select-option") &&
+                    m.component.props.value === value
+                );
+            });
+
+            if (selectOption && selectOption.length) {
+                let selectOptionEl = selectOption[0].find((n) => n instanceof VNode.Element)[0]?.output;
+
+                if (selectOptionEl) {
+                    this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(selectOptionEl);
+                }
+            }
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-select-dropdown {
+    border: solid 1px var(--jk-border-color-light);
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: var(--jk-box-shadow-light);
+    box-sizing: border-box;
+    margin: 5px 0;
+
+    :deep(.jk-select-dropdown-wrap) {
+        max-height: 274px;
+    }
+
+    :deep(.jk-select-dropdown-list) {
+        list-style: none;
+        padding: 6px 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+</style>

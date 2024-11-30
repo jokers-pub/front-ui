@@ -1,0 +1,33 @@
+<template>
+    <div>
+        <jk-collapse accordion>
+            <jk-collapse-item title="一致性" name="1">
+                <div>风格一致性：组件应该遵循相同的视觉和交互风格指南。</div>
+                <div>命名一致性：组件和其API的命名应该清晰、一致。</div>
+            </jk-collapse-item>
+            <jk-collapse-item title="可重用性" name="2" disabled>
+                <div>独立性：组件应该是自包含的，不依赖于外部的具体实现。</div>
+                <div>参数化：组件应该允许通过参数或属性自定义其行为和外观。</div>
+            </jk-collapse-item>
+            <jk-collapse-item title="可维护性" name="3">
+                <div>清晰的文档：每个组件应有详细的文档说明其用途、接口和使用示例。</div>
+                <div>代码清晰：组件代码应该是可读的，有清晰的结构和注释。</div>
+            </jk-collapse-item>
+            <jk-collapse-item title="可访问性" name="4">
+                <div>符合标准：遵守WAI-ARIA指南，确保组件对辅助技术（如屏幕阅读器）友好。</div>
+                <div>键盘可访问：组件应该可以通过键盘操作。</div>
+            </jk-collapse-item>
+        </jk-collapse>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

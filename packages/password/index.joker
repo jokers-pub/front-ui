@@ -1,0 +1,57 @@
+<template>
+    <jk-input
+        autofocus="@props.autofocus"
+        prefixIcon="@props.prefixIcon"
+        maxlength="@props.maxlength"
+        minlength="@props.minlength"
+        tabindex="@props.tabindex"
+        placeholder="@props.placeholder"
+        error="@isError"
+        class="@props.class"
+        size="@sizeClass"
+        value="@value"
+        type="@(model.showPwd ? 'password' : 'text')"
+        @change="handleChange">
+        @section("suffix") {
+            <i class="suffix jk-icon-view @(model.showPwd?'':'open')" @click="handleSuffixClick" />
+        }
+    </jk-input>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+
+export default class extends FormCtrl<{
+    autofocus: boolean;
+    prefixIcon: string;
+    maxlength: number;
+    minlength: number;
+    class: string;
+    tabindex: string;
+    placeholder: string;
+}> {
+    model = {
+        showPwd: true
+    };
+
+    handleChange(e: VNode.Event<string>) {
+        this.value = e.data;
+
+        this.triggerValidate();
+    }
+
+    handleSuffixClick() {
+        this.model.showPwd = !this.model.showPwd;
+    }
+}
+</script>
+
+<style scoped lang="scss">
+i.suffix {
+    cursor: pointer;
+
+    &.open {
+        color: var(--jk-color-primary);
+    }
+}
+</style>

@@ -1,0 +1,5 @@
+@mixin disabled-vars {
+    --jk-disabled-color: var(--jk-color-text-placeholder);
+    --jk-disabled-background-color: #f5f7fa;
+    --jk-disabled-border-color: var(--jk-border-color-light);
+}

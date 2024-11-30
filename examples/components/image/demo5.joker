@@ -1,0 +1,22 @@
+<template>
+    <div class="demo-image__preview">
+        <jk-image style="width: 100px; height: 100px" src="@model.url" preview-src-list="@model.srcList"></jk-image>
+    </div>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        url: "https://picsum.photos/200/300?random=3",
+        srcList: [
+            'https://picsum.photos/600/1000?random=1',
+            'https://picsum.photos/800/1000?random=1',
+            'https://picsum.photos/1000/1000?random=1',
+            'https://picsum.photos/1200/1000?random=1',
+            'https://picsum.photos/1400/1000?random=1',
+        ]
+    };
+}
+</script>

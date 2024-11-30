@@ -1,0 +1,91 @@
+<template>
+    <div class="jk-checkbox-group" ref="group" @keydown="handleKeydown">
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { componentName } from "../utils/index";
+export default class extends FormCtrl<{
+    value: Array<any>;
+    size: string;
+    disabled: boolean;
+    min: number;
+    max: number;
+}> {
+    propsOption = {
+        min: Number,
+        max: Number,
+        value: []
+    };
+    name = componentName("checkbox-group");
+
+    created() {
+        this.$syncProp("value");
+    }
+    model = {
+        value: [] as any[]
+    };
+
+    handleKeydown(e: VNode.Event) {
+        let event = e.event as KeyboardEvent;
+        let target = e.event.target;
+        let groupEl = this.$getRef("group")!.output;
+        let className = target.tagName === "INPUT" ? "[type=checkbox]" : "[role=checkbox]";
+        let checkboxs = groupEl.querySelectorAll(className);
+
+        if (checkboxs && checkboxs.length) {
+            let index = Array.from(checkboxs).indexOf(target);
+            let length = checkboxs.length;
+            let rolecheckboxs = groupEl.querySelectorAll("[role=checkbox]");
+
+            switch (event.key) {
+                case "ArrowLeft":
+                case "ArrowUp":
+                    event.stopPropagation();
+                    event.preventDefault();
+
+                    if (index === 0) {
+                        rolecheckboxs[length - 1].focus();
+                    } else {
+                        rolecheckboxs[index - 1].focus();
+                    }
+                    break;
+                case "ArrowRight":
+                case "ArrowDown":
+                    event.stopPropagation();
+                    event.preventDefault();
+                    if (index === checkboxs.length - 1) {
+                        rolecheckboxs[0].focus();
+                    } else {
+                        rolecheckboxs[index + 1].focus();
+                    }
+                    break;
+                case " ":
+                case "Enter":
+                    event.stopPropagation();
+                    event.preventDefault();
+                    rolecheckboxs[index].click();
+                default:
+                    break;
+            }
+        }
+    }
+
+    checked(val: any, ckeck: boolean) {
+        if (ckeck) {
+            this.model.value.push(val);
+        } else {
+            let index = this.model.value.indexOf(val);
+            this.model.value.splice(index, 1);
+        }
+    }
+
+    handleChange(e: VNode.Event) {
+        this.$trigger("change", this.model.value, e);
+        this.triggerValidate();
+    }
+}
+</script>
+

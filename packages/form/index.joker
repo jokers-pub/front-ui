@@ -1,0 +1,408 @@
+<template>
+    <form
+        class="jk-form @('label-'+props.labelPosition) @(props.inline?'inline':'') @(props.class||'')"
+        @submit.prevent="submit"
+        @reset.prevent="reset">
+        @RenderSection()
+    </form>
+</template>
+<script>
+import { Component, ShallowObserver, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+import { CtrlItem } from "./form-ctrl";
+import { logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+import { Message } from "../message";
+
+export default class extends Component<{
+    labelWidth: string;
+    labelPosition: string;
+    inline: boolean;
+    size: string;
+    class: string;
+
+    showErrorMessage: (name: string, message: string, ctrl: Component<any>) => void | boolean;
+    clearErrorMessage: () => void;
+}> {
+    propsOption = {
+        labelPosition: "right",
+        submit: Function
+    };
+
+    isSubmit = false;
+
+    name = componentName("form");
+
+    actionBtn?: Component;
+
+    async submit(e?: VNode.Event) {
+        if (this.isSubmit) {
+            logger.warn(LOGTAG, "Form正在提交中，请勿重复提交");
+            return;
+        }
+
+        this.$trigger("before-submit");
+
+        this.isSubmit = true;
+
+        let actionBtn: any = undefined;
+
+        //设置loading
+        if (e) {
+            let btnVNode = e.event?.submitter?.JOKER_NODE as VNode.Node;
+            if (btnVNode) {
+                actionBtn = btnVNode.closest<VNode.Component>(
+                    (m) => m instanceof VNode.Component && m.component.name === componentName("button")
+                )?.component;
+                if (actionBtn) {
+                    actionBtn.model.loading = true;
+                }
+            } else {
+                actionBtn = e.target?.closest<VNode.Component>(
+                    (m) => m instanceof VNode.Component && m.component.name === componentName("button")
+                )?.component;
+            }
+        }
+        let self = this;
+        function lastStep() {
+            self.isSubmit = false;
+            if (actionBtn) {
+                actionBtn.model.loading = false;
+                actionBtn = undefined;
+            }
+        }
+
+        let validateResult = await this.validate().catch(lastStep);
+        if (validateResult) {
+            let formData = this.getData();
+            lastStep();
+            this.$trigger("submit", formData);
+        } else {
+            lastStep();
+        }
+    }
+
+    getData() {
+        let formData: Record<string, any> = {};
+
+        for (let name in this.ctrls) {
+            formData[name] = this.ctrls[name].ctrl.model.value;
+        }
+
+        return formData;
+    }
+
+    reset() {
+        if (this.isSubmit) {
+            Message({
+                type: "warning",
+                message: "正在提交中，请勿操作"
+            });
+
+            logger.warn(LOGTAG, "Form正在提交中，请勿重置数据");
+            return;
+        }
+
+        this.clearError();
+
+        for (let name in this.ctrls) {
+            let ctrl = this.ctrls[name].ctrl;
+            this.cancelItemValidateDeffered(name);
+
+            let value = ctrl.model.value;
+            if (typeof value === "boolean") {
+                ctrl.model.value = false;
+            } else if (Array.isArray(value)) {
+                ctrl.model.value = [];
+            } else if (typeof value === "string") {
+                ctrl.model.value = "";
+            } else {
+                ctrl.model.value = undefined;
+            }
+        }
+    }
+
+    registerFormCtrl(name: string, ctrl: { ctrl: Component; formItem: any }) {
+        this.ctrls[name] = {
+            ...ctrl,
+            name,
+            validateState: new ShallowObserver<"success" | "error" | "validating" | "">("")
+        };
+    }
+    unRegisterFormCtrl(name: string, ctrl: Component) {
+        if (this.ctrls[name].ctrl === ctrl) {
+            delete this.ctrls[name];
+        }
+    }
+    ctrls: Record<string, CtrlItem> = {};
+
+    cancelItemValidateDeffered(name: string) {
+        let item = this.ctrls[name];
+        if (item?._validateDefferred) {
+            item._validateDefferred.cancal = true;
+            //取消时只返回name
+            item._validateDefferred.resolve({ name, error: "取消验证" });
+            item._validateDefferred = undefined;
+            //暂时重置状态
+            item.validateState.value = "";
+        }
+    }
+
+    async validate(ctrlName?: string | string[]) {
+        let validateKeys: string[] | undefined;
+        if (ctrlName) {
+            validateKeys = [ctrlName].flat();
+        }
+
+        let validateArray = [];
+
+        for (let name in this.ctrls) {
+            if (validateKeys === undefined || validateKeys.length === 0 || validateKeys.includes(name)) {
+                validateArray.push(async () => await this.validateItem(name, this.ctrls[name]));
+            }
+        }
+
+        return new Promise((resolve, reject) => {
+            if (validateArray.length) {
+                let defArray = [];
+
+                for (let exc of validateArray) {
+                    defArray.push(exc());
+                }
+
+                Promise.all(defArray)
+                    .then((results: any[]) => {
+                        if (results.some((m) => m !== undefined)) {
+                            let error: Record<string, string> = {};
+
+                            for (let item of results) {
+                                if (item) {
+                                    error[item.name] = item.error;
+                                }
+                            }
+
+                            reject(error);
+                        } else {
+                            resolve(true);
+                        }
+                    })
+                    .catch(() => {
+                        reject("表单验证失败");
+                    });
+            } else {
+                resolve(true);
+            }
+        });
+    }
+
+    async _validateCtrlItem(ctrl: CtrlItem) {
+        ctrl.validateState.value = "validating";
+
+        if ("beforeValidate" in ctrl.ctrl && typeof ctrl.ctrl.beforeValidate === "function") {
+            await ctrl.ctrl.beforeValidate();
+        }
+
+        let value = ctrl.ctrl.model.value;
+
+        //通用验证
+        let eMsg = "";
+        if (typeof value === "string" && value) {
+            if (
+                new RegExp(
+                    /<[\s\x00]*SCRIPT|%3C[+\s\x00]*SCRIPT|SELECT\s|INSERT\s|DELETE\s|UPDATE\s|DROP\s|<!--|-->|<[\s\x00]*HEAD|<[\s\x00]*BOY|<[\s\x00]*DIV|<[\s\x00]*TABLE|<[\s\x00]*FRAME|<[\s\x00]*IFRAME|<[\s\x00]*FRAMESET|<[\s\x00]*NOFRAME|<[\s\x00]*PLAINTEXT|<[\s\x00]*LINK|<[\s\x00]*MAP|<[\s\x00]*BGSOUND|<[\s\x00]*FORM|<[\s\x00]*INPUT|<[\s\x00]*SELECT|<[\s\x00]*OPTION|<[\s\x00]*TEXTAREA|<[\s\x00]*APPLET|<[\s\x00]*OBJECT|<[\s\x00]*EMBED|<[\s\x00]*NOSCRIPT|<[\s\x00]*STYLE|%3C[+\s\x00]*HEAD|%3C[+\s\x00]*BOY|%3C[+\s\x00]*FRAME|%3C[+\s\x00]*IFRAME|%3C[+\s\x00]*FRAMESET|%3C[+\s\x00]*NOFRAME|%3C[+\s\x00]*PLAINTEXT|%3C[+\s\x00]*LINK|%3C[+\s\x00]*MAP|%3C[+\s\x00]*BGSOUND|%3C[+\s\x00]*FORM|%3C[+\s\x00]*INPUT|%3C[+\s\x00]*SELECT|%3C[+\s\x00]*OPTION|%3C[+\s\x00]*TEXTAREA|%3C[+\s\x00]*APPLET|%3C[+\s\x00]*OBJECT|%3C[+\s\x00]*EMBED|%3C[+\s\x00]*NOSCRIPT|%3C[+\s\x00]*STYLE|ALERT[\s\x00]*\(|PROMPT[\s\x00]*\(|CONFIRM[\s\x00]*\(/
+                ).test(value.toUpperCase())
+            ) {
+                eMsg = "输入内容存在非法字符，请重新填写";
+            }
+        }
+
+        if (!eMsg) {
+            //自身验证
+            if ("ctrlValidate" in ctrl.ctrl && typeof ctrl.ctrl.ctrlValidate === "function") {
+                eMsg = await ctrl.ctrl.ctrlValidate(value);
+            }
+
+            if (!eMsg) {
+                //自定义验证
+                if (ctrl.ctrl.props.validate) {
+                    if (typeof ctrl.ctrl.props.validate === "function") {
+                        eMsg = await ctrl.ctrl.props.validate(value, ctrl);
+                    } else if (Array.isArray(ctrl.ctrl.props.validate)) {
+                        for (let item of ctrl.ctrl.props.validate) {
+                            if (item && typeof item === "function") {
+                                eMsg = await item(value, ctrl);
+                                if (eMsg) break;
+                            } else {
+                                logger.error(
+                                    LOGTAG,
+                                    `表单校验，${ctrl.name}存在错误的校验规则配置，校验方法不存在或者不是一个方法`,
+                                    item
+                                );
+                            }
+                        }
+                    } else {
+                        logger.error(
+                            LOGTAG,
+                            `表单校验，${ctrl.name}存在错误的校验规则配置，校验方法不存在或者不是一个方法`,
+                            ctrl.ctrl.props.validate
+                        );
+                    }
+                }
+            }
+        }
+
+        if (eMsg) {
+            ctrl.validateState.value = "error";
+            return eMsg;
+        }
+
+        ctrl.validateState.value = "success";
+    }
+
+    private validateItem(name: string, ctrl: CtrlItem) {
+        this.cancelItemValidateDeffered(name);
+
+        this.clearError(name);
+        return new Promise((resolve) => {
+            let self = this;
+            ctrl._validateDefferred = {
+                resolve,
+                cancal: false,
+                active: async function () {
+                    let validateResut = await self._validateCtrlItem(ctrl).catch((e) => {
+                        let errMsg = "检验失败:" + e?.message;
+                        self.showError(name, errMsg);
+
+                        logger.error(LOGTAG, "Form validate检验出现被迫异常", e);
+                        resolve({ name, error: errMsg });
+                    });
+
+                    if (this.cancal) {
+                        ctrl._validateDefferred = undefined;
+                        return;
+                    }
+
+                    if (validateResut) {
+                        self.showError(name, validateResut);
+                        resolve({ name, error: validateResut });
+                    } else {
+                        resolve(undefined);
+                    }
+
+                    ctrl._validateDefferred = undefined;
+                }
+            };
+
+            //start
+            ctrl._validateDefferred.active();
+        });
+    }
+
+    clearError(nameOrCtrl?: string | Component) {
+        if (nameOrCtrl === undefined) {
+            //clearAll
+
+            for (let name in this.ctrls) {
+                this.clearItemError(this.ctrls[name]);
+            }
+
+            return;
+        }
+        let ctrl = this.getCtrlItem(nameOrCtrl);
+
+        if (!ctrl) return;
+
+        this.clearItemError(ctrl);
+    }
+
+    clearItemError(ctrl: CtrlItem) {
+        //非success 重置
+        if (ctrl.validateState.value !== "success") {
+            ctrl.validateState.value = "";
+        }
+
+        //自定义错误处理
+        let customClearErrorMessage = this.props.clearErrorMessage;
+
+        if (customClearErrorMessage) {
+            customClearErrorMessage();
+            return;
+        }
+        let formItem = ctrl.formItem;
+        if (formItem) {
+            formItem.clearErrorMessage();
+        }
+    }
+
+    showError(nameOrCtrl: string | Component, message: string) {
+        let ctrl = this.getCtrlItem(nameOrCtrl);
+
+        if (!ctrl) {
+            logger.warn(LOGTAG, `Form 未找到要展示错误信息的表单控件`);
+            return;
+        }
+
+        ctrl.validateState.value = "error";
+
+        //自定义错误处理
+        let customShowErrorMessage = this.props.showErrorMessage;
+
+        if (customShowErrorMessage) {
+            if (customShowErrorMessage(ctrl.name, message, ctrl.ctrl) !== false) return;
+        }
+
+        if (ctrl.formItem) {
+            //使用form-item 做错误信息展示
+            ctrl.formItem.showErrorMessage(message);
+        } else {
+            //使用message做错误提示
+            Message.error(message);
+        }
+    }
+
+    getCtrlItem(nameOrCtrl: string | Component) {
+        let result = undefined;
+
+        if (typeof nameOrCtrl === "string") {
+            return this.ctrls[nameOrCtrl];
+        } else if ("name" in nameOrCtrl.props && nameOrCtrl.props.name && typeof nameOrCtrl.props.name === "string") {
+            return this.ctrls[nameOrCtrl.props.name];
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-form {
+    &.label-left {
+        :deep(.jk-form-item > label) {
+            text-align: left;
+        }
+    }
+    &.label-top {
+        :deep(.jk-form-item > label) {
+            text-align: left;
+            float: none;
+            display: inline-block;
+        }
+    }
+
+    &.inline {
+        :deep(.jk-form-item) {
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: top;
+
+            > label {
+                float: none;
+                display: inline-block;
+            }
+
+            > .content {
+                vertical-align: top;
+                display: inline-block;
+            }
+        }
+    }
+}
+</style>

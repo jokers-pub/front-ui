@@ -1,0 +1,97 @@
+.jk-popper {
+    .popper_arrow,
+    .popper_arrow::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
+    .popper_arrow {
+        border-width: 6px;
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.03));
+    }
+
+    .popper_arrow::after {
+        content: " ";
+        border-width: 6px;
+    }
+
+    &[x-placement^="top"] {
+        margin-bottom: 12px;
+
+        .popper_arrow {
+            bottom: -6px;
+            left: 50%;
+            margin-right: 3px;
+            border-top-color: var(--jk-border-color-lighter);
+            border-bottom-width: 0;
+
+            &::after {
+                bottom: 1px;
+                margin-left: -6px;
+                border-top-color: #fff;
+                border-bottom-width: 0;
+            }
+        }
+    }
+
+    &[x-placement^="bottom"] {
+        margin-top: 12px;
+
+        .popper_arrow {
+            top: -6px;
+            left: 50%;
+            margin-right: 3px;
+            border-bottom-color: var(--jk-border-color-lighter);
+            border-top-width: 0;
+
+            &::after {
+                top: 1px;
+                margin-left: -6px;
+                border-bottom-color: #fff;
+                border-top-width: 0;
+            }
+        }
+    }
+
+    &[x-placement^="right"] {
+        margin-left: 12px;
+
+        .popper_arrow {
+            left: -6px;
+            top: 50%;
+            margin-bottom: 3px;
+            border-right-color: var(--jk-border-color-lighter);
+            border-left-width: 0;
+
+            &::after {
+                bottom: -6px;
+                left: 1px;
+                border-right-color: #fff;
+                border-left-width: 0;
+            }
+        }
+    }
+
+    &[x-placement^="left"] {
+        margin-right: 12px;
+
+        .popper_arrow {
+            right: -6px;
+            top: 50%;
+            margin-bottom: 3px;
+            border-left-color: var(--jk-border-color-lighter);
+            border-right-width: 0;
+
+            &::after {
+                bottom: -6px;
+                right: 1px;
+                border-left-color: #fff;
+                border-right-width: 0;
+            }
+        }
+    }
+}

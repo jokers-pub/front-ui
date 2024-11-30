@@ -1,0 +1,30 @@
+<template>
+    <ul class="demoContainer">
+        <li>
+            <jk-slider vertical height="200px" />
+        </li>
+        <li>
+            <jk-slider vertical value="30" height="200px" />
+        </li>
+        <li>
+            <jk-slider vertical value="2" step="2" max="10" showStops height="200px" />
+        </li>
+        <li>
+            <jk-slider vertical value="@([2, 6])" step="2" range max="10" showStops height="200px" />
+        </li>
+        <li>
+            <jk-slider vertical disabled value="@([2, 6])" step="2" range max="10" showStops height="200px" />
+        </li>
+    </ul>
+</template>
+
+<style scoped lang="scss">
+.demoContainer {
+    display: flex;
+
+    li {
+        padding: 0 30px;
+        list-style: none;
+    }
+}
+</style>

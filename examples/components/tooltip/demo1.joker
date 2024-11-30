@@ -1,0 +1,81 @@
+<template>
+    <div class="box">
+        <div class="top">
+            <jk-tooltip content="Top Left 提示文字" placement="top-start">
+                <jk-button>上左</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Top Center 提示文字" placement="top">
+                <jk-button>上边</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Top Right 提示文字" placement="top-end">
+                <jk-button>上右</jk-button>
+            </jk-tooltip>
+        </div>
+        <div class="left">
+            <jk-tooltip content="Left Top 提示文字" placement="left-start">
+                <jk-button>左上</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Left Center 提示文字" placement="left">
+                <jk-button>左边</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Left Bottom 提示文字" placement="left-end">
+                <jk-button>左下</jk-button>
+            </jk-tooltip>
+        </div>
+        <div class="right">
+            <jk-tooltip content="Right Top 提示文字" placement="right-start">
+                <jk-button>右上</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Right Center 提示文字" placement="right">
+                <jk-button>右边</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Right Bottom 提示文字" placement="right-end">
+                <jk-button>右下</jk-button>
+            </jk-tooltip>
+        </div>
+        <div class="bottom">
+            <jk-tooltip content="Bottom Left 提示文字" placement="bottom-start">
+                <jk-button>下左</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Bottom Center 提示文字" placement="bottom">
+                <jk-button>下边</jk-button>
+            </jk-tooltip>
+            <jk-tooltip content="Bottom Right 提示文字" placement="bottom-end">
+                <jk-button>下右</jk-button>
+            </jk-tooltip>
+        </div>
+    </div>
+</template>
+<style lang="scss" scoped>
+.box {
+    width: 400px;
+
+    .top {
+        text-align: center;
+    }
+
+    .left {
+        float: left;
+        width: 60px;
+    }
+
+    .right {
+        float: right;
+        width: 60px;
+    }
+
+    .bottom {
+        clear: both;
+        text-align: center;
+    }
+
+    :deep(.jk-button) {
+        margin: 4px;
+    }
+
+    .left .el-tooltip__popper,
+    .right .el-tooltip__popper {
+        padding: 8px 10px;
+    }
+}
+</style>

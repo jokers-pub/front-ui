@@ -1,0 +1,33 @@
+<template>
+    <div class="jk-pagination-sizes">
+        <JokerSelect size="mini" value="@props.pageSize" disabled="@props.disabled" @change="handleChange">
+            @for(let item of props.pageSizes) {
+                <JokerSelectOption value="@item" label="@(item)条/页"></JokerSelectOption>
+            }
+        </JokerSelect>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerSelect from "../../select/index.joker";
+import JokerSelectOption from "../../select/option.joker";
+import { PropsType } from "./types";
+
+export default class extends Component<PropsType> {
+    components = {
+        JokerSelect,
+        JokerSelectOption
+    };
+
+    handleChange(e: VNode.Event<number>) {
+        this.$trigger("pageSizeChange", e.data);
+    }
+}
+</script>
+
+<style scoped>
+.jk-pagination-sizes {
+    width: 100px;
+    display: inline-block;
+}
+</style>

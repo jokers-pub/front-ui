@@ -1,0 +1,90 @@
+<template>
+    <div class="container">
+        <NavBar />
+        <div class="pageContainer">
+            <jk-scrollbar ref="scroll" @scroll="handleScroll">
+                <router-view @updated="routerViewUpdated"></router-view>
+            </jk-scrollbar>
+        </div>
+        <ChapterMenu ref="chapterMenu" @go-to="handleMenuGo" />
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import TopBar from "./components/topbar.joker";
+import NavBar from "./components/navbar.joker";
+import ChapterMenu from "./components/chapter-menu.joker";
+import { hideLoading } from "./loading";
+
+export default class extends Component {
+    components = {
+        TopBar,
+        NavBar,
+        ChapterMenu
+    };
+
+    get scroll() {
+        return this.$getRef<VNode.Component>("scroll")?.component;
+    }
+    get chapterMenu() {
+        return this.$getRef<VNode.Component>("chapterMenu")?.component;
+    }
+
+    routerViewUpdated() {
+        hideLoading();
+
+        this.scroll?.scrollTo({ top: 0, left: 0 });
+
+        this.chapterMenu?.refresh();
+    }
+
+    handleScroll(e: VNode.Event<{ y: number }>) {
+        this.chapterMenu?.scrollChange(e.data.y);
+    }
+
+    handleMenuGo(e: VNode.Event<number>) {
+        this.scroll?.scrollTo({ top: e.data, left: 0 });
+    }
+}
+</script>
+<style lang="scss" scoped>
+.container {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    .pageContainer {
+        flex: 1;
+        height: 100%;
+
+        overflow: auto;
+
+        :deep(.joker-demo-container) {
+            margin: 20px 0;
+            padding: 0 290px 0 20px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        :deep(.joker-demo-container) {
+            padding: 0 20px 0 20px !important;
+        }
+        :deep(> .page-right) {
+            display: none;
+        }
+    }
+
+    @media (max-width: 800px) {
+        :deep(> .nav) {
+            display: none;
+        }
+
+        :deep(.joker-demo-container) {
+            padding: 0 20px 0 20px !important;
+        }
+
+        :deep(> .page-right) {
+            display: none;
+        }
+    }
+}
+</style>

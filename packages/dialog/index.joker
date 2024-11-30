@@ -1,0 +1,295 @@
+<template>
+    @if(model.isAppended) {
+        <div
+            append-to="body"
+            class="jk-dialog"
+            style="display:@(model.visible?'flex':'none');z-index:@model.zIndex"
+            @mousedown.self="handleContainerMousedown">
+            <div
+                role="dialog"
+                aria-modal="true"
+                aria-label="@(props.title || 'dialog')"
+                style="@boxStyle"
+                ref="dialog"
+                class="@([
+                    'dialog-box',
+                    props.customClass,
+                    {
+                        'is-fullscreen': props.fullscreen,
+                        'is-center': props.center
+                    }
+                ])">
+                <div class="header">
+                    @if($sections.title) {
+                        @RenderSection("title")
+                    }
+                    else {
+                        <span class="title">@props.title</span>
+                    }
+                    @if(props.closable) {
+                        <button type="button" class="close" aria-label="Close" @click="handleCloseClick">
+                            <i class="jk-icon-close"></i>
+                        </button>
+                    }
+                </div>
+                <div class="body">
+                    @RenderSection()
+                </div>
+                @if($sections.footer) {
+                    <div class="footer">
+                        @RenderSection("footer")
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { PopupManager } from "../utils/popup-manager";
+import { zIndexManage } from "../utils/zindex";
+let seed = 0;
+
+export default class extends Component<{
+    title: string;
+    fullscreen: boolean;
+    center: boolean;
+    customClass: string;
+    width: string;
+    beforeClose: Function;
+    closable: boolean;
+    closeOnClickModal: boolean;
+    closeOnPressEscape: boolean;
+    modal: boolean;
+    destroyOnClose: boolean;
+}> {
+    model = {
+        isAppended: false,
+        visible: false,
+        zIndex: 0
+    };
+
+    propsOption = {
+        title: "",
+        modal: true,
+        closable: true,
+        closeOnClickModal: false,
+        closeOnPressEscape: true,
+        destroyOnClose: true
+    };
+
+    id = `dialog` + seed++;
+
+    get boxStyle() {
+        let result: Record<string, any> = {};
+
+        if (!this.props.fullscreen && this.props.width) {
+            if (this.props.width.endsWith("px") && window.innerWidth < Number(this.props.width.slice(0, -2))) {
+                result.width = window.innerWidth - 20 + "px";
+            } else {
+                result.width = this.props.width;
+            }
+        }
+
+        return result;
+    }
+    async open() {
+        if (this.model.visible) return;
+
+        this.$trigger("open");
+        if (!this.model.isAppended) {
+            this.model.isAppended = true;
+        }
+        this.model.visible = true;
+
+        await this.$updatedRender();
+        this.props.modal &&
+            PopupManager.open(this.id, {
+                closeOnPressEscape: this.props.closeOnPressEscape,
+                close: () => {
+                    this.close();
+                }
+            });
+
+        this.model.zIndex = zIndexManage.nextZIndex();
+
+        let dialog = this.$getRef("dialog")!;
+
+        this.$nodeTransition(
+            dialog,
+            "enter",
+            "jk-dialog-fade",
+            () => {
+                dialog.output.scrollTop = 0;
+                this.$trigger("opened");
+            },
+            "animation"
+        );
+    }
+    close() {
+        if (this.model.visible === false) return;
+        this.$trigger("close");
+
+        this.$nodeTransition(
+            "dialog",
+            "leave",
+            "jk-dialog-fade",
+            () => {
+                this.model.visible = false;
+                this.props.modal && PopupManager.close(this.id);
+                this.$trigger("closed");
+
+                if (this.props.destroyOnClose) {
+                    this.model.isAppended = false;
+                }
+            },
+            "animation"
+        );
+    }
+
+    beforeDestroy() {
+        this.props.modal && PopupManager.close(this.id);
+    }
+
+    handleClose() {
+        if (this.props.beforeClose) {
+            this.props.beforeClose(this.close);
+        } else {
+            this.close();
+        }
+    }
+    handleContainerMousedown() {
+        if (this.props.closeOnClickModal) {
+            this.handleClose();
+        }
+    }
+    handleCloseClick() {
+        this.handleClose();
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    .dialog-box {
+        position: relative;
+        margin: 0px auto;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+
+        &.is-fullscreen {
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .header {
+            padding: 20px 20px 10px 20px;
+            .title {
+                line-height: 24px;
+                font-size: 18px;
+                color: var(--jk-color-text-primary);
+            }
+            .close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                padding: 0;
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 16px;
+
+                i {
+                    color: var(--jk-color-info);
+                }
+
+                &:focus,
+                &:hover {
+                    i {
+                        color: var(--jk-color-primary);
+                    }
+                }
+            }
+        }
+
+        .body {
+            flex: 1;
+            padding: 20px 20px 30px 20px;
+            color: var(--jk-color-text-regular);
+            font-size: 14px;
+            word-break: break-all;
+            overflow: auto;
+        }
+
+        .footer {
+            padding: 10px 20px 20px 20px;
+            text-align: right;
+            box-sizing: border-box;
+        }
+
+        &.is-center {
+            text-align: center;
+
+            .body {
+                text-align: initial;
+                padding: 25px 25px 30px;
+            }
+
+            .footer {
+                text-align: inherit;
+            }
+        }
+        &.jk-dialog-fade-enter-from {
+            opacity: 0;
+        }
+        &.jk-dialog-fade-enter-active {
+            animation: dialog-fade-in 0.3s;
+        }
+        &.jk-dialog-fade-leave-active {
+            animation: dialog-fade-out 0.3s;
+        }
+
+        @keyframes dialog-fade-in {
+            0% {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+            }
+            100% {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes dialog-fade-out {
+            0% {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(0, -20px, 0);
+                opacity: 0;
+            }
+        }
+    }
+}
+</style>

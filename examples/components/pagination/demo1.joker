@@ -1,0 +1,11 @@
+<template>
+    <DemoRow>
+        <jk-pagination total="50" />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination total="1000" />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination total="1000" currentPage="25" disabled />
+    </DemoRow>
+</template>

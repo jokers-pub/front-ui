@@ -1,0 +1,30 @@
+<template>
+    <div class="demo-image__error">
+        <div class="block">
+            <p class="demonstration">默认</p>
+            <jk-image style="width: 300px;height:200px;"></jk-image>
+        </div>
+        <div class="block">
+            <p class="demonstration">自定义</p>
+            <jk-image style="width: 300px;height:200px;">
+                @section("error") {
+                    <i class="jk-icon-picture-outline" />
+                }
+            </jk-image>
+        </div>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.demo-image__error {
+    display: flex;
+    .block {
+        padding: 30px 0;
+        text-align: center;
+        border-right: 1px solid #eff2f6;
+        flex: 1;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+}
+</style>

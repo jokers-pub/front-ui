@@ -1,0 +1,51 @@
+<template>
+    <DemoRow>
+        <jk-row>
+            <jk-col span="12">
+                <div class="sub-title">circle</div>
+                <jk-row align="middle" type="flex">
+                    <jk-col span="6">
+                        <jk-avatar size="@(50)" circle src="@model.circleUrl"></jk-avatar>
+                    </jk-col>
+                    @for(let item of model.sizeList) {
+                        <jk-col span="6">
+                            <jk-avatar size="@item" circle src="@model.circleUrl"></jk-avatar>
+                        </jk-col>
+                    }
+                </jk-row>
+            </jk-col>
+            <jk-col span="12">
+                <div class="sub-title">square</div>
+                <jk-row align="middle" type="flex">
+                    <jk-col span="6">
+                        <jk-avatar size="@(50)" shape src="@model.squareUrl"></jk-avatar>
+                    </jk-col>
+                    @for(let item of model.sizeList) {
+                        <jk-col span="6">
+                            <jk-avatar size="@item" shape src="@model.squareUrl"></jk-avatar>
+                        </jk-col>
+                    }
+                </jk-row>
+            </jk-col>
+        </jk-row>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        circleUrl: "https://picsum.photos/120",
+        squareUrl: "https://picsum.photos/120",
+        sizeList: ["large", "medium", "small"]
+    };
+}
+</script>
+<style scoped>
+.sub-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #8492a6;
+}
+</style>

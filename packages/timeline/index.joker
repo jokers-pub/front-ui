@@ -1,0 +1,28 @@
+<script>
+import { Component, createElement, createCommand } from "@joker.front/core";
+
+export default class extends Component {
+    mounted() {
+        this.$render([
+            createElement("ul", { class: "@(['jk-timeline',props.class])" }, [createCommand("RenderSection")])
+        ]);
+
+        this.$watch(
+            () => this.$sections.default,
+            () => {
+                this.$render([
+                    createElement("ul", { class: "@(['jk-timeline',props.class])" }, [createCommand("RenderSection")])
+                ]);
+            }
+        );
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-timeline {
+    margin: 0;
+    font-size: 14px;
+    list-style: none;
+}
+</style>

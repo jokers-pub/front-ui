@@ -1,0 +1,38 @@
+<template>
+    <DemoRow>
+        <jk-slider
+            range
+            value="@([30, 60])"
+            marks="@({
+                0: '0°C',
+                8: '8°C',
+                37: '37°C',
+                50: {
+                    style: {
+                        color: 'red'
+                    },
+                    label: '50%'
+                }
+            })"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-slider
+            range
+            height="250px"
+            vertical
+            value="@([30, 60])"
+            marks="@({
+                0: '0°C',
+                8: '8°C',
+                37: '37°C',
+                50: {
+                    style: {
+                        color: 'red'
+                    },
+                    label: '50%'
+                }
+            })"
+        />
+    </DemoRow>
+</template>

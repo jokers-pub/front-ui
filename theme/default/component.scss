@@ -1,0 +1,19 @@
+@mixin component-vars {
+    //button
+    --jk-button-default-background-color: #fff;
+    --jk-button-default-font-color: var(--jk-color-text-regular);
+    --jk-button-font-color: #fff;
+
+    //radio
+    --jk-radio-checked-target-background-color: #fff;
+
+    //message
+    --jk-message-background-color: #edf2fc;
+
+    //modal
+    --jk-modal-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jk-loading-parent--relative {
+    position: relative !important;
+}

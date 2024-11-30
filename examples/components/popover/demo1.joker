@@ -1,0 +1,49 @@
+<template>
+    <jk-popover
+        trigger="hover"
+        title="标题"
+        width="200px"
+        content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+        @section("reference") {
+            <jk-button>hover激活</jk-button>
+        }
+    </jk-popover>
+    <jk-popover
+        trigger="click"
+        title="标题"
+        width="200px"
+        placement="bottom"
+        content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+        @section("reference") {
+            <jk-button>click激活</jk-button>
+        }
+    </jk-popover>
+    <jk-popover
+        trigger="manual"
+        title="标题"
+        width="200px"
+        placement="bottom"
+        ref="popover1"
+        content="再点击一次按钮关闭">
+        @section("reference") {
+            <jk-button @click="open">手动激活</jk-button>
+        }
+    </jk-popover>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    isShow = false;
+    open() {
+        let popover = this.$getRef<VNode.Component>("popover1")?.component;
+        if (this.isShow) {
+            popover?.hide();
+        } else {
+            popover?.show();
+        }
+        this.isShow = !this.isShow;
+    }
+}
+</script>

@@ -1,0 +1,18 @@
+<template>
+    <div class="demo-container">
+        <jk-tag>标签一</jk-tag>
+        <jk-tag type="success">标签二</jk-tag>
+        <jk-tag type="info">标签三</jk-tag>
+        <jk-tag type="warning">标签四</jk-tag>
+        <jk-tag type="danger">标签五</jk-tag>
+        <jk-tag color="yellow">自定义颜色</jk-tag>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.demo-container {
+    :deep(.jk-tag) {
+        margin-right: 10px;
+    }
+}
+</style>

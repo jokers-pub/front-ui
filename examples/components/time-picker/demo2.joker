@@ -1,0 +1,31 @@
+<template>
+    <DemoRow>
+        <jk-time-select
+            start="08:30"
+            step="00:10"
+            end="18:30"
+            placeholder="起始时间"
+            @change="handleStartChange"></jk-time-select>
+    </DemoRow>
+    <DemoRow>
+        <jk-time-select
+            start="08:30"
+            step="00:10"
+            end="18:30"
+            minTime="@model.startTime"
+            placeholder="结束时间"></jk-time-select>
+    </DemoRow>
+</template>
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        startTime: ""
+    };
+    handleStartChange(e: VNode.Event) {
+        this.model.startTime = e.data || "";
+    }
+}
+</script>

@@ -1,0 +1,20 @@
+<template>
+    <jk-switch value="@model.value" activeColor="#13ce66" inactiveColor="#ff4949" @change="handleChange"></jk-switch>
+    <p>
+        @model.value
+    </p>
+</template>
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        value: true
+    };
+
+    handleChange(e: VNode.Event<boolean>) {
+        this.model.value = e.data;
+    }
+}
+</script>

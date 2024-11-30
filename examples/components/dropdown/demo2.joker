@@ -1,0 +1,33 @@
+<template>
+    <DemoRow>
+        <jk-dropdown split-button @click="handleClick">
+            click触发
+            <jk-dropdown-menu>
+                <jk-dropdown-item>菜单1</jk-dropdown-item>
+                <jk-dropdown-item>菜单2</jk-dropdown-item>
+                <jk-dropdown-item>菜单3</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+    <DemoRow>
+        <jk-dropdown trigger="hover" split-button @click="handleClick">
+            hover触发
+            <jk-dropdown-menu>
+                <jk-dropdown-item>菜单1</jk-dropdown-item>
+                <jk-dropdown-item>菜单2</jk-dropdown-item>
+                <jk-dropdown-item>菜单3</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+import { MessageBox } from "../../../src";
+
+export default class extends Component {
+    handleClick() {
+        MessageBox.alert("你点击了按钮");
+    }
+}
+</script>

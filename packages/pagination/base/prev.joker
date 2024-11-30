@@ -1,0 +1,30 @@
+<template>
+    <button type="button" class="jk-pagination-prev" disabled="@disabled" @click="handleClick">
+        @if(props.prevText) {
+            <span>@props.prevText</span>
+        }
+        else {
+            <i class="jk-icon-arrow-left"></i>
+        }
+    </button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { PropsType } from "./types";
+
+export default class extends Component<PropsType> {
+    get disabled() {
+        return this.props.disabled || this.props.currentPage! <= 1;
+    }
+
+    handleClick() {
+        this.$trigger("prev");
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-pagination-prev {
+    padding-right: 12px;
+}
+</style>

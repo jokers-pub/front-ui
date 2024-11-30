@@ -1,0 +1,127 @@
+<template>
+    @if(model.show) {
+        <div
+            class="jk-dropdown-menu jk-popper @(props.size||'')"
+            ref="menu"
+            append-to="body"
+            transition-name="jk-zoom-in-top"
+            @click.outside="close"
+            @mouseenter="clearTimeOut"
+            @mouseleave="handleMouseLeave">
+            @RenderSection()
+        </div>
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Popper } from "../utils/popper";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    size: string;
+    placement: string;
+}> {
+    model = {
+        show: false
+    };
+    name = componentName("dropdown-menu");
+
+    get dropdown() {
+        return this.$rootVNode.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("dropdown")
+        );
+    }
+
+    private popperHandler?: Popper;
+
+    timeout?: number;
+
+    async open(reference: HTMLElement) {
+        this.clearTimeOut();
+
+        this.model.show = true;
+
+        await this.$updatedRender();
+        let popper = this.$getRef("menu")?.output;
+
+        if (popper && reference) {
+            if (this.popperHandler === undefined) {
+                this.popperHandler = new Popper(reference, popper, {
+                    placement: this.props.placement || "bottom-start",
+                    boundariesPadding: 0
+                });
+            }
+
+            this.$trigger("open");
+        }
+    }
+
+    handleMouseLeave() {
+        this.close();
+    }
+
+    close() {
+        this.clearTimeOut();
+
+        this.timeout = setTimeout(() => {
+            this.model.show = false;
+
+            this.popperHandler?.destroy();
+
+            this.popperHandler = undefined;
+
+            this.$trigger("close");
+        }, 150);
+    }
+
+    clearTimeOut() {
+        if (!this.timeout) return;
+
+        window.clearTimeout(this.timeout);
+        this.timeout === undefined;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-dropdown-menu {
+    background-color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    border: solid 1px var(--jk-border-color-lighter);
+    border-radius: 5px;
+    box-shadow: var(--jk-box-shadow-light);
+    font-size: 14px;
+    color: var(--jk-color-text-regular);
+
+    &.medium {
+        padding: 6px 0;
+
+        :deep(.jk-dropdown-item) {
+            line-height: 30px;
+            padding: 0 17px;
+            font-size: 14px;
+        }
+    }
+
+    &.small {
+        padding: 6px 0;
+
+        :deep(.jk-dropdown-item) {
+            line-height: 27px;
+            padding: 0 15px;
+            font-size: 13px;
+        }
+    }
+
+    &.mini {
+        padding: 3px 0;
+
+        :deep(.jk-dropdown-item) {
+            line-height: 24px;
+            padding: 0 10px;
+            font-size: 12px;
+        }
+    }
+}
+</style>

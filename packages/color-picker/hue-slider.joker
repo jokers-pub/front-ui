@@ -1,0 +1,100 @@
+<template>
+    <div class="jk-color-hue-slider" ref="container">
+        <div class="bar" ref="bar" @click.self="barClick"></div>
+        <div class="thumb" ref="thumb" style="top:@(model.thumbTop+'px')"></div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Color } from "@joker.front/shared";
+import { draggable } from "../utils/draggable";
+
+export default class extends Component<{ color: Color }> {
+    model = {
+        thumbTop: 0
+    };
+    getThumbTop() {
+        let el = this.$getRef<VNode.Element>("container")?.output;
+        let thumb = this.$getRef<VNode.Element>("thumb")?.output;
+        let hue = this.props.color?.h!;
+
+        return Math.round((hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360);
+    }
+
+    mounted() {
+        let thumb = this.$getRef<VNode.Element>("thumb")?.output;
+        let bar = this.$getRef<VNode.Element>("bar")?.output;
+
+        let dragConfig = {
+            drag: (e: MouseEvent) => {
+                this.handleDrag(e);
+            },
+            end: (e: MouseEvent) => {
+                this.handleDrag(e);
+            }
+        };
+
+        draggable(thumb, dragConfig);
+        draggable(bar, dragConfig);
+
+        this.$watch(
+            () => this.props.color?.value,
+            () => {
+                this.model.thumbTop = this.getThumbTop();
+            }
+        );
+        this.model.thumbTop = this.getThumbTop();
+    }
+
+    barClick(e: VNode.Event) {
+        this.handleDrag(e.event);
+    }
+
+    handleDrag(e: MouseEvent) {
+        let el: HTMLElement = this.$getRef<VNode.Element>("container")?.output;
+        let thumb = this.$getRef<VNode.Element>("thumb")?.output;
+
+        let rect = el.getBoundingClientRect();
+
+        let top = e.clientY - rect.top;
+        top = Math.min(top, rect.height - thumb.offsetHeight / 2);
+        top = Math.max(thumb.offsetHeight / 2, top);
+
+        let hue = Math.round(((top - thumb.offsetHeight / 2) / (rect.height - thumb.offsetHeight)) * 360);
+
+        this.props.color?.setVal("h", hue);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-color-hue-slider {
+    position: relative;
+    box-sizing: border-box;
+    width: 12px;
+    height: 180px;
+    background: #f00;
+    padding: 2px 0px;
+
+    .bar {
+        position: relative;
+        background: linear-gradient(to bottom, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+        height: 100%;
+    }
+
+    .thumb {
+        position: absolute;
+        cursor: pointer;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 4px;
+        border-radius: 1px;
+        background: #fff;
+        border: solid 1px #f0f0f0;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
+}
+</style>

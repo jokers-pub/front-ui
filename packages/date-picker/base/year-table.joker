@@ -1,0 +1,160 @@
+<template>
+    <table class="jk-year-table" @click="handleClick">
+        <tbody>
+            <tr>
+                @for(let i = year; i < year + 4; i++) {
+                    <td class="@getCellStyle(i)">
+                        <div>
+                            <span>@i</span>
+                        </div>
+                    </td>
+                }
+            </tr>
+            <tr>
+                @for(let i = year + 4; i < year + 8; i++) {
+                    <td class="@getCellStyle(i)">
+                        <div>
+                            <span>@i</span>
+                        </div>
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td class="@getCellStyle(year+8)">
+                    <div>
+                        <span>@(year + 8)</span>
+                    </div>
+                </td>
+                <td class="@getCellStyle(year+9)">
+                    <div>
+                        <span>@(year + 9)</span>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { addDate, getDayCountOfYear } from "../utils";
+import { range } from "@joker.front/shared";
+
+export default class extends Component<{
+    date: Date;
+    disabledDate: Function;
+    value: Date | number;
+}> {
+    model = {};
+
+    get year() {
+        return Math.floor(this.props.date!.getFullYear() / 10) * 10;
+    }
+    getCellStyle(year: number) {
+        let style = [];
+
+        let today = new Date();
+
+        let disabled = false;
+        if (this.props.disabledDate) {
+            let dayCount = getDayCountOfYear(year);
+            let firstDay = new Date(year, 0, 1);
+            let days = range(dayCount).map((n) => addDate(firstDay, n, "d"));
+            disabled = days.every((n) => this.props.disabledDate?.(n));
+        }
+
+        if (disabled) {
+            style.push("disabled");
+        }
+
+        if (
+            this.props.value &&
+            ((typeof this.props.value === "number" && this.props.value === year) ||
+                (typeof this.props.value !== "number" && this.props.value.getFullYear() === year))
+        ) {
+            style.push("current");
+        }
+
+        if (today.getFullYear() === year) {
+            style.push("today");
+        }
+
+        return style.join(" ");
+    }
+    handleClick(e: VNode.Event) {
+        let target = e.event.target;
+
+        if (target.tagName === "SPAN") {
+            target = target.parentNode.parentNode;
+        }
+
+        if (target.tagName === "DIV") {
+            target = target.parentNode;
+        }
+
+        if (target.tagName !== "TD") return;
+        if (target.classList.contains("disabled")) return;
+        let year = target.textContent || target.innerText;
+
+        this.$trigger("pick", parseFloat(year));
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-year-table {
+    font-size: 12px;
+    user-select: none;
+    table-layout: fixed;
+    width: 100%;
+
+    td {
+        text-align: center;
+        padding: 8px 0px;
+        cursor: pointer;
+
+        div {
+            height: 48px;
+            padding: 6px 0;
+            box-sizing: border-box;
+
+            span {
+                width: 60px;
+                height: 36px;
+                display: block;
+                line-height: 36px;
+                color: var(--jk-color-text-regular);
+                margin: 0 auto;
+                border-radius: 18px;
+
+                &:hover {
+                    color: var(--jk-color-primary);
+                }
+            }
+        }
+
+        &.today {
+            span {
+                color: var(--jk-color-primary);
+                font-weight: bold;
+            }
+        }
+
+        &.disabled span {
+            background: var(--jk-background-color-base);
+            cursor: not-allowed;
+            color: var(--jk-color-text-placeholder);
+
+            &:hover {
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+
+        &.current:not(.is-disabled) span {
+            color: #fff;
+            background-color: var(--jk-color-primary);
+        }
+    }
+}
+</style>

@@ -1,0 +1,42 @@
+<template>
+    <jk-button @click="open1">右上角</jk-button>
+    <jk-button @click="open2">右下角</jk-button>
+    <jk-button @click="open3">左下角</jk-button>
+    <jk-button @click="open4">左上角</jk-button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Notification } from "../../../src";
+export default class extends Component {
+    open1() {
+        Notification({
+            //默认
+            position: "top-right",
+            title: "提示",
+            message: "我是一个提示"
+        });
+    }
+    open2() {
+        Notification({
+            position: "bottom-right",
+            title: "提示",
+            message: "我是一个提示"
+        });
+    }
+    open3() {
+        Notification({
+            position: "bottom-left",
+            title: "提示",
+            message: "我是一个提示"
+        });
+    }
+    open4() {
+        Notification({
+            position: "top-left",
+            title: "提示",
+            message: "我是一个提示"
+        });
+    }
+}
+</script>
+

@@ -1,0 +1,139 @@
+<template>
+    <a
+        class="@([
+            'jk-link',
+            props.type || 'default',
+            {
+                'is-disabled': props.disabled,
+                'is-underline': props.underline && !props.disabled
+            },
+            props.class,
+            props.size
+        ])"
+        href="@props.href"
+        target="@props.target"
+        @click="handleClick">
+        @if(props.icon) {
+            <i class="@props.icon" />
+        }
+        @if($sections && $sections.default) {
+            <span>@RenderSection()</span>
+        }
+    </a>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component<{
+    type: string;
+    underline: boolean;
+    disabled: boolean;
+    href: string;
+    icon: string;
+    target: string;
+    class: string;
+    size: string;
+}> {
+    propsOption = {
+        href: "javascript:void(0)",
+        underline: true
+    };
+    handleClick(e: VNode.Event) {
+        this.$trigger("click", undefined, e);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+$colors: (
+    primary: var(--jk-color-primary),
+    success: var(--jk-color-success),
+    danger: var(--jk-color-danger),
+    warning: var(--jk-color-warning),
+    info: var(--jk-color-info)
+);
+
+.jk-link {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 500;
+    line-height: 1;
+    &.is-underline {
+        &:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border-bottom: solid 1px var(--jk-color-primary);
+        }
+    }
+
+    &.is-disabled {
+        cursor: not-allowed;
+    }
+
+    & [class*="-icon-"] {
+        & + span {
+            margin-left: 5px;
+        }
+    }
+
+    &.default {
+        color: var(--jk-color-text-regular);
+
+        &:hover {
+            color: var(--jk-color-primary);
+        }
+
+        &:after {
+            border-color: var(--jk-color-primary);
+        }
+
+        &.is-disabled {
+            color: var(--jk-color-text-placeholder);
+        }
+    }
+
+    @each $type, $color in $colors {
+        &.#{$type} {
+            color: $color;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &:after {
+                border-color: $color;
+            }
+
+            &.is-disabled {
+                opacity: 0.5;
+            }
+
+            &.is-underline {
+                &:hover::after {
+                    border-bottom-color: solid 1px $color;
+                }
+            }
+        }
+    }
+
+    &.medium {
+        font-size: 12px;
+    }
+
+    &.small {
+        font-size: 10px;
+    }
+}
+</style>

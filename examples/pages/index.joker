@@ -1,0 +1,140 @@
+<template>
+    <div class="home">
+        <div class="top">
+            <p>Joker UI</p>
+            <p>网站快速成型工具</p>
+            <p>Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件</p>
+            <div class="nav-btns">
+                <a href="#/component/start">快速起步</a>
+            </div>
+        </div>
+        <div class="desc-list">
+            <div class="item">
+                <div class="title">设计理念</div>
+                <div class="content">
+                    一致性和可用性：遵循最新的UI设计原则，确保界面元素在视觉和功能上的一致性，同时优化用户体验。
+                    模块化和可定制：每个组件都是独立、模块化的，方便开发者根据需要定制和扩展。
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">核心特点</div>
+                <div class="content">
+                    轻量级且高性能：代码经过优化，确保加载快速，对浏览器性能影响最小。
+                    跨浏览器兼容：兼容主流的现代浏览器，包括Chrome、Firefox、Safari和Edge。
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">应用场景</div>
+                <div class="content">
+                    这套UI组件库适用于各种Web应用开发，无论是企业级应用、电商平台还是个人项目，都能提供强大支持。
+                </div>
+            </div>
+        </div>
+        <div class=""></div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+export default class extends Component {
+    components = {};
+    mounted() {}
+}
+</script>
+
+<style lang="scss" scoped>
+.home {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    .top {
+        padding: 70px 32px;
+        text-align: center;
+        border-bottom: solid 1px var(--jk-border-color-base);
+        margin-bottom: 20px;
+        p {
+            margin: 0;
+
+            &:first-child {
+                font-size: 85px;
+                font-weight: 700;
+                line-height: 1.25;
+                background-image: linear-gradient(
+                    315deg,
+                    var(--jk-color-primary),
+                    var(--jk-color-success),
+                    var(--jk-color-primary)
+                );
+                -webkit-background-clip: text;
+                background-size: 200%;
+                color: transparent;
+                animation: run 4s linear 0s infinite;
+            }
+
+            &:nth-child(2) {
+                font-size: 55px;
+                font-weight: 600;
+                line-height: 1.25;
+                color: rgb(33, 53, 71);
+            }
+
+            &:nth-child(3) {
+                color: rgba(60, 60, 60, 0.7);
+                font-size: 18px;
+                margin: 24px 0 48px 0;
+                line-height: 1.5;
+            }
+        }
+
+        .nav-btns {
+            text-align: center;
+            padding: 20px 0;
+
+            a {
+                font-size: 16px;
+                display: inline-block;
+                border-radius: 8px;
+                font-weight: 600;
+                background-color: var(--jk-color-primary);
+                color: #fff;
+                padding: 8px 1em;
+            }
+        }
+    }
+
+    .desc-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 40px;
+
+        .item {
+            flex: 0 25%;
+            padding: 28px 36px;
+            text-align: left;
+
+            .title {
+                font-weight: 600;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .content {
+                font-weight: 400;
+                font-size: 15px;
+                color: #99a9bf;
+                height: 120px;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        .desc-list {
+            display: block;
+        }
+    }
+}
+@keyframes run {
+    100% {
+        background-position: 400% 0px;
+    }
+}
+</style>

@@ -1,0 +1,181 @@
+<template>
+    @if(model.visible) {
+        <div class="jk-drawer" style="@({ zIndex: model.zindex })" @click.self="close">
+            <div
+                class="container @('direction-'+props.direction)"
+                style="@containerStyle"
+                transition-name="drawer-fade">
+                <div class="header">
+                    @if($sections.title) {
+                        @RenderSection("title")
+                    }
+                    else {
+                        <span>@props.title</span>
+                    }
+                    <button class="close" @click="close"><i class="jk-icon-close" /></button>
+                </div>
+                <div class="body">
+                    @RenderSection()
+                </div>
+            </div>
+        </div>
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { zIndexManage } from "../utils/zindex";
+
+export default class extends Component<{
+    title: string;
+    direction: string;
+    size: string;
+}> {
+    propsOption = {
+        size: "30%",
+        direction: {
+            default: "right",
+            validate(val) {
+                let allowValues = ["right", "left", "top", "bottom"];
+                if (allowValues.includes(val) === false) {
+                    return "drawer控件中的direction属性只支持：" + allowValues.join(",");
+                }
+            }
+        }
+    };
+
+    model = {
+        visible: false,
+        zindex: 0
+    };
+
+    get containerStyle() {
+        let result: Record<string, string> = {};
+
+        if (this.props.direction === "right" || this.props.direction === "left") {
+            result.width = this.props.size;
+        } else {
+            result.height = this.props.size;
+        }
+
+        return result;
+    }
+
+    open() {
+        this.model.zindex = zIndexManage.nextZIndex();
+
+        this.model.visible = true;
+
+        this.$trigger("open");
+    }
+
+    close() {
+        this.model.visible = false;
+
+        this.$trigger("close");
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    margin: 0;
+    background: rgba(175, 184, 193, 0.2);
+
+    .container {
+        position: absolute;
+        box-sizing: border-box;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        outline: none;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 1px 3px rgba(31, 35, 40, 0.12), 0 8px 24px rgba(66, 74, 83, 0.12);
+
+        .header {
+            display: flex;
+            height: 32px;
+            line-height: 32px;
+            padding: 20px 20px 0;
+            align-content: center;
+            color: var(--jk-color-text-regular);
+
+            > :first-child {
+                flex: 1;
+            }
+
+            button {
+                height: 32px;
+                width: 32px;
+                padding: 0;
+                user-select: none;
+                border-radius: 6px;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                background: transparent;
+                transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+
+                &:hover {
+                    background-color: var(--jk-background-color-base);
+                    color: var(--jk-color-text-primary);
+                }
+            }
+        }
+
+        .body {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        &.direction-left {
+            border-radius: 0 14px 14px 0;
+        }
+
+        &.direction-top {
+            border-radius: 0 0 14px 14px;
+        }
+
+        &.direction-right {
+            right: 0;
+            border-radius: 14px 0 0 14px;
+        }
+
+        &.direction-bottom {
+            bottom: 0;
+            border-radius: 14px 14px 0 0;
+        }
+    }
+
+    .drawer-fade-enter-active,
+    .drawer-fade-leave-active {
+        transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+    }
+    .drawer-fade-enter-from,
+    .drawer-fade-leave-to {
+        &.direction-left {
+            transform: translateX(-50%);
+        }
+
+        &.direction-top {
+            transform: translateY(-50%);
+        }
+
+        &.direction-right {
+            transform: translateX(50%);
+        }
+
+        &.direction-bottom {
+            transform: translateY(50%);
+        }
+    }
+}
+</style>

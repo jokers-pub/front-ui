@@ -1,0 +1,74 @@
+<template>
+    <ul class="icon-list">
+        @for(let icon of model.icons) {
+            <li @click="handleClick(icon)">
+                <i class="jk-icon-@icon" />
+                <p>
+                    jk-icon-@icon
+                </p>
+            </li>
+        }
+    </ul>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { icons } from "./icon-data";
+import { copyText } from "@joker.front/shared";
+
+export default class extends Component {
+    model = {
+        icons: icons
+    };
+    handleClick(e: VNode.Event, name: string) {
+        copyText(`jk-icon-${name}`);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.icon-list {
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    border: 1px solid #eaeefb;
+    border-radius: 4px;
+
+    li {
+        float: left;
+        width: 16.66%;
+        text-align: center;
+        height: 120px;
+        color: #666;
+        font-size: 13px;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        cursor: pointer;
+        :deep(i) {
+            display: block;
+            font-size: 32px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #606266;
+        }
+
+        p {
+            display: inline-block;
+            padding: 0 3px;
+            height: 1em;
+            line-height: 24px;
+        }
+
+        &:hover {
+            p {
+                color: #5cb6ff;
+            }
+
+            :deep(i) {
+                color: #5cb6ff;
+            }
+        }
+    }
+}
+</style>

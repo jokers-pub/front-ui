@@ -1,0 +1,423 @@
+<template>
+    <div
+        style="@style"
+        class="@([
+            'jk-step',
+            !isSimple && 'is-' + direction,
+            isSimple && 'is-simple',
+            isLast && !space && !isCenter && 'is-flex',
+            isCenter && !isVertical && !isSimple && 'is-center'
+        ])">
+        <!-- icon & line -->
+        <div class="@(['head', 'is-' + currentStatus])">
+            <div class="line">
+                <i class="line-inner" style="@model.lineStyle"></i>
+            </div>
+            <div class="@(['icon', 'is-' + (props.icon ? 'icon' : 'text')])">
+                @if(currentStatus !== "success" && currentStatus !== "error") {
+                    @if($sections.icon) {
+                        @RenderSection("icon")
+                    }
+                    else {
+                        @if(props.icon) {
+                            <i class="@(['icon-inner', props.icon])"></i>
+                        }
+                        @if(!props.icon && !isSimple) {
+                            <div class="icon-inner">
+                                @(model.index + 1)
+                            </div>
+                        }
+                    }
+                }
+                else {
+                    <i
+                        class="@(['icon-inner is-status', currentStatus === 'success' ? 'jk-icon-check' : 'jk-icon-close'])"></i>
+                }
+            </div>
+        </div>
+        <!-- title & description -->
+        <div class="main">
+            <div ref="title" class="@(['title', 'is-' + currentStatus])">
+                @if($sections.title) {
+                    @RenderSection("title")
+                }
+                else {
+                    @props.title
+                }
+            </div>
+            @if(isSimple) {
+                <div class="arrow"></div>
+            }
+            else {
+                <div class="@(['description', 'is-' + currentStatus])">
+                    @if($sections.description) {
+                        @RenderSection("description")
+                    }
+                    else {
+                        @props.description
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{ title: string; icon: string; description: string }> {
+    name = componentName("step");
+    model = { lineStyle: {}, internalStatus: "", index: 0 };
+
+    beforeDestroy() {
+        this.group?.updateSteps();
+    }
+    group: any;
+    created() {
+        this.group = this.$root?.closest((n) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("steps");
+        })?.component;
+    }
+    mounted() {
+        this.group?.updateSteps();
+
+        this.$watch(
+            () => [this.group?.model.active],
+            () => {
+                this.updateStatus();
+            }
+        );
+    }
+
+    get currentStatus() {
+        return this.model.internalStatus;
+    }
+
+    get prevStatus() {
+        let prevStep = this.group?.model.steps[this.model.index];
+        return prevStep ? prevStep.currentStatus : "wait";
+    }
+
+    get isCenter() {
+        return this.group?.props.alignCenter;
+    }
+    get direction() {
+        return this.group?.props.direction;
+    }
+    get isVertical() {
+        return this.group?.props.direction === "vertical";
+    }
+
+    get isSimple() {
+        return this.group?.props.simple;
+    }
+
+    get isLast() {
+        if (this.group) {
+            let steps = this.group.model.steps;
+            return steps.length - 1 === this.model.index;
+        }
+    }
+
+    get stepsCount() {
+        return this.group?.model.steps.length;
+    }
+
+    get space() {
+        return this.isSimple ? "" : this.group?.props.space;
+    }
+
+    get style() {
+        if (this.group) {
+            let style = "";
+            let parent = this.group;
+            let len = parent.model.steps.length;
+            //等待初始化
+            if (len === 0) return;
+            let space =
+                typeof this.space === "number"
+                    ? this.space + "px"
+                    : this.space
+                    ? this.space
+                    : 100 / (len - (this.isCenter ? 0 : 1)) + "%";
+
+            style += "flex-basis:" + space;
+            if (this.isVertical) return style;
+            if (this.isLast) {
+                style += ";max-width:" + (100 / len + "%");
+            }
+
+            return style;
+        }
+    }
+
+    updateStatus() {
+        let currentActive = this.group?.model.active || 0;
+        if (currentActive > this.model.index) {
+            this.model.internalStatus = "finish";
+        } else if (currentActive === this.model.index && this.prevStatus !== "error") {
+            this.model.internalStatus = "process";
+        } else {
+            this.model.internalStatus = "wait";
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-step {
+    &:last-of-type {
+        .line {
+            display: none;
+        }
+        &.is-flex {
+            flex-basis: auto !important;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+        .main .description,
+        .main {
+            padding-right: 0;
+        }
+    }
+    .head {
+        position: relative;
+        width: 100%;
+        &.is-process {
+            color: var(--jk-color-primary);
+            border-color: var(--jk-color-primary);
+        }
+        &.is-wait {
+            color: var(--jk-color-info-light-4);
+            border-color: var(--jk-color-info-light-4);
+        }
+        &.is-success {
+            color: var(--jk-color-primary);
+            border-color: var(--jk-color-primary);
+            .line {
+                background-color: var(--jk-color-primary);
+            }
+        }
+        &.is-error {
+            color: var(--jk-color-danger);
+            border-color: var(--jk-color-danger);
+        }
+        &.is-finish {
+            color: var(--jk-color-primary);
+            border-color: var(--jk-color-primary);
+            .line {
+                background-color: var(--jk-color-primary);
+            }
+        }
+        .icon {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background: #fff;
+            transition: 0.15s ease-out;
+            &.is-text {
+                border-radius: 50%;
+                border: 2px solid;
+                border-color: inherit;
+            }
+            &.is-icon {
+                width: 40px;
+            }
+            .icon-inner {
+                display: inline-block;
+                user-select: none;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1;
+                color: inherit;
+                &[class*="jk-icon"]:not(.is-status) {
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+                &.is-status {
+                    transform: translateY(1px);
+                }
+            }
+        }
+        .line-inner {
+            display: block;
+            border: 1px solid;
+            border-color: inherit;
+            transition: 0.15s ease-out;
+            box-sizing: border-box;
+            width: 0;
+            height: 0;
+        }
+    }
+    .main {
+        white-space: normal;
+        text-align: left;
+        .title {
+            font-size: 14px;
+            line-height: 38px;
+            &.is-process {
+                font-weight: 700;
+                color: var(--jk-color-primary);
+            }
+            &.is-wait {
+                color: var(--jk-color-info-light-4);
+            }
+            &.is-success {
+                color: var(--jk-color-primary);
+            }
+            &.is-error {
+                color: var(--jk-color-danger);
+            }
+            &.is-finish {
+                color: #409eff;
+            }
+        }
+        .description {
+            padding-right: 10%;
+            margin-top: -5px;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 400;
+            &.is-process {
+                color: var(--jk-color-primary);
+            }
+
+            &.is-wait {
+                color: var(--jk-color-info-light-4);
+            }
+
+            &.is-success {
+                color: var(--jk-color-primary);
+            }
+
+            &.is-error {
+                color: var(--jk-color-danger);
+            }
+
+            &.is-finish {
+                color: #409eff;
+            }
+        }
+    }
+    &.is-horizontal {
+        display: inline-block;
+        .line {
+            height: 2px;
+            top: 8px;
+            left: 0;
+            right: 0;
+        }
+    }
+    &.is-vertical {
+        display: flex;
+        .head {
+            flex-grow: 0;
+            width: 24px;
+        }
+        .main {
+            padding-left: 10px;
+            flex-grow: 1;
+        }
+        .title {
+            line-height: 24px;
+            padding-bottom: 8px;
+        }
+        .line {
+            width: 2px;
+            top: 0;
+            bottom: 0;
+            left: 8px;
+        }
+        .icon.is-icon {
+            width: 24px;
+        }
+    }
+    &.is-center {
+        .head,
+        .main {
+            text-align: center;
+            .description {
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+        }
+        .line {
+            left: 50%;
+            right: -50%;
+        }
+    }
+    &.is-simple {
+        display: flex;
+        align-items: center;
+        .head {
+            width: auto;
+            font-size: 0;
+            padding-right: 10px;
+            .icon {
+                background: transparent;
+                width: 16px;
+                height: 16px;
+                font-size: 12px;
+            }
+            .icon-inner[class*="jk-icon"]:not(.is-status) {
+                font-size: 18px;
+            }
+            .icon-inner.is-status {
+                transform: scale(0.8) translateY(1px);
+            }
+        }
+
+        .main {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            flex-grow: 1;
+        }
+        .title {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        &:not(:last-of-type) .title {
+            max-width: 50%;
+            word-break: break-all;
+        }
+        .arrow {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow:after,
+        .arrow:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            height: 15px;
+            width: 1px;
+            background: var(--jk-color-info-light-4);
+        }
+        .arrow:before {
+            transform: rotate(-45deg) translateY(-4px);
+            transform-origin: 0 0;
+        }
+        .arrow:after {
+            transform: rotate(45deg) translateY(4px);
+            transform-origin: 100% 100%;
+        }
+        &:last-of-type .arrow {
+            display: none;
+        }
+    }
+    .line {
+        position: absolute;
+        border-color: inherit;
+        background-color: var(--jk-color-info-light-4);
+    }
+}
+</style>

@@ -1,0 +1,70 @@
+<template>
+    <DemoRow>
+        <jk-radio-group value="@model.ctrlSize" @change="handleRadioChange">
+            <jk-radio-button label="">default</jk-radio-button>
+            <jk-radio-button label="medium">medium</jk-radio-button>
+            <jk-radio-button label="small">small</jk-radio-button>
+            <jk-radio-button label="mini">mini</jk-radio-button>
+        </jk-radio-group>
+    </DemoRow>
+    <jk-form ref="form" size="@model.ctrlSize">
+        <jk-form-item label="活动名称">
+            <jk-input name="name" placeholder="请输入活动名称" />
+        </jk-form-item>
+        <jk-form-item label="活动区域">
+            <jk-select name="area" placeholder="请选择活动区域">
+                <jk-option label="山东" value="shandong" />
+                <jk-option label="北京" value="beijing" />
+            </jk-select>
+        </jk-form-item>
+        <jk-form-item label="活动时间">
+            <jk-date-picker
+                name="date"
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </jk-form-item>
+        <jk-form-item label="推广">
+            <jk-switch name="promotion" />
+        </jk-form-item>
+        <jk-form-item label="参与人数">
+            <jk-number name="userCount" placeholder="请设置人数" validate="@Global.isRequired()" />
+        </jk-form-item>
+        <jk-form-item label="活动性质">
+            <jk-checkbox-group name="type">
+                <jk-checkbox-button label="自驾游"></jk-checkbox-button>
+                <jk-checkbox-button label="发布会"></jk-checkbox-button>
+                <jk-checkbox-button label="跟团出行"></jk-checkbox-button>
+            </jk-checkbox-group>
+            <div style="margin-top:5px">
+                <jk-alert show-icon title="自驾游会产生相关费用" type="info"></jk-alert>
+            </div>
+        </jk-form-item>
+        <jk-form-item label="资金来源">
+            <jk-radio-group name="source">
+                <jk-radio-button value="1">品牌商赞助</jk-radio-button>
+                <jk-radio-button value="2">线下场地免费</jk-radio-button>
+                <jk-radio-button value="3">费用均摊</jk-radio-button>
+            </jk-radio-group>
+        </jk-form-item>
+        <jk-form-item label="活动要则">
+            <jk-textarea name="note" placeholder="请输入内容" rows="2"></jk-textarea>
+        </jk-form-item>
+        <jk-form-item>
+            <jk-button type="primary">提交</jk-button>
+        </jk-form-item>
+    </jk-form>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        ctrlSize: ""
+    };
+    handleRadioChange(e: VNode.Event<string>) {
+        this.model.ctrlSize = e.data;
+    }
+}
+</script>

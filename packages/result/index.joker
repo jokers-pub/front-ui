@@ -1,0 +1,113 @@
+<template>
+    <div class="@(['jk-result', props.class])">
+        <div class="icon">
+            @if($sections.icon) {
+                @RenderSection("icon")
+            }
+            else {
+                <component name="@iconElement" />
+            }
+        </div>
+        @if(props.title || $sections.title) {
+            <div class="title">
+                @if($sections.title) {
+                    @RenderSection("title")
+                }
+                else {
+                    <p>
+                        @props.title
+                    </p>
+                }
+            </div>
+        }
+        @if(props.subTitle || $sections.subTitle) {
+            <div class="subTitle">
+                @if($sections.subTitle) {
+                    @RenderSection("subTitle")
+                }
+                else {
+                    <p>
+                        @props.subTitle
+                    </p>
+                }
+            </div>
+        }
+        @if($sections.default) {
+            <div class="extra">
+                @RenderSection()
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import IconSuccess from "./icon-success.joker";
+import IconError from "./icon-error.joker";
+import IconWarning from "./icon-warning.joker";
+import IconInfo from "./icon-info.joker";
+
+const IconMap: Record<string, string> = {
+    success: "jk-icon-success",
+    warning: "jk-icon-error",
+    error: "jk-icon-warning",
+    info: "jk-icon-info"
+};
+
+export default class extends Component<{
+    title: string;
+    subTitle: string;
+    icon: string;
+    class: string;
+}> {
+    propsOption = {
+        title: "",
+        subTitle: "",
+        icon: ""
+    };
+
+    components = {
+        "jk-icon-success": IconSuccess,
+        "jk-icon-error": IconError,
+        "jk-icon-warning": IconWarning,
+        "jk-icon-info": IconInfo
+    };
+
+    get iconElement() {
+        const icon = this.props.icon!;
+        return icon && IconMap[icon] ? IconMap[icon] : "jk-icon-info";
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 40px 30px;
+    .title {
+        margin-top: 20px;
+        p {
+            margin: 0;
+            font-size: 20px;
+            color: #303133;
+            line-height: 1.3;
+        }
+    }
+    .subtitle {
+        margin-top: 10px;
+        p {
+            margin: 0;
+            font-size: 14px;
+            color: #606266;
+            line-height: 1.3;
+        }
+    }
+    .extra {
+        margin-top: 30px;
+    }
+}
+</style>

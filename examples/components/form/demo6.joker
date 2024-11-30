@@ -1,0 +1,59 @@
+<template>
+    <jk-form ref="form" @submit="handleFormSubmit">
+        <jk-form-item label="年龄">
+            <jk-input
+                name="age"
+                status-icon
+                validate="@([Global.isRequired(), Global.isInt(), validateAge])"
+                placeholder="请输入年龄"
+            />
+        </jk-form-item>
+        <jk-form-item label="新密码">
+            <jk-input name="pwd" ref="pwd" validate="@([Global.isRequired()])" placeholder="请输入新密码" />
+        </jk-form-item>
+        <jk-form-item label="确认密码">
+            <jk-input
+                name="confirmPwd"
+                validate="@([Global.isRequired(), validateConfirmPwd])"
+                placeholder="请输入确认密码"
+            />
+        </jk-form-item>
+        <jk-form-item>
+            <jk-button type="primary" nativeType="submit">提交</jk-button>
+        </jk-form-item>
+    </jk-form>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { sleep } from "@joker.front/shared";
+
+export default class extends Component {
+    async validateAge(value: string) {
+        //模拟请求，实现异步校验
+        await sleep(1500);
+
+        //自定义校验是最后执行，无需考虑非空 && 正整数
+        let age = parseInt(value);
+
+        if (age < 22) {
+            return "你的年龄太小了，等22岁之后再来吧";
+        }
+
+        if (age > 30) {
+            return "你已经够成熟了，不需要再了解了";
+        }
+    }
+    validateConfirmPwd(value) {
+        let pwd = this.$getRef<VNode.Component>("pwd")?.component.value;
+
+        if (pwd !== value) {
+            return "两次密码不一致";
+        }
+    }
+
+    async handleFormSubmit(e: VNode.Event) {
+        console.log("验证成功", e.data);
+    }
+}
+</script>
+

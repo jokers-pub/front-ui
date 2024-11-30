@@ -1,0 +1,40 @@
+<template>
+    <div class="demo-container">
+        @for(let fit of model.fits) {
+            <div class="demo-img">
+                <p class="demonstration">
+                    @fit
+                </p>
+                <jk-image style="width: 100px; height: 100px" src="@model.url" fit="@fit"></jk-image>
+            </div>
+        }
+    </div>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        fits: ["fill", "contain", "cover", "none", "scale-down"],
+        url: "https://picsum.photos/200/300?random=1"
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+.demo-container {
+    :deep(.jk-image) {
+        margin-right: 10px;
+    }
+    .demo-img {
+        text-align: center;
+        display: inline-block;
+        width: 20%;
+        box-sizing: border-box;
+        vertical-align: top;
+        padding: 30px 0px;
+        border-right: 1px solid rgb(239, 242, 246);
+    }
+}
+</style>

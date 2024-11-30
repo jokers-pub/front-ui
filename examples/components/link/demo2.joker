@@ -1,0 +1,18 @@
+<template>
+    <div class="demo-container">
+        <jk-link disabled>默认链接</jk-link>
+        <jk-link type="primary" disabled>主要链接</jk-link>
+        <jk-link type="success" disabled>成功链接</jk-link>
+        <jk-link type="warning" disabled>警告链接</jk-link>
+        <jk-link type="danger" disabled>危险链接</jk-link>
+        <jk-link type="info" disabled>信息链接</jk-link>
+    </div>
+</template>
+
+<style scoped lang="scss">
+.demo-container {
+    :deep(.jk-link) {
+        margin-right: 5px;
+    }
+}
+</style>

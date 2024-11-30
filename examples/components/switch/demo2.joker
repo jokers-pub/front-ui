@@ -1,0 +1,9 @@
+<template>
+    <label class="demo2"><jk-switch value="@true" disabled></jk-switch></label>
+    <jk-switch disabled activeColor="#13ce66" inactiveColor="#ff4949"></jk-switch>
+</template>
+<style scoped>
+.demo2 {
+    margin-right: 20px;
+}
+</style>

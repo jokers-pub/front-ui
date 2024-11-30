@@ -1,0 +1,73 @@
+<template>
+    <div class="jk-breadcrumb-item">
+        <div class="jk-breadcrumb-item-title">
+            @RenderSection()
+        </div>
+        <div class="jk-breadcrumb-item-separator">
+            @if(model.separatorClass) {
+                <i class="@(model.separatorClass)"></i>
+            }
+            else {
+                <span>@model.separator</span>
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{}> {
+    model = {
+        separatorClass: "",
+        separator: "/"
+    };
+
+    mounted() {
+        this.model.separatorClass = this.breadcrumb?.props.separatorClass ?? "";
+        this.model.separator = this.breadcrumb?.props?.separator ?? "/";
+    }
+
+    get breadcrumb() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("breadcrumb");
+        })?.component;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--jk-color-text-secondary);
+
+    :deep(.jk-breadcrumb-item-title > a) {
+        text-decoration: none;
+        transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        color: var(--jk-color-text-secondary);
+
+        &:hover {
+            color: var(--jk-color-primary);
+            cursor: pointer;
+        }
+    }
+
+    .jk-breadcrumb-item-separator {
+        margin: 0 8px;
+    }
+
+    &:last-child {
+        color: var(--jk-color-text-primary);
+
+        :deep(a) {
+            color: var(--jk-color-text-primary);
+        }
+
+        .jk-breadcrumb-item-separator {
+            display: none;
+        }
+    }
+}
+</style>

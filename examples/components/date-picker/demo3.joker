@@ -1,0 +1,89 @@
+<template>
+    <div class="demoContainer">
+        <div class="row">
+            <span>默认面板：</span>
+            <jk-date-picker
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </div>
+        <div class="row">
+            <span>快捷指令：</span>
+            <jk-date-picker
+                unlinkPanels
+                shortcuts="@shortcuts"
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </div>
+        <div class="row">
+            <span>时间区间：</span>
+            <jk-date-picker
+                unlinkPanels
+                shortcuts="@shortcuts"
+                type="datetimerange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </div>
+    </div>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    shortcuts = [
+        {
+            text: "近一周",
+            onClick: (callBack: Function) => {
+                let end = new Date();
+                let start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                callBack([start, end]);
+            }
+        },
+        {
+            text: "近一月",
+            onClick: (callBack: Function) => {
+                let end = new Date();
+                let start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                callBack([start, end]);
+            }
+        },
+        {
+            text: "近三月",
+            onClick(callBack: Function) {
+                let end = new Date();
+                let start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+
+                callBack([start, end]);
+            }
+        }
+    ];
+}
+</script>
+<style lang="scss" scoped>
+.demoContainer {
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+</style>

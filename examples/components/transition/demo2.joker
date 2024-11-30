@@ -1,0 +1,45 @@
+<template>
+    <DemoRow>
+        <jk-button @click="handleClick">点我</jk-button>
+    </DemoRow>
+    <div style="display:flex;height:120px">
+        @if(model.show) {
+            <div class="demo-container" transition-name="jk-zoom-in-center">jk-zoom-in-center</div>
+            <div class="demo-container" transition-name="jk-zoom-in-top">jk-zoom-in-top</div>
+            <div class="demo-container" transition-name="jk-zoom-in-bottom">jk-zoom-in-bottom</div>
+        }
+    </div>
+    <div style="height:60px">
+        @if(model.show) {
+            <jk-button type="primary" transition-name="jk-zoom-in-center">jk-zoom-in-center</jk-button>
+            <jk-button type="success" transition-name="jk-zoom-in-top">jk-zoom-in-top</jk-button>
+            <jk-button type="warning" transition-name="jk-zoom-in-bottom">jk-zoom-in-bottom</jk-button>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+export default class extends Component {
+    model = {
+        show: false
+    };
+
+    handleClick() {
+        this.model.show = !this.model.show;
+    }
+}
+</script>
+<style lang="scss" scoped>
+.demo-container {
+    width: 150px;
+    height: 100px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #409eff;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+</style>

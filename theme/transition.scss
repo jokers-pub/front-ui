@@ -1,0 +1,48 @@
+.jk-fade-in-enter-active,
+.jk-fade-in-leave-active {
+    transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.jk-fade-in-enter-from,
+.jk-fade-in-leave-to {
+    opacity: 0;
+}
+
+.jk-zoom-in-center-enter-active,
+.jk-zoom-in-center-leave-active {
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.jk-zoom-in-center-enter-from,
+.jk-zoom-in-center-leave-to {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.jk-zoom-in-top-enter-active {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center top;
+}
+.jk-zoom-in-top-leave-active {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    transform-origin: center top;
+}
+
+.jk-zoom-in-top-enter-from,
+.jk-zoom-in-top-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+}
+
+.jk-zoom-in-bottom-enter-active {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    transform-origin: center bottom;
+}
+
+.jk-zoom-in-bottom-leave-active {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    transform-origin: center bottom;
+}
+.jk-zoom-in-bottom-enter-from,
+.jk-zoom-in-bottom-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+}

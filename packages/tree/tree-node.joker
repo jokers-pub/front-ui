@@ -1,0 +1,317 @@
+<template>
+    <div
+        class="@([
+            'jk-tree-node',
+            'drop_' + model.dropState,
+            {
+                'is-expanded': props.node.expanded,
+                'is-current': props.node.isCurrent,
+                'is-hidden': !props.node.visible,
+                'is-disabled': props.node.disabled
+            }
+        ])"
+        role="treeitem"
+        tabindex="-1"
+        ref="node"
+        aria-expanded="@props.node.expanded"
+        aria-disabled="@props.node.disabled"
+        aria-checked="@props.node.checked"
+        draggable="@enabledDraggable"
+        @dragover.stop="handleDragOver"
+        @dragstart.stop="handleDragStart"
+        @dragleave.stop="handleDragLeave"
+        @drop.stop.prevent="handleDrop"
+        @click.stop="handleClick"
+        @contextmenu="handleContextMenu">
+        <div class="content" style="margin-left:@(paddingLeft)px">
+            <span
+                class="@([
+                    tree.props.iconClass || 'jk-icon-caret-right',
+                    {
+                        'expand-icon': true,
+                        'is-leaf': props.node.isLeaf,
+                        expanded: !props.node.isLeaf && props.node.expanded
+                    }
+                ])"
+                @click.stop="handleExpandIconClick"></span>
+            @if(tree.props.showCheckbox) {
+                <JokerCheckBox
+                    value="@props.node.checked"
+                    indeterminate="@props.node.indeterminate"
+                    disabled="@props.node.disabled"
+                    @change="handleCheckBoxChange"
+                />
+            }
+            @if(props.node.loading) {
+                <span class="loading jk-icon-loading"></span>
+            }
+            @if($sections.default) {
+                @RenderSection("default", props.node)
+            }
+            else {
+                <span class="label">@props.node.label</span>
+            }
+            <div class="dropLine"></div>
+        </div>
+        @if(model.childNodeRendered || props.node.expanded) {
+            <div class="children" role="group" aria-expanded="@props.node.extended">
+                @for(let child of props.node.children) {
+                    <JokerTreeNode node="@child">
+                        @if($sections.default) {
+                            @section("default", node) {
+                                @RenderSection("default", node)
+                            }
+                        }
+                    </JokerTreeNode>
+                }
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { TreeNode } from "./store/node";
+import { componentName } from "../utils";
+import JokerCheckBox from "../checkbox/checkbox.joker";
+import JokerTreeNode from "./tree-node.joker";
+
+export default class extends Component<{ node: TreeNode }> {
+    model = {
+        childNodeRendered: false,
+        dropState: ""
+    };
+
+    components = {
+        JokerCheckBox,
+        JokerTreeNode
+    };
+
+    get enabledDraggable() {
+        if (this.tree?.props.draggable) {
+            if (this.tree?.props.checkDraggabled?.(this.props.node) === false) return false;
+
+            return this.props.node.isCurrent ? "true" : false;
+        }
+
+        return false;
+    }
+    tree?: any;
+    nodeEl?: HTMLElement;
+    mounted() {
+        this.nodeEl = this.$getRef("node")?.output;
+    }
+    created() {
+        //结点是否被首次渲染，once
+        let [_, destroyWatch] = this.$watch(
+            () => this.props.node?.expanded,
+            (expaned) => {
+                if (expaned) {
+                    this.model.childNodeRendered = true;
+                    destroyWatch();
+                }
+            }
+        );
+
+        this.tree = (<any>this.$root)?.closest(
+            (n: any) => n instanceof VNode.Component && n.component.name === componentName("tree")
+        )!.component!;
+    }
+
+    get paddingLeft() {
+        return (this.props.node!.level - 1) * this.tree?.props.indent;
+    }
+    handleClick() {
+        this.tree?.setCurrentNode(this.props.node!);
+
+        this.tree?.props.expandOnClickNode && this.handleExpandIconClick();
+    }
+    handleExpandIconClick() {
+        if (this.props.node?.isLeaf) return;
+
+        if (this.props.node?.expanded) {
+            this.tree?.collapseNode(this.props.node);
+        } else {
+            this.tree?.expandNode(this.props.node);
+        }
+    }
+    handleContextMenu(e: VNode.Event) {
+        this.tree?.handleContextMenu(e, this.props.node);
+    }
+
+    handleCheckBoxChange(e: VNode.Event<boolean>) {
+        this.tree?.checkNode(this.props.node!, e.data);
+        e.stopPropagation();
+    }
+    handleDragStart(e: VNode.Event) {
+        e.event.dataTransfer.setData("JOKER_UI_DRAG_TREE_ID", this.props.node.key);
+        e.event.dataTransfer.effectAllowed = "move";
+        this.props.node.expanded = false;
+    }
+    handleDragOver(e: VNode.Event) {
+        if (this.props.node.isCurrent || !this.tree?.props.draggable) return;
+
+        let rect = this.nodeEl.getBoundingClientRect();
+        let mouseY = e.event.clientY;
+        let topDistance = mouseY - rect.top;
+
+        let state = this.checkDropState(rect, topDistance);
+        this.model.dropState = state;
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    checkDropState(rect: DOMRect, topDistance: number) {
+        if (!this.tree?.props.draggable) return;
+
+        let canDrop = true;
+        if (this.tree.props.checkCanDropIn?.(this.props.node) === false) canDrop = false;
+
+        let height = rect.height;
+        let topArea = 0;
+        let bootomArea = 0;
+        if (canDrop) {
+            topArea = height / 3;
+            bootomArea = topArea * 2;
+        } else {
+            topArea = height / 2;
+            bootomArea = topArea;
+        }
+
+        if (topDistance < topArea) return "prev";
+        if (topDistance > bootomArea) return "next";
+        return "in";
+    }
+
+    handleDragLeave() {
+        this.model.dropState = "";
+    }
+    handleDrop(e: VNode.Event) {
+        if (!this.model.dropState) return;
+
+        let position = this.model.dropState;
+        this.model.dropState = "";
+
+        if (this.props.node.isCurrent || !this.tree?.props.draggable) {
+            return;
+        }
+
+        let dragNodeId = e.event.dataTransfer.getData("JOKER_UI_DRAG_TREE_ID");
+        if (dragNodeId) {
+            let dragNode = this.props.node.store.getNodeByKey(dragNodeId);
+            if (!dragNode) return;
+
+            this.tree.$trigger("drop", {
+                dragNode,
+                dropNode: this.props.node,
+                position
+            });
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-tree-node {
+    white-space: nowrap;
+    outline: none;
+    position: relative;
+    &:focus {
+        > .content {
+            background-color: var(--jk-background-color-base);
+        }
+    }
+
+    &.is-current {
+        > .content {
+            background-color: var(--jk-color-primary-light-9) !important;
+        }
+    }
+
+    > .content {
+        display: flex;
+        align-items: center;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+
+        > span.expand-icon {
+            padding: 6px;
+            cursor: pointer;
+            color: var(--jk-color-text-secondary);
+            font-size: 12px;
+
+            transform: rotate(0deg);
+            transition: transform 0.3s ease-in-out;
+
+            &.expanded {
+                transform: rotate(90deg);
+            }
+
+            &.is-leaf {
+                color: transparent;
+                cursor: default;
+            }
+        }
+
+        :deep(> label.jk-checkbox) {
+            margin-right: 8px;
+        }
+
+        > .label {
+            font-size: 14px;
+        }
+
+        > .loading {
+            margin-right: 8px;
+            font-size: 14px;
+            color: var(--jk-color-text-placeholder);
+        }
+
+        &:hover {
+            background-color: var(--jk-background-color-base);
+        }
+
+        .dropLine {
+            pointer-events: none;
+            height: 2px;
+            background: var(--jk-color-primary);
+            position: absolute;
+            width: 100%;
+            display: none;
+        }
+    }
+
+    > .children {
+        overflow: hidden;
+        background: transparent;
+        display: none;
+    }
+
+    &.is-expanded > .children {
+        display: block;
+    }
+
+    &.is-hidden {
+        display: none;
+    }
+
+    &.drop_prev > .content {
+        .dropLine {
+            display: block;
+            top: 0;
+        }
+    }
+
+    &.drop_next > .content {
+        .dropLine {
+            display: block;
+            bottom: 0;
+        }
+    }
+
+    &.drop_in > .content {
+        color: #fff;
+        background: var(--jk-color-primary);
+    }
+}
+</style>

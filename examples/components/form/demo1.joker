@@ -1,0 +1,59 @@
+<template>
+    <jk-form ref="form" label-width="100px" @submit="handleFormSubmit">
+        <jk-form-item label="活动名称">
+            <jk-input name="name" placeholder="请输入活动名称" />
+        </jk-form-item>
+        <jk-form-item label="活动区域" tip="测试数据，请理解">
+            <jk-select name="area" placeholder="请选择活动区域">
+                <jk-option label="山东" value="shandong" />
+                <jk-option label="北京" value="beijing" />
+            </jk-select>
+        </jk-form-item>
+        <jk-form-item label="活动时间">
+            <jk-date-picker
+                name="date"
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </jk-form-item>
+        <jk-form-item label="推广">
+            <jk-switch name="promotion" />
+        </jk-form-item>
+        <jk-form-item label="活动性质">
+            <jk-checkbox-group name="type">
+                <jk-checkbox label="美食/餐厅线上活动"></jk-checkbox>
+                <jk-checkbox label="线下活动"></jk-checkbox>
+                <jk-checkbox label="自驾游"></jk-checkbox>
+                <jk-checkbox label="发布会"></jk-checkbox>
+                <jk-checkbox label="跟团出行"></jk-checkbox>
+            </jk-checkbox-group>
+        </jk-form-item>
+        <jk-form-item label="资金来源">
+            <jk-radio-group name="source">
+                <jk-radio value="1">品牌商赞助</jk-radio>
+                <jk-radio value="2">线下场地免费</jk-radio>
+                <jk-radio value="3">费用均摊</jk-radio>
+            </jk-radio-group>
+        </jk-form-item>
+        <jk-form-item label="资金比例">
+            <jk-slider name="sourcePic" value="30"></jk-slider>
+        </jk-form-item>
+        <jk-form-item label="活动要则">
+            <jk-textarea name="note" placeholder="请输入内容" rows="2"></jk-textarea>
+        </jk-form-item>
+        <jk-form-item>
+            <jk-button type="primary" nativeType="submit">提交</jk-button>
+        </jk-form-item>
+    </jk-form>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    handleFormSubmit(e: VNode.Event<any>) {
+        let form = (e.target as VNode.Component)?.component;
+        console.log(e.data);
+    }
+}
+</script>

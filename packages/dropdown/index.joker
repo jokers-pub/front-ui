@@ -1,0 +1,125 @@
+<template>
+    <div
+        class="jk-dropdown"
+        ref="container"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        @click="handleClick">
+        @if(props.splitButton) {
+            <div class="split-button">
+                <jk-button-group>
+                    <jk-button
+                        type="@props.type"
+                        disabled="@props.disabled"
+                        size="@props.size"
+                        @click.stop="handleBtnClick">
+                        @RenderSection()
+                    </jk-button>
+                    <jk-button
+                        type="@props.type"
+                        size="@props.size"
+                        disabled="@props.disabled"
+                        ref="button"
+                        @mouseenter="handleMouseEnter(true)"
+                        @mouseleave="handleMouseLeave(true)"
+                        @click.stop="handleClick(true)">
+                        <i class="jk-icon-arrow-down" />
+                    </jk-button>
+                </jk-button-group>
+            </div>
+        }
+        else {
+            @RenderSection()
+        }
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    splitButton: boolean;
+    type: string;
+    size: string;
+    trigger: string;
+    disabled: boolean;
+}> {
+    propsOption = {
+        trigger: "click",
+        type: "primary"
+    };
+
+    model = {};
+
+    name = componentName("dropdown");
+
+    get dropdownMenu() {
+        return this.$rootVNode?.find(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("dropdown-menu")
+        )[0] as VNode.Component;
+    }
+
+    mounted() {
+        let firstEl = this.$getRef("container")?.output as HTMLElement;
+
+        if (firstEl) {
+            firstEl.addEventListener(this.props.trigger, () => {});
+        }
+    }
+    handleBtnClick(e: VNode.Event) {
+        this.$trigger("click", undefined, e);
+    }
+
+    handleClick(e: VNode.Event, isbutton?: boolean) {
+        if (this.props.disabled) return;
+
+        if (this.props.trigger !== "click") return;
+
+        this.dropdownMenu?.component.open(
+            isbutton ? this.$getRef("button").firstElement.output : this.$getRef("container").output
+        );
+
+        if (this.props.splitButton && isbutton) return;
+        this.$trigger("click", undefined, e);
+    }
+
+    handleMouseEnter(e: VNode.Event, isbutton?: boolean) {
+        if (this.props.disabled) return;
+
+        if (this.props.splitButton && !isbutton) return;
+        if (this.props.trigger !== "hover") return;
+
+        this.dropdownMenu?.component.open(
+            isbutton ? this.$getRef("button").firstElement.output : this.$getRef("container").output
+        );
+    }
+
+    handleMouseLeave(e: VNode.Event, isbutton?: boolean) {
+        if (this.props.disabled) return;
+
+        this.dropdownMenu?.component.close();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-dropdown {
+    display: inline-block;
+    position: relative;
+    color: var(--jk-color-text-regular);
+    font-size: 14px;
+
+    .split-button {
+        display: inline-block;
+
+        :deep(.jk-button:last-child) {
+            padding-left: 8px;
+            padding-right: 8px;
+
+            i {
+                font-size: 10px;
+            }
+        }
+    }
+}
+</style>

@@ -1,0 +1,346 @@
+<template>
+    <label
+        class="@([
+            'jk-radio',
+            props.border && size && size,
+            props.class,
+            isDisabled && 'is-disabled',
+            model.focus && 'is-focus',
+            props.border && 'is-border',
+            checked && 'is-checked'
+        ])"
+        role="radio"
+        aria-checked="@(checked)"
+        aria-disabled="@isDisabled"
+        tabindex="@tabIndex"
+        @keydown.space.stop.prevent="handleKeydown">
+        <span class="input @(isDisabled?'is-disabled':'') @(checked?'is-checked':'')">
+            <span class="target"></span>
+            <input
+                ref="radio"
+                type="radio"
+                value="@props.label"
+                name="@props.name"
+                disabled="@isDisabled"
+                tabindex="-1"
+                autocomplete="off"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                @change="handleChange"
+            />
+        </span>
+        @if($sections.default || props.label) {
+            <span class="label" @keydown.stop>
+                @if($sections.default) {
+                    @RenderSection()
+                }
+                else {
+                    @props.label
+                }
+            </span>
+        }
+    </label>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { componentName } from "../utils";
+
+export default class extends FormCtrl<{
+    value: string | number | boolean;
+    label: string | number | boolean;
+    disabled: boolean;
+    name: string;
+    class: string;
+    border: boolean;
+    size: string;
+}> {
+    model: { value?: string | number | boolean; focus: boolean } = {
+        value: undefined,
+        focus: false
+    };
+
+    mounted() {
+        this.$watch(
+            () => this.checked,
+            (val) => {
+                this.$getRef("radio")!.output.checked = val;
+            }
+        );
+
+        //设置默认
+        this.$getRef("radio")!.output.checked = this.checked;
+    }
+
+    get checked() {
+        return this.group ? this.value === this.props.value : this.props.value;
+    }
+
+    get group(): VNode.Component | undefined {
+        return this.$rootVNode?.closest((n) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("radio_group");
+        });
+    }
+
+    get value() {
+        return this.group ? this.group.component.model.value : this.model.value;
+    }
+
+    set value(val: string | number | boolean | undefined) {
+        if (this.group) {
+            this.group.component.checked(val);
+        } else {
+            this.model.value = val;
+        }
+
+        this.$getRef<VNode.Element>("radio")!.output.checked = this.model.value === this.props.value;
+    }
+
+    get isDisabled() {
+        return this.group?.component?.props.disabled ?? this.props.disabled;
+    }
+
+    get tabIndex() {
+        return this.isDisabled || (this.group && this.value !== this.props.value) ? -1 : 0;
+    }
+
+    get size() {
+        return this.group?.component.props.size || this.props.size;
+    }
+
+    handleKeydown(e: VNode.Event) {
+        if (!this.isDisabled) {
+            this.value = this.props.value;
+        }
+    }
+    handleFocus(e: VNode.Node) {
+        this.model.focus = true;
+    }
+    handleBlur(e: VNode.Node) {
+        this.model.focus = false;
+    }
+    handleChange(e: VNode.Event) {
+        if (e.target?.output.checked) {
+            this.value = this.props.value;
+            this.group?.component.handleChange(e, this.value);
+        }
+
+        this.$trigger("change", this.value);
+
+        this.triggerValidate();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-radio {
+    color: var(--jk-color-text-regular);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    outline: none;
+    user-select: none;
+
+    & + & {
+        margin-left: 30px;
+    }
+
+    &.is-border {
+        padding: 12px 20px 0 10px;
+        border-radius: 4px;
+        border: $--border-base;
+        box-sizing: border-box;
+        height: 40px;
+
+        &.is-checked {
+            border-color: var(--jk-color-primary);
+        }
+
+        &.is-disabled {
+            cursor: not-allowed;
+            border-color: var(--jk-border-color-lighter);
+        }
+
+        & + .jk-radio.is-border {
+            margin-left: 10px;
+        }
+    }
+
+    &.medium {
+        &.is-border {
+            padding: 10px 20px 0 10px;
+            border-radius: 4px;
+            height: 36px;
+
+            .target {
+                height: 14px;
+                width: 14px;
+            }
+
+            .label {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &.small {
+        &.is-border {
+            padding: 8px 15px 0 10px;
+            border-radius: 3px;
+            height: 32px;
+
+            .target {
+                height: 12px;
+                width: 12px;
+            }
+
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &.mini {
+        &.is-border {
+            padding: 6px 15px 0 10px;
+            border-radius: 3px;
+            height: 28px;
+
+            .target {
+                height: 12px;
+                width: 12px;
+            }
+
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.is-focus {
+        .target {
+            border-color: var(--jk-color-primary);
+        }
+    }
+
+    .input {
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+
+        &.is-disabled {
+            .target {
+                background-color: var(--jk-disabled-background-color);
+                border-color: var(--jk-disabled-border-color);
+                cursor: not-allowed;
+
+                &::after {
+                    cursor: not-allowed;
+                    background-color: var(--jk-disabled-background-color);
+                }
+
+                &:hover {
+                    border-color: var(--jk-disabled-border-color);
+                }
+            }
+
+            &.is-checked {
+                .target {
+                    background-color: var(--jk-disabled-background-color);
+                    border-color: var(--jk-disabled-border-color);
+
+                    &::after {
+                        background-color: var(--jk-color-text-placeholder);
+                    }
+                }
+            }
+
+            & + .label {
+                color: var(--jk-color-text-placeholder);
+                cursor: not-allowed;
+            }
+        }
+
+        &.is-checked {
+            .target {
+                background-color: var(--jk-color-primary);
+                border-color: var(--jk-color-primary);
+
+                &::after {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+
+            & + .label {
+                color: var(--jk-color-primary);
+            }
+        }
+
+        .target {
+            border: solid 1px var(--jk-border-color-base);
+            border-radius: 100%;
+            width: 14px;
+            height: 14px;
+            background: var(--jk-radio-checked-target-background-color);
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            box-sizing: border-box;
+
+            &:hover {
+                border-color: var(--jk-color-primary);
+            }
+
+            &::after {
+                width: 4px;
+                height: 4px;
+                border-radius: 100%;
+                background-color: #fff;
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: $--all-transition;
+            }
+        }
+
+        input {
+            opacity: 0;
+            outline: none;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+    }
+
+    &:focus:not(.is-focus):not(:active):not(.is-disabled) {
+        .target {
+            box-shadow: 0 0 2px 2px var(--jk-color-primary);
+        }
+    }
+
+    .label {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+}
+</style>

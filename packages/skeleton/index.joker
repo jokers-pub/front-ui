@@ -1,0 +1,106 @@
+<template>
+    @if(model.uiLoading) {
+        <div class="@(['jk-skeleton', props.class, props.animated && 'is-animated'])" style="@props.style">
+            @if(props.loading) {
+                @for(let i = 0; i < props.count; i++) {
+                    @if($sections && $sections.template) {
+                        @RenderSection("template")
+                    }
+                    else {
+                        @for(let item = 0; item < props.rows; item++) {
+                            <jk-skeleton-item class="@getClassStr(item)" variant="p" />
+                        }
+                    }
+                }
+            }
+        </div>
+    }
+    else {
+        @RenderSection()
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{
+    animated: boolean;
+    count: number;
+    rows: number;
+    class: string;
+    loading: boolean;
+    throttle: number;
+    style: string;
+}> {
+    propsOption = {
+        count: {
+            type: Number,
+            default: 1
+        },
+        rows: 4,
+        loading: true,
+        throttle: {
+            type: Number,
+            default: 0
+        }
+    };
+
+    model = {
+        uiLoading: false
+    };
+
+    timeoutHandle?: number;
+
+    created() {
+        this.model.uiLoading = this.props.throttle! <= 0 ? this.props.loading! : false;
+        this.$watch(
+            () => this.props.loading,
+            (val) => {
+                if (this.props.throttle! <= 0) {
+                    this.model.uiLoading = val;
+                    return;
+                }
+                if (val) {
+                    clearTimeout(this.timeoutHandle);
+                    this.timeoutHandle = setTimeout(() => {
+                        this.model.uiLoading = this.props.loading!;
+                    }, this.props.throttle);
+                } else {
+                    this.model.uiLoading = val;
+                }
+            }
+        );
+    }
+    mounted() {}
+
+    getClassStr(index: any) {
+        let classList = [
+            index !== 0 ? "paragraph" : "",
+            index === 0 ? "is-first" : "",
+            index + 1 === this.props.rows && <number>this.props.rows > 1 ? "is-last" : ""
+        ];
+        return classList.join(" ");
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@keyframes jk-skeleton-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    to {
+        background-position: 0 50%;
+    }
+}
+
+.jk-skeleton {
+    &.is-animated {
+        :deep(.jk-skeleton-item, .jk-skeleton-item.paragraph) {
+            background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+            background-size: 400% 100%;
+            animation: jk-skeleton-loading 1.4s ease infinite;
+        }
+    }
+}
+</style>

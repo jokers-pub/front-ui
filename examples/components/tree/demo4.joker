@@ -1,0 +1,135 @@
+<template>
+    <DemoRow>
+        <jk-tree ref="tree" data="@treeData" icon-class="jk-icon-arrow-right" default-expand-all show-checkbox>
+            @section("default", node) {
+                <div class="node-item">
+                    <div class="label">
+                        <span class="icon @getNodeIcon(node)"></span>@node.label
+                    </div>
+                    <div class="option">
+                        <jk-link type="primary" @click.stop="appendNode(node)">添加</jk-link>
+                        <jk-link type="danger" @click.stop="removeNode(node)">删除</jk-link>
+                    </div>
+                </div>
+            }
+        </jk-tree>
+    </DemoRow>
+    <jk-button @click="handleClick">重置</jk-button>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { TreeNode } from "../../../packages/tree/store/node";
+
+export default class extends Component {
+    treeData = [
+        {
+            label: "一级 1",
+            children: [
+                {
+                    label: "二级 1-1",
+                    children: [
+                        {
+                            label: "三级 1-1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: "一级 2",
+            children: [
+                {
+                    label: "二级 2-1",
+                    children: [
+                        {
+                            label: "三级 2-1-1"
+                        }
+                    ]
+                },
+                {
+                    label: "二级 2-2",
+                    children: [
+                        {
+                            label: "三级 2-2-1"
+                        },
+                        {
+                            label: "三级 2-2-2"
+                        },
+                        {
+                            label: "三级 2-2-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: "一级 3",
+            children: [
+                {
+                    label: "二级 3-1"
+                },
+                {
+                    label: "二级 3-2",
+                    children: [
+                        {
+                            label: "三级 3-2-1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    getNodeIcon(node: TreeNode) {
+        if (node.level === 1) {
+            return "jk-icon-food";
+        } else if (node.level === 2) {
+            return "jk-icon-cpu";
+        } else {
+            return "jk-icon-connection";
+        }
+    }
+
+    appendNode(e: VNode.Event, node: TreeNode) {
+        let child = node.insterChild({
+            label: "测试添加节点" + node.level + 1
+        });
+
+        //由于动态添加，checkbox ,需要设置一次checkbox来刷新树
+        //这一行代码仅为了支持demo运行
+        //一般情况下不会出现带checkbox的动态树
+        child.setChecked(false);
+    }
+
+    removeNode(e: VNode.Event, node: TreeNode) {
+        node.remove();
+    }
+
+    handleClick() {
+        this.$getRef("tree").component.reload();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.node-item {
+    display: flex;
+    flex: 1;
+
+    font-size: 14px;
+    .label {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .icon {
+        margin-right: 8px;
+    }
+
+    .option {
+        :deep(.jk-link) {
+            margin-right: 10px;
+        }
+    }
+}
+</style>

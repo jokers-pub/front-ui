@@ -1,0 +1,405 @@
+<template>
+    <colgroup>
+        @for(let column of store.data.leafColumnsFlat) {
+            <col width="@column.width" />
+        }
+    </colgroup>
+    <thead
+        class="@({
+            'is-group': isGroup,
+            'jk-table-header': true,
+            border: table.props.border,
+            'group-header': model.columnRows.length > 1
+        })">
+        @for(let (rowIndex,row) in model.columnRows) {
+            <tr class="@getHeaderRowClassName(rowIndex)" style="@getHeaderRowStyle(rowIndex)">
+                @for(let (colIndex,column) in row) {
+                    <th
+                        colspan="@column.colSpan"
+                        rowspan="@column.rowSpan"
+                        style="@getHeaderCellStyle(rowIndex,colIndex,row,column)"
+                        class="@getHeaderCellClassName(rowIndex,colIndex,row,column)"
+                        @click="handleThClick(column)">
+                        <div class="cell">
+                            @if(column.type === "selection") {
+                                @if(table.props.multiple) {
+                                    <JokerCheckboxCell isHeader column="@column" />
+                                }
+                                else {
+                                    <JokerRadioCell isHeader column="@column" />
+                                }
+                            }
+                            else if(column.type === "index") {
+                                <JokerIndexCell isHeader column="@column" />
+                            }
+                            else if(column.type === "expand") {
+                                <JokerExpandCell isHeader column="@column" />
+                            }
+                            else {
+                                @if(column._sectionTh) {
+                                    @RenderSection(column._sectionTh, { cellIndex: colIndex, column: column, store: store })
+                                }
+                                else {
+                                    @column.label
+                                }
+                                @if(column.sortable) {
+                                    <span class="sort" @click="handleSortableClick(column)">
+                                        <i class="ascending"></i>
+                                        <i class="descending"></i>
+                                    </span>
+                                }
+                                @if(column.filter) {
+                                    <span
+                                        class="filter jk-icon-filter @(store.hasFilter(column.key)?'active':'')"
+                                        @click.stop.prevent="handleFilterClick(column)">
+                                        @if(column.key && model.showFilterColKey === column.key) {
+                                            <JokerFilter key="@column.key" />
+                                        }
+                                    </span>
+                                }
+                            }
+                        </div>
+                    </th>
+                }
+            </tr>
+        }
+    </thead>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+import { ColumnType, Store } from "./store";
+import JokerCheckboxCell from "./cells/checkbox.joker";
+import JokerRadioCell from "./cells/radio.joker";
+import JokerIndexCell from "./cells/index.joker";
+import JokerExpandCell from "./cells/expand.joker";
+
+import JokerFilter from "./filter.joker";
+
+export default class extends Component {
+    model = {
+        columnRows: [] as any,
+        showFilterColKey: undefined as string | undefined
+    };
+    name = componentName("table-header");
+    components = {
+        JokerCheckboxCell,
+        JokerRadioCell,
+        JokerIndexCell,
+        JokerFilter,
+        JokerExpandCell
+    };
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get store(): Store {
+        return this.table!.store;
+    }
+
+    mounted() {
+        this.$watch(
+            () => this.store.data.orderColumnsFlat,
+            () => {
+                this.updateColumnRows();
+            }
+        );
+
+        if (this.store.ready) {
+            this.updateColumnRows();
+        }
+    }
+
+    updateColumnRows() {
+        let maxLevel = 0;
+
+        let initLevelAndColspan = (column: ColumnType, parent?: ColumnType) => {
+            column.level = (parent?.level ?? 0) + 1;
+
+            if (maxLevel < column.level) {
+                maxLevel = column.level;
+            }
+
+            if (column.children) {
+                let colSpan = 0;
+                column.children.forEach((m) => {
+                    initLevelAndColspan(m, column);
+
+                    colSpan += m.colSpan ?? 0;
+                });
+
+                column.colSpan = colSpan;
+            } else {
+                column.colSpan = 1;
+            }
+        };
+
+        this.store.data.orderColumnsFlat.forEach((m) => {
+            m.level = 0;
+            initLevelAndColspan(m);
+        });
+
+        let rows: Array<ColumnType[]> = [];
+
+        this.getAllColumns(this.store.data.orderColumnsFlat).forEach((m) => {
+            if (m.children) {
+                m.rowSpan = 1;
+            } else {
+                m.rowSpan = maxLevel - m.level! + 1;
+            }
+            (rows[(m.level ?? 1) - 1] ??= []).push(m);
+        });
+
+        this.model.columnRows = rows;
+    }
+
+    get isGroup() {
+        return this.model.columnRows.length > 1;
+    }
+
+    getHeaderRowClassName(rowIndex: number) {
+        if (typeof this.table?.props.headerRowClassName === "function") {
+            return this.table.props.headerRowClassName(rowIndex);
+        }
+
+        return this.table?.props.headerRowClassName;
+    }
+
+    getHeaderRowStyle(rowIndex: number) {
+        if (typeof this.table?.props.headerRowStyle === "function") {
+            return this.table.props.headerRowStyle(rowIndex);
+        }
+
+        return this.table?.props.headerRowStyle;
+    }
+
+    getHeaderCellStyle(rowIndex: number, colIndex: number, row: ColumnType[], column: ColumnType) {
+        if (typeof this.table?.props.headerCellStyle === "function") {
+            return this.table.props.headerCellStyle({
+                rowIndex,
+                colIndex,
+                row,
+                column
+            });
+        }
+
+        return this.table?.props.headerCellStyle;
+    }
+
+    getHeaderCellClassName(rowIndex: number, colIndex: number, row: ColumnType[], column: ColumnType) {
+        if (!this.$root) return;
+        let result = [column.headerAlign && "align-" + column.headerAlign, column.class];
+
+        if (!column.children?.length) {
+            result.push("is-leaf");
+        }
+
+        if (column.key && this.store.data.sortable?.key === column.key) {
+            result.push(this.store.data.sortable?.order);
+        }
+
+        if (column.sortable) {
+            result.push("is-sortable");
+        }
+
+        column.fixed && result.push("fixed-" + (column.fixed === true ? "left" : column.fixed));
+
+        if (typeof this.table?.props.headerCellClassName === "function") {
+            result.push(
+                this.table.props.headerCellClassName({
+                    rowIndex,
+                    colIndex,
+                    row,
+                    column
+                })
+            );
+        } else {
+            result.push(this.table?.props.headerCellClassName);
+        }
+
+        return result;
+    }
+
+    getAllColumns(columns: ColumnType[]) {
+        let result: ColumnType[] = [];
+
+        columns.forEach((m) => {
+            result.push(m);
+            if (m.children) {
+                result.push(...this.getAllColumns(m.children));
+            }
+        });
+
+        return result;
+    }
+
+    //#region events
+    handleThClick(e: VNode.Event, column: ColumnType) {
+        if (column.sortable) {
+            if (this.store.data.sortable?.key !== column.key) {
+                this.store.setSortableOrder(column, "ascending");
+            } else if (this.store.data.sortable?.order === "ascending") {
+                this.store.setSortableOrder(column, "descending");
+            } else {
+                this.store.clearSortable();
+            }
+
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }
+
+    handleSortableClick(e: VNode.Event, column: ColumnType) {
+        let target = e.event.target;
+
+        if (target && target.tagName === "I") {
+            if ((<HTMLElement>target).classList.contains("ascending")) {
+                if (this.store.data.sortable?.key === column.key && this.store.data.sortable?.order === "ascending") {
+                    this.store.clearSortable();
+                } else {
+                    this.store.setSortableOrder(column, "ascending");
+                }
+            } else {
+                if (this.store.data.sortable?.key === column.key && this.store.data.sortable?.order === "descending") {
+                    this.store.clearSortable();
+                } else {
+                    this.store.setSortableOrder(column, "descending");
+                }
+            }
+
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+    handleFilterClick(e: VNode.Event, col: ColumnType) {
+        this.model.showFilterColKey = col.key;
+    }
+    //#endregion
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-table-header {
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    z-index: 1;
+    th {
+        text-align: left;
+        box-sizing: border-box;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        color: var(--jk-color-text-secondary);
+        font-weight: 700;
+        font-size: 14px;
+        background: #fff;
+        padding: 12px 0;
+        div.cell {
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 0 10px;
+            width: 100%;
+            line-height: 23px;
+            vertical-align: middle;
+
+            .filter {
+                display: inline-block;
+                cursor: pointer;
+                position: relative;
+                text-align: center;
+                padding: 0 2px;
+                border-radius: 2px;
+                &:hover {
+                    background: var(--jk-background-color-base);
+                }
+                &.active {
+                    color: var(--jk-color-primary);
+                }
+            }
+
+            .sort {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                vertical-align: middle;
+                height: 32px;
+                width: 24px;
+                cursor: pointer;
+                position: relative;
+
+                i {
+                    width: 0;
+                    height: 0;
+                    border: solid 5px transparent;
+                    position: absolute;
+                    left: 7px;
+
+                    &.ascending {
+                        border-bottom-color: var(--jk-color-text-placeholder);
+                        top: 5px;
+                    }
+
+                    &.descending {
+                        border-top-color: var(--jk-color-text-placeholder);
+                        bottom: 5px;
+                    }
+                }
+            }
+        }
+
+        &.align-right {
+            text-align: right;
+        }
+
+        &.align-center {
+            text-align: center;
+        }
+
+        &.is-sortable {
+            cursor: pointer;
+        }
+
+        &.is-leaf {
+            border-bottom: solid 1px var(--jk-border-color-lighter);
+        }
+
+        &.fixed-left {
+            position: sticky;
+            left: 0;
+        }
+
+        &.fixed-right {
+            position: sticky;
+            right: 0;
+        }
+
+        &.ascending div.cell .sort i.ascending {
+            border-bottom-color: var(--jk-color-primary);
+        }
+        &.descending div.cell .sort i.descending {
+            border-top-color: var(--jk-color-primary);
+        }
+    }
+
+    &.border {
+        th {
+            &.fixed-left,
+            &.fixed-right {
+                border-color: transparent;
+
+                outline: solid 1px var(--jk-border-color-lighter);
+            }
+
+            border-bottom: solid 1px var(--jk-border-color-lighter);
+            border-right: solid 1px var(--jk-border-color-lighter);
+        }
+    }
+
+    &.group-header th {
+        background-color: var(--jk-background-color-base);
+    }
+}
+</style>

@@ -1,0 +1,44 @@
+<template>
+    <div class="carouselDemo5">
+        <jk-carousel height="200px" direction="vertical" autoplay="@false">
+            @for(let item of model.list) {
+                <jk-carousel-item>
+                    <div class="item small">
+                        @item
+                    </div>
+                </jk-carousel-item>
+            }
+        </jk-carousel>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = { list: [1, 2, 3] };
+}
+</script>
+
+<style lang="scss">
+.carouselDemo5 {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    .jk-carousel-item .item {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+    }
+
+    .jk-carousel-item:nth-child(2n) {
+        background-color: #99a9bf;
+    }
+
+    .jk-carousel-item:nth-child(2n + 1) {
+        background-color: #d3dce6;
+    }
+}
+</style>

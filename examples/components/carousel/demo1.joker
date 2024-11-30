@@ -1,0 +1,66 @@
+<template>
+    <div class="carouselDemo1">
+        <span class="demonstration">默认 Hover 指示器触发</span>
+        <jk-carousel height="150px">
+            @for(let item of model.list) {
+                <jk-carousel-item>
+                    <div class="item small">
+                        @item
+                    </div>
+                </jk-carousel-item>
+            }
+        </jk-carousel>
+    </div>
+    <div class="carouselDemo1">
+        <span class="demonstration">Click 指示器触发</span>
+        <jk-carousel trigger="click" height="150px">
+            @for(let item of model.list) {
+                <jk-carousel-item>
+                    <div class="item small">
+                        @item
+                    </div>
+                </jk-carousel-item>
+            }
+        </jk-carousel>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        list: [1, 2, 3, 4]
+    };
+}
+</script>
+<style lang="scss">
+.carouselDemo1 {
+    padding: 30px;
+    text-align: center;
+    border-right: 1px solid #eff2f6;
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    .demonstration {
+        display: block;
+        color: #8492a6;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .jk-carousel-item .item {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 150px;
+        margin: 0;
+    }
+
+    .jk-carousel-item:nth-child(2n) {
+        background-color: #99a9bf;
+    }
+
+    .jk-carousel-item:nth-child(2n + 1) {
+        background-color: #d3dce6;
+    }
+}
+</style>

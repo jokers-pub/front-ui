@@ -1,0 +1,34 @@
+<template>
+    <div>
+        <jk-progress type="circle" percentage="@model.percentage1"></jk-progress>
+    </div>
+    <div>
+        <jk-progress type="circle" percentage="@model.percentage2"></jk-progress>
+    </div>
+    <div>
+        <jk-progress type="circle" percentage="@model.percentage3" status="success"></jk-progress>
+    </div>
+    <div>
+        <jk-progress type="circle" percentage="@model.percentage4" status="warning"></jk-progress>
+    </div>
+    <jk-progress type="circle" percentage="@model.percentage5" status="exception"></jk-progress>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        percentage1: 0,
+        percentage2: 25,
+        percentage3: 100,
+        percentage4: 70,
+        percentage5: 50
+    };
+}
+</script>
+<style lang="scss" scoped>
+div {
+    display: inline-block;
+    margin-right: 20px;
+}
+</style>

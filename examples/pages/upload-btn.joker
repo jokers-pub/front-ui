@@ -1,0 +1,210 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Upload Btn 上传按钮组件</h2>
+<p>提供文件选择交互按钮。</p>
+<h3>基础用法</h3>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-upload-btn @change=&quot;handleClick&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
+        Message(`选中了${e.data.length}个文件`);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>多文件上传</h3>
+<p>通过配置<code>multiple</code>来启用多选文件选择。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot;&gt;多选文件上传&lt;/jk-upload-btn&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot; maxFileCount=&quot;2&quot;&gt;最多选择2个&lt;/jk-upload-btn&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
+        Message(`选中了${e.data.length}个文件`);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>限制选择类型</h3>
+<p>可通过配置<code>mimeType</code>属性来限制上传类型，该属性可以传入<code>string</code>、<code>string[]</code>类型的值。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-upload-btn @change=&quot;handleClick&quot; mimeType=&quot;image/png&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
+        if (e.data.length) {
+            Message(`选中了${e.data[0].name}文件`);
+        }
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>限制传入文件大小</h3>
+<p>通过配置<code>maxFileSize</code>属性来限制每个文件的最大大小，单位为<strong>kb</strong>。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-upload-btn @change=&quot;handleClick&quot; maxFileSize=&quot;12&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
+        if (e.data.length) {
+            Message(`选中的文件大小:${e.data[0].size / 1024}kb`);
+        }
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>参数</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td>按钮 icon 图标</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>btnType</td>
+<td>按钮类型，对应 jk-button 的 type 类型</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>title</td>
+<td>按钮文本，若有指定 default 区域，则设置该属性无效</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>btnSize</td>
+<td>按钮大小，对应 jk-button 的 size 类型</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否启用多选</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>maxFileCount</td>
+<td>最大上传个数</td>
+<td>number</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>mimeType</td>
+<td>限制文件类型，支持通配符例如：<strong>(image/*)</strong></td>
+<td>string / string[]</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>maxFileSize</td>
+<td>单个文件最大大小限制，单位<strong>kb</strong></td>
+<td>number</td>
+<td>—</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值变更通知</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo4 from '../components/upload-btn/demo4.joker';
+import DEMO_JOKER_demo3 from '../components/upload-btn/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/upload-btn/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/upload-btn/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

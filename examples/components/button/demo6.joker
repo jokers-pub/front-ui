@@ -1,0 +1,7 @@
+<template>
+    <jk-button type="primary" loading>加载中</jk-button>
+    <jk-button type="success" loading>加载中</jk-button>
+    <jk-button type="warning" loading>加载中</jk-button>
+    <jk-button type="danger" loading>加载中</jk-button>
+    <jk-button type="info" loading>加载中</jk-button>
+</template>

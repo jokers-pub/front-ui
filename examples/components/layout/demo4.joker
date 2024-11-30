@@ -1,0 +1,36 @@
+<template>
+    <DemoRow>
+        <jk-row gutter="20">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6" offset="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+    </DemoRow>
+    <DemoRow>
+        <jk-row gutter="20">
+            <jk-col span="6" offset="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6" offset="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+    </DemoRow>
+    <DemoRow>
+        <jk-row gutter="20">
+            <jk-col span="12" offset="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+    </DemoRow>
+</template>
+<style lang="scss" scoped>
+.demo-container {
+    border-radius: 4px;
+    min-height: 36px;
+    background: #d3dce6;
+}
+</style>

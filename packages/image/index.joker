@@ -1,0 +1,251 @@
+<template>
+    <div class="@(['jk-image', props.class])" style="@props.style" ref="imageCon">
+        @if(model.loading) {
+            <div class="placeholder">
+                @RenderSection("placeholder")
+            </div>
+        }
+        else if(model.error) {
+            <div class="error">
+                @if($sections.error) {
+                    @RenderSection("error")
+                }
+                else {
+                    @props.errMsg
+                }
+            </div>
+        }
+        else {
+            <img class="inner" src="@props.src" @click="clickHandler" style="@imageStyle" />
+        }
+        @if(preview && model.showViewer) {
+            <JokerImageViewer
+                z-index="@props.zIndex"
+                initial-index="@props.imageIndex"
+                onClose="@closeViewer"
+                url-list="@props.previewSrcList"></JokerImageViewer>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import JokerImageViewer from "./image-viewer.joker";
+import { throttle } from "@joker.front/shared";
+
+import { getScrollContainer, isInContainer, isHtmlElement, isSupportObjectFit } from "../utils/index";
+
+let ObjectFit = {
+    NONE: "none",
+    CONTAIN: "contain",
+    COVER: "cover",
+    FILL: "fill",
+    SCALE_DOWN: "scale-down"
+};
+
+export default class extends Component<{
+    errMsg: string;
+    src: string;
+    class: string;
+    fit: string;
+    lazy: boolean;
+    scrollContainer: object | string;
+    preview: boolean;
+    previewSrcList: Array<any>;
+    zIndex: number;
+    style: string;
+}> {
+    propsOption = {
+        errMsg: "加载失败",
+        scrollContainer: {},
+        previewSrcList: [],
+        zIndex: 2000
+    };
+
+    model = {
+        loading: true,
+        error: false,
+        show: !this.props.lazy,
+        imageWidth: 0,
+        imageHeight: 0,
+        showViewer: false
+    };
+
+    prevOverflow = "";
+    _scrollContainer?: HTMLElement;
+    _lazyLoadHandler?: any;
+
+    components = {
+        JokerImageViewer
+    };
+
+    mounted() {
+        this.$watch(
+            () => [this.model.show, this.props.src],
+            () => {
+                this.loadImage();
+            }
+        );
+        if (this.props.lazy) {
+            this.addLazyLoadListener();
+        } else {
+            this.loadImage();
+        }
+    }
+
+    beforeDestroy() {
+        this.props.lazy && this.removeLazyLoadListener();
+    }
+
+    get imageStyle() {
+        let { fit } = this.props;
+        if (fit) {
+            return isSupportObjectFit() ? { "object-fit": fit } : this.getImageStyle(fit);
+        }
+        return {};
+    }
+
+    get alignCenter() {
+        return !isSupportObjectFit() && this.props.fit !== ObjectFit.FILL;
+    }
+
+    get preview() {
+        let { previewSrcList } = this.props;
+        return Array.isArray(previewSrcList) && previewSrcList.length > 0;
+    }
+
+    getImageStyle(fit: string) {
+        let { imageWidth, imageHeight } = this.model;
+        let { clientWidth: containerWidth, clientHeight: containerHeight } = this.$getRef("imageCon").output;
+
+        if (!imageWidth || !imageHeight || !containerWidth || !containerHeight) return {};
+
+        let imageAspectRatio = imageWidth / imageHeight;
+        let containerAspectRatio = containerWidth / containerHeight;
+
+        if (fit === ObjectFit.SCALE_DOWN) {
+            let isSmaller = imageWidth < containerWidth && imageHeight < containerHeight;
+            fit = isSmaller ? ObjectFit.NONE : ObjectFit.CONTAIN;
+        }
+
+        switch (fit) {
+            case ObjectFit.NONE:
+                return { width: "auto", height: "auto" };
+            case ObjectFit.CONTAIN:
+                return imageAspectRatio < containerAspectRatio ? { width: "auto" } : { height: "auto" };
+            case ObjectFit.COVER:
+                return imageAspectRatio < containerAspectRatio ? { height: "auto" } : { width: "auto" };
+            default:
+                return {};
+        }
+    }
+
+    loadImage() {
+        //懒加载图片不展示时不进行加载
+        if (!this.model.show) return false;
+        //重置状态
+        this.model.loading = true;
+        this.model.error = false;
+        //
+        let img = new Image();
+        img.onload = (e) => this.handleLoad(img);
+        img.onerror = this.handleError;
+        let ref = this.$getRef("imageCon");
+        ref &&
+            Object.keys(ref).forEach((key) => {
+                img.setAttribute(key, ref[key]);
+            });
+        img.src = this.props.src;
+    }
+
+    handleLoad(img: HTMLImageElement) {
+        this.model.imageWidth = img.width;
+        this.model.imageHeight = img.height;
+        this.model.loading = false;
+        this.model.error = false;
+        this.$trigger("load");
+    }
+
+    handleError(e) {
+        this.model.loading = false;
+        this.model.error = true;
+        this.$trigger("error");
+    }
+
+    handleLazyLoad() {
+        if (isInContainer(this.$getRef("imageCon").output, this._scrollContainer)) {
+            this.model.show = true;
+            this.removeLazyLoadListener();
+        }
+    }
+    addLazyLoadListener() {
+        let { scrollContainer } = this.props;
+        let _scrollContainer = null;
+        if (isHtmlElement(scrollContainer)) {
+            _scrollContainer = scrollContainer;
+        } else if (typeof scrollContainer === "string") {
+            _scrollContainer = document.querySelector(scrollContainer);
+        } else if (this.$getRef("imageCon").output) {
+            _scrollContainer = getScrollContainer(this.$getRef("imageCon").output);
+        }
+        if (_scrollContainer) {
+            this._scrollContainer = _scrollContainer;
+            this._lazyLoadHandler = throttle(200, this.handleLazyLoad.bind(this));
+            this._scrollContainer.addEventListener("scroll", this._lazyLoadHandler);
+            this.handleLazyLoad();
+        }
+    }
+    removeLazyLoadListener() {
+        let { _scrollContainer, _lazyLoadHandler } = this;
+
+        if (!_scrollContainer || !_lazyLoadHandler) return;
+
+        this._scrollContainer.removeEventListener("scroll", _lazyLoadHandler);
+        this._scrollContainer = undefined;
+        this._lazyLoadHandler = undefined;
+    }
+    clickHandler() {
+        if (!this.preview) return;
+
+        this.prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        this.model.showViewer = true;
+    }
+    closeViewer() {
+        document.body.style.overflow = this.prevOverflow;
+        this.model.showViewer = false;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-image {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    .error,
+    .inner,
+    .placeholder {
+        width: 100%;
+        height: 100%;
+    }
+    .error,
+    .placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: #c0c4cc;
+        vertical-align: middle;
+        background: #f5f7fa;
+        :deep(i) {
+            font-size: 32px;
+        }
+    }
+
+    img {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+    }
+}
+</style>

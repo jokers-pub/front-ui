@@ -1,0 +1,34 @@
+<template>
+    <jk-button plain @click="open1">成功</jk-button>
+    <jk-button plain @click="open2">警告</jk-button>
+    <jk-button plain @click="open3">消息</jk-button>
+    <jk-button plain @click="open4">错误</jk-button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Message } from "../../../src";
+
+export default class extends Component {
+    open1() {
+        Message({
+            type: "success",
+            message: "我是一个成功提示"
+        });
+    }
+    open2() {
+        Message({
+            type: "warning",
+            message: "我是一个警告提示"
+        });
+    }
+    open3() {
+        Message({
+            type: "info",
+            message: "我是一个信息提示"
+        });
+    }
+    open4() {
+        Message.error("我是一个错误提示");
+    }
+}
+</script>

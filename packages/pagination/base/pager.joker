@@ -1,0 +1,150 @@
+<template>
+    <ul class="jk-pagination-pager">
+        @if(props.pageCount > 0) {
+            <li class="@({ active: props.currentPage === 1, disabled: props.disabled, number: true })" @click="go(1)">
+                1
+            </li>
+        }
+        @if(model.showPrevMore) {
+            <li
+                class="more jk-icon-more @(props.disabled?'disabled':'')"
+                @click="go(props.currentPage - (props.pagerCount - 2))"></li>
+        }
+        @for(let item of pagers) {
+            <li
+                class="@({ disabled: props.disabled, active: props.currentPage === item, number: true })"
+                @click="go(item)">
+                @item
+            </li>
+        }
+        @if(model.showNextMore) {
+            <li
+                class="more jk-icon-more @(props.disabled?'disabled':'')"
+                @click="go(props.currentPage + (props.pagerCount - 2))"></li>
+        }
+        @if(props.pageCount > 1) {
+            <li
+                class="@({ disabled: props.disabled, active: props.currentPage === props.pageCount, number: true })"
+                @click="go(props.pageCount)">
+                @props.pageCount
+            </li>
+        }
+    </ul>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { PropsType } from "./types";
+
+export default class extends Component<PropsType> {
+    model = {
+        showPrevMore: false,
+        showNextMore: false
+    };
+
+    get pagers() {
+        let pagerCount = this.props.pagerCount!;
+        let halfPagerCount = (pagerCount - 1) / 2;
+
+        let currentPage = Number(this.props.currentPage);
+        let pageCount = Number(this.props.pageCount);
+
+        let showPrevMore = false;
+        let showNextMore = false;
+
+        if (pageCount > pagerCount) {
+            if (currentPage > pagerCount - halfPagerCount) {
+                showPrevMore = true;
+            }
+
+            if (currentPage < pageCount - halfPagerCount) {
+                showNextMore = true;
+            }
+        }
+
+        const array = [];
+
+        if (showPrevMore && !showNextMore) {
+            const startPage = pageCount - (pagerCount - 2);
+            for (let i = startPage; i < pageCount; i++) {
+                array.push(i);
+            }
+        } else if (!showPrevMore && showNextMore) {
+            for (let i = 2; i < pagerCount; i++) {
+                array.push(i);
+            }
+        } else if (showPrevMore && showNextMore) {
+            const offset = Math.floor(pagerCount / 2) - 1;
+            for (let i = currentPage - offset; i <= currentPage + offset; i++) {
+                array.push(i);
+            }
+        } else {
+            for (let i = 2; i < pageCount; i++) {
+                array.push(i);
+            }
+        }
+
+        this.model.showPrevMore = showPrevMore;
+        this.model.showNextMore = showNextMore;
+
+        return array;
+    }
+
+    go(e: VNode.Event, page: number) {
+        if (this.props.disabled) return;
+
+        if (page <= 0) page = 1;
+        if (page > this.props.pageCount!) page = this.props.pageCount!;
+
+        if (this.props.currentPage === page) return;
+
+        this.$trigger("pageChange", page);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-pagination-pager {
+    user-select: none;
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+
+    li {
+        padding: 0 4px;
+        background: #fff;
+        vertical-align: top;
+        display: inline-block;
+        font-size: 13px;
+        min-width: 35px;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+        box-sizing: border-box;
+        text-align: center;
+        margin: 0;
+        color: var(--jk-color-text-primary);
+
+        &.active + li {
+            border-left: 0;
+        }
+
+        &:hover {
+            color: var(--jk-color-primary);
+        }
+
+        &.active {
+            color: var(--jk-color-primary);
+            cursor: default;
+        }
+
+        &.disabled {
+            color: var(--jk-color-text-placeholder);
+            cursor: not-allowed;
+        }
+    }
+}
+</style>

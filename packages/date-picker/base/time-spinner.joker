@@ -1,0 +1,403 @@
+<template>
+    <div ref="container" class="jk-time-spinner @(props.showSeconds?'has-seconds':'')">
+        <JokerScrollbar
+            ref="hours"
+            noresize
+            tag="ul"
+            class="jk-time-spinner-wrapper"
+            viewClass="jk-time-spinner-list"
+            @mouseenter="handleMouseEnter('hours')"
+            @scroll="handleScroll('hours')">
+            @for(let hour of hoursList) {
+                <li
+                    class="@({
+                        item: true,
+                        'is-disabled': hour.disabled,
+                        'is-selected': hour.value === hours
+                    })"
+                    @click="handleItemClick('hours', hour)">
+                    @hour.title
+                </li>
+            }
+        </JokerScrollbar>
+        <JokerScrollbar
+            ref="minutes"
+            noresize
+            tag="ul"
+            class="jk-time-spinner-wrapper"
+            viewClass="jk-time-spinner-list"
+            @mouseenter="handleMouseEnter('minutes')"
+            @scroll="handleScroll('minutes')">
+            @for(let minute of minutesList) {
+                <li
+                    class="@({
+                        item: true,
+                        'is-disabled': minute.disabled,
+                        'is-selected': minute.value === minutes
+                    })"
+                    @click="handleItemClick('minutes', minute)">
+                    @minute.title
+                </li>
+            }
+        </JokerScrollbar>
+        @if(props.showSeconds) {
+            <JokerScrollbar
+                ref="seconds"
+                noresize
+                tag="ul"
+                class="jk-time-spinner-wrapper"
+                viewClass="jk-time-spinner-list"
+                @mouseenter="handleMouseEnter('seconds')"
+                @scroll="handleScroll('seconds')">
+                @for(let second of secondsList) {
+                    <li
+                        class="@({
+                            item: true,
+                            'is-disabled': second.disabled,
+                            'is-selected': second.value === seconds
+                        })"
+                        @click="handleItemClick('seconds', second)">
+                        @second.title
+                    </li>
+                }
+            </JokerScrollbar>
+        }
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerScrollbar from "../../scrollbar/index.joker";
+import { parseTime, TimeMode, validateTimeInRange } from "../utils";
+import { debounce } from "@joker.front/shared";
+
+type ItemType = { value: number; title: string; disabled: boolean };
+
+export default class extends Component<{
+    showSeconds: boolean;
+    date: TimeMode;
+    navigateBreakWhenEnd: boolean;
+    valueFormat: string;
+    selectableRange: Array<string | string[]>;
+}> {
+    propsOption = {
+        showSeconds: true,
+        valueFormat: "HH:mm:ss"
+    };
+    components = {
+        JokerScrollbar
+    };
+
+    created() {
+        this.$watch(
+            () => this.props.selectableRange,
+            () => {
+                this.model.selectableRange = this.getSelectableRange();
+            }
+        );
+
+        this.model.selectableRange = this.getSelectableRange();
+    }
+
+    currentType: keyof TimeMode = "hours";
+
+    setCurrentSelectRange(type: keyof TimeMode, force?: boolean) {
+        if (this.currentType !== type || force) {
+            this.currentType = type;
+
+            this.$trigger("select-range", type);
+        }
+    }
+
+    itemHeight = 0;
+
+    model = {
+        selectableRange: [] as Array<TimeMode[]>
+    };
+
+    mounted() {
+        this.itemHeight = this.$getRef("container")!.output.querySelector("li.item").offsetHeight;
+
+        let adjustScrollbarsCallBack = debounce(300, () => {
+            this.adjustScrollbars();
+        });
+
+        this.$watch(() => this.props.date, adjustScrollbarsCallBack);
+
+        this.adjustScrollbars();
+    }
+
+    get hours() {
+        return this.props.date!.hours;
+    }
+
+    get minutes() {
+        return this.props.date!.minutes;
+    }
+
+    get seconds() {
+        return this.props.date!.seconds;
+    }
+
+    get hoursList() {
+        let result: ItemType[] = [];
+
+        let selectableHours = this.model.selectableRange.map((n) => [n[0].hours, n[1].hours]);
+
+        for (let i = 0; i < 24; i++) {
+            let canSelect = false;
+            if (selectableHours?.length) {
+                for (let item of selectableHours) {
+                    if (i >= item[0] && i <= item[1]) {
+                        canSelect = true;
+                        break;
+                    }
+                }
+            } else {
+                canSelect = true;
+            }
+
+            result.push({
+                value: i,
+                title: i.toString().padStart(2, "0"),
+                disabled: !canSelect
+            });
+        }
+
+        return result;
+    }
+
+    get minutesList() {
+        let result: ItemType[] = [];
+
+        let selectableMins = this.model.selectableRange?.map((n) => {
+            return [
+                {
+                    ...n[0],
+                    seconds: 0
+                },
+                {
+                    ...n[1],
+                    seconds: 0
+                }
+            ];
+        });
+
+        for (let i = 0; i < 60; i++) {
+            let current = `${this.hours}:${i}:0`;
+
+            result.push({
+                value: i,
+                title: i.toString().padStart(2, "0"),
+                disabled: !validateTimeInRange(current, this.props.valueFormat!, selectableMins)
+            });
+        }
+
+        return result;
+    }
+
+    get secondsList() {
+        let result: ItemType[] = [];
+        let selectableRange = this.model.selectableRange;
+
+        for (let i = 0; i < 60; i++) {
+            let current = `${this.hours}:${this.minutes}:${i}`;
+
+            result.push({
+                value: i,
+                title: i.toString().padStart(2, "0"),
+                disabled: !validateTimeInRange(current, this.props.valueFormat!, selectableRange)
+            });
+        }
+
+        return result;
+    }
+
+    handleItemClick(e: VNode.Event, type: keyof TimeMode, data: any) {
+        if (data.disabled) return;
+
+        this.triggerChange(type, data.value);
+
+        this.setCurrentSelectRange(type);
+    }
+
+    handleScroll(e: VNode.Event, type: keyof TimeMode) {
+        let scrollbar = (<VNode.Component>e.target).component;
+        let scrollTop = scrollbar.scrollTop;
+
+        let scrollBarHeight = scrollbar.scrollbarHeight;
+
+        let value = Math.min(
+            Math.round((scrollTop - (scrollBarHeight / 2 - 10) / this.itemHeight + 3) / this.itemHeight),
+            type === "hours" ? 23 : 59
+        );
+
+        this.triggerChange(type, value);
+    }
+
+    handleMouseEnter(e: VNode.Event, type: keyof TimeMode) {
+        this.setCurrentSelectRange(type);
+    }
+
+    triggerChange(type: keyof TimeMode, value: number) {
+        //相同不做响应
+        if (this[type] === value) return;
+        //@ts-ignore
+        if (this[type + "List"][value].disabled) return;
+
+        this.$trigger("change", {
+            ...this.props.date!,
+            [type]: value
+        });
+
+        this.$trigger("select-range", this.currentType);
+    }
+
+    adjustScrollbars() {
+        this.adjustScrollbar("hours");
+        this.adjustScrollbar("minutes");
+        this.adjustScrollbar("seconds");
+    }
+
+    adjustScrollbar(type: keyof TimeMode) {
+        let value = this[type];
+        this.$getRef<VNode.Root>(type)?.component.scrollTo({
+            top: Math.max(0, value * this.itemHeight)
+        });
+    }
+
+    scrollDown(step: 1 | -1, now: number, list: Array<{ disabled: boolean }>) {
+        let maxLength = list.length;
+
+        now = (now + step + maxLength) % maxLength;
+
+        if (!list[now]) return;
+
+        this.triggerChange(this.currentType, now);
+        this.adjustScrollbars();
+    }
+
+    navigateItem(e: VNode.Event) {
+        let keyCode = e.event.keyCode;
+
+        //up/down
+        if (keyCode === 38 || keyCode === 40) {
+            let now = this[this.currentType];
+            //@ts-ignore
+            let list = this[this.currentType + "List"];
+            this.scrollDown(keyCode === 38 ? -1 : 1, now, list);
+
+            e.preventDefault();
+        }
+
+        //left/right
+        if (keyCode === 37 || keyCode === 39) {
+            let mappings: Array<keyof TimeMode> = ["hours", "minutes"];
+            if (this.props.showSeconds) {
+                mappings.push("seconds");
+            }
+
+            let currentIndex = mappings.indexOf(this.currentType);
+
+            if ((currentIndex === 0 && keyCode === 37) || (currentIndex === mappings.length - 1 && keyCode === 39)) {
+                if (this.props.navigateBreakWhenEnd) {
+                    this.$trigger("navigate-end", keyCode === 37 ? "prev" : "next");
+
+                    e.preventDefault();
+                    return;
+                }
+            }
+
+            let next = (currentIndex + (keyCode === 37 ? -1 : 1) + mappings.length) % mappings.length;
+
+            this.setCurrentSelectRange(mappings[next]);
+            e.preventDefault();
+        }
+    }
+
+    getSelectableRange(): Array<TimeMode[]> {
+        if (!this.props.selectableRange) return [];
+        let result: Array<TimeMode[]> = [];
+
+        for (let item of this.props.selectableRange) {
+            let start = "";
+            let end = "";
+            if (Array.isArray(item)) {
+                start = item[0];
+                end = item[1];
+            } else {
+                let arrItem = item.split("-");
+                start = arrItem[0];
+                end = arrItem[1];
+            }
+
+            result.push([parseTime(start, this.props.valueFormat!), parseTime(end, this.props.valueFormat!)]);
+        }
+        return result;
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-time-spinner {
+    height: 190px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    font-size: 0;
+
+    &::after {
+        content: "";
+        top: 50%;
+        position: absolute;
+        margin-top: -16px;
+        height: 32px;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        border-top: solid 1px var(--jk-border-color-light);
+        border-bottom: solid 1px var(--jk-border-color-light);
+        box-sizing: border-box;
+    }
+
+    :deep(.jk-time-spinner-wrapper) {
+        vertical-align: top;
+        flex: 1;
+        .jk-time-spinner-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: center;
+
+            &::after,
+            &::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 80px;
+            }
+        }
+    }
+
+    .item {
+        height: 32px;
+        line-height: 32px;
+        font-size: 12px;
+        color: var(--jk-color-text-regular);
+
+        &:hover:not(.is-disabled):not(.is-selected) {
+            background: var(--jk-background-color-base);
+            cursor: pointer;
+        }
+
+        &.is-selected:not(.is-disabled) {
+            color: var(--jk-color-text-primary);
+            font-weight: bold;
+        }
+
+        &.is-disabled {
+            color: var(--jk-color-text-placeholder);
+            cursor: not-allowed;
+        }
+    }
+}
+</style>

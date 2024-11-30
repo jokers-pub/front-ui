@@ -1,0 +1,3 @@
+<template>
+    <jk-empty description="描述文字"></jk-empty>
+</template>

@@ -1,0 +1,28 @@
+<template>
+    <jk-tooltip content="默认主题" placement="top" manual effect="light" ref="tooltip">
+        <jk-button @click="handleClick">
+            点击@(model.show ? "关闭" : "打开")
+        </jk-button>
+    </jk-tooltip>
+</template>
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        show: false
+    };
+
+    handleClick() {
+        let tooltip = this.$getRef<VNode.Component>("tooltip")?.component;
+        if (this.model.show) {
+            tooltip?.hide();
+        } else {
+            tooltip?.show();
+        }
+
+        this.model.show = !this.model.show;
+    }
+}
+</script>

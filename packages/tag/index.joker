@@ -1,0 +1,189 @@
+<template>
+    <span
+        class="@(['jk-tag', props.class, props.type, props.size, props.effect])"
+        style="@(props.color ? 'background-color:' + props.color : '')"
+        @click="handleClick">
+        @RenderSection()
+        @if(props.closable) {
+            <i class="jk-tag-close jk-icon-close" @click.stop="handleClose" />
+        }
+    </span>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component<{
+    type: string;
+    closable: boolean;
+    color: string;
+    size: string;
+    class: string;
+    effect: string;
+}> {
+    propsOption = {
+        effect: "light"
+    };
+    handleClick(e: VNode.Event) {
+        this.$trigger("click", undefined, e);
+    }
+    handleClose(e: VNode.Event) {
+        this.$trigger("close", undefined, e);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@mixin setColor($backgroundWeight, $borderWeight, $hoverWeight) {
+    background-color: var(--jk-color-primary#{$backgroundWeight});
+    border-color: var(--jk-color-primary#{$borderWeight});
+    color: var(--jk-color-primary);
+
+    > .jk-tag-close {
+        color: var(--jk-color-primary);
+
+        &:hover {
+            color: #fff;
+            background-color: var(--jk-color-primary#{$hoverWeight});
+        }
+    }
+
+    &.success {
+        background-color: var(--jk-color-success#{$backgroundWeight});
+        border-color: var(--jk-color-success#{$borderWeight});
+        color: var(--jk-color-success);
+
+        > .jk-tag-close {
+            color: var(--jk-color-success);
+
+            &:hover {
+                color: #fff;
+                background-color: var(--jk-color-success#{$hoverWeight});
+            }
+        }
+    }
+
+    &.warning {
+        background-color: var(--jk-color-warning#{$backgroundWeight});
+        border-color: var(--jk-color-warning#{$borderWeight});
+        color: var(--jk-color-warning);
+
+        > .jk-tag-close {
+            color: var(--jk-color-warning);
+
+            &:hover {
+                color: #fff;
+                background-color: var(--jk-color-warning#{$hoverWeight});
+            }
+        }
+    }
+
+    &.danger {
+        background-color: var(--jk-color-danger#{$backgroundWeight});
+        border-color: var(--jk-color-danger#{$borderWeight});
+        color: var(--jk-color-danger);
+
+        > .jk-tag-close {
+            color: var(--jk-color-danger);
+
+            &:hover {
+                color: #fff;
+                background-color: var(--jk-color-danger#{$hoverWeight});
+            }
+        }
+    }
+
+    &.info {
+        background-color: var(--jk-color-info#{$backgroundWeight});
+        border-color: var(--jk-color-info#{$borderWeight});
+        color: var(--jk-color-info);
+
+        > .jk-tag-close {
+            color: var(--jk-color-info);
+
+            &:hover {
+                color: #fff;
+                background-color: var(--jk-color-info#{$hoverWeight});
+            }
+        }
+    }
+}
+.jk-tag {
+    @include setColor("-light-9", "-light-8", "");
+    display: inline-block;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 12px;
+    color: var(--jk-color-primary);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    cursor: default;
+    > .jk-tag-close {
+        border-radius: 50%;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        font-size: 12px;
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+        vertical-align: middle;
+        top: -1px;
+        right: -5px;
+        margin-left: 3px;
+
+        &::before {
+            display: block;
+        }
+    }
+
+    &.dark {
+        @include setColor("", "", "-light-3");
+        color: #fff !important;
+
+        > .jk-tag-close {
+            color: #fff !important;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1) !important;
+            }
+        }
+    }
+    &.plain {
+        @include setColor("-light-9", "-light-5", "");
+        background-color: #fff !important;
+    }
+
+    &.medium {
+        height: 28px;
+        line-height: 26px;
+
+        > .jk-tag-close {
+            transform: scale(0.8);
+        }
+    }
+
+    &.small {
+        height: 24px;
+        padding: 0 8px;
+        line-height: 22px;
+
+        > .jk-tag-close {
+            transform: scale(0.8);
+        }
+    }
+
+    &.mini {
+        height: 20px;
+        padding: 0 5px;
+        line-height: 19px;
+
+        > .jk-tag-close {
+            margin-left: -3px;
+            transform: scale(0.7);
+        }
+    }
+}
+</style>

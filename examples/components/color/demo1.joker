@@ -1,0 +1,22 @@
+<template>
+    <div class="demo-container">
+        <div style="background-color:var(--jk-color-primary-dark-2)"></div>
+        @for(let i = 3; i < 10; i++) {
+            <div style="background-color:var(--jk-color-primary-light-@i)"></div>
+        }
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.demo-container {
+    border-radius: 4px;
+    width: 250px;
+    display: flex;
+    padding-top: 80px;
+    background-color: var(--jk-color-primary);
+    div {
+        flex: 1;
+        height: 30px;
+    }
+}
+</style>

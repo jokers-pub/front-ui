@@ -1,0 +1,40 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h3>快速上手</h3>
+<p>本指南讲解了如何在你的项目中使用 Joker UI。</p>
+<p>你可以引入整个 Joker UI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Joker UI。</p>
+<p>Joker UI 是使用<a href="www.jokers.pub" target="_blank">Joker Core</a>前端开发框架进行开发的一套 PC 端 UI 框架，可前往<a href="www.jokers.pub" target="_blank">Joker 官网</a>进行学习了解。</p>
+<h3>安装及使用</h3>
+<pre><code class="language-ts">import App from &quot;./app.joker&quot;;
+import &quot;@joker.front/ui&quot;;
+import &quot;@joker.front/ui/index.css&quot;;
+</code></pre>
+<p>以上代码便完成了 Joker UI 的引入。需要注意的是，样式文件需要单独引入。</p>
+<h3>主题样式</h3>
+<p>Joker 采用<a href="https://www.w3school.com.cn/css/css3_variables.asp" target="_blank">CSS variable</a>的方式来管理 UI 库的主题，我们内部定义了丰富的色彩等相关的配置，我们可以通过修改这些变量来实现对 UI 风格的自定义。</p>
+<p>例如：</p>
+<pre><code class="language-css">:root {
+    --jk-color-primary: red;
+    --jk-button-font-color: red;
+}
+</code></pre>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,6 @@
+<template>
+    <DemoRow><jk-alert title="成功提示的文案" type="success"></jk-alert></DemoRow>
+    <DemoRow><jk-alert title="消息提示的文案" type="info"></jk-alert></DemoRow>
+    <DemoRow><jk-alert title="警告提示的文案" type="warning"></jk-alert></DemoRow>
+    <DemoRow><jk-alert title="错误提示的文案" type="error"></jk-alert></DemoRow>
+</template>

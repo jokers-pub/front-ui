@@ -1,0 +1,52 @@
+<template>
+    <DemoRow>
+        <jk-link type="primary" @click="open">请输入邮箱</jk-link>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Message, MessageBox, Loading } from "../../../src";
+
+export default class extends Component {
+    open() {
+        MessageBox.prompt("请输入你的邮箱", "确认邮箱", {
+            validate(val) {
+                if (!val) return "请输入邮箱";
+
+                if (
+                    /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/.test(
+                        val
+                    ) === false
+                ) {
+                    return "邮箱地址不正确";
+                }
+            },
+            beforeClose(action, com, close) {
+                if (action === "confirm") {
+                    let value = com.inputValue;
+
+                    let loading = Loading({
+                        text: "正在提交数据"
+                    });
+
+                    Message("正在提交数据：" + value);
+
+                    setTimeout(() => {
+                        loading.close();
+                        close();
+                    }, 3000);
+                } else {
+                    close();
+                }
+            },
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+</script>
+

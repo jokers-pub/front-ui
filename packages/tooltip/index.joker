@@ -1,0 +1,368 @@
+<template>
+    @if(model.show) {
+        <div
+            class="jk-tooltip jk-popper is-@props.effect @(props.size||'')"
+            append-to="body"
+            ref="popper"
+            id="@id"
+            style="@({ maxWidth: props.maxWidth })"
+            @mouseleave="handleTooltipMouseLeave"
+            @mouseenter="handleTooltipMouseEnter"
+            transition-name="@props.transition">
+            @if($sections.content) {
+                @RenderSection("content")
+            }
+            else {
+                @props.content
+            }
+        </div>
+    }
+    <template ref="content">
+        @RenderSection()
+    </template>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { debounce, guid, logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+import { Popper } from "../utils/popper";
+
+export default class extends Component<{
+    openDelay: number;
+    closeDelay: number;
+    disabled: boolean;
+    content: string;
+    placement: string;
+    offset: number;
+    transition: string;
+    manual: boolean;
+    effect: string;
+    size: string;
+    maxWidth?: string;
+}> {
+    propsOption = {
+        closeDelay: 200,
+        openDelay: {
+            type: Number,
+            default: 0
+        },
+        placement: "bottom",
+        offset: {
+            type: Number,
+            default: 0
+        },
+        transition: "jk-fade-in",
+        effect: "dark"
+    };
+    model = {
+        expectedState: false,
+        show: false
+    };
+
+    id = `jk-tooltip-${guid(4)}`;
+    timeout?: number;
+    popperHandler?: Popper;
+    firstElement?: HTMLElement;
+
+    debounceClose = debounce(this.props.closeDelay!, () => this.hideTooltip());
+
+    mounted() {
+        this.firstElement = this.$getRef<VNode.Component>("content")?.firstElement?.output;
+
+        if (this.firstElement === undefined) {
+            logger.error(LOGTAG, "[tooltip]未找到参考Element元素");
+
+            return;
+        }
+
+        this.firstElement.setAttribute("aria-describedby", this.id);
+
+        if (this.props.manual) return;
+
+        this.firstElement.addEventListener("mouseenter", this.show, false);
+        this.firstElement.addEventListener("mouseleave", this.hide, false);
+
+        this.$watch(
+            () => this.props.content,
+            () => {
+                setTimeout(() => {
+                    if (this.model.show && this.popperHandler) {
+                        this.popperHandler.update();
+                    }
+                });
+            }
+        );
+    }
+
+    async show() {
+        if (this.props.disabled) return;
+
+        this.setShowState(true);
+
+        await this.$updatedRender();
+
+        this.showTooltip();
+
+        this.popperHandler?.update();
+    }
+
+    hide() {
+        this.setShowState(false);
+        this.debounceClose();
+    }
+
+    handleTooltipMouseEnter() {
+        if (this.props.manual) return;
+        this.setShowState(true);
+    }
+
+    handleTooltipMouseLeave() {
+        if (this.props.manual) return;
+        this.hide();
+    }
+
+    setShowState(val: boolean) {
+        this.model.expectedState = val;
+    }
+
+    showTooltip() {
+        if (!this.model.expectedState || !this.props.content) return;
+
+        clearTimeout(this.timeout);
+
+        this.timeout = setTimeout(async () => {
+            this.model.show = true;
+            await this.$updatedRender();
+            let popperEl = this.$getRef("popper")?.output;
+            if (this.firstElement && popperEl && !this.popperHandler) {
+                this.popperHandler = new Popper(this.firstElement, popperEl, {
+                    placement: this.props.placement,
+                    offset: this.props.offset
+                });
+            }
+        }, this.props.openDelay);
+    }
+
+    hideTooltip() {
+        if (this.model.expectedState) return;
+
+        clearTimeout(this.timeout);
+
+        this.model.show = false;
+
+        this.popperHandler?.destroy();
+        this.popperHandler = undefined;
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+        this.firstElement?.removeEventListener("mouseenter", this.show);
+        this.firstElement?.removeEventListener("mouseleave", this.hide);
+    }
+}
+</script>
+
+<style lang="scss">
+@import "../../theme/var.scss";
+
+.jk-tooltip {
+    position: absolute;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: $--index-popper;
+    line-height: 1.2;
+    min-width: 10px;
+    word-wrap: break-word;
+
+    .popper_arrow,
+    .popper_arrow::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
+    .popper_arrow {
+        border-width: 6px;
+    }
+
+    .popper_arrow::after {
+        content: " ";
+        border-width: 5px;
+    }
+
+    &[x-placement^="top"] {
+        margin-bottom: 12px;
+        .popper_arrow {
+            bottom: -6px;
+            border-bottom-width: 0;
+            border-top-color: var(--jk-color-text-primary);
+
+            &::after {
+                bottom: 1px;
+                margin-left: -5px;
+                border-bottom-width: 0;
+                border-top-color: var(--jk-color-text-primary);
+            }
+        }
+    }
+
+    &[x-placement^="bottom"] {
+        margin-top: 12px;
+        .popper_arrow {
+            top: -6px;
+            border-top-width: 0;
+            border-bottom-color: var(--jk-color-text-primary);
+
+            &::after {
+                top: 1px;
+                margin-left: -5px;
+                border-top-width: 0;
+                border-bottom-color: var(--jk-color-text-primary);
+            }
+        }
+    }
+
+    &[x-placement^="right"] {
+        margin-left: 12px;
+        .popper_arrow {
+            left: -6px;
+            border-left-width: 0;
+            border-right-color: var(--jk-color-text-primary);
+
+            &::after {
+                left: 1px;
+                bottom: -5px;
+                border-left-width: 0;
+                border-right-color: var(--jk-color-text-primary);
+            }
+        }
+    }
+
+    &[x-placement^="left"] {
+        margin-right: 12px;
+        .popper_arrow {
+            right: -6px;
+            border-right-width: 0;
+            border-left-color: var(--jk-color-text-primary);
+
+            &::after {
+                right: 1px;
+                bottom: -5px;
+                margin-left: -5px;
+                border-right-width: 0;
+                border-left-color: var(--jk-color-text-primary);
+            }
+        }
+    }
+
+    &.is-dark {
+        background: var(--jk-color-text-primary);
+        color: #fff;
+    }
+
+    &.is-light {
+        background: #fff;
+        border: solid 1px var(--jk-color-text-primary);
+
+        &[x-placement^="left"] {
+            .popper_arrow {
+                border-left-color: var(--jk-color-text-primary);
+
+                &::after {
+                    border-left-color: #fff;
+                }
+            }
+        }
+        &[x-placement^="right"] {
+            .popper_arrow {
+                border-right-color: var(--jk-color-text-primary);
+
+                &::after {
+                    border-right-color: #fff;
+                }
+            }
+        }
+        &[x-placement^="top"] {
+            .popper_arrow {
+                border-top-color: var(--jk-color-text-primary);
+
+                &::after {
+                    border-top-color: #fff;
+                }
+            }
+        }
+        &[x-placement^="bottom"] {
+            .popper_arrow {
+                border-bottom-color: var(--jk-color-text-primary);
+
+                &::after {
+                    border-bottom-color: #fff;
+                }
+            }
+        }
+    }
+
+    &.is-error {
+        background: var(--jk-color-danger);
+        border: solid 1px var(--jk-color-danger-dark-2);
+        color: #fff;
+        &[x-placement^="left"] {
+            .popper_arrow {
+                border-left-color: var(--jk-color-danger-dark-2);
+
+                &::after {
+                    border-left-color: var(--jk-color-danger);
+                }
+            }
+        }
+        &[x-placement^="right"] {
+            .popper_arrow {
+                border-right-color: var(--jk-color-danger-dark-2);
+
+                &::after {
+                    border-right-color: var(--jk-color-danger);
+                }
+            }
+        }
+        &[x-placement^="top"] {
+            .popper_arrow {
+                border-top-color: var(--jk-color-danger-dark-2);
+
+                &::after {
+                    border-top-color: var(--jk-color-danger);
+                }
+            }
+        }
+        &[x-placement^="bottom"] {
+            .popper_arrow {
+                border-bottom-color: var(--jk-color-danger-dark-2);
+
+                &::after {
+                    border-bottom-color: var(--jk-color-danger);
+                }
+            }
+        }
+    }
+
+    &:focus:hover {
+        outline-width: 0;
+    }
+
+    &.medium {
+        padding: 8px;
+    }
+
+    &.small {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    &.mini {
+        padding: 4px;
+        font-size: 12px;
+    }
+}
+</style>

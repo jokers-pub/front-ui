@@ -1,0 +1,240 @@
+<template>
+    <table cellspacing="0" cellpadding="0" @click="handleClick" @mousemove="handleMouseMove" class="jk-month-table">
+        <tbody>
+            @for(let row of rows) {
+                <tr>
+                    @for(let cell of row) {
+                        <td class="@getCellStyle(cell)">
+                            <div>
+                                <span>@(cell.text)月</span>
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { addDate, getDayCountOfMonth } from "../utils";
+import { range } from "@joker.front/shared";
+
+type CellType = {
+    date: Date;
+    type: "normal" | "today";
+    text: string;
+    disabled?: boolean;
+    selected?: boolean;
+    inRange?: boolean;
+    start?: boolean;
+    end?: boolean;
+};
+
+function clearDate(date: Date) {
+    return new Date(date.getFullYear(), date.getMonth()).getTime();
+}
+
+export default class extends Component<{
+    date: Date;
+    value: Date;
+    minDate: Date;
+    maxDate: Date;
+    disabledDate: Function;
+    range: boolean;
+}> {
+    model = {
+        rangeState: {
+            endDate: undefined as Date | undefined,
+            selecting: false
+        }
+    };
+    monthTextMapping = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
+    get rows() {
+        let result: Array<CellType[]> = [];
+
+        for (let i = 0; i < 3; i++) {
+            let row: CellType[] = [];
+
+            for (let j = 0; j < 4; j++) {
+                let date = new Date(this.props.date!.getFullYear(), i * 4 + j);
+                let time = date.getTime();
+                let firstDaty = new Date(this.props.date!.getFullYear(), i * 4 + j, 1);
+
+                //获取当月所有天，交由disabledDate处理
+                let disabled = false;
+                if (this.props.disabledDate) {
+                    let dayCount = getDayCountOfMonth(date.getFullYear(), date.getMonth());
+                    let days = range(dayCount).map((n) => addDate(firstDaty, n, "d"));
+                    disabled = days.every((n) => this.props.disabledDate?.(n));
+                }
+
+                row.push({
+                    date,
+                    type: clearDate(new Date()) == time ? "today" : "normal",
+                    text: this.monthTextMapping[i * 4 + j],
+                    inRange:
+                        this.props.minDate &&
+                        time >= clearDate(this.props.minDate) &&
+                        this.props.maxDate &&
+                        time <= clearDate(this.props.maxDate),
+                    start: this.props.minDate && time === clearDate(this.props.minDate),
+                    end: this.props.maxDate && time === clearDate(this.props.maxDate),
+                    disabled,
+                    selected: this.props.value && clearDate(this.props.value) === time
+                });
+            }
+
+            result.push(row);
+        }
+
+        return result;
+    }
+
+    getCellStyle(cell: CellType) {
+        let result: string[] = [];
+
+        if (cell.inRange) result.push("in-range");
+
+        if (cell.start) result.push("state-date");
+
+        if (cell.end) result.push("end-date");
+
+        if (cell.disabled) result.push("disabled");
+
+        if (cell.type === "today") result.push("today");
+
+        if (this.props.value && cell.date.getTime() === clearDate(this.props.value)) result.push("current");
+
+        return result.join(" ");
+    }
+
+    handleClick(e: VNode.Event) {
+        let target = e.event.target;
+
+        if (target.tagName === "SPAN") {
+            target = target.parentNode.parentNode;
+        }
+
+        if (target.tagName === "DIV") {
+            target = target.parentNode;
+        }
+
+        if (target.tagName !== "TD") return;
+
+        let row = target.parentNode.rowIndex;
+        let column = target.cellIndex;
+        let cell = this.rows[row][column];
+
+        if (cell.disabled) return;
+
+        let newDate = cell.date!;
+
+        if (!this.props.range) {
+            this.$trigger("pick", newDate);
+        } else {
+            if (!this.model.rangeState.selecting) {
+                this.$trigger("pick", { minDate: newDate, maxDate: undefined });
+            } else {
+                if (this.props.minDate) {
+                    if (newDate.getTime() >= clearDate(this.props.minDate)) {
+                        this.$trigger("pick", { minDate: this.props.minDate, maxDate: newDate });
+                    } else {
+                        this.$trigger("pick", { minDate: newDate, maxDate: this.props.minDate });
+                    }
+                }
+            }
+        }
+    }
+    handleMouseMove() {}
+}
+</script>
+
+<style scoped lang="scss">
+.jk-month-table {
+    font-size: 12px;
+    user-select: none;
+    table-layout: fixed;
+    width: 100%;
+
+    td {
+        text-align: center;
+        padding: 8px 0px;
+        cursor: pointer;
+
+        div {
+            height: 48px;
+            padding: 6px 0;
+            box-sizing: border-box;
+
+            span {
+                width: 60px;
+                height: 36px;
+                display: block;
+                line-height: 36px;
+                color: var(--jk-color-text-regular);
+                margin: 0 auto;
+                border-radius: 18px;
+
+                &:hover {
+                    color: var(--jk-color-primary);
+                }
+            }
+        }
+
+        &.today {
+            span {
+                color: var(--jk-color-primary);
+                font-weight: bold;
+            }
+
+            &.start-date span,
+            &.end-date span {
+                color: #fff;
+            }
+        }
+
+        &.disabled span {
+            background: var(--jk-background-color-base);
+            cursor: not-allowed;
+            color: var(--jk-color-text-placeholder);
+
+            &:hover {
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+
+        &.in-range div {
+            background-color: var(--jk-border-color-extra-light);
+
+            &:hover {
+                background-color: var(--jk-border-color-extra-light);
+            }
+        }
+
+        &.current:not(.is-disabled) span {
+            color: #fff;
+            background-color: var(--jk-color-primary);
+        }
+
+        &.start-date div,
+        &.end-date div {
+            color: #fff;
+
+            span {
+                background-color: var(--jk-color-primary);
+            }
+        }
+
+        &.start-date div {
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
+        }
+
+        &.end-date div {
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+    }
+}
+</style>

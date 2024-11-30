@@ -1,0 +1,260 @@
+<template>
+    <div class="jk-popper jk-picker-time-range-panel" transition-name="jk-zoom-in-top" ref="popper" append-to="body">
+        <div class="content">
+            <div class="item">
+                <div class="title">
+                    @props.startPlaceholder
+                </div>
+                <div class="body">
+                    <JokerTimeSpinner
+                        ref="timeStartSpinner"
+                        @change="handleMinChange"
+                        @select-range="handleMinSelectRange"
+                        @navigate-end="handleNavigateEnd"
+                        navigateBreakWhenEnd
+                        date="@model.minTime"
+                        showSeconds="@showSeconds"
+                        selectableRange="@model.minSelectableRange"></JokerTimeSpinner>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    @props.endPlaceholder
+                </div>
+                <div class="body">
+                    <JokerTimeSpinner
+                        ref="timeEndSpinner"
+                        @change="handleMaxChange"
+                        @select-range="handleMaxSelectRange"
+                        @navigate-end="handleNavigateEnd"
+                        navigateBreakWhenEnd
+                        date="@model.maxTime"
+                        showSeconds="@showSeconds"
+                        valueFormat="@props.valueFormat"
+                        selectableRange="@model.maxSelectableRange"></JokerTimeSpinner>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <JokerLink @click.stop="handleCancel">取消</JokerLink>
+            <JokerLink type="primary" @click.stop="handleConfirm">确定</JokerLink>
+        </div>
+    </div>
+</template>
+<script>
+import { PickerPanel } from "./base";
+import JokerTimeSpinner from "../base/time-spinner.joker";
+import JokerLink from "../../link/index.joker";
+import { VNode } from "@joker.front/core";
+import { TimeMode, addDate, parseTime, validateTimeInRange } from "../utils";
+let selectRangeMapping: Record<keyof TimeMode, number[]> = {
+    hours: [0, 2],
+    minutes: [3, 5],
+    seconds: [6, 8]
+};
+
+export default class extends PickerPanel<{
+    format: string;
+    valueFormat: string;
+    value: string;
+    defaultValue: string;
+    startPlaceholder: string;
+    endPlaceholder: string;
+}> {
+    propsOption = {
+        valueFormat: "HH:mm:ss",
+        format: "HH:mm:ss"
+    };
+
+    model = {
+        minTime: { hours: 0, minutes: 0, seconds: 0 },
+        maxTime: { hours: 0, minutes: 0, seconds: 0 },
+        minSelectableRange: [] as Array<(TimeMode | string)[]>,
+        maxSelectableRange: [] as Array<(TimeMode | string)[]>
+    };
+
+    components = {
+        JokerLink,
+        JokerTimeSpinner
+    };
+
+    oldVal?: string;
+
+    created() {
+        this.oldVal = this.props.value;
+
+        this.initModelDate();
+
+        this.$watch(
+            () => this.props.value,
+            () => {
+                this.initModelDate();
+            }
+        );
+    }
+
+    handleNavigateEnd(e: VNode.Event<"prev" | "next">) {
+        let startPick = this.$getRef<VNode.Component>("timeStartSpinner");
+        if (this.pick === startPick) {
+            this.pick = this.$getRef<VNode.Component>("timeEndSpinner");
+        } else {
+            this.pick = startPick;
+        }
+
+        if (e.data === "prev") {
+            this.pick?.component.setCurrentSelectRange(this.showSeconds ? "seconds" : "minutes", true);
+        } else {
+            this.pick?.component.setCurrentSelectRange("hours", true);
+        }
+    }
+
+    mounted() {
+        this.pick = this.$getRef<VNode.Component>("timeStartSpinner");
+
+        this.$trigger("select-range", { range: selectRangeMapping.hours });
+    }
+
+    initModelDate() {
+        if (this.props.value && Array.isArray(this.props.value)) {
+            this.model.minTime = parseTime(this.props.value[0], this.props.valueFormat!);
+            this.model.maxTime = parseTime(this.props.value[1], this.props.valueFormat!);
+        } else if (this.props.defaultValue) {
+            if (Array.isArray(this.props.defaultValue)) {
+                this.model.minTime = parseTime(this.props.defaultValue[0], this.props.valueFormat!);
+                this.model.maxTime = parseTime(this.props.defaultValue[1], this.props.valueFormat!);
+            } else {
+                this.model.minTime = parseTime(this.props.defaultValue[0], this.props.valueFormat!);
+
+                let maxTime = { ...this.model.minTime };
+
+                maxTime.hours++;
+
+                if (maxTime.hours >= 24) maxTime.hours === 23;
+
+                this.model.maxTime = maxTime;
+            }
+        } else {
+            let nowDate = new Date();
+            this.model.minTime = parseTime(
+                `${nowDate.getHours()}:${nowDate.getMinutes()}:${nowDate.getSeconds()}`,
+                "HH:mm:ss"
+            );
+
+            let maxDate = addDate(nowDate, 1, "h");
+            this.model.maxTime = parseTime(
+                `${maxDate.getHours()}:${maxDate.getMinutes()}:${maxDate.getSeconds()}`,
+                "HH:mm:ss"
+            );
+        }
+    }
+
+    get showSeconds() {
+        return this.props.format?.includes("ss");
+    }
+
+    handleChange() {
+        if (this.isValidValue([this.model.minTime, this.model.maxTime])) {
+            this.model.minSelectableRange = [["00:00:00", this.model.maxTime]];
+
+            this.model.maxSelectableRange = [[this.model.minTime, "23:59:59"]];
+
+            this.$trigger("pick", { value: [this.model.minTime, this.model.maxTime] });
+        }
+    }
+
+    isValidValue(val: [string | TimeMode, string | TimeMode]) {
+        return (
+            Array.isArray(val) &&
+            validateTimeInRange(val[0], this.props.format!, this.model.minSelectableRange) &&
+            validateTimeInRange(val[1], this.props.format!, this.model.maxSelectableRange)
+        );
+    }
+
+    handleMinChange(e: VNode.Event<TimeMode>) {
+        this.model.minTime = e.data!;
+
+        this.handleChange();
+    }
+
+    handleMaxChange(e: VNode.Event<TimeMode>) {
+        this.model.maxTime = e.data!;
+
+        this.handleChange();
+    }
+
+    //pick 对接事件，用于键盘导航
+
+    pick?: VNode.Component;
+
+    navigateItem(e: VNode.Event) {
+        this.pick?.component.navigateItem(e);
+    }
+
+    handleMinSelectRange(e: VNode.Event<keyof TimeMode>) {
+        this.$trigger("select-range", { range: selectRangeMapping[e.data] });
+    }
+
+    handleMaxSelectRange(e: VNode.Event<keyof TimeMode>) {
+        this.$trigger("select-range", { range: selectRangeMapping[e.data], target: "max" });
+    }
+
+    handleCancel() {
+        this.$trigger("pick", { value: this.oldVal, close: true });
+    }
+
+    handleConfirm() {
+        this.$trigger("pick", { value: [this.model.minTime, this.model.maxTime], close: true });
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-picker-time-range-panel {
+    color: var(--jk-color-text-regular);
+    border: 1px solid var(--jk-border-color-light);
+    box-shadow: var(--jk-box-shadow-light);
+    background: #fff;
+    border-radius: 2px;
+    margin: 5px 0;
+    user-select: none;
+    box-sizing: border-box;
+    width: 355px;
+    overflow: visible;
+
+    .content {
+        padding: 10px;
+
+        .item {
+            padding: 4px 7px 7px;
+            width: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+
+            .title {
+                margin-bottom: 5px;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .body {
+                border-radius: 2px;
+                border: 1px solid var(--jk-border-color-light);
+            }
+        }
+    }
+
+    .footer {
+        border-top: 1px solid #e4e4e4;
+        padding: 4px;
+        height: 36px;
+        line-height: 25px;
+        text-align: right;
+        box-sizing: border-box;
+        text-align: right;
+
+        :deep(.jk-link) {
+            margin-right: 10px;
+        }
+    }
+}
+</style>

@@ -1,0 +1,23 @@
+<template>
+    <div>
+        <jk-breadcrumb>
+            @for(let name of model.breadcrumbs) {
+                <jk-breadcrumb-item>
+                    @name
+                </jk-breadcrumb-item>
+            }
+        </jk-breadcrumb>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        breadcrumbs: ["首页", "任务管理", "任务列表", "任务详情"]
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

@@ -1,0 +1,8 @@
+<template>
+    <DemoRow>
+        <jk-slider show-input />
+    </DemoRow>
+    <DemoRow>
+        <jk-slider show-input value="30" showStops step="10" />
+    </DemoRow>
+</template>

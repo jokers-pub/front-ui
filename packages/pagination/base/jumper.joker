@@ -1,0 +1,53 @@
+<template>
+    <div class="jk-pagination-jumper">
+        前往
+        <JokerNumber
+            min="1"
+            max="@props.pageCount"
+            size="mini"
+            value="@model.currentPage"
+            disabled="@props.disabled"
+            @change="handleChange"
+        />
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerNumber from "../../number/index.joker";
+import { PropsType } from "./types";
+
+export default class extends Component<PropsType> {
+    model = {
+        userInput: "",
+        currentPage: 0
+    };
+    components = {
+        JokerNumber
+    };
+
+    created() {
+        this.$syncProp("currentPage");
+    }
+
+    handleChange(e: VNode.Event<number>) {
+        this.$trigger("pageChange", e.data);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-pagination-jumper {
+    display: inline-block;
+    font-size: 13px;
+    min-width: 35.5px;
+    height: 28px;
+    line-height: 28px;
+    margin-left: 10px;
+    vertical-align: top;
+    box-sizing: border-box;
+
+    :deep(.jk-number) {
+        width: 100px;
+    }
+}
+</style>

@@ -1,0 +1,28 @@
+<template>
+    <jk-row gutter="10">
+        <jk-col xs="8" sm="6" md="4" lg="3" xl="1">
+            <div class="demo-container"></div>
+        </jk-col>
+        <jk-col xs="4" sm="6" md="8" lg="9" xl="11">
+            <div class="demo-container color1"></div>
+        </jk-col>
+        <jk-col xs="4" sm="6" md="8" lg="9" xl="11">
+            <div class="demo-container"></div>
+        </jk-col>
+        <jk-col xs="8" sm="6" md="4" lg="3" xl="1">
+            <div class="demo-container color1"></div>
+        </jk-col>
+    </jk-row>
+</template>
+
+<style lang="scss" scoped>
+.demo-container {
+    border-radius: 4px;
+    min-height: 36px;
+    background: #d3dce6;
+
+    &.color1 {
+        background: #e5e9f2;
+    }
+}
+</style>

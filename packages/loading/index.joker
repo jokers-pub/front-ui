@@ -1,0 +1,148 @@
+<template>
+    @if(model.visible) {
+        <div
+            class="jk-loading-mask @(props.fullscreen?'is-fullscreen':'') @(props.customClass||'')"
+            transition-name="jk-loading-fade"
+            style="z-index:@props.zIndex"
+            ref="container">
+            <div class="spinner">
+                @if(props.spinner) {
+                    <i class="@props.spinner"></i>
+                }
+                else {
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" />
+                    </svg>
+                }
+                @if(model.text) {
+                    <p class="text">
+                        @model.text
+                    </p>
+                }
+            </div>
+        </div>
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+export default class extends Component<{
+    fullscreen: boolean;
+    customClass: string;
+    spinner: string;
+    text: string;
+    zIndex: string;
+}> {
+    model = {
+        text: "",
+        visible: true
+    };
+
+    created() {
+        this.$syncProp("text");
+    }
+
+    mounted() {
+        this.$watchNode("container", (callback, type) => {
+            if (type === "after-leave") {
+                this.$destroy(true);
+            }
+        });
+    }
+
+    setText(text: string) {
+        this.model.text = text;
+    }
+
+    close() {
+        this.model.visible = false;
+        this.$trigger("close");
+        this.$destroy(true);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-loading-mask {
+    position: absolute;
+    z-index: 2000;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: opacity 0.3s;
+
+    &.jk-loading-fade-enter-from,
+    &.jk-loading-fade-leave-to {
+        opacity: 0;
+    }
+
+    .spinner {
+        top: 50%;
+        margin-top: -25px;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+
+        .circular {
+            height: 42px;
+            width: 42px;
+            animation: loading-rotate 2s linear infinite;
+
+            .path {
+                animation: loading-dash 1.5s ease-in-out infinite;
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: 0;
+                stroke-width: 2;
+                stroke: var(--jk-color-primary);
+                stroke-linecap: round;
+            }
+        }
+
+        .text {
+            color: var(--jk-color-primary);
+            margin: 3px 0;
+            font-size: 14px;
+        }
+
+        i {
+            color: var(--jk-color-primary);
+        }
+    }
+
+    &.is-fullscreen {
+        position: fixed;
+
+        .spinner {
+            margin-top: -25px;
+
+            .circular {
+                height: 50px;
+                width: 50px;
+            }
+        }
+    }
+
+    @keyframes loading-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes loading-dash {
+        0% {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -40px;
+        }
+        100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -120px;
+        }
+    }
+}
+</style>

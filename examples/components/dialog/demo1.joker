@@ -1,0 +1,64 @@
+<template>
+    <DemoRow>
+        <jk-button @click="open">点击打开Dialog</jk-button>
+        <jk-button @click="open1">全屏窗口</jk-button>
+        <jk-button @click="open2">超长内容窗口</jk-button>
+        <jk-dialog ref="dialog" title="基本展示" width="30%" before-close="@dialogBeforeClose">
+            <p>我是弹窗内的内容</p>
+            <jk-select>
+                <jk-option label="选项1" value="1"></jk-option>
+                <jk-option label="选项2" value="2"></jk-option>
+                <jk-option label="选项3" value="3"></jk-option>
+            </jk-select>
+            @section("footer") {
+                <jk-button @click="handleDialogCancelClick">取 消</jk-button>
+                <jk-button type="primary" @click="handleDialogConfirmClick">确 定</jk-button>
+            }
+        </jk-dialog>
+    </DemoRow>
+    <jk-dialog ref="dialog1" fullscreen title="全屏展示"></jk-dialog>
+    <jk-dialog ref="dialog2" title="超长内容窗口">
+        <ul>
+            @for(let i = 0; i < 100; i++) {
+                <li>
+                    我是第@i
+                    行
+                </li>
+            }
+        </ul>
+    </jk-dialog>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { MessageBox } from "../../../src";
+
+export default class extends Component {
+    open() {
+        this.$getRef<VNode.Component>("dialog")?.component.open();
+    }
+    open1() {
+        this.$getRef<VNode.Component>("dialog1")?.component.open();
+    }
+    open2() {
+        this.$getRef<VNode.Component>("dialog2")?.component.open();
+    }
+    dialogBeforeClose(close: Function) {
+        MessageBox.confirm("你确定要关闭吗？", {
+            title: "提示",
+            callback(action) {
+                if (action === "confirm") {
+                    close();
+                }
+            }
+        });
+    }
+    handleDialogCancelClick() {
+        this.$getRef<VNode.Component>("dialog")?.component.close();
+    }
+
+    handleDialogConfirmClick() {
+        this.$getRef<VNode.Component>("dialog")?.component.close();
+    }
+}
+</script>
+

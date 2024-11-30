@@ -1,0 +1,77 @@
+<template>
+    <div class="demo">
+        <jk-row type="flex">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container color1"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+        <jk-row type="flex" justify="center">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container color1"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+        <jk-row type="flex" justify="end">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container color1"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+        <jk-row type="flex" justify="space-between">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container color1"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+        <jk-row type="flex" justify="space-around">
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container color1"></div>
+            </jk-col>
+            <jk-col span="6">
+                <div class="demo-container"></div>
+            </jk-col>
+        </jk-row>
+    </div>
+</template>
+<style lang="scss" scoped>
+.demo {
+    :deep(.jk-row) {
+        margin-bottom: 20px;
+        padding: 10px 0;
+        background-color: #f9fafc;
+    }
+    .demo-container {
+        border-radius: 4px;
+        min-height: 36px;
+        background: #d3dce6;
+
+        &.color1 {
+            background: #99a9bf;
+        }
+    }
+}
+</style>

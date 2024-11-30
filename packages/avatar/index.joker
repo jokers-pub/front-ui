@@ -1,0 +1,147 @@
+<template>
+    <span class="@avatarClass" style="@sizeStyle" @click="handleClick">
+        @if(model.isImageExist && props.src) {
+            <img src="@props.src" @error="handleError" alt="@props.alt" srcSet="@props.srcSet" style="@imgStyle" />
+        }
+        else if(props.icon) {
+            <i class="@props.icon" />
+        }
+        else if(props.text) {
+            @props.text
+        }
+        else {
+            @RenderSection()
+        }
+    </span>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { componentName } from "../utils/index";
+
+export default class extends Component<{
+    size: number | string;
+    shape: string;
+    class: string;
+    icon: string;
+    src: string;
+    text?: string;
+    alt: string;
+    srcSet: string;
+    error: () => {};
+    fit: string;
+}> {
+    name = componentName("avatar");
+    propsOption = {
+        shape: "circle",
+        fit: "cover"
+    };
+    model = {
+        isImageExist: true
+    };
+
+    get avatarClass() {
+        let { size, icon, shape, text } = this.props;
+        let classList = ["jk-avatar"];
+
+        if (size && typeof size === "string") {
+            classList.push(size);
+        }
+
+        if (icon) {
+            classList.push("icon");
+        }
+
+        if (shape) {
+            classList.push(shape);
+        }
+        if (text) {
+            classList.push("text");
+        }
+        if (this.props.class) {
+            classList.push(this.props.class);
+        }
+
+        return classList.join(" ");
+    }
+
+    get sizeStyle() {
+        let size = this.props.size;
+        return typeof size === "number"
+            ? {
+                  height: size + "px",
+                  width: size + "px",
+                  lineHeight: size + "px"
+              }
+            : {};
+    }
+
+    get imgStyle() {
+        return {
+            "object-fit": this.props.fit,
+            display: !this.model.isImageExist || !this.props.src ? "none" : "block"
+        };
+    }
+
+    handleError() {
+        let errorFlag = this.props.error?.();
+        if (errorFlag !== false) {
+            this.model.isImageExist = false;
+        }
+    }
+
+    handleClick() {
+        this.$trigger("click");
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-avatar {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+
+    width: 40px;
+    height: 40px;
+
+    :deep(> img) {
+        display: block;
+        height: 100%;
+    }
+    &.circle {
+        border-radius: 50%;
+    }
+
+    &.square {
+        border-radius: 4px;
+    }
+
+    &.icon,
+    &.text {
+        font-size: 18px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #fff;
+        background: #c0c4cc;
+    }
+
+    &.large {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    &.medium {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+    }
+
+    &.small {
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+    }
+}
+</style>

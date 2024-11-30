@@ -1,0 +1,208 @@
+<script>
+import { Component, createCommand, createElement } from "@joker.front/core";
+import { scrollIntoView } from "../utils/scrollbar";
+import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+import { componentName } from "../utils";
+import JokerBar from "./bar.joker";
+
+export default class extends Component<{
+    wrapClass: string;
+    viewClass: string;
+    class: string;
+    noresize: boolean;
+    tag: string;
+    height: string;
+    maxHeight: string;
+    width: string;
+    maxWidth: string;
+}> {
+    name = componentName("scrollbar");
+
+    components = {
+        JokerBar
+    };
+
+    propsOption = {
+        tag: "div"
+    };
+
+    model = {
+        width: "0px",
+        height: "0px",
+        moveX: 0,
+        moveY: 0
+    };
+
+    template = () => {
+        return [
+            createElement(
+                "div",
+                {
+                    class: "jk-scrollbar @(props.class||'')",
+                    ref: "container",
+                    "@mouseenter": "handleMouseEnter",
+                    "@mouseleave": "handleMouseLeave"
+                },
+                [
+                    createElement(
+                        "div",
+                        {
+                            style: "@wrapStyle",
+                            ref: "wrap",
+                            class: "warp @(props.wrapClass||'')",
+                            "@scroll": "handleScroll"
+                        },
+                        [
+                            createElement(
+                                this.props.tag!,
+                                {
+                                    class: "view @(props.viewClass||'')"
+                                },
+                                [createCommand("RenderSection")]
+                            )
+                        ]
+                    ),
+                    createElement("JokerBar", {
+                        move: "@model.moveX",
+                        size: "@model.width"
+                    }),
+                    createElement("JokerBar", {
+                        vertical: "@true",
+                        move: "@model.moveY",
+                        size: "@model.height"
+                    })
+                ]
+            )
+        ];
+    };
+
+    mounted() {
+        this.update();
+
+        if (this.wrapEl && !this.props.noresize) {
+            //@ts-ignore
+            addResizeListener(this.wrapEl.firstChild, this.update);
+            addResizeListener(this.wrapEl, this.update);
+        }
+
+        this.$watch(
+            () => [this.props.height, this.props.maxHeight, this.props.width, this.props.maxWidth],
+            () => {
+                this.update();
+                this.handleScroll();
+            }
+        );
+    }
+
+    get wrapEl(): HTMLElement | undefined {
+        return this.$getRef("wrap")?.output;
+    }
+
+    get wrapStyle() {
+        return {
+            height: this.props.height,
+            maxHeight: this.props.maxHeight,
+            width: this.props.width,
+            maxWidth: this.props.maxWidth
+        };
+    }
+
+    get scrollTop() {
+        return this.wrapEl!.scrollTop;
+    }
+
+    get scrollbarHeight(): number {
+        return this.$getRef("container")!.output!.offsetHeight;
+    }
+
+    update() {
+        requestAnimationFrame(() => {
+            let wrap = this.wrapEl;
+            if (wrap) {
+                let heightPercentage = (wrap.clientHeight * 100) / wrap.scrollHeight;
+                let widthPercentage = (wrap.clientWidth * 100) / wrap.scrollWidth;
+
+                this.model.height = heightPercentage < 100 ? heightPercentage + "%" : "";
+                this.model.width = widthPercentage < 100 ? widthPercentage + "%" : "";
+            }
+
+            this.$trigger("resize");
+        });
+    }
+
+    beforeDestroy() {
+        if (!this.props.noresize) {
+            removeResizeListener(this.wrapEl.firstChild as HTMLElement, this.update);
+            removeResizeListener(this.wrapEl, this.update);
+        }
+    }
+
+    handleScroll() {
+        let wrap = this.wrapEl;
+
+        if (wrap) {
+            this.model.moveY = (wrap.scrollTop * 100) / wrap.clientHeight;
+            this.model.moveX = (wrap.scrollLeft * 100) / wrap.clientWidth;
+
+            this.$trigger("scroll", {
+                top: wrap.scrollTop,
+                left: wrap.scrollLeft,
+                y: wrap.scrollTop / (wrap.scrollHeight - wrap.clientHeight),
+                x: wrap.scrollLeft / (wrap.scrollWidth - wrap.clientWidth)
+            });
+        }
+    }
+
+    handleMouseEnter() {
+        this.$trigger("mouseenter");
+    }
+    handleMouseLeave() {
+        this.$trigger("mouseleave");
+    }
+
+    scrollToEl(el: HTMLElement) {
+        let wrapEl = this.wrapEl;
+        if (wrapEl) {
+            scrollIntoView(wrapEl, el);
+            this.handleScroll();
+        }
+    }
+
+    scrollTo(option?: ScrollToOptions) {
+        let wrapEl: HTMLElement | undefined = this.wrapEl;
+        if (wrapEl) {
+            wrapEl.scrollTo(option);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-scrollbar {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    .warp {
+        overflow: scroll;
+        height: 100%;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        .view {
+            min-height: 100%;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        :deep(> .jk-scrollbar-bar) {
+            opacity: 1;
+            transition: opacity 340ms ease-out;
+        }
+    }
+}
+</style>

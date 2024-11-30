@@ -1,0 +1,168 @@
+<template></template>
+<script>
+import { Component, VNode, createCommand, createElement } from "@joker.front/core";
+import { componentName } from "../utils";
+
+type SizeItem = {
+    span: number;
+    offset: number;
+};
+export default class extends Component<{
+    span: number;
+    tag: string;
+    offset: number;
+    pull: number;
+    push: number;
+    xs: SizeItem | number;
+    sm: SizeItem | number;
+    md: SizeItem | number;
+    lg: SizeItem | number;
+    xl: SizeItem | number;
+}> {
+    propsOption = {
+        span: { type: Number, default: 24 },
+        tag: "div",
+        offset: Number,
+        pull: Number,
+        push: Number
+    };
+    mounted() {
+        this.$render([
+            createElement(
+                this.props.tag!,
+                {
+                    class: `jk-col @classVal`,
+                    style: "@styleVal"
+                },
+                [createCommand("RenderSection")]
+            )
+        ]);
+    }
+
+    get classVal() {
+        let classList: string[] = [];
+
+        this.setClassColItem("span", classList);
+        this.setClassColItem("offset", classList);
+        this.setClassColItem("pull", classList);
+        this.setClassColItem("push", classList);
+        this.setClassSizeItem("xs", classList);
+        this.setClassSizeItem("sm", classList);
+        this.setClassSizeItem("md", classList);
+        this.setClassSizeItem("lg", classList);
+        this.setClassSizeItem("xl", classList);
+
+        return classList.join(" ");
+    }
+
+    get styleVal() {
+        let style = "";
+
+        if (this.gutter) {
+            let val = this.gutter / 2 + "px";
+            style += `padding-left:${val};`;
+            style += `padding-right:${val};`;
+        }
+
+        return style;
+    }
+
+    get gutter() {
+        let parent = this.$rootVNode?.closest<VNode.Component>((node) => {
+            return (
+                node instanceof VNode.Component && node.component && node.component.name === componentName("layout_row")
+            );
+        });
+
+        return parent ? parent.component.props.gutter : 0;
+    }
+
+    private setClassColItem(prop: "span" | "offset" | "pull" | "push", classList: string[]) {
+        let propVal = this.props[prop];
+        if (propVal || propVal === 0) {
+            classList.push(prop === "span" ? `col-${propVal}` : `col-${prop}-${propVal}`);
+        }
+    }
+
+    private setClassSizeItem(prop: "xs" | "sm" | "md" | "lg" | "xl", classList: string[]) {
+        let propVal = this.props[prop];
+        if (typeof propVal === "object") {
+            for (let name in propVal) {
+                classList.push(name === "span" ? `col-${prop}-${propVal}` : `col-${prop}-${name}-${propVal}`);
+            }
+        } else if (propVal !== undefined) {
+            classList.push(`col-${prop}-${propVal}`);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+
+@mixin setBreakpointsContent($size) {
+    @include res($size) {
+        &.col-#{$size}-0 {
+            display: none;
+        }
+
+        @for $i from 0 through 24 {
+            &.col-#{$size}-#{$i} {
+                width: calc((1 / 24 * $i * 100) * 1%);
+            }
+
+            &.col-#{$size}-offset-#{$i} {
+                margin-left: calc((1 / 24 * $i * 100) * 1%);
+            }
+
+            &.col-#{$size}-pull-#{$i} {
+                position: relative;
+                right: calc((1 / 24 * $i * 100) * 1%);
+            }
+
+            &.col-#{$size}-push-#{$i} {
+                position: relative;
+                left: calc((1 / 24 * $i * 100) * 1%);
+            }
+        }
+    }
+}
+
+.jk-col {
+    float: left;
+    box-sizing: border-box;
+
+    &.col-0 {
+        display: none;
+    }
+
+    @for $i from 0 through 24 {
+        &.col-#{$i} {
+            width: calc((1 / 24 * $i * 100) * 1%);
+        }
+
+        &.col-offset-#{$i} {
+            margin-left: calc((1 / 24 * $i * 100) * 1%);
+        }
+
+        &.col-pull-#{$i} {
+            position: relative;
+            right: calc((1 / 24 * $i * 100) * 1%);
+        }
+        &.col-push-#{$i} {
+            position: relative;
+            left: calc((1 / 24 * $i * 100) * 1%);
+        }
+    }
+
+    @include setBreakpointsContent(xs);
+
+    @include setBreakpointsContent(sm);
+
+    @include setBreakpointsContent(md);
+
+    @include setBreakpointsContent(lg);
+
+    @include setBreakpointsContent(xl);
+}
+</style>

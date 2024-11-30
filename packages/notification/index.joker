@@ -1,0 +1,225 @@
+<template>
+    <div
+        class="@(['jk-notification', props.customClass, horizontalProperty, (typeClass || props.iconClass) && 'is-with-icon'])"
+        style="@positionStyle"
+        role="alert"
+        ref="contianer"
+        transition-name="jk-notification-fade"
+        @mouseenter="clearTimer"
+        @mouseleave="startTimer"
+        @click="handleClick">
+        @if(props.type || props.iconClass) {
+            <i class="icon @typeClass @(props.iconClass||'')"></i>
+        }
+        <div class="container">
+            <div class="title">
+                @(props.title || "")
+            </div>
+            @if(props.message) {
+                <div class="content">
+                    @if(props.useHtml) {
+                        @Html(props.message)
+                    }
+                    else {
+                        @props.message
+                    }
+                </div>
+            }
+            @if(props.closable) {
+                <div class="close jk-icon-close" @click.stop="close"></div>
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { PropsOption } from ".";
+import { zIndexManage } from "../utils/zindex";
+
+export default class extends Component<PropsOption> {
+    model = {
+        offset: this.props.offset
+    };
+
+    propsOption = {
+        closable: true,
+        position: "top-right",
+        duration: 4500
+    };
+
+    get typeClass() {
+        if (this.props.type) {
+            return `jk-icon-${this.props.type}`;
+        }
+        return "";
+    }
+
+    get horizontalProperty() {
+        return this.props.position?.includes("right") ? "right" : "left";
+    }
+
+    get verticalProperty() {
+        return /^top-/.test(this.props.position!) ? "top" : "bottom";
+    }
+
+    get positionStyle() {
+        return {
+            [this.verticalProperty]: `${this.model.offset}px`,
+            zIndex: zIndexManage.nextZIndex()
+        };
+    }
+
+    id = this.props.id!;
+
+    get offsetHeight() {
+        return this.$getRef("contianer")?.output.offsetHeight || 0;
+    }
+
+    setOffset(offset: number) {
+        this.model.offset = offset;
+    }
+
+    closed = false;
+
+    timer?: number;
+
+    close() {
+        if (this.closed) return;
+
+        this.closed = true;
+
+        this.props.onClose?.();
+
+        this.$trigger("close");
+
+        this.$destroy(true);
+    }
+
+    clearTimer() {
+        window.clearTimeout(this.timer);
+    }
+
+    startTimer() {
+        if (this.props.duration) {
+            this.timer = setTimeout(() => {
+                if (this.closed === false) {
+                    this.close();
+                }
+            }, this.props.duration);
+        }
+    }
+
+    keydown(e: KeyboardEvent) {
+        if (e.key === "Escape") {
+            if (this.closed === false) {
+                this.close();
+            }
+        }
+    }
+
+    mounted() {
+        this.startTimer();
+
+        window.addEventListener("keydown", this.keydown);
+    }
+
+    beforeDestroy() {
+        window.removeEventListener("keydown", this.keydown);
+    }
+
+    handleClick() {
+        this.props.onClick?.();
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-notification {
+    display: flex;
+    width: 330px;
+    padding: 14px 26px 14px 13px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: solid 1px var(--jk-border-color-lighter);
+    position: fixed;
+    background-color: #fff;
+    box-shadow: var(--jk-box-shadow-light);
+    transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s;
+    overflow: hidden;
+
+    &.right {
+        right: 16px;
+    }
+    &.left {
+        left: 16px;
+    }
+
+    .icon {
+        height: 24px;
+        width: 24px;
+        font-size: 24px;
+
+        &.jk-icon-success {
+            color: var(--jk-color-success);
+        }
+        &.jk-icon-error {
+            color: var(--jk-color-danger);
+        }
+        &.jk-icon-info {
+            color: var(--jk-color-info);
+        }
+        &.jk-icon-warning {
+            color: var(--jk-color-warning);
+        }
+    }
+
+    .container {
+        margin-left: 14px;
+        margin-right: 8px;
+
+        .title {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0;
+            color: var(--jk-color-text-primary);
+        }
+        .content {
+            font-size: 14px;
+            line-height: 21px;
+            color: var(--jk-color-text-regular);
+            text-align: justify;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 18px;
+            right: 15px;
+            cursor: pointer;
+            color: var(--jk-color-text-secondary);
+            font-size: 16px;
+
+            &:hover {
+                color: var(--jk-color-text-regular);
+            }
+        }
+    }
+
+    &.jk-notification-fade-enter-from {
+        &.right {
+            right: 0;
+            transform: translateX(100%);
+        }
+        &.left {
+            left: 0;
+            transform: translateX(-100%);
+        }
+    }
+    &.jk-notification-fade-leave-to {
+        opacity: 0;
+    }
+}
+</style>

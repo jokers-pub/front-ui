@@ -1,0 +1,8 @@
+<template>
+    <jk-tooltip content="默认主题" placement="top">
+        <jk-button>默认主题</jk-button>
+    </jk-tooltip>
+    <jk-tooltip content="默认主题" placement="top" disabled>
+        <jk-button>Disabled</jk-button>
+    </jk-tooltip>
+</template>

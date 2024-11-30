@@ -1,0 +1,26 @@
+<template>
+    <div style="width:180px">
+        <jk-input placeholder="请输入内容" @input="handleInput" />
+    </div>
+    <p>
+        @model.val
+    </p>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        val: ""
+    };
+    handleInput(e: VNode.Event) {
+        this.model.val = e.data!;
+    }
+}
+</script>
+<style scoped lang="scss">
+p {
+    padding: 10px 0;
+    line-height: 1.2;
+}
+</style>

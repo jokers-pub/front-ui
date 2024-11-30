@@ -1,0 +1,150 @@
+<template>
+    <DemoRow>
+        <jk-table data="@model.tableData" max-height="250">
+            <jk-table-column label="日期" key="date" width="120" fixed="left" />
+            <jk-table-column label="姓名" key="name" width="120" fixed="left" />
+            <jk-table-column label="省份" key="province" width="120" />
+            <jk-table-column label="城市" key="city" width="120" />
+            <jk-table-column label="邮编" key="zip" width="120" />
+            <jk-table-column label="地址" key="address" width="300" />
+            <jk-table-column label="余额" key="money" headerAlign="right" fixed="right" align="right" width="150" />
+        </jk-table>
+    </DemoRow>
+    <DemoRow>
+        <jk-button @click="loadAll">加载全部</jk-button>
+        <jk-button @click="loadPart">加载部分</jk-button>
+        <jk-button @click="clearData">清空全部数据</jk-button>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+let demoData = [
+    {
+        name: "张三",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 1000
+    },
+    {
+        name: "李四",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市",
+        money: 10
+    },
+    {
+        name: "李梅",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 300
+    },
+    {
+        name: "王武",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 11.9
+    },
+    {
+        name: "张三",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 1000
+    },
+    {
+        name: "李四",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 10
+    },
+    {
+        name: "李梅",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 300
+    },
+    {
+        name: "王武",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 11.9
+    },
+    {
+        name: "张三",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 1000
+    },
+    {
+        name: "李四",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 10
+    },
+    {
+        name: "李梅",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 300
+    },
+    {
+        name: "王武",
+        date: "2023-11-21",
+        province: "山东省",
+        city: "济南市",
+        zip: "251900",
+        address: "山东省济南市",
+        money: 11.9
+    }
+];
+export default class extends Component {
+    model = {
+        tableData: [] as any
+    };
+
+    mounted() {
+        this.loadAll();
+    }
+
+    loadAll() {
+        this.model.tableData = demoData.slice(0);
+    }
+    loadPart() {
+        this.model.tableData = demoData.slice(0, 3);
+    }
+    clearData() {
+        this.model.tableData.length = 0;
+    }
+}
+</script>

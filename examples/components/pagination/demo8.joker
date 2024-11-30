@@ -1,0 +1,38 @@
+<template>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            background
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            disabled
+            background
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            small
+            background
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            small
+            disabled
+            background
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+</template>

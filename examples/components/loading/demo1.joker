@@ -1,0 +1,14 @@
+<template>
+    <div ref="target" style="background:var(--jk-color-primary);width:200px;height:200px;"></div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Loading } from "../../../src/index";
+export default class extends Component {
+    mounted() {
+        Loading({
+            target: this.$getRef("target")?.output
+        });
+    }
+}
+</script>

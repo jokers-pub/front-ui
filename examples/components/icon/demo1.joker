@@ -1,0 +1,16 @@
+<template>
+    <div class="icon-container">
+        <i class="jk-icon-edit" />
+        <i class="jk-icon-share" />
+        <i class="jk-icon-delete" />
+        <jk-button type="primary" icon="jk-icon-search">搜索</jk-button>
+    </div>
+</template>
+<style scoped lang="scss">
+.icon-container i {
+    color: #606266;
+    margin: 0 20px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+</style>

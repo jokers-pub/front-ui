@@ -1,0 +1,18 @@
+<template>
+    <div class="demo-container">
+        <DemoRow>
+            <jk-input placeholder="请输入" suffix-icon="jk-icon-date" />
+            <jk-input placeholder="请输入" size="medium" suffix-icon="jk-icon-date" />
+        </DemoRow>
+        <DemoRow>
+            <jk-input placeholder="请输入" size="small" suffix-icon="jk-icon-date" autofocus />
+            <jk-input placeholder="请输入" size="mini" suffix-icon="jk-icon-date" />
+        </DemoRow>
+    </div>
+</template>
+<style lang="scss" scoped>
+:deep(.demo-container .jk-input) {
+    width: 180px;
+    margin-right: 15px;
+}
+</style>

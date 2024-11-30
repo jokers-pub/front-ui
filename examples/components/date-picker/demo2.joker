@@ -1,0 +1,47 @@
+<template>
+    <div class="demoContainer">
+        <div class="row">
+            <span>月：</span>
+            <jk-date-picker type="month" placeholder="请选择年月"></jk-date-picker>
+        </div>
+        <div class="row">
+            <span>周：</span>
+            <jk-date-picker
+                format="YYYY 年 ww周"
+                value="2023-36"
+                type="week"
+                showWeekNumber
+                placeholder="请选择周"></jk-date-picker>
+        </div>
+        <div class="row">
+            <span>年：</span>
+            <jk-date-picker type="year" placeholder="请选择日期"></jk-date-picker>
+        </div>
+        <div class="row">
+            <span>时间：</span>
+            <jk-date-picker type="datetime" placeholder="请选择日期"></jk-date-picker>
+        </div>
+    </div>
+</template>
+<style lang="scss" scoped>
+.demoContainer {
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+            width: 60px;
+            display: inline-block;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+</style>

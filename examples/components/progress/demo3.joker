@@ -1,0 +1,48 @@
+<template>
+    <DemoRow><jk-progress percentage="@model.percentage" color="@model.customColor"></jk-progress></DemoRow>
+    <DemoRow><jk-progress percentage="@model.percentage" color="@customColorMethod"></jk-progress></DemoRow>
+    <DemoRow><jk-progress percentage="@model.percentage" color="@model.customColors"></jk-progress></DemoRow>
+    <jk-button-group>
+        <jk-button icon="jk-icon-minus" @click="decrease"></jk-button>
+        <jk-button icon="jk-icon-plus" @click="increase"></jk-button>
+    </jk-button-group>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        percentage: 20,
+        customColor: '#409eff',
+        customColors: [
+          {color: '#f56c6c', percentage: 20},
+          {color: '#e6a23c', percentage: 40},
+          {color: '#5cb87a', percentage: 60},
+          {color: '#1989fa', percentage: 80},
+          {color: '#6f7ad3', percentage: 100}
+        ]
+    };
+
+    customColorMethod(percentage: number) {
+        if (percentage < 30) {
+          return '#909399';
+        } else if (percentage < 70) {
+          return '#e6a23c';
+        } else {
+          return '#67c23a';
+        }
+    }
+    increase() {
+        this.model.percentage += 10;
+        if (this.model.percentage > 100) {
+          this.model.percentage = 100;
+        }
+    }
+    decrease() {
+        this.model.percentage -= 10;
+        if (this.model.percentage < 0) {
+          this.model.percentage = 0;
+        }
+    }
+}
+</script>

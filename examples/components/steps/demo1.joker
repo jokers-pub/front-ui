@@ -1,0 +1,23 @@
+<template>
+    <DemoRow>
+        <jk-steps active="@model.active" finishStatus="success">
+            @for(let item of model.list) {
+                <jk-step title="@item.title"></jk-step>
+            }
+        </jk-steps>
+    </DemoRow>
+    <DemoRow>
+        <jk-button @click="next">下一步</jk-button>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = { active: 0, list: [{ title: "步骤1" }, { title: "步骤2" }, { title: "步骤3" }] };
+
+    next() {
+        if (this.model.active++ > 2) this.model.active = 0;
+    }
+}
+</script>

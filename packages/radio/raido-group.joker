@@ -1,0 +1,77 @@
+<template>
+    <div class="@(['jk-radio-group', props.class])" ref="group" @keydown="handleKeydown">
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { componentName } from "../utils";
+
+export default class extends FormCtrl<{
+    disabled: boolean;
+    size: string;
+    class: string;
+    value: string | number | boolean;
+}> {
+    name = componentName("radio_group");
+
+    model: { value: string | number | boolean | undefined } = {
+        value: undefined
+    };
+
+    handleKeydown(e: VNode.Event) {
+        let event = e.event as KeyboardEvent;
+        let target = e.event.target;
+        let groupEl = this.$getRef("group")!.output;
+        let className = target.tagName === "INPUT" ? "[type=radio]" : "[role=radio]";
+        let radios = groupEl.querySelectorAll(className);
+
+        if (radios && radios.length) {
+            let index = Array.from(radios).indexOf(target);
+            let length = radios.length;
+            let roleRadios = groupEl.querySelectorAll("[role=radio]");
+            switch (event.key) {
+                case "ArrowLeft":
+                case "ArrowUp":
+                    event.stopPropagation();
+                    event.preventDefault();
+
+                    if (index === 0) {
+                        roleRadios[length - 1].click();
+                        roleRadios[length - 1].focus();
+                    } else {
+                        roleRadios[index - 1].click();
+                        roleRadios[index - 1].focus();
+                    }
+                    break;
+                case "ArrowRight":
+                case "ArrowDown":
+                    event.stopPropagation();
+                    event.preventDefault();
+                    if (index === radios.length - 1) {
+                        roleRadios[0].click();
+                        roleRadios[0].focus();
+                    } else {
+                        roleRadios[index + 1].click();
+                        roleRadios[index + 1].focus();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    checked(val: string) {
+        this.model.value = val;
+    }
+
+    handleChange(e: VNode.Event, val: any) {
+        this.$trigger("change", val, e);
+
+        this.triggerValidate();
+    }
+}
+</script>
+

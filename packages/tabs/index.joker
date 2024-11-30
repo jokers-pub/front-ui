@@ -1,0 +1,306 @@
+<template>
+    <div
+        class="@(['jk-tabs', props.fullHeight && 'is-full-height', props.position, props.card && 'card', props.class])">
+        <div class="jk-tabs-menus">
+            @for(let item of model.tabs) {
+                <div
+                    ref="item"
+                    class="item @(model.showName ===item.name?'selected':'')"
+                    @click="handleSelectTab(item)">
+                    @if(item.label) {
+                        @item.label
+                    }
+                    else if(item.labelSection) {
+                        @RenderSection(item.labelSection)
+                    }
+                </div>
+            }
+            @if(!props.card) {
+                <div class="bottom-line" style="@model.bottomLineStyle"></div>
+            }
+        </div>
+        <div class="jk-tabs-content">
+            @if(props.fullHeight) {
+                <ScrollBar>
+                    @RenderSection()
+                </ScrollBar>
+            }
+            else {
+                @RenderSection()
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component, SectionType, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+import { removeFilter } from "@joker.front/shared";
+import ScrollBar from "../scrollbar/index.joker";
+export default class extends Component<{
+    value: string;
+    position: string;
+    card: boolean;
+    fullHeight: boolean;
+    class: string;
+}> {
+    propsOption = {
+        position: "top"
+    };
+    model = {
+        showName: "",
+        tabs: [] as Array<{ name: string; label: string; labelSection?: SectionType }>,
+        bottomLineStyle: undefined as any
+    };
+    name = componentName("tabs");
+    components = {
+        ScrollBar
+    };
+    created() {
+        this.$watch(
+            () => this.props.value,
+            () => {
+                this.setShowName();
+            }
+        );
+        this.$watch(
+            () => [this.model.showName, this.props.position],
+            () => {
+                this.refreshBottomLineStyle();
+            }
+        );
+    }
+
+    mounted() {
+        this.setShowName();
+        setTimeout(() => {
+            //延迟刷新下样式，避免dialog时延迟影响
+            this.$root && this.refreshBottomLineStyle();
+        }, 200);
+    }
+
+    setShowName() {
+        if (this.props.value && this.model.tabs.some((n) => n.name === this.props.value)) {
+            this.model.showName = this.props.value;
+        } else {
+            this.model.showName = this.model.tabs[0]?.name;
+        }
+    }
+
+    refreshBottomLineStyle() {
+        let index = this.model.tabs.findIndex((n) => n.name === this.model.showName);
+
+        if (index !== -1) {
+            let output = this.$getRefs("item")[index].output as HTMLElement;
+
+            if (output) {
+                let clientRect = output.getBoundingClientRect();
+
+                if (["top", "bottom"].includes(this.props.position)) {
+                    this.model.bottomLineStyle = {
+                        width: clientRect.width + "px",
+                        transform: `translateX(${output.offsetLeft}px)`
+                    };
+                } else {
+                    this.model.bottomLineStyle = {
+                        height: clientRect.height + "px",
+                        transform: `translateY(${output.offsetTop}px)`
+                    };
+                }
+
+                return;
+            }
+        }
+
+        this.model.bottomLineStyle = undefined;
+    }
+
+    registerTab(name: string, label: string, labelSection: any) {
+        this.unRegisterTab(name);
+        this.model.tabs.push({ name, label, labelSection });
+    }
+    unRegisterTab(name: string) {
+        removeFilter(this.model.tabs, (n) => n.name === name);
+    }
+    handleSelectTab(e: VNode.Event, item: any) {
+        if (this.model.showName !== item.name) {
+            this.model.showName = item.name;
+
+            this.$trigger("change", item);
+        }
+        this.$trigger("click", item);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/var.scss";
+.jk-tabs {
+    display: flex;
+
+    > .jk-tabs-menus {
+        display: flex;
+        white-space: nowrap;
+        position: relative;
+        transition: 0.3s;
+
+        .item {
+            padding: 0 20px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--jk-text-color-primary);
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--jk-color-primary);
+            }
+
+            &.selected {
+                color: var(--jk-color-primary);
+            }
+        }
+
+        .bottom-line {
+            position: absolute;
+            background-color: var(--jk-color-primary);
+            z-index: 1;
+            transition: transform 0.3s $--transition;
+        }
+    }
+
+    &.card {
+        border: solid 1px var(--jk-border-color-light);
+        > .jk-tabs-menus {
+            background: var(--jk-background-color-base);
+
+            .item {
+                &.selected {
+                    background: #fff;
+                }
+            }
+        }
+    }
+    &.top {
+        flex-direction: column;
+        > .jk-tabs-menus {
+            margin: 0 0 15px 0;
+            border-bottom: solid 2px var(--jk-border-color-light);
+
+            .bottom-line {
+                bottom: -2px;
+                left: 0;
+                height: 2px;
+            }
+        }
+    }
+
+    &.bottom {
+        flex-direction: column-reverse;
+        > .jk-tabs-menus {
+            margin: 10px 0 0 0;
+            border-top: solid 2px var(--jk-border-color-light);
+            .bottom-line {
+                top: -2px;
+                left: 0;
+                height: 2px;
+            }
+        }
+    }
+
+    &.right {
+        flex-direction: row-reverse;
+        > .jk-tabs-content {
+            flex: 1;
+            overflow: auto;
+        }
+        > .jk-tabs-menus {
+            flex-direction: column;
+            margin: 0 0 0 15px;
+            border-left: solid 2px var(--jk-border-color-light);
+            .bottom-line {
+                top: 0;
+                left: -2px;
+                width: 2px;
+            }
+        }
+    }
+
+    &.left {
+        > .jk-tabs-content {
+            flex: 1;
+            overflow: auto;
+        }
+        > .jk-tabs-menus {
+            flex-direction: column;
+            margin: 0 15px 0 0;
+            border-right: solid 2px var(--jk-border-color-light);
+            .bottom-line {
+                top: 0;
+                right: -2px;
+                width: 2px;
+            }
+        }
+    }
+
+    &.card {
+        &.left,
+        &.right {
+            > .jk-tabs-menus {
+                border: none;
+                .item {
+                    border-top: solid 1px transparent;
+                    border-bottom: solid 1px transparent;
+                    &:first-child {
+                        border-top: none;
+                    }
+
+                    &.selected {
+                        border-color: var(--jk-border-color-light);
+                    }
+                }
+            }
+        }
+        &.top,
+        &.bottom {
+            > .jk-tabs-menus {
+                border: none;
+                .item {
+                    border-left: solid 1px transparent;
+                    border-right: solid 1px transparent;
+                    &:first-child {
+                        border-left: none;
+                    }
+
+                    &.selected {
+                        border-color: var(--jk-border-color-light);
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-full-height {
+        height: 100%;
+
+        &.top,
+        &.bottom {
+            .jk-tabs-content {
+                flex: 1;
+                overflow: auto;
+            }
+        }
+
+        &.left,
+        &.right {
+            .jk-tabs-content {
+                height: 100%;
+                overflow: auto;
+            }
+        }
+    }
+}
+</style>

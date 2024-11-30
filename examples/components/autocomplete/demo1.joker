@@ -1,0 +1,65 @@
+<template>
+    <div class="demoContainer">
+        <div class="row">
+            <span>激活即列出输入建议：</span>
+            <jk-autocomplete placeholder="请输入内容" searchLoad="@querString"></jk-autocomplete>
+        </div>
+        <div class="row">
+            <span>输入后匹配输入建议：</span>
+            <jk-autocomplete
+                placeholder="请输入内容"
+                searchLoad="@querString"
+                triggerOnFocus="@false"
+                clearable></jk-autocomplete>
+        </div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { mock } from "./mock";
+import { sleep } from "@joker.front/shared";
+export default class extends Component {
+    options = mock();
+
+    async querString(keyword: string, cb: Function) {
+        //模拟数据查询
+        await sleep(1000);
+
+        let result: any[] = [];
+
+        for (let item of this.options) {
+            if (item.value.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+                result.push(item);
+            }
+        }
+
+        cb(result);
+    }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.demoContainer {
+    :deep(.jk-autocomplete) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+</style>

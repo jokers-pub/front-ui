@@ -1,0 +1,16 @@
+<template>
+    <div class="demo-container">
+        <jk-tag closable>默认尺寸</jk-tag>
+        <jk-tag size="medium" closable>中等尺寸</jk-tag>
+        <jk-tag size="small" closable>小型标签</jk-tag>
+        <jk-tag size="mini" closable>超小标签</jk-tag>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.demo-container {
+    :deep(.jk-tag) {
+        margin-right: 10px;
+    }
+}
+</style>

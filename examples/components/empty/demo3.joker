@@ -1,0 +1,3 @@
+<template>
+    <jk-empty imageSize="200"></jk-empty>
+</template>

@@ -1,0 +1,600 @@
+<template>
+    <div
+        ref="container"
+        class="@([
+            'jk-input',
+            props.class,
+            sizeClass,
+            {
+                'is-disabled': props.disabled,
+                'is-exceed': inputExceed,
+                'is-error': isError,
+                group: $sections.prepend || $sections.append,
+                'group-append': $sections.append,
+                'group-prepend': $sections.prepend,
+                prefix: $sections.prefix || props.prefixIcon,
+                suffix: $sections.suffix || props.suffixIcon || props.clearable
+            }
+        ])"
+        @mouseenter="handleHover(true)"
+        @mouseleave="handleHover(false)">
+        @if($sections.prepend) {
+            <div class="prepend">
+                @RenderSection("prepend")
+            </div>
+        }
+        <input
+            ref="input"
+            tabindex="@props.tabindex"
+            disabled="@props.disabled"
+            readonly="@props.readonly"
+            autocomplete="@props.autocomplete"
+            autofocus="@props.autofocus"
+            aria-label="@props.label"
+            placeholder="@props.placeholder"
+            maxlength="@props.maxlength"
+            minlength="@props.minlength"
+            @input="handleInput"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            @keydown="handleKeydown"
+            @keyup="handleKeyup"
+            @compositionstart="handleCompositionStart"
+            @compositionupdate="handleCompositionUpdate"
+            @compositionend="handleCompositionEnd"
+            type="@props.type"
+        />
+        @if($sections.prefix || props.prefixIcon) {
+            <span class="prefix">
+                @RenderSection("prefix")
+                @if(props.prefixIcon) {
+                    <i class="@props.prefixIcon"></i>
+                }
+            </span>
+        }
+        @if(suffixVisable) {
+            <span class="suffix">
+                @if(!showClear || !isWordLimitVisible) {
+                    @RenderSection("suffix")
+                    @if(props.suffixIcon) {
+                        <i class="@props.suffixIcon" @click="handleSuffixClick" />
+                    }
+                }
+                @if(showClear) {
+                    <i class="clear jk-icon-circle-close" @mousedown.stop @click.stop="clear" />
+                }
+                @if(isWordLimitVisible) {
+                    <span class="count"><span class="inner">@(textLength)/@(props.maxlength)</span></span>
+                }
+                @if(formItemOption && formItemOption.ctrl.validateState.value) {
+                    <i class="validate @validateIcon" />
+                }
+            </span>
+        }
+        @if($sections.append) {
+            <div class="append">
+                @RenderSection("append")
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+
+export default class extends FormCtrl<{
+    type: string;
+    autofocus: boolean;
+    autocomplete: string;
+    prefixIcon: string;
+    class: string;
+    maxlength: number;
+    minlength: number;
+    suffixIcon: string;
+    clearable: boolean;
+    forceShowClearable: boolean;
+    tabindex: string;
+    showWordLimit: boolean;
+    statusIcon: boolean;
+}> {
+    model: Record<string, any> = {
+        hovering: false,
+        focused: false,
+        isComposing: false
+    };
+
+    propsOption = {
+        type: "text",
+        autocomplete: "off",
+        maxlength: Number,
+        minlength: Number
+    };
+
+    mounted() {
+        this.setNativeInputValue();
+
+        this.$watch(
+            () => this.model.value,
+            () => {
+                this.setNativeInputValue();
+            }
+        );
+
+        this.$watch(
+            () => this.props.type,
+            () => {
+                this.setNativeInputValue();
+            }
+        );
+
+        if (this.props.autofocus) {
+            setTimeout(() => {
+                if (this.$root) {
+                    let input = this.$getRef("input")?.output;
+                    input?.focus();
+                }
+            });
+        }
+    }
+
+    get isWordLimitVisible() {
+        return (
+            this.props.showWordLimit &&
+            this.props.maxlength &&
+            this.props.type === "text" &&
+            !this.props.disabled &&
+            !this.props.readonly
+        );
+    }
+    get validateIcon() {
+        let stateVaule = this.formItemOption.ctrl.validateState.value;
+        return (
+            stateVaule &&
+            {
+                validating: "jk-icon-loading",
+                success: "jk-icon-circle-check",
+                error: "jk-icon-circle-close"
+            }[stateVaule]
+        );
+    }
+    get textLength() {
+        if (typeof this.value === "number") {
+            return String(this.value).length;
+        }
+
+        return (this.value || "").length;
+    }
+
+    get inputExceed() {
+        return this.isWordLimitVisible && this.textLength > this.props.maxlength!;
+    }
+
+    get nativeInputValue() {
+        return this.value === null || this.value === undefined ? "" : String(this.value);
+    }
+
+    get showClear() {
+        return (
+            (this.props.forceShowClearable || (this.props.clearable && !this.props.disabled && !this.props.readonly)) &&
+            this.nativeInputValue &&
+            (this.model.focused || this.model.hovering)
+        );
+    }
+
+    get suffixVisable() {
+        return (
+            this.$sections.suffix ||
+            this.props.suffixIcon ||
+            this.showClear ||
+            this.isWordLimitVisible ||
+            (this.formItemOption?.ctrl.validateState.value && this.props.statusIcon)
+        );
+    }
+
+    clear() {
+        this.value = "";
+        this.setNativeInputValue();
+        this.$trigger("input", this.value);
+        this.$trigger("change", this.value);
+        this.$trigger("clear");
+    }
+
+    focus() {
+        this.$getRef("input")?.output.focus();
+    }
+
+    blur() {
+        this.$getRef("input")?.output.blur();
+    }
+
+    select() {
+        this.$getRef("input")?.output.select();
+    }
+
+    //#region 事件
+
+    handleHover(e: VNode.Event, val: boolean) {
+        this.model.hovering = val;
+    }
+
+    handleFocus(e: VNode.Event) {
+        this.model.focused = true;
+        this.$trigger("focus", this.value, e);
+    }
+
+    handleBlur(e: VNode.Event) {
+        this.model.focused = false;
+        this.$trigger("blur", this.value, e);
+
+        this.triggerValidate();
+    }
+
+    handleChange(e: VNode.Event) {
+        this.$trigger("change", e.event.target.value);
+    }
+
+    handleInput(e: VNode.Event) {
+        if (this.model.isComposing) return;
+
+        if (e.event.target.value === this.value) return;
+
+        this.$trigger("input", e.event.target.value, e);
+
+        this.value = e.event.target.value;
+    }
+
+    handleCompositionStart(e: VNode.Event) {
+        this.$trigger("compositionstart", undefined, e);
+        this.model.isComposing = true;
+    }
+
+    handleCompositionUpdate(e: VNode.Event) {
+        this.$trigger("compositionupdate", undefined, e);
+    }
+
+    handleCompositionEnd(e: VNode.Event) {
+        this.$trigger("compositionend", undefined, e);
+
+        if (this.model.isComposing) {
+            this.model.isComposing = false;
+            this.handleInput(e);
+        }
+    }
+
+    handleKeydown(e: VNode.Event) {
+        if (this.model.isComposing) return;
+
+        this.$trigger("keydown", this.value, e);
+    }
+
+    handleKeyup(e: VNode.Event) {
+        this.$trigger("keyup", this.value, e);
+    }
+
+    handleSuffixClick(e: VNode.Event) {
+        this.$trigger("suffix-click", this.value, e);
+    }
+
+    //#endregion
+
+    private setNativeInputValue() {
+        let input = this.$getRef("input")?.output;
+
+        if (!input) return;
+
+        if (input.value === this.nativeInputValue) return;
+
+        input.value = this.nativeInputValue;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+@import "../../theme/var.scss";
+.jk-input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+
+    @include scroll-bar;
+
+    &.suffix {
+        input {
+            padding-right: 30px;
+        }
+    }
+
+    &.prefix {
+        input {
+            padding-left: 30px;
+        }
+    }
+
+    &.is-disabled {
+        input {
+            background-color: var(--jk-disabled-background-color);
+            border-color: var(--jk-disabled-border-color);
+            color: var(--jk-disabled-color);
+            cursor: not-allowed;
+
+            &::placeholder {
+                color: var(--jk-color-text-placeholder);
+            }
+
+            .suffix,
+            .prefix {
+                cursor: not-allowed;
+            }
+
+            &:hover {
+                border-color: var(--jk-disabled-border-color) !important;
+            }
+        }
+    }
+
+    &.is-exceed {
+        input {
+            border-color: var(--jk-color-danger);
+        }
+
+        .suffix {
+            .count {
+                color: var(--jk-color-danger);
+            }
+        }
+    }
+
+    &.group {
+        line-height: normal;
+        display: inline-table;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+
+        input {
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .append,
+        .prepend {
+            background-color: var(--jk-background-color-base);
+            color: var(--jk-color-info);
+            vertical-align: middle;
+            display: table-cell;
+            position: relative;
+            border: $--border-base;
+            border-radius: 4px;
+            padding: 0 20px;
+            width: 1px;
+            white-space: nowrap;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &.group-prepend {
+            input {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        &.group-append {
+            input {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        .prepend {
+            border-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .append {
+            border-left: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    input {
+        -webkit-appearance: none;
+        background-color: #fff;
+        background-image: none;
+        border-radius: 4px;
+        border: $--border-base;
+        box-sizing: border-box;
+        color: var(--jk-color-text-regular);
+        display: inline-block;
+        font-size: inherit;
+        height: 40px;
+        line-height: 40px;
+        outline: none;
+        padding: 0 15px;
+        transition: $--border-transition-base;
+        width: 100%;
+
+        &::-ms-reveal {
+            display: none;
+        }
+        &::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        &::placeholder {
+            color: var(--jk-color-text-placeholder);
+        }
+
+        &:hover {
+            border-color: var(--jk-border-color-hover);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--jk-color-primary);
+        }
+    }
+
+    .suffix,
+    .prefix {
+        height: 100%;
+        min-width: 25px;
+        text-align: center;
+        transition: all 0.3s;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:after {
+            content: "";
+            height: 100%;
+            width: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .suffix {
+        position: absolute;
+
+        right: 5px;
+        top: 0;
+        text-align: center;
+        color: var(--jk-color-text-placeholder);
+        transition: all 0.3s;
+        pointer-events: none;
+
+        pointer-events: all;
+
+        &.cursor-pointer {
+            cursor: pointer;
+        }
+
+        .clear {
+            color: var(--jk-color-text-placeholder);
+            cursor: pointer;
+            font-size: 14px;
+            transition: $--color-transition-base;
+
+            &:hover {
+                color: var(--jk-color-text-secondary);
+            }
+        }
+
+        .count {
+            height: 100%;
+            display: inline-block;
+            align-items: center;
+            color: val(--jk-color-info);
+            font-size: 12px;
+
+            .inner {
+                line-height: initial;
+                display: inline-block;
+                padding: 0 5px;
+            }
+        }
+
+        .validate {
+            pointer-events: none;
+
+            &.jk-icon-circle-check {
+                color: var(--jk-color-success);
+            }
+
+            &.jk-icon-circle-close {
+                color: var(--jk-color-danger);
+            }
+        }
+    }
+
+    .prefix {
+        position: absolute;
+        height: 100%;
+        left: 5px;
+        top: 0;
+        text-align: center;
+        color: var(--jk-color-text-placeholder);
+        transition: all 0.3s;
+    }
+
+    &.medium {
+        font-size: 14px;
+        input {
+            height: 36px;
+            line-height: 36px;
+        }
+
+        .suffix,
+        .prefix {
+            line-height: 36px;
+        }
+
+        &.group {
+            .append,
+            .prepend {
+                padding: 0 18px;
+            }
+        }
+    }
+
+    &.small {
+        font-size: 13px;
+        input {
+            height: 32px;
+            line-height: 32px;
+        }
+
+        .suffix,
+        .prefix {
+            line-height: 32px;
+        }
+
+        &.group {
+            .append,
+            .prepend {
+                font-size: 12px;
+                padding: 0 5px;
+            }
+        }
+    }
+
+    &.mini {
+        font-size: 12px;
+        input {
+            height: 28px;
+            line-height: 28px;
+        }
+
+        .suffix,
+        .prefix {
+            line-height: 28px;
+        }
+
+        &.group {
+            .append,
+            .prepend {
+                font-size: 12px;
+                padding: 0 0px;
+            }
+        }
+    }
+
+    &.is-error {
+        input {
+            &,
+            &:focus {
+                border-color: var(--jk-color-danger);
+            }
+        }
+    }
+}
+</style>

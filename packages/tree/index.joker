@@ -1,0 +1,231 @@
+<template>
+    <div class="@(['jk-tree', props.class])" ref="tree" role="tree" @keydown="handleKeyDown">
+        @if(model.root.children) {
+            @if(model.root.children.length) {
+                @for(let child of model.root.children) {
+                    <JokerTreeNode node="@child">
+                        @if($sections.default) {
+                            @section("default", node) {
+                                @RenderSection("default", node)
+                            }
+                        }
+                    </JokerTreeNode>
+                }
+            }
+            else {
+                <jk-empty description="@props.emptyText" size="@props.emptySize" />
+            }
+        }
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { TreeStore, TreeStoreOption } from "./store";
+import { NodeData, TreeNode } from "./store/node";
+import JokerTreeNode from "./tree-node.joker";
+import { componentName } from "../utils";
+
+export default class extends Component<
+    TreeStoreOption & {
+        emptyText: string;
+        emptySize: string;
+        indent: number;
+        class: string;
+        iconClass: string;
+        showCheckbox: boolean;
+        expandOnClickNode: boolean;
+        draggable: boolean;
+        checkDraggabled: Function;
+        checkCanDropIn: Function;
+    }
+> {
+    name = componentName("tree");
+    propsOption = {
+        expandOnClickNode: true,
+        isLeafKey: "isLeaf",
+        childrenKey: "children",
+        disabledKey: "disabled",
+        expandKey: "expand",
+        labelKey: "label",
+        indent: 18
+    };
+    model = {
+        root: undefined as TreeNode | undefined
+    };
+
+    components = {
+        JokerTreeNode
+    };
+
+    store!: TreeStore;
+
+    created() {
+        this.$watch(
+            () => this.props.data,
+            () => {
+                //@ts-ignore
+                this.store = new TreeStore(this.props);
+
+                this.model.root = this.store.root;
+            }
+        );
+        //@ts-ignore
+        this.store = new TreeStore(this.props);
+
+        this.model.root = this.store.root;
+    }
+
+    reload() {
+        //@ts-ignore
+        this.store = new TreeStore(this.props);
+
+        this.model.root = this.store.root;
+    }
+
+    setCurrentNode(nodeOrKey?: TreeNode | string | number) {
+        let node: TreeNode | undefined;
+        if (typeof nodeOrKey === "string" || typeof nodeOrKey === "number") {
+            node = this.store.getNodeByKey(nodeOrKey);
+        } else {
+            node = nodeOrKey;
+        }
+
+        this.store.setCurrentNode(node);
+        this.$trigger("current-change", node);
+    }
+
+    getNode(filter: (node: TreeNode) => boolean | void) {
+        return this.store.getNode(filter);
+    }
+
+    getAllNodeData() {
+        let result = [];
+
+        let appendNode = (n: TreeNode) => {
+            result.push(n.nodeData);
+        };
+
+        this.store.root.children.forEach((n) => {
+            appendNode(n);
+        });
+
+        return result;
+    }
+
+    getCurrentNode() {
+        return this.store.currentNode;
+    }
+
+    collapseNode(node: TreeNode) {
+        this.$trigger("node-collapse", node);
+        node.collapse();
+    }
+
+    expandNode(node: TreeNode) {
+        this.$trigger("node-expand", node);
+        node.expand();
+    }
+
+    checkNode(node: TreeNode, checked: boolean) {
+        node.setChecked(checked, true);
+
+        this.$trigger("check", node);
+    }
+
+    getCheckedNodes(leafOnly = false, includeHalfChecked = false) {
+        return this.store.getCheckedNodes(leafOnly, includeHalfChecked);
+    }
+
+    getCheckedKeys(leafOnly = false, includeHalfChecked = false) {
+        return this.store.getCheckedKeys(leafOnly, includeHalfChecked);
+    }
+
+    setCheckedKeys(keys: string[] = []) {
+        this.store.setChecked(keys);
+    }
+
+    getNodeByKey(key: string) {
+        return this.store.getNodeByKey(key);
+    }
+
+    appendNode(nodeData: NodeData | TreeNode) {
+        this.store.appendNode(nodeData);
+    }
+
+    removeNode(nodeOrKey: TreeNode | string | number) {
+        if (typeof nodeOrKey === "string" || typeof nodeOrKey === "number") {
+            let removeNode = this.store.getNodeByKey(nodeOrKey);
+
+            removeNode?.remove();
+        } else {
+            this.store.removeNode(nodeOrKey);
+        }
+    }
+
+    checkedAll() {
+        this.store.root.children.forEach((n) => {
+            n.setChecked(true, true);
+        });
+    }
+
+    clearChecked() {
+        this.store.root.children.forEach((n) => {
+            n.setChecked(false, true);
+        });
+    }
+
+    filter(val: any) {
+        this.store.filter(val);
+    }
+
+    handleContextMenu(e: VNode.Event, node: TreeNode) {
+        this.$trigger("node-contextmenu", node, e);
+    }
+
+    handleKeyDown(e: VNode.Event) {
+        let target = e.event.target as HTMLElement;
+
+        if (target.classList.contains("jk-tree-node") === false) return;
+
+        let keyCode = e.event.keyCode;
+
+        let items = Array.from(this.$getRef("tree")!.output.querySelectorAll(".jk-tree-node")) as HTMLElement[];
+        let currentIndex = items.indexOf(target);
+
+        //up down left right enter space
+        if ([38, 40, 37, 39, 13, 32].includes(keyCode) === false) return;
+
+        e.preventDefault();
+
+        //up||down
+        if (keyCode === 38 || keyCode === 40) {
+            let nextIndex;
+            if (keyCode === 38) {
+                nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0;
+            } else {
+                nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+            }
+
+            //focus
+            items[nextIndex].focus();
+        }
+        //left right
+        else if (keyCode === 37 || keyCode === 39) {
+            target.click();
+        }
+        //enter space
+        else {
+            (target.querySelector(".jk-checkbox input") as HTMLElement)?.click();
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-tree {
+    position: relative;
+    cursor: default;
+
+    color: var(--jk-color-text-regular);
+}
+</style>

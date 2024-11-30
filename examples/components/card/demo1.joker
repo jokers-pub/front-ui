@@ -1,0 +1,35 @@
+<template>
+    <div class="card-demo1">
+        <jk-card class="box-card">
+            @section("header") {
+                <span>卡片名称</span>
+                <jk-button link type="text">操作按钮</jk-button>
+            }
+            @for(let i of [1,2,3,4]) {
+                <div class="text item">
+                    列表内容@i
+                </div>
+            }
+        </jk-card>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.card-demo1 {
+    :deep(.header) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+}
+</style>

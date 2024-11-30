@@ -1,0 +1,29 @@
+<template>
+    <div ref="target" class="container"></div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Loading } from "../../../src";
+
+export default class extends Component {
+    mounted() {
+        Loading({
+            target: this.$getRef("target")?.output,
+            customClass: "custom",
+            spinner: "jk-icon-loading",
+            text: "拼命在加载，别急"
+        });
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.container {
+    background: var(--jk-color-primary);
+    height: 200px;
+
+    :deep(.custom) {
+        background: rgba(0, 0, 0, 0.6);
+    }
+}
+</style>

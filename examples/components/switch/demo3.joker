@@ -1,0 +1,35 @@
+<template>
+    <label class="demo">
+        <jk-switch 
+            value="@model.value1" 
+            activeText="按月付费" 
+            inactiveText="按年付费">
+        </jk-switch>
+    </label>
+    <label>
+        <jk-switch 
+            value="@model.value2" 
+            activeText="按月付费" 
+            inactiveText="按年付费" 
+            activeColor="#13ce66" 
+            inactiveColor="#ff4949">
+        </jk-switch>
+    </label>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        value1: false,
+        value2: true
+    };
+}
+</script>
+
+<style scoped>
+.demo{
+    display: block;
+    margin-bottom: 20px;
+}
+</style>

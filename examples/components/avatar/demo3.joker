@@ -1,0 +1,22 @@
+<template>
+    <div class="demo-type">
+        <jk-avatar size="@(60)" src="https://empty" error="@errorHandler">
+            <img src="/static/avatar/empty.png" />
+        </jk-avatar>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    errorHandler() {
+        return true;
+    }
+}
+</script>
+
+<style lang="scss">
+.demo-type {
+    display: flex;
+}
+</style>

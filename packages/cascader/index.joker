@@ -1,0 +1,682 @@
+<template>
+    <div
+        ref="container"
+        class="@(['jk-cascader', props.size, model.showPanel && 'is-focus', props.class])"
+        @click="toggleMenu"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
+        @if(props.multiple) {
+            <div
+                class="jk-cascader-tags"
+                ref="tags"
+                style="@({ maxWidth: model.inputWidth - 32 + 'px', width: '100%' })">
+                @for(let item of selectedOptions.value) {
+                    <JokerTag
+                        type="info"
+                        disableTransition
+                        closable="@(!props.disabled)"
+                        size="@tagsSize"
+                        @close="handleTagClose(item.value)">
+                        @(props.showAllLevels ? item.pathLabels.join(props.separator) : item.label)
+                    </JokerTag>
+                }
+                @if(props.filterable && model.showPanel) {
+                    <input
+                        ref="reference"
+                        type="text"
+                        autocomplete="off"
+                        disabled="@props.disabled"
+                        style="@({
+                            width: model.inputLength / (model.inputWidth - 32) + '%',
+                            maxWidth: model.inputWidth - 42 + 'px'
+                        })"
+                        @focus="handleFocus"
+                        @input="debouncedInputChange"
+                        @keydown="handleKeyDown"
+                        @keydown.esc.prevent="hide"
+                        @keydown.tab="hide"
+                        @keydown.delete="handleDelete"
+                        @compositionstart="handleComposition(true)"
+                        @compositionend="handleComposition(false)"
+                    />
+                }
+            </div>
+        }
+        <JokerInput
+            ref="input"
+            placeholder="@model.placeholder"
+            autocomplete="off"
+            size="@props.size"
+            disabled="@props.disabled"
+            readonly="@readonly"
+            value="@inputText"
+            error="@isError"
+            tabindex="@(props.multiple && props.filterable ? '-1' : false)"
+            @focus="handleFocus"
+            @input="debouncedInputChange"
+            @keydown.esc.prevent="hide"
+            @keydown.tab="hide"
+            @keydown.delete="handleDelete"
+            @compositionstart="handleComposition(true)"
+            @compositionend="handleComposition(false)">
+            @if($sections.prefix) {
+                @section("prefix") {
+                    @RenderSection("prefix", value)
+                }
+            }
+            @section("suffix") {
+                @if(showClose) {
+                    <i class="jk-cascader-caret jk-icon-circle-close" @click.stop="clear" />
+                }
+                else {
+                    <i class="jk-cascader-caret jk-icon-@iconName" @click.stop="handleFocus" />
+                }
+            }
+        </JokerInput>
+        @if(showDropDown) {
+            <JokerDropDown
+                ref="dropdown"
+                store="@store"
+                suggestions="@model.suggestions"
+                noDataText="@props.noDataText"
+                noMatchText="@props.noMatchText"
+                inputWidth="@model.inputWidth"
+                multiple="@props.multiple"
+                queryLabel="@model.queryLabel"
+                expandTrigger="@props.expandTrigger"
+                lazy="@props.lazy"></JokerDropDown>
+        }
+    </div>
+</template>
+
+<script>
+import { ShallowObserver, VNode, OBJECTPROXY_DEPID } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import JokerInput from "../input/index.joker";
+import JokerDropDown from "./dropdown.joker";
+import JokerTag from "../tag/index.joker";
+import { componentName, isEdge, isIE, valueEquals } from "../utils";
+import { debounce } from "@joker.front/shared";
+import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+import { Store, Node } from "./store";
+
+export default class extends FormCtrl<{
+    size: string;
+    class: string;
+    options: Array<any>;
+    expandTrigger: string;
+    clearable: boolean;
+    placeholder: string;
+    valueKey: string;
+    labelKey: string;
+    childrenKey: string;
+    leafKey: string;
+    disabledKey: string;
+    multiple: boolean;
+    separator: string;
+    emitPath: boolean;
+    filterable: boolean;
+    lazy: boolean;
+    showAllLevels: boolean;
+    filterMethod: (node: Node, keyword: string) => boolean;
+    lazyLoad: Function;
+    loading: boolean;
+    loadingText: string;
+    noDataText: string;
+    noMatchText: string;
+}> {
+    name = componentName("cascader");
+
+    model = {
+        inputHovering: false,
+        showPanel: false,
+        selectedLabel: "",
+        inputWidth: 0,
+        inputLength: 20,
+        isOnComposition: false,
+        visibleOptionCount: 0,
+        placeholder: "",
+        dropdownInit: false,
+        queryLabel: "",
+        suggestions: [] as Node[]
+    };
+
+    store!: Store;
+
+    initialInputHeight = 0;
+
+    debouncedInputChange!: Function;
+
+    propsOption = {
+        options: [],
+        separator: " / ",
+        showAllLevels: true,
+        emitPath: true,
+        expandTrigger: "click",
+        placeholder: "请选择",
+        labelKey: "label",
+        valueKey: "value",
+        childrenKey: "children",
+        leafKey: "leaf",
+        disabledKey: "disabled",
+        loadingText: "加载中",
+        noDataText: "暂无数据",
+        noMatchText: "无匹配数据",
+        filterMethod: (node: Node, keyword: string) => {
+            return node.text.includes(keyword);
+        }
+    };
+
+    components = {
+        JokerInput,
+        JokerDropDown,
+        JokerTag
+    };
+
+    created() {
+        this.$syncProp("value");
+        this.$syncProp("placeholder");
+        this.initOptions();
+
+        this.debouncedInputChange = debounce(300, (e: VNode.Event) => {
+            let reference = this.$getRef("reference")?.output;
+
+            if (reference && reference.value.length > 0) {
+                this.model.placeholder = "";
+            }
+
+            this.handleQueryChange(e.event.target.value!);
+        });
+
+        this.$watch(
+            () => this.props.options,
+            () => {
+                this.initOptions();
+                this.setSelected();
+            }
+        );
+    }
+
+    mounted() {
+        this.containerEl = this.$getRef("container")!.output;
+
+        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+
+        this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
+
+        this.model.inputWidth = (<HTMLElement>this.inputContainerEl).getBoundingClientRect().width || 0;
+
+        this.initialInputHeight = this.inputReferenceEl.getBoundingClientRect().height;
+
+        addResizeListener(this.containerEl, this.handleResize);
+
+        //不考虑lazy下首次数据反显
+        if (!this.props.lazy) {
+            this.setSelected();
+        }
+
+        this.$watch(
+            () => this.props.value,
+            () => {
+                this.setSelected();
+                if (this.props.filterable && !this.props.multiple) {
+                    this.model.inputLength = 20;
+                }
+
+                if (this.model.showPanel) return;
+
+                this.model.queryLabel = "";
+            }
+        );
+    }
+
+    initOptions() {
+        this.store = new Store(this.props.options!, {
+            valueKey: this.props.valueKey!,
+            labelKey: this.props.labelKey!,
+            childrenKey: this.props.childrenKey!,
+            disabledKey: this.props.disabledKey!,
+            leafKey: this.props.leafKey!,
+            lazy: !!this.props.lazy,
+            emitPath: this.props.emitPath!,
+            multiple: !!this.props.multiple,
+            allLevels: !!this.props.showAllLevels,
+            separator: this.props.separator!
+        });
+
+        if (this.props.lazy && !this.props.options?.length && this.props.lazyLoad) {
+            this.lazyLoad();
+        }
+    }
+
+    selectedOptions: ShallowObserver<Array<Node>> = new ShallowObserver([]);
+
+    //#region  属性
+
+    inputContainerEl!: HTMLElement;
+
+    inputReferenceEl!: HTMLElement;
+
+    containerEl!: HTMLElement;
+
+    dropMenuShowOnFocus = false;
+
+    get showDropDown() {
+        return this.model.dropdownInit || this.model.showPanel;
+    }
+
+    get showClose() {
+        if (this.props.clearable) {
+            let hasValue = this.props.multiple
+                ? (this.value || []).length > 0
+                : this.value !== undefined && this.value !== null && this.value !== "";
+
+            return this.model.inputHovering && hasValue && !this.props.disabled;
+        }
+        return false;
+    }
+    get iconName() {
+        return this.model.showPanel ? "arrow-up is-reverse" : "arrow-up";
+    }
+
+    get readonly() {
+        return !this.props.filterable || this.props.multiple || (!isIE() && !isEdge() && !this.model.showPanel);
+    }
+
+    get tagsSize() {
+        return ["small", "mini"].includes(this.props.size || "") ? "mini" : "small";
+    }
+
+    get inputText() {
+        if (this.props.multiple) {
+            if (this.selectedOptions.value.length) {
+                return " ";
+            }
+            return "";
+        } else {
+            return this.model.selectedLabel;
+        }
+    }
+
+    get dropdown() {
+        return this.$getRef<VNode.Component>("dropdown");
+    }
+
+    //#endregion
+
+    //#region  方法
+
+    lazyLoad(
+        node?: Node | { root: true; level: 0; loading?: boolean; loaded?: boolean; children?: Array<Node> },
+        onFullfiled?: Function
+    ) {
+        node ??= { root: true, level: 0 };
+
+        node.loading = true;
+
+        let complete = async (dataList: any[]) => {
+            if (!node) return;
+
+            let parent: Node | undefined = "root" in node! && node.root ? undefined : <Node>node;
+            if (dataList) {
+                this.store.appendNodes(dataList, parent);
+            }
+
+            node.loading = false;
+            node.loaded = true;
+            await this.$updatedRender();
+            //不考虑lazy下的数据首次反显
+            //存在多层级接口调用，不建议该方案
+            onFullfiled?.();
+        };
+
+        if (node.children?.length) {
+            node.loading = false;
+            node.loaded = true;
+            onFullfiled?.();
+        } else {
+            this.props.lazyLoad!(node, (dataList: Array<any>) => {
+                complete(dataList);
+            });
+        }
+    }
+
+    blur() {
+        this.$getRef<VNode.Component>("input")?.component?.blur();
+    }
+
+    hide() {
+        this.model.showPanel = false;
+        this.dropMenuShowOnFocus = false;
+        this.blur();
+
+        this.model.inputLength = 20;
+
+        this.refreshSelectedNode();
+        //关闭时做input显示值更新
+        if (!this.props.multiple) {
+            let selectedOption = this.selectedOptions.value;
+
+            if (selectedOption && selectedOption.length) {
+                this.model.selectedLabel = this.props.showAllLevels
+                    ? selectedOption[0].pathLabels.join(this.props.separator)
+                    : selectedOption[0].label;
+            } else {
+                this.model.selectedLabel = "";
+            }
+        } else {
+            this.model.selectedLabel =
+                (this.props.showAllLevels
+                    ? this.selectedOptions.value[0]?.pathLabels.join(this.props.separator)
+                    : this.selectedOptions.value[0]?.label) || "";
+        }
+
+        if (this.props.filterable) {
+            this.model.placeholder = this.props.placeholder!;
+        }
+
+        this.model.queryLabel = "";
+        let reference = this.$getRef("reference");
+        reference && (reference.output.value = "");
+    }
+    //通过value 设置选中（配合异步）
+    setSelected() {
+        //清空
+        this.clear(true);
+
+        if (this.props.multiple) {
+            if (Array.isArray(this.value)) {
+                this.value.forEach((m) => {
+                    let option = this.getOption(m);
+
+                    if (option) {
+                        option.doChecked(true);
+                    }
+                });
+            }
+
+            this.selectedOptions.value = this.store.leafNodes.filter((m) => m.checked);
+
+            this.resetInputHeight();
+        } else {
+            let option = this.getOption(this.value);
+            if (option) {
+                option.doChecked(true);
+                this.model.selectedLabel = this.props.showAllLevels
+                    ? option.pathLabels.join(this.props.separator)
+                    : option.label;
+                this.selectedOptions.value = [option];
+            }
+        }
+    }
+
+    async resetInputHeight() {
+        await this.$updatedRender();
+        if (!this.$root) return;
+        let height = this.initialInputHeight + "px";
+
+        if (this.selectedOptions.value.length) {
+            let tagContainer = this.$getRef("tags")?.output;
+            let tagHeight = tagContainer ? Math.round(tagContainer.getBoundingClientRect().height) : 0;
+
+            if (tagHeight > 30) {
+                height = tagHeight + 6 + "px";
+            }
+        }
+        this.inputReferenceEl.style.height = height;
+
+        this.updatePopper();
+    }
+
+    updatePopper() {
+        this.dropdown?.component.updatePopper();
+    }
+
+    getOption(value: any) {
+        return this.store.getNodeByValue(value);
+    }
+
+    //#endregion
+
+    //#region  事件
+    handleMouseEnter() {
+        this.model.inputHovering = true;
+    }
+
+    handleMouseLeave() {
+        this.model.inputHovering = false;
+    }
+
+    handleDelete(e: VNode.Event) {
+        if (this.props.multiple && this.value?.length && !e.event.target.value) {
+            let lastSelectedNode = this.selectedOptions.value[this.selectedOptions.value.length - 1];
+
+            if (lastSelectedNode) {
+                lastSelectedNode.doChecked(false);
+                this.refreshSelectedNode();
+            }
+        }
+    }
+
+    toggleMenu() {
+        if (this.props.disabled) return;
+
+        if (this.dropMenuShowOnFocus) {
+            this.dropMenuShowOnFocus = false;
+        } else {
+            this.model.showPanel = !this.model.showPanel;
+        }
+
+        if (this.model.showPanel) {
+            let referenceInput = this.$getRef("reference")?.output;
+
+            if (referenceInput) {
+                referenceInput.focus();
+            } else {
+                this.$getRef<VNode.Component>("input")?.component.focus();
+            }
+        }
+    }
+    async handleFocus() {
+        if (!this.model.showPanel) {
+            //清除过程数据
+            this.model.queryLabel = "";
+        }
+
+        this.model.showPanel = true;
+
+        this.dropMenuShowOnFocus = true;
+
+        await this.$updatedRender();
+        if (this.props.filterable) {
+            if (!this.$getRef("reference")?.output.value.length) {
+                this.model.placeholder = this.model.selectedLabel || this.props.placeholder!;
+                this.model.selectedLabel = "";
+            }
+        }
+    }
+
+    handleKeyDown(e: VNode.Event) {
+        this.model.inputLength = e.event.target.value.length * 15 + 20;
+        this.resetInputHeight();
+    }
+
+    handleComposition(e: VNode.Event, val: boolean) {
+        this.model.isOnComposition = val;
+    }
+
+    clear(dontRefreshSelectedNode = false) {
+        this.store.leafNodes.forEach((m) => {
+            m.checked = false;
+        });
+
+        this.model.dropdownInit = false;
+
+        if (!dontRefreshSelectedNode) {
+            this.refreshSelectedNode();
+        }
+        this.model.selectedLabel = "";
+    }
+
+    handleResize() {
+        this.model.inputWidth = (<HTMLElement>this.inputContainerEl).getBoundingClientRect().width;
+
+        if (this.props.multiple) {
+            this.resetInputHeight();
+        }
+    }
+
+    handleTagClose(e: VNode.Event, val: any) {
+        let selectedNode = this.selectedOptions.value.find((m) => m.value === val);
+        if (selectedNode) {
+            //@ts-ignore
+            console.log(selectedNode[OBJECTPROXY_DEPID]);
+            selectedNode.doChecked(false);
+
+            this.refreshSelectedNode();
+        }
+    }
+
+    handleQueryChange(val: string) {
+        if (this.model.isOnComposition) return;
+
+        this.model.queryLabel = val;
+
+        if (this.props.multiple && this.props.filterable) {
+            let length = this.$getRef("reference")?.output.value.length * 15 + 20;
+            this.model.inputLength = length || 20;
+
+            this.resetInputHeight();
+        }
+
+        if (this.props.filterMethod) {
+            if (val === "") {
+                this.model.suggestions.length = 0;
+            } else {
+                this.model.suggestions = this.store.leafNodes.filter((n) => {
+                    if (n.disabled) return false;
+
+                    return this.props.filterMethod?.(n, val);
+                });
+            }
+
+            this.updatePopper();
+        }
+    }
+
+    //#endregion
+
+    beforeDestroy() {
+        removeResizeListener(this.containerEl, this.handleResize);
+    }
+
+    private triggerChange(val: any) {
+        if (valueEquals(this.value, val) === false) {
+            this.value = val;
+
+            if (this.props.multiple) {
+                this.refreshSelectedNode();
+            }
+
+            this.$trigger("change", val);
+        }
+    }
+
+    public refreshSelectedNode() {
+        this.selectedOptions.value = this.store.leafNodes.filter((m) => m.checked);
+
+        if (this.props.multiple) {
+            this.triggerChange(this.selectedOptions.value.map((m) => m.value));
+
+            this.$getRef("reference")?.output.focus();
+        } else {
+            this.triggerChange(this.selectedOptions.value[0]?.value);
+        }
+
+        this.handleResize();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-cascader {
+    display: inline-block;
+    position: relative;
+
+    &:hover {
+        :deep(.jk-input:not(.is-disabled) input) {
+            border-color: var(--jk-border-color-hover);
+        }
+    }
+
+    :deep(.jk-input) {
+        input {
+            cursor: pointer;
+
+            &[disabled] {
+                cursor: not-allowed;
+            }
+        }
+
+        i.jk-cascader-caret {
+            color: var(--jk-color-text-placeholder);
+            font-size: 14px;
+            transition: transform 0.3s;
+            transform: rotateZ(180deg);
+            cursor: pointer;
+
+            &.is-reverse {
+                transform: rotateZ(0deg);
+            }
+        }
+    }
+
+    &.is-focus {
+        :deep(.jk-input input) {
+            border-color: var(--jk-color-primary);
+        }
+    }
+
+    .jk-cascader-tags {
+        position: absolute;
+        line-height: normal;
+        white-space: normal;
+        z-index: $--index-normal;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        :deep(> .jk-tag) {
+            box-sizing: border-box;
+            border-color: transparent;
+            margin: 2px 0 2px 6px;
+            display: flex;
+            max-width: 100%;
+            align-items: center;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            padding: 0;
+            margin-left: 15px;
+            color: var(--jk-color-text-regular);
+            font-size: 14px;
+            appearance: none;
+            height: 28px;
+            background-color: transparent;
+            flex-grow: 1;
+        }
+    }
+
+    &.mini {
+        .jk-cascader-tags input {
+            height: 14px;
+        }
+    }
+}
+</style>

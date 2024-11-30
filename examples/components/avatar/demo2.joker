@@ -1,0 +1,25 @@
+<template>
+    <div class="demo-type">
+        <div>
+            <jk-avatar icon="jk-icon-user"></jk-avatar>
+        </div>
+        <div>
+            <jk-avatar src="/static/avatar/people.png"></jk-avatar>
+        </div>
+        <div>
+            <jk-avatar text="user"></jk-avatar>
+        </div>
+    </div>
+</template>
+<style lang="scss" scoped>
+.demo-type {
+    display: flex;
+    > div {
+        flex: 1;
+        text-align: center;
+        &:not(:last-child) {
+            border-right: 1px solid rgba(224, 230, 237, 0.5);
+        }
+    }
+}
+</style>

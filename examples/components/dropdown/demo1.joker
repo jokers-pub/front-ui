@@ -1,0 +1,28 @@
+<template>
+    <DemoRow>
+        <jk-dropdown>
+            <a href="javascript:void(0)">
+                click触发
+                <i class="jk-icon-arrow-down" />
+                <jk-dropdown-menu>
+                    <jk-dropdown-item>菜单1</jk-dropdown-item>
+                    <jk-dropdown-item>菜单2</jk-dropdown-item>
+                    <jk-dropdown-item>菜单3</jk-dropdown-item>
+                </jk-dropdown-menu>
+            </a>
+        </jk-dropdown>
+    </DemoRow>
+    <DemoRow>
+        <jk-dropdown trigger="hover">
+            <a href="javascript:void(0)">
+                hover触发
+                <i class="jk-icon-arrow-down" />
+                <jk-dropdown-menu>
+                    <jk-dropdown-item>菜单1</jk-dropdown-item>
+                    <jk-dropdown-item>菜单2</jk-dropdown-item>
+                    <jk-dropdown-item>菜单3</jk-dropdown-item>
+                </jk-dropdown-menu>
+            </a>
+        </jk-dropdown>
+    </DemoRow>
+</template>

@@ -1,0 +1,70 @@
+<template>
+    <div class="@(['jk-divider', props.direction, props.class])">
+        @if($sections.default && props.direction !== "vertical") {
+            <div class="text @props.contentPosition" style="@({ background: props.background })">
+                @RenderSection()
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{
+    direction: string;
+    contentPosition: string;
+    class: string;
+    background: string;
+}> {
+    propsOption = {
+        direction: "horizontal",
+        contentPosition: "center"
+    };
+}
+</script>
+
+<style scoped lang="scss">
+.jk-divider {
+    background-color: var(--jk-border-color-base);
+    position: relative;
+
+    &.horizontal {
+        display: block;
+        height: 1px;
+        width: 100%;
+        margin: 24px 0;
+    }
+
+    &.vertical {
+        display: inline-block;
+        width: 1px;
+        height: 1em;
+        margin: 0 8px;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .text {
+        position: absolute;
+        background-color: #fff;
+        padding: 0 20px;
+        font-weight: 500;
+        color: var(--jk-color-text-primary);
+
+        &.left {
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        &.center {
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        &.right {
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    }
+}
+</style>

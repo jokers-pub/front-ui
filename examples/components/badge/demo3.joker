@@ -1,0 +1,19 @@
+<template>
+    <div class="item">
+        <jk-badge value="new">
+            <jk-button size="small">评论</jk-button>
+        </jk-badge>
+    </div>
+    <div class="item">
+        <jk-badge value="hot">
+            <jk-button size="small">回复</jk-button>
+        </jk-badge>
+    </div>
+</template>
+
+<style scoped>
+.item {
+    display: inline-block;
+    margin-right: 40px;
+}
+</style>

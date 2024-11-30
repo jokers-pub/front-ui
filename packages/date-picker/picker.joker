@@ -1,0 +1,686 @@
+<template>
+    <div
+        class="@([
+            'jk-date-editor',
+            props.type,
+            props.class,
+            props.disabled && 'is-disabled',
+            model.pickerVisible && 'is-active',
+            isError && 'is-error'
+        ])"
+        @click.outside="hide"
+        type="@props.type">
+        @if(isRange) {
+            <div
+                class="jk-date-range @(sizeClass||'')"
+                ref="input"
+                @click="handleRangeClick"
+                @keydown="handleKeydown"
+                @mouseenter="handleMouseEnter"
+                @mouseleave="handleMouseLeave">
+                <i class="@triggerClass" @click="handleFocus"></i>
+                <input
+                    disabled="@props.disabled"
+                    autocomplete="off"
+                    placeholder="@props.startPlaceholder"
+                    value="@(displayValue ? displayValue[0] : '')"
+                    readonly="@readonly"
+                    @focus="handleFocus"
+                    @input="handleStartInput"
+                    @change="handleStartChange"
+                />
+                <span class="range-separator">@props.rangeSeparator</span>
+                <input
+                    disabled="@props.disabled"
+                    autocomplete="off"
+                    placeholder="@props.startPlaceholder"
+                    value="@(displayValue ? displayValue[1] : '')"
+                    readonly="@readonly"
+                    @focus="handleFocus"
+                    @input="handleEndInput"
+                    @change="handleEndChange"
+                />
+                <i
+                    class="clearable @(props.clearable && model.showClearable && !props.disabled?'jk-icon-circle-close':'')"
+                    @click="clear"></i>
+            </div>
+        }
+        else {
+            <JokerInput
+                readonly="@readonly"
+                disabled="@props.disabled"
+                size="@props.size"
+                placeholder="@props.placeholder"
+                value="@displayValue"
+                clearable="@props.clearable"
+                forceShowClearable="@(!(props.readonly || props.disabled))"
+                @focus="handleFocus"
+                error="@isError"
+                @input="handleInput"
+                @keydown="handleKeydown"
+                @change="handleChange"
+                ref="input">
+                @section("prefix") {
+                    <i class="@triggerClass" @click="handleFocus"></i>
+                }
+            </JokerInput>
+        }
+        @if(model.pickerVisible) {
+            @if(props.type === "time-select") {
+                <JokerTimeSelectPanel
+                    ref="panel"
+                    @pick="handlePick"
+                    value="@value"
+                    start="@props.start"
+                    valueFormat="@props.valueFormat"
+                    end="@props.end"
+                    step="@props.step"
+                    defaultValue="@props.defaultValue"
+                    maxTime="@props.maxTime"
+                    minTime="@props.minTime"
+                />
+            }
+            else if(props.type === "time") {
+                <JokerTimePanel
+                    ref="panel"
+                    @pick="handlePick"
+                    @select-range="handleSelectRange"
+                    format="@props.format"
+                    valueFormat="@props.valueFormat"
+                    value="@value"
+                    defaultValue="@props.defaultValue"
+                    selectableRange="@props.selectableRange"
+                />
+            }
+            else if(props.type === "timerange") {
+                <JokerTimeRangePanel
+                    ref="panel"
+                    @pick="handlePick"
+                    @select-range="handleSelectRange"
+                    startPlaceholder="@props.startPlaceholder"
+                    endPlaceholder="@props.endPlaceholder"
+                    format="@props.format"
+                    valueFormat="@props.valueFormat"
+                    value="@value"
+                    defaultValue="@props.defaultValue"
+                />
+            }
+            else if(props.type === "date" || props.type === "datetime" || props.type === "month" || props.type === "year" || props.type === "week") {
+                <JokerDatePanel
+                    ref="panel"
+                    format="@props.format"
+                    valueFormat="@props.valueFormat"
+                    type="@props.type"
+                    shortcuts="@props.shortcuts"
+                    disabledDate="@props.disabledDate"
+                    cellClassName="@props.cellClassName"
+                    showWeekNumber="@props.showWeekNumber"
+                    @pick="handlePick"
+                    value="@value"
+                    range="@isRange"
+                    defaultValue="@props.defaultValue"
+                />
+            }
+            else if(props.type === "daterange" || props.type === "datetimerange") {
+                <JokerDateRangePanel
+                    ref="panel"
+                    format="@props.format"
+                    valueFormat="@props.valueFormat"
+                    type="@props.type"
+                    shortcuts="@props.shortcuts"
+                    disabledDate="@props.disabledDate"
+                    cellClassName="@props.cellClassName"
+                    showWeekNumber="@props.showWeekNumber"
+                    unlinkPanels="@props.unlinkPanels"
+                    @pick="handlePick"
+                    value="@value"
+                    defaultValue="@props.defaultValue"
+                />
+            }
+        }
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+
+import JokerInput from "../input/index.joker";
+import { Shortcut, formatAsFormatAndType, parseAsFormatAndType } from "./utils";
+import { componentName, valueEquals } from "../utils";
+import JokerTimeSelectPanel from "./panel/time-select.joker";
+import JokerTimePanel from "./panel/time.joker";
+import JokerTimeRangePanel from "./panel/time-range.joker";
+import JokerDatePanel from "./panel/date.joker";
+import JokerDateRangePanel from "./panel/date-range.joker";
+
+export default class extends FormCtrl<{
+    type: string;
+    editable: boolean;
+    format: string;
+    class: string;
+    defaultValue: string;
+    valueFormat: string;
+    placeholder: string;
+    startPlaceholder: string;
+    endPlaceholder: string;
+    prefixIcon: string;
+    clearable: boolean;
+    shortcuts: Array<Shortcut>;
+    unlinkPanels: boolean;
+    align: string;
+    selectableRange: Array<string[] | string>;
+    rangeSeparator: string;
+}> {
+    propsOption = {
+        editable: true,
+        clearable: true,
+        align: "left",
+        rangeSeparator: "-",
+        startPlaceholder: "开始",
+        endPlaceholder: "结束"
+    };
+    model = {
+        pickerVisible: false,
+        useInput: undefined as any,
+        //仅在range模式下提供清除
+        showClearable: false
+    };
+    components = {
+        JokerInput,
+        JokerTimeSelectPanel,
+        JokerTimePanel,
+        JokerTimeRangePanel,
+        JokerDatePanel,
+        JokerDateRangePanel
+    };
+
+    name = componentName("date-picker");
+
+    valueOnOpen: any;
+
+    get readonly() {
+        return !this.props.editable || this.props.readonly || this.props.type === "week";
+    }
+
+    get displayValue() {
+        let formattedValue = formatAsFormatAndType(this.parsedValue, this.props.format, this.props.type!);
+
+        if (this.isRange && Array.isArray(this.model.useInput)) {
+            return [
+                this.model.useInput[0] || (formattedValue && formattedValue[0]) || "",
+                this.model.useInput[1] || (formattedValue && formattedValue[1]) || ""
+            ];
+        } else if (this.model.useInput !== undefined) {
+            return this.model.useInput;
+        } else if (formattedValue) {
+            return formattedValue;
+        }
+
+        return "";
+    }
+
+    get isRange() {
+        return this.props.type?.includes("range");
+    }
+
+    get triggerClass() {
+        return this.props.prefixIcon || (this.props.type?.includes("time") ? "jk-icon-time" : "jk-icon-date");
+    }
+
+    get parsedValue() {
+        if (!this.value) return this.value;
+
+        return parseAsFormatAndType(this.value, this.props.valueFormat, this.props.type!, this.props.rangeSeparator);
+    }
+
+    get panel() {
+        return this.$getRef<VNode.Component>("panel");
+    }
+
+    inputReference!: HTMLElement;
+
+    inputElements!: NodeListOf<HTMLInputElement>;
+
+    inputWidth = 0;
+
+    clear() {
+        this.triggerInput(undefined);
+        this.triggerChange();
+        this.model.useInput = undefined;
+    }
+
+    mounted() {
+        this.valueOnOpen = this.value;
+
+        this.inputReference = this.isRange
+            ? this.$getRef("input")?.output
+            : this.$getRef<VNode.Component>("input")?.firstElement?.output;
+
+        this.inputElements = this.inputReference.querySelectorAll("input");
+
+        this.inputWidth = this.inputReference.getBoundingClientRect().width;
+    }
+
+    isValidValue(val: any) {
+        let panelCom = this.panel?.component;
+        if (panelCom) {
+            if (panelCom.isValidValue) {
+                return val && panelCom.isValidValue(val);
+            }
+
+            return true;
+        }
+    }
+
+    triggerInput(val: any) {
+        let formatted = this.formatToValue(val);
+
+        if (valueEquals(this.value, formatted) === false) {
+            this.value = formatted;
+            this.$trigger("input", this.value);
+        }
+    }
+
+    triggerChange() {
+        if (valueEquals(this.value, this.valueOnOpen) === false) {
+            this.$trigger("change", this.value);
+
+            this.valueOnOpen = this.value;
+
+            this.triggerValidate();
+        }
+    }
+
+    blur() {
+        this.inputElements.forEach((n) => n.blur());
+        this.hide();
+    }
+
+    focus() {
+        this.inputElements[0].focus();
+    }
+
+    show() {
+        this.inputWidth = this.inputReference.getBoundingClientRect().width;
+
+        Promise.resolve().then(() => {
+            if (!this.model.pickerVisible) {
+                this.valueOnOpen = this.value;
+
+                this.model.pickerVisible = true;
+            }
+        });
+    }
+
+    hide() {
+        if (this.model.pickerVisible) {
+            if (this.isValidValue(this.value) === false) {
+                this.clear();
+            } else {
+                this.triggerChange();
+            }
+
+            this.model.pickerVisible = false;
+            this.model.useInput = undefined;
+
+            this.blur();
+
+            this.$trigger("blur");
+        }
+    }
+
+    //#region  event
+    handleFocus(e: VNode.Event) {
+        this.$trigger("focus");
+
+        e.stopPropagation();
+
+        this.show();
+    }
+
+    handleKeydown(e: VNode.Event) {
+        let panelCom = this.panel?.component;
+        let keyCode = e.event.keyCode;
+
+        //esc
+        if (keyCode === 27) {
+            this.hide();
+            e.stopPropagation();
+            return;
+        }
+
+        //Tab
+        if (keyCode === 9) {
+            //TODO:
+
+            if (this.isRange) {
+            } else {
+                this.hide();
+                this.blur();
+                e.stopPropagation();
+            }
+            return;
+        }
+
+        //enter
+        if (keyCode === 13) {
+            if (this.model.useInput === "" || this.isValidValue(this.parseString(this.displayValue))) {
+                this.handleChange();
+
+                this.model.pickerVisible = false;
+
+                this.blur();
+            }
+            e.stopPropagation();
+            return;
+        }
+
+        if (this.model.useInput) {
+            e.stopPropagation();
+            return;
+        }
+
+        if (panelCom && panelCom.navigateItem) {
+            panelCom.navigateItem(e);
+        }
+    }
+
+    handleSelectRange(e: VNode.Event<{ target?: "min" | "max"; range: number[] }>) {
+        let range = e.data.range;
+
+        if (!e.data.target || e.data.target === "min") {
+            this.inputElements[0].setSelectionRange(range[0], range[1]);
+            this.inputElements[0].focus();
+        } else {
+            this.inputElements[1].setSelectionRange(range[0], range[1]);
+            this.inputElements[1].focus();
+        }
+    }
+
+    handleInput(e: VNode.Event) {
+        this.model.useInput = e.data;
+    }
+
+    handleChange() {
+        if (this.model.useInput) {
+            let value = this.parseString(this.displayValue);
+            if (value) {
+                if (this.panel) {
+                    if (this.isValidValue(value)) {
+                        this.triggerInput(value);
+                        this.model.useInput = undefined;
+                    }
+                }
+            }
+        }
+
+        if (this.model.useInput === "") {
+            this.clear();
+            this.model.useInput = undefined;
+        }
+    }
+
+    handleStartInput(e: VNode.Event) {
+        this.model.useInput = [e.event.target.value, this.model.useInput?.[1]];
+    }
+
+    handleEndInput(e: VNode.Event<string>) {
+        this.model.useInput = [this.model.useInput?.[0], e.event.target.value];
+    }
+
+    handleStartChange() {
+        let value = this.parseString(this.model.useInput && this.model.useInput[0]);
+
+        if (value) {
+            this.model.useInput = [this.formatToString(value), this.displayValue[1]];
+
+            let newVal = [value, this.value && this.value[1]];
+
+            if (this.isValidValue(newVal)) {
+                this.triggerInput(newVal);
+                this.model.useInput = undefined;
+            } else {
+                this.clear();
+            }
+        }
+    }
+
+    handleEndChange() {
+        let value = this.parseString(this.model.useInput && this.model.useInput[1]);
+
+        if (value) {
+            this.model.useInput = [this.displayValue[0], this.formatToString(value)];
+
+            let newVal = [this.value && this.value[0], value];
+
+            if (this.isValidValue(newVal)) {
+                this.triggerInput(newVal);
+                this.model.useInput = undefined;
+            } else {
+                this.clear();
+            }
+        }
+    }
+
+    handleMouseEnter() {
+        this.model.showClearable = true;
+    }
+
+    handleMouseLeave() {
+        this.model.showClearable = false;
+    }
+
+    handlePick(e: VNode.Event<{ value: any; close?: boolean }>) {
+        this.model.useInput = undefined;
+        this.triggerInput(e.data?.value);
+
+        if (e.data.close) {
+            this.hide();
+        }
+    }
+
+    //range
+    handleRangeClick() {
+        if (this.model.pickerVisible) return;
+        this.focus();
+    }
+    //#endregion
+
+    private formatToValue(val: any) {
+        return formatAsFormatAndType(val, this.props.valueFormat, this.props.type!);
+    }
+
+    private formatToString(val: any) {
+        let type = Array.isArray(val) ? this.props.type : this.props.type?.replace("range", "");
+
+        return formatAsFormatAndType(val, this.props.valueFormat, type!);
+    }
+
+    private parseString(val: any) {
+        let type = Array.isArray(val) ? this.props.type! : this.props.type!.replace("range", "");
+
+        return parseAsFormatAndType(val, this.props.format, type);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/var.scss";
+.jk-date-editor {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+
+    :deep(.jk-input) {
+        width: 220px;
+    }
+
+    &.monthrange {
+        .jk-date-range {
+            width: 300px;
+        }
+    }
+
+    &.daterange,
+    &.timerange {
+        .jk-date-range {
+            width: 350px;
+        }
+    }
+
+    &.datetimerange {
+        .jk-date-range {
+            width: 400px;
+        }
+    }
+
+    .jk-date-range {
+        background-color: #fff;
+        background-image: none;
+        border-radius: 4px;
+        border: $--border-base;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        height: 40px;
+        line-height: 40px;
+        outline: none;
+        padding: 3px 10px;
+        transition: $--border-transition-base;
+        font-size: 14px;
+        color: var(--jk-color-text-regular);
+        position: relative;
+
+        .jk-icon-date {
+            color: var(--jk-color-text-placeholder);
+        }
+
+        input {
+            line-height: 1;
+            appearance: none;
+            border: none;
+            outline: none;
+            display: inline-block;
+            height: 100%;
+            padding: 0;
+            width: 40%;
+            text-align: center;
+            font-size: 14px;
+            color: var(--jk-color-text-regular);
+
+            &::placeholder {
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+
+        .range-separator {
+            display: inline-block;
+            height: 100%;
+            padding: 0 5px;
+            margin: 0;
+            text-align: center;
+            line-height: 32px;
+            width: 5%;
+        }
+
+        .clearable {
+            font-size: 14px;
+            color: var(--jk-color-text-placeholder);
+            width: 25px;
+            display: inline-block;
+            float: right;
+            line-height: 32px;
+            cursor: pointer;
+        }
+
+        &.medium {
+            height: 36px;
+
+            .range-separator {
+                line-height: 28px;
+                font-size: 14px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            .clearable {
+                line-height: 28px;
+            }
+        }
+
+        &.small {
+            height: 32px;
+
+            .range-separator {
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+            input {
+                font-size: 13px;
+            }
+
+            .clearable {
+                line-height: 24px;
+            }
+        }
+
+        &.mini {
+            height: 28px;
+
+            .range-separator {
+                line-height: 20px;
+                font-size: 12px;
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            .clearable {
+                line-height: 20px;
+            }
+        }
+    }
+
+    &.is-active {
+        .jk-date-range {
+            border-color: var(--jk-color-primary);
+
+            &:hover {
+                border-color: var(--jk-color-primary);
+            }
+        }
+    }
+
+    &.is-disabled .jk-date-range {
+        background-color: var(--jk-disabled-background-color);
+        border-color: var(--jk-disabled-border-color);
+        color: var(--jk-disabled-color);
+        cursor: not-allowed;
+
+        &:hover,
+        &:focus {
+            border-color: var(--jk-disabled-border-color);
+        }
+
+        input {
+            background-color: var(--jk-disabled-background-color);
+            color: var(--jk-disabled-color);
+            cursor: not-allowed;
+
+            &::placeholder {
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+    }
+
+    &.is-error {
+        .jk-date-range {
+            border-color: var(--jk-color-danger);
+        }
+    }
+}
+</style>

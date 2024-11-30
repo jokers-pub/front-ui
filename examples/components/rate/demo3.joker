@@ -1,0 +1,7 @@
+<template>
+    <jk-rate
+        icon-classes="@(['jk-icon-heavy-rain', 'jk-icon-cloudy-and-sunny', 'jk-icon-sunny'])"
+        colors="@(['#99A9BF', '#F7BA2A', '#FF9900'])"
+        void-icon-class="jk-icon-cloudy"
+    />
+</template>

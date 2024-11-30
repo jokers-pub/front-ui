@@ -1,0 +1,10 @@
+<template>
+    <jk-popconfirm
+        title="你确定要删除此数据吗？"
+        confirm-button-text="好的"
+        cancel-button-text="不用了"
+        icon="jk-icon-info"
+        icon-color="red">
+        <jk-button>删除</jk-button>
+    </jk-popconfirm>
+</template>

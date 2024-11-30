@@ -1,0 +1,53 @@
+<template>
+    <tbody class="@({ 'joker-table-tbody': true, border: table.props.border })">
+        @for(let (index,row) in store.data.tableData) {
+            <JokerTr row="@row" rowIndex="@index" />
+        }
+    </tbody>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Store } from "./store";
+import { componentName } from "../utils";
+import JokerTr from "./tr.joker";
+
+export default class extends Component {
+    components = {
+        JokerTr
+    };
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+
+    get store(): Store {
+        return this.table!.store;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.joker-table-tbody {
+    line-height: 1;
+    &.border {
+        :deep(tr:last-child) {
+            border-bottom: none;
+        }
+        :deep(td) {
+            &.fixed-left,
+            &.fixed-right {
+                border: none;
+                outline: solid 1px var(--jk-border-color-lighter);
+            }
+
+            border-right: solid 1px var(--jk-border-color-lighter);
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+}
+</style>

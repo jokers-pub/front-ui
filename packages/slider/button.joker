@@ -1,0 +1,322 @@
+<template>
+    <div
+        class="@({
+            'jk-slider-button-wrapper': true,
+            'is-hover': model.hovering,
+            'is-dragging': model.dragging,
+            'is-vertical': props.vertical,
+            'is-disabled': props.disabled
+        })"
+        style="@wrapperStyle"
+        ref="button"
+        tabindex="0"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        @mousedown="handleMouseDown"
+        @touchstart.passive="handleMouseDown"
+        @focus="handleMouseEnter"
+        @blur="handleMouseLeave"
+        @keydown.left="handleLeftKeyDown"
+        @keydown.right="handleRightKeyDown"
+        @keydown.down.prevent="handleLeftKeyDown"
+        @keydown.up.prevent="handleRightKeyDown">
+        <JokerToolTip placement="top" ref="tooltip" disabled="@(!props.showTooltip)" content="@formatValue">
+            <div class="@({ button: true, 'is-hover': model.hovering, 'is-dragging': model.dragging })"></div>
+        </JokerToolTip>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerToolTip from "../tooltip/index.joker";
+import { componentName } from "../utils";
+export default class extends Component<{
+    showTooltip: boolean;
+    formatTooltip: Function;
+    value: number;
+    vertical: boolean;
+    disabled: boolean;
+    max: number;
+    min: number;
+    step: number;
+    precision: number;
+}> {
+    model = {
+        hovering: false,
+        dragging: false
+    };
+
+    startX = 0;
+    currentX = 0;
+    startY = 0;
+    currentY = 0;
+    startPosition = 0;
+    newPosition?: number;
+    isClick = false;
+
+    components = {
+        JokerToolTip
+    };
+
+    get formatValue() {
+        return this.props.formatTooltip ? this.props.formatTooltip(this.props.value) : this.props.value;
+    }
+
+    get buttonStyle() {
+        return "";
+    }
+
+    get $parent() {
+        return this.$rootVNode?.closest<VNode.Component>((m) => {
+            return m instanceof VNode.Component && m.component.name === componentName("slider");
+        })?.component;
+    }
+
+    get currentPosition() {
+        return `${((this.props.value! - this.props.min!) / (this.props.max! - this.props.min!)) * 100}%`;
+    }
+    get wrapperStyle() {
+        return this.props.vertical
+            ? { bottom: this.currentPosition }
+            : {
+                  left: this.currentPosition
+              };
+    }
+
+    showToolTip() {
+        this.$getRef<VNode.Component>("tooltip")?.component.show();
+    }
+
+    hideToolTip() {
+        this.$getRef<VNode.Component>("tooltip")?.component.hide();
+    }
+
+    setPosition(newPosition?: number) {
+        if (newPosition === undefined || isNaN(newPosition)) return;
+
+        if (newPosition < 0) newPosition = 0;
+        if (newPosition > 100) newPosition = 100;
+
+        let lengthPerStep = 100 / ((this.props.max! - this.props.min!) / this.props.step!);
+        let steps = Math.round(newPosition / lengthPerStep);
+
+        let value = steps * lengthPerStep * (this.props.max! - this.props.min!) * 0.01 + this.props.min!;
+        value = parseFloat(value.toFixed(this.props.precision!));
+
+        this.$trigger("input", value);
+        this.showToolTip();
+    }
+
+    handleMouseEnter() {
+        this.model.hovering = true;
+        this.showToolTip();
+    }
+
+    handleMouseLeave() {
+        this.model.hovering = true;
+        this.hideToolTip();
+    }
+
+    handleMouseDown(e: VNode.Event) {
+        if (this.props.disabled) return;
+
+        e.preventDefault();
+        this.onDragStart(e.event);
+
+        window.addEventListener("mousemove", this.onDragging);
+        window.addEventListener("touchmove", this.onDragging);
+        window.addEventListener("mouseup", this.onDragEnd);
+        window.addEventListener("touchend", this.onDragEnd);
+        window.addEventListener("contextmenu", this.onDragEnd);
+    }
+
+    handleLeftKeyDown() {
+        if (this.props.disabled) return;
+
+        this.newPosition =
+            parseFloat(this.currentPosition) - (this.props.step! / (this.props.max! - this.props.min!)) * 100;
+
+        this.setPosition(this.newPosition);
+
+        this.$parent?.triggerChange();
+    }
+
+    handleRightKeyDown() {
+        if (this.props.disabled) return;
+
+        this.newPosition =
+            parseFloat(this.currentPosition) + (this.props.step! / (this.props.max! - this.props.min!)) * 100;
+
+        this.setPosition(this.newPosition);
+
+        this.$parent?.triggerChange();
+    }
+
+    onDragStart(event: MouseEvent | TouchEvent) {
+        this.model.dragging = true;
+        this.$parent && (this.$parent.model.dragging = true);
+
+        this.isClick = true;
+        let clientOffset = {
+            clientY: 0,
+            clientX: 0
+        };
+        if (event instanceof TouchEvent) {
+            clientOffset.clientY = event.touches[0].clientY;
+            clientOffset.clientX = event.touches[0].clientX;
+        } else {
+            clientOffset.clientX = event.clientX;
+            clientOffset.clientY = event.clientY;
+        }
+
+        if (this.props.vertical) {
+            this.startY = clientOffset.clientY;
+        } else {
+            this.startX = clientOffset.clientX;
+        }
+
+        this.startPosition = parseFloat(this.currentPosition);
+        this.newPosition = this.startPosition;
+    }
+    onDragging(event: MouseEvent | TouchEvent) {
+        if (this.model.dragging) {
+            this.isClick = false;
+            this.showToolTip();
+            this.$parent?.resetSize();
+
+            let diff = 0;
+            let clientOffset = {
+                clientY: 0,
+                clientX: 0
+            };
+            if (event instanceof TouchEvent) {
+                clientOffset.clientY = event.touches[0].clientY;
+                clientOffset.clientX = event.touches[0].clientX;
+            } else {
+                clientOffset.clientX = event.clientX;
+                clientOffset.clientY = event.clientY;
+            }
+
+            if (this.props.vertical) {
+                this.currentY = clientOffset.clientY;
+                diff = ((this.startY - this.currentY) / this.$parent?.model.sliderSize) * 100;
+            } else {
+                this.currentX = clientOffset.clientX;
+                diff = ((this.currentX - this.startX) / this.$parent?.model.sliderSize) * 100;
+            }
+
+            this.newPosition = this.startPosition + diff;
+            this.setPosition(this.newPosition);
+        }
+    }
+    onDragEnd() {
+        if (this.model.dragging) {
+            setTimeout(() => {
+                this.model.dragging = false;
+                this.$parent && (this.$parent.model.dragging = false);
+                this.hideToolTip();
+
+                if (!this.isClick) {
+                    this.setPosition(this.newPosition);
+                    this.$parent?.triggerChange();
+                }
+            });
+            window.removeEventListener("mousemove", this.onDragging);
+            window.removeEventListener("touchmove", this.onDragging);
+            window.removeEventListener("mouseup", this.onDragEnd);
+            window.removeEventListener("touchend", this.onDragEnd);
+            window.removeEventListener("contextmenu", this.onDragEnd);
+        }
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/mixins.scss";
+
+.jk-slider-button-wrapper {
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    z-index: 1001;
+    top: -15px;
+    transform: translateX(-50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+
+    @include vertical-center;
+
+    .button {
+        width: 16px;
+        height: 16px;
+        border: solid 2px var(--jk-color-primary);
+        background-color: #fff;
+        border-radius: 50%;
+        transition: 0.2s;
+        user-select: none;
+        vertical-align: middle;
+        display: inline-block;
+
+        &:hover,
+        &.is-hover,
+        &.is-dragging {
+            transform: scale(1.2);
+        }
+
+        &:hover,
+        &.is-hover {
+            cursor: grab;
+        }
+
+        &.is-dragging {
+            cursor: grabbing;
+        }
+    }
+
+    &:hover,
+    &.is-hover {
+        cursor: grab;
+    }
+
+    &.is-dragging {
+        cursor: grabbing;
+    }
+
+    &.is-disabled {
+        &:hover,
+        &.is-hover {
+            cursor: not-allowed;
+        }
+
+        &.is-dragging {
+            cursor: not-allowed;
+        }
+        .button {
+            cursor: not-allowed;
+            border-color: var(--jk-color-text-placeholder);
+
+            &:hover,
+            &.is-hover,
+            &.is-dragging {
+                transform: scale(1);
+            }
+
+            &:hover,
+            &.is-hover {
+                cursor: not-allowed;
+            }
+
+            &.is-dragging {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &.is-vertical {
+        top: auto;
+        left: -15px;
+        transform: translateY(50%);
+    }
+}
+</style>

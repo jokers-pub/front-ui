@@ -1,0 +1,49 @@
+<template>
+    <div>
+        <jk-breadcrumb separator=">">
+            @for(let item of model.breadcrumbs) {
+                <jk-breadcrumb-item>
+                    @if(item.url) {
+                        <a href="@item.url">
+                            @if(item.icon) {
+                                <jk-icon name="@item.icon" />
+                            }
+                            @if(item.name) {
+                                @item.name
+                            }
+                        </a>
+                    }
+                    else {
+                        @item.name
+                    }
+                </jk-breadcrumb-item>
+            }
+        </jk-breadcrumb>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        breadcrumbs: [
+            {
+                url: "#/",
+                icon: "s-home"
+            },
+            {
+                name: "任务管理"
+            },
+            {
+                name: "任务列表"
+            },
+            {
+                name: "任务详情"
+            }
+        ]
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

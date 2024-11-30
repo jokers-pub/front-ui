@@ -1,0 +1,91 @@
+<template>
+    <JokerPopover
+        ref="popover"
+        placement="@props.placement"
+        offset="@props.offset"
+        width="@props.width"
+        trigger="click">
+        <div class="jk-popconfirm">
+            <p class="title">
+                <i class="icon @props.icon" style="color:@props.iconColor" />@props.title
+            </p>
+            <div class="btns">
+                <JokerButton size="mini" type="@props.cancelButtonType" @click="handleCancelClick">
+                    @props.cancelButtonText
+                </JokerButton>
+                <JokerButton size="mini" type="@props.confirmButtonType" @click="handleConfirmClick">
+                    @props.confirmButtonText
+                </JokerButton>
+            </div>
+        </div>
+        @section("reference") {
+            @RenderSection()
+        }
+    </JokerPopover>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerPopover from "../popover/index.joker";
+import JokerButton from "../button/index.joker";
+
+export default class extends Component<{
+    disabled: boolean;
+    placement: string;
+    offset: number;
+    width: string;
+    icon: string;
+    iconColor: string;
+    title: string;
+    confirmButtonText: string;
+    cancelButtonText: string;
+    confirmButtonType: string;
+    cancelButtonType: string;
+}> {
+    propsOption = {
+        icon: "jk-icon-question",
+        iconColor: "#f90",
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        confirmButtonType: "primary",
+        cancelButtonType: "text"
+    };
+    get popover() {
+        return this.$getRef<VNode.Component>("popover")?.component;
+    }
+
+    components = {
+        JokerPopover,
+        JokerButton
+    };
+
+    handleCancelClick() {
+        this.popover?.hide();
+
+        this.$trigger("cancel");
+    }
+
+    handleConfirmClick() {
+        this.popover?.hide();
+
+        this.$trigger("confirm");
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-popconfirm {
+    .title {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            margin-right: 5px;
+        }
+    }
+
+    .btns {
+        text-align: right;
+        margin: 0;
+    }
+}
+</style>

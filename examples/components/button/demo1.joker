@@ -1,0 +1,35 @@
+<template>
+    <DemoRow>
+        <jk-button>默认按钮</jk-button>
+        <jk-button type="primary">主要按钮</jk-button>
+        <jk-button type="success">成功按钮</jk-button>
+        <jk-button type="info">信息按钮</jk-button>
+        <jk-button type="warning">警告按钮</jk-button>
+        <jk-button type="danger">危险按钮</jk-button>
+    </DemoRow>
+    <DemoRow>
+        <jk-button plain>朴素按钮</jk-button>
+        <jk-button type="primary" plain>主要按钮</jk-button>
+        <jk-button type="success" plain>成功按钮</jk-button>
+        <jk-button type="info" plain>信息按钮</jk-button>
+        <jk-button type="warning" plain>警告按钮</jk-button>
+        <jk-button type="danger" plain>危险按钮</jk-button>
+    </DemoRow>
+    <DemoRow>
+        <jk-button round>圆角按钮</jk-button>
+        <jk-button type="primary" round>主要按钮</jk-button>
+        <jk-button type="success" round>成功按钮</jk-button>
+        <jk-button type="info" round>信息按钮</jk-button>
+        <jk-button type="warning" round>警告按钮</jk-button>
+        <jk-button type="danger" round>危险按钮</jk-button>
+    </DemoRow>
+    <DemoRow>
+        <jk-button icon="jk-icon-search" circle></jk-button>
+        <jk-button type="primary" icon="jk-icon-edit" circle></jk-button>
+        <jk-button type="success" icon="jk-icon-check" circle></jk-button>
+        <jk-button type="info" icon="jk-icon-message" circle></jk-button>
+        <jk-button type="warning" icon="jk-icon-star-off" circle></jk-button>
+        <jk-button type="danger" icon="jk-icon-delete" circle></jk-button>
+    </DemoRow>
+</template>
+

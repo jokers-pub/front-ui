@@ -1,0 +1,175 @@
+<template>
+    <div ref="container" append-to="body" class="jk-table-filter jk-popper" @click.outside="close">
+        <div class="content">
+            <jk-scrollbar ref="scrollbar">
+                @for(let item of filters) {
+                    <div class="item">
+                        <JokerCheckbox
+                            value="@isChecked(item.value)"
+                            label="@item.text"
+                            @change="handleCheckboxChange(item.value)"
+                        />
+                    </div>
+                }
+            </jk-scrollbar>
+        </div>
+        <div class="option">
+            <jk-link type="info" @click="reset">重置</jk-link>
+            <jk-link type="primary" @click="handleSureClick">筛选</jk-link>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Popper } from "../utils/popper";
+import { componentName } from "../utils";
+import { ColumnType, Store } from "./store";
+import JokerCheckbox from "../checkbox/checkbox.joker";
+import { remove } from "@joker.front/shared";
+
+export default class extends Component<{
+    key: string;
+}> {
+    model = {
+        filterValue: [] as any[]
+    };
+    components = {
+        JokerCheckbox
+    };
+
+    popperHandler?: Popper;
+
+    isChecked(val: any) {
+        return this.model.filterValue.includes(val);
+    }
+
+    get filters() {
+        let store = this.table?.component.store as Store;
+        if (!store) return [];
+
+        let column = store.getColumn(this.props.key!) as ColumnType;
+        let result: Map<string, any> = new Map();
+        if (column) {
+            if (column.filter) {
+                if (Array.isArray(column.filter)) {
+                    column.filter.forEach((n) => {
+                        if (typeof n === "object") {
+                            result.set(n.value, n.text);
+                        } else {
+                            result.set(n, n);
+                        }
+                    });
+                } else {
+                    //补充方案，使用所有列数据
+                    store.data.originalTableData?.forEach((n) => {
+                        let val = n[this.props.key!];
+                        result.set(val, val);
+                    });
+                }
+            }
+        }
+
+        let out: any[] = [];
+        result.forEach((v, k) => {
+            out.push({
+                text: v,
+                value: k
+            });
+        });
+
+        return out;
+    }
+
+    get table() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        );
+    }
+
+    get header() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table-header")
+        )?.component;
+    }
+
+    mounted() {
+        this.model.filterValue =
+            this.table?.component.store.data.filter.find((n: any) => n.key === this.props.key)?.value || [];
+
+        let popper = this.$getRef("container")?.output;
+        let reference = this.$rootVNode?.closest((n) => n instanceof VNode.Element)?.output;
+
+        if (popper && reference) {
+            this.popperHandler = new Popper(reference, popper, {
+                placement: "bottom-start",
+                boundariesPadding: 0,
+                scrollContainer: this.table?.firstElement?.output
+            });
+        }
+    }
+
+    close() {
+        if (this.header) {
+            this.header.model.showFilterColKey = undefined;
+        }
+    }
+
+    reset() {
+        this.table!.component.store.setFilter(this.props.key);
+        this.close();
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+    }
+
+    handleCheckboxChange(e: VNode.Event<boolean>, val: any) {
+        if (e.data) {
+            if (this.model.filterValue.includes(val) === false) {
+                this.model.filterValue.push(val);
+            }
+        } else {
+            remove(this.model.filterValue, val);
+        }
+    }
+
+    handleSureClick() {
+        this.table?.component.store.setFilter(this.props.key!, this.model.filterValue);
+        this.close();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-table-filter {
+    border: solid 1px var(--jk-border-color-light);
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: var(--jk-box-shadow-light);
+    box-sizing: border-box;
+    margin: 5px 0;
+    min-width: 120px;
+
+    .content {
+        min-height: 100px;
+        padding: 10px;
+        max-height: 300px;
+        border-bottom: solid 1px --jk-border-color-base;
+
+        .item {
+            :deep(.jk-checkbox) {
+                margin: 0 5px 8px 5px;
+            }
+        }
+    }
+
+    .option {
+        padding: 8px 10px;
+        text-align: right;
+
+        :deep(.jk-link) {
+            margin-left: 8px;
+        }
+    }
+}
+</style>

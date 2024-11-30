@@ -1,0 +1,37 @@
+<template>
+    @if(show) {
+        @RenderSection()
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { guid } from "@joker.front/shared";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    name: string;
+    label: string;
+}> {
+    propsOption = {
+        name: guid()
+    };
+
+    get show() {
+        return this.tabs?.model.showName === this.props.name;
+    }
+
+    get tabs() {
+        return this.$rootVNode.closest(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("tabs")
+        ).component;
+    }
+
+    mounted() {
+        this.tabs?.registerTab(this.props.name, this.props.label, this.$sections.label);
+    }
+
+    beforeDestroy() {
+        this.tabs?.unRegisterTab(this.props.name);
+    }
+}
+</script>

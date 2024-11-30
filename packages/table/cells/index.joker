@@ -1,0 +1,27 @@
+<template>
+    @if(!props.isHeader) {
+        @rowIndex
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { ColumnType } from "../store";
+
+export default class extends Component<{
+    isHeader: boolean;
+    rowIndex: number;
+    column: ColumnType;
+}> {
+    get rowIndex() {
+        let startIndex = 1;
+        if (this.props.column?.index) {
+            if (typeof this.props.column.index === "function") {
+                startIndex = this.props.column.index();
+            } else {
+                startIndex = this.props.column.index;
+            }
+        }
+        return (this.props.rowIndex ?? 0) + startIndex;
+    }
+}
+</script>

@@ -1,0 +1,429 @@
+<template>
+    <div
+        class="jk-message-box"
+        tabindex="-1"
+        role="dialog"
+        aria-modal="true"
+        aria-label="@(props.title || 'dialog')"
+        transition-name="jk-message-box-fade"
+        transition-type="animation"
+        style="z-index:@getzIndex()"
+        @click.self="handleContainerClick">
+        <div class="@(['message-box', props.customClass, props.center && 'is-center'])">
+            @if(props.title) {
+                <div class="header">
+                    <div class="title">
+                        @if(icon && props.center) {
+                            <div class="status @icon"></div>
+                        }
+                        <span>@props.title</span>
+                    </div>
+                    @if(props.closable) {
+                        <button
+                            type="button"
+                            class="header-close"
+                            aria-label="Close"
+                            @click="handleCloseClick"
+                            @keydown.enter="handleCloseClick">
+                            <i class="jk-icon-close"></i>
+                        </button>
+                    }
+                </div>
+            }
+            <div class="content">
+                <div class="container">
+                    @if(icon && !props.center && props.message) {
+                        <div class="status @icon"></div>
+                    }
+                    @if(props.message) {
+                        <div class="message">
+                            <p>
+                                @if(props.useHtml) {
+                                    @Html(props.message)
+                                }
+                                else {
+                                    @props.message
+                                }
+                            </p>
+                        </div>
+                    }
+                </div>
+                @if(props.showInput) {
+                    <div class="input">
+                        <JokerInput
+                            ref="input"
+                            autofocus
+                            value="@props.inputValue"
+                            error="@(!!model.inputErrorMsg)"
+                            placeholder="@props.inputPlaceholder"
+                            @keydown.enter="handleInputKeyDown"
+                            @input="handleInput"
+                        />
+                        @if(model.inputErrorMsg) {
+                            <div class="error-msg">
+                                @model.inputErrorMsg
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="btns">
+                @if(props.showCancelButton) {
+                    <JokerButton
+                        loading="@model.cancelButtonLoading"
+                        size="small"
+                        round="@props.roundButton"
+                        @click="handleCancelClick"
+                        @keydown.enter="handleCancelClick">
+                        @props.cancelButtonText
+                    </JokerButton>
+                }
+                @if(props.showConfirmButton) {
+                    <JokerButton
+                        loading="@model.confirmButtonLoading"
+                        size="small"
+                        type="primary"
+                        round="@props.roundButton"
+                        @click="handleConfirmClick"
+                        @keydown.enter="handleConfirmClick">
+                        @props.confirmButtonText
+                    </JokerButton>
+                }
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerInput from "../input/index.joker";
+import JokerButton from "../button/index.joker";
+import { PopupManager } from "../utils/popup-manager";
+import { zIndexManage } from "../utils/zindex";
+import { Action, PropsOption } from "./index";
+let seed = 1;
+
+export default class extends Component<PropsOption> {
+    model: Record<string, any> = {
+        inputErrorMsg: "",
+        cancelButtonLoading: false,
+        confirmButtonLoading: false
+    };
+
+    propsOption = {
+        closable: true,
+        showConfirmButton: true,
+        closeOnClickModal: true,
+        closeOnPressEscape: true,
+        cancelButtonText: "取消",
+        confirmButtonText: "确定",
+        title: "温馨提示",
+        inputPlaceholder: "请输入内容"
+    };
+
+    components = {
+        JokerInput,
+        JokerButton
+    };
+
+    id = "message-box-" + seed++;
+
+    created() {
+        this.inputValue = this.props.inputValue || "";
+        PopupManager.open(this.id, {
+            closeOnPressEscape: this.props.closeOnPressEscape,
+            close: () => {
+                this.handleCloseClick();
+            }
+        });
+    }
+
+    beforeDestroy() {
+        PopupManager.close(this.id);
+    }
+
+    close() {
+        this.triggerAction("close");
+    }
+
+    get icon() {
+        return this.props.iconClass || (this.props.type && `jk-icon-${this.props.type}`) || "";
+    }
+
+    getzIndex() {
+        return zIndexManage.nextZIndex();
+    }
+
+    setErrorMsg(errMsg: string) {
+        this.model.inputErrorMsg = errMsg;
+    }
+
+    inputValue: string = "";
+
+    triggerAction(action: Action) {
+        if (this.props.$type === "prompt" && action === "confirm" && this.validate() === false) {
+            return;
+        }
+
+        if (this.props.beforeClose) {
+            this.props.beforeClose(action, this, () => this.doClose(action));
+        } else {
+            this.doClose(action);
+        }
+    }
+
+    doClose(action: Action) {
+        this.props.callback?.(action, this);
+
+        this.$destroy(true);
+    }
+
+    validate() {
+        if (this.props.$type !== "prompt" || !this.props.validate) return true;
+
+        let result = this.props.validate(this.inputValue);
+
+        if (result === true) {
+            this.model.inputErrorMsg = "";
+        } else if (result === false) {
+            this.model.inputErrorMsg = "验证失败";
+        } else {
+            this.model.inputErrorMsg = result;
+        }
+
+        if (this.model.inputErrorMsg) {
+            return false;
+        }
+
+        return true;
+    }
+
+    handleContainerClick() {
+        if (this.props.closeOnClickModal) {
+            this.triggerAction(this.props.distinguishCancelAndClose ? "close" : "cancel");
+        }
+    }
+
+    handleCloseClick() {
+        this.triggerAction(this.props.distinguishCancelAndClose ? "close" : "cancel");
+    }
+
+    handleInput(e: VNode.Event) {
+        this.inputValue = e.data!;
+
+        this.validate();
+    }
+
+    handleInputKeyDown() {
+        this.triggerAction("confirm");
+    }
+
+    handleCancelClick() {
+        this.triggerAction("cancel");
+    }
+
+    handleConfirmClick() {
+        this.triggerAction("confirm");
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-message-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+    }
+
+    .message-box {
+        display: inline-block;
+        width: 420px;
+        padding-bottom: 10px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: solid 1px var(--jk-border-color-lighter);
+        font-size: 18px;
+        box-shadow: var(--jk-box-shadow-light);
+        text-align: left;
+        overflow: hidden;
+        backface-visibility: hidden;
+
+        .header {
+            position: relative;
+            padding: 15px 15px 10px 15px;
+
+            .title {
+                padding-left: 0;
+                margin-bottom: 0;
+                font-size: 18px;
+                line-height: 1;
+                color: var(--jk-color-text-primary);
+            }
+
+            .header-close {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                padding: 0;
+                border: none;
+                outline: none;
+                background: transparent;
+                font-size: 16px;
+                cursor: pointer;
+
+                .jk-icon-close {
+                    color: var(--jk-color-info);
+                }
+
+                &:focus,
+                &:hover {
+                    .jk-icon-close {
+                        color: var(--jk-color-primary);
+                    }
+                }
+            }
+        }
+
+        .content {
+            padding: 10px 15px;
+            color: var(--jk-color-text-regular);
+            font-size: 14px;
+
+            .container {
+                position: relative;
+
+                .message {
+                    margin: 0;
+                    & p {
+                        margin: 0;
+                        line-height: 24px;
+                    }
+                }
+            }
+            .input {
+                padding-top: 15px;
+
+                .error-msg {
+                    color: var(--jk-color-danger);
+                    font-size: 12px;
+                    min-height: 18px;
+                    margin-top: 2px;
+                }
+            }
+        }
+
+        .btns {
+            padding: 5px 15px 0;
+            text-align: right;
+
+            & button:nth-child(2) {
+                margin-left: 10px;
+            }
+        }
+
+        .status {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+
+            &::before {
+                padding-left: 1px;
+            }
+
+            &.jk-icon-success {
+                color: var(--jk-color-success);
+            }
+            &.jk-icon-info {
+                color: var(--jk-color-info);
+            }
+            &.jk-icon-warning {
+                color: var(--jk-color-warning);
+            }
+            &.jk-icon-error {
+                color: var(--jk-color-danger);
+            }
+
+            + .message {
+                padding-left: 36px;
+                padding-right: 12px;
+            }
+        }
+
+        &.is-center {
+            padding-bottom: 30px;
+
+            .header {
+                padding-top: 30px;
+
+                .title {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .btns {
+                text-align: center;
+                padding-left: 26px;
+                padding-right: 26px;
+            }
+
+            .status {
+                position: relative;
+                top: auto;
+                padding-right: 5px;
+                text-align: center;
+                transform: translateY(-1px);
+            }
+        }
+    }
+    &.jk-message-box-fade-enter-from {
+        opacity: 0;
+    }
+    &.jk-message-box-fade-enter-active {
+        animation: msgbox-fade-in 0.3s;
+    }
+    &.jk-message-box-fade-leave-active {
+        animation: msgbox-fade-out 0.3s;
+    }
+
+    @keyframes msgbox-fade-in {
+        0% {
+            transform: translate3d(0, -20px, 0);
+            opacity: 0;
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes msgbox-fade-out {
+        0% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate3d(0, -20px, 0);
+            opacity: 0;
+        }
+    }
+}
+</style>

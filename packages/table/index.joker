@@ -1,0 +1,415 @@
+<template>
+    <div
+        class="@(['jk-table', props.class, model.scrollTag, { border: props.border }, props.size || ''])"
+        ref="container"
+        style="@({
+            height: model.tableHeight
+        })">
+        <JokerScrollbar @resize="resize" @scroll="handleScroll">
+            @RenderSection()
+            <table border="0" cellspacing="0" cellpadding="0">
+                @if(props.showHeader) {
+                    <JokerTableHeader />
+                }
+                <JokerTableBody />
+            </table>
+            <div class="horizontalLine" style="left:@(model.horizontalLineLeft)px"></div>
+            @if(model.horizontalLineRight > 0) {
+                <div class="horizontalLine right" style="right:@(model.horizontalLineRight)px"></div>
+            }
+            @if(store.data.tableData && store.data.tableData.length === 0) {
+                <div class="empty">
+                    @if($sections.empty) {
+                        @RenderSection("empty")
+                    }
+                    else {
+                        <JokerEmpty description="@props.emptyText" size="@props.size" />
+                    }
+                </div>
+            }
+        </JokerScrollbar>
+    </div>
+</template>
+<script>
+import { Component, VNode, combinedReply } from "@joker.front/core";
+import { CHECK_ROW_KEY, SortableOrderType, Store } from "./store";
+import { componentName, transformUnit } from "../utils";
+import JokerTableHeader from "./header.joker";
+import JokerTableBody from "./body.joker";
+import JokerScrollbar from "../scrollbar/index.joker";
+import JokerEmpty from "../empty/index.joker";
+
+import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+
+export default class extends Component<{
+    data: Array<any>;
+    size: string;
+    emptyText: string;
+    showHeader: boolean;
+    border: boolean;
+    stripe: boolean;
+    height: string | number;
+    maxHeight: number;
+    select: boolean;
+    multiple: boolean;
+    class: string;
+    rowKey: string;
+    isLeafKey: string;
+    childrenKey: string;
+    defaultSort: string;
+    defaultSortOrder: SortableOrderType;
+    //数据变更不清除选中
+    dataChangeNotClearSelected: boolean;
+    /** 默认展开全部 */
+    defaultExpandAll?: boolean;
+    //header
+    headerRowStyle: Function | string;
+    headerRowClassName: Function | string;
+    headerCellStyle: Function | string;
+    headerCellClassName: Function | string;
+    //row
+    rowClassName: Function | string;
+    rowStyle: Function | string;
+    cellClassName: Function | string;
+    cellStyle: Function | string;
+}> {
+    name = componentName("table");
+
+    propsOption = {
+        showHeader: true,
+        data: undefined,
+        emptyText: "暂无数据",
+        isLeafKey: "isLeaf",
+        childrenKey: "children"
+    };
+
+    model = {
+        scrollTag: "",
+        horizontalLineLeft: 0,
+        horizontalLineRight: 0,
+        tableHeight: undefined as string | undefined
+    };
+
+    store!: Store;
+
+    created() {
+        this.store = new Store(this);
+
+        if (this.props.defaultSort) {
+            this.store.setSortableOrder(this.props.defaultSort, this.props.defaultSortOrder);
+        }
+
+        this.$watch(
+            () => [this.props.height, this.props.maxHeight, this.store.data.tableData],
+            () => {
+                this.resize();
+            }
+        );
+
+        this.$watch(
+            () => this.props.data,
+            (tableData) => {
+                this.store.setData(tableData);
+            }
+        );
+    }
+
+    get container() {
+        return this.$getRef("container")?.output as HTMLElement;
+    }
+
+    mounted() {
+        this.store.ready = true;
+        this.store.updateColumns();
+
+        if (this.props.data) {
+            this.store.setData(this.props.data);
+        }
+
+        this.resize();
+
+        addResizeListener(this.container, this.resize);
+    }
+
+    beforeDestroy() {
+        this.store?.destroy();
+        removeResizeListener(this.container, this.resize);
+    }
+
+    resize() {
+        if (this.container) {
+            this.resizeFixedColumn();
+            this.resizeHeight();
+        }
+    }
+
+    resizeFixedColumn() {
+        if (this.container) {
+            //getOffsetLeft
+            let offsetLeft: number[] = [];
+            let headFixedLeft = this.container.querySelectorAll("thead .fixed-left");
+            headFixedLeft.forEach((n) => {
+                offsetLeft.push((<HTMLElement>n).offsetWidth);
+            });
+
+            if (offsetLeft.length) {
+                this.container.querySelectorAll("tr").forEach((tr) => {
+                    tr.querySelectorAll(".fixed-left").forEach((n, index) => {
+                        let selfOffsetLeft = 0;
+                        for (var i = 0; i < index; i++) {
+                            selfOffsetLeft += offsetLeft[i];
+                        }
+                        (<HTMLElement>n).style.left = selfOffsetLeft + "px";
+                    });
+                });
+
+                this.model.horizontalLineLeft = offsetLeft.reduce((a, b) => {
+                    return a + b;
+                });
+            } else {
+                this.model.horizontalLineLeft = 0;
+            }
+
+            //getOffsetRight
+            let offsetRight: number[] = [];
+            let headFixedRight = this.container.querySelectorAll("thead .fixed-right");
+            headFixedRight.forEach((n) => {
+                offsetRight.push((<HTMLElement>n).offsetWidth);
+            });
+
+            if (offsetRight.length) {
+                this.container.querySelectorAll("tr").forEach((tr) => {
+                    tr.querySelectorAll(".fixed-right").forEach((n, index) => {
+                        let selfOffsetRight = 0;
+                        for (var i = index + 1; i < offsetRight.length; i++) {
+                            selfOffsetRight += offsetRight[i];
+                        }
+                        (<HTMLElement>n).style.right = selfOffsetRight + "px";
+                    });
+                });
+
+                this.model.horizontalLineRight = offsetRight.reduce((a, b) => {
+                    return a + b;
+                });
+            } else {
+                this.model.horizontalLineRight = 0;
+            }
+        }
+    }
+    resizeHeight() {
+        if (this.props.height) {
+            this.model.tableHeight = transformUnit(this.props.height);
+            return;
+        }
+
+        if (this.props.maxHeight) {
+            let rowHeight = 0;
+            this.container.querySelectorAll("tr").forEach((n) => {
+                rowHeight += (<HTMLElement>n).offsetHeight;
+            });
+
+            if (rowHeight > this.props.maxHeight) {
+                this.model.tableHeight = transformUnit(this.props.maxHeight);
+                return;
+            }
+        }
+
+        this.model.tableHeight = undefined;
+    }
+
+    components = {
+        JokerTableHeader,
+        JokerTableBody,
+        JokerScrollbar,
+        JokerEmpty
+    };
+
+    get tableStyle() {
+        let height = transformUnit(this.props.height);
+
+        return {
+            height
+        };
+    }
+    clearSort() {
+        this.store.clearSortable();
+    }
+    clearFilter() {
+        this.store.clearFilter();
+    }
+
+    sort(key: string, order: SortableOrderType) {
+        this.store.setSortableOrder(key, order);
+    }
+
+    setSelectedRow(selectedRow?: any) {
+        this.store.data.selectedRows.forEach((row) => {
+            row[CHECK_ROW_KEY] = false;
+        });
+        if (selectedRow === undefined) {
+            this.store.data.selectedRows.length = 0;
+        } else {
+            if (Array.isArray(selectedRow)) {
+                if (this.props.multiple) {
+                    this.store.data.selectedRows = selectedRow;
+                } else {
+                    this.store.data.selectedRows = selectedRow[0];
+                }
+            } else {
+                if (this.props.multiple) {
+                    this.store.data.selectedRows.push(selectedRow);
+                } else {
+                    this.store.data.selectedRows = [selectedRow];
+                }
+            }
+        }
+        this.store.data.selectedRows.forEach((row) => {
+            row[CHECK_ROW_KEY] = true;
+        });
+    }
+
+    getSelectRow() {
+        return this.store.data.selectedRows;
+    }
+
+    clearSelectedRow() {
+        this.store.data.selectedRows.forEach((row) => {
+            row[CHECK_ROW_KEY] = false;
+        });
+        this.store.data.selectedRows.length = 0;
+    }
+
+    selectAll() {
+        let selectionCol = this.store.selectionColumn;
+
+        combinedReply(() => {
+            this.store.data.originalTableData?.forEach((n: any) => {
+                if (!n[CHECK_ROW_KEY]) {
+                    //禁用行跳过
+                    if (selectionCol && selectionCol.disabledMethod?.(n)) {
+                        return;
+                    }
+
+                    this!.store.data.selectedRows.push(n);
+                    n[CHECK_ROW_KEY] = true;
+                }
+            });
+        });
+    }
+
+    triggerSelectedRowChange() {
+        if (this.props.multiple) {
+            this.$trigger("selected-change", this.store.data.selectedRows);
+        } else {
+            this.$trigger("selected-change", this.store.data.selectedRows.slice(0, 1));
+        }
+    }
+
+    //#region events
+    handleScroll(e: VNode.Event<{ top: number; left: number }>) {
+        let result = [];
+        if (e.data.top > 0) {
+            result.push("scroll-top");
+        }
+
+        if (e.data.left > 0) {
+            result.push("scroll-left");
+        }
+
+        this.model.scrollTag = result.join(" ");
+    }
+    //#endregion
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+.jk-table {
+    overflow: auto;
+    box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    background: #fff;
+    font-size: 14px;
+    color: var(--jk-color-text-regular);
+    position: relative;
+    .horizontalLine {
+        display: none;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    &.border {
+        border: solid 1px var(--jk-border-color-lighter);
+    }
+
+    &.scroll-top {
+        :deep(table thead tr) {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    &.scroll-left .horizontalLine {
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        z-index: 2;
+        background: var(--jk-border-color-lighter);
+        opacity: 0.3;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.12);
+    }
+
+    .horizontalLine.right {
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        z-index: 2;
+        background: var(--jk-border-color-lighter);
+        opacity: 0.3;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.12);
+    }
+
+    &.medium {
+        :deep(.jk-table-header th) {
+            padding: 10px 0;
+        }
+
+        :deep(tr td) {
+            padding: 10px 0;
+        }
+    }
+
+    &.small {
+        :deep(.jk-table-header th) {
+            padding: 8px 0;
+        }
+
+        :deep(tr td) {
+            padding: 8px 0;
+        }
+    }
+
+    &.mini {
+        font-size: 12px;
+        :deep(.jk-table-header th) {
+            padding: 6px 0;
+            font-size: 12px;
+            div.cell {
+                line-height: 20px;
+            }
+        }
+
+        :deep(tr td) {
+            padding: 6px 0;
+        }
+    }
+}
+</style>

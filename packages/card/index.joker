@@ -1,0 +1,72 @@
+<template>
+    <div class="@(['jk-card', props.shadow ? 'is-' + props.shadow + '-shadow' : 'is-always-shadow', props.class])">
+        @if($sections.header) {
+            <div class="header">
+                @RenderSection("header")
+            </div>
+        }
+        else if(props.header) {
+            <div class="header">
+                @props.header
+            </div>
+        }
+        <div class="body" style="@transBodyStyle">
+            @RenderSection()
+        </div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{
+    header: string;
+    bodyStyle: object | string;
+    shadow: string;
+    class: string;
+}> {
+    propsOption = {
+        class: "",
+        bodyStyle: ""
+    };
+
+    get transBodyStyle() {
+        const bodyStyle: any = this.props.bodyStyle;
+        if (typeof bodyStyle === "string") {
+            const hIndex = bodyStyle.indexOf("{");
+            const eIndex = bodyStyle.indexOf("}") || bodyStyle.length - 1;
+
+            return hIndex > -1 ? bodyStyle.substring(hIndex + 1, eIndex) : bodyStyle;
+        } else {
+            let result = "";
+            for (let key in bodyStyle!) {
+                result += key + ":" + bodyStyle[key];
+            }
+            return result;
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-card {
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    overflow: hidden;
+    color: #303133;
+    transition: 0.3s;
+    &.is-always-shadow,
+    &.is-hover-shadow:focus,
+    &.is-hover-shadow:hover {
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        padding: 18px 20px;
+        border-bottom: 1px solid #ebeef5;
+        box-sizing: border-box;
+    }
+    .body {
+        padding: 20px;
+    }
+}
+</style>

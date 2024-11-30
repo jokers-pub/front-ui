@@ -1,0 +1,116 @@
+<template>
+    <div
+        class="jk-color-pick-dropdown jk-popper"
+        append-to="body"
+        transition-name="jk-zoom-in-top"
+        ref="container"
+        @click.outside="hanldeOutSideClick">
+        <div class="top">
+            <ColorPanel color="@props.color" />
+            <HueSlider color="@props.color" />
+        </div>
+        @if(props.showAlpha) {
+            <AlphaSlider color="@props.color" />
+        }
+        <div class="options">
+            <div class="value">
+                <JokerInput size="mini" value="@props.color.value" @keyup="handleInputKeyup" @blur="handleInputBlur" />
+            </div>
+            <JokerButton size="mini" type="text" @click="handleClear">清空</JokerButton>
+            <JokerButton size="mini" @click="handleConfirm">确定</JokerButton>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Color } from "@joker.front/shared";
+import HueSlider from "./hue-slider.joker";
+import ColorPanel from "./color-panel.joker";
+import AlphaSlider from "./alpha-slider.joker";
+import JokerInput from "../input/index.joker";
+import JokerButton from "../button/index.joker";
+import { Popper } from "../utils/popper";
+
+export default class extends Component<{ color: Color; showAlpha: boolean }> {
+    components = {
+        ColorPanel,
+        HueSlider,
+        AlphaSlider,
+        JokerInput,
+        JokerButton
+    };
+    popperHandler?: Popper;
+    mounted() {
+        let popper = this.$getRef("container")?.output;
+        let reference = this.$rootVNode?.closest((n) => {
+            return n instanceof VNode.Element;
+        })?.output;
+
+        if (popper && reference) {
+            this.popperHandler = new Popper(reference, popper);
+        }
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+    }
+
+    hanldeOutSideClick() {
+        this.$trigger("hide");
+    }
+
+    setColor(val: string) {
+        this.props.color?.fromString(val);
+    }
+
+    handleInputKeyup(e: VNode.Event<string>) {
+        let event = e.event as KeyboardEvent;
+
+        if (event.key === "Enter") {
+            this.setColor(e.data || "");
+        }
+    }
+
+    handleInputBlur(e: VNode.Event<string>) {
+        this.setColor(e.data || "");
+    }
+
+    handleClear() {
+        this.$trigger("clear");
+        this.$trigger("hide");
+    }
+    handleConfirm() {
+        this.$trigger("pick");
+    }
+}
+</script>
+
+<style lang="scss">
+@import "../../theme/mixins.scss";
+.jk-color-pick-dropdown {
+    position: absolute;
+    box-sizing: content-box;
+    padding: 6px;
+    z-index: 10;
+    background: #fff;
+    border: solid 1px var(--jk-border-color-lighter);
+    border-radius: 4px;
+    box-shadow: var(--jk-box-shadow-light);
+    .top {
+        display: flex;
+    }
+
+    .options {
+        margin-top: 6px;
+        text-align: right;
+        @include clearfix;
+
+        .value {
+            float: left;
+            line-height: 26px;
+            font-size: 12px;
+            width: 160px;
+        }
+    }
+}
+</style>

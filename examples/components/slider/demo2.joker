@@ -1,0 +1,34 @@
+<template>
+    <div class="row">
+        <span>不显示间断点：</span>
+        <jk-slider step="10"></jk-slider>
+    </div>
+    <div class="row">
+        <span>显示间断点：</span>
+        <jk-slider step="10" showStops></jk-slider>
+    </div>
+</template>
+<style scoped lang="scss">
+.row {
+    padding: 30px 24px;
+    overflow: hidden;
+    border-bottom: 1px solid #eff2f6;
+
+    span {
+        font-size: 14px;
+        color: #8492a6;
+        line-height: 44px;
+        font-size: 16px;
+    }
+
+    :deep(.jk-slider) {
+        float: right;
+        width: 70%;
+        margin-right: 20px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+</style>

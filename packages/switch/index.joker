@@ -1,0 +1,214 @@
+<template>
+    <label
+        class="@(['jk-switch', props.class, props.disabled && 'is-disabled', checked && 'is-checked'])"
+        role="switch"
+        aria-checked="@checked"
+        aria-disabled="@props.disabled"
+        tabindex="@tabIndex"
+        @click.space.stop.prevent="handleClick">
+        <input
+            ref="switch"
+            type="checkbox"
+            name="@props.name"
+            @change="handleChange"
+            true-value="@model.activeValue"
+            false-value="@model.inactiveValue"
+            disabled="@props.disabled"
+            @keydown.enter="handleClick"
+        />
+        @if(props.inactiveIconClass || props.inactiveText) {
+            <span class="label label-left @(!checked?'is-active':'')">
+                @if(props.inactiveIconClass) {
+                    <i class="@props.inactiveIconClass"></i>
+                }
+                @if(!props.inactiveIconClass && props.inactiveText) {
+                    <span>@props.inactiveText</span>
+                }
+            </span>
+        }
+        <span ref="core" class="core"></span>
+        @if(props.activeIconClass || props.activeText) {
+            <span class="label label-right @(checked?'is-active':'')">
+                @if(props.activeIconClass) {
+                    <i class="@props.activeIconClass"></i>
+                }
+                @if(!props.activeIconClass && props.activeText) {
+                    <span>@props.activeText</span>
+                }
+            </span>
+        }
+    </label>
+</template>
+<script>
+import { FormCtrl } from "../form/form-ctrl";
+
+export default class extends FormCtrl<{
+    value: boolean | string | number;
+    disabled: boolean;
+    width: number;
+    activeIconClass: string;
+    inactiveIconClass: string;
+    activeText: string;
+    inactiveText: string;
+    activeValue: boolean | string | number;
+    inactiveValue: boolean | string | number;
+    activeColor: string;
+    inactiveColor: string;
+    name: string;
+}> {
+    propsOption = {
+        activeValue: true,
+        inactiveValue: false,
+        width: 40
+    };
+    model = {
+        value: false
+    };
+
+    created() {
+        if (!~[this.props.activeValue, this.props.inactiveValue].indexOf(this.model.value)) {
+            this.$trigger("change", this.props.inactiveValue);
+        }
+    }
+
+    mounted() {
+        this.$watch(
+            () => {
+                return !!this.value;
+            },
+            (val) => {
+                this.$getRef("switch")!.output.checked = val;
+            }
+        );
+
+        if (this.props.activeColor || this.props.inactiveColor) {
+            this.setBackgroundColor();
+        }
+
+        this.$getRef("core")!.output.style.width = this.props.width + "px";
+
+        //设置默认
+        this.$getRef("switch")!.output.checked = this.model.value === this.props.activeValue;
+    }
+
+    get checked() {
+        return this.model.value === this.props.activeValue;
+    }
+
+    handleClick() {
+        if (!this.props.disabled) {
+            this.handleChange();
+        }
+    }
+
+    handleChange() {
+        const val = this.checked ? this.props.inactiveValue : this.props.activeValue;
+        this.model.value = val as any;
+        this.$trigger("change", val);
+        this.setBackgroundColor();
+        this.$getRef("switch") && (this.$getRef("switch").output.checked = this.checked);
+    }
+
+    focus() {
+        this.$getRef("switch")?.output.focus();
+    }
+
+    setBackgroundColor() {
+        let coreOutput = this.$getRef("core")?.output;
+        if (coreOutput) {
+            let newColor = this.checked ? this.props.activeColor : this.props.inactiveColor;
+            coreOutput.style.borderColor = newColor;
+            coreOutput.style.backgroundColor = newColor;
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-switch {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+    input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        margin: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+    .core {
+        margin: 0;
+        display: inline-block;
+        position: relative;
+        width: 40px;
+        height: 20px;
+        border: 1px solid #c0ccda;
+        outline: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: #c0ccda;
+        cursor: pointer;
+        transition: border-color 0.3s, background-color 0.3s;
+        vertical-align: middle;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            border-radius: 100%;
+            transition: all 0.3s;
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+        }
+    }
+    &.is-checked {
+        .core {
+            background-color: var(--jk-color-primary);
+            border-color: var(--jk-color-primary);
+            &::after {
+                left: 100%;
+                margin-left: -17px;
+            }
+        }
+    }
+    &.is-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+
+        .core {
+            cursor: not-allowed;
+        }
+    }
+    .label {
+        transition: 0.2s;
+        height: 20px;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        vertical-align: middle;
+        color: var(--jk-color-text-primary);
+        &.label-left {
+            margin-right: 10px;
+        }
+        &.label-right {
+            margin-left: 10px;
+        }
+        * {
+            line-height: 1;
+            font-size: 14px;
+            display: inline-block;
+        }
+        &.is-active {
+            color: var(--jk-color-primary);
+        }
+    }
+}
+</style>

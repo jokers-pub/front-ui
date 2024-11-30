@@ -1,0 +1,485 @@
+<template>
+    <div
+        class="@(['jk-popper', 'jk-picker-date-panel', { 'has-sidebar': props.shortcuts }])"
+        transition-name="jk-zoom-in-top"
+        ref="popper"
+        append-to="body">
+        <div class="body-wrapper">
+            @if(props.shortcuts) {
+                <div class="sidebar">
+                    @for(let item of props.shortcuts) {
+                        <button type="button" @click="handleShortcutClick(item)">@item.text</button>
+                    }
+                </div>
+            }
+            <div class="body">
+                @if(showTime) {
+                    <div class="time-panel">
+                        选择时间：
+                        <JokerTimePicker size="mini" value="@time" @change="handleTimeChange" />
+                    </div>
+                }
+                <div class="header @(model.currentView==='year'||model.currentView ==='month'?'bordered':'')">
+                    <button
+                        type="button"
+                        @click="prevYear"
+                        aria-label="前一年"
+                        class="prev-btn jk-icon-d-arrow-left"></button>
+                    @if(model.currentView === "date") {
+                        <button
+                            type="button"
+                            @click="prevMonth"
+                            aria-label="上一月"
+                            class="prev-btn jk-icon-arrow-left"></button>
+                    }
+                    <button
+                        type="button"
+                        @click="nextYear"
+                        aria-label="后一年"
+                        class="next-btn jk-icon-d-arrow-right"></button>
+                    @if(model.currentView === "date") {
+                        <button
+                            type="button"
+                            @click="nextMonth"
+                            aria-label="下一月"
+                            class="next-btn jk-icon-arrow-right"></button>
+                    }
+                    <span @click="showYearPicker" role="button" class="label">@yearLabel</span>
+                    @if(model.currentView === "date") {
+                        <span
+                            @click="showMonthPicker"
+                            role="button"
+                            class="label @(model.currentView==='month'?'active':'')">
+                            @monthLabel
+                        </span>
+                    }
+                </div>
+                <div class="content">
+                    @if(model.currentView === "date") {
+                        <JokerDateTable
+                            type="@(props.type === 'datetime' ? 'date' : props.type)"
+                            date="@model.date"
+                            value="@model.value"
+                            disabledDate="@props.disabledDate"
+                            cellClassName="@props.cellClassName"
+                            showWeekNumber="@props.showWeekNumber"
+                            @pick="handleDatePick"
+                        />
+                    }
+                    else if(model.currentView === "month") {
+                        <JokerMonthTable
+                            type="@props.type"
+                            date="@model.date"
+                            value="@model.value"
+                            disabledDate="@props.disabledDate"
+                            range="@props.range"
+                            @pick="handleDatePick"
+                        />
+                    }
+                    else if(model.currentView === "year") {
+                        <JokerYearTable
+                            type="@props.type"
+                            date="@model.date"
+                            value="@model.value"
+                            disabledDate="@props.disabledDate"
+                            @pick="handleDatePick"
+                        />
+                    }
+                </div>
+                @if(showTime) {
+                    <div class="footer">
+                        <JokerButton size="small" @click="handleConfirm">确定</JokerButton>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { PickerPanel } from "./base";
+
+import JokerButton from "../../button/index.joker";
+import JokerDateTable from "../base/date-table.joker";
+import JokerMonthTable from "../base/month-table.joker";
+import JokerYearTable from "../base/year-table.joker";
+import JokerTimePicker from "../time-picker";
+
+import { addDate, subtractDate, parseAsFormatAndType, Shortcut, formatAsFormatAndType, setTime } from "../utils";
+
+export default class extends PickerPanel<{
+    shortcuts: Shortcut[];
+    format: string;
+    valueFormat: string;
+    type: string;
+    value: string;
+    defaultValue: string;
+    showWeekNumber: boolean;
+    disabledDate: (date: Date) => boolean;
+    cellClassName: (date: Date) => string;
+    range: boolean;
+}> {
+    model = {
+        currentView: "date" as "date" | "month" | "year" | "week",
+        value: undefined as any,
+        date: undefined as any
+    };
+
+    get showTime() {
+        return this.props.type?.includes("time");
+    }
+
+    components = {
+        JokerButton,
+        JokerTimePicker,
+        JokerDateTable,
+        JokerMonthTable,
+        JokerYearTable
+    };
+
+    created() {
+        this.initModelDate();
+
+        this.$watch(
+            () => [this.props.value, this.props.defaultValue],
+            () => {
+                this.initModelDate();
+            }
+        );
+
+        if (this.props.type === "month") {
+            this.model.currentView = "month";
+        } else if (this.props.type === "year") {
+            this.model.currentView = "year";
+        }
+    }
+
+    initModelDate() {
+        if (this.props.value) {
+            this.model.value = parseAsFormatAndType(this.props.value, this.props.valueFormat, this.props.type!);
+        } else if (this.props.defaultValue) {
+            this.model.value = parseAsFormatAndType(this.props.defaultValue, this.props.valueFormat, this.props.type!);
+        } else {
+            let now = new Date();
+            switch (this.props.type) {
+                case "week":
+                case "date":
+                case "datetime":
+                    this.model.date = new Date();
+                    break;
+
+                case "month":
+                    this.model.date = new Date(now.getFullYear(), now.getMonth());
+                    break;
+                case "year":
+                    this.model.date = new Date(now.getFullYear(), 0);
+                    break;
+            }
+        }
+
+        this.model.date ??= this.model.value;
+    }
+
+    //#region 属性
+    get yearLabel() {
+        if (this.model.currentView === "year") {
+            let startYear = Math.floor(this.model.date.getFullYear() / 10) * 10;
+
+            return `${startYear} 年 - ${startYear + 9} 年`;
+        }
+
+        return this.model.date.getFullYear() + "年";
+    }
+
+    get monthLabel() {
+        return this.model.date.getMonth() + 1 + "月";
+    }
+
+    //#endregion
+
+    //#region  方法
+    prevYear() {
+        if (this.props.type === "year") {
+            this.model.date = subtractDate(this.model.date, 10, "y");
+        } else {
+            this.model.date = subtractDate(this.model.date, 1, "y");
+        }
+    }
+    prevMonth() {
+        this.model.date = subtractDate(this.model.date, 1, "M");
+    }
+
+    showYearPicker() {
+        this.model.currentView = "year";
+    }
+
+    showMonthPicker() {
+        this.model.currentView = "month";
+    }
+
+    nextYear() {
+        if (this.props.type === "year") {
+            this.model.date = addDate(this.model.date, 10, "y");
+        } else {
+            this.model.date = addDate(this.model.date, 1, "y");
+        }
+    }
+    nextMonth() {
+        this.model.date = addDate(this.model.date, 1, "M");
+    }
+
+    isValidValue(val: string | number | Date) {
+        let date: Date | undefined;
+
+        if (this.props.type === "year") {
+            return (typeof val === "string" || typeof val === "number") && !isNaN(parseInt(val as string));
+        }
+
+        if (val instanceof Date) date = val;
+        else {
+            date = parseAsFormatAndType(val, this.props.format, this.props.type!);
+        }
+        if (date && !isNaN(date.getTime())) {
+            if (this.props.disabledDate?.(date)) return false;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    triggerChange(val: any, close = true) {
+        if (this.isValidValue(val)) {
+            this.model.value = val;
+
+            this.$trigger("pick", {
+                value: this.model.value,
+                close: close
+            });
+        }
+    }
+
+    navigateItem(e: VNode.Event) {
+        let keyCode = e.event.keyCode;
+        if ([38, 40, 37, 39].includes(keyCode) === false) return;
+
+        let mapping = {
+            year: {
+                38: -4,
+                40: 4,
+                37: -1,
+                39: 1,
+                offset: (date: Date, step: number) => date.setFullYear(date.getFullYear() + step)
+            },
+            month: {
+                38: -4,
+                40: 4,
+                37: -1,
+                39: 1,
+                offset: (date: Date, step: number) => date.setMonth(date.getMonth() + step)
+            },
+            week: {
+                38: -7,
+                40: 7,
+                37: -7,
+                39: 7,
+                offset: (date: Date, step: number) => date.setDate(date.getDate() + step)
+            },
+            date: {
+                38: -7,
+                40: 7,
+                37: -1,
+                39: 1,
+                offset: (date: Date, step: number) => date.setDate(date.getDate() + step)
+            }
+        };
+        const mode = this.props.type === "week" && this.model.currentView === "date" ? "week" : this.model.currentView;
+        const year = 3.1536e10;
+        const now = this.model.date.getTime();
+        const newDate = new Date(now);
+
+        while (Math.abs(now - newDate.getTime()) <= year) {
+            const map = mapping[mode];
+
+            //@ts-ignore
+            map.offset(newDate, map[keyCode]);
+            if (this.props.disabledDate?.(newDate)) {
+                continue;
+            }
+            this.model.date = newDate;
+            this.triggerChange(newDate, false);
+            e.stopPropagation();
+            e.preventDefault();
+            break;
+        }
+    }
+
+    get time() {
+        return formatAsFormatAndType(this.model.date, "HH:mm:ss", "datetime");
+    }
+
+    //#endregion
+
+    //#region  event
+    handleShortcutClick(e: VNode.Event, shortcut: Shortcut) {
+        console.log(shortcut);
+        shortcut.onClick?.((val) => {
+            if (val) {
+                this.triggerChange(val);
+            }
+        });
+    }
+
+    handleTimeChange(e: VNode.Event<string>) {
+        this.model.date = setTime(this.model.date, e.data);
+    }
+
+    handleConfirm() {
+        this.triggerChange(this.model.date);
+    }
+
+    handleDatePick(e: VNode.Event<any>) {
+        if ((this.props.type === "date" || this.props.type === "datetime") && this.model.currentView !== "date") {
+            if (this.model.currentView === "year") {
+                this.model.date = new Date(e.data, 0, 1);
+                this.model.currentView = "month";
+                return;
+            }
+
+            this.model.date = e.data;
+            this.model.currentView = "date";
+            return;
+        } else if (this.props.type === "week" && this.model.currentView !== "date") {
+            if (this.model.currentView === "year") {
+                this.model.date = new Date(e.data, 0, 1);
+                this.model.currentView = "month";
+                return;
+            }
+            this.model.date = e.data;
+            this.model.currentView = "date";
+            return;
+        }
+
+        if (this.props.type === "datetime") {
+            this.triggerChange(setTime(e.data, this.time), false);
+        } else {
+            this.triggerChange(e.data);
+        }
+    }
+
+    //#endregion
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-picker-date-panel {
+    width: 322px;
+    color: var(--jk-color-text-regular);
+    border: 1px solid var(--jk-border-color-light);
+    box-shadow: var(--jk-box-shadow-light);
+    background: #fff;
+    border-radius: 2px;
+    margin: 5px 0;
+    user-select: none;
+    box-sizing: border-box;
+
+    &.has-sidebar {
+        width: 438px;
+    }
+
+    .body-wrapper {
+        display: flex;
+        .sidebar {
+            width: 110px;
+            border-right: solid 1px #e4e4e4;
+            box-sizing: border-box;
+            padding-top: 6px;
+            overflow: auto;
+
+            button {
+                display: block;
+                width: 100%;
+                border: 0;
+                background-color: transparent;
+                line-height: 28px;
+                font-size: 14px;
+                color: var(--jk-color-text-regular);
+                padding-left: 12px;
+                text-align: left;
+                outline: none;
+                cursor: pointer;
+
+                &:hover,
+                &:active {
+                    color: var(--jk-color-primary);
+                }
+            }
+        }
+        .body {
+            flex: 1;
+            .time-panel {
+                margin: 5px 15px;
+                font-size: 12px;
+            }
+            .header {
+                margin: 12px;
+                text-align: center;
+                &.bordered {
+                    padding-bottom: 12px;
+                    border-bottom: solid 1px var(--jk-border-color-lighter);
+                    & + .content {
+                        margin-top: 0;
+                    }
+                }
+
+                .label {
+                    font-size: 16px;
+                    font-weight: 500;
+                    padding: 0 5px;
+                    line-height: 22px;
+                    text-align: center;
+                    cursor: pointer;
+                    color: var(--jk-color-text-regular);
+
+                    &:hover,
+                    &:active {
+                        color: var(--jk-color-primary);
+                    }
+                }
+
+                button {
+                    font-size: 12px;
+                    color: var(--jk-color-text-primary);
+                    border: 0;
+                    background: transparent;
+                    cursor: pointer;
+                    outline: none;
+                    margin-top: 5px;
+
+                    &:hover {
+                        color: var(--jk-color-primary);
+                    }
+
+                    &.prev-btn {
+                        float: left;
+                    }
+
+                    &.next-btn {
+                        float: right;
+                    }
+                }
+            }
+
+            .content {
+                position: relative;
+                margin: 15px;
+            }
+            .footer {
+                border-top: solid 1px #e4e4e4;
+                padding: 4px;
+                text-align: right;
+            }
+        }
+    }
+}
+</style>

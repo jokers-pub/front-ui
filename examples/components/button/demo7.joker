@@ -1,0 +1,14 @@
+<template>
+    <DemoRow>
+        <jk-button>默认按钮</jk-button>
+        <jk-button size="medium">中等按钮</jk-button>
+        <jk-button size="small">小型按钮</jk-button>
+        <jk-button size="mini">超小按钮</jk-button>
+    </DemoRow>
+    <DemoRow>
+        <jk-button round>默认按钮</jk-button>
+        <jk-button size="medium" round>中等按钮</jk-button>
+        <jk-button size="small" round>小型按钮</jk-button>
+        <jk-button size="mini" round>超小按钮</jk-button>
+    </DemoRow>
+</template>

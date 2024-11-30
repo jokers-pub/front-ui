@@ -1,0 +1,323 @@
+<template>
+    <button
+        disabled="@(props.disabled || model.loading)"
+        autofocus="@props.autofocus"
+        type="@props.nativeType"
+        @click="handleClick"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        class="@([
+            'jk-button',
+            props.type || '',
+            props.size || '',
+            {
+                'is-link': props.link,
+                'is-disabled': props.disabled,
+                'is-loading': model.loading,
+                'is-plain': props.plain,
+                'is-round': props.round,
+                'is-circle': props.circle,
+                'is-fullwidth': props.fullWidth
+            },
+            props.class
+        ])">
+        @if(model.loading) {
+            <i class="jk-icon-loading"></i>
+        }
+        @if(props.icon && !model.loading) {
+            <i class="@props.icon"></i>
+        }
+        @if($sections && $sections.default) {
+            <span>@RenderSection()</span>
+        }
+    </button>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    type: string;
+    size: string;
+    icon: string;
+    link: boolean;
+    nativeType: string;
+    loading: Boolean;
+    disabled: Boolean;
+    autofocus: Boolean;
+    class: string;
+    round: Boolean;
+    circle: Boolean;
+    fullWidth: boolean;
+}> {
+    propsOption = {
+        type: "default",
+        nativeType: "button"
+    };
+
+    name = componentName("button");
+
+    created() {
+        this.$syncProp("loading");
+    }
+    model = {
+        loading: false
+    };
+    handleClick(e: VNode.Event) {
+        this.$trigger("click", undefined, e);
+    }
+    handleMouseEnter(e: VNode.Event) {
+        this.$trigger("mouseenter", undefined, e);
+    }
+    handleMouseLeave(e: VNode.Event) {
+        this.$trigger("mouseleave", undefined, e);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@mixin set-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+    padding: $padding-vertical $padding-horizontal;
+    font-size: $font-size;
+    border-radius: $border-radius;
+}
+
+@mixin set-color($color) {
+    color: var(--jk-button-font-color);
+    background-color: var(--jk-color-#{$color});
+    border-color: var(--jk-color-#{$color});
+
+    &:hover:not(.is-disabled, .is-link) {
+        color: var(--jk-button-font-color);
+        background-color: var(--jk-color-#{$color}-light-3);
+        border-color: var(--jk-color-#{$color}-light-3);
+    }
+
+    &:active:not(.is-disabled, .is-link) {
+        color: var(--jk-button-font-color);
+        background-color: var(--jk-color-#{$color}-dark-2);
+        border-color: var(--jk-color-#{$color}-dark-2);
+    }
+
+    &.is-disabled,
+    &.is-loading {
+        background-color: var(--jk-color-#{$color}-light-5);
+        border-color: var(--jk-color-#{$color}-light-5);
+    }
+
+    &.is-plain {
+        color: var(--jk-color-#{$color});
+        background-color: #fff;
+
+        &.is-disabled {
+            &,
+            &:hover {
+                color: var(--jk-color-#{$color});
+                background-color: #fff;
+            }
+        }
+
+        &:hover {
+            color: var(--jk-button-font-color);
+            background-color: var(--jk-color-#{$color});
+        }
+
+        &:active {
+            background-color: var(--jk-color-#{$color}-dark-2);
+        }
+    }
+
+    &.is-link {
+        color: var(--jk-color-#{$color});
+        border-color: transparent;
+        background: transparent;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--jk-color-#{$color}-light-3);
+        }
+        &.is-disabled {
+            &,
+            &:hover,
+            &:focus {
+                background: transparent;
+                color: var(--jk-color-#{$color}-light-5);
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+.jk-button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: var(--jk-button-default-background-color);
+    border: solid 1px var(--jk-border-color-base);
+    color: var(--jk-button-default-font-color);
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: 0.1s;
+    font-weight: 500;
+    user-select: none;
+    padding: 12px 20px;
+    @include set-size(12px, 20px, 14px, 4px);
+
+    & + & {
+        margin-left: 10px;
+    }
+
+    &:hover:not(.is-disabled) {
+        color: var(--jk-color-primary);
+        background-color: var(--jk-color-primary-light-9);
+        border-color: var(--jk-color-primary-light-7);
+    }
+
+    &:active:not(.is-disabled) {
+        border-color: var(--jk-color-primary);
+        outline: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    & [class*="-icon-"] {
+        & + span {
+            margin-left: 5px;
+        }
+    }
+
+    &.is-plain {
+        &:hover,
+        &:focus {
+            background: #fff;
+            border-color: var(--jk-color-primary);
+            color: var(--jk-color-primary);
+            opacity: 1;
+        }
+
+        &.is-disabled {
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+                opacity: 0.5;
+                border-color: var(--jk-border-color-base);
+                color: var(--jk-button-default-font-color);
+                background-color: #fff;
+            }
+        }
+    }
+    &.is-disabled {
+        &,
+        &:hover,
+        &:focus {
+            cursor: not-allowed;
+            background-image: none;
+        }
+    }
+
+    &.is-loading {
+        position: relative;
+        pointer-events: none;
+        &:before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            left: -1;
+            top: -1;
+            right: -1;
+            bottom: -1px;
+            border-radius: inherit;
+            background-color: rgba(255, 255, 255, 0.35);
+        }
+    }
+
+    &.is-round {
+        border-radius: 20px !important;
+        padding: 12px 23px;
+    }
+
+    &.is-circle {
+        border-radius: 50% !important;
+        padding: 12px;
+    }
+
+    &.primary {
+        @include set-color(primary);
+    }
+
+    &.success {
+        @include set-color(success);
+    }
+    &.warning {
+        @include set-color(warning);
+    }
+
+    &.danger {
+        @include set-color(danger);
+    }
+
+    &.info {
+        @include set-color(info);
+    }
+
+    &.is-link {
+        border-color: transparent;
+        color: var(--jk-color-primary);
+        background: transparent;
+        padding-left: 0;
+        padding-right: 0;
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--jk-color-primary-light-3);
+            background: transparent;
+            border-color: transparent;
+        }
+
+        &.is-disabled {
+            &,
+            &:hover,
+            &:focus {
+                color: var(--jk-color-primary-light-5);
+                border-color: transparent;
+            }
+        }
+    }
+
+    &.medium {
+        @include set-size(10px, 20px, 14px, 4px);
+        &.is-circle {
+            padding: 10px;
+        }
+    }
+
+    &.small {
+        @include set-size(9px, 15px, 12px, 3px);
+        &.is-circle {
+            padding: 9px;
+        }
+    }
+
+    &.mini {
+        @include set-size(7px, 15px, 12px, 3px);
+        &.is-circle {
+            padding: 7px;
+        }
+    }
+
+    &.is-fullwidth {
+        width: 100%;
+        & + & {
+            margin-left: 0;
+        }
+    }
+}
+</style>

@@ -1,0 +1,182 @@
+<script>
+import { Component, createElement, createText, VNode, AST } from "@joker.front/core";
+import { componentName } from "../utils/index";
+
+export default class extends Component<{
+    rowIndex: number;
+}> {
+    propsOption = {
+        rowIndex: {
+            type: Number,
+            default: 0
+        }
+    };
+    mounted() {
+        const descriptions = this.getDescriptions()!.component;
+        const row = descriptions.itemsList[this.props.rowIndex!];
+
+        if (descriptions.props.direction === "vertical") {
+            let labelList: any[] = [];
+            let contentList: any[] = [];
+            row.filter((item: any) => {
+                let thChilds = item.component.$sections.label
+                    ? item.component.$sections.label.asts
+                    : [createText(item.component.props.label)];
+                labelList.push(
+                    createElement(
+                        "th",
+                        {
+                            class:
+                                "cell label " +
+                                (!descriptions.props.border && descriptions.props.colon ? "has-colon " : "") +
+                                (descriptions.props.border ? "is-bordered-label" : ""),
+                            style: item.component.props.labelStyle,
+                            colSpan: item.component.span
+                        },
+                        thChilds
+                    )
+                );
+                contentList.push(
+                    createElement(
+                        "td",
+                        {
+                            class: "cell content " + item.component.props.contentClassName,
+                            style: item.component.props.contentStyle,
+                            colSpan: item.component.span
+                        },
+                        item.component.$sections.default.asts
+                    )
+                );
+            });
+            this.$render([
+                createElement("tbody", { class: "jk-descriptions-item" }, [
+                    createElement("tr", { class: "row" }, labelList),
+                    createElement("tr", { class: "row" }, contentList)
+                ])
+            ]);
+        } else if (descriptions.props.border) {
+            let list: any[] = [];
+            row.filter((item: any) => {
+                let thChilds = item.component.$sections.label
+                    ? item.component.$sections.label.asts
+                    : [createText(item.component.props.label)];
+                list.push(
+                    createElement(
+                        "th",
+                        {
+                            class:
+                                "cell label " +
+                                (descriptions.props.border ? "is-bordered-label " : "") +
+                                item.component.props.labelClassName,
+                            style: item.component.props.labelStyle,
+                            colSpan: "1"
+                        },
+                        thChilds
+                    )
+                );
+                list.push(
+                    createElement(
+                        "td",
+                        {
+                            class: "cell content " + item.component.props.contentClassName,
+                            style: item.component.props.contentStyle,
+                            colSpan: (item.component.span * 2 - 1).toString()
+                        },
+                        item.component.$sections.default.asts
+                    )
+                );
+            });
+            this.$render([
+                createElement("tbody", { class: "jk-descriptions-item" }, [createElement("tr", { class: "row" }, list)])
+            ]);
+        } else {
+            let tdList: any[] = [];
+            row.filter((item: any) => {
+                let labelChilds = item.component.$sections.label
+                    ? item.component.$sections.label.asts
+                    : [createText(item.component.props.label)];
+                tdList.push(
+                    createElement(
+                        "td",
+                        {
+                            class: "item cell",
+                            colSpan: item.component.span
+                        },
+                        [
+                            createElement("div", { class: "container" }, [
+                                createElement(
+                                    "span",
+                                    {
+                                        class:
+                                            "label " +
+                                            (descriptions.props.colon ? "has-colon" : "") +
+                                            item.component.props.labelClassName,
+                                        style: item.component.props.labelStyle
+                                    },
+                                    labelChilds
+                                ),
+                                createElement(
+                                    "span",
+                                    {
+                                        class: "content " + item.component.props.contentClassName,
+                                        style: item.component.props.contentStyle
+                                    },
+                                    item.component.$sections.default.asts
+                                )
+                            ])
+                        ]
+                    )
+                );
+            });
+            this.$render([
+                createElement("tbody", { class: "jk-descriptions-item" }, [
+                    createElement("tr", { class: "row" }, tdList)
+                ])
+            ]);
+        }
+    }
+
+    getDescriptions(): VNode.Component | undefined {
+        return this.$root?.closest((n: VNode.Component) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("descriptions");
+        });
+    }
+}
+</script>
+<style lang="scss" scoped>
+.jk-descriptions-item {
+    .item {
+        vertical-align: top;
+        .container {
+            display: flex;
+            .content,
+            .label {
+                display: inline-flex;
+                align-items: baseline;
+            }
+            .content {
+                flex: 1;
+            }
+        }
+    }
+    .label {
+        &.has-colon:after {
+            content: ":";
+            position: relative;
+            top: -0.5px;
+        }
+        &.is-bordered-label {
+            font-weight: 700;
+            color: #909399;
+            background: #fafafa;
+        }
+        &:not(.is-bordered-label) {
+            margin-right: 10px;
+        }
+    }
+    .content {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+</style>

@@ -1,0 +1,84 @@
+<template>
+    <DemoRow>
+        <jk-link type="primary" @click="open">点击打开消息弹窗</jk-link>
+    </DemoRow>
+    <DemoRow>
+        <jk-link type="primary" @click="open1">点击打开警告弹窗</jk-link>
+    </DemoRow>
+    <DemoRow>
+        <jk-link type="primary" @click="open2">点击打开成功弹窗</jk-link>
+    </DemoRow>
+    <DemoRow>
+        <jk-link type="primary" @click="open3">点击打开错误弹窗</jk-link>
+    </DemoRow>
+    <DemoRow>
+        <jk-link type="primary" @click="open4">点击打开自定义图标</jk-link>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { MessageBox, Message } from "../../../src";
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
+            confirmButtonText: "我是OK",
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open1() {
+        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
+            confirmButtonText: "我是OK",
+            type: "warning",
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open2() {
+        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
+            confirmButtonText: "我是OK",
+            type: "success",
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open3() {
+        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
+            confirmButtonText: "我是OK",
+            type: "error",
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open4() {
+        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
+            confirmButtonText: "我是OK",
+            iconClass: "jk-icon-message",
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+</script>
+

@@ -1,0 +1,78 @@
+<template>
+    <ul class="jk-select-group-wrap @(model.visible?'':'hide')">
+        <li class="title">
+            @props.label
+        </li>
+        <li>
+            <ul class="jk-select-group">
+                @RenderSection()
+            </ul>
+        </li>
+    </ul>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    label: string;
+    disabled: boolean;
+}> {
+    name = componentName("select-group");
+    model = {
+        visible: true
+    };
+
+    queryChange() {
+        let visibleChildrens = this.$rootVNode?.find((n) => {
+            return (
+                n instanceof VNode.Component &&
+                n.component.name === componentName("select-option") &&
+                n.component.model.visible
+            );
+        });
+
+        this.model.visible = !!visibleChildrens?.length;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-select-group-wrap {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+
+    .title {
+        padding-left: 20px;
+        font-size: 12px;
+        color: var(--jk-color-text-secondary);
+        line-height: 30px;
+    }
+
+    .jk-select-group {
+        padding: 0;
+        margin: 0;
+    }
+
+    &:not(:last-of-type) {
+        padding-bottom: 24px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 20px;
+            right: 20px;
+            bottom: 12px;
+            height: 1px;
+            background: var(--jk-border-color-light);
+        }
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+</style>

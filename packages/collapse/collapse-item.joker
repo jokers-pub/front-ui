@@ -1,0 +1,109 @@
+<template>
+    <div class="collapse-item" @click="handleClick">
+        <div class="@(['collapse-item-title', { 'is-disabled': props.disabled }])" is-active="@model.isActive">
+            @if(props.title) {
+                <span>@props.title</span>
+            }
+            else {
+                <div>
+                    @RenderSection("title")
+                </div>
+            }
+            <!-- 当前版本暂不支持图标配置 项目可以通过class覆盖 -->
+            <i class="@arrowClassName"></i>
+        </div>
+        @if(model.isActive) {
+            <div class="collapse-item-content">
+                @RenderSection()
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { VNode, Component } from "@joker.front/core";
+import { guid } from "@joker.front/shared";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    name: string;
+    title: string;
+    disabled: Boolean;
+}> {
+    name = componentName("collapse-item");
+
+    propsOption = {
+        name: guid()
+    };
+
+    model = {
+        isActive: false
+    };
+
+    mounted() {
+        this.initIsActive();
+    }
+
+    initIsActive() {
+        this.collapse?.model.activeNames.forEach((item) => {
+            if (item && item === this.props.name) {
+                this.model.isActive = true;
+            }
+        });
+    }
+
+    handleClick(e: VNode.Node) {
+        if (this.props.disabled) return;
+        this.collapse?.refreshChildren(this);
+    }
+
+    setIsActive(isActive) {
+        this.model.isActive = isActive;
+    }
+
+    get collapse() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("collapse");
+        })?.component;
+    }
+
+    get arrowClassName() {
+        return this.model.isActive ? "jk-icon-arrow-right transition-down" : "jk-icon-arrow-right transition-right";
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.collapse-item {
+    border-top: 1px solid var(--jk-border-color-base);
+
+    &:last-child {
+        border-bottom: 1px solid var(--jk-border-color-base);
+    }
+    .collapse-item-title {
+        color: var(--jk-color-text-primary);
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 48px;
+        cursor: pointer;
+        &.is-disabled {
+            cursor: not-allowed;
+            color: #bbb;
+        }
+    }
+    .collapse-item-content {
+        color: var(--jk-color-text-regular);
+        font-size: 14px;
+        padding-bottom: 16px;
+    }
+    .transition-down {
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+    }
+    .transition-right {
+        transform: rotate(0deg);
+        transition: transform 0.3s;
+    }
+}
+</style>

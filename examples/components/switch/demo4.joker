@@ -1,0 +1,27 @@
+<template>
+    <jk-tooltip content="@model.value" placement="top">
+        <jk-switch
+            value="@model.value"
+            activeValue="100"
+            inactiveValue="0"
+            activeColor="#13ce66"
+            inactiveColor="#ff4949"
+            @change="changeValue"></jk-switch>
+    </jk-tooltip>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        value: "100"
+    };
+
+    changeValue(e: VNode.Event<string>) {
+        this.model.value = e.data;
+    }
+}
+</script>
+
+<style scoped>
+</style>

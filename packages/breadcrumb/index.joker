@@ -1,0 +1,32 @@
+<template>
+    <!-- TODO: 考虑 h5 nav元素 -->
+    <div class="jk-breadcrumb">
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    separator: String;
+    separatorClass: String;
+}> {
+    propsOption = {
+        separator: "/"
+    };
+
+    name = componentName("breadcrumb");
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-breadcrumb {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+</style>

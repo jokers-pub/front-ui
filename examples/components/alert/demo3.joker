@@ -1,0 +1,15 @@
+<template>
+    <DemoRow><jk-alert title="不可关闭的 alert" type="success" closable="@false"></jk-alert></DemoRow>
+    <DemoRow><jk-alert title="自定义 close-text" type="info" closeText="知道了"></jk-alert></DemoRow>
+    <DemoRow><jk-alert title="设置了回调的 alert" type="warning" @close="hello"></jk-alert></DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {};
+    hello(){
+        alert('Hello World!');
+    }
+}
+</script>

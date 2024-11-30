@@ -1,0 +1,382 @@
+<template>
+    <label
+        class="@([
+            'jk-checkbox',
+            props.border && size && size,
+            isDisabled && 'is-disabled',
+            model.focus && 'is-focus',
+            props.border && 'is-border',
+            value && 'is-checked',
+            props.indeterminate && 'is-indeterminate'
+        ])"
+        role="checkbox"
+        aria-checked="@value"
+        aria-disabled="@isDisabled"
+        tabindex="@tabIndex"
+        @keydown.space.stop.prevent="handleKeydown">
+        <span class="input    @(isDisabled?'is-disabled':'')    @(value?'is-checked':'')">
+            <span class="target"></span>
+            <input
+                ref="checkbox"
+                type="checkbox"
+                value="@(props.label)"
+                checked="@value"
+                name="@props.name"
+                disabled="@isDisabled"
+                tabindex="-1"
+                autocomplete="off"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                @change="handleChange"
+            />
+        </span>
+        @if($sections.default || props.label) {
+            <span class="label" @keydown.stop>
+                @if($sections.default) {
+                    @RenderSection()
+                }
+                else {
+                    @props.label
+                }
+            </span>
+        }
+    </label>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { componentName } from "../utils";
+
+export default class extends FormCtrl<{
+    value: string | number | boolean;
+    label: string | number | boolean;
+    disabled: boolean;
+    name: string;
+    border: boolean;
+    class: string;
+    size: string;
+    indeterminate: boolean;
+}> {
+    model: { value?: string | number | boolean; focus: boolean; disabled: boolean } = {
+        value: undefined,
+        focus: false,
+        disabled: false
+    };
+
+    propsOption = {
+        value: false
+    };
+
+    mounted() {
+        this.$syncProp("disabled");
+
+        this.$watch(
+            () => {
+                return this.value === this.props.label;
+            },
+            (val) => {
+                this.$getRef("checkbox")!.output.checked = val;
+            }
+        );
+
+        //设置默认
+        this.$getRef("checkbox")!.output.checked = !!this.value;
+    }
+
+    get group(): VNode.Component | undefined {
+        return this.$rootVNode?.closest((n) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("checkbox-group");
+        });
+    }
+
+    get value() {
+        return this.group ? this.group.component.model.value.indexOf(this.props.value) > -1 : this.model.value;
+    }
+
+    set value(val: string | number | boolean | undefined) {
+        if (this.group) {
+            this.group.component.checked(this.props.label, val);
+        } else {
+            this.model.value = val;
+        }
+        this.$getRef<VNode.Element>("checkbox")!.output.checked = !!this.model.value;
+    }
+
+    get isLimitDisabled() {
+        if (this.group) {
+            const { max, min } = this.group.component.props;
+            const checkedList = this.group.component.model.value;
+            return (
+                (!!(max || min) && checkedList.length >= max && !this.value) ||
+                (checkedList.length <= min && this.value)
+            );
+        }
+        return false;
+    }
+
+    get isDisabled() {
+        return this.group?.component?.props.disabled ?? (this.model.disabled || this.isLimitDisabled);
+    }
+
+    get tabIndex() {
+        return this.isDisabled || (this.group && this.value !== this.props.label) ? -1 : 0;
+    }
+
+    get size() {
+        return this.group?.component.props.size || this.props.size;
+    }
+
+    handleKeydown(e: VNode.Event) {
+        if (!this.isDisabled) {
+            this.value = !this.value;
+        }
+    }
+    handleFocus(e: VNode.Node) {
+        this.model.focus = true;
+    }
+    handleBlur(e: VNode.Node) {
+        this.model.focus = false;
+    }
+    handleChange(e: VNode.Event) {
+        this.value = !this.value;
+        this.group?.component.handleChange(e);
+        this.$trigger("change", this.value);
+
+        this.triggerValidate();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-checkbox {
+    color: var(--jk-color-text-regular);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    outline: none;
+    margin-right: 30px;
+    user-select: none;
+
+    &.is-border {
+        padding: 12px 20px 0 10px;
+        border-radius: 4px;
+        border: $--border-base;
+        box-sizing: border-box;
+        height: 40px;
+
+        &.is-checked {
+            border-color: var(--jk-color-primary);
+        }
+
+        &.is-disabled {
+            cursor: not-allowed;
+            border-color: var(--jk-border-color-lighter);
+        }
+
+        & + .jk-checkbox.is-border {
+            margin-left: 10px;
+        }
+    }
+
+    &.medium {
+        &.is-border {
+            padding: 10px 20px 0 10px;
+            border-radius: 4px;
+            height: 36px;
+
+            .target {
+                height: 14px;
+                width: 14px;
+            }
+
+            .label {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &.small {
+        &.is-border {
+            padding: 8px 15px 0 10px;
+            border-radius: 3px;
+            height: 32px;
+
+            .target {
+                height: 12px;
+                width: 12px;
+            }
+
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &.mini {
+        &.is-border {
+            padding: 6px 15px 0 10px;
+            border-radius: 3px;
+            height: 28px;
+
+            .target {
+                height: 12px;
+                width: 12px;
+            }
+
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &.is-focus {
+        .target {
+            border-color: var(--jk-color-primary);
+        }
+    }
+
+    .input {
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+
+        &.is-disabled {
+            .target {
+                background-color: var(--jk-disabled-background-color);
+                border-color: var(--jk-disabled-border-color);
+                cursor: not-allowed;
+
+                &::after {
+                    cursor: not-allowed;
+                    background-color: var(--jk-disabled-background-color);
+                }
+
+                &:hover {
+                    border-color: var(--jk-disabled-border-color);
+                }
+            }
+
+            &.is-checked {
+                .target {
+                    background-color: var(--jk-disabled-background-color);
+                    border-color: var(--jk-disabled-border-color);
+
+                    &::after {
+                        border-color: var(--jk-color-text-placeholder);
+                    }
+                }
+            }
+
+            & + .label {
+                color: var(--jk-color-text-placeholder);
+                cursor: not-allowed;
+            }
+        }
+
+        &.is-checked {
+            .target {
+                background-color: var(--jk-color-primary);
+                border-color: var(--jk-color-primary);
+
+                &::after {
+                    transform: rotate(45deg) scale(1);
+                }
+            }
+
+            & + .label {
+                color: var(--jk-color-primary);
+            }
+        }
+
+        .target {
+            border: solid 1px var(--jk-border-color-base);
+            border-radius: 2px;
+            width: 14px;
+            height: 14px;
+            background: var(--jk-checkbox-checked-target-background-color);
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            box-sizing: border-box;
+
+            &:hover {
+                border-color: var(--jk-color-primary);
+            }
+
+            &::after {
+                box-sizing: content-box;
+                content: "";
+                border: 1px solid #fff;
+                border-left: 0;
+                border-top: 0;
+                height: 7px;
+                left: 4px;
+                position: absolute;
+                top: 1px;
+
+                width: 3px;
+                transition: transform 0.15s ease-in 0.05s;
+                transform: rotate(45deg) scale(0);
+            }
+        }
+
+        input {
+            opacity: 0;
+            outline: none;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+    }
+
+    &:focus:not(.is-focus):not(:active):not(.is-disabled) {
+        .target {
+            box-shadow: 0 0 2px 2px var(--jk-color-primary);
+        }
+    }
+
+    .label {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+
+    &.is-indeterminate {
+        .input {
+            .target {
+                background-color: var(--jk-color-primary);
+                border-color: var(--jk-color-primary);
+                &::after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    background-color: #fff;
+                    height: 1px;
+                    width: 100%;
+                    transform: scale(0.5);
+                    left: 0;
+                    right: 0;
+                    top: 5px;
+                }
+            }
+        }
+    }
+}
+</style>

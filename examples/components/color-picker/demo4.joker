@@ -1,0 +1,15 @@
+<template>
+    <div class="demo-container">
+        <jk-color-picker value="#409EFF" readonly />
+        <jk-color-picker value="#409EFF" size="medium" disabled />
+        <jk-color-picker value="#409EFF" size="small" readonly />
+        <jk-color-picker value="#409EFF" size="mini" disabled />
+    </div>
+</template>
+<style scoped lang="scss">
+.demo-container {
+    :deep(.jk-color-picker) {
+        margin-right: 15px;
+    }
+}
+</style>

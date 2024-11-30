@@ -1,0 +1,25 @@
+<script>
+import { Component } from "@joker.front/core";
+import { componentName } from "../utils/index";
+
+export default class extends Component<{
+    label: string;
+    span: number;
+    contentClassName: string;
+    contentStyle: object;
+    labelClassName: string;
+    labelStyle: object;
+}> {
+    propsOption = {
+        label: "",
+        span: {
+            type: Number,
+            default: 1
+        },
+        contentClassName: "",
+        labelClassName: ""
+    };
+    name = componentName("descriptions-item");
+    span: number = 1;
+}
+</script>

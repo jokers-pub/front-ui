@@ -1,0 +1,89 @@
+<template>
+    <div class="@(['jk-skeleton-item', props.variant, props.class])" style="@props.style">
+        @if(props.variant === "image") {
+            <jk-img-placeholder />
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{
+    variant: string;
+    class: string;
+    style: string;
+}> {
+    propsOption = {
+        variant: "text"
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-skeleton-item {
+    background: #f2f2f2;
+    height: 16px;
+    border-radius: 4px;
+    width: 100%;
+    &.paragraph {
+        margin-top: 16px;
+
+        & + .is-first {
+            margin-top: 16px;
+        }
+    }
+    &.circle {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+    }
+    &.circle--lg {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    &.circle--md {
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+    }
+    &.button {
+        height: 40px;
+        width: 64px;
+        border-radius: 4px;
+    }
+    &.p {
+        width: 100%;
+        &.is-last {
+            width: 61%;
+        }
+        &.is-first {
+            width: 33%;
+        }
+    }
+    &.text {
+        width: 100%;
+        height: 13px;
+    }
+    &.caption {
+        height: 12px;
+    }
+    &.h1 {
+        height: 20px;
+    }
+    &.h3 {
+        height: 18px;
+    }
+    &.h5 {
+        height: 16px;
+    }
+    &.image {
+        width: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+    }
+}
+</style>

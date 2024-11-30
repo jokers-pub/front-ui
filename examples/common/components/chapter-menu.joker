@@ -1,0 +1,168 @@
+<template>
+    <div class="page-right">
+        <div class="chapter-menu">
+            <div class="title">
+                @model.title
+            </div>
+            <ul>
+                @for(let (index,item) in model.list) {
+                    <li class="@({ selected: index === model.index })" @click="handleLiClick(index)">
+                        @item
+                    </li>
+                }
+                <li class="tag" style="top:@tagTop"></li>
+            </ul>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode, combinedReply } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        title: "",
+        list: [] as string[],
+        index: 0
+    };
+
+    pageContainer!: HTMLElement;
+
+    mounted() {
+        this.pageContainer = this.pageContainer = this.$rootVNode
+            ?.closest((n) => n instanceof VNode.Element && (<HTMLElement>n.output).classList.contains("middle"))
+            ?.output?.querySelector(".pageContainer");
+
+        this.refresh();
+    }
+
+    get tagTop() {
+        return this.model.index * 28 + 5 + "px";
+    }
+
+    async refresh() {
+        await this.$updatedRender();
+        this.model.title = this.pageContainer.querySelector("h2")?.innerText || "";
+
+        combinedReply(() => {
+            this.model.list = [];
+            this.pageContainer.querySelectorAll("h3").forEach((n) => {
+                this.model.list.push(n.innerText);
+            });
+        });
+    }
+
+    handleLiClick(e: VNode.Event, index: number) {
+        let aimH3 = this.pageContainer.querySelectorAll("h3")[index];
+
+        let offsetTop = aimH3.offsetTop || 0;
+        offsetTop -= 20;
+
+        if (offsetTop < 0) offsetTop = 0;
+
+        this.$trigger("go-to", offsetTop);
+    }
+
+    scrollChange(y: number) {
+        let h3List = Array.from(this.pageContainer.querySelectorAll("h3"));
+        let containerHalfHeight = this.pageContainer.offsetHeight / 4;
+
+        if (y === 1) {
+            this.model.index = h3List.length - 1;
+            return;
+        }
+        let lastIndex = 0;
+        for (let index in h3List) {
+            let item = h3List[index];
+            let top = item.getBoundingClientRect().top - containerHalfHeight;
+
+            if (top < 0) {
+                lastIndex = Number(index);
+            } else {
+                break;
+            }
+        }
+
+        this.model.index = lastIndex;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.page-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    overflow: auto;
+    width: 270px;
+
+    .chapter-menu {
+        margin-top: 20px;
+        .title {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding: 0 12px;
+            position: relative;
+            li {
+                list-style: none;
+                font-size: 13px;
+                line-height: 28px;
+
+                cursor: pointer;
+                color: var(--jk-color-text-regular);
+
+                &:hover {
+                    color: var(--jk-color-text-primary);
+                    font-weight: 700;
+                }
+
+                &.selected {
+                    color: var(--jk-color-text-primary);
+                    font-weight: 700;
+                }
+
+                &.tag {
+                    position: absolute;
+                    top: 5px;
+                    left: 0px;
+                    width: 4px;
+                    height: 20px;
+                    border-radius: 2px;
+                    background: var(--jk-color-primary);
+                    transition: ease-in-out 0.3s;
+                }
+            }
+        }
+    }
+
+    .team {
+        margin: 40px 0;
+
+        .title {
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .team-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+
+            div {
+                width: 80px;
+                height: 80px;
+                text-align: center;
+
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+</style>

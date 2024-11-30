@@ -1,0 +1,24 @@
+<template>
+    <DemoRow>
+        <jk-radio-group value="@model.value" @change="handleChange">
+            <jk-radio value="1">备选项1</jk-radio>
+            <jk-radio value="2">备选项2</jk-radio>
+            <jk-radio value="3">备选项3</jk-radio>
+        </jk-radio-group>
+    </DemoRow>
+    <p>
+        已选中：@model.value
+    </p>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        value: "2"
+    };
+    handleChange(e: VNode.Event) {
+        this.model.value = e.data!;
+    }
+}
+</script>

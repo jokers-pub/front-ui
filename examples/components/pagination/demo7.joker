@@ -1,0 +1,19 @@
+<template>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            small
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination
+            total="1000"
+            pageSize="20"
+            small
+            disabled
+            layout="@(['total', 'prev', 'pager', 'next', '->', 'sizes', 'jumper'])"
+        />
+    </DemoRow>
+</template>

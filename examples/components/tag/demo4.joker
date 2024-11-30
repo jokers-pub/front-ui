@@ -1,0 +1,53 @@
+<template>
+    <div class="demo-container">
+        <div class="row">
+            <span>默认（Light）：</span>
+            <jk-tag closable>标签一</jk-tag>
+            <jk-tag type="success" closable>标签二</jk-tag>
+            <jk-tag type="info" closable>标签三</jk-tag>
+            <jk-tag type="warning" closable>标签四</jk-tag>
+            <jk-tag type="danger" closable>标签五</jk-tag>
+        </div>
+        <div class="row">
+            <span>Dark：</span>
+            <jk-tag effect="dark" closable>标签一</jk-tag>
+            <jk-tag effect="dark" type="success" closable>标签二</jk-tag>
+            <jk-tag effect="dark" type="info" closable>标签三</jk-tag>
+            <jk-tag effect="dark" type="warning" closable>标签四</jk-tag>
+            <jk-tag effect="dark" type="danger" closable>标签五</jk-tag>
+        </div>
+        <div class="row">
+            <span>Plain：</span>
+            <jk-tag effect="plain" closable>标签一</jk-tag>
+            <jk-tag effect="plain" type="success" closable>标签二</jk-tag>
+            <jk-tag effect="plain" type="info" closable>标签三</jk-tag>
+            <jk-tag effect="plain" type="warning" closable>标签四</jk-tag>
+            <jk-tag effect="plain" type="danger" closable>标签五</jk-tag>
+        </div>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.demo-container {
+    :deep(.jk-tag) {
+        margin-right: 10px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+</style>

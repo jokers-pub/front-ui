@@ -1,0 +1,44 @@
+<template>
+    <DemoRow>
+        <jk-button @click="addRow">添加一行</jk-button>
+        <jk-button @click="removeRow">删除一行</jk-button>
+    </DemoRow>
+    <jk-scrollbar maxHeight="200px">
+        @for(let i = 0; i < model.value; i++) {
+            <p class="scrollbar-demo-item">
+                @i
+            </p>
+        }
+    </jk-scrollbar>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        value: 3
+    };
+
+    addRow() {
+        this.model.value++;
+    }
+
+    removeRow() {
+        this.model.value--;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+}
+</style>

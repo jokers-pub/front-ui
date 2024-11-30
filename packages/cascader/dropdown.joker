@@ -1,0 +1,304 @@
+<template>
+    <div
+        ref="container"
+        append-to="body"
+        class="jk-cascader-dropdown jk-popper"
+        style="@({ display: model.display })"
+        @click.outside="handleClickOutside">
+        <div class="continer">
+            @if(props.queryLabel) {
+                <div class="suggestion" style="min-width:@(props.inputWidth+'px')">
+                    <JokerScrollbar
+                        ref="scrollbar"
+                        tag="ul"
+                        role="menu"
+                        wrap-class="jk-cascader-suggestion-wrap"
+                        view-class="jk-cascader-suggestion-list">
+                        @if(props.suggestions.length) {
+                            @for(let item of props.suggestions) {
+                                <li class="node-item @(item.checked?'is-checked':'')" @click="handleItemClick(item)">
+                                    <span>@item.text</span>
+                                    @if(item.checked) {
+                                        <i class="jk-icon-check"></i>
+                                    }
+                                </li>
+                            }
+                        }
+                        else {
+                            <li class="empty-text">
+                                @props.noMatchText
+                            </li>
+                        }
+                    </JokerScrollbar>
+                </div>
+            }
+            else {
+                @for(let menu of model.menus) {
+                    <JokerMenu
+                        ref="menu"
+                        nodes="@menu"
+                        noDataText="@props.noDataText"
+                        multiple="@props.multiple"
+                        expandTrigger="@props.expandTrigger"
+                        lazy="@props.lazy"></JokerMenu>
+                }
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Popper } from "../utils/popper";
+import { VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+import JokerMenu from "./menu.joker";
+import JokerScrollbar from "../scrollbar/index.joker";
+import { Store, Node } from "./store";
+
+export default class extends Component<{
+    multiple: boolean;
+    store: Store;
+    expandTrigger: string;
+    lazy: boolean;
+    noDataText: string;
+    noMatchText: string;
+    suggestions: Node[];
+    queryLabel: string;
+    inputWidth: number;
+}> {
+    name = componentName("cascader-dropdown");
+    model = {
+        display: "none",
+        activePath: [] as Node[],
+        menus: [this.props.store!.nodes]
+    };
+
+    components = {
+        JokerMenu,
+        JokerScrollbar
+    };
+
+    mounted() {
+        this.cascader && (this.cascader.component.model.dropdownInit = true);
+        this.$watch(
+            () => this.cascader?.component.model.showPanel,
+            (val) => {
+                this.changeVisible(val);
+            }
+        );
+
+        this.changeVisible(this.cascader?.component.model.showPanel);
+    }
+
+    //#region  popper
+
+    private popperHandler?: Popper;
+
+    initPopper() {
+        this.popperHandler?.destroy();
+
+        let popper = this.$getRef("container")?.output;
+        let reference = this.cascader?.component?.inputContainerEl;
+
+        if (popper && reference) {
+            this.popperHandler = new Popper(reference, popper, {
+                placement: "bottom-start",
+                boundariesPadding: 0
+            });
+        }
+    }
+
+    changeVisible(val: boolean) {
+        if (val) {
+            this.model.display = "block";
+            this.initPopper();
+            this.$nodeTransition(this.$getRef("container")!, "enter", "jk-zoom-in-top");
+            this.syncMenuState();
+        } else if (this.model.display !== "none") {
+            this.$nodeTransition(this.$getRef("container")!, "leave", "jk-zoom-in-top", () => {
+                this.model.display = "none";
+                this.popperHandler?.destroy();
+            });
+        }
+    }
+
+    updatePopper() {
+        this.popperHandler?.update();
+    }
+
+    handleClickOutside(e: VNode.Event) {
+        let container = this.cascader?.component.containerEl as HTMLElement;
+
+        //点击input 内
+        if (container && container.contains(e.event.target)) {
+            return;
+        }
+
+        this.cascader?.component.hide();
+    }
+
+    handleItemClick(e: VNode.Event, node: Node) {
+        if (this.props.multiple) {
+            node?.doChecked(true);
+
+            this.cascader?.component.refreshSelectedNode();
+        } else {
+            this.checkChange(node);
+        }
+
+        if (this.cascader) {
+            //用于重置下拉
+            this.cascader.component.model.dropdownInit = false;
+        }
+    }
+    //#endregion
+
+    syncMenuState() {
+        this.syncActivePath();
+
+        this.scrollIntoView();
+    }
+
+    syncActivePath() {
+        if (this.model.activePath.length) {
+            let nodes = this.model.activePath
+                .map((node) => this.props.store?.getNodeByValue(node.value))
+                .filter(Boolean);
+
+            //@ts-ignore
+            this.expandNodes(nodes);
+        } else {
+            let checkedValue = this.getCheckedValue();
+            if (checkedValue.length) {
+                let value = checkedValue[0];
+
+                let checkedNode = this.props.store?.getNodeByValue(value);
+                if (checkedNode) {
+                    this.expandNodes(checkedNode.pathNodes.slice(0, -1));
+                }
+            } else {
+                this.model.activePath = [];
+                this.model.menus = [this.props.store!.nodes];
+            }
+        }
+    }
+
+    //单选模式
+    checkChange(node: Node) {
+        this.props.store?.getFlattedNodes(true, false).forEach((n) => {
+            n.checked = false;
+        });
+
+        node.doChecked(true);
+
+        this.handleExpand(node);
+
+        if (!this.props.multiple) {
+            this.cascader?.component.hide();
+        }
+    }
+
+    scrollIntoView() {
+        this.$getRefs<VNode.Component>("menu")?.forEach((menu) => {
+            menu.component.scrollIntoView();
+        });
+    }
+
+    expandNodes(nodes: Node[]) {
+        nodes.forEach((n) => this.handleExpand(n));
+    }
+
+    async handleExpand(node: Node) {
+        let path = this.model.activePath.slice(0, node.level - 1);
+
+        await this.$updatedRender();
+        this.model.menus.length = node.level;
+
+        if (!node.isLeaf) {
+            path.push(node);
+
+            this.model.menus.push(node.children);
+        }
+
+        this.model.activePath = path;
+    }
+
+    get cascader() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("cascader");
+        });
+    }
+
+    getCheckedValue() {
+        let checkedValue = this.cascader?.component.value;
+
+        if (this.props.multiple) {
+            return checkedValue || [];
+        } else {
+            return checkedValue === undefined ? [] : [checkedValue];
+        }
+    }
+
+    beforeDestroy() {
+        this.popperHandler?.destroy();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-cascader-dropdown {
+    border: solid 1px var(--jk-border-color-light);
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: var(--jk-box-shadow-light);
+    box-sizing: border-box;
+    margin: 5px 0;
+    font-size: 14px;
+    .continer {
+        display: flex;
+        .suggestion {
+            :deep(.jk-cascader-suggestion-wrap) {
+                max-height: 274px;
+
+                .jk-cascader-suggestion-list {
+                    list-style: none;
+                    padding: 6px 0;
+                    margin: 0;
+                    box-sizing: border-box;
+                    .node-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        height: 34px;
+                        padding: 0 15px;
+                        text-align: left;
+                        color: var(--jk-color-text-regular);
+                        outline: none;
+                        cursor: pointer;
+
+                        &:hover,
+                        &:focus {
+                            background: var(--jk-background-color-base);
+                        }
+
+                        &.is-checked {
+                            color: var(--jk-color-primary);
+                            font-weight: bold;
+                        }
+                        > span {
+                            margin-right: 10px;
+                        }
+                    }
+                    .empty-text {
+                        padding: 4px 0;
+                        margin: 0;
+                        text-align: center;
+                        color: var(--jk-color-text-primary);
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+</style>

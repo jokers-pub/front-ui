@@ -1,0 +1,449 @@
+<template>
+    <div
+        ref="container"
+        class="@(['jk-autocomplete', sizeClass, model.showPanel && 'is-focus', props.class])"
+        @click="toggleMenu"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
+        <JokerInput
+            ref="input"
+            placeholder="@props.placeholder"
+            autocomplete="off"
+            size="@props.size"
+            disabled="@props.disabled"
+            value="@model.value"
+            error="@isError"
+            @focus="handleFocus"
+            @input="debouncedInputChange"
+            @keydown.down.prevent="handleNavigate('next')"
+            @keydown.up.prevent="handleNavigate('prev')"
+            @keydown.enter.prevent="handleEnter"
+            @keydown.esc.prevent="hide"
+            @keydown.tab="hide"
+            @change="handleChange"
+            @compositionstart="handleComposition(true)"
+            @compositionend="handleComposition(false)">
+            @if($sections.prepend) {
+                @section("prepend") {
+                    @RenderSection("prepend")
+                }
+            }
+            @if($sections.append) {
+                @section("append") {
+                    @RenderSection("append")
+                }
+            }
+            @if($sections.prefix) {
+                @section("prefix") {
+                    @RenderSection("prefix")
+                }
+            }
+            @if($sections.suffix || showClose) {
+                @section("suffix") {
+                    @if(showClose) {
+                        <i class="jk-autocomplete-caret jk-icon-circle-close" @click.stop="clear" />
+                    }
+                    else {
+                        @RenderSection("suffix")
+                    }
+                }
+            }
+        </JokerInput>
+        @if(model.showPanel && (model.list.length || model.loading)) {
+            <JokerDropDown ref="dropdown">
+                @if(model.loading) {
+                    <li class="jk-autocomplete-item-loading">
+                        <i class="jk-icon-loading"></i>
+                    </li>
+                }
+                else {
+                    @for(let (index,item) in model.list) {
+                        <li
+                            class="@({ 'jk-autocomplete-item': true, 'is-hover': model.hoverItemIndex === index })"
+                            role="option"
+                            aria-selected="@(model.hoverItemIndex === index)"
+                            id="@(id + '-item-' + index)"
+                            @click.stop.prevent="handleLiClick(item)"
+                            @mouseenter="handleLiMouseenter(index)">
+                            @if($sections.default) {
+                                @RenderSection("default", item)
+                            }
+                            else {
+                                @(item[props.valueKey])
+                            }
+                        </li>
+                    }
+                }
+            </JokerDropDown>
+        }
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import JokerInput from "../input/index.joker";
+import JokerDropDown from "./dropdown.joker";
+import { componentName } from "../utils";
+import { debounce, guid } from "@joker.front/shared";
+import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+
+export default class extends FormCtrl<{
+    size: string;
+    clearable: boolean;
+    placeholder: string;
+    valueKey: string;
+    class: string;
+    searchLoad: (key: string, callback: (list?: Array<any>) => void) => void;
+    triggerOnFocus: boolean;
+    triggerChangeOnEnter?: boolean;
+}> {
+    name = componentName("autocomplete");
+
+    model = {
+        list: [] as any[],
+        inputHovering: false,
+        showPanel: false,
+        isOnComposition: false,
+        inputWidth: 0,
+        hoverItemIndex: -1,
+        loading: false
+    };
+
+    debouncedInputChange!: Function;
+
+    propsOption = {
+        valueKey: "value",
+        triggerOnFocus: true,
+        triggerChangeOnEnter: true
+    };
+
+    components = {
+        JokerInput,
+        JokerDropDown
+    };
+
+    created() {
+        this.$syncProp("value");
+        this.$syncProp("placeholder");
+
+        this.debouncedInputChange = debounce(300, (e: VNode.Event) => {
+            this.handleQueryChange(e.event.target.value!);
+        });
+    }
+
+    mounted() {
+        this.containerEl = this.$getRef("container")!.output;
+
+        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+
+        this.handleResize();
+
+        this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
+
+        addResizeListener(this.containerEl, this.handleResize);
+
+        this.inputReferenceEl.setAttribute("role", "textbox");
+        this.inputReferenceEl.setAttribute("aria-autocomplete", "list");
+        this.inputReferenceEl.setAttribute("aria-controls", "id");
+
+        this.setActivedescendant();
+
+        this.$watch(
+            () => this.model.hoverItemIndex,
+            () => {
+                this.setActivedescendant();
+            }
+        );
+    }
+
+    //#region  属性
+
+    inputContainerEl!: HTMLElement;
+
+    inputReferenceEl!: HTMLElement;
+
+    containerEl!: HTMLElement;
+
+    dropMenuShowOnFocus = false;
+
+    get showDropDown() {
+        return this.model.showPanel;
+    }
+
+    get id() {
+        return `jk-autocomplete-${guid()}`;
+    }
+
+    setActivedescendant() {
+        this.inputReferenceEl.setAttribute("aria-activedescendant", `${this.id}-item-${this.model.hoverItemIndex}`);
+    }
+
+    get showClose() {
+        if (this.props.clearable) {
+            let hasValue = this.value !== undefined && this.value !== null && this.value !== "";
+
+            return this.model.inputHovering && hasValue && !this.props.disabled;
+        }
+        return false;
+    }
+    get iconName() {
+        return this.model.showPanel ? "arrow-up is-reverse" : "arrow-up";
+    }
+
+    //#endregion
+
+    //#region  方法
+    blur() {
+        this.$getRef<VNode.Component>("input")?.component?.blur();
+    }
+
+    focus() {
+        this.$getRef<VNode.Component>("input")?.component?.focus();
+    }
+    hide(notBlur = false) {
+        this.model.list.length = 0;
+        this.model.hoverItemIndex = -1;
+        this.queryLabel = undefined;
+        this.model.showPanel = false;
+        this.dropMenuShowOnFocus = false;
+
+        if (notBlur) return;
+
+        this.blur();
+    }
+
+    clear() {
+        this.triggerChange("");
+    }
+
+    //#region hover & navigation
+
+    navigateOption(direction: "prev" | "next") {
+        if (!this.model.showPanel || !this.model.list.length) return;
+
+        if (direction === "next") {
+            this.model.hoverItemIndex++;
+
+            if (this.model.hoverItemIndex >= this.model.list.length) {
+                this.model.hoverItemIndex = 0;
+            }
+        } else {
+            this.model.hoverItemIndex--;
+            if (this.model.hoverItemIndex < 0) {
+                this.model.hoverItemIndex = this.model.list.length - 1;
+            }
+        }
+
+        this.$getRef<VNode.Component>("dropdown")?.component.scrollToSelectedOption();
+    }
+
+    updatePopper() {
+        this.$getRef<VNode.Component>("dropdown")?.component.updatePopper();
+    }
+
+    //#endregion
+
+    //#endregion
+
+    //#region  事件
+    beforeDestroy() {
+        removeResizeListener(this.containerEl, this.handleResize);
+    }
+
+    handleLiClick(e: VNode.Event, itemData: any) {
+        this.triggerChange(itemData[this.props.valueKey!]);
+        this.$trigger("select", itemData);
+        this.hide();
+    }
+
+    handleLiMouseenter(e: VNode.Event, index: number) {
+        this.model.hoverItemIndex = index;
+    }
+
+    handleChange(e: VNode.Event) {
+        this.triggerChange(e.data);
+    }
+
+    handleResize() {
+        this.model.inputWidth = (<HTMLElement>this.inputContainerEl).getBoundingClientRect().width;
+    }
+
+    handleMouseEnter() {
+        this.model.inputHovering = true;
+    }
+
+    handleMouseLeave() {
+        this.model.inputHovering = false;
+    }
+
+    handleNavigate(e: VNode.Event, direction: "next" | "prev") {
+        if (this.model.isOnComposition) return;
+
+        this.navigateOption(direction);
+    }
+    handleEnter() {
+        if (this.model.isOnComposition) return;
+
+        if (this.model.hoverItemIndex > -1 && this.model.list.length) {
+            let item = this.model.list[this.model.hoverItemIndex];
+
+            this.triggerChange(item[this.props.valueKey!]);
+
+            this.$trigger("select", item);
+
+            this.hide();
+            return;
+        }
+
+        if (this.props.triggerChangeOnEnter) {
+            this.triggerChange(this.$getRef("input").component.value);
+        }
+    }
+
+    toggleMenu() {
+        if (this.props.disabled) return;
+
+        if (this.dropMenuShowOnFocus) {
+            this.dropMenuShowOnFocus = false;
+        } else {
+            this.model.showPanel = !this.model.showPanel;
+        }
+
+        if (this.model.showPanel) {
+            this.$getRef<VNode.Component>("input")?.component.focus();
+        }
+    }
+    handleFocus() {
+        this.model.showPanel = true;
+
+        this.dropMenuShowOnFocus = true;
+
+        if (this.props.triggerOnFocus) {
+            this.handleQueryChange(this.$getRef<VNode.Component>("input")?.component.value || "");
+        }
+    }
+
+    handleComposition(e: VNode.Event, val: boolean) {
+        this.model.isOnComposition = val;
+    }
+
+    queryLabel?: string;
+    async handleQueryChange(val: string) {
+        if (this.model.isOnComposition) return;
+        if (!this.props.searchLoad) return;
+        if (val) {
+            this.model.showPanel = true;
+        }
+
+        if (this.queryLabel === val) return;
+
+        this.queryLabel = val;
+
+        this.model.loading = true;
+
+        await this.$updatedRender();
+        this.props.searchLoad?.(val, async (list) => {
+            this.model.loading = false;
+            console.log(this.model.loading);
+
+            this.model.list = list || [];
+
+            this.model.hoverItemIndex = -1;
+
+            await this.$updatedRender();
+            if (this.model.list.length) {
+                this.updatePopper();
+            } else {
+                this.hide(true);
+            }
+        });
+    }
+
+    //#endregion
+
+    private triggerChange(val: any) {
+        if (this.value !== val) {
+            this.value = val;
+
+            this.$trigger("change", val);
+
+            this.triggerValidate();
+        }
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/var.scss";
+@import "../../theme/mixins.scss";
+
+.jk-autocomplete {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    &:hover {
+        :deep(.jk-input:not(.is-disabled) input) {
+            border-color: var(--jk-border-color-hover);
+        }
+    }
+
+    :deep(.jk-input) {
+        input {
+            cursor: pointer;
+
+            &[disabled] {
+                cursor: not-allowed;
+            }
+        }
+
+        i.jk-autocomplete-caret {
+            color: var(--jk-color-text-placeholder);
+            font-size: 14px;
+            transition: transform 0.3s;
+            transform: rotateZ(180deg);
+            cursor: pointer;
+
+            &.is-reverse {
+                transform: rotateZ(0deg);
+            }
+        }
+    }
+
+    &.is-focus {
+        :deep(.jk-input input) {
+            border-color: var(--jk-color-primary);
+        }
+    }
+}
+
+.jk-autocomplete-item-loading {
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-size: 20px;
+    color: #999;
+
+    @include vertical-center;
+
+    .jk-icon-loading {
+        vertical-align: middle;
+    }
+}
+
+.jk-autocomplete-item {
+    font-size: 14px;
+    padding: 0 40px 0 20px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--jk-color-text-regular);
+    line-height: 34px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &.is-hover {
+        background-color: var(--jk-background-color-base);
+    }
+}
+</style>

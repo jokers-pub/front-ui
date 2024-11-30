@@ -1,0 +1,541 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>MessageBox 弹框</h2>
+<p>模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。</p>
+<blockquote>
+<p>从场景上说，MessageBox 的作用是美化系统自带的 <code>alert</code>、<code>confirm</code> 和 <code>prompt</code>，因此适合展示较为简单的内容。如果需要弹出较为复杂的内容，请使用 Dialog。</p>
+</blockquote>
+<h3>消息提示</h3>
+<p>当用户进行操作时会被触发，该对话框中断用户操作，直到用户确认知晓后才可关闭。</p>
+<p>调用<code>MessageBox.alert</code>方法即可打开消息提示，它模拟了系统的 <code>alert</code>，无法通过按下 ESC 或点击框外关闭。此例中接收了两个参数，<code>message</code>和<code>title</code>。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox, Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.alert(&quot;我是一个alert提示框&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>确认消息</h3>
+<p>提示用户确认其已经触发的动作，并询问是否进行此操作时会用到此对话框。</p>
+<p>调用<code>MessageBox.confirm</code>方法即可打开消息提示，它模拟了系统的 <code>confirm</code>。Message Box 组件也拥有极高的定制性，我们可以传入<code>options</code>作为第三个参数，它是一个字面量对象。<code>type</code>字段表明消息类型，可以为<code>success</code>，<code>error</code>，<code>info</code>和<code>warning</code>，无效的设置将会被忽略。注意，第二个参数<code>title</code>必须定义为<code>String</code>类型，如果是<code>Object</code>，会被理解为<code>options</code>。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open1&quot;&gt;点击打开警告弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open2&quot;&gt;点击打开成功弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open3&quot;&gt;点击打开错误弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open4&quot;&gt;点击打开自定义图标&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox, Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open1() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            type: &quot;warning&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open2() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            type: &quot;success&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open3() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            type: &quot;error&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+    open4() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            iconClass: &quot;jk-icon-message&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>提交内容</h3>
+<p>当用户进行操作时会被触发，中断用户操作，提示用户进行输入的对话框。</p>
+<p>调用<code>MessageBox.prompt</code>方法即可打开消息提示，它模拟了系统的 <code>prompt</code>。可以用<code>validate</code>规定校验函数，可以返回<code>String</code>|<code>Boolean</code>，返回的字符串相当于定义了<code>错误提示</code>字段，返回<code>false</code>则提示默认错误信息，为了精准化交互，建议返回<code>String</code>错误提示文本。此外，可以用<code>inputPlaceholder</code>字段来定义输入框的占位符。</p>
+<p>通过<code>beforeClose</code>可以自定义操作，例如：数据提交等，然后交由调用者决定是否要<code>close</code>窗口。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;请输入邮箱&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { Message, MessageBox, Loading } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.prompt(&quot;请输入你的邮箱&quot;, &quot;确认邮箱&quot;, {
+            validate(val) {
+                if (!val) return &quot;请输入邮箱&quot;;
+
+                if (
+                    /[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/.test(
+                        val
+                    ) === false
+                ) {
+                    return &quot;邮箱地址不正确&quot;;
+                }
+            },
+            beforeClose(action, com, close) {
+                if (action === &quot;confirm&quot;) {
+                    let value = com.inputValue;
+
+                    let loading = Loading({
+                        text: &quot;正在提交数据&quot;
+                    });
+
+                    Message(&quot;正在提交数据：&quot; + value);
+
+                    setTimeout(() =&gt; {
+                        loading.close();
+                        close();
+                    }, 3000);
+                } else {
+                    close();
+                }
+            },
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>使用 HTML 片段</h3>
+<p><code>message</code> 属性支持传入 HTML 片段。将<code>useHtml</code>属性设置为 true，<code>message</code> 就会被当作 HTML 片段处理。</p>
+<div class="warning">
+<p><code>message</code> 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS 攻击</a>。因此在 <code>useHtml</code> 打开的情况下，请确保 <code>message</code> 的内容是可信的，<strong>永远不要</strong>将用户提交的内容赋值给 <code>message</code> 属性。</p>
+</div>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;打开消息弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm(&quot;你确定要向xxx转账：&lt;span style='color:red'&gt;2,000&lt;/span&gt;元吗？&quot;, &quot;动帐提示&quot;, {
+            useHtml: true
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>队列显示</h3>
+<p><code>MessageBox</code>的展现形式和浏览的消息提示框逻辑一致，也是采用了队列展示，<code>先进先出</code>的模式。如果有场景需要我们提供<code>MessageBox.closeAll</code>方法来关闭当前弹窗，并清空列队。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;同时打开多个窗口&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.alert(&quot;我是提示框1&quot;, &quot;温馨提示&quot;);
+        MessageBox.alert(&quot;我是提示框2&quot;, &quot;温馨提示&quot;);
+        MessageBox.alert(&quot;我是提示框3&quot;, &quot;温馨提示&quot;);
+        MessageBox.confirm(&quot;我是中间确认框后面还剩余两个弹窗，是否要执行closeAll，关闭所有弹窗？&quot;, &quot;温馨提示&quot;, {
+            callback(action) {
+                if (action === &quot;confirm&quot;) {
+                    MessageBox.closeAll();
+                }
+            }
+        });
+        MessageBox.alert(&quot;我是提示框4&quot;, &quot;温馨提示&quot;);
+        MessageBox.alert(&quot;我是提示框5&quot;, &quot;温馨提示&quot;);
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>区分取消与关闭</h3>
+<p>有些场景下，点击取消按钮与点击关闭按钮有着不同的含义。默认情况下，当用户触发取消（点击取消按钮）和触发关闭（点击关闭按钮或遮罩层、按下 ESC 键）时，Promise 的 reject 回调和<code>callback</code>回调的参数均为 'cancel'。如果将<code>distinguishCancelAndClose</code>属性设置为 true，则上述两种行为的参数分别为 'cancel' 和 'close'。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox, Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm(&quot;我是一个confirm提示框，区分cancel和close状态&quot;, &quot;温馨提示&quot;, {
+            confirmButtonText: &quot;我是OK&quot;,
+            distinguishCancelAndClose: true,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>居中布局</h3>
+<p>内容支持居中布局，将 <code>center</code> 设置为 <code>true</code> 即可开启居中布局</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox, Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+            type: &quot;warning&quot;,
+            center: true,
+            confirmButtonText: &quot;我是OK&quot;,
+            callback: (action) =&gt; {
+                Message({
+                    type: &quot;info&quot;,
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>引用方式</h3>
+<p>引入 <code>MessageBox</code>：</p>
+<pre><code class="language-javascript">import { MessageBox } from &quot;@joker.front/ui&quot;;
+</code></pre>
+<p>那么对应于上述四个全局方法的调用方法依次为：MessageBox, MessageBox.alert, MessageBox.confirm 和 MessageBox.prompt，调用参数与全局方法相同。</p>
+<h3>Options</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>MessageBox 标题</td>
+<td>string</td>
+<td>—</td>
+<td>温馨提示</td>
+</tr>
+<tr>
+<td>message</td>
+<td>MessageBox 消息正文内容</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>useHtml</td>
+<td>是否将 message 属性作为 HTML 片段处理</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>type</td>
+<td>消息类型，用于显示图标</td>
+<td>string</td>
+<td>success / info / warning / error</td>
+<td>—</td>
+</tr>
+<tr>
+<td>iconClass</td>
+<td>自定义图标的类名，会覆盖 <code>type</code></td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>customClass</td>
+<td>MessageBox 的自定义类名</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>若不使用 Promise，可以使用此参数指定 MessageBox 关闭后的回调</td>
+<td>function(action, instance)，action 的值为'confirm', 'cancel'或'close', instance 为 MessageBox 实例，可以通过它访问实例上的属性和方法</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>closable</td>
+<td>MessageBox 是否显示右上角关闭按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>beforeClose</td>
+<td>MessageBox 关闭前的回调，会暂停实例的关闭</td>
+<td>function(action, instance, close)，action 的值为'confirm', 'cancel'或'close'；instance 为 MessageBox 实例，可以通过它访问实例上的属性和方法；close 用于关闭 MessageBox 实例 ；可通过读取 instance 中 inputValue 进行值的读取</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>distinguishCancelAndClose</td>
+<td>是否将取消（点击取消按钮）与关闭（点击关闭按钮或遮罩层、按下 ESC 键）进行区分</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>showCancelButton</td>
+<td>是否显示取消按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false（以 confirm 和 prompt 方式调用时为 true）</td>
+</tr>
+<tr>
+<td>showConfirmButton</td>
+<td>是否显示确定按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>cancelButtonText</td>
+<td>取消按钮的文本内容</td>
+<td>string</td>
+<td>—</td>
+<td>取消</td>
+</tr>
+<tr>
+<td>confirmButtonText</td>
+<td>确定按钮的文本内容</td>
+<td>string</td>
+<td>—</td>
+<td>确定</td>
+</tr>
+<tr>
+<td>closeOnClickModal</td>
+<td>是否可通过点击遮罩关闭 MessageBox</td>
+<td>boolean</td>
+<td>—</td>
+<td>true（以 alert 方式调用时为 false）</td>
+</tr>
+<tr>
+<td>closeOnPressEscape</td>
+<td>是否可通过按下 ESC 键关闭 MessageBox</td>
+<td>boolean</td>
+<td>—</td>
+<td>true（以 alert 方式调用时为 false）</td>
+</tr>
+<tr>
+<td>showInput</td>
+<td>是否显示输入框</td>
+<td>boolean</td>
+<td>—</td>
+<td>false（以 prompt 方式调用时为 true）</td>
+</tr>
+<tr>
+<td>inputPlaceholder</td>
+<td>输入框的占位符</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>validate</td>
+<td>输入框的校验函数。可以返回布尔值或字符串，若返回一个字符串, 则返回结果会被赋值给错误信息，其中 validate 中参数为当前文本框的输入值。</td>
+<td>function</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>center</td>
+<td>是否居中布局</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>roundButton</td>
+<td>是否使用圆角按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>id</td>
+<td>若配置 id，则在同一时刻同一个序列中只会弹出一次</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>方法</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭当前消息弹窗</td>
+<td>—</td>
+</tr>
+<tr>
+<td>setErrorMsg</td>
+<td>手动配置错误信息</td>
+<td>errMsg:string</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo7 from '../components/message-box/demo7.joker';
+import DEMO_JOKER_demo6 from '../components/message-box/demo6.joker';
+import DEMO_JOKER_demo5 from '../components/message-box/demo5.joker';
+import DEMO_JOKER_demo4 from '../components/message-box/demo4.joker';
+import DEMO_JOKER_demo3 from '../components/message-box/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/message-box/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/message-box/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

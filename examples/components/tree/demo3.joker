@@ -1,0 +1,131 @@
+<template>
+    <DemoRow>
+        <jk-tree
+            ref="tree"
+            data="@treeData"
+            node-key="id"
+            show-checkbox
+            default-expanded-keys="@(['2', '2-1', '3'])"
+            default-checked-keys="@(['1-1-1', '2-2-1'])"
+        />
+    </DemoRow>
+    <DemoRow>
+        <jk-button @click="getCheckNodes">获取选中节点</jk-button>
+        <jk-button @click="getCheckKeys">获取选中Keys</jk-button>
+        <jk-button @click="setCheckedByKeys">根据Keys设置选中</jk-button>
+        <jk-button @click="checkedAll">全选</jk-button>
+        <jk-button @click="clear">清空</jk-button>
+    </DemoRow>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Message, MessageBox } from "../../../src";
+
+export default class extends Component {
+    treeData = [
+        {
+            id: "1",
+            label: "一级 1",
+            children: [
+                {
+                    id: "1-1",
+                    label: "二级 1-1",
+                    children: [
+                        {
+                            id: "1-1-1",
+                            label: "三级 1-1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: "2",
+            label: "一级 2",
+            children: [
+                {
+                    id: "2-1",
+                    label: "二级 2-1",
+                    children: [
+                        {
+                            id: "2-1-1",
+                            label: "三级 2-1-1"
+                        }
+                    ]
+                },
+                {
+                    id: "2-2",
+                    label: "二级 2-2",
+                    disabled: true,
+                    children: [
+                        {
+                            id: "2-2-1",
+                            label: "三级 2-2-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: "3",
+            label: "一级 3",
+            children: [
+                {
+                    id: "3-1",
+                    label: "二级 3-1",
+                    children: [
+                        {
+                            id: "3-1-1",
+                            label: "三级 3-1-1"
+                        }
+                    ]
+                },
+                {
+                    id: "3-2",
+                    label: "二级 3-2",
+                    children: [
+                        {
+                            id: "3-2-1",
+                            label: "三级 3-2-2"
+                        },
+                        {
+                            id: "3-2-2",
+                            label: "三级 3-2-1",
+                            disabled: true
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    get tree() {
+        return this.$getRef<VNode.Component>("tree")?.component;
+    }
+
+    getCheckNodes() {
+        Message({
+            message: "请查看控制台输出",
+            type: "success"
+        });
+
+        console.log(this.tree?.getCheckedNodes());
+    }
+
+    getCheckKeys() {
+        MessageBox.alert(this.tree?.getCheckedKeys().join(","));
+    }
+
+    setCheckedByKeys() {
+        this.tree?.setCheckedKeys(["2-1-1", "3-1"]);
+    }
+
+    checkedAll() {
+        this.tree?.checkedAll();
+    }
+
+    clear() {
+        this.tree?.clearChecked();
+    }
+}
+</script>

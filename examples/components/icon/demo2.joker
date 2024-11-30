@@ -1,0 +1,15 @@
+<template>
+    <div class="icon-container">
+        <jk-icon name="edit" />
+        <jk-icon name="share" />
+        <jk-icon name="delete" />
+    </div>
+</template>
+<style scoped lang="scss">
+:deep(.icon-container i) {
+    color: #606266;
+    margin: 0 20px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+</style>

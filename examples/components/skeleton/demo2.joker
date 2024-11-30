@@ -1,0 +1,3 @@
+<template>
+    <jk-skeleton rows="6" count="2" />
+</template>

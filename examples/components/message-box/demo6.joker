@@ -1,0 +1,25 @@
+<template>
+    <DemoRow>
+        <jk-link type="primary" @click="open">点击打开消息弹窗</jk-link>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { MessageBox, Message } from "../../../src";
+
+export default class extends Component {
+    open() {
+        MessageBox.confirm("我是一个confirm提示框，区分cancel和close状态", "温馨提示", {
+            confirmButtonText: "我是OK",
+            distinguishCancelAndClose: true,
+            callback: (action) => {
+                Message({
+                    type: "info",
+                    message: `关闭弹窗，触发时机为: ${action}`
+                });
+            }
+        });
+    }
+}
+</script>
+

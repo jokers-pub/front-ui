@@ -1,0 +1,63 @@
+<template>
+    <div class="demoContainer">
+        <DemoRow>
+            <jk-autocomplete placeholder="请输入内容" searchLoad="@querString">
+                @section("default", item) {
+                    <p class="name">
+                        @item.value
+                    </p>
+                    <p class="addr">
+                        @item.address
+                    </p>
+                }
+                @section("suffix") {
+                    <i class="jk-icon-edit"></i>
+                }
+            </jk-autocomplete>
+        </DemoRow>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { mock } from "./mock";
+export default class extends Component {
+    options = mock();
+
+    async querString(keyword: string, cb: Function) {
+        let result: any[] = [];
+
+        for (let item of this.options) {
+            if (item.value.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+                result.push(item);
+            }
+        }
+
+        cb(result);
+    }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.demoContainer {
+    :deep(.jk-autocomplete) {
+        width: 250px;
+    }
+}
+
+p.name,
+p.addr {
+    margin: 0;
+    padding: 0;
+}
+p.name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+p.addr {
+    font-size: 12px;
+    color: #b4b4b4;
+    line-height: 20px;
+}
+</style>

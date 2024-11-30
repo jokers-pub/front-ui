@@ -1,0 +1,10 @@
+<template>
+    <jk-button type="primary" icon="jk-icon-edit"></jk-button>
+    <jk-button type="primary" icon="jk-icon-share"></jk-button>
+    <jk-button type="primary" icon="jk-icon-delete"></jk-button>
+    <jk-button type="primary" icon="jk-icon-search">搜索</jk-button>
+    <jk-button type="primary">
+        上传
+        <i class="jk-icon-upload jk-icon--right"></i>
+    </jk-button>
+</template>

@@ -1,0 +1,22 @@
+<template>
+    <DemoRow>
+        <jk-checkbox value="@model.value1" @change="handleChange1">备选项1</jk-checkbox>
+        <jk-checkbox value="@model.value2" @change="handleChange2">备选项2</jk-checkbox>
+    </DemoRow>
+</template>
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+export default class extends Component {
+    model = {
+        value1: true,
+        value2: false
+    };
+    handleChange1(e: VNode.Event) {
+        console.log(e.data)
+    }
+    handleChange2(e: VNode.Event) {
+        console.log(e.data)
+    }
+}
+</script>

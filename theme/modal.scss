@@ -1,0 +1,32 @@
+.jk-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--jk-modal-background-color);
+
+    &.jk-modal-enter {
+        animation: jk-modal-in 0.2s ease;
+    }
+
+    &.jk-modal-leave {
+        animation: jk-modal-out 0.2s ease forwards;
+    }
+}
+
+@keyframes jk-modal-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+    }
+}
+
+@keyframes jk-modal-out {
+    0% {
+    }
+    100% {
+        opacity: 0;
+    }
+}

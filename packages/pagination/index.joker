@@ -1,0 +1,274 @@
+<template>
+    @if(!(props.hideOnSinglePage && pageCount === 1)) {
+        <div class="@([{ 'jk-pagination': true, 'is-background': props.background, small: props.small }, props.class])">
+            @for(let item of layoutLeft) {
+                <component
+                    name="@item"
+                    nextText="@props.nextText"
+                    prevText="@props.prevText"
+                    disabled="@props.disabled"
+                    currentPage="@model.currentPage"
+                    pageCount="@pageCount"
+                    pagerCount="@props.pagerCount"
+                    total="@props.total"
+                    pageSize="@model.pageSize"
+                    pageSizes="@props.pageSizes"
+                    @prev="prev"
+                    @next="next"
+                    @pageChange="handlePageChange"
+                    @pageSizeChange="handlePageSizeChange"
+                />
+            }
+            @if(layoutRight) {
+                <div class="rightwrapper">
+                    @for(let item of layoutRight) {
+                        <component
+                            name="@item"
+                            nextText="@props.nextText"
+                            prevText="@props.prevText"
+                            disabled="@props.disabled"
+                            currentPage="@model.currentPage"
+                            pageCount="@pageCount"
+                            pagerCount="@props.pagerCount"
+                            total="@props.total"
+                            pageSize="@model.pageSize"
+                            pageSizes="@props.pageSizes"
+                            @prev="prev"
+                            @next="next"
+                            @pageChange="handlePageChange"
+                            @pageSizeChange="handlePageSizeChange"
+                        />
+                    }
+                </div>
+            }
+        </div>
+    }
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import JokerPrev from "./base/prev.joker";
+import JokerPager from "./base/pager.joker";
+import JokerNext from "./base/next.joker";
+import JokerTotal from "./base/total.joker";
+import JokerSizes from "./base/sizes.joker";
+import JokerJumper from "./base/jumper.joker";
+
+import { componentName } from "../utils";
+import { logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+
+export default class extends Component<{
+    pageSize: number;
+    small: boolean;
+    disabled: boolean;
+    hideOnSinglePage: boolean;
+    background: boolean;
+    total: number;
+    class: string;
+    pageCount: number;
+    currentPage: number;
+    pagerCount: number;
+    pageSizes: Array<number>;
+    prevText: string;
+    nextText: string;
+    layout: string[];
+}> {
+    name = componentName("pagination");
+
+    propsOption = {
+        currentPage: 1,
+        pageSize: 10,
+        pagerCount: { default: 7, type: Number },
+        pageSizes: [10, 20, 30, 40, 50, 100],
+        layout: ["prev", "pager", "next"],
+        total: Number
+    };
+
+    created() {
+        this.$syncProp("currentPage", (val) => {
+            return Number(val);
+        });
+        this.$syncProp("pageSize", (val) => {
+            return Number(val) || this.props.pageSizes[0];
+        });
+    }
+
+    components = {
+        prev: JokerPrev,
+        pager: JokerPager,
+        next: JokerNext,
+        total: JokerTotal,
+        sizes: JokerSizes,
+        jumper: JokerJumper
+    };
+
+    model = {
+        currentPage: 1,
+        pageSize: 10
+    };
+
+    //#region  property
+    get layoutLeft() {
+        let rightIndex = this.props.layout?.indexOf("->");
+
+        if (rightIndex === -1) return this.props.layout;
+
+        return this.props.layout!.slice(0, rightIndex);
+    }
+
+    get layoutRight() {
+        let rightIndex = this.props.layout?.indexOf("->");
+
+        if (rightIndex === -1) return [];
+
+        return this.props.layout!.slice(rightIndex! + 1);
+    }
+
+    get pageCount() {
+        if (this.props.total !== undefined) {
+            return Math.max(1, Math.ceil(this.props.total / this.model.pageSize!));
+        } else if (this.props.pageCount !== undefined) {
+            return Math.max(1, this.props.pageCount);
+        }
+        return null;
+    }
+
+    //#endregion
+
+    //#region  method
+    prev() {
+        this.go(this.model.currentPage - 1);
+    }
+
+    next() {
+        this.go(this.model.currentPage + 1);
+    }
+
+    go(page: number) {
+        if (page < 0 || (this.pageCount && page > this.pageCount)) return;
+
+        if (page !== this.model.currentPage) {
+            this.model.currentPage = page;
+            this.$trigger("change", this.model.currentPage);
+        }
+    }
+    //#endregion
+
+    //#region events
+    handlePageChange(e: VNode.Event<number>) {
+        this.go(e.data);
+    }
+    handlePageSizeChange(e: VNode.Event<number>) {
+        if (this.model.pageSize === e.data) return;
+
+        this.model.pageSize = e.data;
+
+        if (this.pageCount && this.model.currentPage > this.pageCount) {
+            this.go(this.pageCount);
+        }
+
+        this.$trigger("size-change", this.model.pageSize);
+    }
+    //#endregion
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+
+.jk-pagination {
+    white-space: nowrap;
+    padding: 2px 5px;
+    color: var(--jk-color-text-primary);
+
+    @include clearfix;
+
+    .rightwrapper {
+        float: right;
+    }
+    :deep(button) {
+        display: inline-block;
+        font-size: 13px;
+        min-width: 35px;
+        height: 28px;
+        line-height: 28px;
+        vertical-align: top;
+        box-sizing: border-box;
+        border: none;
+        padding: 0 6px;
+        background: transparent;
+        color: var(--jk-color-text-primary);
+        cursor: pointer;
+
+        i {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            color: var(--jk-color-primary);
+        }
+
+        &:disabled {
+            color: var(--jk-color-text-placeholder);
+            background-color: #fff;
+            cursor: not-allowed;
+        }
+    }
+
+    &.small {
+        :deep(button),
+        :deep(.jk-pagination-pager li),
+        :deep(.jk-pagination-total) {
+            font-size: 12px;
+            line-height: 22px;
+            height: 22px;
+            min-width: 22px;
+        }
+
+        :deep(.jk-pagination-jumper) {
+            font-size: 12px;
+        }
+    }
+
+    &.is-background {
+        :deep(button),
+        :deep(.jk-pagination-pager li) {
+            margin: 0 5px;
+            background-color: var(--jk-color-info-light-9);
+            color: var(--jk-color-text-regular);
+            border-radius: 2px;
+
+            &.disabled,
+            &:disabled {
+                color: var(--jk-color-text-placeholder);
+            }
+
+            &.active:not(.disabled, :disabled) {
+                background-color: var(--jk-color-primary);
+                color: #fff;
+            }
+
+            &:hover:not(.disabled, :disabled, .active) {
+                color: var(--jk-color-primary);
+            }
+        }
+
+        &:not(.small) {
+            :deep(button),
+            :deep(.jk-pagination-pager li) {
+                min-width: 30px;
+            }
+        }
+
+        :deep(.jk-pagination-jumper) {
+            font-size: 12px;
+        }
+    }
+}
+</style>

@@ -1,0 +1,75 @@
+<template>
+    <div class="container">
+        <DemoRow>
+            <jk-select placeholder="请选择" multiple filterable>
+                <jk-option label="鱼香肉丝" value="1" />
+                <jk-option label="红烧排骨" value="2" />
+                <jk-option label="辣椒炒肉" value="3" />
+                <jk-option label="鱼香茄子" value="4" />
+            </jk-select>
+        </DemoRow>
+        <DemoRow>
+            <jk-select
+                placeholder="异步查询搜索"
+                multiple
+                filterable
+                remote
+                remoteMethod="@queryData"
+                loading="@model.loading">
+                @for(let item of model.options) {
+                    <jk-option label="@item.label" value="@item.value" />
+                }
+            </jk-select>
+        </DemoRow>
+    </div>
+</template>
+
+<script>
+import { Component } from "@joker.front/core";
+import { sleep } from "@joker.front/shared";
+
+export default class extends Component {
+    model: {
+        options: Array<{ label: string; value: string }>;
+        loading: boolean;
+    } = {
+        options: [],
+        loading: false
+    };
+
+    async queryData(keyword: string) {
+        if (!keyword) return;
+        this.model.loading = true;
+        let data = [
+            { label: "鱼香肉丝", value: "1" },
+            { label: "红烧排骨", value: "2" },
+            { label: "辣椒炒肉", value: "3" },
+            { label: "鱼香茄子", value: "4" },
+            { label: "东北乱炖", value: "5" },
+            { label: "酸菜排骨", value: "6" },
+            { label: "芹菜鱼丝", value: "7" },
+            { label: "拔丝山药", value: "8" },
+            { label: "川北凉粉", value: "9" },
+            { label: "清炒卷心菜", value: "10" },
+            { label: "玉带虾仁", value: "11" },
+            { label: "麻婆豆腐", value: "12" }
+        ];
+
+        //模拟请求耗时
+        await sleep(1000);
+
+        this.model.options = data.filter((m) => {
+            return m.label.startsWith(keyword);
+        });
+
+        this.model.loading = false;
+    }
+}
+</script>
+<style lang="scss" scoped>
+.container {
+    :deep(.jk-select) {
+        width: 240px;
+    }
+}
+</style>

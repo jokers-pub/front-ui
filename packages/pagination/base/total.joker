@@ -1,0 +1,27 @@
+<template>
+    @if(props.total !== undefined) {
+        <span class="jk-pagination-total">共 @props.total 条</span>
+    }
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { PropsType } from "./types";
+
+export default class extends Component<PropsType> {
+    model = {};
+}
+</script>
+
+<style scoped>
+.jk-pagination-total {
+    display: inline-block;
+    font-size: 13px;
+    min-width: 35.5px;
+    height: 28px;
+    line-height: 28px;
+    vertical-align: top;
+    box-sizing: border-box;
+    margin-right: 10px;
+    color: var(--jk-color-text-regular);
+}
+</style>

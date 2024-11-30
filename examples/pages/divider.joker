@@ -1,0 +1,123 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Divider 分割线</h2>
+<p>区隔内容的分割线。</p>
+<h3>基础用法</h3>
+<p>对不同章节的文本段落进行分割。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
+    &lt;jk-divider /&gt;
+    &lt;p&gt;好好地享受青春,你无法比此刻更年轻了。&lt;/p&gt;
+    &lt;jk-divider /&gt;
+    &lt;p&gt;幸好我爱笑,生活才没那么糟糕。&lt;/p&gt;
+    &lt;jk-divider /&gt;
+    &lt;p&gt;能瞬间改变你心情的人,对你一定很重要吧。&lt;/p&gt;
+&lt;/template&gt;
+&lt;style scoped lang=&quot;scss&quot;&gt;
+p {
+    line-height: 30px;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>设置文案</h3>
+<p>可以在分割线上自定义文案内容。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
+    &lt;jk-divider content-position=&quot;left&quot;&gt;干的漂亮！&lt;/jk-divider&gt;
+    &lt;p&gt;好好地享受青春,你无法比此刻更年轻了。&lt;/p&gt;
+    &lt;jk-divider&gt;
+        &lt;i class=&quot;jk-icon-star-on&quot;&gt;&lt;/i&gt;
+    &lt;/jk-divider&gt;
+    &lt;p&gt;幸好我爱笑,生活才没那么糟糕。&lt;/p&gt;
+    &lt;jk-divider content-position=&quot;right&quot;&gt;66666&lt;/jk-divider&gt;
+    &lt;p&gt;能瞬间改变你心情的人,对你一定很重要吧。&lt;/p&gt;
+&lt;/template&gt;
+&lt;style scoped lang=&quot;scss&quot;&gt;
+p {
+    line-height: 30px;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>垂直分割</h3>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;span&gt;雨纷纷&lt;/span&gt;
+    &lt;jk-divider direction=&quot;vertical&quot; /&gt;
+    &lt;span&gt;旧故里&lt;/span&gt;
+    &lt;jk-divider direction=&quot;vertical&quot; /&gt;
+    &lt;span&gt;草木深&lt;/span&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>设置分割线方向</td>
+<td>string</td>
+<td>horizontal / vertical</td>
+<td>horizontal</td>
+</tr>
+<tr>
+<td>content-position</td>
+<td>设置分割线文案的位置</td>
+<td>string</td>
+<td>left / right / center</td>
+<td>center</td>
+</tr>
+<tr>
+<td>background</td>
+<td>背景色</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo3 from '../components/divider/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/divider/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/divider/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

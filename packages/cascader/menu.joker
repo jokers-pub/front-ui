@@ -1,0 +1,91 @@
+<template>
+    <div class="jk-cascader-menu" ref="container">
+        <JokerScrollbar
+            ref="scrollbar"
+            tag="ul"
+            role="menu"
+            wrap-class="jk-cascader-wrap"
+            view-class="jk-cascader-list">
+            @if(props.nodes.length) {
+                @for(let node of props.nodes) {
+                    <JokerNode
+                        node="@node"
+                        multiple="@props.multiple"
+                        expandTrigger="@props.expandTrigger"
+                        lazy="@props.lazy"></JokerNode>
+                }
+            }
+            else {
+                <li class="empty-text">
+                    @props.noDataText
+                </li>
+            }
+        </JokerScrollbar>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils";
+import JokerScrollbar from "../scrollbar/index.joker";
+import JokerNode from "./node.joker";
+
+export default class extends Component<{
+    nodes: Array<any>;
+    leave: number;
+    noDataText: string;
+    expandTrigger: string;
+    lazy: boolean;
+}> {
+    components = {
+        JokerScrollbar,
+        JokerNode
+    };
+
+    get cascader() {
+        return this.$rootVNode?.closest<VNode.Component>((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("cascader");
+        });
+    }
+
+    scrollIntoView() {
+        let activeNode = this.$getRef("container")!.output.querySelector(".jk-cascader-node.is-active");
+
+        this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(activeNode);
+    }
+}
+</script>
+
+<style scoped lang="scss">
+.jk-cascader-menu {
+    min-width: 180px;
+    max-height: 240px;
+    box-sizing: border-box;
+    color: var(--jk-color-text-regular);
+    border-right: solid 1px var(--jk-border-color-light);
+    &:last-child {
+        :deep(.jk-cascader-wrap) {
+            border-right: none;
+        }
+    }
+
+    :deep(.jk-cascader-wrap) {
+        .jk-cascader-list {
+            position: relative;
+            min-height: 100%;
+            margin: 0;
+            padding: 6px 0;
+            list-style: none;
+            box-sizing: border-box;
+
+            .empty-text {
+                padding: 0 30px 0 20px;
+                height: 34px;
+                line-height: 34px;
+                outline: none;
+                text-align: center;
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+    }
+}
+</style>

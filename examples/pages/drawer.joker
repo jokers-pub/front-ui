@@ -1,0 +1,194 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Drawer 抽屉</h2>
+<p>Drawer 组件提供了与 <code>Dialog</code> 几乎相同的 API，但在 UI 上带来了不同的体验。</p>
+<h3>基础用法</h3>
+<p>弹出一个侧边栏，可以从多个方向展示</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-radio-group @change=&quot;handleRadioChange&quot; value=&quot;@model.direction&quot;&gt;
+            &lt;jk-radio value=&quot;left&quot;&gt;从左到右&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;top&quot;&gt;从上到下&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;right&quot;&gt;从右到左&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;bottom&quot;&gt;从下到上&lt;/jk-radio&gt;
+        &lt;/jk-radio-group&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-button @click=&quot;handleOpen&quot;&gt;弹出&lt;/jk-button&gt;
+    &lt;jk-drawer ref=&quot;drawer&quot; direction=&quot;@model.direction&quot; title=&quot;我是标题&quot;&gt;我是内容。&lt;/jk-drawer&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { VNode } from &quot;@joker.front/core&quot;;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        direction: &quot;left&quot;
+    };
+
+    handleRadioChange(e: VNode.Event&lt;string&gt;) {
+        this.model.direction = e.data;
+    }
+
+    handleOpen() {
+        this.$getRef(&quot;drawer&quot;)?.component.open();
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>多层嵌套</h3>
+<p>支持多层嵌套，组件内会自动控制<code>zindex</code></p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-button @click=&quot;handleOpen&quot;&gt;弹出&lt;/jk-button&gt;
+    &lt;jk-drawer ref=&quot;drawer&quot; size=&quot;50%&quot; title=&quot;我是标题&quot;&gt;
+        我是内容。
+        &lt;div&gt;
+            &lt;jk-button @click=&quot;handleOpenNext&quot;&gt;再弹出一个&lt;/jk-button&gt;
+        &lt;/div&gt;
+        &lt;jk-drawer ref=&quot;drawer2&quot; title=&quot;我是第二个&quot;&gt;我是第二个内容&lt;/jk-drawer&gt;
+    &lt;/jk-drawer&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    handleOpenNext() {
+        this.$getRef(&quot;drawer2&quot;)?.component.open();
+    }
+
+    handleOpen() {
+        this.$getRef(&quot;drawer&quot;)?.component.open();
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>展开方向</td>
+<td>string</td>
+<td>left/top/right/bottom</td>
+<td>right</td>
+</tr>
+<tr>
+<td>size</td>
+<td>展开尺寸</td>
+<td>string</td>
+<td>-</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Sections</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>内容区域</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题区域</td>
+</tr>
+</tbody>
+</table>
+<h3>Methods</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>打开</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>close</td>
+<td>关闭</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>打开</td>
+<td>-</td>
+</tr>
+<tr>
+<td>close</td>
+<td>关闭</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo2 from '../components/drawer/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/drawer/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

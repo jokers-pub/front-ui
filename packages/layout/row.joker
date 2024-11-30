@@ -1,0 +1,108 @@
+<script>
+import { Component, createCommand, createElement } from "@joker.front/core";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    tag: string;
+    gutter: number;
+    type: string;
+    justify: string;
+    align: string;
+}> {
+    name = componentName("layout_row");
+
+    propsOption = {
+        tag: "div",
+        justify: "start",
+        gutter: Number
+    };
+
+    template = () => {
+        return [
+            createElement(
+                this.props.tag!,
+                {
+                    class: "jk-row @classVal",
+                    style: "@styleVal"
+                },
+                [createCommand("RenderSection")]
+            )
+        ];
+    };
+
+    get classVal() {
+        let classVal: string[] = [];
+
+        if (this.props.justify !== "start") {
+            classVal.push("is-justify-" + this.props.justify);
+        }
+
+        if (this.props.align) {
+            classVal.push("is-align-" + this.props.align);
+        }
+
+        if (this.props.type === "flex") {
+            classVal.push("is-flex");
+        }
+
+        return classVal.join(" ");
+    }
+
+    get styleVal() {
+        let result = "";
+
+        if (this.props.gutter) {
+            let val = this.props.gutter / 2;
+            result += `margin-left:-${val}px;`;
+            result += `margin-right:-${val}px;`;
+        }
+
+        return result;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+.jk-row {
+    position: relative;
+    box-sizing: border-box;
+    @include clearfix;
+
+    &.is-flex {
+        display: flex;
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    &.is-justify-center {
+        justify-content: center;
+    }
+
+    &.is-justify-end {
+        justify-content: flex-end;
+    }
+
+    &.is-justify-space-between {
+        justify-content: space-between;
+    }
+    &.is-justify-space-around {
+        justify-content: space-around;
+    }
+
+    &.is-align-top {
+        align-items: flex-start;
+    }
+
+    &.is-align-middle {
+        align-items: center;
+    }
+
+    &.is-align-bottom {
+        align-items: flex-end;
+    }
+}
+</style>

@@ -1,0 +1,88 @@
+<template>
+    <jk-form ref="form" @submit="handleFormSubmit">
+        <jk-form-item label="活动名称" required>
+            <jk-input name="name" validate="@Global.isRequired()" placeholder="请输入活动名称" />
+        </jk-form-item>
+        <jk-form-item label="活动区域" required>
+            <jk-select name="area" validate="@Global.isRequired()" placeholder="请选择活动区域">
+                <jk-option label="山东" value="shandong" />
+                <jk-option label="北京" value="beijing" />
+            </jk-select>
+        </jk-form-item>
+        <jk-form-item label="活动时间" required>
+            <jk-date-picker
+                name="date"
+                validate="@Global.isRequired('请选择活动时间')"
+                type="daterange"
+                range-separator="至"
+                startPlaceholder="开始日期"
+                endPlaceholder="结束日期"></jk-date-picker>
+        </jk-form-item>
+        <jk-form-item label="审核时间" required>
+            <jk-date-picker
+                name="examineDate"
+                validate="@Global.isRequired()"
+                placeholder="请选择审核时间"></jk-date-picker>
+        </jk-form-item>
+        <jk-form-item label="组织者" required>
+            <jk-col span="8">
+                <jk-form-item labelWidth="0">
+                    <jk-select name="organization" validate="@Global.isRequired()" placeholder="请选择组织">
+                        <jk-option label="北部大区" value="01"></jk-option>
+                        <jk-option label="南部大区" value="02"></jk-option>
+                    </jk-select>
+                </jk-form-item>
+            </jk-col>
+            <jk-col span="1">-</jk-col>
+            <jk-col span="15">
+                <jk-form-item labelWidth="0">
+                    <jk-select name="userName" validate="@Global.isRequired()" placeholder="请选择用户">
+                        <jk-option label="张三" value="01"></jk-option>
+                        <jk-option label="李四" value="02"></jk-option>
+                    </jk-select>
+                </jk-form-item>
+            </jk-col>
+        </jk-form-item>
+        <jk-form-item label="推广">
+            <jk-switch name="promotion" />
+        </jk-form-item>
+        <jk-form-item label="参与人数">
+            <jk-number name="userCount" size="small" placeholder="请设置人数" validate="@Global.isRequired()" />
+        </jk-form-item>
+        <jk-form-item label="活动性质" required>
+            <jk-checkbox-group name="type" validate="@Global.isRequired('请选择活动性质')">
+                <jk-checkbox label="美食/餐厅线上活动"></jk-checkbox>
+                <jk-checkbox label="线下活动"></jk-checkbox>
+                <jk-checkbox label="自驾游"></jk-checkbox>
+                <jk-checkbox label="发布会"></jk-checkbox>
+                <jk-checkbox label="跟团出行"></jk-checkbox>
+            </jk-checkbox-group>
+        </jk-form-item>
+        <jk-form-item label="资金来源" required>
+            <jk-radio-group name="source" validate="@Global.isRequired('请选择资金来源')">
+                <jk-radio value="1">品牌商赞助</jk-radio>
+                <jk-radio value="2">线下场地免费</jk-radio>
+                <jk-radio value="3">费用均摊</jk-radio>
+            </jk-radio-group>
+        </jk-form-item>
+        <jk-form-item label="活动要则" required>
+            <jk-textarea
+                name="note"
+                validate="@Global.isRequired()"
+                placeholder="请输入活动要则"
+                rows="2"></jk-textarea>
+        </jk-form-item>
+        <jk-form-item>
+            <jk-button type="primary" nativeType="submit">提交</jk-button>
+        </jk-form-item>
+    </jk-form>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    async handleFormSubmit(e: VNode.Event) {
+        console.log("验证成功", e.data);
+    }
+}
+</script>

@@ -1,0 +1,570 @@
+<template>
+    <div
+        class="@([
+            'jk-number',
+            props.class,
+            sizeClass,
+            props.fullWidth && 'full-width',
+            props.disabled && 'is-disabled',
+            props.hiddenControls && 'is-without-controls',
+            controlsAtRight && 'is-controls-right'
+        ])">
+        @if(!props.hiddenControls) {
+            <span
+                class="decrease @(minDisabled?'is-disabled':'')"
+                role="button"
+                @click="handleDecrease"
+                @keydown.enter="handleDecrease">
+                <i class="jk-icon-@(controlsAtRight?'arrow-down':'minus')" />
+            </span>
+            <span
+                class="increase @(maxDisabled?'is-disabled':'')"
+                role="button"
+                @click="handleIncrease"
+                @keydown.enter="handleIncrease">
+                <i class="jk-icon-@(controlsAtRight?'arrow-up':'plus')" />
+            </span>
+        }
+        <JokerInput
+            ref="input"
+            value="@displayValue"
+            placeholder="@props.placeholder"
+            disabled="@props.disabled"
+            size="@props.size"
+            label="@props.label"
+            error="@isError"
+            @keydown="handleKeydown"
+            @blur="handleBlur"
+            @focus="handleFocus"
+            @input="handleInput"
+            @change="handleChange">
+            @if($sections.prepend) {
+                @section("prepend") {
+                    @RenderSection("prepend")
+                }
+            }
+            @if($sections.append) {
+                @section("append") {
+                    @RenderSection("append")
+                }
+            }
+        </JokerInput>
+    </div>
+</template>
+<script>
+import { logger } from "@joker.front/shared";
+import { FormCtrl } from "../form/form-ctrl";
+import { LOGTAG } from "../config";
+import { VNode } from "@joker.front/core";
+import JokerInput from "../input/index.joker";
+
+export default class extends FormCtrl<{
+    step: number;
+    stepStrictly: boolean;
+    max: number;
+    min: number;
+    class: string;
+    label: string;
+    placeholder: string;
+    hiddenControls: boolean;
+    controlsPosition: string;
+    precision: number;
+    fullWidth: boolean;
+}> {
+    components = {
+        JokerInput
+    };
+    propsOption = {
+        step: {
+            type: Number,
+            default: 1
+        },
+        max: {
+            type: Number,
+            default: Infinity
+        },
+        min: {
+            type: Number,
+            default: -Infinity
+        },
+        precision: Number
+    };
+
+    model: Record<string, any> = {
+        userInput: null
+    };
+
+    mounted() {
+        this.$watch(
+            () => this.value,
+            (val) => {
+                let newVal = val === undefined ? val : Number(val);
+
+                if (val !== undefined) {
+                    if (isNaN(val)) return;
+
+                    if (this.props.stepStrictly) {
+                        let stepPrecision = this.getPrecision(this.props.step);
+                        let precisionFactor = Math.pow(10, stepPrecision);
+
+                        newVal =
+                            (Math.round(newVal / this.props.step!) * precisionFactor * this.props.step!) /
+                            precisionFactor;
+
+                        if (this.props.precision !== undefined) {
+                            newVal = this.toPrecision(newVal, this.props.precision);
+                        }
+                    }
+
+                    if (newVal >= this.props.max!) newVal = this.props.max!;
+                    if (newVal <= this.props.min!) newVal = this.props.min!;
+
+                    if (this.value === newVal) return;
+
+                    this.value = Number(newVal);
+                    this.value = isNaN(this.value) ? undefined : this.value;
+
+                    this.model.userInput = null;
+
+                    this.$trigger("input", newVal);
+                }
+            }
+        );
+
+        this.value = this.value === undefined ? undefined : Number(this.value);
+        this.value = isNaN(this.value) ? undefined : this.value;
+    }
+
+    get controlsAtRight() {
+        return !this.props.hiddenControls && this.props.controlsPosition === "right";
+    }
+
+    get minDisabled() {
+        if (this.props.disabled) return true;
+
+        return this.decrease(this.value) < this.props.min!;
+    }
+
+    get maxDisabled() {
+        if (this.props.disabled) return true;
+
+        return this.increase(this.value) > this.props.max!;
+    }
+
+    get numPrecision() {
+        let stepPrecision = this.getPrecision(this.props.step);
+        if (this.props.precision !== undefined) {
+            if (this.props.precision >= 0 && this.props.precision === parseInt(this.props.precision.toString(), 10)) {
+                if (stepPrecision > this.props.precision) {
+                    logger.warn(LOGTAG, "[number] 值的计算精度大于传入的要求精度");
+                }
+                return this.props.precision;
+            } else {
+                logger.warn(LOGTAG, "[number] props.precision值不符合要求", this.props.precision);
+            }
+        }
+
+        return Math.max(this.getPrecision(this.value), stepPrecision);
+    }
+
+    get displayValue() {
+        if (this.model.userInput !== null) {
+            return this.model.userInput;
+        }
+
+        let value: string | number | undefined = this.value === undefined ? undefined : Number(this.value);
+
+        value = isNaN(value) ? undefined : value;
+        if (typeof value === "number") {
+            if (this.props.stepStrictly) {
+                let stepPrecision = this.getPrecision(this.props.step);
+
+                let presisionFactor = Math.pow(10, stepPrecision);
+
+                value = (Math.round(value / this.props.step!) * presisionFactor * this.props.step!) / presisionFactor;
+            }
+
+            if (this.props.precision !== undefined) {
+                value = value.toFixed(this.props.precision);
+            }
+        }
+
+        return value;
+    }
+
+    clear() {
+        this.model.userInput = null;
+        this.$trigger("input", undefined);
+        this.$trigger("change", undefined);
+        this.value = undefined;
+    }
+    focus() {
+        this.$getRef<VNode.Component>("input")?.component.focus();
+    }
+
+    blur() {
+        this.$getRef<VNode.Component>("input")?.component.blur();
+    }
+
+    select() {
+        this.$getRef<VNode.Component>("input")?.component.select();
+    }
+
+    //#region Event
+    handleDecrease(e: VNode.Event) {
+        if (this.props.disabled || this.minDisabled) return;
+
+        let value = this.value || 0;
+        let newVal = this.decrease(value);
+
+        this.setNativeInputValue(newVal);
+    }
+
+    handleIncrease(e: VNode.Event) {
+        if (this.props.disabled || this.maxDisabled) return;
+
+        let value = this.value || 0;
+        let newVal = this.increase(value);
+
+        this.setNativeInputValue(newVal);
+    }
+
+    handleKeydown(e: VNode.Event) {
+        let event = e.event! as KeyboardEvent;
+
+        switch (event.key) {
+            case "ArrowDown":
+                e.preventDefault();
+                e.stopPropagation();
+                this.handleDecrease(e);
+                break;
+            case "ArrowUp":
+                e.preventDefault();
+                e.stopPropagation();
+                this.handleIncrease(e);
+                break;
+        }
+    }
+    handleBlur(e: VNode.Event) {
+        this.triggerValidate();
+        this.$trigger("blur", undefined, e);
+    }
+    handleFocus(e: VNode.Event) {
+        this.$trigger("focus", undefined, e);
+    }
+    handleInput(e: VNode.Event<string>) {
+        this.model.userInput = e.data;
+    }
+    handleChange(e: VNode.Event<string>) {
+        let newVal = e.data === "" ? undefined : Number(e.data);
+
+        if ((newVal !== undefined && !isNaN(newVal)) || e.data === "") {
+            this.setNativeInputValue(newVal);
+        }
+
+        this.model.userInput = null;
+    }
+
+    //#endregion
+
+    private getPrecision(val?: number) {
+        if (val === undefined) return 0;
+
+        let valStr = val.toString();
+        let dotPostion = valStr.indexOf(".");
+        let precision = 0;
+
+        if (dotPostion !== -1) {
+            precision = valStr.length - dotPostion - 1;
+        }
+
+        return precision;
+    }
+
+    private decrease(val?: number) {
+        val = val === undefined ? undefined : Number(val);
+        if (val === undefined) return this.value;
+
+        if (typeof val !== "number" && val !== undefined) return this.value;
+
+        let presisionFactor = Math.pow(10, this.numPrecision);
+
+        return this.toPrecision((presisionFactor * val - presisionFactor * this.props.step!) / presisionFactor);
+    }
+
+    private increase(val?: number) {
+        val = val === undefined ? undefined : Number(val);
+        if (val === undefined) return this.value;
+
+        if (typeof val !== "number" && val !== undefined) return this.value;
+
+        let presisionFactor = Math.pow(10, this.numPrecision);
+
+        return this.toPrecision((presisionFactor * val + presisionFactor * this.props.step!) / presisionFactor);
+    }
+
+    private toPrecision(val: number, precision?: number) {
+        if (precision === undefined) precision = this.numPrecision;
+
+        return parseFloat((Math.round(val * Math.pow(10, precision)) / Math.pow(10, precision)).toString());
+    }
+
+    private setNativeInputValue(newVal?: number) {
+        if (newVal === undefined) {
+            this.clear();
+            this.triggerValidate();
+            return;
+        }
+        let oldVal = this.value;
+
+        if (typeof newVal === "number" && this.props.precision !== undefined) {
+            newVal = this.toPrecision(newVal, this.props.precision);
+        }
+        newVal ??= 0;
+
+        if (newVal >= this.props.max!) {
+            newVal = this.props.max!;
+        }
+
+        if (newVal <= this.props.min!) {
+            newVal = this.props.min!;
+        }
+
+        if (oldVal === newVal) return;
+
+        this.model.userInput = null;
+
+        this.$trigger("input", newVal);
+        this.$trigger("change", newVal);
+
+        this.value = newVal;
+        this.triggerValidate();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-number {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    line-height: 38px;
+
+    &.full-width {
+        width: 100%;
+    }
+    :deep(.jk-input) {
+        // display: block;
+
+        input {
+            -webkit-appearance: none;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: center;
+        }
+
+        &.group {
+            .append,
+            .prepend {
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .increase,
+    .decrease {
+        position: absolute;
+        z-index: 1;
+        top: 1px;
+        width: 40px;
+        height: auto;
+        text-align: center;
+        background: var(--jk-background-color-base);
+        color: var(--jk-color-text-regular);
+        cursor: pointer;
+        font-size: 13px;
+
+        &:hover {
+            color: var(--jk-color-primary);
+
+            &:not(.is-disabled) {
+                :deep(~ .jk-input input) {
+                    border-color: var(--jk-color-primary);
+                }
+            }
+        }
+
+        &.is-disabled {
+            color: var(--jk-disabled-color);
+            cursor: not-allowed;
+        }
+
+        &.increase {
+            right: 1px;
+            border-radius: 0 4px 4px 0;
+            border-left: $--border-base;
+        }
+
+        &.decrease {
+            left: 1px;
+            border-radius: 4px 0 0 4px;
+            border-right: $--border-base;
+        }
+
+        &.is-disabled {
+            border-color: var(--jk-disabled-border-color);
+            color: var(--jk-disabled-color);
+            cursor: not-allowed;
+            &:hover {
+                color: var(--jk-disabled-color);
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &.medium {
+        line-height: 34px;
+
+        .increase,
+        .decrease {
+            width: 36px;
+            font-size: 14px;
+        }
+
+        :deep(.jk-input) {
+            input {
+                padding-left: 43px;
+                padding-right: 43px;
+            }
+        }
+    }
+
+    &.small {
+        width: 130px;
+        line-height: 29px;
+        &.full-width {
+            width: 100%;
+        }
+        .increase,
+        .decrease {
+            width: 32px;
+            font-size: 13px;
+
+            [class*="jk-icon"] {
+                transform: scale(0.9);
+            }
+        }
+
+        :deep(.jk-input) {
+            input {
+                padding-left: 39px;
+                padding-right: 39px;
+            }
+
+            &.group {
+                .append,
+                .prepend {
+                    padding: 0 5px;
+                }
+            }
+        }
+    }
+
+    &.mini {
+        width: 130px;
+        line-height: 25px;
+        &.full-width {
+            width: 100%;
+        }
+        .increase,
+        .decrease {
+            width: 28px;
+            font-size: 12px;
+
+            [class*="jk-icon"] {
+                transform: scale(0.8);
+            }
+        }
+
+        :deep(.jk-input) {
+            input {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+            &.group {
+                .append,
+                .prepend {
+                    padding: 0 5px;
+                }
+            }
+        }
+    }
+
+    &.is-controls-right {
+        :deep(.jk-input) {
+            input {
+                padding-left: 15px;
+                padding-right: 50px;
+            }
+        }
+
+        .increase,
+        .decrease {
+            height: auto;
+            line-height: 19px;
+
+            [class*="jk-icon"] {
+                transform: scale(0.8);
+            }
+
+            &.increase {
+                border-radius: 0 4px 0 0;
+                border-bottom: $--border-base;
+            }
+
+            &.decrease {
+                right: 1px;
+                bottom: 1px;
+                top: auto;
+                left: auto;
+                border-right: none;
+                border-left: $--border-base;
+                border-radius: 0 0 4px 0;
+            }
+        }
+
+        &.medium {
+            .increase,
+            .decrease {
+                line-height: 17px;
+            }
+        }
+
+        &.small {
+            .increase,
+            .decrease {
+                line-height: 15px;
+            }
+        }
+
+        &.mini {
+            .increase,
+            .decrease {
+                line-height: 13px;
+            }
+        }
+    }
+
+    &.is-without-controls {
+        :deep(.jk-input) {
+            input {
+                padding-left: 15px;
+                padding-right: 15px;
+                text-align: right;
+            }
+        }
+    }
+}
+</style>

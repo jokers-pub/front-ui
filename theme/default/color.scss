@@ -1,0 +1,37 @@
+@use "sass:math";
+
+@mixin set-color-mix-level($type) {
+    $mix-color: map-get($colors, $type);
+
+    @for $i from 3 through 9 {
+        $p: math.percentage(math.div(10-$i, 10));
+        $color: mix($mix-color, $color-white, $p);
+        --jk-color-#{$type}-light-#{$i}: #{$color};
+    }
+
+    --jk-color-#{$type}-dark-2: #{mix($mix-color, $color-black, 80%)};
+}
+
+@mixin color-vars {
+    --jk-color-primary: #{$color-primary};
+    @include set-color-mix-level(primary);
+    --jk-color-success: #{$color-success};
+    @include set-color-mix-level(success);
+    --jk-color-warning: #{$color-warning};
+    @include set-color-mix-level(warning);
+    --jk-color-danger: #{$color-danger};
+    @include set-color-mix-level(danger);
+    --jk-color-info: #{$color-info};
+    @include set-color-mix-level(info);
+
+    //font
+    --jk-color-text-primary: #303133;
+    --jk-color-text-regular: #606266;
+    --jk-color-text-secondary: #909399;
+    --jk-color-text-placeholder: #c0c4cc;
+
+    --jk-background-color-base: #f5f7fa;
+
+    --jk-scrollbar-background-color: rgba(144, 147, 153, 0.3);
+    --jk-scrollbar-hover-background-color: rgba(144, 147, 153, 0.6);
+}

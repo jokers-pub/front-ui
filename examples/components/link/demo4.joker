@@ -1,0 +1,17 @@
+<template>
+    <div class="demo-container">
+        <jk-link icon="jk-icon-edit">编辑</jk-link>
+        <jk-link type="warning">
+            查看
+            <i class="jk-icon-view"></i>
+        </jk-link>
+        <jk-link icon="jk-icon-delete" type="danger">删除</jk-link>
+    </div>
+</template>
+<style scoped lang="scss">
+.demo-container {
+    :deep(.jk-link) {
+        margin-right: 5px;
+    }
+}
+</style>

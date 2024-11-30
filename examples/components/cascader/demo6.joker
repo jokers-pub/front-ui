@@ -1,0 +1,44 @@
+<template>
+    <div class="demoContainer">
+        <DemoRow>
+            <jk-cascader lazy lazyLoad="@lazyLoad"></jk-cascader>
+        </DemoRow>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { sleep } from "@joker.front/shared";
+
+export default class extends Component {
+    id = 0;
+    async lazyLoad(node: any, resolve: Function) {
+        let level = node.level;
+
+        //模拟请求耗时
+        await sleep(500);
+
+        if (node.nodeData?.value === 3) {
+            resolve([]);
+            return;
+        }
+
+        // 通过调用resolve将子节点数据返回，通知组件数据加载完成
+        resolve(
+            Array.from({ length: level + 1 }).map(() => ({
+                value: ++this.id,
+                label: `选项${this.id}`,
+                leaf: level >= 2
+            }))
+        );
+    }
+}
+</script>
+
+
+<style lang="scss" scoped>
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 320px;
+    }
+}
+</style>

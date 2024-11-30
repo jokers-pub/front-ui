@@ -1,0 +1,1611 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Table 表格</h2>
+<p>用于展示多条结构类似的数据，可对数据进行排序、筛选、对比或其他自定义操作。</p>
+<h3>基础表格</h3>
+<p>基础的表格展示用法。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>带斑马纹表格</h3>
+<p>使用带斑马纹的表格，可以更容易区分出不同行的数据。</p>
+<p><code>stripe</code>属性可以创建带斑马纹的表格。它接受一个<code>Boolean</code>，默认为<code>false</code>，设置为<code>true</code>即为启用。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; stripe&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>带边框表格</h3>
+<p>默认情况下，Table 组件是不具有竖直方向的边框的，如果需要，可以使用<code>border</code>属性，它接受一个<code>Boolean</code>，设置为<code>true</code>即可启用。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; border&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>固定表头</h3>
+<p>纵向内容过多时，可选择固定表头。</p>
+<p>只要在<code>jk-table</code>元素中定义了<code>height</code>属性，即可实现固定表头的表格，而不需要额外的代码。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 },
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 },
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>固定列</h3>
+<p>横向内容过多时，可选择固定列。</p>
+<p>固定列需要使用<code>fixed</code>属性，它接受 Boolean 值或者<code>left</code> <code>right</code>，表示左边固定还是右边固定。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot; border&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+        &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000
+        },
+        {
+            name: &quot;李四&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+            money: 10
+        },
+        {
+            name: &quot;李梅&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 300
+        },
+        {
+            name: &quot;王武&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 11.9
+        },
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000
+        },
+        {
+            name: &quot;李四&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 10
+        },
+        {
+            name: &quot;李梅&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 300
+        },
+        {
+            name: &quot;王武&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 11.9
+        },
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000
+        },
+        {
+            name: &quot;李四&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 10
+        },
+        {
+            name: &quot;李梅&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 300
+        },
+        {
+            name: &quot;王武&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 11.9
+        }
+    ];
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>流体高度</h3>
+<p>当数据量动态变化时，可以为 Table 设置一个最大高度。</p>
+<p>通过设置<code>max-height</code>属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot; max-height=&quot;250&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+            &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button @click=&quot;loadAll&quot;&gt;加载全部&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;loadPart&quot;&gt;加载部分&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;clearData&quot;&gt;清空全部数据&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+let demoData = [
+    {
+        name: &quot;张三&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 1000
+    },
+    {
+        name: &quot;李四&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+        money: 10
+    },
+    {
+        name: &quot;李梅&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 300
+    },
+    {
+        name: &quot;王武&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 11.9
+    },
+    {
+        name: &quot;张三&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 1000
+    },
+    {
+        name: &quot;李四&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 10
+    },
+    {
+        name: &quot;李梅&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 300
+    },
+    {
+        name: &quot;王武&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 11.9
+    },
+    {
+        name: &quot;张三&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 1000
+    },
+    {
+        name: &quot;李四&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 10
+    },
+    {
+        name: &quot;李梅&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 300
+    },
+    {
+        name: &quot;王武&quot;,
+        date: &quot;2023-11-21&quot;,
+        province: &quot;山东省&quot;,
+        city: &quot;济南市&quot;,
+        zip: &quot;251900&quot;,
+        address: &quot;山东省济南市&quot;,
+        money: 11.9
+    }
+];
+export default class extends Component {
+    model = {
+        tableData: [] as any
+    };
+
+    mounted() {
+        this.loadAll();
+    }
+
+    loadAll() {
+        this.model.tableData = demoData.slice(0);
+    }
+    loadPart() {
+        this.model.tableData = demoData.slice(0, 3);
+    }
+    clearData() {
+        this.model.tableData.length = 0;
+    }
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>多级表头</h3>
+<p>数据结构比较复杂的时候，可使用多级表头来展现数据的层次关系。</p>
+<p>只需要在 <code>jk-table-column</code> 里面嵌套 <code>jk-table-column</code>，就可以实现多级表头。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; border&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;个人信息&quot;&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot;&gt;
+                &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+            &lt;/jk-table-column&gt;
+        &lt;/jk-table-column&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000
+        },
+        {
+            name: &quot;李四&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+            money: 10
+        },
+        {
+            name: &quot;李梅&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 300
+        },
+        {
+            name: &quot;王武&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 11.9
+        },
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000
+        },
+        {
+            name: &quot;李四&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 10
+        },
+        {
+            name: &quot;王武&quot;,
+            date: &quot;2023-11-21&quot;,
+            province: &quot;山东省&quot;,
+            city: &quot;济南市&quot;,
+            zip: &quot;251900&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 11.9
+        }
+    ];
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>选中行</h3>
+<p>可通过<code>select</code>属性来开启选中行，设置<code>select</code>属性为<strong>true</strong>代表开启选中模式，可配置为<code>mutiple</code>属性来开启多选模式。</p>
+<p>可通过新增<code>jk-table-column</code>组件，并配置 type 为<strong>selection</strong>来展示选中辅助列，<strong>注意</strong>若开启辅助列，则点击行不再进行选中操作。</p>
+<p>通过事件<code>selected-change</code>来观察选中状态变化，其中单选模式下返回单行数据，多选模式下返回多行数据。</p>
+<p>也可以通过以下方法来进行选中行的读取和控制：</p>
+<ul>
+<li><code>getSelectedRow</code> 获取选中行，单选模式下返回单行数据，多选模式下返回多行数据</li>
+<li><code>setSelectedRow</code> 选中行，可传入多行或单行数据，<strong>注意</strong>单选模式下传入多行数据时只会选中第一项数据</li>
+<li><code>clearSelectedRow</code> 清除选中行</li>
+<li><code>selectAll</code> 多选模式下，可通过该方法选中全部非禁用数据</li>
+</ul>
+<p>单选模式示例：</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo8)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table ref=&quot;table1&quot; data=&quot;@model.tableData&quot; select @selected-change=&quot;handleSelectedChange('table2')&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table ref=&quot;table2&quot; data=&quot;@model.tableData&quot; select @selected-change=&quot;handleSelectedChange('table1')&quot;&gt;
+            &lt;jk-table-column type=&quot;selection&quot; disabledMethod=&quot;@disabledMethod&quot; /&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        //存放到model中，使用数据观察代理，以保证两个table行数据一致
+        tableData: [
+            { name: &quot;张三&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+            { name: &quot;李四&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+            { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+            { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        ]
+    };
+
+    disabledMethod(row: any) {
+        return row.name === &quot;李梅&quot;;
+    }
+
+    handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
+        this.$getRef&lt;VNode.Component&gt;(syncTableName)?.component.setSelectedRow([e.data]);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<p>多选模式示例：</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo9)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table
+            ref=&quot;table1&quot;
+            data=&quot;@model.tableData&quot;
+            select
+            multiple
+            @selected-change=&quot;handleSelectedChange('table2')&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table
+            ref=&quot;table2&quot;
+            data=&quot;@model.tableData&quot;
+            select
+            multiple
+            @selected-change=&quot;handleSelectedChange('table1')&quot;&gt;
+            &lt;jk-table-column type=&quot;selection&quot; disabledMethod=&quot;@disabledMethod&quot; /&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button @click=&quot;clear&quot;&gt;清空&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;selectAll&quot;&gt;选中全部&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot; select multiple&gt;
+            &lt;jk-table-column type=&quot;selection&quot; key=&quot;checked&quot; /&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        //存放到model中，使用数据观察代理，以保证两个table行数据一致
+        tableData: [
+            { name: &quot;张三&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+            { name: &quot;李四&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+            { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300, checked: true },
+            { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        ]
+    };
+
+    disabledMethod(row: any) {
+        return row.name === &quot;李梅&quot;;
+    }
+
+    selectAll() {
+        this.$getRef&lt;VNode.Component&gt;(&quot;table1&quot;)?.component.selectAll();
+        this.$getRef&lt;VNode.Component&gt;(&quot;table2&quot;)?.component.selectAll();
+    }
+
+    clear() {
+        this.$getRef&lt;VNode.Component&gt;(&quot;table1&quot;)?.component.clearSelectedRow();
+        this.$getRef&lt;VNode.Component&gt;(&quot;table2&quot;)?.component.clearSelectedRow();
+    }
+
+    handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
+        this.$getRef&lt;VNode.Component&gt;(syncTableName)?.component.setSelectedRow(e.data);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>排序</h3>
+<p>对表格进行排序，可快速查找或对比数据。</p>
+<p>在列中设置<code>sortable</code>属性即可实现以该列为基准的排序，接受一个<code>Boolean</code>，默认为<code>false</code>。
+可以通过 Table 的<code>default-sort</code>属性设置默认的排序列和排序顺序。可以使用<code>sort-method</code>来自定义排序规则，其中<code>default-sort-order</code>属性默认为<strong>ascending</strong>，可配置<strong>descending</strong>实现排序方式切换。</p>
+<p>如果需要后端排序，需将<code>sortable</code>设置为<code>custom</code>，同时在 Table 上监听<code>sort-change</code>事件，在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo10)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; sortable /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<p>自定义排序，模拟服务端排序</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo11)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData.value&quot; ref=&quot;table&quot; @sort-change=&quot;handleSortChange&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable=&quot;custom&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column
+            label=&quot;余额&quot;
+            key=&quot;money&quot;
+            headerAlign=&quot;right&quot;
+            align=&quot;right&quot;
+            sortable
+            sort-method=&quot;@moneySortMethod&quot;
+        /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, ShallowObserver, VNode } from &quot;@joker.front/core&quot;;
+import { ColumnType, SortableOrderType } from &quot;../../../packages/table/store&quot;;
+import { sleep } from &quot;@joker.front/shared&quot;;
+import { Loading } from &quot;../../../src&quot;;
+
+let tableData = [
+    { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+    { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+    { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+    { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+];
+export default class extends Component {
+    //为demo做浅劫持
+    tableData = new ShallowObserver(tableData.slice(0));
+
+    //记录当前排序列
+    order?: string;
+
+    //当前demo模拟只对date一个字段进行延迟排序，故逻辑较复杂，请根据自身需求调整
+    async handleSortChange(e: VNode.Event&lt;{ column: ColumnType; order: SortableOrderType }&gt;) {
+        //模拟还原数据
+        if (this.order &amp;&amp; e.data === undefined) {
+            this.order = undefined;
+            let loading = Loading({
+                target: this.$getRef(&quot;table&quot;)
+            });
+            //模拟请求
+            await sleep(1500);
+
+            loading.close();
+
+            this.tableData.value = tableData.slice(0);
+            return;
+        }
+
+        //不是date列，清空标记
+        if (e.data?.column.key !== &quot;date&quot;) {
+            this.order = undefined;
+            return;
+        }
+
+        if (e.data?.column.key === &quot;date&quot; &amp;&amp; this.order !== e.data.order) {
+            this.order = e.data.order;
+            let loading = Loading({
+                target: this.$getRef(&quot;table&quot;)
+            });
+            //模拟请求
+            await sleep(1500);
+
+            loading.close();
+
+            this.tableData.value = tableData.slice(0).sort((a, b) =&gt; {
+                if (e.data.order === &quot;ascending&quot;) {
+                    return a.date &gt; b.date ? 1 : -1;
+                } else {
+                    return a.date &gt; b.date ? -1 : 1;
+                }
+            });
+        }
+    }
+    //金额排序
+    moneySortMethod(datas: Array&lt;any&gt;, col: ColumnType, order: SortableOrderType) {
+        console.log(&quot;自定义排序&quot;);
+        return datas.sort((a, b) =&gt; {
+            if (order === &quot;ascending&quot;) {
+                return a.money &gt; b.money ? 1 : -1;
+            } else {
+                return a.money &gt; b.money ? -1 : 1;
+            }
+        });
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>筛选</h3>
+<p>对表格进行筛选，可快速查找到自己想看的数据。</p>
+<p>在列中设置<code>filter</code> <code>filter-method</code>属性即可开启该列的筛选，filter 是一个数组，若不设置则默认尝试展示当前列所有可选值，<code>filter-method</code>是一个方法，它用于决定某些数据是否显示，会传入三个参数：<code>当前行数据</code> 、 <code>筛选条件值</code>和<code>筛选列</code>。</p>
+<p>其中 filter 可配置数组，数组可以为<strong>string[]</strong>，也可以为筛选想做转译，例如：</p>
+<pre><code class="language-js">[
+    { value: &quot;1&quot;, text: &quot;男&quot; },
+    { value: &quot;0&quot;, text: &quot;女&quot; }
+];
+</code></pre>
+<DemoContainer component="@(components.DEMO_JOKER_demo12)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable filter /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column
+            label=&quot;余额&quot;
+            key=&quot;money&quot;
+            headerAlign=&quot;right&quot;
+            align=&quot;right&quot;
+            filter=&quot;@([
+                { text: '小于100', value: 1 },
+                { text: '大于100', value: 2 }
+            ])&quot;
+            filter-method=&quot;@customFilter&quot;
+        /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { ColumnType } from &quot;../../../packages/table/store&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+    customFilter(row: any, filters: number[]) {
+        for (let i = 0; i &lt; filters.length; i++) {
+            let filter = filters[i];
+            if ((filter === 1 &amp;&amp; row.money &lt; 100) || (filter === 2 &amp;&amp; row.money &gt; 100)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>索引列</h3>
+<p>通过配置<code>jk-table-column</code>组件的 type=&quot;index&quot;来展示索引列，并通过 index 属性来配置起始索引，默认起始位置为 1。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo13)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@tableData&quot;&gt;
+            &lt;jk-table-column type=&quot;index&quot; index=&quot;@model.startIndex&quot; /&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-button @click=&quot;handleClick&quot;&gt;设置起始索引为10&lt;/jk-button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+    model = {
+        startIndex: 1
+    };
+    handleClick() {
+        this.model.startIndex = 10;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>自定义列模板</h3>
+<p>自定义列的显示内容，可组合其他组件使用。
+通过 <code>RenderSection</code> 可以获取到 value, row, rowIndex, columnIndex,column, 和 store（table 数据管理）的数据，用法参考 demo。</p>
+<p>其中<code>td</code>区域代表表格内容单元格渲染，<code>th</code>区域代表表头渲染。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo14)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@model.tableData&quot; select multiple dataChangeNotClearSelected&gt;
+        &lt;jk-table-column type=&quot;selection&quot; /&gt;
+        &lt;jk-table-column type=&quot;index&quot; /&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot;&gt;
+            @section(&quot;td&quot;, data) {
+                &lt;i class=&quot;jk-icon-time&quot; /&gt;@data.value
+            }
+        &lt;/jk-table-column&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;操作&quot; headerAlign=&quot;right&quot; align=&quot;right&quot;&gt;
+            @section(&quot;th&quot;) {
+                &lt;i class=&quot;jk-icon-edit&quot;&gt;&lt;/i&gt;
+                操作
+            }
+            @section(&quot;td&quot;, data) {
+                &lt;jk-button type=&quot;primary&quot; size=&quot;small&quot; @click=&quot;handleMoveDown(data)&quot;&gt;下移&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;danger&quot; size=&quot;small&quot; @click=&quot;handleDelete(data)&quot;&gt;删除&lt;/jk-button&gt;
+            }
+        &lt;/jk-table-column&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { ColumnType, Store } from &quot;../../../packages/table/store&quot;;
+import { Message, MessageBox } from &quot;../../../src&quot;;
+import { moveDown, remove } from &quot;@joker.front/shared&quot;;
+
+export default class extends Component {
+    model = {
+        tableData: [
+            { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+            { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+            { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+            { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        ]
+    };
+
+    handleDelete(
+        e: VNode.Event,
+        data: {
+            //当前行值，配置column.key才会取值
+            value: any;
+            //当前行数据
+            row: any;
+            //行索引
+            rowIndex: number;
+            //列索引
+            cellIndex: number;
+            //列数据
+            column: ColumnType;
+            //存储单元
+            store: Store;
+        }
+    ) {
+        MessageBox.confirm('你确定要删除&quot;' + data.row.name + '&quot;吗？', {
+            callback: (action) =&gt; {
+                if (action === &quot;confirm&quot;) {
+                    remove(this.model.tableData, data.row);
+                }
+            }
+        });
+    }
+
+    handleMoveDown(e: VNode.Event, data: any) {
+        moveDown(this.model.tableData, data.rowIndex);
+
+        console.log(this.model.tableData);
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>展开行</h3>
+<p>当行内容过多并且不想显示横向滚动条时，可以使用 Table 展开行功能。
+通过设置 type=&quot;expand&quot; 和 <code>section('expand',data)</code> 可以开启展开行功能，<code>jk-table-column</code> 的模板会被渲染成为展开行的内容，其中 data 参数包括：<code>当前行数据</code>,<code>行索引</code>,<code>store数据管理</code>。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo15)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; defaultExpandAll&gt;
+        &lt;jk-table-column type=&quot;expand&quot;&gt;
+            @section(&quot;expand&quot;, data) {
+                &lt;ul class=&quot;expand-ul&quot;&gt;
+                    &lt;li&gt;
+                        姓名：@data.row.name
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        容器：@data.row.date
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        余额：@data.row.money
+                        元
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        地址：@data.row.address
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            }
+        &lt;/jk-table-column&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>树列表</h3>
+<p>支持树类型的数据的显示。当 row 中包含 <code>children</code> 字段时，被视为树形数据。渲染树形数据时，必须要指定 <code>row-key</code>。支持子节点数据异步加载。设置 Table 的 <code>lazy</code> 属性为 true 与加载函数 <code>load</code> 。通过指定 row 中的 <code>isLeafKey</code> 字段来指定哪些行是包含子节点。</p>
+<blockquote>
+<p>可通过更改<code>childrenKey</code>和 <code>isLeafKey</code>来配置节点属性和是否叶子属性</p>
+</blockquote>
+<DemoContainer component="@(components.DEMO_JOKER_demo16)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; row-key=&quot;name&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    tableData = [
+        {
+            name: &quot;张三&quot;,
+            date: &quot;2023-11-21&quot;,
+            address: &quot;山东省济南市&quot;,
+            money: 1000,
+            children: [
+                { name: &quot;张三1&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                {
+                    name: &quot;张三2&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;山东省济南市&quot;,
+                    money: 10,
+                    children: [
+                        { name: &quot;张三12&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                        { name: &quot;张三22&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                        { name: &quot;张三32&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+                    ]
+                },
+                { name: &quot;张三3&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+            ]
+        },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    ];
+}
+&lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<p>异步加载</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo17)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@tableData&quot; row-key=&quot;name&quot; lazy load=&quot;@loadChildrenRow&quot;&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { sleep } from &quot;@joker.front/shared&quot;;
+
+export default class extends Component {
+    tableData = [
+        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 10 },
+        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 300 },
+        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 11.9 }
+    ];
+
+    async loadChildrenRow(row: any, callBack: Function) {
+        await sleep(1000);
+
+        if (row.name === &quot;张三&quot;) {
+            row.children = [
+                { name: &quot;张三1&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 10 },
+                { name: &quot;张三2&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                { name: &quot;张三3&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 300 },
+                { name: &quot;张三4&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 11.9 }
+            ];
+        } else {
+            row.children = [
+                { name: &quot;张三12&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 10 },
+                { name: &quot;张三22&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 10 },
+                { name: &quot;张三32&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 300 },
+                { name: &quot;张三42&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 11.9 }
+            ];
+        }
+
+        callBack();
+    }
+}
+&lt;/script&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<blockquote>
+<p>注意，树形列表如果启用排序、筛选或索引列，只会对一级列表进行操作，不会对子集作用。</p>
+</blockquote>
+<h3>尺寸</h3>
+<p>通过修改 size 属性来修改表格的大小。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo18)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-divider&gt;medium&lt;/jk-divider&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-divider&gt;small&lt;/jk-divider&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;small&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-divider&gt;mini&lt;/jk-divider&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;mini&quot;&gt;
+            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;/jk-table&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-button @click=&quot;handleClearData&quot;&gt;清空数据，查看空数据时尺寸大小&lt;/jk-button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        tableData: [
+            { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+            { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+        ]
+    };
+
+    handleClearData() {
+        this.model.tableData.length = 0;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>大数据同步加载</h3>
+<p>大数据加载（800 条）。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo19)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-table data=&quot;@model.tableData&quot; select multiple height=&quot;250&quot; ref=&quot;table&quot;&gt;
+        &lt;jk-table-column type=&quot;selection&quot; key=&quot;checked&quot; /&gt;
+        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+    &lt;/jk-table&gt;
+    &lt;jk-button @click=&quot;handleLoadClick&quot;&gt;加载数据&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;handleClick&quot;&gt;选中全部&lt;/jk-button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, combinedReply } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        tableData: undefined
+    };
+    handleLoadClick() {
+        combinedReply(() =&gt; {
+            this.model.tableData = [];
+            for (let i = 0; i &lt; 200; i++)
+                this.model.tableData.push(
+                    { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
+                    { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                    { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
+                    { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+                );
+        });
+    }
+    handleClick() {
+        this.$getRef(&quot;table&quot;)?.component.selectAll();
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>Table Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>显示的数据</td>
+<td>array</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Table 的高度，默认为自动高度。如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。</td>
+<td>string/number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>Table 的最大高度。合法的值为数字或者单位为 px 的高度。</td>
+<td>string/number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>stripe</td>
+<td>是否为斑马纹 table</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>border</td>
+<td>是否带有纵向边框</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Table 的尺寸</td>
+<td>string</td>
+<td>medium / small / mini</td>
+<td>—</td>
+</tr>
+<tr>
+<td>show-header</td>
+<td>是否显示表头</td>
+<td>boolean</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>row-class-name</td>
+<td>行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。</td>
+<td>Function({row, rowIndex})/String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>row-style</td>
+<td>行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。</td>
+<td>Function({row, rowIndex})/Object</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cell-class-name</td>
+<td>单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。</td>
+<td>Function({row, column, rowIndex, columnIndex})/String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cell-style</td>
+<td>单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。</td>
+<td>Function({row, column, rowIndex, columnIndex})/Object</td>
+<td>string</td>
+<td>—</td>
+</tr>
+<tr>
+<td>header-row-class-name</td>
+<td>表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。</td>
+<td>Function({row, rowIndex})/String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>header-row-style</td>
+<td>表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。</td>
+<td>Function({row, rowIndex})/Object</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>header-cell-class-name</td>
+<td>表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。</td>
+<td>Function({row, column, rowIndex, columnIndex})/String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>header-cell-style</td>
+<td>表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。</td>
+<td>Function({row, column, rowIndex, columnIndex})/Object</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>empty-text</td>
+<td>空数据时显示的文本内容，也可以通过 <code>section=&quot;empty&quot;</code> 设置</td>
+<td>String</td>
+<td>—</td>
+<td>暂无数据</td>
+</tr>
+<tr>
+<td>default-sort</td>
+<td>默认的排序列的</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>default-sort-order</td>
+<td>默认排序的规则</td>
+<td>ascending</td>
+<td>descending</td>
+<td>-</td>
+</tr>
+<tr>
+<td>childrenKey</td>
+<td>树结构列表时，用于指定子集属性名称</td>
+<td></td>
+<td>string</td>
+<td>children</td>
+</tr>
+<tr>
+<td>isLeafKey</td>
+<td>树结构列表时，用于指定是否有子集属性名称</td>
+<td></td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>dataChangeNotClearSelected</td>
+<td>数据变更后不清空选中项</td>
+<td></td>
+<td>boolean</td>
+<td>-</td>
+</tr>
+<tr>
+<td>defaultExpandAll</td>
+<td>是否默认展开所有行</td>
+<td></td>
+<td>boolean</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Table Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selected-change</td>
+<td>当选择项发生变化时会触发该事件</td>
+<td>选中行</td>
+</tr>
+<tr>
+<td>sort-change</td>
+<td>当表格的排序条件发生变化的时候会触发该事件</td>
+<td>{ column, order }</td>
+</tr>
+<tr>
+<td>expand-change</td>
+<td>当用户对某一行展开或者关闭的时候会触发该事件</td>
+<td>row, expand</td>
+</tr>
+</tbody>
+</table>
+<h3>Table Methods</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clearSelectedRow</td>
+<td>用于多选表格，清空用户的选择</td>
+<td>—</td>
+</tr>
+<tr>
+<td>selectAll</td>
+<td>用于多选表格，切换所有行的选中状态</td>
+<td>-</td>
+</tr>
+<tr>
+<td>setSelectedRow</td>
+<td>用于单选表格，设定某一行为选中行</td>
+<td>row</td>
+</tr>
+<tr>
+<td>clearSort</td>
+<td>用于清空排序条件，数据会恢复成未排序的状态</td>
+<td>—</td>
+</tr>
+<tr>
+<td>clearFilter</td>
+<td>不传入参数时用于清空所有过滤条件，数据会恢复成未过滤的状态，也可传入由 column.key 组成的数组以清除指定列的过滤条件</td>
+<td>column.key</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>手动对 Table 进行排序。参数<code>key</code>属性指定排序列，<code>order</code>指定排序顺序。</td>
+<td>key: string, order: string</td>
+</tr>
+<tr>
+<td>getSelectRow</td>
+<td>获取选中行</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>Table-column Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>对应列的类型。如果设置了 <code>selection</code> 则显示单选/多选框；如果设置了 <code>index</code> 则显示该行的索引（从 1 开始计算）；如果设置了 <code>expand</code> 则显示为一个可展开的按钮</td>
+<td>string</td>
+<td>selection/index/expand</td>
+<td>—</td>
+</tr>
+<tr>
+<td>index</td>
+<td>如果设置了 <code>type=index</code>，可以通过传递 <code>index</code> 属性来自定义索引</td>
+<td>number, Function(index)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>key</td>
+<td>column 的 key，如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>label</td>
+<td>显示的标题</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>width</td>
+<td>对应列的宽度</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>列是否固定在左侧或者右侧，true 表示固定在左侧</td>
+<td>string, boolean</td>
+<td>true, left, right</td>
+<td>—</td>
+</tr>
+<tr>
+<td>sortable</td>
+<td>对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件</td>
+<td>boolean, string</td>
+<td>true, false, 'custom'</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sort-method</td>
+<td>对数据进行排序的时候使用的方法，仅当 sortable 设置为 true 的时候有效，自定义数据排序，返回新的数据</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>align</td>
+<td>对齐方式</td>
+<td>String</td>
+<td>left/center/right</td>
+<td>left</td>
+</tr>
+<tr>
+<td>header-align</td>
+<td>表头对齐方式，若不设置该项，则使用表格的对齐方式</td>
+<td>String</td>
+<td>left/center/right</td>
+<td>—</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>列的 class</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性，默认按当前列数据筛选。</td>
+<td>Array&lt;{ text, value }&gt; 或者 Array&lt;string&gt;</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>filter-method</td>
+<td>数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。</td>
+<td>Function(row, filters, col)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>Table-column Section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>name</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>td</td>
+<td>自定义列的内容，参数为 {value, row,rowIndex, column, columnIndex,store }</td>
+</tr>
+<tr>
+<td>th</td>
+<td>自定义表头的内容，参数为 { column, columnIndex,store }</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>针对展开行的扩展 ， 参数为 { row, rowIndex,store }</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo9 from '../components/table/demo9.joker';
+import DEMO_JOKER_demo8 from '../components/table/demo8.joker';
+import DEMO_JOKER_demo7 from '../components/table/demo7.joker';
+import DEMO_JOKER_demo6 from '../components/table/demo6.joker';
+import DEMO_JOKER_demo5 from '../components/table/demo5.joker';
+import DEMO_JOKER_demo4 from '../components/table/demo4.joker';
+import DEMO_JOKER_demo3 from '../components/table/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/table/demo2.joker';
+import DEMO_JOKER_demo19 from '../components/table/demo19.joker';
+import DEMO_JOKER_demo18 from '../components/table/demo18.joker';
+import DEMO_JOKER_demo17 from '../components/table/demo17.joker';
+import DEMO_JOKER_demo16 from '../components/table/demo16.joker';
+import DEMO_JOKER_demo15 from '../components/table/demo15.joker';
+import DEMO_JOKER_demo14 from '../components/table/demo14.joker';
+import DEMO_JOKER_demo13 from '../components/table/demo13.joker';
+import DEMO_JOKER_demo12 from '../components/table/demo12.joker';
+import DEMO_JOKER_demo11 from '../components/table/demo11.joker';
+import DEMO_JOKER_demo10 from '../components/table/demo10.joker';
+import DEMO_JOKER_demo1 from '../components/table/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo9,
+DEMO_JOKER_demo8,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo19,
+DEMO_JOKER_demo18,
+DEMO_JOKER_demo17,
+DEMO_JOKER_demo16,
+DEMO_JOKER_demo15,
+DEMO_JOKER_demo14,
+DEMO_JOKER_demo13,
+DEMO_JOKER_demo12,
+DEMO_JOKER_demo11,
+DEMO_JOKER_demo10,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

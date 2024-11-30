@@ -1,0 +1,220 @@
+<template>
+    <div class="jk-descriptions @(props.class||'')">
+        @RenderSection()
+        @if(props.title || props.extra || $sections.title || $sections.extra) {
+            <div class="header">
+                <div class="title">
+                    @if($sections.title) {
+                        @RenderSection("title")
+                    }
+                    else {
+                        @props.title
+                    }
+                </div>
+                <div class="extra">
+                    @if($sections.extra) {
+                        @RenderSection("extra")
+                    }
+                    else {
+                        @props.extra
+                    }
+                </div>
+            </div>
+        }
+        <div class="body">
+            <table class="@(['table', { 'is-bordered': props.border }, descriptionsSize])">
+                @for(let i = 0; i < model.itemsLength; i++) {
+                    <jk-descriptions-row rowIndex="@i"></jk-descriptions-row>
+                }
+            </table>
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { componentName } from "../utils/index";
+import DescriptionsRow from "./descriptions-row.joker";
+
+export default class extends Component<{
+    border: boolean;
+    column: number;
+    direction: string;
+    size: string;
+    title: string;
+    extra: string;
+    labelStyle: object;
+    contentStyle: object;
+    labelClassName: string;
+    contentClassName: string;
+    colon: boolean;
+    class: string;
+}> {
+    propsOption = {
+        column: {
+            type: Number,
+            default: 3
+        },
+        direction: "horizontal",
+        colon: true
+    };
+
+    model = {
+        itemsLength: 0
+    };
+    itemsList: any[] = [];
+    name = componentName("descriptions");
+    components = {
+        "jk-descriptions-row": DescriptionsRow
+    };
+
+    mounted() {
+        this.getRows();
+    }
+
+    get descriptionsSize() {
+        return this.props.size || (this.$root || {}).size;
+    }
+
+    getRows() {
+        let itemsList =
+            this.$rootVNode?.find((n) => {
+                return n instanceof VNode.Component && n.component?.name === componentName("descriptions-item");
+            }) || [];
+        const rows: any[] = [];
+        let temp: any[] = [];
+        let count = this.props.column!;
+
+        itemsList.forEach((item: any, index: number) => {
+            const span = item.component.props.span || 1;
+
+            if (index === itemsList.length - 1) {
+                temp.push(this.filledItem(item, span, count, true));
+                rows.push(temp);
+                return;
+            }
+
+            if (span < count) {
+                count -= span;
+                temp.push(item);
+            } else {
+                temp.push(this.filledItem(item, span, count));
+                rows.push(temp);
+                count = this.props.column!;
+                temp = [];
+            }
+        });
+        this.itemsList = rows;
+        this.model.itemsLength = this.itemsList.length;
+    }
+
+    filledItem(item: any, span: number, count: number, isLast = false) {
+        if (span > count) {
+            item.component.span = count;
+        }
+        if (isLast) {
+            item.component.span = count;
+        }
+        return item;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-descriptions {
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #303133;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        .title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+    .body {
+        color: #606266;
+        background-color: #fff;
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            :deep(td) {
+                border-bottom: none;
+                padding: 0;
+            }
+            :deep(th) {
+                border-bottom: none;
+                padding: 0;
+            }
+            :deep(.cell) {
+                box-sizing: border-box;
+                text-align: left;
+                font-weight: 400;
+                line-height: 1.5;
+                &.is-left {
+                    text-align: left;
+                }
+                &.is-center {
+                    text-align: center;
+                }
+                &.is-right {
+                    text-align: right;
+                }
+            }
+            &.is-bordered {
+                table-layout: auto;
+                :deep(.cell) {
+                    border: 1px solid #ebeef5;
+                    padding: 12px 10px;
+                }
+            }
+            &:not(.is-bordered) {
+                :deep(.cell) {
+                    padding-bottom: 12px;
+                }
+            }
+            &.medium {
+                &.is-bordered {
+                    :deep(.cell) {
+                        padding: 10px;
+                    }
+                }
+                &:not(.is-bordered) {
+                    :deep(.cell) {
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+            &.small {
+                font-size: 12px;
+                &.is-bordered {
+                    :deep(.cell) {
+                        padding: 8px 10px;
+                    }
+                }
+                &:not(.is-bordered) {
+                    :deep(.cell) {
+                        padding-bottom: 8px;
+                    }
+                }
+            }
+            &.mini {
+                font-size: 12px;
+                &.is-bordered {
+                    :deep(.cell) {
+                        padding: 6px 10px;
+                    }
+                }
+                &:not(.is-bordered) {
+                    :deep(.cell) {
+                        padding-bottom: 6px;
+                    }
+                }
+            }
+        }
+    }
+}
+</style>

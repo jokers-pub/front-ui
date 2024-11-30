@@ -1,0 +1,17 @@
+<template>
+    <DemoRow>
+        <jk-slider max="10" range></jk-slider>
+    </DemoRow>
+    <DemoRow>
+        <jk-slider max="10" value="@([0, 0])" range></jk-slider>
+    </DemoRow>
+    <DemoRow>
+        <jk-slider max="10" value="@([3, 6])" range></jk-slider>
+    </DemoRow>
+    <DemoRow>
+        <jk-slider max="10" value="@([2, 4])" range showStops></jk-slider>
+    </DemoRow>
+    <DemoRow>
+        <jk-slider max="10" value="@([1, 3])" range showStops disabled></jk-slider>
+    </DemoRow>
+</template>

@@ -1,0 +1,505 @@
+<template>
+    <table
+        cellspacing="0"
+        cellpadding="0"
+        class="jk-date-table @(props.type ==='week' ?'is-week-mode':'')"
+        @mousemove="handleMouseMove">
+        <thead>
+            <tr>
+                @if(props.showWeekNumber) {
+                    <th>周</th>
+                }
+                @for(let week of weeks) {
+                    <th>
+                        @week
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody @click="handleClick">
+            @for(let row of model.rows) {
+                <tr class="@(isWeekActive(row[1]) ? 'current' : '')">
+                    @for(let cell of row) {
+                        <td class="cell @getCellClass(cell)">
+                            <div>
+                                <span>@cell.text</span>
+                            </div>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { addDate, clearTime, getDayCountOfMonth, getStartDateOfMonth, getWeekNumber, subtractDate } from "../utils";
+
+type CellType = {
+    date?: Date;
+    type: "normal" | "week" | "prev-month" | "next-month" | "today";
+    text?: number;
+    disabled?: boolean;
+    selected?: boolean;
+    customClass?: string;
+    inRange?: boolean;
+    start?: boolean;
+    end?: boolean;
+};
+
+export default class extends Component<{
+    type: string;
+    showWeekNumber: boolean;
+    date: Date;
+    value: Date;
+    minDate: Date;
+    maxDate: Date;
+    disabledDate: (date: Date) => boolean;
+    cellClassName: (date: Date) => string;
+    isRange: boolean;
+    //采用对象，需要跨组建进行数据同步
+    rangeState: {
+        selecting: boolean;
+    };
+}> {
+    propsOption = {
+        type: "date",
+        showWeekNumber: false,
+        rangeState: { selecting: false }
+    };
+
+    model = {
+        rows: [] as Array<CellType>[]
+    };
+
+    weeks = ["日", "一", "二", "三", "四", "五", "六"];
+
+    get year() {
+        return this.props.date!.getFullYear();
+    }
+
+    get month() {
+        return this.props.date!.getMonth();
+    }
+
+    get startDate() {
+        return getStartDateOfMonth(this.year, this.month);
+    }
+
+    created() {
+        this.$watch(
+            () => [this.props.date, this.props.showWeekNumber, this.props.cellClassName],
+            () => {
+                this.calcRows();
+            }
+        );
+
+        this.$watch(
+            () => [this.props.minDate, this.props.maxDate],
+            () => {
+                this.markRange();
+            }
+        );
+
+        this.calcRows();
+    }
+
+    markRange() {
+        let minDate = this.props.minDate && clearTime(this.props.minDate);
+        let maxDate = (this.props.maxDate && clearTime(this.props.maxDate)) || minDate;
+
+        if (minDate && maxDate) {
+            [minDate, maxDate] = [Math.min(minDate, maxDate), Math.max(minDate, maxDate)];
+        }
+
+        let rows = this.model.rows;
+        for (let i = 0, k = rows.length; i < k; i++) {
+            let row = rows[i];
+            for (let j = 0, l = row.length; j < l; j++) {
+                if (this.props.showWeekNumber && j === 0) continue;
+
+                let cell = row[j];
+                let time = clearTime(cell.date!);
+
+                cell.inRange = !!(minDate && time >= minDate && maxDate && time <= maxDate);
+                cell.start = !!(minDate && time === minDate);
+                cell.end = !!(maxDate && time === maxDate);
+            }
+        }
+    }
+
+    calcRows() {
+        let year = this.year;
+        let month = this.month;
+        let date = new Date(year, month, 1);
+
+        let dateCountOfMonth = getDayCountOfMonth(year, month);
+        let dateCountOfLastMonth = getDayCountOfMonth(year, month === 0 ? 11 : month - 1);
+        let day = date.getDay();
+        let startDate = this.startDate;
+        let rows: Array<any[]> = [];
+        let now = clearTime(new Date());
+        let count = 1;
+
+        day = day === 0 ? 7 : day;
+
+        for (let i = 0; i < 6; i++) {
+            let row: CellType[] = [];
+
+            if (this.props.showWeekNumber) {
+                row.push({ type: "week", text: getWeekNumber(addDate(startDate, i * 7 + 1, "d")) });
+            }
+
+            for (let j = 0; j < 7; j++) {
+                let cellDate = addDate(startDate, i * 7 + j, "d");
+                let date = clearTime(cellDate);
+
+                let cell: CellType = {
+                    date: new Date(date),
+                    type: "normal",
+                    text: 0,
+                    disabled: false,
+                    selected: false,
+                    customClass: "",
+                    inRange: false,
+                    start: false,
+                    end: false
+                };
+
+                cell.inRange =
+                    this.props.minDate &&
+                    date >= clearTime(this.props.minDate) &&
+                    this.props.maxDate &&
+                    date <= clearTime(this.props.maxDate);
+
+                cell.start = !!(this.props.minDate && date === clearTime(this.props.minDate));
+                cell.end = !!(this.props.maxDate && date === clearTime(this.props.maxDate));
+
+                if (date === now) {
+                    cell.type = "today";
+                }
+
+                //前两行处理非本月
+                if (i === 0 || i === 1) {
+                    if (j + i * 7 >= day) {
+                        cell.text = count++;
+                    } else {
+                        cell.text = dateCountOfLastMonth - (7 - (j % 7)) + 1 + i * 7;
+                        cell.type = "prev-month";
+                    }
+                } else {
+                    if (count <= dateCountOfMonth) {
+                        cell.text = count++;
+                    } else {
+                        cell.text = count++ - dateCountOfMonth;
+                        cell.type = "next-month";
+                    }
+                }
+
+                cell.disabled = this.props.disabledDate?.(cellDate) ?? false;
+                cell.customClass = this.props.cellClassName?.(cellDate) || "";
+
+                row.push(cell);
+            }
+
+            if (this.props.type === "week") {
+                let start = this.props.showWeekNumber ? 1 : 0;
+                let end = this.props.showWeekNumber ? 7 : 6;
+                let isWeekActive = this.isWeekActive(row[start + 1]);
+
+                row[start].inRange = isWeekActive;
+                row[start].start = isWeekActive;
+                row[end].inRange = isWeekActive;
+                row[end].end = isWeekActive;
+            }
+
+            rows.push(row);
+        }
+
+        this.model.rows = rows;
+    }
+
+    isWeekActive(cell: CellType) {
+        if (this.props.type !== "week") return false;
+
+        if (this.props.value) {
+            return getWeekNumber(this.props.value) === getWeekNumber(cell.date!);
+        }
+
+        return false;
+    }
+
+    getCellClass(cell: CellType) {
+        let classes: string[] = [];
+
+        if (!cell.disabled && (cell.type === "normal" || cell.type === "today")) {
+            classes.push("available");
+
+            if (cell.type === "today") {
+                classes.push("today");
+            }
+        } else {
+            classes.push(cell.type);
+        }
+
+        if (
+            this.props.type === "date" &&
+            this.props.value &&
+            (cell.type === "normal" || cell.type === "today") &&
+            this.cellMatchesDate(cell, this.props.value)
+        ) {
+            classes.push("current");
+        }
+
+        if (cell.inRange && (cell.type === "normal" || cell.type === "today" || this.props.type === "week")) {
+            classes.push("in-range");
+
+            if (cell.start) {
+                classes.push("start-date");
+            }
+
+            if (cell.end) {
+                classes.push("end-date");
+            }
+        }
+
+        if (cell.disabled) {
+            classes.push("is-disabled");
+        }
+
+        if (cell.selected) {
+            classes.push("selected");
+        }
+
+        if (cell.customClass) {
+            classes.push(cell.customClass);
+        }
+
+        return classes.join(" ");
+    }
+
+    handleClick(e: VNode.Event) {
+        let target = e.event.target;
+
+        if (target.tagName === "SPAN") {
+            target = target.parentNode.parentNode;
+        }
+
+        if (target.tagName === "DIV") {
+            target = target.parentNode;
+        }
+
+        if (target.tagName !== "TD" && !target.classList.has?.("cell")) return;
+
+        let row = target.parentNode.rowIndex - 1;
+        let column = this.props.type === "week" ? 1 : target.cellIndex;
+        let cell = this.model.rows[row][column];
+
+        if (cell.disabled || cell.type === "week") return;
+
+        let newDate = cell.date!;
+        if (this.props.isRange) {
+            if (!this.props.rangeState!.selecting) {
+                this.$trigger("pick", { minDate: newDate, maxDate: undefined });
+                this.props.rangeState!.selecting = true;
+            } else {
+                //开始选择时，minDate必有值
+                if (newDate >= this.props.minDate!) {
+                    this.$trigger("pick", { minDate: this.props.minDate, maxDate: newDate });
+                } else {
+                    this.$trigger("pick", { minDate: newDate, maxDate: this.props.minDate });
+                }
+                this.props.rangeState!.selecting = false;
+            }
+        } else if (this.props.type === "date" || this.props.type === "week") {
+            this.$trigger("pick", newDate);
+        }
+    }
+
+    handleMouseMove(e: VNode.Event) {
+        if (!this.props.rangeState!.selecting) return;
+
+        let target = e.event.target;
+
+        if (target.tagName === "SPAN") {
+            target = target.parentNode.parentNode;
+        }
+
+        if (target.tagName === "DIV") {
+            target = target.parentNode;
+        }
+
+        if (target.tagName !== "TD" && !target.classList.has?.("cell")) return;
+
+        let row = target.parentNode.rowIndex - 1;
+        let column = this.props.type === "week" ? 1 : target.cellIndex;
+        let cell = this.model.rows[row][column];
+
+        if (cell.disabled || cell.type === "week") return;
+
+        this.$trigger("changerange", {
+            minDate: this.props.minDate,
+            maxDate: cell.date
+        });
+    }
+
+    private cellMatchesDate(cell: CellType, date: Date) {
+        return cell.date?.getTime() === clearTime(date);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-date-table {
+    font-size: 12px;
+    user-select: none;
+    table-layout: fixed;
+    width: 100%;
+
+    thead {
+        th {
+            padding: 5px;
+            color: var(--jk-color-text-regular);
+            font-weight: 400;
+            border-bottom: solid 1px var(--jk-border-color-lighter);
+        }
+    }
+
+    tbody {
+        td {
+            width: 32px;
+            height: 32px;
+            padding: 4px 0;
+            text-align: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: relative;
+
+            div {
+                height: 30px;
+                padding: 3px 0;
+                box-sizing: border-box;
+                span {
+                    width: 24px;
+                    height: 24px;
+                    display: block;
+                    margin: 0 auto;
+                    line-height: 24px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-radius: 50%;
+                }
+            }
+
+            &.next-month,
+            &.prev-month {
+                color: var(--jk-color-text-placeholder);
+            }
+
+            &.today {
+                span {
+                    color: var(--jk-color-primary);
+                    font-weight: bold;
+                }
+
+                &.start-date span,
+                &.end-date span {
+                    color: #fff;
+                }
+            }
+
+            &.available:hover {
+                color: var(--jk-color-primary);
+            }
+
+            &.in-range div {
+                background-color: var(--jk-border-color-extra-light);
+
+                &:hover {
+                    background-color: var(--jk-border-color-extra-light);
+                }
+            }
+
+            &.current:not(.is-disabled) span {
+                color: #fff;
+                background-color: var(--jk-color-primary);
+            }
+
+            &.start-date div,
+            &.end-date div {
+                color: #fff;
+
+                span {
+                    background-color: var(--jk-color-primary);
+                }
+            }
+
+            &.start-date div {
+                margin-left: 5px;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+            }
+
+            &.end-date div {
+                margin-right: 5px;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+
+            &.is-disabled div {
+                background: var(--jk-background-color-base);
+                cursor: not-allowed;
+                color: var(--jk-color-text-placeholder);
+            }
+
+            &.selected div {
+                margin-left: 5px;
+                margin-right: 5px;
+                background-color: var(--jk-border-color-extra-light);
+                border-radius: 15px;
+                &:hover {
+                    background-color: var(--jk-border-color-extra-light);
+                }
+
+                span {
+                    background-color: var(--jk-color-primary);
+                    color: #fff;
+                    border-radius: 15px;
+                }
+            }
+
+            &.week {
+                font-size: 80%;
+                color: var(--jk-color-text-regular);
+            }
+        }
+    }
+
+    &.is-week-mode {
+        tbody tr {
+            &:hover {
+                td {
+                    &.week div {
+                        background: none;
+                    }
+                    div {
+                        background: var(--jk-border-color-extra-light);
+                    }
+                }
+            }
+
+            &.current {
+                td {
+                    &.week div {
+                        background: none;
+                    }
+                    div {
+                        background: var(--jk-border-color-extra-light);
+                    }
+                }
+            }
+        }
+    }
+}
+</style>

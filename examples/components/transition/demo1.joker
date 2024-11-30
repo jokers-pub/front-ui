@@ -1,0 +1,37 @@
+<template>
+    <DemoRow>
+        <jk-button @click="handleClick">点我</jk-button>
+    </DemoRow>
+    <div style="height:120px">
+        @if(model.show) {
+            <div class="demo-container" transition-name="jk-fade-in">jk-fade-in</div>
+            <jk-button type="success" transition-name="jk-fade-in">jk-fade-in</jk-button>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+export default class extends Component {
+    model = {
+        show: false
+    };
+
+    handleClick() {
+        this.model.show = !this.model.show;
+    }
+}
+</script>
+<style lang="scss" scoped>
+.demo-container {
+    width: 200px;
+    height: 100px;
+    border-radius: 4px;
+    background-color: #409eff;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    margin-right: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+</style>

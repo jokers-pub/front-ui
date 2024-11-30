@@ -1,0 +1,26 @@
+<template>
+    <div class="card-demo2">
+        <jk-card class="box-card">
+            @for(let i of [1,2,3,4]) {
+                <div class="text item">
+                    列表内容@i
+                </div>
+            }
+        </jk-card>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.card-demo2 {
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+}
+</style>

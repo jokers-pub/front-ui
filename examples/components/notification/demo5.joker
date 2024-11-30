@@ -1,0 +1,19 @@
+<template>
+    <jk-button @click="open">弹出HTML警告</jk-button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { Notification } from "../../../src";
+
+export default class extends Component {
+    open() {
+        Notification({
+            title: "提示",
+            type: "success",
+            useHtml: true,
+            message: "已成功收到张三转入的<span style='color:red'>3,000</span>元"
+        });
+    }
+}
+</script>
+

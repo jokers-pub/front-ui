@@ -1,0 +1,151 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Icon 图标</h2>
+<p>提供了一套常用的图标集合</p>
+<h3>使用方法</h3>
+<p>直接通过设置类名为<code>jk-icon-name</code>的方式来使用，例如：</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;icon-container&quot;&gt;
+        &lt;i class=&quot;jk-icon-edit&quot; /&gt;
+        &lt;i class=&quot;jk-icon-share&quot; /&gt;
+        &lt;i class=&quot;jk-icon-delete&quot; /&gt;
+        &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;搜索&lt;/jk-button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.icon-container i {
+    color: #606266;
+    margin: 0 20px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<p>也可以使用<code>jk-icon</code>组件，通过设置<code>name</code>属性来进行使用，例如：</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;icon-container&quot;&gt;
+        &lt;jk-icon name=&quot;edit&quot; /&gt;
+        &lt;jk-icon name=&quot;share&quot; /&gt;
+        &lt;jk-icon name=&quot;delete&quot; /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;style scoped lang=&quot;scss&quot;&gt;
+:deep(.icon-container i) {
+    color: #606266;
+    margin: 0 20px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>图标集合</h3>
+<blockquote>
+<p>点击图标复制<code>class</code> 名称</p>
+</blockquote>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;ul class=&quot;icon-list&quot;&gt;
+        @for(let icon of model.icons) {
+            &lt;li @click=&quot;handleClick(icon)&quot;&gt;
+                &lt;i class=&quot;jk-icon-@icon&quot; /&gt;
+                &lt;p&gt;
+                    jk-icon-@icon
+                &lt;/p&gt;
+            &lt;/li&gt;
+        }
+    &lt;/ul&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { icons } from &quot;./icon-data&quot;;
+import { copyText } from &quot;@joker.front/shared&quot;;
+
+export default class extends Component {
+    model = {
+        icons: icons
+    };
+    handleClick(e: VNode.Event, name: string) {
+        copyText(`jk-icon-${name}`);
+    }
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.icon-list {
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    border: 1px solid #eaeefb;
+    border-radius: 4px;
+
+    li {
+        float: left;
+        width: 16.66%;
+        text-align: center;
+        height: 120px;
+        color: #666;
+        font-size: 13px;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        cursor: pointer;
+        :deep(i) {
+            display: block;
+            font-size: 32px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #606266;
+        }
+
+        p {
+            display: inline-block;
+            padding: 0 3px;
+            height: 1em;
+            line-height: 24px;
+        }
+
+        &amp;:hover {
+            p {
+                color: #5cb6ff;
+            }
+
+            :deep(i) {
+                color: #5cb6ff;
+            }
+        }
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo3 from '../components/icon/demo3.joker';
+import DEMO_JOKER_demo2 from '../components/icon/demo2.joker';
+import DEMO_JOKER_demo1 from '../components/icon/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

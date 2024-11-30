@@ -1,0 +1,294 @@
+<template>
+    <div
+        class="@(['jk-textarea', props.class, { 'is-error': isError, 'is-disabled': props.disabled, 'is-exceed': inputExceed }])"
+        @mouseenter="handleHover(true)"
+        @mouseleave="handleHover(false)">
+        <textarea
+            ref="input"
+            tabindex="@props.tabindex"
+            disabled="@props.disabled"
+            readonly="@props.readonly"
+            autocomplete="@props.autocomplete"
+            autofocus="@props.autofocus"
+            aria-label="@props.label"
+            placeholder="@props.placeholder"
+            maxlength="@props.maxlength"
+            minlength="@props.minlength"
+            rows="@props.rows"
+            style="@style"
+            @input="handleInput"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            @compositionstart="handleCompositionStart"
+            @compositionupdate="handleCompositionUpdate"
+            @compositionend="handleCompositionEnd"></textarea>
+        @if(isWordLimitVisible) {
+            <span class="count">@(textLength)/@(this.props.maxlength)</span>
+        }
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import { calcTextareaHeight } from "./calcTextareaHeight";
+export default class extends FormCtrl<{
+    autofocus: boolean;
+    autocomplete: string;
+    maxlength: number;
+    minlength: number;
+    tabindex: string;
+    showWordLimit: boolean;
+    resize: string;
+    rows: number;
+    class: string;
+    autosize: { minRows: number; maxRows: number };
+}> {
+    model: Record<string, any> = {
+        hovering: false,
+        focused: false,
+        textareaStyle: {},
+        isComposing: false
+    };
+
+    propsOption = {
+        autocomplete: "off",
+        maxlength: Number,
+        minlength: Number,
+        rows: Number
+    };
+
+    mounted() {
+        this.setNativeInputValue();
+
+        this.$watch(
+            () => this.props.value,
+            () => {
+                this.setNativeInputValue();
+            }
+        );
+
+        this.$watch(
+            () => this.value,
+            () => {
+                this.resize();
+            }
+        );
+
+        this.resize();
+    }
+
+    get isWordLimitVisible() {
+        return this.props.showWordLimit && this.props.maxlength && !this.props.disabled && !this.props.readonly;
+    }
+
+    get textLength() {
+        if (typeof this.value === "number") {
+            return String(this.value).length;
+        }
+
+        return (this.value || "").length;
+    }
+
+    get inputExceed() {
+        return this.isWordLimitVisible && this.textLength > this.props.maxlength!;
+    }
+
+    get nativeInputValue() {
+        return this.value === null || this.value === undefined ? "" : String(this.value);
+    }
+
+    get style() {
+        let result: string[] = [];
+
+        if (this.props.resize) {
+            result.push(`resize:${this.props.resize}`);
+        }
+
+        if (this.model.textareaStyle.height && !this.props.rows) {
+            result.push(`height:${this.model.textareaStyle.height}`);
+        }
+        if (this.model.textareaStyle["min-height"]) {
+            result.push(`min-height:${this.model.textareaStyle["min-height"]}`);
+        }
+
+        return result.join(";");
+    }
+
+    focus() {
+        this.$getRef("input")?.output.focus();
+    }
+
+    blur() {
+        this.$getRef("input")?.output.blur();
+    }
+
+    select() {
+        this.$getRef("input")?.output.select();
+    }
+
+    resize() {
+        if (this.props.autosize) {
+            let result = calcTextareaHeight(
+                this.$getRef("input")?.output,
+                this.props.autosize.minRows,
+                this.props.autosize.maxRows
+            );
+            this.model.textareaStyle = {
+                "min-height": result.minHeight,
+                height: result.height
+            };
+        } else {
+            let minHeight = calcTextareaHeight(this.$getRef("input")?.output).minHeight;
+            this.model.textareaStyle = {
+                height: minHeight,
+                "min-height": minHeight
+            };
+        }
+    }
+
+    //#region 事件
+
+    handleHover(e: VNode.Event, val: boolean) {
+        this.model.hovering = val;
+    }
+
+    handleFocus(e: VNode.Event) {
+        this.model.focused = true;
+        this.$trigger("focus", this.value, e);
+    }
+
+    handleBlur(e: VNode.Event) {
+        this.model.focused = false;
+        this.$trigger("blur", this.value, e);
+
+        this.triggerValidate();
+    }
+
+    handleChange(e: VNode.Event) {
+        this.$trigger("change", e.event.target.value);
+    }
+
+    handleInput(e: VNode.Event) {
+        if (this.model.isComposing) return;
+
+        if (e.event.target.value === this.value) return;
+
+        this.$trigger("input", e.event.target.value, e);
+
+        this.value = e.event.target.value;
+    }
+
+    handleCompositionStart(e: VNode.Event) {
+        this.$trigger("compositionstart", undefined, e);
+        this.model.isComposing = true;
+    }
+
+    handleCompositionUpdate(e: VNode.Event) {
+        this.$trigger("compositionupdate", undefined, e);
+    }
+
+    handleCompositionEnd(e: VNode.Event) {
+        this.$trigger("compositionend", undefined, e);
+
+        if (this.model.isComposing) {
+            this.model.isComposing = false;
+            this.handleInput(e);
+        }
+    }
+
+    //#endregion
+
+    private setNativeInputValue() {
+        let input = this.$getRef("input")?.output;
+
+        if (!input) return;
+
+        if (input.value === this.nativeInputValue) return;
+
+        input.value = this.nativeInputValue;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/mixins.scss";
+@import "../../theme/var.scss";
+
+.jk-textarea {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+
+    @include scroll-bar;
+
+    textarea {
+        display: block;
+        resize: vertical;
+        padding: 5px 15px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: inherit;
+        background-color: #fff;
+        background-image: none;
+        border-radius: 4px;
+
+        border: $--border-base;
+        color: var(--jk-color-text-regular);
+        transition: $--border-transition-base;
+
+        &::placeholder {
+            color: var(--jk-color-text-placeholder);
+        }
+
+        &:hover {
+            border-color: var(--jk-border-color-hover);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--jk-color-primary);
+        }
+    }
+
+    &.is-disabled {
+        textarea {
+            background-color: var(--jk-disabled-background-color);
+            border-color: var(--jk-disabled-border-color);
+            color: var(--jk-disabled-color);
+            cursor: not-allowed;
+
+            &::placeholder {
+                color: var(--jk-color-text-placeholder);
+            }
+        }
+    }
+
+    &.is-exceed {
+        textarea {
+            border-color: var(--jk-color-danger);
+        }
+    }
+
+    .count {
+        color: var(--jk-color-info);
+        background: #fff;
+        position: absolute;
+        font-size: 12px;
+        bottom: 5px;
+        right: 10px;
+    }
+
+    &.is-error {
+        textarea {
+            &,
+            &:focus {
+                border-color: var(--jk-color-danger);
+            }
+        }
+    }
+}
+</style>

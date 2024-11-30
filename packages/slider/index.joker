@@ -1,0 +1,518 @@
+<template>
+    <div
+        class="@([
+            'jk-slider',
+            props.class,
+            {
+                'is-vertical': props.vertical
+            }
+        ])"
+        role="slider"
+        aria-valuemin="@props.min"
+        aria-valuemax="@props.max"
+        aria-valuetext="@valueText"
+        aria-label="@(props.label || '滑动区间' + props.min + '到' + props.max)"
+        aria-orientation="@(props.vertical ? 'vertical' : 'horizontal')"
+        aria-disabled="@props.disabled">
+        @if(props.showInput && !props.range && !props.vertical) {
+            <JokerInputNumber
+                value="@model.startValue"
+                ref="input"
+                @change="handleInputChange"
+                step="@props.step"
+                disabled="@props.disabled"
+                controls="@props.showInputControls"
+                min="@props.min"
+                max="@props.max"
+                size="@props.inputSize"></JokerInputNumber>
+        }
+        <div
+            class="@([
+                'runway',
+                { 'show-input': props.showInput && !props.range && !props.vertical, 'is-disabled': props.disabled }
+            ])"
+            ref="slider"
+            style="@runwayStyle"
+            @click="handleRunwayClick">
+            <div class="bar" style="@barStyle"></div>
+            <JokerSliderButton
+                showTooltip="@props.showTooltip"
+                value="@model.startValue"
+                vertical="@props.vertical"
+                disabled="@props.disabled"
+                max="@props.max"
+                min="@props.min"
+                step="@props.step"
+                precision="@precision"
+                formatTooltip="@props.formatTooltip"
+                ref="startButton"
+                @input="handleStartInput"
+            />
+            @if(props.range) {
+                <JokerSliderButton
+                    showTooltip="@props.showTooltip"
+                    value="@model.endValue"
+                    vertical="@props.vertical"
+                    disabled="@props.disabled"
+                    max="@props.max"
+                    min="@props.min"
+                    step="@props.step"
+                    precision="@precision"
+                    formatTooltip="@props.formatTooltip"
+                    ref="endButton"
+                    @input="handleEndInput"
+                />
+            }
+            @if(props.showStops) {
+                @for(let item of stops) {
+                    <div class="stop" style="@getStopStyle(item)"></div>
+                }
+            }
+            @if(markList.length) {
+                @for(let item of markList) {
+                    <div class="stop" style="@getStopStyle(item.position)"></div>
+                }
+                <div class="marks">
+                    @for(let item of markList) {
+                        <div class="mark" style="@getStopStyle(item.position)">
+                            <span style="@getMarkTextStyle(item.mark)">@getMarkText(item.mark)</span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { VNode } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import JokerInputNumber from "../number/index.joker";
+import { componentName } from "../utils";
+import JokerSliderButton from "./button.joker";
+import { logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+
+export default class extends FormCtrl<{
+    min: number;
+    max: number;
+    step: number;
+    class: string;
+    value: number | Array<any>;
+    showInput: boolean;
+    showInputControls: boolean;
+    inputSize: string;
+    showStops: boolean;
+    showTooltip: boolean;
+    formatTooltip: Function;
+    range: boolean;
+    vertical: boolean;
+    height: string;
+    label: string;
+    marks: Record<string | number, string>;
+}> {
+    name = componentName("slider");
+    propsOption = {
+        min: {
+            type: Number,
+            default: 0
+        },
+        max: {
+            type: Number,
+            default: 100
+        },
+        step: {
+            type: Number,
+            default: 1
+        },
+        value: 0,
+        showInputControls: true,
+        inputSize: "small",
+        showTooltip: true,
+        formatTooltip: Function
+    };
+    components = {
+        JokerInputNumber,
+        JokerSliderButton
+    };
+    model: any = {
+        dragging: false,
+        startValue: undefined,
+        endValue: undefined,
+        oldValue: undefined,
+        sliderSize: 1,
+        value: undefined
+    };
+    created() {
+        if (this.props.range && this.props.showInput) {
+            logger.warn(LOGTAG, "[slider] 开启range区间时，禁用showInput属性");
+        }
+    }
+    mounted() {
+        this.initValue();
+        this.resetSize();
+
+        this.$watch(
+            () => [this.model.value],
+            () => {
+                if (
+                    this.model.dragging ||
+                    (Array.isArray(this.props.value) &&
+                        Array.isArray(this.model.oldValue) &&
+                        this.model.value.every((item, index) => item === this.model.oldValue[index]))
+                )
+                    return;
+                this.initValue();
+            }
+        );
+
+        this.$watch(
+            () => [this.props.min, this.props.max],
+            () => {
+                this.initValue();
+            }
+        );
+        window.addEventListener("resize", this.resetSize);
+    }
+
+    beforeDestroy() {
+        window.removeEventListener("reset", this.resetSize);
+    }
+
+    initValue() {
+        if (this.props.min! > this.props.max!) {
+            logger.error(LOGTAG, "[slider] min必须小于max");
+            return;
+        }
+
+        let value = parseFloat(this.model.value) || 0;
+        if (this.props.range) {
+            if (Array.isArray(value)) {
+                this.model.startValue = Math.max(this.props.min!, value[0]);
+                this.model.endValue = Math.min(this.props.max!, value[1]);
+            } else {
+                this.model.startValue = this.props.min;
+                this.model.endValue = this.props.max;
+            }
+
+            this.model.oldValue = [this.model.startValue, this.model.endValue];
+        } else {
+            if (typeof this.model.value !== "number" && isNaN(this.model.value)) {
+                this.model.startValue = this.props.min;
+            } else {
+                this.model.startValue = Math.min(this.props.max!, Math.max(this.props.min!, value));
+            }
+
+            this.model.oldValue = this.model.startValue;
+        }
+    }
+
+    get markList() {
+        if (!this.props.marks) return [];
+
+        let marks = this.props.marks;
+        let marksKey = Object.keys(marks);
+
+        return marksKey
+            .map(parseFloat)
+            .sort((a, b) => a - b)
+            .filter((m) => m <= this.props.max! && m >= this.props.min!)
+            .map((m) => ({
+                point: m,
+                position: ((m - this.props.min!) * 100) / (this.props.max! - this.props.min!),
+                mark: marks[m]
+            }));
+    }
+
+    get runwayStyle() {
+        return this.props.vertical ? { height: this.props.height } : {};
+    }
+
+    get minValue() {
+        return Math.min(this.model.startValue, this.model.endValue);
+    }
+
+    get maxValue() {
+        return Math.max(this.model.startValue, this.model.endValue);
+    }
+
+    updateValue() {
+        if (this.props.range) {
+            this.model.value = [this.minValue, this.maxValue];
+        } else {
+            this.model.value = this.model.startValue || 0;
+        }
+    }
+
+    get barStyle() {
+        let barSize = this.props.range
+            ? `${(100 * (this.maxValue - this.minValue)) / (this.props.max! - this.props.min!)}%`
+            : `${(100 * (this.model.startValue - this.props.min!)) / (this.props.max! - this.props.min!)}%`;
+        let barStart = this.props.range
+            ? `${(100 * (this.minValue - this.props.min!)) / (this.props.max! - this.props.min!)}%`
+            : "0%";
+
+        return this.props.vertical
+            ? {
+                  height: barSize,
+                  bottom: barStart
+              }
+            : {
+                  width: barSize,
+                  left: barStart
+              };
+    }
+
+    get valueText() {
+        if (this.props.range) {
+            return `${this.model.startValue}-${this.model.endValue}`;
+        }
+        return this.model.startValue;
+    }
+
+    get precision() {
+        let precisions = [this.props.min!, this.props.max!, this.props.step!].map((m) => {
+            let decimal = ("" + m).split(".")[1];
+            return decimal ? decimal.length : 0;
+        });
+        return Math.max.apply(null, precisions);
+    }
+
+    get formatValue() {
+        if (this.props.formatTooltip) {
+            return this.props.formatTooltip(this.model.value) || this.model.value;
+        }
+        return this.model.value;
+    }
+
+    get stops() {
+        if (!this.props.showStops) return [];
+
+        if (this.props.step === 0) {
+            logger.warn(LOGTAG, "[slider] steps属性不可以设置为0");
+            return;
+        }
+
+        let max = this.props.max!;
+        let min = this.props.min!;
+        let step = this.props.step!;
+
+        let stopCount = (max - min) / step;
+        let stepWidth = (100 * step) / (max - min);
+
+        let result = [];
+        for (let i = 0; i < stopCount; i++) {
+            result.push(i * stepWidth);
+        }
+
+        if (this.props.range) {
+            //只显示非区间内的断点
+            return result.filter((step) => {
+                return (
+                    step < (100 * (this.minValue - min)) / (max - min) ||
+                    step > (100 * (this.maxValue - min)) / (max - min)
+                );
+            });
+        } else {
+            return result.filter((step) => step > (100 * (this.model.startValue - min)) / (max - min));
+        }
+    }
+
+    getMarkTextStyle(item: any) {
+        if (item && typeof item === "object" && item.style) {
+            return item.style;
+        }
+    }
+    getMarkText(item: any) {
+        if (item && typeof item === "object" && item.label) {
+            return item.label;
+        }
+        return item;
+    }
+
+    getStopStyle(position: number) {
+        return this.props.vertical ? { bottom: position + "%" } : { left: position + "%" };
+    }
+
+    setPosition(percent: number) {
+        let targetValue = this.props.min! + (percent * (this.props.max! - this.props.min!)) / 100;
+
+        if (!this.props.range) {
+            this.$getRef<VNode.Component>("startButton")?.component.setPosition(percent);
+            return;
+        }
+
+        let buttonName = "";
+
+        if (Math.abs(this.minValue - targetValue) < Math.abs(this.maxValue - targetValue)) {
+            buttonName = this.model.startValue < this.model.endValue ? "startButton" : "endButton";
+        } else {
+            buttonName = this.model.startValue > this.model.endValue ? "startButton" : "endButton";
+        }
+
+        this.$getRef<VNode.Component>(buttonName)?.component.setPosition(percent);
+    }
+
+    triggerChange() {
+        this.triggerInput();
+
+        this.$trigger("change", this.model.value);
+
+        this.$trigger("validate");
+    }
+
+    triggerInput() {
+        this.updateValue();
+        this.$trigger("input", this.model.value);
+    }
+
+    resetSize() {
+        let sliderEl = this.$getRef("slider")?.output;
+
+        if (sliderEl) {
+            this.model.sliderSize = sliderEl["client" + (this.props.vertical ? "Height" : "Width")];
+        }
+    }
+
+    handleInputChange(e: VNode.Event) {
+        this.model.startValue = e.data;
+        this.triggerChange();
+    }
+
+    handleRunwayClick(e: VNode.Event) {
+        if (this.props.disabled || this.model.dragging) return;
+
+        this.resetSize();
+        let sliderEl: HTMLElement = this.$getRef("slider")?.output;
+
+        if (!sliderEl) return;
+        let event = e.event;
+
+        if (this.props.vertical) {
+            let sliderOffsetBottom = sliderEl.getBoundingClientRect().bottom;
+            this.setPosition(((sliderOffsetBottom - event.clientY) / this.model.sliderSize) * 100);
+        } else {
+            let sliderOffsetLeft = sliderEl.getBoundingClientRect().left;
+            this.setPosition(((event.clientX - sliderOffsetLeft) / this.model.sliderSize) * 100);
+        }
+
+        this.triggerChange();
+    }
+
+    handleStartInput(e: VNode.Event) {
+        this.model.startValue = e.data;
+        this.triggerInput();
+    }
+
+    handleEndInput(e: VNode.Event) {
+        this.model.endValue = e.data;
+        this.triggerInput();
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import "../../theme/mixins.scss";
+
+.jk-slider {
+    @include clearfix;
+
+    .runway {
+        width: 100%;
+        height: 6px;
+        margin: 16px 0;
+        background-color: var(--jk-border-color-light);
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle;
+
+        &.show-input {
+            margin-right: 160px;
+            width: auto;
+        }
+
+        &.is-disabled {
+            cursor: default;
+
+            .bar {
+                background-color: var(--jk-color-text-placeholder);
+            }
+        }
+
+        .bar {
+            height: 6px;
+            background-color: var(--jk-color-primary);
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            position: absolute;
+        }
+
+        .stop {
+            position: absolute;
+            height: 6px;
+            width: 6px;
+            border-radius: 100%;
+            background-color: #fff;
+            transform: translateX(-50%);
+        }
+
+        .marks {
+            top: 0;
+            left: 12px;
+            width: 18px;
+            height: 100%;
+
+            .mark {
+                position: absolute;
+                transform: translateX(-50%);
+                font-size: 14px;
+                color: var(--jk-color-info);
+                margin-top: 15px;
+            }
+        }
+    }
+
+    &.is-vertical {
+        position: relative;
+        .runway {
+            width: 6px;
+            height: 100%;
+            margin: 0 16px;
+
+            .bar {
+                width: 6px;
+                height: auto;
+                border-radius: 0 0 3px 3px;
+            }
+
+            .stop {
+                transform: translateY(50%);
+            }
+
+            .marks .mark {
+                margin-top: 0;
+                left: 15px;
+                transform: translateY(50%);
+            }
+        }
+    }
+
+    :deep(.jk-number) {
+        float: right;
+        margin-top: 3px;
+        width: 130px;
+
+        &.mini {
+            margin-top: 5px;
+        }
+
+        &.medium {
+            margin-top: 0;
+        }
+
+        &.large {
+            margin-top: -2px;
+        }
+    }
+}
+</style>

@@ -1,0 +1,7 @@
+<template>
+    <span>雨纷纷</span>
+    <jk-divider direction="vertical" />
+    <span>旧故里</span>
+    <jk-divider direction="vertical" />
+    <span>草木深</span>
+</template>

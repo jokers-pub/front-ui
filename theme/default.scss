@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "./var.scss";
+@import "./default/color.scss";
+@import "./default/boder.scss";
+@import "./default/component.scss";
+@import "./default/icon.scss";
+@import "./default/box-shadow.scss";
+@import "./default/disabled.scss";
+
+@import "./transition.scss";
+@import "./popper.scss";
+@import "./modal.scss";
+@font-face {
+    font-family: "joker-icons";
+    src: url("./default/fonts/joker-icons.woff") format("woff"),
+        url("./default/fonts/joker-icons.ttf") format("truetype");
+    font-weight: normal;
+    font-display: auto;
+    font-style: normal;
+}
+
+:root {
+    @include color-vars;
+    @include border-vars;
+    @include box-shadow-vars;
+    @include disabled-vars;
+    //组件变量
+    @include component-vars;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+        sans-serif;
+    font-weight: 400;
+    color: var(--jk-color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}

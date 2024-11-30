@@ -1,0 +1,192 @@
+<template>
+    <div
+        style="@(model.ready ? 'display: block' : 'display: none')"
+        class="@([
+            'jk-carousel-item',
+            {
+                'is-active': model.active,
+                'is-in-stage': model.isStage,
+                'is-hover': model.hover,
+                'is-animating': model.animating,
+                'item-card': typeCard
+            }
+        ])"
+        @click="handleItemClick"
+        style="@itemStyle">
+        @if(typeCard) {
+            <div style="@(model.active ? 'display: none' : 'display: block')" class="mask"></div>
+        }
+        @RenderSection()
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { autoprefixer, componentName } from "../utils";
+import { logger } from "@joker.front/shared";
+import { LOGTAG } from "../config";
+
+let CARD_SCALE = 0.83;
+
+export default class extends Component<{
+    name: string;
+    label: string | number;
+}> {
+    propsOption = {
+        label: ""
+    };
+    name = componentName("carousel-item");
+    model = {
+        hover: false,
+        translate: 0,
+        scale: 1,
+        active: false,
+        ready: false,
+        inStage: false,
+        animating: false
+    };
+    typeCard = false;
+
+    mounted() {
+        this.group && this.group.component?.updateItems();
+        this.typeCard = (this.group && this.group.component?.props.type === "card") || false;
+    }
+
+    destroyed() {
+        this.group && this.group.component.updateItems();
+    }
+
+    get group(): VNode.Component | undefined {
+        return this.$rootVNode?.closest((n) => {
+            return n instanceof VNode.Component && n.component?.name === componentName("carousel");
+        });
+    }
+
+    get parentDirection(): string | undefined {
+        return this.group && this.group.component?.props.direction;
+    }
+
+    get itemStyle() {
+        let translateType = this.parentDirection === "vertical" ? "translateY" : "translateX";
+        let value = translateType + "(" + this.model.translate + "px) scale(" + this.model.scale + ")";
+        let style = {
+            transform: value
+        };
+        return autoprefixer(style) + ";transform: " + value;
+    }
+
+    processIndex(index: number, activeIndex: number, length: number): number {
+        if (activeIndex === 0 && index === length - 1) {
+            return -1;
+        } else if (activeIndex === length - 1 && index === 0) {
+            return length;
+        } else if (index < activeIndex - 1 && activeIndex - index >= length / 2) {
+            return length + 1;
+        } else if (index > activeIndex + 1 && index - activeIndex >= length / 2) {
+            return -2;
+        }
+        return index;
+    }
+
+    calcCardTranslate(index: number, activeIndex: number): number {
+        let parentWidth = this.group && this.group.component.$getRef("carousel")!.output.offsetWidth;
+        if (this.model.inStage) {
+            return (parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1)) / 4;
+        } else if (index < activeIndex) {
+            return (-(1 + CARD_SCALE) * parentWidth) / 4;
+        } else {
+            return ((3 + CARD_SCALE) * parentWidth) / 4;
+        }
+    }
+
+    calcTranslate(index: number, activeIndex: number, isVertical: boolean): number {
+        let distance =
+            this.group && this.group.component.$getRef("carousel")!.output[isVertical ? "offsetHeight" : "offsetWidth"];
+        return distance * (index - activeIndex);
+    }
+
+    translateItem(index: number, activeIndex: number, oldIndex: number): void {
+        let parentType = this.group && this.group.component.props.type;
+        let parentDirection = this.parentDirection;
+        let length = this.group && this.group.component.model.items.length;
+        if (parentType !== "card" && oldIndex !== undefined) {
+            this.model.animating = index === activeIndex || index === oldIndex;
+        }
+        if (index !== activeIndex && length > 2 && this.group && this.group.component.props.loop) {
+            index = this.processIndex(index, activeIndex, length);
+        }
+        if (parentType === "card") {
+            if (parentDirection === "vertical") {
+                logger.warn(LOGTAG, "[Carousel]card 不支持 vertical");
+            }
+            this.model.inStage = Math.round(Math.abs(index - activeIndex)) <= 1;
+            this.model.active = index === activeIndex;
+            this.model.translate = this.calcCardTranslate(index, activeIndex);
+            this.model.scale = this.model.active ? 1 : CARD_SCALE;
+        } else {
+            this.model.active = index === activeIndex;
+            let isVertical = parentDirection === "vertical";
+            this.model.translate = this.calcTranslate(index, activeIndex, isVertical);
+            this.model.scale = 1;
+        }
+        this.model.ready = true;
+    }
+
+    handleItemClick() {
+        let parent = this.group;
+        if (parent && parent.component.props.type === "card") {
+            let index = -1;
+            for (let i = 0; i < parent.component.items.length; i++) {
+                if (parent.component.items[i].component === this) {
+                    index = i;
+                    break;
+                }
+            }
+            parent.component.setActiveItem(index);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 0;
+    &.is-active {
+        z-index: 2;
+    }
+    &.item-card,
+    &.is-animating {
+        transition: transform 0.4s ease-in-out;
+    }
+    &.item-card {
+        width: 50%;
+        &.is-in-stage {
+            cursor: pointer;
+            z-index: 1;
+            &.is-hover .mask,
+            &:hover .mask {
+                opacity: 0.12;
+            }
+        }
+        &.is-active {
+            z-index: 2;
+        }
+    }
+    .mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        opacity: 0.24;
+        transition: 0.2s;
+    }
+}
+</style>

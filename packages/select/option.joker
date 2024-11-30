@@ -1,0 +1,178 @@
+<template>
+    @if(model.visible) {
+        <li
+            class="@([
+                'jk-select-dropdown-item',
+                {
+                    'is-disabled': disabled,
+                    selected: itemSelected,
+                    hover: model.hover
+                }
+            ])"
+            @mouseenter="handleHover"
+            @click.stop="handleClick">
+            @if($sections.default) {
+                @RenderSection("default", { value: props.value, label: currentLabel })
+            }
+            else {
+                @currentLabel
+            }
+        </li>
+    }
+</template> 
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { escapeRegexpString, getValueByPath, isObject } from "@joker.front/shared";
+import { componentName } from "../utils";
+
+export default class extends Component<{
+    value: string;
+    label: string | number;
+    disabled: boolean;
+}> {
+    name = componentName("select-option");
+    propsOption = {
+        value: { required: true }
+    };
+    model = {
+        visible: true,
+        hover: false
+    };
+
+    mounted() {
+        this.select?.refreshVisibleOptions();
+    }
+
+    get select() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("select")
+        )?.component;
+    }
+
+    get group() {
+        return this.$rootVNode?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("select-group")
+        )?.component;
+    }
+
+    get currentLabel() {
+        return this.props.label || (isObject(this.props.value) ? "" : this.props.value);
+    }
+
+    get itemSelected() {
+        if (this.select?.props.multiple) {
+            return this.contains(this.select.value, this.props.value);
+        } else {
+            return this.isEqual(this.props.value, this.select?.value);
+        }
+    }
+
+    get limitReached() {
+        if (this.select?.props.multiple) {
+            return (
+                !this.itemSelected &&
+                this.select.props.multipleLimit > 0 &&
+                (this.select.value || []).length > this.select.props.multipleLimit
+            );
+        }
+        return false;
+    }
+
+    get disabled() {
+        return this.props.disabled || this.group?.props.disabled || this.limitReached;
+    }
+
+    isEqual(a: any, b: any) {
+        if (isObject(this.props.value)) {
+            let valueKey = this.select?.props.valueKey;
+
+            return getValueByPath(a, valueKey) === getValueByPath(b, valueKey);
+        } else {
+            return a === b;
+        }
+    }
+
+    queryChange(query: string) {
+        let filterMethod = this.select.props.filterMethod;
+        if (filterMethod) {
+            this.model.visible = !!filterMethod(query, this.props.label, this.props.value);
+            return;
+        }
+        let reg = new RegExp(escapeRegexpString(query), "i");
+        this.model.visible = reg.test(String(this.currentLabel));
+    }
+
+    contains(a: Array<any>, b: any) {
+        if (isObject(this.props.value)) {
+            let valueKey = this.select?.props.valueKey;
+
+            return (
+                a &&
+                a.some((item) => {
+                    return getValueByPath(item, valueKey) === getValueByPath(b, valueKey);
+                })
+            );
+        } else {
+            return a && a.includes(b);
+        }
+    }
+
+    handleClick() {
+        if (!this.disabled) {
+            this.select?.selectOption(this, true);
+        }
+    }
+
+    handleHover() {
+        if (!this.disabled) {
+            this.select?.hoverItem(this);
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-select-dropdown-item {
+    font-size: 14px;
+    padding: 0 40px 0 20px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--jk-color-text-regular);
+    line-height: 34px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &.hover {
+        background-color: var(--jk-background-color-base);
+    }
+    &.is-disabled {
+        color: #c0c4cc;
+        cursor: not-allowed;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+    &.selected {
+        color: var(--jk-color-primary);
+        background-color: #fff;
+
+        &.hover {
+            background-color: var(--jk-background-color-base);
+        }
+
+        &::after {
+            position: absolute;
+            right: 20px;
+            font-family: "joker-icons";
+            content: "\e62a";
+            font-size: 12px;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+}
+</style>

@@ -1,0 +1,60 @@
+<template>
+    <div class="card-demo3">
+        <jk-row gutter="20">
+            @for(let i of [0,1]) {
+                <jk-col span="8" offset="@(i > 0 ? 2 : 0)">
+                    <jk-card bodyStyle="{ padding: 0px }">
+                        <img src="https://picsum.photos/200/200" class="image" />
+                        <div style="padding: 14px;">
+                            <span>好看的风景</span>
+                            <div class="bottom">
+                                <time class="time">
+                                    @currentDate
+                                </time>
+                                <jk-button link type="text">操作按钮</jk-button>
+                            </div>
+                        </div>
+                    </jk-card>
+                </jk-col>
+            }
+        </jk-row>
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    currentDate = new Date().toLocaleString();
+}
+</script>
+
+<style lang="scss" scoped>
+.card-demo3 {
+    :deep(.jk-button) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .image {
+        width: 100%;
+        display: block;
+    }
+}
+</style>

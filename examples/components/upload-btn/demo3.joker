@@ -1,0 +1,15 @@
+<template>
+    <jk-upload-btn @change="handleClick" mimeType="image/png" />
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Message } from "../../../src";
+
+export default class extends Component {
+    handleClick(e: VNode.Event<Array<File>>) {
+        if (e.data.length) {
+            Message(`选中了${e.data[0].name}文件`);
+        }
+    }
+}
+</script>

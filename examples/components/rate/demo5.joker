@@ -1,0 +1,8 @@
+<template>
+    <DemoRow>
+        <jk-rate value="3" show-score disabled />
+    </DemoRow>
+    <DemoRow>
+        <jk-rate value="3.7" show-score disabled />
+    </DemoRow>
+</template>

@@ -1,0 +1,97 @@
+$breakpoints: (
+    "xs": (
+        max-width: 768px - 1
+    ),
+    "sm": (
+        min-width: 768px
+    ),
+    "md": (
+        min-width: 992px
+    ),
+    "lg": (
+        min-width: 1200px
+    ),
+    "xl": (
+        min-width: 1920px
+    )
+);
+
+@mixin res($key) {
+    @if map-has-key($breakpoints, $key) {
+        @media only screen and #{inspect(map-get($breakpoints,$key))} {
+            @content;
+        }
+    } @else {
+        @warn '没有找到`#{$key}`';
+    }
+}
+
+@mixin clearfix {
+    $selector: &;
+
+    @at-root {
+        #{$selector}::before,
+        #{$selector}::after {
+            display: table;
+            content: "";
+        }
+
+        #{$selector}::after {
+            clear: both;
+        }
+    }
+}
+
+@mixin scroll-bar {
+    &::-webkit-scrollbar {
+        z-index: 11;
+        width: 6px;
+
+        &:horizontal {
+            height: 6px;
+        }
+
+        &-thumb {
+            border-radius: 5px;
+            width: 6px;
+            background: transparent;
+        }
+
+        &-corner {
+            background: transparent;
+        }
+
+        &-track {
+            background: transparent;
+
+            &-piece {
+                background: transparent;
+                width: 6px;
+            }
+        }
+    }
+
+    &:hover {
+        &::-webkit-scrollbar {
+            &-thumb {
+                background: var(--jk-scrollbar-background-color);
+                &:hover {
+                    background: var(--jk-scrollbar-hover-background-color);
+                }
+            }
+        }
+    }
+}
+
+@mixin vertical-center {
+    $selector: &;
+
+    @at-root {
+        #{$selector}::after {
+            display: inline-block;
+            content: "";
+            height: 100%;
+            vertical-align: middle;
+        }
+    }
+}

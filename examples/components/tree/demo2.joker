@@ -1,0 +1,45 @@
+<template>
+    <jk-tree lazy load="@loadData" nodeKey="id" @check="handleCheck" show-checkbox default-expand-all />
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { TreeNode } from "../../../packages/tree/store/node";
+import { sleep } from "@joker.front/shared";
+
+export default class extends Component {
+    model = {};
+    async loadData(node: TreeNode, callBack: Function) {
+        if (node.level === 0) {
+            return callBack([
+                { label: "选项1", id: "1" },
+                { label: "选项2", id: "2" }
+            ]);
+        }
+
+        //模拟请求
+        await sleep(1000);
+
+        if (node.level > 3) {
+            return callBack();
+        }
+
+        if (node.key === "1") {
+            callBack([
+                { label: "选项1-1", id: "1-1" },
+                { label: "选项2-2", id: "2-2" }
+            ]);
+        } else if (node.key === "2-2") {
+            callBack([
+                { label: "选项2-2-1", id: "2-2-1" },
+                { label: "选项2-2-2", id: "2-2-2" }
+            ]);
+        } else {
+            callBack();
+        }
+    }
+
+    handleCheck(e: VNode.Event<TreeNode>) {
+        console.log(e.data, e.data.checked);
+    }
+}
+</script>

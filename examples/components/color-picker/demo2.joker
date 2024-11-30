@@ -1,0 +1,3 @@
+<template>
+    <jk-color-picker show-alpha value="rgba(19, 206, 102, 0.8)" format="rgba" />
+</template>

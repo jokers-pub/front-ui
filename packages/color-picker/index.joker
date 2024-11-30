@@ -1,0 +1,239 @@
+<template>
+    <div class="@(['jk-color-picker', (props.disabled || props.readonly) && 'is-disbaled', sizeClass, props.class])">
+        @if(props.disabled || props.readonly) {
+            <div class="mask"></div>
+        }
+        <div class="trigger" @click="show">
+            <span class="color @(props.showAlpha?'is-alpha':'')">
+                <span class="inner" style="background:@displayColor"></span>
+                @if(value) {
+                    <i class="arrow-down jk-icon-arrow-down"></i>
+                }
+                else {
+                    <i class="empty jk-icon-close"></i>
+                }
+            </span>
+        </div>
+        @if(model.showPanelColor) {
+            <PickerDropdown
+                ref="dropdown"
+                showAlpha="@props.showAlpha"
+                color="@model.color"
+                @hide="hide"
+                @pick="handleConfirm"
+                @clear="clear"></PickerDropdown>
+        }
+    </div>
+</template>
+<script>
+import { FormCtrl } from "../form/form-ctrl";
+import { Color } from "@joker.front/shared";
+import PickerDropdown from "./dropdown.joker";
+import { componentName } from "../utils";
+
+export default class extends FormCtrl<{
+    size: string;
+    format: "hex" | "rgba";
+    showAlpha: boolean;
+    class: string;
+}> {
+    propsOption = {
+        format: "hex"
+    };
+    model: Record<string, any> = {
+        showPanelColor: false,
+        color: undefined
+    };
+
+    created() {
+        this.$syncProp("value");
+
+        this.$syncProp("value", "color", (val) => {
+            let color = new Color(this.props.format);
+            val && color.fromString(val);
+            return color;
+        });
+
+        this.props.value && this.model.color.fromString(this.props.value);
+    }
+
+    components = {
+        PickerDropdown
+    };
+
+    public hide() {
+        this.model.showPanelColor = false;
+
+        if (this.model.value) {
+            this.model.color.fromString(this.model.value);
+        } else {
+            this.clear();
+        }
+    }
+
+    public show() {
+        this.model.showPanelColor = true;
+    }
+
+    public clear() {
+        if (!this.model.value) {
+            this.model.value = "";
+            this.$trigger("change", this.value);
+        } else {
+            this.model.value = "";
+        }
+
+        this.model.color.fromString("");
+        this.model.color.value = "";
+    }
+
+    get displayColor() {
+        if (!this.value && !this.model.showPanelColor) {
+            return "transparent";
+        }
+
+        return this.model.color.value;
+    }
+
+    handleConfirm() {
+        this.model.value = this.model.color.value;
+        this.hide();
+        this.$trigger("change", this.value);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+.jk-color-picker {
+    display: inline-block;
+    position: relative;
+    line-height: normal;
+    height: 40px;
+
+    &.is-disabled {
+        .trigger {
+            cursor: not-allowed;
+        }
+    }
+
+    .mask {
+        height: 38px;
+        width: 38px;
+        border-radius: 4px;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        z-index: 1;
+        cursor: not-allowed;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .trigger {
+        display: inline-block;
+        box-sizing: border-box;
+        height: 40px;
+        width: 40px;
+        padding: 4px;
+        border: solid 1px #e6e6e6;
+        border-radius: 4px;
+        font-size: 0;
+        position: relative;
+        cursor: pointer;
+
+        .color {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            border: solid 1px #999;
+            border-radius: 2px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+
+            &.is-alpha {
+                background: $--transparent-background;
+            }
+
+            .inner {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            i.empty {
+                font-size: 12px;
+                color: #999;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+            }
+
+            i.arrow-down {
+                display: inline-block;
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                color: #fff;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
+
+    &.medium {
+        height: 36px;
+        .trigger {
+            height: 36px;
+            width: 36px;
+        }
+        .mask {
+            height: 34px;
+            width: 34px;
+        }
+    }
+
+    &.small {
+        height: 32px;
+
+        .trigger {
+            height: 32px;
+            width: 32px;
+
+            i.empty,
+            i.arrow-down {
+                transform: translate3d(-50%, -50%, 0) scale(0.8);
+            }
+        }
+
+        .mask {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    &.mini {
+        height: 28px;
+
+        .trigger {
+            height: 28px;
+            width: 28px;
+
+            i.empty,
+            i.arrow-down {
+                transform: translate3d(-50%, -50%, 0) scale(0.8);
+            }
+        }
+
+        .mask {
+            height: 26px;
+            width: 26px;
+        }
+    }
+}
+</style>

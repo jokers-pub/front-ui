@@ -1,0 +1,315 @@
+<template>
+    <tr
+        @click="handleTrClick(props.row)"
+        class="@getRowClassName(props.rowIndex,props.row)"
+        style="@getRowStyle(props.rowIndex,props.row)">
+        @for(let (colIndex,column) in store.data.leafColumnsFlat) {
+            <td
+                class="@getCellClassName(props.rowIndex,colIndex,props.row,column)"
+                style="@getCellStyle(props.rowIndex,colIndex,props.row,column)">
+                <div class="cell">
+                    @if(colIndex === 0) {
+                        @if(props.level > 0) {
+                            <span class="indent" style="padding-left:@(props.level * 16)px"></span>
+                        }
+                        @if(hasChildren) {
+                            <span @click="handleExpandClick" class="expand-icon @(expandIcon)"></span>
+                        }
+                        else if(props.level > 0) {
+                            <span class="placeholder"></span>
+                        }
+                    }
+                    @if(column.type === "selection") {
+                        @if(table.props.multiple) {
+                            <JokerCheckboxCell row="@props.row" column="@column" />
+                        }
+                        else {
+                            <JokerRadioCell row="@props.row" column="@column" />
+                        }
+                    }
+                    else if(column.type === "index") {
+                        <JokerIndexCell row-index="@props.rowIndex" column="@column" />
+                    }
+                    else if(column.type === "expand") {
+                        <JokerExpandCell row="@props.row" column="@column" />
+                    }
+                    else {
+                        @if(column._sectionTd) {
+                            @RenderSection(column._sectionTd, { value: props.row[column.key], level: props.level, row: props.row, rowIndex: props.rowIndex, cellIndex: colIndex, column: column, store: store })
+                        }
+                        else {
+                            @(props.row[column.key])
+                        }
+                    }
+                </div>
+            </td>
+        }
+    </tr>
+    @if(store.expandColumn && store.data.expandRows.includes(props.row)) {
+        <tr>
+            <td colspan="@store.data.leafColumnsFlat.length">
+                @RenderSection(store.expandColumn._sectionExpand, { row: props.row, level: props.level, rowIndex: props.rowIndex, store: store })
+            </td>
+        </tr>
+    }
+    @if(hasChildren && store.data.expandRows.includes(props.row)) {
+        @for(let (childrenRowIndex,childrenRow ) in props.row[table.props.childrenKey]) {
+            <JokerTr row="@childrenRow" rowIndex="@childrenRowIndex" level="@(props.level + 1)" />
+        }
+    }
+</template><script>
+import { Component, VNode } from "@joker.front/core";
+import { CHECK_ROW_KEY, ColumnType, Store } from "./store";
+import { componentName } from "../utils";
+import { remove } from "@joker.front/shared";
+import JokerCheckboxCell from "./cells/checkbox.joker";
+import JokerRadioCell from "./cells/radio.joker";
+import JokerIndexCell from "./cells/index.joker";
+import JokerExpandCell from "./cells/expand.joker";
+import JokerTr from "./tr.joker";
+
+export default class extends Component<{
+    row: any;
+    rowIndex: number;
+    level: number;
+}> {
+    propsOption = {
+        level: 0
+    };
+    components = {
+        JokerCheckboxCell,
+        JokerRadioCell,
+        JokerIndexCell,
+        JokerExpandCell,
+        JokerTr
+    };
+
+    created() {
+        this.table = (<VNode.Component>this.$root)?.closest<VNode.Component>(
+            (n) => n instanceof VNode.Component && n.component.name === componentName("table")
+        )?.component;
+    }
+    model = {
+        loading: false
+    };
+
+    table?: any;
+
+    get hasChildren() {
+        return (
+            this.table?.props.rowKey &&
+            (this.props.row[this.table?.props.childrenKey]?.length ||
+                (this.table.props.lazy &&
+                    !(
+                        this.props.row[this.table.props.isLeafKey] ||
+                        this.props.row[this.table?.props.childrenKey]?.length === 0
+                    )))
+        );
+    }
+
+    get store(): Store {
+        return this.table!.store;
+    }
+
+    get expandIcon() {
+        if (this.model.loading) {
+            return "jk-icon-loading";
+        }
+
+        if (this.store.data.expandRows.includes(this.props.row)) {
+            return "jk-icon-arrow-down";
+        }
+        return "jk-icon-arrow-right";
+    }
+
+    loadChildren() {
+        this.model.loading = true;
+
+        this.table.props.load(this.props.row, () => {
+            this.store.data.expandRows.push(this.props.row);
+            this.model.loading = false;
+            this.table?.resize();
+            this.table?.$trigger("expand-change", {
+                row: this.props.row,
+                expand: true
+            });
+        });
+    }
+
+    getRowClassName(rowIndex: number, row: any) {
+        let result = [];
+        if (this.table?.props.stripe && rowIndex % 2 === 1) {
+            result.push("striped");
+        }
+        if (typeof this.table?.props.rowClassName === "function") {
+            result.push(this.table.props.rowClassName(rowIndex, row));
+        } else {
+            result.push(this.table?.props.rowClassName);
+        }
+        if (row[CHECK_ROW_KEY]) {
+            return "selected";
+        }
+        return result;
+    }
+
+    getRowStyle(rowIndex: number, row: any) {
+        if (typeof this.table?.props.rowStyle === "function") {
+            return this.table.props.rowStyle(rowIndex, row);
+        }
+
+        return this.table?.props.rowStyle;
+    }
+
+    getCellStyle(rowIndex: number, colIndex: number, row: any, column: ColumnType) {
+        if (typeof this.table?.props.cellStyle === "function") {
+            return this.table.props.cellStyle({
+                rowIndex,
+                colIndex,
+                row,
+                column
+            });
+        }
+
+        return this.table?.props.cellStyle;
+    }
+
+    getCellClassName(rowIndex: number, colIndex: number, row: any, column: ColumnType) {
+        let result = [column.align && "align-" + column.align, column.class];
+
+        column.fixed && result.push("fixed-" + (column.fixed === true ? "left" : column.fixed));
+
+        if (typeof this.table?.props.cellClassName === "function") {
+            result.push(
+                this.table.props.cellClassName({
+                    rowIndex,
+                    colIndex,
+                    row,
+                    column
+                })
+            );
+        } else {
+            result.push(this.table?.props.cellClassName);
+        }
+
+        return result;
+    }
+
+    //#region events
+    handleTrClick(e: VNode.Event, row: any) {
+        //没有辅助列才开启点击行选中
+        if (!this.store.selectionColumn) {
+            if (this.table?.props.select) {
+                if (this.table.props.multiple) {
+                    if (this.store.data.selectedRows.includes(row)) {
+                        remove(this.store.data.selectedRows, row);
+                        row[CHECK_ROW_KEY] = false;
+                    } else {
+                        this.store.data.selectedRows.push(row);
+                        row[CHECK_ROW_KEY] = true;
+                    }
+                } else {
+                    if (this.store.data.selectedRows.includes(row)) {
+                        this.store.data.selectedRows.length = 0;
+                        row[CHECK_ROW_KEY] = false;
+                    } else {
+                        this.store.data.selectedRows = [row];
+                        row[CHECK_ROW_KEY] = true;
+                    }
+                }
+
+                this.table.triggerSelectedRowChange();
+            }
+        }
+    }
+
+    handleExpandClick() {
+        if (this.store.data.expandRows.includes(this.props.row)) {
+            remove(this.store.data.expandRows, this.props.row);
+            this.table?.$trigger("expand-change", {
+                row: this.props.row,
+                expand: false
+            });
+        } else {
+            if (this.props.row[this.table.props.childrenKey]) {
+                this.store.data.expandRows.push(this.props.row);
+                this.table?.resize();
+                this.table?.$trigger("expand-change", {
+                    row: this.props.row,
+                    expand: true
+                });
+            } else if (this.table.props.lazy && this.table.props.load) {
+                this.loadChildren();
+            }
+        }
+    }
+    //#endregion
+}
+</script>
+<style lang="scss" scoped>
+tr {
+    border-bottom: solid 1px var(--jk-border-color-lighter);
+    td {
+        text-align: left;
+        padding: 12px 0;
+        box-sizing: border-box;
+        vertical-align: middle;
+
+        background: #fff;
+        .cell {
+            display: inline-block;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 23px;
+            word-break: break-all;
+            padding: 0 10px;
+            width: 100%;
+            vertical-align: middle;
+
+            .expand-icon {
+                margin-right: 10px;
+                font-size: 12px;
+                cursor: pointer;
+            }
+            .placeholder {
+                display: inline-block;
+                width: 20px;
+            }
+        }
+
+        &.align-right {
+            text-align: right;
+        }
+
+        &.align-center {
+            text-align: center;
+        }
+
+        &.fixed-left {
+            position: sticky;
+            left: 0;
+        }
+
+        &.fixed-right {
+            position: sticky;
+            right: 0;
+        }
+    }
+
+    &.striped,
+    &.striped td {
+        background-color: var(--jk-color-info-light-9);
+    }
+
+    &:hover,
+    &:hover td {
+        background-color: var(--jk-background-color-base);
+    }
+
+    &.selected td,
+    &.selected:hover td {
+        background-color: var(--jk-color-primary-light-9);
+    }
+}
+</style>

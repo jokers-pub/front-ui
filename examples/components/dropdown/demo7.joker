@@ -1,0 +1,54 @@
+<template>
+    <DemoRow>
+        <jk-dropdown split-button>
+            默认尺寸
+            <jk-dropdown-menu>
+                <jk-dropdown-item icon="jk-icon-circle-plus-outline">创建新项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-remove-outline">删除</jk-dropdown-item>
+                <jk-dropdown-item disabled icon="jk-icon-edit">编辑</jk-dropdown-item>
+                <jk-dropdown-item divided></jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-share">分享项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-document-copy">复制项目</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+    <DemoRow>
+        <jk-dropdown split-button size="medium">
+            中等尺寸
+            <jk-dropdown-menu size="medium">
+                <jk-dropdown-item icon="jk-icon-circle-plus-outline">创建新项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-remove-outline">删除</jk-dropdown-item>
+                <jk-dropdown-item disabled icon="jk-icon-edit">编辑</jk-dropdown-item>
+                <jk-dropdown-item divided></jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-share">分享项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-document-copy">复制项目</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+    <DemoRow>
+        <jk-dropdown split-button size="small">
+            小型尺寸
+            <jk-dropdown-menu size="small">
+                <jk-dropdown-item icon="jk-icon-circle-plus-outline">创建新项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-remove-outline">删除</jk-dropdown-item>
+                <jk-dropdown-item disabled icon="jk-icon-edit">编辑</jk-dropdown-item>
+                <jk-dropdown-item divided></jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-share">分享项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-document-copy">复制项目</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+    <DemoRow>
+        <jk-dropdown split-button size="mini">
+            超小尺寸
+            <jk-dropdown-menu size="mini">
+                <jk-dropdown-item icon="jk-icon-circle-plus-outline">创建新项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-remove-outline">删除</jk-dropdown-item>
+                <jk-dropdown-item disabled icon="jk-icon-edit">编辑</jk-dropdown-item>
+                <jk-dropdown-item divided></jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-share">分享项目</jk-dropdown-item>
+                <jk-dropdown-item icon="jk-icon-document-copy">复制项目</jk-dropdown-item>
+            </jk-dropdown-menu>
+        </jk-dropdown>
+    </DemoRow>
+</template>

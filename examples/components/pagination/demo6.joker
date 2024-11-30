@@ -1,0 +1,23 @@
+<template>
+    <DemoRow>
+        <jk-switch value="@hideOnSinglePage" @change="handleChange" />
+    </DemoRow>
+    <DemoRow>
+        <jk-pagination hideOnSinglePage="@model.hideOnSinglePage" total="5" pageSize="10" />
+    </DemoRow>
+</template>
+
+
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        hideOnSinglePage: false
+    };
+
+    handleChange(e: VNode.Event<boolean>) {
+        this.model.hideOnSinglePage = e.data;
+    }
+}
+</script>

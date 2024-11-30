@@ -1,0 +1,8 @@
+@mixin border-vars {
+    //color
+    --jk-border-color-base: #dcdfe6;
+    --jk-border-color-light: #e4e7ed;
+    --jk-border-color-lighter: #ebeef5;
+    --jk-border-color-extra-light: #f2f6fc;
+    --jk-border-color-hover: var(--jk-color-text-placeholder);
+}

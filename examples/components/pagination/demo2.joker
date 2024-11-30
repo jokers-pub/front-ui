@@ -1,0 +1,5 @@
+<template>
+    <DemoRow>
+        <jk-pagination total="1000" currentPage="10" pagerCount="11" pageSize="20" />
+    </DemoRow>
+</template>

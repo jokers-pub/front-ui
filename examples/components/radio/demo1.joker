@@ -1,0 +1,21 @@
+<template>
+    <DemoRow>
+        <jk-radio-group value="2">
+            <jk-radio value="1">备选项1</jk-radio>
+            <jk-radio value="2">备选项2</jk-radio>
+        </jk-radio-group>
+    </DemoRow>
+    <DemoRow>
+        <jk-radio-group value="@false">
+            <jk-radio value="@true">是</jk-radio>
+            <jk-radio value="@false">否</jk-radio>
+        </jk-radio-group>
+    </DemoRow>
+    <DemoRow>
+        <jk-radio-group>
+            <jk-radio value="@true"></jk-radio>
+            <jk-radio value="@false"></jk-radio>
+        </jk-radio-group>
+    </DemoRow>
+</template>
+

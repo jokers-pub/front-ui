@@ -1,0 +1,408 @@
+<template>
+    <div tabindex="-1" append-to="body" ref="imageViewer" class="joker-image-viewer" style="z-index:@viewerZIndex">
+        <div class="viewer-mask" @click.self="handleMaskClick"></div>
+        <!-- 关闭按钮 -->
+        <span class="viewer-btn close-btn" @click="hide"><i class="jk-icon-close"></i></span>
+        <!-- 前一张后一张按钮 -->
+        @if(!model.isSingle) {
+            <span class="viewer-btn prev @changeDisabled" @click="prev"><i class="jk-icon-arrow-left" /></span>
+            <span class="viewer-btn next @changeDisabled" @click="next"><i class="jk-icon-arrow-right" /></span>
+        }
+        <!-- 操作项 -->
+        <div class="viewer-btn action-btns">
+            <div class="action-inners">
+                <i class="jk-icon-zoom-out" @click="onActionsClick('zoomOut')"></i>
+                <i class="jk-icon-zoom-in" @click="onActionsClick('zoomIn')"></i>
+                <i class="action-dividers"></i>
+                <i class="@model.mode" @click="toggleMode"></i>
+                <i class="el-image-viewer__actions__divider"></i>
+                <i class="jk-icon-refresh-left" @click="onActionsClick('anticlocelise')"></i>
+                <i class="jk-icon-refresh-right" @click="onActionsClick('clocelise')"></i>
+            </div>
+        </div>
+        <!-- CANVAS -->
+        <div class="viewer-canvas">
+            <img
+                ref="img"
+                class="viewer-img"
+                src="@currentImg"
+                style="@imgStyle"
+                @load="handleImgLoad"
+                @error="handleImgError"
+                @mousedown="handleMouseDown"
+            />
+            @if(model.loading || model.firstIn) {
+                <div class="placeholder">
+                    <i class="jk-icon-loading"></i>
+                </div>
+            }
+        </div>
+    </div>
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { isFirefox, rafThrottle } from "../utils/index";
+
+let mousewheelEventName = isFirefox() ? "DOMMouseScroll" : "mousewheel";
+
+export default class extends Component<{
+    urlList: Array<string>;
+    zIndex: number;
+    onSwitch: Function;
+    onClose: Function;
+    maskClosable: boolean;
+}> {
+    propsOption = {
+        urlList: [],
+        zIndex: 2000,
+        maskClosable: true
+    };
+
+    model = {
+        index: 0,
+        isShow: false,
+        infinite: true,
+        loading: false,
+        mode: "jk-icon-full-screen",
+        transform: {
+            scale: 1,
+            deg: 0,
+            offsetX: 0,
+            offsetY: 0,
+            enableTransition: false
+        },
+        firstIn: true
+    };
+
+    _keyDownHandler?: any;
+    _mouseWheelHandler?: any;
+    _dragHandler?: any;
+
+    mounted() {
+        this.$watch(
+            () => this.model.index,
+            (val) => {
+                this.reset();
+                this.props.onSwitch?.(val);
+                this.props.onSwitch?.(val);
+            }
+        );
+        this.$watch(
+            () => this.currentImg,
+            () => {
+                let curImg = this.$getRef("img").output;
+                if (!curImg.complete) {
+                    this.model.loading = true;
+                }
+            }
+        );
+
+        this.deviceSupportInstall();
+
+        this.$getRef("imageViewer").output.focus();
+    }
+
+    get isSingle() {
+        return this.props.urlList.length <= 1;
+    }
+    get isFirst() {
+        return this.model.index === 0;
+    }
+    get isLast() {
+        return this.model.index === this.props.urlList.length - 1;
+    }
+    get currentImg() {
+        return this.props.urlList[this.model.index];
+    }
+    get imgStyle() {
+        let { scale, deg, offsetX, offsetY, enableTransition } = this.model.transform;
+        let style = {
+            transform: `scale(${scale}) rotate(${deg}deg)`,
+            transition: enableTransition ? "transform .3s" : "",
+            "margin-left": `${offsetX}px`,
+            "margin-top": `${offsetY}px`,
+            maxWidth: "",
+            maxHeight: "",
+            visibility:"visible"
+        };
+
+        if (this.model.mode.includes("full")) {
+            style.maxWidth = style.maxHeight = "100%";
+        }
+        if(this.model.loading){
+            style.visibility = "hidden";
+        }
+        return style;
+    }
+    get viewerZIndex() {
+        return this.props.zIndex > 2000 ? this.props.zIndex : 2000;
+    }
+
+    get changeDisabled() {
+        return !this.model.infinite && this.model.index === 0 ? "is-disabled" : "";
+    }
+
+    hide() {
+        this.deviceSupportUninstall();
+        this.props.onClose();
+    }
+
+    deviceSupportInstall() {
+        this._keyDownHandler = (e: { stopPropagation: () => void; keyCode: any }) => {
+            e.stopPropagation();
+            let keyCode = e.keyCode;
+            switch (keyCode) {
+                // ESC
+                case 27:
+                    this.hide();
+                    break;
+                // SPACE
+                case 32:
+                    this.toggleMode();
+                    break;
+                // LEFT_ARROW
+                case 37:
+                    this.prev();
+                    break;
+                // UP_ARROW
+                case 38:
+                    this.handleActions("zoomIn");
+                    break;
+                // RIGHT_ARROW
+                case 39:
+                    this.next();
+                    break;
+                // DOWN_ARROW
+                case 40:
+                    this.handleActions("zoomOut");
+                    break;
+            }
+        };
+        this._mouseWheelHandler = rafThrottle((e: { wheelDelta: any; detail: number }) => {
+            let delta = e.wheelDelta ? e.wheelDelta : -e.detail;
+            if (delta > 0) {
+                this.handleActions("zoomIn", {
+                    zoomRate: 0.015,
+                    enableTransition: false
+                });
+            } else {
+                this.handleActions("zoomOut", {
+                    zoomRate: 0.015,
+                    enableTransition: false
+                });
+            }
+        });
+        document.addEventListener("keydown", this._keyDownHandler);
+        document.addEventListener(mousewheelEventName, this._mouseWheelHandler);
+    }
+    deviceSupportUninstall() {
+        document.removeEventListener("keydown", this._keyDownHandler);
+        document.removeEventListener(mousewheelEventName, this._mouseWheelHandler);
+        this._keyDownHandler = null;
+        this._mouseWheelHandler = null;
+    }
+    handleImgLoad() {
+        this.model.loading = false;
+        this.model.firstIn = false;
+    }
+    handleImgError(e: { target: { alt: string } }) {
+        this.model.loading = false;
+        e.target.alt = "加载失败";
+    }
+    handleMouseDown(e: { event: { button: number; pageX: any; pageY: any }; preventDefault: () => void }) {
+        if (this.model.loading || e.event.button !== 0) return;
+
+        let { offsetX, offsetY } = this.model.transform;
+        let startX = e.event.pageX;
+        let startY = e.event.pageY;
+        this._dragHandler = rafThrottle((ev: { pageX: number; pageY: number }) => {
+            this.model.transform.offsetX = offsetX + ev.pageX - startX;
+            this.model.transform.offsetY = offsetY + ev.pageY - startY;
+        });
+        document.addEventListener("mousemove", this._dragHandler);
+        document.addEventListener("mouseup", (ev) => {
+            document.removeEventListener("mousemove", this._dragHandler);
+        });
+
+        e.preventDefault();
+    }
+    handleMaskClick() {
+        if (this.props.maskClosable) {
+            this.hide();
+        }
+    }
+    reset() {
+        this.model.transform = {
+            scale: 1,
+            deg: 0,
+            offsetX: 0,
+            offsetY: 0,
+            enableTransition: false
+        };
+    }
+    toggleMode() {
+        if (this.model.loading) return;
+        if (this.model.mode.includes("full")) {
+            this.model.mode = "jk-icon-scale-to-original";
+        } else {
+            this.model.mode = "jk-icon-full-screen";
+        }
+        this.reset();
+    }
+    prev() {
+        if (this.isFirst && !this.model.infinite) return;
+        let len = this.props.urlList.length;
+        this.model.index = (this.model.index - 1 + len) % len;
+    }
+    next() {
+        if (this.isLast && !this.model.infinite) return;
+        let len = this.props.urlList.length;
+        this.model.index = (this.model.index + 1) % len;
+    }
+    onActionsClick(e: VNode.Event, action: string) {
+        this.handleActions(action);
+    }
+    handleActions(action: string, options = {}) {
+        if (this.model.loading) return;
+        let { zoomRate, rotateDeg, enableTransition } = {
+            zoomRate: 0.2,
+            rotateDeg: 90,
+            enableTransition: true,
+            ...options
+        };
+        let { transform } = this.model;
+        switch (action) {
+            case "zoomOut":
+                if (transform.scale > 0.2) {
+                    transform.scale = parseFloat((transform.scale - zoomRate).toFixed(3));
+                }
+                break;
+            case "zoomIn":
+                transform.scale = parseFloat((transform.scale + zoomRate).toFixed(3));
+                break;
+            case "clocelise":
+                transform.deg += rotateDeg;
+                break;
+            case "anticlocelise":
+                transform.deg -= rotateDeg;
+                break;
+        }
+        transform.enableTransition = enableTransition;
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.joker-image-viewer {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+
+    .viewer-mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        opacity: 0.5;
+        background: rgb(0, 0, 0);
+    }
+
+    .viewer-btn {
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+        cursor: pointer;
+        box-sizing: border-box;
+        user-select: none;
+        border-radius: 50%;
+    }
+
+    .close-btn {
+        top: 40px;
+        right: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(96, 98, 102);
+    }
+
+    .prev,
+    .next {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+        color: #fff;
+        background-color: #606266;
+        border-color: #fff;
+    }
+
+    .prev {
+        left: 40px;
+    }
+
+    .next {
+        right: 40px;
+        text-indent: 2px;
+    }
+
+    .action-btns {
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        width: 282px;
+        height: 44px;
+        background-color: rgb(96, 98, 102);
+        padding: 0px 23px;
+        border-color: rgb(255, 255, 255);
+        border-radius: 22px;
+
+        .action-inners {
+            width: 100%;
+            height: 100%;
+            text-align: justify;
+            cursor: default;
+            font-size: 23px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .action-dividers {
+            font-style: italic;
+        }
+    }
+
+    .viewer-canvas {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .viewer-img {
+            overflow-clip-margin: content-box;
+            overflow: clip;
+        }
+
+        .placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: #c0c4cc;
+            vertical-align: middle;
+            position: absolute;
+        }
+    }
+}
+</style>

@@ -1,0 +1,137 @@
+<template>
+    <li class="jk-timeline-item">
+        <div class="tail"></div>
+        @if(!$sections.dot) {
+            <div
+                class="@(['node', props.size, props.type])"
+                style="@(props.color ? 'background-color:' + props.color : '')">
+                @if(props.icon) {
+                    <i class="icon @props.icon"></i>
+                }
+            </div>
+        }
+        @if($sections.dot) {
+            <div class="dot">
+                @RenderSection("dot")
+            </div>
+        }
+        <div class="wrapper">
+            @if(!props.hideTimestamp && props.placement === "top") {
+                <div class="timestamp is-top">
+                    @props.timestamp
+                </div>
+            }
+            <div class="content">
+                @RenderSection()
+            </div>
+            @if(!props.hideTimestamp && props.placement === "bottom") {
+                <div class="timestamp is-bottom">
+                    @props.timestamp
+                </div>
+            }
+        </div>
+    </li>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component<{
+    timestamp: string;
+    hideTimestamp: boolean;
+    placement: string;
+    type: string;
+    color: string;
+    size: string;
+    icon: string;
+}> {
+    propsOption = {
+        placement: "bottom",
+        size: "normal"
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+.jk-timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+    &:last-child {
+        .tail {
+            display: none;
+        }
+    }
+    .wrapper {
+        position: relative;
+        padding-left: 28px;
+        top: -3px;
+        .content {
+            color: #303133;
+        }
+        .timestamp {
+            color: #909399;
+            line-height: 1;
+            font-size: 13px;
+            &.is-top {
+                margin-bottom: 8px;
+                padding-top: 4px;
+            }
+            &.is-bottom {
+                margin-top: 8px;
+            }
+        }
+    }
+    .tail {
+        position: absolute;
+        left: 4px;
+        height: 100%;
+        border-left: 2px solid #e4e7ed;
+    }
+    .node {
+        position: absolute;
+        background-color: #e4e7ed;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+            color: #fff;
+            font-size: 13px;
+        }
+        &.normal {
+            left: -1px;
+            width: 12px;
+            height: 12px;
+        }
+        &.large {
+            left: -2px;
+            width: 14px;
+            height: 14px;
+        }
+        &.primary {
+            background-color: #409eff;
+        }
+
+        &.success {
+            background-color: #67c23a;
+        }
+
+        &.warning {
+            background-color: #e6a23c;
+        }
+
+        &.danger {
+            background-color: #f56c6c;
+        }
+
+        &.info {
+            background-color: #909399;
+        }
+    }
+    .dot {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+</style>

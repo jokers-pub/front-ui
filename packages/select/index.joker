@@ -1,0 +1,822 @@
+<template>
+    <div
+        ref="container"
+        class="@([
+            'jk-select',
+            sizeClass,
+            props.class,
+            props.fullWidth && 'full-width',
+            model.showPanel && 'is-focus',
+            isError && 'is-error'
+        ])"
+        @click="toggleMenu"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
+        @if(props.multiple) {
+            <div class="jk-select-tags" ref="tags" style="@({ maxWidth: model.inputWidth - 32 + 'px', width: '100%' })">
+                @for(let item of selectedOptions.value) {
+                    <JokerTag
+                        type="info"
+                        disableTransition
+                        closable="@(!props.disabled)"
+                        size="@tagsSize"
+                        @close="handleTagClose(item.value)">
+                        @item.label
+                    </JokerTag>
+                }
+                @if(props.filterable) {
+                    <input
+                        ref="reference"
+                        type="text"
+                        autocomplete="off"
+                        disabled="@props.disabled"
+                        style="@({
+                            width: model.inputLength / (model.inputWidth - 32) + '%',
+                            maxWidth: model.inputWidth - 42 + 'px'
+                        })"
+                        @focus="handleFocus"
+                        @input="debouncedInputChange"
+                        @keydown="handleKeyDown"
+                        @keydown.down.prevent="handleNavigate('next')"
+                        @keydown.up.prevent="handleNavigate('prev')"
+                        @keydown.enter.prevent="handleEnter"
+                        @keydown.esc.prevent="hide"
+                        @keydown.tab="hide"
+                        @keydown.delete="handleDelete"
+                        @compositionstart="handleComposition(true)"
+                        @compositionend="handleComposition(false)"
+                    />
+                }
+            </div>
+        }
+        <JokerInput
+            ref="input"
+            placeholder="@model.placeholder"
+            autocomplete="off"
+            size="@props.size"
+            disabled="@props.disabled"
+            readonly="@readonly"
+            value="@inputText"
+            error="@isError"
+            tabindex="@(props.multiple && props.filterable ? '-1' : false)"
+            @focus="handleFocus"
+            @input="debouncedInputChange"
+            @keydown.down.prevent="handleNavigate('next')"
+            @keydown.up.prevent="handleNavigate('prev')"
+            @keydown.enter.prevent="handleEnter"
+            @keydown.esc.prevent="hide"
+            @keydown.tab="hide"
+            @keydown.delete="handleDelete"
+            @compositionstart="handleComposition(true)"
+            @compositionend="handleComposition(false)">
+            @if($sections.prefix) {
+                @section("prefix") {
+                    @RenderSection("prefix", value)
+                }
+            }
+            @section("suffix") {
+                @if(showClose) {
+                    <i class="jk-select-caret jk-icon-circle-close" @click.stop="clear" />
+                }
+                else {
+                    <i class="jk-select-caret jk-icon-@iconName" @click.stop="handleFocus" />
+                }
+            }
+        </JokerInput>
+        @if(showDropDown) {
+            <JokerDropDown ref="dropdown">
+                @if(!props.loading) {
+                    @RenderSection()
+                }
+                @if(props.loading) {
+                    <div class="loading">
+                        <i class="jk-icon-loading" />@props.loadingText
+                    </div>
+                }
+                else if(model.visibleOptionCount === 0) {
+                    @if($sections.empty) {
+                        @RenderSection("empty")
+                    }
+                    else {
+                        <p class="emtpy-text">
+                            @emptyText
+                        </p>
+                    }
+                }
+            </JokerDropDown>
+        }
+    </div>
+</template>
+
+<script>
+import { ShallowObserver, VNode, combinedReply } from "@joker.front/core";
+import { FormCtrl } from "../form/form-ctrl";
+import JokerInput from "../input/index.joker";
+import JokerDropDown from "./dropdown.joker";
+import JokerTag from "../tag/index.joker";
+import { componentName, isEdge, isIE, valueEquals } from "../utils";
+import { debounce, deepClone, getValueByPath, isObject, remove, removeFilter } from "@joker.front/shared";
+import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+
+export default class extends FormCtrl<{
+    clearable: boolean;
+    placeholder: string;
+    valueKey: string;
+    multiple: boolean;
+    class: string;
+    multipleLimit: number;
+    filterable: boolean;
+    remote: boolean;
+    filterMethod: Function;
+    remoteMethod: Function;
+    loading: boolean;
+    loadingText: string;
+    noDataText: string;
+    noMatchText: string;
+    fullWidth: boolean;
+}> {
+    name = componentName("select");
+
+    model = {
+        inputHovering: false,
+        showPanel: false,
+        selectedLabel: "",
+        inputWidth: 0,
+        inputLength: 20,
+        isOnComposition: false,
+        visibleOptionCount: 0,
+        placeholder: "",
+        dropdownInit: false,
+        queryLabel: ""
+    };
+
+    initialInputHeight = 0;
+
+    debouncedInputChange!: Function;
+
+    propsOption = {
+        placeholder: "请选择",
+        valueKey: "value",
+        multipleLimit: {
+            type: Number,
+            default: 0
+        },
+        loadingText: "加载中",
+        noDataText: "暂无数据",
+        noMatchText: "无匹配数据"
+    };
+
+    components = {
+        JokerInput,
+        JokerDropDown,
+        JokerTag
+    };
+
+    created() {
+        this.$syncProp("placeholder");
+
+        let debounceTime = this.props.remote ? 300 : 0;
+
+        this.debouncedInputChange = debounce(debounceTime, (e: VNode.Event) => {
+            let reference = this.$getRef("reference")?.output;
+
+            if (reference && reference.value.length > 0) {
+                this.model.placeholder = "";
+            }
+
+            this.handleQueryChange(e.event.target.value!);
+        });
+    }
+
+    async mounted() {
+        this.containerEl = this.$getRef("container")!.output;
+
+        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+
+        this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
+
+        addResizeListener(this.containerEl, this.handleResize);
+
+        this.$watch(
+            () => this.value,
+            () => {
+                this.setSelected();
+                if (this.props.filterable && !this.props.multiple) {
+                    this.model.inputLength = 20;
+                }
+
+                if (this.model.showPanel) return;
+
+                this.model.queryLabel = "";
+            }
+        );
+
+        this.$updatedRender(() => {
+            this.setSelected();
+
+            this.resetInputHeight();
+        });
+    }
+
+    selectedOptions: ShallowObserver<
+        Array<{
+            label: string;
+            value: any;
+        }>
+    > = new ShallowObserver([]);
+
+    //#region  属性
+
+    inputContainerEl!: HTMLElement;
+
+    inputReferenceEl!: HTMLElement;
+
+    containerEl!: HTMLElement;
+
+    dropMenuShowOnFocus = false;
+
+    get showDropDown() {
+        if (this.props.remote && !this.model.queryLabel) return false;
+        return (
+            this.model.dropdownInit ||
+            ((this.value !== undefined || this.model.showPanel) && !(this.props.remote && !this.model.queryLabel))
+        );
+    }
+    get showClose() {
+        if (this.props.clearable) {
+            let hasValue = this.props.multiple
+                ? (this.value || []).length > 0
+                : this.value !== undefined && this.value !== null && this.value !== "";
+
+            return this.model.inputHovering && hasValue && !this.props.disabled;
+        }
+        return false;
+    }
+    get iconName() {
+        return this.props.remote ? "" : this.model.showPanel ? "arrow-up is-reverse" : "arrow-up";
+    }
+
+    get readonly() {
+        return !this.props.filterable || this.props.multiple || (!isIE() && !isEdge() && !this.model.showPanel);
+    }
+
+    get options() {
+        return (this.$getRef("dropdown")?.find((m) => {
+            return m instanceof VNode.Component && m.component.name === componentName("select-option");
+        }) || []) as VNode.Component[];
+    }
+
+    get visibledOptions() {
+        return (this.$getRef("dropdown")?.find((m) => {
+            return (
+                m instanceof VNode.Component &&
+                m.component.name === componentName("select-option") &&
+                m.component.model.visible
+            );
+        }) || []) as VNode.Component[];
+    }
+
+    get groups() {
+        return (this.$getRef("dropdown")?.find((m) => {
+            return m instanceof VNode.Component && m.component.name === componentName("select-group");
+        }) || []) as VNode.Component[];
+    }
+
+    get tagsSize() {
+        return ["small", "mini"].includes(this.props.size || "") ? "mini" : "small";
+    }
+
+    get inputText() {
+        if (this.props.multiple) {
+            if (this.selectedOptions.value.length) {
+                return " ";
+            }
+            return "";
+        } else {
+            return this.model.selectedLabel;
+        }
+    }
+
+    get emptyText() {
+        if (this.props.filterable && this.model.queryLabel && this.options.length > 0) {
+            return this.props.noMatchText;
+        } else {
+            return this.props.noDataText;
+        }
+    }
+
+    oldValue: any;
+    //#endregion
+
+    //#region  方法
+    blur() {
+        this.$getRef<VNode.Component>("input")?.component?.blur();
+    }
+    hide() {
+        if (!this.model.showPanel) return;
+
+        this.model.showPanel = false;
+        this.dropMenuShowOnFocus = false;
+        this.blur();
+
+        this.model.inputLength = 20;
+
+        //关闭时做input显示值更新
+        if (!this.props.multiple) {
+            this.refreshSelectedOption();
+            let selectedOption = this.selectedOptions.value;
+
+            if (selectedOption && selectedOption.length) {
+                this.model.selectedLabel = selectedOption[0].label;
+            } else {
+                this.model.selectedLabel = "";
+            }
+        } else {
+            this.model.selectedLabel = this.selectedOptions.value[0]?.label || "";
+        }
+
+        if (this.props.filterable) {
+            this.model.placeholder = this.props.placeholder!;
+        }
+
+        this.model.queryLabel = "";
+        let reference = this.$getRef("reference");
+        reference && (reference.output.value = "");
+
+        this.triggerChange();
+    }
+    //通过value 设置选中（配合异步）
+    setSelected() {
+        combinedReply(async () => {
+            this.selectedOptions.value = [];
+            this.model.selectedLabel = "";
+
+            if (this.props.multiple) {
+                let selectedOptions: any[] = [];
+                if (Array.isArray(this.value)) {
+                    this.value.forEach((m) => {
+                        let option = this.getOption(m);
+
+                        if (option) {
+                            selectedOptions.push(option);
+                        }
+                    });
+                }
+
+                this.selectedOptions.value = selectedOptions;
+
+                this.resetInputHeight();
+            } else {
+                let option = this.getOption(this.value);
+                if (option) {
+                    this.model.selectedLabel = option.label;
+                    this.selectedOptions.value = [option];
+                }
+            }
+        });
+    }
+    selectOption(option: any) {
+        if (this.props.multiple) {
+            let value: any[] = (this.value || []).slice();
+            let optionIndex = this.getValueIndex(value, option.props.value);
+            if (optionIndex > -1) {
+                value.splice(optionIndex, 1);
+            } else if (this.props.multipleLimit! <= 0 || value.length < this.props.multipleLimit!) {
+                value.push(option.props.value);
+            }
+
+            this.value = value;
+
+            if (this.props.multiple) {
+                this.refreshSelectedOption();
+            }
+
+            if (this.props.filterable) {
+                this.$getRef("reference")?.output.focus();
+            }
+        } else {
+            this.value = option.props.value;
+
+            this.hide();
+        }
+    }
+    resetInputHeight = debounce(300, async () => {
+        if (!this.inputReferenceEl) return;
+
+        this.initialInputHeight ||= this.inputReferenceEl.getBoundingClientRect().height;
+
+        let height = this.initialInputHeight + "px";
+
+        if (this.selectedOptions.value.length) {
+            let tagContainer = this.$getRef("tags")?.output;
+            let tagHeight = tagContainer ? Math.round(tagContainer.getBoundingClientRect().height) : 0;
+
+            if (tagHeight > 30) {
+                height = tagHeight + 6 + "px";
+            }
+        }
+
+        this.inputReferenceEl.style.height = height;
+        await this.$updatedRender();
+        this.updatePopper();
+    });
+
+    getOption(value: any) {
+        let options = this.options;
+
+        for (let i = options.length - 1; i >= 0; i--) {
+            let item = options[i].component!;
+
+            if (
+                isObject(value)
+                    ? getValueByPath(item.props.value, this.props.valueKey) ===
+                      getValueByPath(value, this.props.valueKey)
+                    : item.props.value === value
+            ) {
+                return {
+                    label: item.currentLabel,
+                    value: item.props.value
+                };
+            }
+        }
+        //未找到时，不做任何展示，等待业务异步后手动触发setSelected
+    }
+
+    //#region hover & navigation
+    hoverItem(option: any) {
+        if (this.options) {
+            let options = (<any[]>this.options).map((m) => m.component);
+
+            for (let op of options) {
+                op.model.hover = op === option;
+            }
+        }
+    }
+
+    clearOptionHover() {
+        this.options.forEach((m) => {
+            m.component.model.hover = false;
+        });
+    }
+
+    navigateOption(direction: "prev" | "next") {
+        if (!this.model.showPanel) return;
+
+        if (!this.options.length) return;
+
+        let canUseOptions = this.options.filter((m) => !m.component.props.disabled && m.component.model.visible);
+
+        if (canUseOptions.length === 0) return;
+
+        let currentHoverIndex = canUseOptions.findIndex((m) => m.component.model.hover);
+
+        if (direction === "next") {
+            currentHoverIndex++;
+
+            if (currentHoverIndex >= canUseOptions.length) {
+                currentHoverIndex = 0;
+            }
+        } else {
+            currentHoverIndex--;
+            if (currentHoverIndex < 0) {
+                currentHoverIndex = canUseOptions.length - 1;
+            }
+        }
+
+        let option = canUseOptions[currentHoverIndex];
+
+        option && this.hoverItem(option.component);
+    }
+
+    async refreshVisibleOptions() {
+        this.model.visibleOptionCount = this.visibledOptions.length;
+        await this.$updatedRender();
+
+        this.updatePopper();
+
+        this.setSelected();
+    }
+
+    updatePopper() {
+        this.$getRef<VNode.Component>("dropdown")?.component.updatePopper();
+    }
+
+    //#endregion
+
+    //#endregion
+
+    //#region  事件
+    handleMouseEnter() {
+        this.model.inputHovering = true;
+    }
+    handleMouseLeave() {
+        this.model.inputHovering = false;
+    }
+    handleNavigate(e: VNode.Event, direction: "next" | "prev") {
+        if (this.model.isOnComposition) return;
+
+        this.navigateOption(direction);
+    }
+    handleEnter() {
+        let hoverItem = this.options.find((m) => {
+            return m.component.model.hover;
+        });
+
+        if (hoverItem) {
+            this.selectOption(hoverItem.component);
+        }
+    }
+
+    handleDelete(e: VNode.Event) {
+        if (this.props.multiple && this.value?.length && !e.event.target.value) {
+            this.value.pop();
+
+            this.refreshSelectedOption();
+
+            this.$trigger("change", this.value);
+        }
+    }
+    toggleMenu() {
+        if (this.props.disabled) return;
+        if (this.dropMenuShowOnFocus) {
+            this.dropMenuShowOnFocus = false;
+        } else {
+            this.model.showPanel = !this.model.showPanel;
+        }
+
+        if (this.model.showPanel) {
+            let referenceInput = this.$getRef("reference")?.output;
+
+            this.oldValue = deepClone(this.value);
+            if (referenceInput) {
+                referenceInput.focus();
+            } else {
+                this.$getRef<VNode.Component>("input")?.component.focus();
+            }
+        }
+    }
+    handleFocus() {
+        if (this.props.disabled) return;
+        if (!this.model.showPanel) {
+            //清除过程数据
+            this.model.queryLabel = "";
+        }
+
+        this.refreshVisibleOptions();
+        this.model.showPanel = true;
+
+        this.dropMenuShowOnFocus = true;
+
+        if (this.props.filterable) {
+            if (!this.$getRef("reference")?.output.value.length) {
+                this.model.placeholder = this.model.selectedLabel || this.props.placeholder!;
+                this.model.selectedLabel = "";
+            }
+        }
+    }
+    handleKeyDown(e: VNode.Event) {
+        this.model.inputLength = e.event.target.value.length * 15 + 20;
+        this.resetInputHeight();
+    }
+    handleComposition(e: VNode.Event, val: boolean) {
+        this.model.isOnComposition = val;
+    }
+    clear() {
+        this.value = undefined;
+        this.selectedOptions.value = [];
+        this.model.selectedLabel = "";
+        this.$trigger("change", this.value);
+    }
+    handleResize() {
+        this.model.inputWidth = (<HTMLElement>this.inputContainerEl).getBoundingClientRect().width;
+
+        if (this.props.multiple) {
+            this.resetInputHeight();
+        }
+    }
+    handleTagClose(e: VNode.Event, val: any) {
+        remove(this.value, val);
+
+        this.refreshSelectedOption();
+
+        //没有下拉时，才会触发change
+        if (!this.model.showPanel) {
+            this.$trigger("change", this.value);
+        }
+    }
+
+    handleQueryChange(val: string) {
+        if (this.model.isOnComposition) return;
+
+        this.model.queryLabel = val;
+
+        this.clearOptionHover();
+
+        if (this.props.multiple && this.props.filterable) {
+            let length = this.$getRef("reference")?.output.value.length * 15 + 20;
+            this.model.inputLength = length || 20;
+
+            this.resetInputHeight();
+        }
+
+        if (this.props.remote && this.props.remoteMethod) {
+            this.model.visibleOptionCount = 0;
+            this.props.remoteMethod(val);
+        }
+        //不是远程查询的，需要自己去过滤
+        if (!this.props.remote) {
+            this.options.forEach((m) => {
+                let component = m.component;
+
+                if (!component.props.disabled) {
+                    component.queryChange(val);
+                }
+            });
+
+            //刷新分组
+            this.groups.forEach((m) => {
+                m.component.queryChange();
+            });
+
+            //刷新可见
+            this.refreshVisibleOptions();
+        }
+    }
+
+    //#endregion
+
+    beforeDestroy() {
+        removeResizeListener(this.containerEl, this.handleResize);
+    }
+
+    private triggerChange() {
+        if (valueEquals(this.value, this.oldValue) === false) {
+            this.$trigger("change", this.value);
+
+            this.triggerValidate();
+        }
+    }
+
+    private getValueIndex(arr: any[], value: any) {
+        if (isObject(value)) {
+            let valueKey = this.props.valueKey;
+
+            let index = -1;
+
+            arr.some((item, i) => {
+                if (getValueByPath(item, valueKey) === getValueByPath(value, valueKey)) {
+                    index = i;
+                    return true;
+                }
+                return false;
+            });
+            return index;
+        } else {
+            return arr.indexOf(value);
+        }
+    }
+
+    private refreshSelectedOption() {
+        let selectedValues: any[] = [];
+
+        if (this.props.multiple) {
+            selectedValues = this.value || [];
+        } else if (this.value) {
+            selectedValues.push(this.value);
+        }
+        this.selectedOptions.value =
+            this.$getRef("dropdown")
+                ?.find((n) => {
+                    return (
+                        n instanceof VNode.Component &&
+                        n.component.name === componentName("select-option") &&
+                        selectedValues.includes(n.component.props.value)
+                    );
+                })
+                .map((n) => {
+                    let component = (n as VNode.Component).component;
+
+                    return {
+                        label: component.currentLabel,
+                        value: component.props.value
+                    };
+                }) || [];
+
+        this.handleResize();
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../theme/var.scss";
+
+.jk-select {
+    display: inline-block;
+    position: relative;
+    &.full-width {
+        width: 100%;
+    }
+    &:hover {
+        :deep(.jk-input:not(.is-disabled) input) {
+            border-color: var(--jk-border-color-hover);
+        }
+    }
+
+    :deep(.jk-input) {
+        input {
+            cursor: pointer;
+
+            &[disabled] {
+                cursor: not-allowed;
+            }
+        }
+
+        i.jk-select-caret {
+            color: var(--jk-color-text-placeholder);
+            font-size: 14px;
+            transition: transform 0.3s;
+            transform: rotateZ(180deg);
+            cursor: pointer;
+
+            &.is-reverse {
+                transform: rotateZ(0deg);
+            }
+        }
+    }
+
+    &.is-focus {
+        &:hover,
+        &:focus {
+            :deep(.jk-input:not(.is-disabled) input) {
+                border-color: var(--jk-color-primary);
+            }
+        }
+    }
+
+    .jk-select-tags {
+        position: absolute;
+        line-height: normal;
+        white-space: normal;
+        z-index: $--index-normal;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        :deep(> .jk-tag) {
+            box-sizing: border-box;
+            border-color: transparent;
+            margin: 2px 0 2px 6px;
+            display: flex;
+            max-width: 100%;
+            align-items: center;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            padding: 0;
+            margin-left: 15px;
+            color: var(--jk-color-text-regular);
+            font-size: 14px;
+            appearance: none;
+            height: 28px;
+            background-color: transparent;
+            flex-grow: 1;
+        }
+    }
+
+    &.mini {
+        .jk-select-tags input {
+            height: 14px;
+        }
+    }
+
+    &.is-error {
+        input {
+            &,
+            &:focus {
+                border-color: var(--jk-color-danger) !important;
+            }
+        }
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 10px 0;
+    color: var(--jk-color-text-secondary);
+    i {
+        margin-right: 10px;
+    }
+}
+
+.emtpy-text {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: var(--jk-color-text-primary);
+    font-size: 14px;
+}
+</style>
