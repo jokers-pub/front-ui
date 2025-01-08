@@ -64,9 +64,9 @@ import "@joker.front/ui/index.css";
 
 Currently, the UI library has been successfully migrated in the Joker Intelligent Development Platform and already supports low-code visual development capabilities. [Repository Address](https://lowcode.jokers.pub/#/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)
 
-![Low-Code Platform](readme/img1.png)
-![Low-Code Platform](readme/img2.png)
-![Low-Code Platform](readme/img3.png)
+![Low-Code Platform](https://gitee.com/joker_pub/front-ui/raw/main/readme/img1.png)
+![Low-Code Platform](https://gitee.com/joker_pub/front-ui/raw/main/readme/img2.png)
+![Low-Code Platform](https://gitee.com/joker_pub/front-ui/raw/main/readme/img3.png)
 
 [Low-Code Component Issue Feedback](https://lowcode.jokers.pub/index.html#/.repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4/issues)
 
@@ -148,9 +148,9 @@ import "@joker.front/ui/index.css";
 
 目前该 UI 库已在 Joker 智能开发平台中迁移完毕，已支持低代码可视化开发能力 [仓库地址](https://lowcode.jokers.pub/#/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)
 
-![低代码平台](readme/img1.png)
-![低代码平台](readme/img2.png)
-![低代码平台](readme/img3.png)
+![低代码平台](https://gitee.com/joker_pub/front-ui/raw/main/readme/img1.png)
+![低代码平台](https://gitee.com/joker_pub/front-ui/raw/main/readme/img2.png)
+![低代码平台](https://gitee.com/joker_pub/front-ui/raw/main/readme/img3.png)
 
 [低代码组件问题反馈](https://lowcode.jokers.pub/index.html#/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4/issues)
 
