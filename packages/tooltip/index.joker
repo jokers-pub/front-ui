@@ -52,7 +52,8 @@ export default class extends Component<{
             default: 0
         },
         transition: "jk-fade-in",
-        effect: "dark"
+        effect: "dark",
+        maxWidth: "300px"
     };
     model = {
         expectedState: false,

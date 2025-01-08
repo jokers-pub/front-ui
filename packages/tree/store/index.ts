@@ -26,6 +26,8 @@ export type TreeStoreOption = {
     disabledKey: string;
     /** label key */
     labelKey: string;
+    /** 虚拟节点标识Key */
+    virtualKey: string;
     /** 过滤函数 */
     filterMethod?: Function;
 };

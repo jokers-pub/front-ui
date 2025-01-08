@@ -4,10 +4,10 @@
     }
 </template>
 <script>
-import { Component, VNode } from "@joker.front/core";
+import { Component, VNode, combinedReply } from "@joker.front/core";
 import JokerRadio from "../../radio/radio.joker";
 import { componentName } from "../../utils";
-import { CHECK_ROW_KEY, ColumnType } from "../store";
+import { ColumnType, Store } from "../store";
 
 export default class extends Component<{
     isHeader: boolean;
@@ -23,10 +23,13 @@ export default class extends Component<{
             (n) => n instanceof VNode.Component && n.component.name === componentName("table")
         )?.component;
     }
+    get store(): Store {
+        return this.table!.store;
+    }
 
     get selectedRowIndex() {
         if (this.table.store.data.tableData) {
-            return this.props.row[CHECK_ROW_KEY];
+            return this.store?.data.selectedRows.has(this.props.row);
         }
         return false;
     }
@@ -41,12 +44,10 @@ export default class extends Component<{
         return false;
     }
     handleRadioChange() {
-        let oldRow = this.table!.store!.data.selectedRows?.[0];
-        if (oldRow) {
-            oldRow[CHECK_ROW_KEY] = false;
-        }
-        this.table!.store!.data.selectedRows = [this.props.row];
-        this.props.row[CHECK_ROW_KEY] = true;
+        combinedReply(() => {
+            this.store?.data.selectedRows.clear();
+            this.store?.data.selectedRows.add(this.props.row);
+        });
 
         this.table?.triggerSelectedRowChange();
     }

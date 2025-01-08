@@ -7,3 +7,7 @@ declare module "*.joker" {
 
     export default compnent;
 }
+interface ImportMeta {
+    url: string;
+    define: Record<string, any>;
+}

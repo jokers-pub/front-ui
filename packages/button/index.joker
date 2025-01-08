@@ -116,6 +116,9 @@ export default class extends Component<{
                 background-color: #fff;
             }
         }
+        &:focus {
+            border-color: var(--jk-color-#{$color});
+        }
 
         &:hover {
             color: var(--jk-button-font-color);

@@ -2,7 +2,7 @@
     <div class="demoContainer">
         <div class="row">
             <span>激活即列出输入建议：</span>
-            <jk-autocomplete placeholder="请输入内容" searchLoad="@querString"></jk-autocomplete>
+            <jk-autocomplete placeholder="请输入内容" searchLoad="@querString" @change="handleChange"></jk-autocomplete>
         </div>
         <div class="row">
             <span>输入后匹配输入建议：</span>
@@ -10,12 +10,13 @@
                 placeholder="请输入内容"
                 searchLoad="@querString"
                 triggerOnFocus="@false"
-                clearable></jk-autocomplete>
+                clearable
+                @change="handleChange"></jk-autocomplete>
         </div>
     </div>
 </template>
 <script>
-import { Component } from "@joker.front/core";
+import { Component, VNode } from "@joker.front/core";
 import { mock } from "./mock";
 import { sleep } from "@joker.front/shared";
 export default class extends Component {
@@ -34,6 +35,9 @@ export default class extends Component {
         }
 
         cb(result);
+    }
+    handleChange(e: VNode.Event<string>) {
+        alert(e.data);
     }
 }
 </script>

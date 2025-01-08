@@ -1,5 +1,5 @@
 <template>
-    <div class="jk-breadcrumb-item">
+    <div class="@(['jk-breadcrumb-item', props.class])">
         <div class="jk-breadcrumb-item-title">
             @RenderSection()
         </div>
@@ -18,7 +18,9 @@ import { Component } from "@joker.front/core";
 import { VNode } from "@joker.front/core";
 import { componentName } from "../utils";
 
-export default class extends Component<{}> {
+export default class extends Component<{
+    class: string;
+}> {
     model = {
         separatorClass: "",
         separator: "/"

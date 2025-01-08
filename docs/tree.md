@@ -44,32 +44,33 @@
 
 ### Attributes
 
-| 参数                  | 说明                                                                                                             | 类型                    | 可选值 | 默认值 |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------- | ------ | ------ |
-| data                  | 展示数据                                                                                                         | array                   | —      | —      |
-| class                 | 自定义 class 样式                                                                                                | string                  | -      | -      |
-| empty-text            | 内容为空的时候展示的文本                                                                                         | String                  | —      | —      |
-| empty-size            | 空面板尺寸本                                                                                                     | String                  | —      | —      |
-| node-key              | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的                                                             | String                  | —      | —      |
-| load                  | 加载子树数据的方法，仅当 lazy 属性为 true 时生效                                                                 | function(node, resolve) | —      | —      |
-| default-expand-all    | 是否默认展开所有节点                                                                                             | boolean                 | —      | false  |
-| expand-on-click-node  | 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。 | boolean                 | —      | true   |
-| check-on-click-node   | 是否在点击节点的时候选中节点，默认值为 false，即只有在点击复选框时才会选中节点。                                 | boolean                 | —      | false  |
-| default-expanded-keys | 默认展开的节点的 key 的数组                                                                                      | array                   | —      | —      |
-| show-checkbox         | 节点是否可被选择                                                                                                 | boolean                 | —      | false  |
-| default-checked-keys  | 默认勾选的节点的 key 的数组                                                                                      | array                   | —      | —      |
-| current-node-key      | 当前选中的节点                                                                                                   | string, number          | —      | —      |
-| filter-method         | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏                  | Function(node,value)    | —      | —      |
-| indent                | 相邻级节点间的水平缩进，单位为像素                                                                               | number                  | —      | 16     |
-| icon-class            | 自定义树节点的图标                                                                                               | string                  | -      | -      |
-| lazy                  | 是否懒加载子节点，需与 load 方法结合使用                                                                         | boolean                 | —      | false  |
-| labelKey              | 指定节点标签为节点对象的某个属性值                                                                               | string                  | —      | —      |
-| childrenKey           | 指定子树为节点对象的某个属性值                                                                                   | string                  | —      | —      |
-| disabledKey           | 指定节点选择框是否禁用为节点对象的某个属性值                                                                     | string                  | —      | —      |
-| isLeafKey             | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效                                                         | string                  | —      | —      |
-| draggable             | 是否开启拖拽功能                                                                                                 | boolean                 | —      | —      |
-| checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —      |
-| checkCanDropIn        | 当前节点是否允许拖入，如果允许拖入，则 drapp 事件 position 位置会返回 in 来决定是否是拖入                        | function                | —      | —      |
+| 参数                  | 说明                                                                                                             | 类型                    | 可选值 | 默认值        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------- | ------ | ------------- |
+| data                  | 展示数据                                                                                                         | array                   | —      | —             |
+| class                 | 自定义 class 样式                                                                                                | string                  | -      | -             |
+| empty-text            | 内容为空的时候展示的文本                                                                                         | String                  | —      | —             |
+| empty-size            | 空面板尺寸本                                                                                                     | String                  | —      | —             |
+| node-key              | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的                                                             | String                  | —      | —             |
+| load                  | 加载子树数据的方法，仅当 lazy 属性为 true 时生效                                                                 | function(node, resolve) | —      | —             |
+| default-expand-all    | 是否默认展开所有节点                                                                                             | boolean                 | —      | false         |
+| expand-on-click-node  | 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。 | boolean                 | —      | true          |
+| check-on-click-node   | 是否在点击节点的时候选中节点，默认值为 false，即只有在点击复选框时才会选中节点。                                 | boolean                 | —      | false         |
+| default-expanded-keys | 默认展开的节点的 key 的数组                                                                                      | array                   | —      | —             |
+| show-checkbox         | 节点是否可被选择                                                                                                 | boolean                 | —      | false         |
+| default-checked-keys  | 默认勾选的节点的 key 的数组                                                                                      | array                   | —      | —             |
+| current-node-key      | 当前选中的节点                                                                                                   | string, number          | —      | —             |
+| filter-method         | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏                  | Function(node,value)    | —      | —             |
+| indent                | 相邻级节点间的水平缩进，单位为像素                                                                               | number                  | —      | 16            |
+| icon-class            | 自定义树节点的图标                                                                                               | string                  | -      | -             |
+| lazy                  | 是否懒加载子节点，需与 load 方法结合使用                                                                         | boolean                 | —      | false         |
+| labelKey              | 指定节点标签为节点对象的某个属性值                                                                               | string                  | —      | —             |
+| childrenKey           | 指定子树为节点对象的某个属性值                                                                                   | string                  | —      | —             |
+| disabledKey           | 指定节点选择框是否禁用为节点对象的某个属性值                                                                     | string                  | —      | —             |
+| isLeafKey             | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效                                                         | string                  | —      | —             |
+| virtualKey            | 高级用法：是否是虚拟节点，虚拟节点不参与到整个 checkbox 的选中过程，一般在开启选中时生效。                       | string                  | —      | isVirtualNode |
+| draggable             | 是否开启拖拽功能                                                                                                 | boolean                 | —      | —             |
+| checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —             |
+| checkCanDropIn        | 当前节点是否允许拖入，如果允许拖入，则 drapp 事件 position 位置会返回 in 来决定是否是拖入                        | function                | —      | —             |
 
 ### 方法
 

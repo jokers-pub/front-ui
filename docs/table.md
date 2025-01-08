@@ -219,7 +219,7 @@
 | sort-method   | 对数据进行排序的时候使用的方法，仅当 sortable 设置为 true 的时候有效，自定义数据排序，返回新的数据                                                         | —                                         | —                      |
 | align         | 对齐方式                                                                                                                                                   | String                                    | left/center/right      | left   |
 | header-align  | 表头对齐方式，若不设置该项，则使用表格的对齐方式                                                                                                           | String                                    | left/center/right      | —      |
-| class-name    | 列的 class                                                                                                                                                 | string                                    | —                      | —      |
+| class         | 列的 class                                                                                                                                                 | string                                    | —                      | —      |
 | filter        | 数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性，默认按当前列数据筛选。                                                                    | Array<{ text, value }> 或者 Array<string> | —                      | —      |
 | filter-method | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。                                                               | Function(row, filters, col)               | —                      | —      |
 

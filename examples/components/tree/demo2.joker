@@ -26,7 +26,7 @@ export default class extends Component {
         if (node.key === "1") {
             callBack([
                 { label: "选项1-1", id: "1-1" },
-                { label: "选项2-2", id: "2-2" }
+                { label: "选项2-2", id: "2-2", isVirtualNode: true }
             ]);
         } else if (node.key === "2-2") {
             callBack([

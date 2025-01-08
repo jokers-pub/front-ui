@@ -49,7 +49,7 @@
             <JokerInput
                 readonly="@readonly"
                 disabled="@props.disabled"
-                size="@props.size"
+                size="@sizeClass"
                 placeholder="@props.placeholder"
                 value="@displayValue"
                 clearable="@props.clearable"

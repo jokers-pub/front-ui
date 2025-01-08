@@ -1,6 +1,10 @@
 <template>
     <div class="container">
         <NavBar />
+        <div class="nav-bar">
+            <i class="jk-icon-menu" @click="handleOpenMenu" />
+            <span @click="handleOpenMenu">本章菜单</span>
+        </div>
         <div class="pageContainer">
             <jk-scrollbar ref="scroll" @scroll="handleScroll">
                 <router-view @updated="routerViewUpdated"></router-view>
@@ -8,13 +12,16 @@
         </div>
         <ChapterMenu ref="chapterMenu" @go-to="handleMenuGo" />
     </div>
+    <jk-drawer ref="menu-panel" direction="left" title="本章菜单" size="70%">
+        <NavBar inPanel />
+    </jk-drawer>
 </template>
 <script>
 import { Component, VNode } from "@joker.front/core";
 import TopBar from "./components/topbar.joker";
 import NavBar from "./components/navbar.joker";
 import ChapterMenu from "./components/chapter-menu.joker";
-import { hideLoading } from "./loading";
+import { router } from "@joker.front/router";
 
 export default class extends Component {
     components = {
@@ -22,6 +29,15 @@ export default class extends Component {
         NavBar,
         ChapterMenu
     };
+
+    created() {
+        this.$watch(
+            () => router.route.value,
+            () => {
+                this.$getRef("menu-panel")?.component.close();
+            }
+        );
+    }
 
     get scroll() {
         return this.$getRef<VNode.Component>("scroll")?.component;
@@ -31,8 +47,6 @@ export default class extends Component {
     }
 
     routerViewUpdated() {
-        hideLoading();
-
         this.scroll?.scrollTo({ top: 0, left: 0 });
 
         this.chapterMenu?.refresh();
@@ -45,6 +59,9 @@ export default class extends Component {
     handleMenuGo(e: VNode.Event<number>) {
         this.scroll?.scrollTo({ top: e.data, left: 0 });
     }
+    handleOpenMenu() {
+        this.$getRef("menu-panel")?.component.open();
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -52,6 +69,7 @@ export default class extends Component {
     height: 100%;
     overflow: hidden;
     display: flex;
+
     .pageContainer {
         flex: 1;
         height: 100%;
@@ -64,9 +82,12 @@ export default class extends Component {
         }
     }
 
+    .nav-bar {
+        display: none;
+    }
     @media (max-width: 1000px) {
         :deep(.joker-demo-container) {
-            padding: 0 20px 0 20px !important;
+            padding: 0 20px !important;
         }
         :deep(> .page-right) {
             display: none;
@@ -74,12 +95,28 @@ export default class extends Component {
     }
 
     @media (max-width: 800px) {
+        .nav-bar {
+            display: block;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            padding: 0 20px;
+            gap: 5px;
+            border-bottom: solid 1px var(--jk-border-color-base);
+            i {
+                font-size: 14px;
+            }
+        }
+        & {
+            flex-direction: column;
+        }
         :deep(> .nav) {
             display: none;
         }
 
         :deep(.joker-demo-container) {
-            padding: 0 20px 0 20px !important;
+            padding: 0 20px !important;
         }
 
         :deep(> .page-right) {

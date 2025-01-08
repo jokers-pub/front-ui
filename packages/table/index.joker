@@ -2,9 +2,7 @@
     <div
         class="@(['jk-table', props.class, model.scrollTag, { border: props.border }, props.size || ''])"
         ref="container"
-        style="@({
-            height: model.tableHeight
-        })">
+        style="@({ height: model.tableHeight })">
         <JokerScrollbar @resize="resize" @scroll="handleScroll">
             @RenderSection()
             <table border="0" cellspacing="0" cellpadding="0">
@@ -32,7 +30,7 @@
 </template>
 <script>
 import { Component, VNode, combinedReply } from "@joker.front/core";
-import { CHECK_ROW_KEY, SortableOrderType, Store } from "./store";
+import { SortableOrderType, Store } from "./store";
 import { componentName, transformUnit } from "../utils";
 import JokerTableHeader from "./header.joker";
 import JokerTableBody from "./body.joker";
@@ -243,29 +241,31 @@ export default class extends Component<{
     }
 
     setSelectedRow(selectedRow?: any) {
-        this.store.data.selectedRows.forEach((row) => {
-            row[CHECK_ROW_KEY] = false;
-        });
-        if (selectedRow === undefined) {
-            this.store.data.selectedRows.length = 0;
-        } else {
+        if (selectedRow) {
             if (Array.isArray(selectedRow)) {
-                if (this.props.multiple) {
-                    this.store.data.selectedRows = selectedRow;
-                } else {
-                    this.store.data.selectedRows = selectedRow[0];
-                }
+                combinedReply(() => {
+                    if (this.props.multiple) {
+                        selectedRow.map((n) => {
+                            this.store.data.selectedRows.add(n);
+                        });
+                    } else {
+                        this.store.data.selectedRows.clear();
+                        this.store.data.selectedRows.add(selectedRow[0]);
+                    }
+                });
             } else {
                 if (this.props.multiple) {
-                    this.store.data.selectedRows.push(selectedRow);
+                    this.store.data.selectedRows.add(selectedRow);
                 } else {
-                    this.store.data.selectedRows = [selectedRow];
+                    combinedReply(() => {
+                        this.store.data.selectedRows.clear();
+                        this.store.data.selectedRows.add(selectedRow);
+                    });
                 }
             }
+        } else {
+            this.store.data.selectedRows.clear();
         }
-        this.store.data.selectedRows.forEach((row) => {
-            row[CHECK_ROW_KEY] = true;
-        });
     }
 
     getSelectRow() {
@@ -273,10 +273,7 @@ export default class extends Component<{
     }
 
     clearSelectedRow() {
-        this.store.data.selectedRows.forEach((row) => {
-            row[CHECK_ROW_KEY] = false;
-        });
-        this.store.data.selectedRows.length = 0;
+        this.store.data.selectedRows.clear();
     }
 
     selectAll() {
@@ -284,25 +281,18 @@ export default class extends Component<{
 
         combinedReply(() => {
             this.store.data.originalTableData?.forEach((n: any) => {
-                if (!n[CHECK_ROW_KEY]) {
-                    //禁用行跳过
-                    if (selectionCol && selectionCol.disabledMethod?.(n)) {
-                        return;
-                    }
-
-                    this!.store.data.selectedRows.push(n);
-                    n[CHECK_ROW_KEY] = true;
+                //禁用行跳过
+                if (selectionCol && selectionCol.disabledMethod?.(n)) {
+                    return;
                 }
+
+                this.store.data.selectedRows.add(n);
             });
         });
     }
 
     triggerSelectedRowChange() {
-        if (this.props.multiple) {
-            this.$trigger("selected-change", this.store.data.selectedRows);
-        } else {
-            this.$trigger("selected-change", this.store.data.selectedRows.slice(0, 1));
-        }
+        this.$trigger("selected-change", Array.from(this.store.data.selectedRows));
     }
 
     //#region events

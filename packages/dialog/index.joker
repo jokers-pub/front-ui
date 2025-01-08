@@ -11,14 +11,7 @@
                 aria-label="@(props.title || 'dialog')"
                 style="@boxStyle"
                 ref="dialog"
-                class="@([
-                    'dialog-box',
-                    props.customClass,
-                    {
-                        'is-fullscreen': props.fullscreen,
-                        'is-center': props.center
-                    }
-                ])">
+                class="@(['dialog-box', props.customClass, { 'is-fullscreen': props.fullscreen, 'is-center': props.center }])">
                 <div class="header">
                     @if($sections.title) {
                         @RenderSection("title")
@@ -100,9 +93,9 @@ export default class extends Component<{
         if (!this.model.isAppended) {
             this.model.isAppended = true;
         }
-        this.model.visible = true;
 
         await this.$updatedRender();
+        this.model.visible = true;
         this.props.modal &&
             PopupManager.open(this.id, {
                 closeOnPressEscape: this.props.closeOnPressEscape,

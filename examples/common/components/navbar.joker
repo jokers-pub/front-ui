@@ -1,5 +1,5 @@
 <template>
-    <div class="nav">
+    <div class="nav @(props.inPanel?'inPanel':'')">
         <jk-scrollbar>
             <ul>
                 @for(let group of menus) {
@@ -8,7 +8,7 @@
                     </li>
                     @for(let menu of group.children) {
                         <li class="@(model.currentRoutePath === menu.path ? 'selected' : '')">
-                            <a href="#@(menu.path)">@menu.title</a>
+                            <a href="@(menu.path)" @click="go(menu.path)">@menu.title</a>
                         </li>
                     }
                 }
@@ -20,100 +20,12 @@
 <script>
 import { Component, VNode } from "@joker.front/core";
 import { router } from "@joker.front/router";
-
-export default class extends Component {
+import { MENUS } from "../menu";
+export default class extends Component<{ inPanel: boolean }> {
     model = {
         currentRoutePath: ""
     };
-    menus = [
-        {
-            title: "基础",
-            children: [
-                { title: "起步", path: "/component/start" },
-                { title: "Layout 布局", path: "/component/layout" },
-                { title: "Color 颜色", path: "/component/color" },
-                { title: "Icon 图标", path: "/component/icon" },
-                { title: "Button 按钮", path: "/component/button" },
-                { title: "Link 链接", path: "/component/link" },
-                { title: "Scrollbar 滚动条", path: "/component/scrollbar" },
-                { title: "内置动画", path: "/component/transition" }
-            ]
-        },
-        {
-            title: "表单",
-            children: [
-                { title: "Radio 单选", path: "/component/radio" },
-                { title: "Checkbox 多选", path: "/component/checkbox" },
-                { title: "Input 输入框", path: "/component/input" },
-                { title: "AutoComplete 自动完成", path: "/component/autocomplete" },
-                { title: "Textarea 输入框", path: "/component/textarea" },
-                { title: "Number 计数器", path: "/component/number" },
-                { title: "Password 密码", path: "/component/password" },
-                { title: "Select 选择器", path: "/component/select" },
-                { title: "UploadBtn 上传资源", path: "/component/upload-btn" },
-                { title: "Cascader 级联选择器", path: "/component/cascader" },
-                { title: "TimePicker 时间选择器", path: "/component/time-picker" },
-                { title: "DatePicker 日期选择器", path: "/component/date-picker" },
-                { title: "ColorPicker 颜色选择器", path: "/component/color-picker" },
-                { title: "Switch 开关", path: "/component/switch" },
-                { title: "Slider 滑块", path: "/component/slider" },
-                { title: "Rate 评分", path: "/component/rate" },
-                { title: "Form 表单", path: "/component/form" }
-            ]
-        },
-        {
-            title: "数据",
-            children: [
-                { title: "Tag 标签", path: "/component/tag" },
-                { title: "Progress 进度条", path: "/component/progress" },
-                { title: "Tree 树控件", path: "/component/tree" },
-                { title: "Table 表格", path: "/component/table" },
-                { title: "Pagination 分页", path: "/component/pagination" },
-                { title: "Badge 标记", path: "/component/badge" },
-                { title: "Avatar 头像", path: "/component/avatar" },
-                { title: "Skeleton 骨架屏", path: "/component/skeleton" },
-                { title: "Empty 空状态", path: "/component/empty" },
-                { title: "Descriptions 描述列表", path: "/component/descriptions" },
-                { title: "Result 结果", path: "/component/result" }
-            ]
-        },
-        {
-            title: "反馈组件",
-            children: [
-                { title: "Alert 警告", path: "/component/alert" },
-                { title: "Message 消息提示", path: "/component/message" },
-                { title: "MessageBox 消息弹窗", path: "/component/message-box" },
-                { title: "Notification 通知", path: "/component/notification" },
-                { title: "Dialog 对话框", path: "/component/dialog" },
-                { title: "Tooltip 文字提示", path: "/component/tooltip" },
-                { title: "Popover 弹出窗", path: "/component/popover" },
-                { title: "Popconfirm 气泡确认框", path: "/component/popconfirm" },
-                { title: "Loading 加载中", path: "/component/loading" }
-            ]
-        },
-        {
-            title: "导航",
-            children: [
-                { title: "Steps 步骤条", path: "/component/steps" },
-                { title: "Tabs 标签页", path: "/component/tabs" },
-                { title: "Breadcrumb 面包屑", path: "/component/breadcrumb" },
-                { title: "Dropdown 下拉菜单", path: "/component/dropdown" }
-            ]
-        },
-        {
-            title: "其他",
-            children: [
-                { title: "Collapse 折叠面板", path: "/component/collapse" },
-                { title: "Carousel 走马灯", path: "/component/carousel" },
-                { title: "Divider 分割线", path: "/component/divider" },
-                { title: "Timeline 时间线", path: "/component/timeline" },
-                { title: "Card 卡片", path: "/component/card" },
-                { title: "Backtop 回到顶部", path: "/component/backtop" },
-                { title: "Image 图片", path: "/component/image" },
-                { title: "Drawer 抽屉", path: "/component/drawer" }
-            ]
-        }
-    ];
+    menus = MENUS;
 
     mounted() {
         this.$watch(
@@ -125,15 +37,25 @@ export default class extends Component {
 
         this.model.currentRoutePath = router.route.value.fullPath;
     }
+    go(e: VNode.Event, path: string) {
+        if (path.startsWith("http")) return;
+        router.push(path);
+        e.preventDefault();
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .nav {
-    width: 240px;
+    width: 200px;
     height: 100%;
+    box-sizing: border-box;
     overflow-y: auto;
     border-right: solid 1px #dcdfe6;
+
+    &.inPanel {
+        border: none;
+    }
     ul {
         padding: 20px;
         list-style: none;
@@ -145,7 +67,7 @@ export default class extends Component {
             cursor: pointer;
 
             a {
-                padding: 10px 15px;
+                padding: 10px 0px;
                 font-size: 13px;
                 font-weight: 500;
                 display: inline-block;
@@ -163,7 +85,8 @@ export default class extends Component {
                 color: var(--jk-color-text-primary);
                 font-size: 15px;
                 font-weight: 600;
-                padding-left: 0;
+                padding: 20px 0 10px 0;
+
                 cursor: default;
             }
         }

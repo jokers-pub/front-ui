@@ -39,6 +39,10 @@ export default class extends Component<{
                 placement: "bottom-start",
                 boundariesPadding: 0
             });
+
+            this.$updatedRender(() => {
+                this.popperHandler.update();
+            });
         }
     }
 
@@ -97,12 +101,11 @@ export default class extends Component<{
         this.select?.component.hide();
     }
 
-    scrollToSelectedOption() {
-        let select = this.select?.component;
-
+    scrollToSelectedOption(value?: any) {
+        let select = this.select.component;
         if (!select) return;
 
-        let value = select.value;
+        value ??= select.value;
 
         //如果有选中值 && 非多选
         if (value && !select.props.multiple) {

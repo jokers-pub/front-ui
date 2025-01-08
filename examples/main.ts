@@ -1,10 +1,10 @@
 import App from "./app.joker";
-import { Router } from "@joker.front/router";
+import { Router, WebHistory } from "@joker.front/router";
 import { registerValidateAll } from "../src/index";
 import DemoRow from "./common/components/demo-row.joker";
 import DemoContainer from "./common/components/demo-container.joker";
 import { registerGlobalComponent } from "@joker.front/core";
-import { showLoading } from "./common/loading";
+import { hideLoading, showLoading } from "./common/loading";
 import Index from "./pages/index.joker";
 import Layout from "./common/layout.joker";
 
@@ -16,10 +16,11 @@ registerGlobalComponent({
 registerValidateAll();
 
 let router = new Router({
+    history: import.meta.define.routerType === "html5" ? new WebHistory() : undefined,
     routes: [
         {
             path: "/",
-            redirect: "/index"
+            component: Index
         },
         {
             path: "/index",
@@ -266,4 +267,7 @@ new App().$mount(document.getElementById("app"));
 
 router.beforeRouteCallbacks.add(() => {
     showLoading();
+});
+router.afterRouteCallbacks.add(() => {
+    hideLoading();
 });

@@ -30,7 +30,7 @@
             value="@displayValue"
             placeholder="@props.placeholder"
             disabled="@props.disabled"
-            size="@props.size"
+            size="@sizeClass"
             label="@props.label"
             error="@isError"
             @keydown="handleKeydown"

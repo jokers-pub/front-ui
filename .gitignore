@@ -5,3 +5,5 @@ yarn.lock
 dist
 dist_lowcode
 types
+.npmrc
+build/algoliasearch.ts

@@ -30,10 +30,7 @@
                         type="text"
                         autocomplete="off"
                         disabled="@props.disabled"
-                        style="@({
-                            width: model.inputLength / (model.inputWidth - 32) + '%',
-                            maxWidth: model.inputWidth - 42 + 'px'
-                        })"
+                        style="@({ width: model.inputLength / (model.inputWidth - 32) + '%', maxWidth: model.inputWidth - 42 + 'px' })"
                         @focus="handleFocus"
                         @input="debouncedInputChange"
                         @keydown="handleKeyDown"
@@ -53,7 +50,7 @@
             ref="input"
             placeholder="@model.placeholder"
             autocomplete="off"
-            size="@props.size"
+            size="@sizeClass"
             disabled="@props.disabled"
             readonly="@readonly"
             value="@inputText"
@@ -216,6 +213,11 @@ export default class extends FormCtrl<{
 
             this.resetInputHeight();
         });
+    }
+
+    focus() {
+        this.inputReferenceEl?.focus();
+        this.$getRef("reference")?.output?.focus();
     }
 
     selectedOptions: ShallowObserver<
@@ -449,6 +451,10 @@ export default class extends FormCtrl<{
 
             for (let op of options) {
                 op.model.hover = op === option;
+
+                if (op === option) {
+                    this.$getRef("dropdown")?.component.scrollToSelectedOption(op.props.value);
+                }
             }
         }
     }
@@ -573,6 +579,10 @@ export default class extends FormCtrl<{
                 this.model.selectedLabel = "";
             }
         }
+
+        this.$updatedRender(() => {
+            this.updatePopper();
+        });
     }
     handleKeyDown(e: VNode.Event) {
         this.model.inputLength = e.event.target.value.length * 15 + 20;

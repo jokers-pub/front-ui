@@ -29,8 +29,11 @@ export default class extends Component {
     height: 100vh;
     margin: 0 auto;
     overflow: hidden;
+    display: flex;
+
+    flex-direction: column;
     .middle {
-        height: 100%;
+        flex: 1;
         overflow: auto;
         position: relative;
     }

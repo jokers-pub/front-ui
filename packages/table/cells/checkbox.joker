@@ -16,8 +16,8 @@
 import { Component, VNode, combinedReply } from "@joker.front/core";
 import JokerCheckbox from "../../checkbox/checkbox.joker";
 import { componentName } from "../../utils";
-import { debounce, remove } from "@joker.front/shared";
-import { CHECK_ROW_KEY, ColumnType } from "../store";
+import { debounce } from "@joker.front/shared";
+import { ColumnType, Store } from "../store";
 
 export default class extends Component<{
     isHeader: boolean;
@@ -40,12 +40,14 @@ export default class extends Component<{
                 }
             );
 
-            this.setCheckBoxState(!!checked, false);
+            if (checked) {
+                this.setCheckBoxState(true, false);
+            }
         }
 
         if (this.props.isHeader) {
             this.$watch(
-                () => this.table.store.data.selectedRows,
+                () => this.store?.data.selectedRows,
                 () => {
                     this.initHeaderState();
                 }
@@ -57,6 +59,7 @@ export default class extends Component<{
         if (!this.$root) return;
 
         let state = this.getTableCheckState();
+
         this.model.headerChecked =
             (state.checkedCount > 0 || state.disabledCount > 0) && state.hasNotChcekedCount === 0;
         this.model.headerIndeterminate = state.checkedCount > 0 && state.hasNotChcekedCount > 0;
@@ -69,7 +72,7 @@ export default class extends Component<{
     }
 
     get selectedRowChecked() {
-        return this.props.row[CHECK_ROW_KEY];
+        return this.store?.data.selectedRows.has(this.props.row);
     }
 
     get disabled() {
@@ -81,15 +84,18 @@ export default class extends Component<{
 
         return false;
     }
-
+    get store(): Store {
+        return this.table?.store;
+    }
     getTableCheckState() {
         let checkedCount = 0;
         let hasNotChcekedCount = 0;
         let disabledCount = 0;
         if (this.table?.store?.data.originalTableData) {
-            this.table.store.data.originalTableData.forEach((n: any) => {
+            let selectedRows = this.store.data.selectedRows;
+            this.store?.data.originalTableData.forEach((n: any) => {
                 //选中或行禁用
-                if (n[CHECK_ROW_KEY]) {
+                if (selectedRows.has(n)) {
                     checkedCount++;
                 } else if (this.props.column?.disabledMethod?.(n)) {
                     disabledCount++;
@@ -107,15 +113,14 @@ export default class extends Component<{
     }
 
     setCheckBoxState(checked: boolean, notify = true) {
-        if (this.table?.store) {
+        let store = this.store;
+        if (store) {
             if (checked) {
-                if (!this.table.store.data.selectedRows.includes(this.props.row)) {
-                    this.table.store.data.selectedRows.push(this.props.row);
-                    this.props.row[CHECK_ROW_KEY] = true;
+                if (!store?.data.selectedRows.has(this.props.row)) {
+                    store?.data.selectedRows.add(this.props.row);
                 }
             } else {
-                remove(this.table.store.data.selectedRows, this.props.row);
-                this.props.row[CHECK_ROW_KEY] = false;
+                store?.data.selectedRows.delete(this.props.row);
             }
 
             notify && this.table?.triggerSelectedRowChange();
@@ -129,16 +134,14 @@ export default class extends Component<{
         if (this.table?.store?.data.originalTableData) {
             let isChange = false;
             combinedReply(() => {
-                this.table.store.data.originalTableData.forEach((n: any) => {
+                this.store?.data.originalTableData.forEach((n: any) => {
                     if (this.props.column?.disabledMethod?.(n)) return;
                     if (e.data) {
-                        if (!n[CHECK_ROW_KEY]) {
-                            this.table!.store.data.selectedRows.push(n);
-                            n[CHECK_ROW_KEY] = true;
+                        if (this.store?.data.selectedRows.has(n) === false) {
+                            this.store?.data.selectedRows.add(n);
                         }
                     } else {
-                        remove(this.table!.store.data.selectedRows, n);
-                        n[CHECK_ROW_KEY] = false;
+                        this.store.data.selectedRows.delete(n);
                     }
                     isChange = true;
                 });

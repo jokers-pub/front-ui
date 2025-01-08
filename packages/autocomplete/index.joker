@@ -9,7 +9,7 @@
             ref="input"
             placeholder="@props.placeholder"
             autocomplete="off"
-            size="@props.size"
+            size="@sizeClass"
             disabled="@props.disabled"
             value="@model.value"
             error="@isError"
@@ -20,7 +20,6 @@
             @keydown.enter.prevent="handleEnter"
             @keydown.esc.prevent="hide"
             @keydown.tab="hide"
-            @change="handleChange"
             @compositionstart="handleComposition(true)"
             @compositionend="handleComposition(false)">
             @if($sections.prepend) {
@@ -260,10 +259,6 @@ export default class extends FormCtrl<{
         this.model.hoverItemIndex = index;
     }
 
-    handleChange(e: VNode.Event) {
-        this.triggerChange(e.data);
-    }
-
     handleResize() {
         this.model.inputWidth = (<HTMLElement>this.inputContainerEl).getBoundingClientRect().width;
     }
@@ -298,6 +293,7 @@ export default class extends FormCtrl<{
         if (this.props.triggerChangeOnEnter) {
             this.triggerChange(this.$getRef("input").component.value);
         }
+        this.hide();
     }
 
     toggleMenu() {
@@ -344,7 +340,6 @@ export default class extends FormCtrl<{
         await this.$updatedRender();
         this.props.searchLoad?.(val, async (list) => {
             this.model.loading = false;
-            console.log(this.model.loading);
 
             this.model.list = list || [];
 

@@ -3,7 +3,7 @@
 <h3>快速上手</h3>
 <p>本指南讲解了如何在你的项目中使用 Joker UI。</p>
 <p>你可以引入整个 Joker UI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Joker UI。</p>
-<p>Joker UI 是使用<a href="www.jokers.pub" target="_blank">Joker Core</a>前端开发框架进行开发的一套 PC 端 UI 框架，可前往<a href="www.jokers.pub" target="_blank">Joker 官网</a>进行学习了解。</p>
+<p>Joker UI 是使用<a href="https://front.jokers.pub" target="_blank">Joker Core</a>前端开发框架进行开发的一套 PC 端 UI 框架，可前往<a href="https://jokers.pub" target="_blank">Joker 官网</a>进行学习了解。</p>
 <h3>安装及使用</h3>
 <pre><code class="language-ts">import App from &quot;./app.joker&quot;;
 import &quot;@joker.front/ui&quot;;

@@ -1,110 +1,280 @@
 <template>
-    <div class="topbar">
-        <h1>
-            <img src="https://static.jokers.pub/joker.png" />
-            Joker
-        </h1>
-        <ul class="menu">
-            @for(let menu of menus) {
-                <li class="@getClassName(menu.path)">
-                    <a href="@menu.path" target="@menu.target">@menu.title</a>
-                </li>
-            }
-        </ul>
-    </div>
+    <header>
+        <div class="topbar">
+            <h1 @click="handleGoHome">
+                <img src="https://static.jokers.pub/joker.png" />
+                Joker
+            </h1>
+            <div id="docsearch"></div>
+            <ul class="menu">
+                @for(let menu of menus) {
+                    <li class="@getClassName(menu.path) @menu.class">
+                        <a href="@menu.path" @click="go(menu.path)" target="@menu.target">@menu.title</a>
+                    </li>
+                }
+            </ul>
+            <a href="https://github.com/orgs/jokers-pub/repositories" target="_blank" class="github">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                    class="vt-social-link-icon">
+                    <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                </svg>
+            </a>
+            <div class="mini-nav-btn @(model.navIsOpen?'is-open':'')" @click="openNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-fix @(model.navIsOpen?'is-open':'')">
+                @for(let menu of menus) {
+                    <li>
+                        <a href="@menu.path" @click="go(menu.path)" target="@menu.target">@menu.title</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </header>
 </template>
 <script>
 import { Component, VNode } from "@joker.front/core";
 import { router } from "@joker.front/router";
+import docsearch from "@docsearch/js";
+import { MENUS } from "../menu";
+import "@docsearch/css";
 
 export default class extends Component {
     model = {
-        currentRoutePath: ""
+        navIsOpen: false
     };
     menus = [
-        { title: "首页", path: "#/index" },
-        { title: "组件", path: "#/component/layout" },
+        { title: "官网", path: "https://www.jokers.pub", target: "_blank" },
+        { title: "首页", path: "/index" },
+        { title: "组件", path: "/component/layout" },
         { title: "核心框架", path: "https://front.jokers.pub", target: "_blank" },
-        { title: "Joker 官网", path: "https://www.jokers.pub", target: "_blank" }
+        { title: "官方智能开发平台", class: "btn", path: "https://lowcode.jokers.pub", target: "_blank" }
     ];
 
-    mounted() {
-        this.$watch(
-            () => router.route.value,
-            (val) => {
-                this.model.currentRoutePath = val.fullPath;
-            }
-        );
-
-        this.model.currentRoutePath = router.route.value.fullPath;
-    }
-
     getClassName(path: string) {
+        if (path.startsWith("http")) return "";
         let currentRoute = router.route.value;
+
         return path.substring(1).split("/").filter(Boolean)[0] === currentRoute.fullPath.substring(1).split("/")[0]
             ? "active"
             : "";
+    }
+    go(e: VNode.Event, path: string) {
+        this.model.navIsOpen = false;
+        if (path.startsWith("http")) return;
+        router.push(path);
+        e.preventDefault();
+    }
+
+    created() {
+        this.$watch(
+            () => router.route.value,
+            () => {
+                this.setTitle();
+            }
+        );
+
+        this.setTitle();
+    }
+
+    mounted() {
+        this.$updatedRender(() => {
+            docsearch({
+                container: "#docsearch",
+                appId: "U6KJ6739FP",
+                indexName: "joker_ui",
+                apiKey: "aa7e584e01dfa193ec388bd99e005283",
+                insights: true,
+                placeholder: "搜索一下"
+            });
+        });
+    }
+
+    setTitle() {
+        for (let group of MENUS) {
+            for (let item of group.children) {
+                if (item.path === router.route.value.path) {
+                    document.title = `${group.title} - ${item.title} Joker-UI 网站快速成型工具`;
+                    return;
+                }
+            }
+        }
+
+        document.title = "Joker-UI 网站快速成型工具";
+    }
+    handleGoHome() {
+        router.push("/");
+    }
+    openNav() {
+        this.model.navIsOpen = !this.model.navIsOpen;
+
+        if (this.model.navIsOpen) {
+            window.document.body.style.overflow = "hidden";
+        } else {
+            window.document.body.style.overflow = "";
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.topbar {
-    height: 55px;
-    line-height: 55px;
-    font-size: 24px;
-    box-sizing: border-box;
+header {
     border-bottom: 1px solid #dcdfe6;
-    padding: 0 25px;
-    display: flex;
-    align-items: center;
 
-    h1 {
+    .topbar {
+        height: 55px;
+        line-height: 55px;
+        font-size: 24px;
+        box-sizing: border-box;
+        padding: 0 25px;
         display: flex;
         align-items: center;
-        margin: 0;
-        font-size: 26px;
-        font-weight: normal;
-        font-family: "Lucida Console", "Courier New", monospace;
-        img {
-            width: 30px;
-            height: 30px;
-            margin-right: 8px;
-        }
-    }
 
-    ul {
-        flex: 1;
-        display: flex;
-        justify-content: end;
-
-        li {
-            list-style: none;
-            font-size: 13px;
-            font-weight: 500;
-
-            box-sizing: content-box;
+        h1 {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            font-size: 26px;
+            font-weight: normal;
             cursor: pointer;
-            a {
-                padding: 0 12px;
-                display: inline-block;
-                height: 100%;
-                color: #1f2f3d;
-                text-decoration: none;
-                &:hover {
-                    color: var(--jk-color-primary);
+            font-family: "Lucida Console", "Courier New", monospace;
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+            }
+        }
+
+        > ul {
+            flex: 1;
+            display: flex;
+            justify-content: end;
+
+            li {
+                list-style: none;
+                font-size: 13px;
+                font-weight: 500;
+
+                box-sizing: content-box;
+                cursor: pointer;
+                a {
+                    padding: 0 12px;
+                    display: inline-block;
+                    height: 100%;
+                    color: #1f2f3d;
+                    text-decoration: none;
+                    &:hover {
+                        color: var(--jk-color-primary);
+                    }
+                }
+
+                &.active {
+                    border-bottom: solid 2px var(--jk-color-primary);
+                }
+
+                &.btn {
+                    a {
+                        background: var(--jk-color-primary);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .github {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            line-height: 1;
+            margin-left: 10px;
+        }
+
+        .mini-nav-btn {
+            width: 22px;
+            display: none;
+            margin-left: 10px;
+            cursor: pointer;
+            span {
+                height: 2px;
+                display: block;
+                background: var(--jk-color-text-regular);
+                transition: 0.3s ease-in-out;
+                &:first-child {
+                    transform: translateY(-4px);
+                }
+                &:last-child {
+                    transform: translateY(4px);
                 }
             }
 
-            &.active {
-                border-bottom: solid 2px var(--jk-color-primary);
+            &.is-open {
+                span {
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                    &:first-child {
+                        transform: translateY(-1px) rotate(45deg);
+                    }
+
+                    &:last-child {
+                        transform: translateY(-3px) rotate(-45deg);
+                    }
+                }
             }
         }
-    }
-
-    @media (max-width: 767px) {
-        ul {
+        .nav-fix {
             display: none;
+            position: fixed;
+            top: 63px;
+            left: 0;
+            right: 0;
+            padding: 0;
+            margin: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 2;
+
+            color: #484951;
+
+            li {
+                border-bottom: solid 1px #dcdfe6;
+                position: relative;
+                a {
+                    display: inline-block;
+
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+                &:after {
+                    content: ">";
+                    display: inline-block;
+                    position: absolute;
+                    top: 0px;
+                    right: 20px;
+                }
+            }
+
+            &.is-open {
+                display: block;
+            }
+        }
+        @media (max-width: 950px) {
+            h1 {
+                flex: 1;
+            }
+            ul {
+                display: none;
+            }
+            .mini-nav-btn {
+                display: block;
+            }
         }
     }
 }

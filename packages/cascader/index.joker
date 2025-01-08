@@ -1,7 +1,7 @@
 <template>
     <div
         ref="container"
-        class="@(['jk-cascader', props.size, model.showPanel && 'is-focus', props.class])"
+        class="@(['jk-cascader', sizeClass, model.showPanel && 'is-focus', props.class])"
         @click="toggleMenu"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave">
@@ -26,10 +26,7 @@
                         type="text"
                         autocomplete="off"
                         disabled="@props.disabled"
-                        style="@({
-                            width: model.inputLength / (model.inputWidth - 32) + '%',
-                            maxWidth: model.inputWidth - 42 + 'px'
-                        })"
+                        style="@({ width: model.inputLength / (model.inputWidth - 32) + '%', maxWidth: model.inputWidth - 42 + 'px' })"
                         @focus="handleFocus"
                         @input="debouncedInputChange"
                         @keydown="handleKeyDown"
@@ -46,7 +43,7 @@
             ref="input"
             placeholder="@model.placeholder"
             autocomplete="off"
-            size="@props.size"
+            size="@sizeClass"
             disabled="@props.disabled"
             readonly="@readonly"
             value="@inputText"

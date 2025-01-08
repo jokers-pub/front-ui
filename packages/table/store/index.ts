@@ -2,7 +2,6 @@ import { SectionType, Watcher, combinedReply, observer } from "@joker.front/core
 import { logger, remove, removeFilter } from "@joker.front/shared";
 import { LOGTAG } from "../../config";
 
-export const CHECK_ROW_KEY = Symbol("JOKER_UI_CHECK_ROW_KEY");
 export class Store {
     ready = false;
 
@@ -22,7 +21,7 @@ export class Store {
         };
         orderColumnsFlat: ColumnType[];
         leafColumnsFlat: ColumnType[];
-        selectedRows: any[];
+        selectedRows: Set<any>;
         sortable?: {
             key: string;
             order: SortableOrderType;
@@ -40,7 +39,7 @@ export class Store {
             leafColumns: { left: [], center: [], right: [] },
             orderColumnsFlat: [],
             leafColumnsFlat: [],
-            selectedRows: [],
+            selectedRows: new Set(),
             sortable: undefined,
             tableData: undefined,
             filter: [],
@@ -63,31 +62,20 @@ export class Store {
 
     originalTableDataWathcer?: Watcher;
     setData(data: any[]) {
-        this.originalTableDataWathcer?.destroy();
-        this.originalTableDataWathcer = undefined;
         combinedReply(() => {
             this.data.expandRows = [];
-            let dataChange = this.data.originalTableData === data;
 
             this.data.originalTableData = data || [];
 
             this.filterData();
 
             this.sortData();
-            if (dataChange && !this.table.props.dataChangeNotClearSelected) {
-                let newSelectedRows = [];
-                for (let row of this.data.originalTableData) {
-                    if (this.data.selectedRows.includes(row)) {
-                        row[CHECK_ROW_KEY] = true;
-                        newSelectedRows.push(row);
-                    } else {
-                        row[CHECK_ROW_KEY] = false;
-                    }
-                }
-                //只保留存在行
-                this.data.selectedRows = newSelectedRows;
 
-                this.table.triggerSelectedRowChange();
+            if (!this.table.props.dataChangeNotClearSelected) {
+                if (this.data.selectedRows.size) {
+                    this.data.selectedRows.clear();
+                    this.table.triggerSelectedRowChange();
+                }
             }
             if (this.table.props.defaultExpandAll) {
                 this.data.expandRows.push(...this.data.tableData);
@@ -97,15 +85,20 @@ export class Store {
         this.table.$updatedRender(() => {
             if (this.isDestroy) return;
             //由于在filterData时，对原数据解构，需要在这里挂载一层观察者用于对某一项变更时的更新同步
+            this.originalTableDataWathcer?.destroy();
             this.originalTableDataWathcer = new Watcher(
-                //做冻结监听，只为不做深层数据结构劫持
                 () =>
                     //仅做劫持
                     [...data],
 
-                async () => {
-                    await this.table.$updatedRender();
-                    this.setData(data);
+                () => {
+                    //fix：必须先销毁，不能等setData销毁，因为存在updateRender异步，在异步处理前会造成并发update
+                    this.originalTableDataWathcer?.destroy();
+                    this.table.$updatedRender(() => {
+                        if (this.isDestroy) return;
+
+                        this.setData(data);
+                    });
                 }
             );
         });

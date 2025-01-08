@@ -7,10 +7,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-form ref=&quot;form&quot; label-width=&quot;100px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;活动名称&quot;&gt;
+        &lt;jk-form-item label=&quot;活动名称&quot; tip=&quot;测试数据，请理解&quot;&gt;
             &lt;jk-input name=&quot;name&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动区域&quot; tip=&quot;测试数据，请理解&quot;&gt;
+        &lt;jk-form-item
+            label=&quot;活动区域&quot;
+            tip=&quot;测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试&quot;&gt;
             &lt;jk-select name=&quot;area&quot; placeholder=&quot;请选择活动区域&quot;&gt;
                 &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
                 &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;

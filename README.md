@@ -27,6 +27,8 @@ Joker UI is a UI component library that is meticulously crafted for front-end de
 
 ## Installation
 
+[Help Documentation](https://ui.jokers.pub)
+
 ### npm Installation
 
 Execute the following command in the terminal:
@@ -58,7 +60,7 @@ import "@joker.front/ui";
 import "@joker.front/ui/index.css";
 ```
 
-## Low-Code Visualization
+## Visual development Tools
 
 Currently, the UI library has been successfully migrated in the Joker Intelligent Development Platform and already supports low-code visual development capabilities. [Repository Address](https://lowcode.jokers.pub/#/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)
 
@@ -109,6 +111,8 @@ Joker UI 是一款专门为前端开发精心打造的 UI 组件库，其目的�
 
 ## 安装
 
+[帮助文档](https://ui.jokers.pub)
+
 ### npm 安装
 
 在终端中执行以下命令：
@@ -140,7 +144,7 @@ import "@joker.front/ui";
 import "@joker.front/ui/index.css";
 ```
 
-## 低代码可视化
+## 可视化工具
 
 目前该 UI 库已在 Joker 智能开发平台中迁移完毕，已支持低代码可视化开发能力 [仓库地址](https://lowcode.jokers.pub/#/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)
 

@@ -45,7 +45,9 @@ export class TreeNode {
 
         store.registerNode(this);
         let obNode = observer(this);
-        if (!store.option.lazy && nodeData) {
+        //非懒加载 || (懒加载 && 有静态子集)
+        if (nodeData && (!store.option.lazy || this.nodeData?.[this.store.option.childrenKey] !== undefined)) {
+            this.loaded = true;
             //append childrens
             this.appendChildrens(this.childrenDatas);
 
@@ -80,6 +82,10 @@ export class TreeNode {
 
     get disabled(): boolean {
         return !!(this.nodeData?.[this.store.option.disabledKey] || this.parent?.disabled);
+    }
+
+    get virtual(): boolean {
+        return !!this.nodeData?.[this.store.option.virtualKey];
     }
 
     get label() {
@@ -129,24 +135,17 @@ export class TreeNode {
             treeNode = new TreeNode(this.store, child, this);
         }
 
+        let childrens = this.nodeData[this.store.option.childrenKey];
         if (index === undefined) {
             this.children.push(treeNode);
-            if (
-                !this.store.option.lazy &&
-                this.nodeData &&
-                !this.nodeData[this.store.option.childrenKey]?.includes(child)
-            ) {
+            if (!this.store.option.lazy && this.nodeData && !childrens?.includes(child)) {
                 this.nodeData[this.store.option.childrenKey] ??= [];
                 this.nodeData[this.store.option.childrenKey].push(child);
             }
         } else {
             this.children.splice(index, 0, treeNode);
 
-            if (
-                !this.store.option.lazy &&
-                this.nodeData &&
-                !this.nodeData[this.store.option.childrenKey]?.includes(child)
-            ) {
+            if (!this.store.option.lazy && this.nodeData && !childrens?.includes(child)) {
                 this.nodeData[this.store.option.childrenKey] ??= [];
                 this.nodeData[this.store.option.childrenKey].splice(index, 0, child);
             }
@@ -163,7 +162,11 @@ export class TreeNode {
 
         let descendants = () => {
             if (deep) {
+                if (checked) {
+                    checked = this.children.filter((n) => !n.virtual).some((n) => !n.checked);
+                }
                 for (let child of this.children) {
+                    if (child.virtual) continue;
                     passValue ||= checked !== false;
 
                     let isCheck = child.disabled ? child.checked : passValue;

@@ -58,8 +58,8 @@
         }
     }
 </template><script>
-import { Component, VNode } from "@joker.front/core";
-import { CHECK_ROW_KEY, ColumnType, Store } from "./store";
+import { Component, VNode, combinedReply } from "@joker.front/core";
+import { ColumnType, Store } from "./store";
 import { componentName } from "../utils";
 import { remove } from "@joker.front/shared";
 import JokerCheckboxCell from "./cells/checkbox.joker";
@@ -146,7 +146,7 @@ export default class extends Component<{
         } else {
             result.push(this.table?.props.rowClassName);
         }
-        if (row[CHECK_ROW_KEY]) {
+        if (this.store.data.selectedRows.has(row)) {
             return "selected";
         }
         return result;
@@ -200,20 +200,19 @@ export default class extends Component<{
         if (!this.store.selectionColumn) {
             if (this.table?.props.select) {
                 if (this.table.props.multiple) {
-                    if (this.store.data.selectedRows.includes(row)) {
-                        remove(this.store.data.selectedRows, row);
-                        row[CHECK_ROW_KEY] = false;
+                    if (this.store.data.selectedRows.has(row)) {
+                        this.store.data.selectedRows.delete(row);
                     } else {
-                        this.store.data.selectedRows.push(row);
-                        row[CHECK_ROW_KEY] = true;
+                        this.store.data.selectedRows.add(row);
                     }
                 } else {
-                    if (this.store.data.selectedRows.includes(row)) {
-                        this.store.data.selectedRows.length = 0;
-                        row[CHECK_ROW_KEY] = false;
+                    if (this.store.data.selectedRows.has(row)) {
+                        this.store.data.selectedRows.clear();
                     } else {
-                        this.store.data.selectedRows = [row];
-                        row[CHECK_ROW_KEY] = true;
+                        combinedReply(() => {
+                            this.store.data.selectedRows.clear();
+                            this.store.data.selectedRows.add(row);
+                        });
                     }
                 }
 

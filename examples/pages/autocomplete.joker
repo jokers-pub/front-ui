@@ -9,7 +9,7 @@
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;激活即列出输入建议：&lt;/span&gt;
-            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot;&gt;&lt;/jk-autocomplete&gt;
+            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;输入后匹配输入建议：&lt;/span&gt;
@@ -17,12 +17,13 @@
                 placeholder=&quot;请输入内容&quot;
                 searchLoad=&quot;@querString&quot;
                 triggerOnFocus=&quot;@false&quot;
-                clearable&gt;&lt;/jk-autocomplete&gt;
+                clearable
+                @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;script&gt;
-import { Component } from &quot;@joker.front/core&quot;;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
 import { mock } from &quot;./mock&quot;;
 import { sleep } from &quot;@joker.front/shared&quot;;
 export default class extends Component {
@@ -41,6 +42,9 @@ export default class extends Component {
         }
 
         cb(result);
+    }
+    handleChange(e: VNode.Event&lt;string&gt;) {
+        alert(e.data);
     }
 }
 &lt;/script&gt;

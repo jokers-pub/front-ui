@@ -7,7 +7,8 @@
             model.focus && 'is-focus',
             props.border && 'is-border',
             value && 'is-checked',
-            props.indeterminate && 'is-indeterminate'
+            props.indeterminate && 'is-indeterminate',
+            props.class
         ])"
         role="checkbox"
         aria-checked="@value"

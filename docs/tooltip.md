@@ -64,4 +64,4 @@ Tooltip 组件提供了两个不同的主题：`dark`和`light`。
 | close-delay | 延迟隐藏，单位毫秒（防抖）                                            | Number  | —                                                                                                         | 200        |
 | manual      | 手动控制模式，设置为 true 后，mouseenter 和 mouseleave 事件将不会生效 | Boolean | —                                                                                                         | false      |
 | size        | 尺寸配置                                                              | string  | medium、small、mini                                                                                       |            |
-| maxWidth    | 最大宽度                                                              | string  | -                                                                                                         |            |
+| maxWidth    | 最大宽度                                                              | string  | -                                                                                                         | 300px      |

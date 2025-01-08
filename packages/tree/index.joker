@@ -47,6 +47,7 @@ export default class extends Component<
         disabledKey: "disabled",
         expandKey: "expand",
         labelKey: "label",
+        virtualKey: "isVirtualNode",
         indent: 18
     };
     model = {

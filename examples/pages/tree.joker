@@ -109,7 +109,7 @@ export default class extends Component {
         if (node.key === &quot;1&quot;) {
             callBack([
                 { label: &quot;选项1-1&quot;, id: &quot;1-1&quot; },
-                { label: &quot;选项2-2&quot;, id: &quot;2-2&quot; }
+                { label: &quot;选项2-2&quot;, id: &quot;2-2&quot;, isVirtualNode: true }
             ]);
         } else if (node.key === &quot;2-2&quot;) {
             callBack([
@@ -721,6 +721,13 @@ export default class extends Component {
 <td>string</td>
 <td>—</td>
 <td>—</td>
+</tr>
+<tr>
+<td>virtualKey</td>
+<td>高级用法：是否是虚拟节点，虚拟节点不参与到整个 checkbox 的选中过程，一般在开启选中时生效。</td>
+<td>string</td>
+<td>—</td>
+<td>isVirtualNode</td>
 </tr>
 <tr>
 <td>draggable</td>

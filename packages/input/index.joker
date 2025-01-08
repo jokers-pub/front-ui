@@ -122,6 +122,13 @@ export default class extends FormCtrl<{
         );
 
         this.$watch(
+            () => this.props.value,
+            () => {
+                this.triggerValidate();
+            }
+        );
+
+        this.$watch(
             () => this.props.type,
             () => {
                 this.setNativeInputValue();

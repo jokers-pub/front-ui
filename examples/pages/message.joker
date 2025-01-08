@@ -113,6 +113,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;打开提示&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open1&quot;&gt;同序列多次打开，只展示一个&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -123,6 +124,16 @@ export default class extends Component {
             center: true,
             message: &quot;这是一条提示&quot;
         });
+    }
+
+    open1() {
+        for (let i = 0; i &lt; 10; i++) {
+            Message({
+                id: &quot;test&quot;,
+                center: true,
+                message: &quot;这是一条提示&quot;
+            });
+        }
     }
 }
 &lt;/script&gt;

@@ -1,6 +1,5 @@
 <template>
-    <!-- TODO: 考虑 h5 nav元素 -->
-    <div class="jk-breadcrumb">
+    <div class="@(['jk-breadcrumb', props.class])">
         @RenderSection()
     </div>
 </template>
@@ -11,6 +10,7 @@ import { componentName } from "../utils";
 export default class extends Component<{
     separator: String;
     separatorClass: String;
+    class: string;
 }> {
     propsOption = {
         separator: "/"

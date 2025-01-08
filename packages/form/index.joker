@@ -270,6 +270,9 @@ export default class extends Component<{
                 cancal: false,
                 active: async function () {
                     let validateResut = await self._validateCtrlItem(ctrl).catch((e) => {
+                        if (e.type === "取消验证") {
+                            return;
+                        }
                         let errMsg = "检验失败:" + e?.message;
                         self.showError(name, errMsg);
 
