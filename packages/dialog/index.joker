@@ -130,11 +130,11 @@ export default class extends Component<{
             () => {
                 this.model.visible = false;
                 this.props.modal && PopupManager.close(this.id);
-                this.$trigger("closed");
 
                 if (this.props.destroyOnClose) {
                     this.model.isAppended = false;
                 }
+                this.$trigger("closed");
             },
             "animation"
         );
