@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "@joker.front/cli": "^1.1.135",
-        "@joker.front/core": "^1.3.66",
+        "@joker.front/core": "^1.3.67",
         "@joker.front/library-cli": "^1.2.14",
         "@joker.front/router": "^1.0.38",
         "@joker.front/shared": "^1.5.28",
