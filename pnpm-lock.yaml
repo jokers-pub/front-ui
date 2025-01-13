@@ -22,14 +22,14 @@ importers:
         specifier: ^1.1.135
         version: 1.1.135(sass@1.70.0)
       '@joker.front/core':
-        specifier: ^1.3.58
-        version: 1.3.58
+        specifier: ^1.3.66
+        version: 1.3.66
       '@joker.front/library-cli':
         specifier: ^1.2.14
         version: 1.2.14(eslint@8.56.0)
       '@joker.front/router':
         specifier: ^1.0.38
-        version: 1.0.38(@joker.front/core@1.3.58)
+        version: 1.0.38(@joker.front/core@1.3.66)
       '@joker.front/shared':
         specifier: ^1.5.28
         version: 1.5.28
@@ -389,8 +389,8 @@ packages:
       sass:
         optional: true
 
-  '@joker.front/core@1.3.58':
-    resolution: {integrity: sha512-TqSUtsureHIEagMFyhDi6RTgK0okBzw/UrgURFdikKEuYXc2aZ9r3yHIB5A4+LMSjhIfdK5MjFPpnhWjazr8TA==}
+  '@joker.front/core@1.3.66':
+    resolution: {integrity: sha512-c/1npRcOTsZsOCT+7Tr1PjWJ3W5DM82vBLWVxLpGYWwWaWzBrkYExeHEDPVI3p2qrKy5D0Pj7izRQGCTjJu47A==}
 
   '@joker.front/library-cli@1.2.14':
     resolution: {integrity: sha512-fwd9omXyzApB3m4TNKuIUptxcNv11Zcx2l+RpROQwHMyyvndfofRbx/N5iUFY652XFfmz+o/qhrrpyekxUVAXA==}
@@ -2758,7 +2758,7 @@ snapshots:
     optionalDependencies:
       sass: 1.70.0
 
-  '@joker.front/core@1.3.58':
+  '@joker.front/core@1.3.66':
     dependencies:
       '@joker.front/ast': 1.3.24
 
@@ -2782,9 +2782,9 @@ snapshots:
       - eslint
       - supports-color
 
-  '@joker.front/router@1.0.38(@joker.front/core@1.3.58)':
+  '@joker.front/router@1.0.38(@joker.front/core@1.3.66)':
     dependencies:
-      '@joker.front/core': 1.3.58
+      '@joker.front/core': 1.3.66
 
   '@joker.front/shared@1.5.28': {}
 
