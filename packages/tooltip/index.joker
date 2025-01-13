@@ -100,8 +100,6 @@ export default class extends Component<{
 
         this.setShowState(true);
 
-        await this.$updatedRender();
-
         this.showTooltip();
 
         this.popperHandler?.update();
@@ -133,7 +131,7 @@ export default class extends Component<{
 
         this.timeout = setTimeout(async () => {
             this.model.show = true;
-            await this.$updatedRender();
+
             let popperEl = this.$getRef("popper")?.output;
             if (this.firstElement && popperEl && !this.popperHandler) {
                 this.popperHandler = new Popper(this.firstElement, popperEl, {

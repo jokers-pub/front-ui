@@ -337,7 +337,6 @@ export default class extends FormCtrl<{
 
         this.model.loading = true;
 
-        await this.$updatedRender();
         this.props.searchLoad?.(val, async (list) => {
             this.model.loading = false;
 
@@ -345,7 +344,6 @@ export default class extends FormCtrl<{
 
             this.model.hoverItemIndex = -1;
 
-            await this.$updatedRender();
             if (this.model.list.length) {
                 this.updatePopper();
             } else {

@@ -223,11 +223,9 @@ export default class extends FormCtrl<{
             }
         );
 
-        this.$updatedRender(() => {
-            this.setSelected();
+        this.setSelected();
 
-            this.resetInputHeight();
-        });
+        this.resetInputHeight();
     }
 
     focus() {
@@ -449,7 +447,7 @@ export default class extends FormCtrl<{
         }
 
         this.inputReferenceEl.style.height = height;
-        await this.$updatedRender();
+
         this.updatePopper();
     });
 
@@ -526,7 +524,6 @@ export default class extends FormCtrl<{
 
     async refreshVisibleOptions() {
         this.model.visibleOptionCount = this.visibledOptions.length;
-        await this.$updatedRender();
 
         this.updatePopper();
 
@@ -624,9 +621,7 @@ export default class extends FormCtrl<{
             }
         }
 
-        this.$updatedRender(() => {
-            this.updatePopper();
-        });
+        this.updatePopper();
     }
     handleKeyDown(e: VNode.Event) {
         this.model.inputLength = e.event.target.value.length * 15 + 20;

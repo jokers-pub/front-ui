@@ -82,26 +82,21 @@ export class Store {
             }
         });
 
-        this.table.$updatedRender(() => {
-            if (this.isDestroy) return;
-            //由于在filterData时，对原数据解构，需要在这里挂载一层观察者用于对某一项变更时的更新同步
-            this.originalTableDataWathcer?.destroy();
-            this.originalTableDataWathcer = new Watcher(
-                () =>
-                    //仅做劫持
-                    [...data],
+        if (this.isDestroy) return;
+        //由于在filterData时，对原数据解构，需要在这里挂载一层观察者用于对某一项变更时的更新同步
+        this.originalTableDataWathcer?.destroy();
+        this.originalTableDataWathcer = new Watcher(
+            () =>
+                //仅做劫持
+                [...data],
 
-                () => {
-                    //fix：必须先销毁，不能等setData销毁，因为存在updateRender异步，在异步处理前会造成并发update
-                    this.originalTableDataWathcer?.destroy();
-                    this.table.$updatedRender(() => {
-                        if (this.isDestroy) return;
+            () => {
+                //fix：必须先销毁，不能等setData销毁，因为存在updateRender异步，在异步处理前会造成并发update
+                this.originalTableDataWathcer?.destroy();
 
-                        this.setData(data);
-                    });
-                }
-            );
-        });
+                this.setData(data);
+            }
+        );
     }
 
     getColumn(key: string) {

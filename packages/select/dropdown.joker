@@ -40,9 +40,7 @@ export default class extends Component<{
                 boundariesPadding: 0
             });
 
-            this.$updatedRender(() => {
-                this.popperHandler.update();
-            });
+            this.popperHandler.update();
         }
     }
 

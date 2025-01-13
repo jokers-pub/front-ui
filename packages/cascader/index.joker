@@ -321,7 +321,7 @@ export default class extends FormCtrl<{
 
             node.loading = false;
             node.loaded = true;
-            await this.$updatedRender();
+
             //不考虑lazy下的数据首次反显
             //存在多层级接口调用，不建议该方案
             onFullfiled?.();
@@ -408,7 +408,6 @@ export default class extends FormCtrl<{
     }
 
     async resetInputHeight() {
-        await this.$updatedRender();
         if (!this.$root) return;
         let height = this.initialInputHeight + "px";
 
@@ -484,7 +483,6 @@ export default class extends FormCtrl<{
 
         this.dropMenuShowOnFocus = true;
 
-        await this.$updatedRender();
         if (this.props.filterable) {
             if (!this.$getRef("reference")?.output.value.length) {
                 this.model.placeholder = this.model.selectedLabel || this.props.placeholder!;

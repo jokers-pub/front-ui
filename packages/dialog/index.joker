@@ -94,7 +94,6 @@ export default class extends Component<{
             this.model.isAppended = true;
         }
 
-        await this.$updatedRender();
         this.model.visible = true;
         this.props.modal &&
             PopupManager.open(this.id, {
