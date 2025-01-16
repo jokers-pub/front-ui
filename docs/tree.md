@@ -63,10 +63,11 @@
 | indent                | 相邻级节点间的水平缩进，单位为像素                                                                               | number                  | —      | 16            |
 | icon-class            | 自定义树节点的图标                                                                                               | string                  | -      | -             |
 | lazy                  | 是否懒加载子节点，需与 load 方法结合使用                                                                         | boolean                 | —      | false         |
-| labelKey              | 指定节点标签为节点对象的某个属性值                                                                               | string                  | —      | —             |
-| childrenKey           | 指定子树为节点对象的某个属性值                                                                                   | string                  | —      | —             |
-| disabledKey           | 指定节点选择框是否禁用为节点对象的某个属性值                                                                     | string                  | —      | —             |
-| isLeafKey             | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效                                                         | string                  | —      | —             |
+| labelKey              | 指定节点标签为节点对象的某个属性值                                                                               | string                  | —      | label         |
+| childrenKey           | 指定子树为节点对象的某个属性值                                                                                   | string                  | —      | children      |
+| disabledKey           | 指定节点选择框是否禁用为节点对象的某个属性值                                                                     | string                  | —      | disabled      |
+| expandKey             | 指定节点是否默认展开对象的某个属性值                                                                             | string                  | —      | expand        |
+| isLeafKey             | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效                                                         | string                  | —      | isLeaf        |
 | virtualKey            | 高级用法：是否是虚拟节点，虚拟节点不参与到整个 checkbox 的选中过程，一般在开启选中时生效。                       | string                  | —      | isVirtualNode |
 | draggable             | 是否开启拖拽功能                                                                                                 | boolean                 | —      | —             |
 | checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —             |
