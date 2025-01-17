@@ -1,6 +1,12 @@
 <template>
     <div
-        class="@(['jk-notification', props.customClass, horizontalProperty, (typeClass || props.iconClass) && 'is-with-icon'])"
+        class="@([
+            'jk-notification',
+            props.customClass,
+            horizontalProperty,
+            (typeClass || props.iconClass) && 'is-with-icon',
+            props.onClick && 'can-click'
+        ])"
         style="@positionStyle"
         role="alert"
         ref="contianer"
@@ -205,6 +211,14 @@ export default class extends Component<PropsOption> {
             &:hover {
                 color: var(--jk-color-text-regular);
             }
+        }
+    }
+
+    &.can-click {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: var(--jk-box-shadow-base);
         }
     }
 
