@@ -30,6 +30,10 @@
         "dist_lowcode",
         "README.md"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jokers-pub/front-ui.git"
+    },
     "scripts": {
         "demo": "joker --open=/examples/index.html",
         "algoliasearch": "ts-node build/algoliasearch.ts",
