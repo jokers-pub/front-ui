@@ -46,8 +46,11 @@
         "release:prod": "npm run build:lowcode && npm run build:prod && npm publish --access public --registry https://registry.npmjs.org/"
     },
     "devDependencies": {
-        "@joker.front/cli": "^1.1.135",
+        "@docsearch/css": "^3.8.0",
+        "@docsearch/js": "^3.8.0",
         "@joker.front/core": "^1.3.67",
+        "algoliasearch": "^5.17.1",
+        "@joker.front/cli": "^1.1.135",
         "@joker.front/library-cli": "^1.2.14",
         "@joker.front/router": "^1.0.38",
         "@joker.front/shared": "^1.5.28",
@@ -66,9 +69,5 @@
         "ts-node": "^10.9.1",
         "typescript": "^5.0.4"
     },
-    "dependencies": {
-        "@docsearch/css": "^3.8.0",
-        "@docsearch/js": "^3.8.0",
-        "algoliasearch": "^5.17.1"
-    }
+    "dependencies": {}
 }
