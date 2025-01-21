@@ -92,9 +92,11 @@
                 }
                 else if(model.visibleOptionCount === 0) {
                     @if(props.allowCreate) {
-                        <p class="create-item" @click="handleCreateNewItem">
-                            <i class="jk-icon-plus" />@(props.createText)
-                        </p>
+                        @if(!props.multiple) {
+                            <p class="create-item" @click="handleCreateNewItem">
+                                <i class="jk-icon-plus" />@(props.createText)
+                            </p>
+                        }
                     }
                     else {
                         @if($sections.empty) {
@@ -551,6 +553,8 @@ export default class extends FormCtrl<{
         this.navigateOption(direction);
     }
     handleEnter() {
+        if (this.model.isOnComposition) return;
+
         let hoverItem = this.options.find((m) => {
             return m.component.model.hover;
         });
@@ -561,7 +565,7 @@ export default class extends FormCtrl<{
             return;
         }
 
-        if (this.props.multiple && this.props.allowCreate) {
+        if (this.props.multiple && this.props.allowCreate && this.model.queryLabel) {
             this.selectOption({
                 props: {
                     value: this.model.queryLabel
