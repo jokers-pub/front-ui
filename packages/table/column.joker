@@ -85,10 +85,24 @@ export default class extends Component<ColumnType> {
 
     mounted() {
         let parent = this.parent!;
+        let table = this.table;
+
+        let columns = parent.find(
+            (n) => {
+                return n instanceof VNode.Component && n.component.name === componentName("table-column");
+            },
+            (n) => {
+                //跳过嵌套table
+                if (n instanceof VNode.Component && n.component.name === componentName("table")) return false;
+            }
+        );
+
+        let index = columns.indexOf(this.$root);
 
         this.store?.appendColumn(
             this.columnConfig,
-            parent.component === this.table ? undefined : parent.component.columnConfig
+            parent.component === table ? undefined : parent.component.columnConfig,
+            index
         );
     }
 

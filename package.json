@@ -48,7 +48,7 @@
     "devDependencies": {
         "@docsearch/css": "^3.8.0",
         "@docsearch/js": "^3.8.0",
-        "@joker.front/core": "^1.3.67",
+        "@joker.front/core": "^1.3.68",
         "algoliasearch": "^5.17.1",
         "@joker.front/cli": "^1.1.135",
         "@joker.front/library-cli": "^1.2.14",
