@@ -92,11 +92,9 @@
                 }
                 else if(model.visibleOptionCount === 0) {
                     @if(props.allowCreate) {
-                        @if(!props.multiple) {
-                            <p class="create-item" @click="handleCreateNewItem">
-                                <i class="jk-icon-plus" />@(props.createText)
-                            </p>
-                        }
+                        <p class="create-item" @click="handleCreateNewItem">
+                            <i class="jk-icon-plus" />@(props.createText)
+                        </p>
                     }
                     else {
                         @if($sections.empty) {
@@ -259,7 +257,6 @@ export default class extends FormCtrl<{
             this.props.allowCreate &&
             this.props.multiple &&
             this.props.filterable &&
-            this.model.queryLabel &&
             this.model.visibleOptionCount === 0
         ) {
             return false;
