@@ -17,6 +17,10 @@
         "./package.json": "./package.json",
         "./index.css": "./dist/index.css"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jokers-pub/front-ui.git"
+    },
     "homepage": "https://ui.jokers.pub",
     "keywords": [
         "joker",
