@@ -152,6 +152,8 @@ export default class extends Component<{
 
         this.timeout = setTimeout(async () => {
             this.model.show = true;
+            //等待组件加载
+            await this.$nextUpdatedRender();
 
             let popperEl = this.$getRef("popper")?.output;
             if (this.firstElement && popperEl && !this.popperHandler) {
