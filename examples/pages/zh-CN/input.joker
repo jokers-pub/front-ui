@@ -142,7 +142,7 @@ p {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Input 属性</h3>
+<h3>Input Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -289,7 +289,7 @@ p {
 </tr>
 </tbody>
 </table>
-<h3>Input section</h3>
+<h3>Input Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -316,7 +316,7 @@ p {
 </tr>
 </tbody>
 </table>
-<h3>Input 事件</h3>
+<h3>Input Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -353,7 +353,7 @@ p {
 </tr>
 </tbody>
 </table>
-<h3>Input 方法</h3>
+<h3>Input Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>

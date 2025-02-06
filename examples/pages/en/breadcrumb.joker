@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Breadcrumb 面包屑</h2>
-<p>显示页面的路径，返回之前页面</p>
-<h3>基础用法</h3>
-<p>基础的面包屑用法。</p>
+<h2>Breadcrumb</h2>
+<p>Displays the page path for returning to previous pages.</p>
+<h3>Basic Usage</h3>
+<p>Basic usage of the breadcrumb.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -30,7 +30,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>图标分隔符</h3>
+<h3>Icon Separator</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -57,7 +57,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>链接功能</h3>
+<h3>Link Functionality</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -101,7 +101,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>包含图标</h3>
+<h3>Include Icons</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -158,24 +158,24 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>separator</td>
-<td>分隔符</td>
+<td>Separator</td>
 <td>string</td>
 <td>-</td>
 <td>&quot;/&quot;</td>
 </tr>
 <tr>
 <td>separatorClass</td>
-<td>图标分隔符 class</td>
+<td>Class for the icon separator</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>

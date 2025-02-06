@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Alert 警告</h2>
-<p>用于页面中展示重要的提示信息。</p>
-<h3>基础用法</h3>
-<p>页面中的非浮层元素，不会自动消失。</p>
-<p>Alert 组件提供四种主题，由 type 属性指定，默认值为 info。</p>
+<h2>Alert</h2>
+<p>Used to display important prompt information on the page.</p>
+<h3>Basic Usage</h3>
+<p>It is a non-floating element on the page and will not disappear automatically.
+The Alert component provides four themes, specified by the <code>type</code> attribute, with the default value being <code>info</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
@@ -14,9 +14,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>主题</h3>
-<p>Alert 组件提供了两个不同的主题：light 和 dark。</p>
-<p>通过设置 effect 属性来改变主题，默认为 light。</p>
+<h3>Themes</h3>
+<p>The Alert component offers two different themes: <code>light</code> and <code>dark</code>.
+Change the theme by setting the <code>effect</code> attribute, with the default being <code>light</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
@@ -26,9 +26,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>自定义关闭按钮</h3>
-<p>自定义关闭按钮为文字或其他符号。</p>
-<p>在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。closable 属性决定是否可关闭，接受 boolean，默认为 true。你可以设置 closeText 属性来代替右侧的关闭图标，注意：closeText 必须为文本。设置 close 事件来设置关闭时的回调。</p>
+<h3>Custom Close Button</h3>
+<p>Customize the close button to be text or other symbols.
+In the Alert component, you can set whether it is closable, the text of the close button, and the callback function when closing. The <code>closable</code> attribute determines whether it is closable, accepting a <code>boolean</code> value, with the default being <code>true</code>. You can set the <code>closeText</code> attribute to replace the close icon on the right. Note: <code>closeText</code> must be text. Set the <code>close</code> event to set the callback when closing.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-alert title=&quot;不可关闭的 alert&quot; type=&quot;success&quot; closable=&quot;@false&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
@@ -47,9 +47,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>带有 icon</h3>
-<p>表示某种状态时提升可读性。</p>
-<p>通过设置 showIcon 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。</p>
+<h3>With Icon</h3>
+<p>Improve readability when indicating a certain state.
+Display the icon of the Alert by setting the <code>showIcon</code> attribute, which can more effectively show your display intention to users.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
@@ -59,8 +59,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>文字居中</h3>
-<p>使用 center 属性让文字水平居中。</p>
+<h3>Center-aligned Text</h3>
+<p>Use the <code>center</code> attribute to center the text horizontally.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; center showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
@@ -70,9 +70,9 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>带有辅助性文字介绍</h3>
-<p>包含标题和内容，解释更详细的警告。</p>
-<p>除了必填的 title 属性外，你可以设置 description 属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。</p>
+<h3>With Supplementary Text Introduction</h3>
+<p>Contains a title and content to explain the warning in more detail.
+In addition to the required <code>title</code> attribute, you can set the <code>description</code> attribute to help with a better introduction, which we call supplementary text. The supplementary text can only hold single-line text and will be displayed with automatic line breaks.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-alert
@@ -83,8 +83,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>带有 icon 和辅助性文字介绍</h3>
-<p>最后，这是一个同时具有 icon 和辅助性文字的样例。</p>
+<h3>With Icon and Supplementary Text Introduction</h3>
+<p>Finally, this is an example with both an icon and supplementary text.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -133,119 +133,119 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>Title</td>
 <td>string</td>
 <td>-</td>
 <td>—</td>
 </tr>
 <tr>
 <td>type</td>
-<td>主题</td>
+<td>Theme</td>
 <td>string</td>
 <td>success/warning/info/error</td>
 <td>info</td>
 </tr>
 <tr>
 <td>description</td>
-<td>辅助性文字。也可通过默认 section 传入</td>
+<td>Supplementary text. Can also be passed in through the default section</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>closable</td>
-<td>是否可关闭</td>
+<td>Whether it is closable</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>center</td>
-<td>文字是否居中</td>
+<td>Whether the text is centered</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>closeText</td>
-<td>关闭按钮自定义文本</td>
+<td>Custom text for the close button</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>showIcon</td>
-<td>是否显示图标</td>
+<td>Whether to display the icon</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>更改显示图标</td>
+<td>Change the displayed icon</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>effect</td>
-<td>选择提供的主题</td>
+<td>Select the provided theme</td>
 <td>string</td>
 <td>light/dark</td>
 <td>light</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>close</td>
-<td>关闭 alert 时触发的事件</td>
+<td>Event triggered when closing the alert</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>名称</th>
-<th>描述</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>-</td>
-<td>描述</td>
+<td>Description</td>
 </tr>
 <tr>
 <td>title</td>
-<td>标题的内容</td>
+<td>Content of the title</td>
 </tr>
 </tbody>
 </table>

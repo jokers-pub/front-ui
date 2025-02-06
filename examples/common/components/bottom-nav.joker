@@ -1,11 +1,58 @@
 <template>
-    <div class="bottom-nav">本章结束</div>
+    <div class="bottom-nav">
+        @if(menus.length > 1) {
+            <div class="left">
+                @if(prev) {
+                    <p>
+                        @(lang === "zh-CN" ? "上一篇" : "Previous")
+                    </p>
+                    <a href="@prev.path">@prev.title</a>
+                }
+            </div>
+            <div class="right">
+                @if(next) {
+                    <p>
+                        @(lang === "zh-CN" ? "下一篇" : "Next")
+                    </p>
+                    <a href="@next.path">@next.title</a>
+                }
+            </div>
+        }
+    </div>
 </template>
 <script>
 import { Component } from "@joker.front/core";
+import { router } from "@joker.front/router";
+import { MENUS_ZH_CN, MENUS_EN } from "../datas/menu";
+import { getLang } from "../utils";
 
 export default class extends Component {
-    model = {};
+    menus: any[] = [];
+    prev: any;
+    next: any;
+
+    lang = getLang();
+    created() {
+        let currentRoutePath = router.route.value.fullPath;
+
+        this.setMenus();
+
+        let index = this.menus.findIndex((n) => n.path === currentRoutePath);
+        if (index > -1) {
+            this.prev = this.menus[index - 1];
+        }
+
+        if (index !== this.menus.length - 1) {
+            this.next = this.menus[index + 1];
+        }
+    }
+    setMenus() {
+        let menusData = getLang() === "zh-CN" ? MENUS_ZH_CN : MENUS_EN;
+
+        for (let group of menusData) {
+            this.menus.push(...group.children);
+        }
+    }
 }
 </script>
 
@@ -17,5 +64,19 @@ export default class extends Component {
     padding-bottom: 100px;
     font-size: 12px;
     color: var(--jk-color-text-secondary);
+
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    p {
+        font-size: 12px;
+    }
+    .left {
+        text-align: left;
+    }
+
+    .right {
+        text-align: right;
+    }
 }
 </style>

@@ -159,7 +159,7 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Card 参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -201,7 +201,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Card 区块</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

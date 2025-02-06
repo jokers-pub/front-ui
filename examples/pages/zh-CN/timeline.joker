@@ -228,7 +228,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Timeline-Item section</h3>
+<h3>Timeline-Item Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

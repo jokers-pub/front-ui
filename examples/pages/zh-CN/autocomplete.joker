@@ -145,7 +145,7 @@ p.addr {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>Autocomplete Attributes</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -201,7 +201,7 @@ p.addr {
 </tr>
 </tbody>
 </table>
-<h3>Autocomplete Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

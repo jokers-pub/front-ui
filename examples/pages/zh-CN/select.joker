@@ -396,7 +396,7 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Select 属性</h3>
+<h3>Select Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -557,7 +557,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Select 事件</h3>
+<h3>Select Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -579,7 +579,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Select section</h3>
+<h3>Select Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -598,7 +598,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Option Group 属性</h3>
+<h3>Option Group Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -626,7 +626,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Option 属性</h3>
+<h3>Option Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>

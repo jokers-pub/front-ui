@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Switch 开关</h2>
-<p>表示两种相互对立的状态间的切换，多用于触发「开/关」。</p>
-<h3>基础用法</h3>
-<p>绑定 value 到一个 Boolean 类型的变量。可以使用 activeColor 属性与 inactiveColor 属性来设置开关的背景色。</p>
+<h2>Switch</h2>
+<p>Represents the switch between two mutually opposing states, often used to trigger &quot;on/off&quot;.</p>
+<h3>Basic Usage</h3>
+<p>Bind <code>value</code> to a variable of the <code>Boolean</code> type. You can use the <code>activeColor</code> and <code>inactiveColor</code> attributes to set the background color of the switch.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-switch value=&quot;@model.value&quot; activeColor=&quot;#13ce66&quot; inactiveColor=&quot;#ff4949&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-switch&gt;
@@ -27,8 +27,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>禁用状态</h3>
-<p>设置 disabled 属性，接受一个 Boolean，设置 true 即可禁用。</p>
+<h3>Disabled State</h3>
+<p>Set the <code>disabled</code> attribute, which accepts a <code>Boolean</code>. Setting it to <code>true</code> disables the switch.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;label class=&quot;demo2&quot;&gt;&lt;jk-switch value=&quot;@true&quot; disabled&gt;&lt;/jk-switch&gt;&lt;/label&gt;
@@ -41,8 +41,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>文字描述</h3>
-<p>使用 activeText 属性与 inactiveText 属性来设置开关的文字描述。</p>
+<h3>Text Description</h3>
+<p>Use the <code>activeText</code> and <code>inactiveText</code> attributes to set the text description of the switch.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;label class=&quot;demo&quot;&gt;
@@ -81,8 +81,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>扩展的 value 类型</h3>
-<p>设置 activeValue 和 inactiveValue 属性，接受 Boolean, String 或 Number 类型的值。</p>
+<h3>Extended Value Types</h3>
+<p>Set the <code>activeValue</code> and <code>inactiveValue</code> attributes, which can accept values of the <code>Boolean</code>, <code>String</code>, or <code>Number</code> type.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip content=&quot;@model.value&quot; placement=&quot;top&quot;&gt;
@@ -114,141 +114,141 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>Switch 参数</h3>
+<h3>Switch Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>绑定值</td>
+<td>Bound value</td>
 <td>string / number / boolean</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether to disable</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>width</td>
-<td>switch 的宽度（像素）</td>
+<td>The width of the switch (in pixels)</td>
 <td>number</td>
 <td>—</td>
 <td>40</td>
 </tr>
 <tr>
 <td>activeIconClass</td>
-<td>switch 打开时所显示图标的类名，设置此项会忽略 activeText</td>
+<td>The class name of the icon displayed when the switch is on. Setting this will ignore <code>activeText</code></td>
 <td>string</td>
 <td></td>
 <td>—</td>
 </tr>
 <tr>
 <td>inactiveIconClass</td>
-<td>switch 关闭时所显示图标的类名，设置此项会忽略 inactiveText</td>
+<td>The class name of the icon displayed when the switch is off. Setting this will ignore <code>inactiveText</code></td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>activeText</td>
-<td>switch 打开时的文字描述</td>
+<td>The text description when the switch is on</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>inactiveText</td>
-<td>switch 关闭时的文字描述</td>
+<td>The text description when the switch is off</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>activeValue</td>
-<td>switch 打开时的值</td>
+<td>The value when the switch is on</td>
 <td>boolean / string / number</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>inactiveValue</td>
-<td>switch 关闭时的值</td>
+<td>The value when the switch is off</td>
 <td>boolean / string / number</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>activeColor</td>
-<td>switch 打开时的背景色</td>
+<td>The background color when the switch is on</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>inactiveColor</td>
-<td>switch 关闭时的背景色</td>
+<td>The background color when the switch is off</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>name</td>
-<td>switch 对应的 name 属性</td>
+<td>The <code>name</code> attribute corresponding to the switch</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<h3>Switch 事件</h3>
+<h3>Switch Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>switch 状态发生变化时的回调函数</td>
-<td>变换后的值</td>
+<td>The callback function when the state of the switch changes</td>
+<td>The changed value</td>
 </tr>
 </tbody>
 </table>
-<h3>Switch 方法</h3>
+<h3>Switch Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>focus</td>
-<td>使 Switch 获取焦点</td>
+<td>Make the Switch gain focus</td>
 <td>-</td>
 </tr>
 </tbody>

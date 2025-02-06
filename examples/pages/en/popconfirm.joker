@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Popconfirm 气泡确认框</h2>
-<p>点击元素，弹出气泡确认框。</p>
-<h3>基础用法</h3>
-<p>Popconfirm 的属性与 Popover 很类似，因此对于重复属性，请参考 Popover 的文档，在此文档中不做详尽解释，在 Popconfirm 中，只有 <code>title</code> 属性可用。</p>
+<h2>Popconfirm</h2>
+<p>A pop-up bubble confirmation box appears when you click an element.</p>
+<h3>Basic Usage</h3>
+<p>The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the <code>title</code> attribute is available.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popconfirm title=&quot;你确定要删除此数据吗？&quot; @cancel=&quot;cancel&quot; @confirm=&quot;confirm&quot;&gt;
@@ -26,8 +26,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>自定义</h3>
-<p>可以在 Popconfirm 中自定义内容。</p>
+<h3>Customization</h3>
+<p>You can customize the content in Popconfirm.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popconfirm
@@ -46,45 +46,45 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>Title</td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>confirm-button-text</td>
-<td>确认按钮文字</td>
+<td>Text of the confirmation button</td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>cancel-button-text</td>
-<td>取消按钮文字</td>
+<td>Text of the cancel button</td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>confirm-button-type</td>
-<td>确认按钮类型</td>
+<td>Type of the confirmation button</td>
 <td>String</td>
 <td>—</td>
 <td>Primary</td>
 </tr>
 <tr>
 <td>cancel-button-type</td>
-<td>取消按钮类型</td>
+<td>Type of the cancel button</td>
 <td>String</td>
 <td>—</td>
 <td>Text</td>
@@ -98,25 +98,25 @@ export default class extends Component {
 </tr>
 <tr>
 <td>icon-color</td>
-<td>Icon 颜色</td>
+<td>Color of the Icon</td>
 <td>String</td>
 <td>—</td>
 <td>#f90</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>触发 Popconfirm 显示的 HTML 元素</td>
+<td>The HTML element that triggers the display of Popconfirm</td>
 </tr>
 </tbody>
 </table>
@@ -124,20 +124,20 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>confirm</td>
-<td>点击确认按钮时触发</td>
+<td>Triggered when the confirmation button is clicked</td>
 <td>—</td>
 </tr>
 <tr>
 <td>cancel</td>
-<td>点击取消按钮时触发</td>
+<td>Triggered when the cancel button is clicked</td>
 <td>—</td>
 </tr>
 </tbody>

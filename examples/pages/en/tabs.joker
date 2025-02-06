@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Tabs 标签页</h2>
-<p>分隔内容上有关联但属于不同类别的数据集合。</p>
-<h3>基本用法</h3>
-<p>基础的、简洁的标签页。</p>
+<h2>Tabs</h2>
+<p>Separate data sets that are related in content but belong to different categories.</p>
+<h3>Basic Usage</h3>
+<p>Basic and simple tab pages.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tabs&gt;
@@ -32,8 +32,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>位置</h3>
-<p>可通过<code>position</code>设置标签的位置。</p>
+<h3>Position</h3>
+<p>You can set the position of the tabs through <code>position</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -82,8 +82,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>自定义标签页标题</h3>
-<p>可通过<code>jk-tab-panel</code>中的<strong>label</strong>区块自定义标签标题。</p>
+<h3>Custom Tab Page Title</h3>
+<p>You can customize the tab title through the <strong>label</strong> section in <code>jk-tab-panel</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tabs&gt;
@@ -116,8 +116,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>卡片风格</h3>
-<p>可通过配置<code>card</code>启用卡片风格。</p>
+<h3>Card Style</h3>
+<p>You can enable the card style by configuring <code>card</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -170,63 +170,63 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>默认选中 tab 值，对应 tab-panel 中的 name</td>
+<td>The default selected tab value, corresponding to the <code>name</code> in <code>tab-panel</code></td>
 <td>string</td>
 <td>-</td>
 <td>—</td>
 </tr>
 <tr>
 <td>card</td>
-<td>卡片主题</td>
+<td>Card theme</td>
 <td>boolean</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>position</td>
-<td>tab 位置</td>
+<td>Tab position</td>
 <td>string</td>
 <td>top/bottom/right/left</td>
 <td>top</td>
 </tr>
 <tr>
 <td>fullHeight</td>
-<td>启用后内容区域高度会自动撑满</td>
+<td>When enabled, the height of the content area will be automatically filled</td>
 <td>boolean</td>
 <td>-</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>当选中 tab 变更时触发</td>
-<td>tab 项信息</td>
+<td>Triggered when the selected tab changes</td>
+<td>Tab item information</td>
 </tr>
 <tr>
 <td>click</td>
-<td>当 tab 点击时触发</td>
-<td>tab 项信息</td>
+<td>Triggered when a tab is clicked</td>
+<td>Tab item information</td>
 </tr>
 </tbody>
 </table>

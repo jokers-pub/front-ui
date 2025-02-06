@@ -249,7 +249,7 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>Checkbox 参数</h3>
+<h3>Checkbox Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -319,7 +319,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Checkbox 事件</h3>
+<h3>Checkbox Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -336,7 +336,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Checkbox-button 属性</h3>
+<h3>Checkbox-button Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -378,7 +378,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Checkbox-button 事件</h3>
+<h3>Checkbox-button Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -395,7 +395,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Checkbox-group 属性</h3>
+<h3>Checkbox-group Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -444,7 +444,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Checkbox-group 事件</h3>
+<h3>Checkbox-group Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>

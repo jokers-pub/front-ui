@@ -1,19 +1,19 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Pagination 分页</h2>
-<p>当数据量过多时，使用分页分解数据。</p>
-<h3>基础用法</h3>
-<p>设置<code>layout</code>，表示需要显示的内容，用逗号分隔，布局元素会依次显示。</p>
+<h2>Pagination</h2>
+<p>When there is too much data, use pagination to break down the data.</p>
+<h3>Basic Usage</h3>
+<p>Set <code>layout</code> to indicate the content to be displayed, separated by commas. The layout elements will be displayed in sequence.</p>
 <ul>
-<li><code>prev</code>表示上一页</li>
-<li><code>next</code>为下一页</li>
-<li><code>pager</code>表示页码列表，</li>
-<li><code>jumper</code>跳转指定页码</li>
-<li><code>total</code>表示总条目数</li>
-<li><code>sizes</code>用于设置每页显示的页码数量</li>
+<li><code>prev</code> represents the previous page.</li>
+<li><code>next</code> is the next page.</li>
+<li><code>pager</code> represents the page number list.</li>
+<li><code>jumper</code> is for jumping to a specified page number.</li>
+<li><code>total</code> represents the total number of items.</li>
+<li><code>sizes</code> is used to set the number of page numbers displayed per page.</li>
 </ul>
 <blockquote>
-<p>除此以外还提供了特殊的布局符号<code>-&gt;</code>，<code>-&gt;</code>后的元素会靠右显示。</p>
+<p>In addition, a special layout symbol <code>-&gt;</code> is provided. Elements after <code>-&gt;</code> will be displayed on the right.</p>
 </blockquote>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
@@ -29,8 +29,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>设置最大页码按钮数</h3>
-<p>默认情况下，当总页数超过 7 页时，Pagination 会折叠多余的页码按钮。通过<code>pager-count</code>属性可以设置最大页码按钮数。</p>
+<h3>Set the Maximum Number of Page Number Buttons</h3>
+<p>By default, when the total number of pages exceeds 7, Pagination will collapse the extra page number buttons. The maximum number of page number buttons can be set through the <code>pager-count</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -39,8 +39,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>显示总条目数</h3>
-<p>通过配置 layout，新增<code>total</code>来展示总条目数。</p>
+<h3>Display the Total Number of Items</h3>
+<p>By configuring the layout and adding <code>total</code>, the total number of items can be displayed.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -49,8 +49,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>设置每页条数</h3>
-<p>通过配置 layout，新增<code>sizes</code>来展示每页条数配置。</p>
+<h3>Set the Number of Items per Page</h3>
+<p>By configuring the layout and adding <code>sizes</code>, the configuration of the number of items per page can be displayed.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -67,8 +67,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>显示直接前往</h3>
-<p>通过配置 layout，新增<code>jumper</code>来展示直接前往功能。</p>
+<h3>Display the Direct Jump</h3>
+<p>By configuring the layout and adding <code>jumper</code>, the direct jump function can be displayed.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -81,8 +81,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>当只有一页时隐藏分页</h3>
-<p>通过配置<code>hide-on-single-page</code>配置不足一页时是否隐藏分页</p>
+<h3>Hide Pagination When There is Only One Page</h3>
+<p>Configure <code>hide-on-single-page</code> to determine whether to hide the pagination when there is less than one page.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -110,8 +110,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>小尺寸分页</h3>
-<p>通过配置<code>small</code>来设置展示小尺寸分页</p>
+<h3>Small-Sized Pagination</h3>
+<p>Configure <code>small</code> to display small-sized pagination.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -134,8 +134,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>带有背景色的分页</h3>
-<p>可通过配置<code>backgournd</code>展示带有背景色的分页，背景色遵循主色规则</p>
+<h3>Pagination with Background Color</h3>
+<p>Configure <code>background</code> to display pagination with a background color. The background color follows the main color rule.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo8)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -181,108 +181,108 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>small</td>
-<td>是否使用小型分页样式</td>
+<td>Whether to use the small-sized pagination style</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>background</td>
-<td>是否为分页按钮添加背景色</td>
+<td>Whether to add a background color to the pagination buttons</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>page-size</td>
-<td>每页显示条目个数</td>
+<td>The number of items displayed per page</td>
 <td>number</td>
 <td>—</td>
 <td>10</td>
 </tr>
 <tr>
 <td>total</td>
-<td>总条目数</td>
+<td>The total number of items</td>
 <td>number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>page-count</td>
-<td>总页数，total 和 page-count 设置任意一个就可以达到显示页码的功能；如果要支持 page-sizes 的更改，则需要使用 total 属性</td>
+<td>The total number of pages. Setting either <code>total</code> or <code>page-count</code> can achieve the function of displaying page numbers; if you want to support changes in <code>page-sizes</code>, you need to use the <code>total</code> attribute</td>
 <td>Number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>pager-count</td>
-<td>页码按钮的数量，当总页数超过该值时会折叠</td>
+<td>The number of page number buttons. When the total number of pages exceeds this value, it will be collapsed</td>
 <td>number</td>
-<td>大于等于 5 且小于等于 21 的奇数</td>
+<td>Odd numbers greater than or equal to 5 and less than or equal to 21</td>
 <td>7</td>
 </tr>
 <tr>
 <td>current-page</td>
-<td>当前页数，支持 .sync 修饰符</td>
+<td>The current page number, supports the <code>.sync</code> modifier</td>
 <td>number</td>
 <td>—</td>
 <td>1</td>
 </tr>
 <tr>
 <td>layout</td>
-<td>组件布局，子组件名用逗号分隔</td>
+<td>The component layout, with sub-component names separated by commas</td>
 <td>string[]</td>
 <td><code>sizes</code>, <code>prev</code>, <code>pager</code>, <code>next</code>, <code>jumper</code>, <code>-&gt;</code>, <code>total</code>, <code>section</code></td>
 <td>'prev, pager, next, jumper, -&gt;, total'</td>
 </tr>
 <tr>
 <td>page-sizes</td>
-<td>每页显示个数选择器的选项设置</td>
+<td>The option settings for the number-of-items-per-page selector</td>
 <td>number[]</td>
 <td>—</td>
 <td>[10, 20, 30, 40, 50, 100]</td>
 </tr>
 <tr>
 <td>prev-text</td>
-<td>替代图标显示的上一页文字</td>
+<td>The text for the previous page instead of the icon</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>next-text</td>
-<td>替代图标显示的下一页文字</td>
+<td>The text for the next page instead of the icon</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether to disable</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>hide-on-single-page</td>
-<td>只有一页时是否隐藏</td>
+<td>Whether to hide when there is only one page</td>
 <td>boolean</td>
 <td>—</td>
 <td>-</td>
@@ -293,21 +293,21 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size-change</td>
-<td>pageSize 改变时会触发</td>
-<td>每页条数</td>
+<td>Triggered when the <code>pageSize</code> changes</td>
+<td>Number of items per page</td>
 </tr>
 <tr>
 <td>change</td>
-<td>currentPage 改变时会触发</td>
-<td>当前页</td>
+<td>Triggered when the <code>currentPage</code> changes</td>
+<td>Current page</td>
 </tr>
 </tbody>
 </table>

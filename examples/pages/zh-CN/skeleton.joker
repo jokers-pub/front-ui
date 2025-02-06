@@ -177,7 +177,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>Skeleton 属性</h3>
+<h3>Skeleton Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -240,7 +240,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>SkeletonItem 属性</h3>
+<h3>SkeletonItem Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -275,7 +275,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Skeleton section</h3>
+<h3>Skeleton Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

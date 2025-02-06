@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Divider 分割线</h2>
-<p>区隔内容的分割线。</p>
-<h3>基础用法</h3>
-<p>对不同章节的文本段落进行分割。</p>
+<h2>Divider</h2>
+<p>A dividing line that separates content.</p>
+<h3>Basic Usage</h3>
+<p>Used to separate text paragraphs of different chapters.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
@@ -21,8 +21,8 @@ p {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>设置文案</h3>
-<p>可以在分割线上自定义文案内容。</p>
+<h3>Set Text</h3>
+<p>You can customize the text content on the dividing line.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
@@ -42,7 +42,7 @@ p {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>垂直分割</h3>
+<h3>Vertical Division</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;span&gt;雨纷纷&lt;/span&gt;
@@ -57,38 +57,38 @@ p {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>direction</td>
-<td>设置分割线方向</td>
+<td>Set the direction of the dividing line</td>
 <td>string</td>
 <td>horizontal / vertical</td>
 <td>horizontal</td>
 </tr>
 <tr>
 <td>content-position</td>
-<td>设置分割线文案的位置</td>
+<td>Set the position of the text on the dividing line</td>
 <td>string</td>
 <td>left / right / center</td>
 <td>center</td>
 </tr>
 <tr>
 <td>background</td>
-<td>背景色</td>
+<td>Background color</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>

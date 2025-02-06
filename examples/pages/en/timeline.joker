@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Timeline 时间线</h2>
-<p>可视化地呈现时间流信息。</p>
-<h3>基础用法</h3>
-<p>Timeline 可拆分成多个按照时间戳排列的 activity，时间戳是其区分于其他控件的重要特征，使⽤时注意与 Steps 步骤条等区分。</p>
+<h2>Timeline</h2>
+<p>Visually presents time-flow information.</p>
+<h3>Basic Usage</h3>
+<p>The Timeline can be split into multiple activities arranged according to timestamps. The timestamp is an important feature that distinguishes it from other controls. When using it, pay attention to differentiating it from components like Steps.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;radio&quot;&gt;
@@ -61,8 +61,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>⾃定义节点样式</h3>
-<p>可根据实际场景⾃定义节点尺⼨、颜⾊，或直接使⽤图标。</p>
+<h3>Custom Node Styles</h3>
+<p>You can customize the size and color of nodes according to the actual scenario, or directly use icons.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
@@ -115,8 +115,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>⾃定义时间戳</h3>
-<p>当内容在垂直⽅向上过⾼时，可将时间戳置于内容之上。</p>
+<h3>Custom Timestamp</h3>
+<p>When the content is too tall in the vertical direction, the timestamp can be placed above the content.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
@@ -148,17 +148,17 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
@@ -169,81 +169,81 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>timestamp</td>
-<td>时间戳</td>
+<td>Timestamp</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>hideTimestamp</td>
-<td>是否隐藏时间戳</td>
+<td>Whether to hide the timestamp</td>
 <td>boolean</td>
 <td>-</td>
 <td>false</td>
 </tr>
 <tr>
 <td>placement</td>
-<td>时间戳位置</td>
+<td>Timestamp position</td>
 <td>string</td>
 <td>top / bottom</td>
 <td>bottom</td>
 </tr>
 <tr>
 <td>type</td>
-<td>节点类型</td>
+<td>Node type</td>
 <td>string</td>
 <td>primary / success / warning / danger / info</td>
 <td>-</td>
 </tr>
 <tr>
 <td>color</td>
-<td>节点颜色</td>
+<td>Node color</td>
 <td>string</td>
 <td>hsl / hsv / hex / rgb</td>
 <td>-</td>
 </tr>
 <tr>
 <td>size</td>
-<td>节点尺寸</td>
+<td>Node size</td>
 <td>string</td>
 <td>normal / large</td>
 <td>normal</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>节点图标</td>
+<td>Node icon</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Timeline-Item section</h3>
+<h3>Timeline-Item Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>name</th>
-<th>说明</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>Timeline-Item 的内容</td>
+<td>Content of Timeline-Item</td>
 </tr>
 <tr>
 <td>dot</td>
-<td>自定义节点</td>
+<td>Custom node</td>
 </tr>
 </tbody>
 </table>

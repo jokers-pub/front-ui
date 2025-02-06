@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Button 按钮</h2>
-<p>常用的操作按钮。</p>
-<h3>基础用法</h3>
-<p>基础的按钮用法。</p>
-<p>使用<code>type</code>、<code>plain</code>、<code>round</code>和<code>circle</code>属性来定义 Button 的样式。</p>
+<h2>Button</h2>
+<p>Commonly used operation buttons.</p>
+<h3>Basic Usage</h3>
+<p>Basic usage of buttons.
+Use the <code>type</code>, <code>plain</code>, <code>round</code>, and <code>circle</code> attributes to define the style of the Button.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -44,9 +44,9 @@
 
 </code></pre>
 </DemoContainer>
-<h3>禁用状态</h3>
-<p>按钮不可用状态。</p>
-<p>你可以使用<code>disabled</code>属性来定义按钮是否可用，它接收一个<code>Boolean</code>值。</p>
+<h3>Disabled State</h3>
+<p>The state where the button is unavailable.
+You can use the <code>disabled</code> attribute to define whether the button is available, which accepts a <code>Boolean</code> value.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -69,8 +69,8 @@
 
 </code></pre>
 </DemoContainer>
-<h3>文字按钮</h3>
-<p>没有边框和背景色的按钮。属性：<code>link</code></p>
+<h3>Text Button</h3>
+<p>A button without borders and background color. Attribute: <code>link</code></p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button link&gt;文字按钮&lt;/jk-button&gt;
@@ -86,9 +86,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>图标按钮</h3>
-<p>带图标的按钮可增强辨识度（有文字）或节省空间（无文字）。</p>
-<p>要设置图标，只需指定<code>icon</code>属性即可。可设置的 icon 列表可以参考 Joker-UI 的 icon 组件，如果想设置在文字右侧的 icon ，只需使用<code>i</code>标签即可使用自定义图标。</p>
+<h3>Icon Button</h3>
+<p>Buttons with icons can enhance recognition (when there is text) or save space (when there is no text).
+To set an icon, simply specify the <code>icon</code> attribute. The list of available icons can be referred to in the Joker-UI icon component. If you want to set an icon on the right side of the text, you can use the <code>&lt;i&gt;</code> tag to use a custom icon.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-button&gt;
@@ -102,9 +102,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>按钮组</h3>
-<p>以按钮组的方式出现，常用于多项类似操作。</p>
-<p>使用<code>&lt;jk-button-group&gt;</code>标签来嵌套你的按钮。</p>
+<h3>Button Group</h3>
+<p>Appears in the form of a button group, often used for multiple similar operations.
+Use the <code>&lt;jk-button-group&gt;</code> tag to nest your buttons.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -126,9 +126,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>加载中</h3>
-<p>点击按钮后进行数据加载操作，在按钮上显示加载状态。</p>
-<p>要设置为 loading 状态，只要设置<code>loading</code>属性为<code>true</code>即可。</p>
+<h3>Loading State</h3>
+<p>Performs a data loading operation after clicking the button and displays the loading state on the button.
+To set it to the loading state, just set the <code>loading</code> attribute to <code>true</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button type=&quot;primary&quot; loading&gt;加载中&lt;/jk-button&gt;
@@ -140,9 +140,9 @@
 
 </code></pre>
 </DemoContainer>
-<h3>不同尺寸</h3>
-<p>Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。</p>
-<p>尺寸有：<code>medium</code>、<code>small</code>、<code>mini</code>，通过设置<code>size</code>属性来配置它们。</p>
+<h3>Different Sizes</h3>
+<p>The Button component provides three sizes in addition to the default value, allowing you to choose the appropriate button size for different scenarios.
+The sizes are: <code>medium</code>, <code>small</code>, <code>mini</code>, which can be configured by setting the <code>size</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -164,120 +164,120 @@
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size</td>
-<td>尺寸</td>
+<td>Size</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>—</td>
 </tr>
 <tr>
 <td>type</td>
-<td>类型</td>
+<td>Type</td>
 <td>string</td>
 <td>primary / success / warning / danger / info</td>
 <td>—</td>
 </tr>
 <tr>
 <td>plain</td>
-<td>是否朴素按钮</td>
+<td>Whether it is a plain button</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>full-width</td>
-<td>是否宽度 100%</td>
+<td>Whether the width is 100%</td>
 <td>boolean</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>link</td>
-<td>是否使用文本展示</td>
+<td>Whether to use text display</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>round</td>
-<td>是否圆角按钮</td>
+<td>Whether it is a rounded-corner button</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>circle</td>
-<td>是否圆形按钮</td>
+<td>Whether it is a circular button</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>loading</td>
-<td>是否加载中状态</td>
+<td>Whether it is in the loading state</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用状态</td>
+<td>Whether it is in the disabled state</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>图标类名</td>
+<td>Icon class name</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>autofocus</td>
-<td>是否默认聚焦</td>
+<td>Whether it is focused by default</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>native-type</td>
-<td>原生 type 属性</td>
+<td>Native type attribute</td>
 <td>string</td>
 <td>button / submit / reset</td>
 <td>button</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td>点击按钮后的响应事件</td>
+<td>The response event after clicking the button</td>
 <td>VNode.Event</td>
 </tr>
 </tbody>

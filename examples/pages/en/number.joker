@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>InputNumber 计数器</h2>
-<p>仅允许输入标准的数字值，可定义范围</p>
-<h3>基础用法</h3>
-<p>要使用它，只需要在<code>jk-number</code>元素中使用<code>value</code>绑定变量即可，变量的初始值即为默认值。</p>
+<h2>InputNumber</h2>
+<p>Only allows the input of standard numeric values, and the range can be defined.</p>
+<h3>Basic Usage</h3>
+<p>To use it, simply bind a variable to <code>value</code> in the <code>jk-number</code> element. The initial value of the variable is the default value.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -12,8 +12,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>禁用状态</h3>
-<p><code>disabled</code>属性接受一个<code>Boolean</code>，设置为<code>true</code>即可禁用整个组件，如果你只需要控制数值在某一范围内，可以设置<code>min</code>属性和<code>max</code>属性，不设置<code>min</code>和<code>max</code>时，最小值为 0。</p>
+<h3>Disabled State</h3>
+<p>The <code>disabled</code> attribute accepts a <code>Boolean</code>. Setting it to <code>true</code> disables the entire component. If you only need to control the value within a certain range, you can set the <code>min</code> and <code>max</code> attributes. When <code>min</code> and <code>max</code> are not set, the minimum value is 0.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -30,9 +30,9 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>步数</h3>
-<p>允许定义递增递减的步数控制</p>
-<p>设置<code>step</code>属性可以控制步长，接受一个<code>Number</code>。</p>
+<h3>Step</h3>
+<p>Allows the definition of step-by-step control for incrementing and decrementing.</p>
+<p>Setting the <code>step</code> attribute can control the step size, which accepts a <code>Number</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -43,8 +43,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>严格步数</h3>
-<p><code>step-strictly</code>属性接受一个<code>Boolean</code>。如果这个属性被设置为<code>true</code>，则只能输入步数的倍数。</p>
+<h3>Strict Step</h3>
+<p>The <code>step-strictly</code> attribute accepts a <code>Boolean</code>. If this attribute is set to <code>true</code>, only multiples of the step can be entered.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -55,8 +55,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>精度</h3>
-<p>设置 <code>precision</code> 属性可以控制数值精度，接收一个 <code>Number</code>。</p>
+<h3>Precision</h3>
+<p>Setting the <code>precision</code> attribute can control the numerical precision, which accepts a <code>Number</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -68,10 +68,10 @@
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p><code>precision</code> 的值必须是一个非负整数，并且不能小于 <code>step</code> 的小数位数。</p>
+<p>The value of <code>precision</code> must be a non-negative integer and cannot be less than the number of decimal places of <code>step</code>.</p>
 </blockquote>
-<h3>尺寸</h3>
-<p>额外提供了 <code>medium</code>、<code>small</code>、<code>mini</code> 三种尺寸的数字输入框</p>
+<h3>Size</h3>
+<p>Three additional sizes of numeric input boxes are provided: <code>medium</code>, <code>small</code>, and <code>mini</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
@@ -99,8 +99,8 @@
 
 </code></pre>
 </DemoContainer>
-<h3>按钮位置</h3>
-<p>设置 <code>controls-position</code> 属性可以控制按钮位置。</p>
+<h3>Button Position</h3>
+<p>Setting the <code>controls-position</code> attribute can control the position of the buttons.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot; style=&quot;width:200px;&quot;&gt;
@@ -126,8 +126,8 @@
 
 </code></pre>
 </DemoContainer>
-<h3>无控制按钮</h3>
-<p>设置 <code>hidden-controls</code> 属性可以控制按钮位置。</p>
+<h3>No Control Buttons</h3>
+<p>Setting the <code>hidden-controls</code> attribute can control the position of the buttons.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo8)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot; style=&quot;width:200px;&quot;&gt;
@@ -197,171 +197,171 @@
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>绑定值</td>
+<td>Bound value</td>
 <td>number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>min</td>
-<td>设置计数器允许的最小值</td>
+<td>Set the minimum value allowed by the counter</td>
 <td>number</td>
 <td>—</td>
 <td>-Infinity</td>
 </tr>
 <tr>
 <td>max</td>
-<td>设置计数器允许的最大值</td>
+<td>Set the maximum value allowed by the counter</td>
 <td>number</td>
 <td>—</td>
 <td>Infinity</td>
 </tr>
 <tr>
 <td>step</td>
-<td>计数器步长</td>
+<td>Counter step size</td>
 <td>number</td>
 <td>—</td>
 <td>1</td>
 </tr>
 <tr>
 <td>step-strictly</td>
-<td>是否只能输入 step 的倍数</td>
+<td>Whether only multiples of step can be entered</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>precision</td>
-<td>数值精度</td>
+<td>Numerical precision</td>
 <td>number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>size</td>
-<td>计数器尺寸</td>
+<td>Counter size</td>
 <td>string</td>
 <td>large, small</td>
 <td>—</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用计数器</td>
+<td>Whether to disable the counter</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>hidden-controls</td>
-<td>是否隐藏控制按钮</td>
+<td>Whether to hide the control buttons</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>controls-position</td>
-<td>控制按钮位置</td>
+<td>Position of the control buttons</td>
 <td>string</td>
 <td>right</td>
 <td>-</td>
 </tr>
 <tr>
 <td>name</td>
-<td>原生属性</td>
+<td>Native attribute</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>label</td>
-<td>输入框关联的 label 文字</td>
+<td>The label text associated with the input box</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>placeholder</td>
-<td>输入框默认 placeholder</td>
+<td>Default placeholder of the input box</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>fullWidth</td>
-<td>是否宽度 100%</td>
+<td>Whether the width is 100%</td>
 <td>boolean</td>
 <td>-</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>绑定值被改变时触发</td>
+<td>Triggered when the bound value is changed</td>
 <td>currentValue, oldValue</td>
 </tr>
 <tr>
 <td>blur</td>
-<td>在组件 Input 失去焦点时触发</td>
+<td>Triggered when the Input in the component loses focus</td>
 <td>VNode.Event</td>
 </tr>
 <tr>
 <td>focus</td>
-<td>在组件 Input 获得焦点时触发</td>
+<td>Triggered when the Input in the component gains focus</td>
 <td>VNode.Event</td>
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>blur</td>
-<td>使 input 失去焦点</td>
+<td>Make the input lose focus</td>
 <td>-</td>
 </tr>
 <tr>
 <td>focus</td>
-<td>使 input 获取焦点</td>
+<td>Make the input gain focus</td>
 <td>-</td>
 </tr>
 <tr>
 <td>select</td>
-<td>选中 input 中的文字</td>
+<td>Select the text in the input</td>
 <td>—</td>
 </tr>
 </tbody>

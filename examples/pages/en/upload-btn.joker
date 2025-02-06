@@ -1,8 +1,8 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Upload Btn 上传按钮组件</h2>
-<p>提供文件选择交互按钮。</p>
-<h3>基础用法</h3>
+<h2>Upload Button</h2>
+<p>Provides an interactive button for file selection.</p>
+<h3>Basic Usage</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-upload-btn @change=&quot;handleClick&quot; /&gt;
@@ -20,8 +20,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>多文件上传</h3>
-<p>通过配置<code>multiple</code>来启用多选文件选择。</p>
+<h3>Multiple File Upload</h3>
+<p>Enable multi-file selection by configuring the <code>multiple</code> property.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -44,8 +44,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>限制选择类型</h3>
-<p>可通过配置<code>mimeType</code>属性来限制上传类型，该属性可以传入<code>string</code>、<code>string[]</code>类型的值。</p>
+<h3>Limit Selection Types</h3>
+<p>You can limit the upload types by configuring the <code>mimeType</code> property. This property can accept values of type <code>string</code> or <code>string[]</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-upload-btn @change=&quot;handleClick&quot; mimeType=&quot;image/png&quot; /&gt;
@@ -65,8 +65,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>限制传入文件大小</h3>
-<p>通过配置<code>maxFileSize</code>属性来限制每个文件的最大大小，单位为<strong>kb</strong>。</p>
+<h3>Limit File Size</h3>
+<p>Limit the maximum size of each file by configuring the <code>maxFileSize</code> property. The unit is <strong>kb</strong>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-upload-btn @change=&quot;handleClick&quot; maxFileSize=&quot;12&quot; /&gt;
@@ -86,80 +86,80 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>icon</td>
-<td>按钮 icon 图标</td>
+<td>Button icon</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>btnType</td>
-<td>按钮类型，对应 jk-button 的 type 类型</td>
+<td>Button type, corresponding to the <code>type</code> of <code>jk-button</code></td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>title</td>
-<td>按钮文本，若有指定 default 区域，则设置该属性无效</td>
+<td>Button text. If the <code>default</code> area is specified, setting this property is invalid</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>btnSize</td>
-<td>按钮大小，对应 jk-button 的 size 类型</td>
+<td>Button size, corresponding to the <code>size</code> of <code>jk-button</code></td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether to disable</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>multiple</td>
-<td>是否启用多选</td>
+<td>Whether to enable multi-selection</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>maxFileCount</td>
-<td>最大上传个数</td>
+<td>Maximum number of uploads</td>
 <td>number</td>
 <td>—</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>mimeType</td>
-<td>限制文件类型，支持通配符例如：<strong>(image/*)</strong></td>
+<td>Limit file types, wildcards are supported, e.g., <strong>(image/*)</strong></td>
 <td>string / string[]</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>maxFileSize</td>
-<td>单个文件最大大小限制，单位<strong>kb</strong></td>
+<td>Maximum size limit for a single file, unit is <strong>kb</strong></td>
 <td>number</td>
 <td>—</td>
-<td></td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
@@ -167,15 +167,15 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>值变更通知</td>
+<td>Notification of value change</td>
 <td>—</td>
 </tr>
 </tbody>

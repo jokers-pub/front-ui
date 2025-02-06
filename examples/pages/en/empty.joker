@@ -1,32 +1,32 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Empty 空状态</h2>
-<p>空状态时的占位提示。</p>
-<h3>基础用法</h3>
+<h2>Empty</h2>
+<p>Placeholder prompt for the empty state.</p>
+<h3>Basic Usage</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty description=&quot;描述文字&quot;&gt;&lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>自定义图片</h3>
-<p>通过设置 image 属性传入图片 URL。</p>
+<h3>Custom Image</h3>
+<p>Pass in the image URL by setting the <code>image</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty image=&quot;https://picsum.photos/100/100&quot;&gt;&lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>图片尺寸</h3>
-<p>通过设置 image-size 属性来控制图片大小。</p>
+<h3>Image Size</h3>
+<p>Control the size of the image by setting the <code>image-size</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty imageSize=&quot;200&quot;&gt;&lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>底部内容</h3>
-<p>使用默认 section 可在底部插入内容。</p>
+<h3>Bottom Content</h3>
+<p>Use the default section to insert content at the bottom.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty&gt;
@@ -35,8 +35,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>尺寸</h3>
-<p>通过配置 size 属性来设置尺寸。</p>
+<h3>Size</h3>
+<p>Set the size by configuring the <code>size</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty description=&quot;描述文字&quot;&gt;&lt;/jk-empty&gt;
@@ -53,71 +53,71 @@
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size</td>
-<td>自定义尺寸</td>
+<td>Custom size</td>
 <td>string</td>
 <td>-</td>
 <td>medium/small/mini</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>image</td>
-<td>图片地址</td>
+<td>Image address</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>imageSize</td>
-<td>图片大小（宽度）</td>
+<td>Image size (width)</td>
 <td>number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>description</td>
-<td>文本描述</td>
+<td>Text description</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>名称</th>
-<th>描述</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>自定义底部内容</td>
+<td>Customize bottom content</td>
 </tr>
 <tr>
 <td>image</td>
-<td>自定义图片</td>
+<td>Customize the image</td>
 </tr>
 <tr>
 <td>description</td>
-<td>自定义描述文字</td>
+<td>Customize the description text</td>
 </tr>
 </tbody>
 </table>

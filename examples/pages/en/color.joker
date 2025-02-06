@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Color 色彩</h2>
-<p>Joker-UI 为了避免视觉传达差异，使用一套特定的调色板来规定颜色，为你所搭建的产品提供一致的外观视觉感受。</p>
-<h3>主色</h3>
-<p>Joker-UI 主要品牌颜色是鲜艳、友好的蓝色。</p>
+<h2>Color</h2>
+<p>To avoid visual communication differences, Joker-UI uses a specific color palette to define colors, providing a consistent visual appearance for the products you build.</p>
+<h3>Primary Color</h3>
+<p>The main brand color of Joker-UI is a bright and friendly blue.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -29,8 +29,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>辅助色</h3>
-<p>除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。</p>
+<h3>Secondary Colors</h3>
+<p>These are the scene colors other than the primary color, which need to be used in different scenarios (for example, the danger color represents dangerous operations).</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;6&quot;&gt;
@@ -66,8 +66,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>中性色</h3>
-<p>中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。</p>
+<h3>Neutral Colors</h3>
+<p>Neutral colors are used for text, background, and border colors. By applying different neutral colors, the hierarchical structure can be presented.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -129,8 +129,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>阴影颜色</h3>
-<p>提供常用的阴影样式。</p>
+<h3>Shadow Colors</h3>
+<p>Common shadow styles are provided.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;20&quot;&gt;

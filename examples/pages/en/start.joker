@@ -1,23 +1,27 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h3>快速上手</h3>
-<p>本指南讲解了如何在你的项目中使用 Joker UI。</p>
-<p>你可以引入整个 Joker UI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Joker UI。</p>
-<p>Joker UI 是使用<a href="https://front.jokers.pub" target="_blank">Joker Core</a>前端开发框架进行开发的一套 PC 端 UI 框架，可前往<a href="https://jokers.pub" target="_blank">Joker 官网</a>进行学习了解。</p>
-<h3>安装及使用</h3>
+<h3>Quick Start</h3>
+<p>This guide explains how to use Joker UI in your project.</p>
+<p>You can either import the entire Joker UI or only import specific components as needed. First, we'll introduce how to import the complete Joker UI.</p>
+<p>Joker UI is a PC-side UI framework developed using the <a href="https://front.jokers.pub" target="_blank">Joker Core</a> front-end development framework. You can visit the <a href="https://jokers.pub" target="_blank">Joker official website</a> to learn more.</p>
+<h3>Installation and Usage</h3>
 <pre><code class="language-ts">import App from &quot;./app.joker&quot;;
 import &quot;@joker.front/ui&quot;;
 import &quot;@joker.front/ui/index.css&quot;;
 </code></pre>
-<p>以上代码便完成了 Joker UI 的引入。需要注意的是，样式文件需要单独引入。</p>
-<h3>主题样式</h3>
-<p>Joker 采用<a href="https://www.w3school.com.cn/css/css3_variables.asp" target="_blank">CSS variable</a>的方式来管理 UI 库的主题，我们内部定义了丰富的色彩等相关的配置，我们可以通过修改这些变量来实现对 UI 风格的自定义。</p>
-<p>例如：</p>
+<p>The above code completes the import of Joker UI. Note that the style file needs to be imported separately.</p>
+<h3>Theme Styles</h3>
+<p>Joker manages the theme of the UI library by using <a href="https://www.w3school.com.cn/css/css3_variables.asp" target="_blank">CSS variables</a>. We have defined a rich set of configurations related to colors, etc. internally. We can customize the UI style by modifying these variables.</p>
+<p>For example:</p>
 <pre><code class="language-css">:root {
     --jk-color-primary: red;
     --jk-button-font-color: red;
 }
 </code></pre>
+<h3>Visual Development Tools</h3>
+<p>Currently, <code>Joker UI</code> provides visual operation components in the Joker visual development tool. Using components in the visual development tool is more convenient. Through flexible dragging and visual component parameter descriptions, it can help you quickly complete the use of components.</p>
+<p><img src="https://static.jokers.pub/home/component.png" alt="Joker Visual Development Tool" title="Visual Development Tool"></p>
+<p><a href="https://lowcode.jokers.pub/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4" target="_blank">Component Library Address</a></p>
 
 <BottomNav />
 </div>

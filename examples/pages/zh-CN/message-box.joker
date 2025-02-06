@@ -483,7 +483,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>

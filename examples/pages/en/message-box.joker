@@ -1,13 +1,13 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>MessageBox 弹框</h2>
-<p>模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。</p>
+<h2>MessageBox</h2>
+<p>A set of modal dialog components implemented by simulating the system's message prompt box, used for message prompts, confirmation messages, and content submission.</p>
 <blockquote>
-<p>从场景上说，MessageBox 的作用是美化系统自带的 <code>alert</code>、<code>confirm</code> 和 <code>prompt</code>，因此适合展示较为简单的内容。如果需要弹出较为复杂的内容，请使用 Dialog。</p>
+<p>In terms of scenarios, the role of MessageBox is to beautify the system-built-in <code>alert</code>, <code>confirm</code>, and <code>prompt</code>. Therefore, it is suitable for displaying relatively simple content. If you need to pop up more complex content, please use Dialog.</p>
 </blockquote>
-<h3>消息提示</h3>
-<p>当用户进行操作时会被触发，该对话框中断用户操作，直到用户确认知晓后才可关闭。</p>
-<p>调用<code>MessageBox.alert</code>方法即可打开消息提示，它模拟了系统的 <code>alert</code>，无法通过按下 ESC 或点击框外关闭。此例中接收了两个参数，<code>message</code>和<code>title</code>。</p>
+<h3>Message Prompt</h3>
+<p>It is triggered when the user performs an operation. This dialog box interrupts the user's operation until the user confirms and acknowledges it before it can be closed.</p>
+<p>Calling the <code>MessageBox.alert</code> method can open the message prompt. It simulates the system's <code>alert</code> and cannot be closed by pressing ESC or clicking outside the box. In this example, it accepts two parameters, <code>message</code> and <code>title</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -36,9 +36,9 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>确认消息</h3>
-<p>提示用户确认其已经触发的动作，并询问是否进行此操作时会用到此对话框。</p>
-<p>调用<code>MessageBox.confirm</code>方法即可打开消息提示，它模拟了系统的 <code>confirm</code>。Message Box 组件也拥有极高的定制性，我们可以传入<code>options</code>作为第三个参数，它是一个字面量对象。<code>type</code>字段表明消息类型，可以为<code>success</code>，<code>error</code>，<code>info</code>和<code>warning</code>，无效的设置将会被忽略。注意，第二个参数<code>title</code>必须定义为<code>String</code>类型，如果是<code>Object</code>，会被理解为<code>options</code>。</p>
+<h3>Confirmation Message</h3>
+<p>This dialog box is used when prompting the user to confirm an action they have triggered and asking whether to perform this operation.</p>
+<p>Calling the <code>MessageBox.confirm</code> method can open the message prompt. It simulates the system's <code>confirm</code>. The MessageBox component also has a high degree of customizability. We can pass in <code>options</code> as the third parameter, which is a literal object. The <code>type</code> field indicates the message type and can be <code>success</code>, <code>error</code>, <code>info</code>, and <code>warning</code>. Invalid settings will be ignored. Note that the second parameter, <code>title</code>, must be defined as a <code>String</code> type. If it is an <code>Object</code>, it will be understood as <code>options</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -127,10 +127,10 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>提交内容</h3>
-<p>当用户进行操作时会被触发，中断用户操作，提示用户进行输入的对话框。</p>
-<p>调用<code>MessageBox.prompt</code>方法即可打开消息提示，它模拟了系统的 <code>prompt</code>。可以用<code>validate</code>规定校验函数，可以返回<code>String</code>|<code>Boolean</code>，返回的字符串相当于定义了<code>错误提示</code>字段，返回<code>false</code>则提示默认错误信息，为了精准化交互，建议返回<code>String</code>错误提示文本。此外，可以用<code>inputPlaceholder</code>字段来定义输入框的占位符。</p>
-<p>通过<code>beforeClose</code>可以自定义操作，例如：数据提交等，然后交由调用者决定是否要<code>close</code>窗口。</p>
+<h3>Content Submission</h3>
+<p>It is triggered when the user performs an operation, interrupts the user's operation, and prompts the user to enter information in the dialog box.</p>
+<p>Calling the <code>MessageBox.prompt</code> method can open the message prompt. It simulates the system's <code>prompt</code>. You can use <code>validate</code> to define a validation function, which can return <code>String</code> or <code>Boolean</code>. The returned string is equivalent to defining the <code>error prompt</code> field. Returning <code>false</code> will prompt the default error message. For more precise interaction, it is recommended to return a <code>String</code> error prompt text. In addition, you can use the <code>inputPlaceholder</code> field to define the placeholder of the input box.</p>
+<p>Through <code>beforeClose</code>, you can customize operations, such as data submission, etc., and then let the caller decide whether to <code>close</code> the window.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -187,10 +187,10 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>使用 HTML 片段</h3>
-<p><code>message</code> 属性支持传入 HTML 片段。将<code>useHtml</code>属性设置为 true，<code>message</code> 就会被当作 HTML 片段处理。</p>
+<h3>Using HTML Fragments</h3>
+<p>The <code>message</code> property supports passing in HTML fragments. Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
 <div class="warning">
-<p><code>message</code> 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS 攻击</a>。因此在 <code>useHtml</code> 打开的情况下，请确保 <code>message</code> 的内容是可信的，<strong>永远不要</strong>将用户提交的内容赋值给 <code>message</code> 属性。</p>
+<p>Although the <code>message</code> property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>. Therefore, when <code>useHtml</code> is turned on, please ensure that the content of <code>message</code> is trustworthy. <strong>Never</strong> assign user-submitted content to the <code>message</code> property.</p>
 </div>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
@@ -214,8 +214,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>队列显示</h3>
-<p><code>MessageBox</code>的展现形式和浏览的消息提示框逻辑一致，也是采用了队列展示，<code>先进先出</code>的模式。如果有场景需要我们提供<code>MessageBox.closeAll</code>方法来关闭当前弹窗，并清空列队。</p>
+<h3>Queue Display</h3>
+<p>The display form of <code>MessageBox</code> is consistent with the logic of the browser's message prompt box, and it also uses a queue display in a &quot;first-in-first-out&quot; mode. If there is a scenario where we need it, we provide the <code>MessageBox.closeAll</code> method to close the current pop-up window and clear the queue.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -247,8 +247,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>区分取消与关闭</h3>
-<p>有些场景下，点击取消按钮与点击关闭按钮有着不同的含义。默认情况下，当用户触发取消（点击取消按钮）和触发关闭（点击关闭按钮或遮罩层、按下 ESC 键）时，Promise 的 reject 回调和<code>callback</code>回调的参数均为 'cancel'。如果将<code>distinguishCancelAndClose</code>属性设置为 true，则上述两种行为的参数分别为 'cancel' 和 'close'。</p>
+<h3>Distinguishing Cancellation and Closing</h3>
+<p>In some scenarios, clicking the cancel button and clicking the close button have different meanings. By default, when the user triggers cancellation (clicking the cancel button) and triggering closing (clicking the close button or the mask layer, pressing the ESC key), the parameters of the Promise's reject callback and the <code>callback</code> callback are both 'cancel'. If the <code>distinguishCancelAndClose</code> property is set to <code>true</code>, the parameters of the above two behaviors are 'cancel' and 'close' respectively.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -278,8 +278,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>居中布局</h3>
-<p>内容支持居中布局，将 <code>center</code> 设置为 <code>true</code> 即可开启居中布局</p>
+<h3>Centered Layout</h3>
+<p>The content supports a centered layout. Set <code>center</code> to <code>true</code> to enable the centered layout.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -310,197 +310,197 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>引用方式</h3>
-<p>引入 <code>MessageBox</code>：</p>
+<h3>Method of Introduction</h3>
+<p>Import <code>MessageBox</code>:</p>
 <pre><code class="language-javascript">import { MessageBox } from &quot;@joker.front/ui&quot;;
 </code></pre>
-<p>那么对应于上述四个全局方法的调用方法依次为：MessageBox, MessageBox.alert, MessageBox.confirm 和 MessageBox.prompt，调用参数与全局方法相同。</p>
+<p>Then the calling methods corresponding to the above four global methods are <code>MessageBox</code>, <code>MessageBox.alert</code>, <code>MessageBox.confirm</code>, and <code>MessageBox.prompt</code> in sequence. The calling parameters are the same as those of the global methods.</p>
 <h3>Options</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
-<td>MessageBox 标题</td>
+<td>The title of the MessageBox</td>
 <td>string</td>
 <td>—</td>
-<td>温馨提示</td>
+<td>A friendly reminder</td>
 </tr>
 <tr>
 <td>message</td>
-<td>MessageBox 消息正文内容</td>
+<td>The message body content of the MessageBox</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>useHtml</td>
-<td>是否将 message 属性作为 HTML 片段处理</td>
+<td>Whether to treat the <code>message</code> property as an HTML fragment</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>type</td>
-<td>消息类型，用于显示图标</td>
+<td>The message type, used to display the icon</td>
 <td>string</td>
 <td>success / info / warning / error</td>
 <td>—</td>
 </tr>
 <tr>
 <td>iconClass</td>
-<td>自定义图标的类名，会覆盖 <code>type</code></td>
+<td>The class name of the custom icon, which will override <code>type</code></td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>customClass</td>
-<td>MessageBox 的自定义类名</td>
+<td>The custom class name of the MessageBox</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>callback</td>
-<td>若不使用 Promise，可以使用此参数指定 MessageBox 关闭后的回调</td>
-<td>function(action, instance)，action 的值为'confirm', 'cancel'或'close', instance 为 MessageBox 实例，可以通过它访问实例上的属性和方法</td>
+<td>If not using Promise, this parameter can be used to specify the callback after the MessageBox is closed</td>
+<td>function(action, instance), where the value of <code>action</code> is 'confirm', 'cancel', or 'close', and <code>instance</code> is the MessageBox instance through which you can access the properties and methods on the instance</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>closable</td>
-<td>MessageBox 是否显示右上角关闭按钮</td>
+<td>Whether the MessageBox displays the close button in the upper-right corner</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>beforeClose</td>
-<td>MessageBox 关闭前的回调，会暂停实例的关闭</td>
-<td>function(action, instance, close)，action 的值为'confirm', 'cancel'或'close'；instance 为 MessageBox 实例，可以通过它访问实例上的属性和方法；close 用于关闭 MessageBox 实例 ；可通过读取 instance 中 inputValue 进行值的读取</td>
+<td>The callback before the MessageBox is closed, which will pause the closing of the instance</td>
+<td>function(action, instance, close), where the value of <code>action</code> is 'confirm', 'cancel', or 'close'; <code>instance</code> is the MessageBox instance through which you can access the properties and methods on the instance; <code>close</code> is used to close the MessageBox instance; the value can be read by accessing <code>inputValue</code> in <code>instance</code></td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>distinguishCancelAndClose</td>
-<td>是否将取消（点击取消按钮）与关闭（点击关闭按钮或遮罩层、按下 ESC 键）进行区分</td>
+<td>Whether to distinguish between cancellation (clicking the cancel button) and closing (clicking the close button or the mask layer, pressing the ESC key)</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>showCancelButton</td>
-<td>是否显示取消按钮</td>
+<td>Whether to display the cancel button</td>
 <td>boolean</td>
 <td>—</td>
-<td>false（以 confirm 和 prompt 方式调用时为 true）</td>
+<td>false (true when called in the <code>confirm</code> and <code>prompt</code> ways)</td>
 </tr>
 <tr>
 <td>showConfirmButton</td>
-<td>是否显示确定按钮</td>
+<td>Whether to display the confirm button</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>cancelButtonText</td>
-<td>取消按钮的文本内容</td>
+<td>The text content of the cancel button</td>
 <td>string</td>
 <td>—</td>
-<td>取消</td>
+<td>Cancel</td>
 </tr>
 <tr>
 <td>confirmButtonText</td>
-<td>确定按钮的文本内容</td>
+<td>The text content of the confirm button</td>
 <td>string</td>
 <td>—</td>
-<td>确定</td>
+<td>OK</td>
 </tr>
 <tr>
 <td>closeOnClickModal</td>
-<td>是否可通过点击遮罩关闭 MessageBox</td>
+<td>Whether the MessageBox can be closed by clicking the mask</td>
 <td>boolean</td>
 <td>—</td>
-<td>true（以 alert 方式调用时为 false）</td>
+<td>true (false when called in the <code>alert</code> way)</td>
 </tr>
 <tr>
 <td>closeOnPressEscape</td>
-<td>是否可通过按下 ESC 键关闭 MessageBox</td>
+<td>Whether the MessageBox can be closed by pressing the ESC key</td>
 <td>boolean</td>
 <td>—</td>
-<td>true（以 alert 方式调用时为 false）</td>
+<td>true (false when called in the <code>alert</code> way)</td>
 </tr>
 <tr>
 <td>showInput</td>
-<td>是否显示输入框</td>
+<td>Whether to display the input box</td>
 <td>boolean</td>
 <td>—</td>
-<td>false（以 prompt 方式调用时为 true）</td>
+<td>false (true when called in the <code>prompt</code> way)</td>
 </tr>
 <tr>
 <td>inputPlaceholder</td>
-<td>输入框的占位符</td>
+<td>The placeholder of the input box</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>validate</td>
-<td>输入框的校验函数。可以返回布尔值或字符串，若返回一个字符串, 则返回结果会被赋值给错误信息，其中 validate 中参数为当前文本框的输入值。</td>
+<td>The validation function of the input box. It can return a boolean or a string. If a string is returned, the return result will be assigned to the error message, where the parameter in <code>validate</code> is the input value of the current text box</td>
 <td>function</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>center</td>
-<td>是否居中布局</td>
+<td>Whether to use a centered layout</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>roundButton</td>
-<td>是否使用圆角按钮</td>
+<td>Whether to use rounded-corner buttons</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>id</td>
-<td>若配置 id，则在同一时刻同一个序列中只会弹出一次</td>
+<td>If <code>id</code> is configured, only one pop-up will appear in the same sequence at the same time</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>close</td>
-<td>关闭当前消息弹窗</td>
+<td>Close the current message pop-up</td>
 <td>—</td>
 </tr>
 <tr>
 <td>setErrorMsg</td>
-<td>手动配置错误信息</td>
+<td>Manually configure the error message</td>
 <td>errMsg:string</td>
 </tr>
 </tbody>

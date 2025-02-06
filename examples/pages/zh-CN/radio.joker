@@ -165,7 +165,7 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Radio 参数</h3>
+<h3>Radio Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -235,7 +235,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Radio 事件</h3>
+<h3>Radio Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -252,7 +252,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Radio-button 属性</h3>
+<h3>Radio-button Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -301,7 +301,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Radio-button 事件</h3>
+<h3>Radio-button Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -318,7 +318,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Radio-group 属性</h3>
+<h3>Radio-group Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -353,7 +353,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Radio-group 事件</h3>
+<h3>Radio-group Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>

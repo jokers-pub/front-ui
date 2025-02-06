@@ -213,7 +213,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -230,7 +230,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

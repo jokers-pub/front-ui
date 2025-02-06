@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Notification 通知</h2>
-<p>悬浮出现在页面角落，显示全局的通知提醒消息。</p>
-<h3>基本用法</h3>
-<p>适用性广泛的通知栏，Notification 组件提供通知功能，提供<code>Notification</code>方法，接收一个<code>options</code>字面量参数，在最简单的情况下，你可以设置<code>title</code>字段和<code>message</code>字段，用于设置通知的标题和正文。默认情况下，经过一段时间后 Notification 组件会自动关闭，但是通过设置<code>duration</code>，可以控制关闭的时间间隔，特别的是，如果设置为<code>0</code>，则不会自动关闭。注意：<code>duration</code>接收一个<code>Number</code>，单位为毫秒，默认为<code>4500</code>。</p>
+<h2>Notification</h2>
+<p>It floats in the corner of the page to display global notification reminder messages.</p>
+<h3>Basic Usage</h3>
+<p>A widely applicable notification bar. The Notification component provides a notification function with the <code>Notification</code> method, which accepts an <code>options</code> literal parameter. In the simplest case, you can set the <code>title</code> and <code>message</code> fields to set the title and body of the notification. By default, the Notification component will automatically close after a certain period of time. However, by setting <code>duration</code>, you can control the time interval for closing. Notably, if set to <code>0</code>, it will not close automatically. Note: <code>duration</code> accepts a <code>Number</code> with the unit of milliseconds, and the default value is <code>4500</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;可自动关闭&lt;/jk-button&gt;
@@ -32,9 +32,9 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>带有倾向性</h3>
-<p>带有 icon，常用来显示「成功、警告、消息、错误」类的系统消息</p>
-<p>Notification 组件准备了四种通知类型：<code>success</code>, <code>warning</code>, <code>info</code>, <code>error</code>。通过<code>type</code>字段来设置，除此以外的值将被忽略。同时，我们也为 Notification 的各种 type 注册了方法，可以在不传入<code>type</code>字段的情况下像<code>open3</code>和<code>open4</code>那样直接调用。</p>
+<h3>With 倾向性</h3>
+<p>Comes with an icon, often used to display system messages of &quot;success, warning, message, error&quot; types.</p>
+<p>The Notification component has prepared four notification types: <code>success</code>, <code>warning</code>, <code>info</code>, <code>error</code>. Set through the <code>type</code> field, and values other than these will be ignored. At the same time, we have also registered methods for various types of Notification, which can be called directly like <code>open3</code> and <code>open4</code> without passing in the <code>type</code> field.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;成功&lt;/jk-button&gt;
@@ -78,8 +78,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>自定义弹出位置</h3>
-<p>可以让 Notification 从屏幕四角中的任意一角弹出，使用<code>position</code>属性定义 Notification 的弹出位置，支持四个选项：<code>top-right</code>、<code>top-left</code>、<code>bottom-right</code>、<code>bottom-left</code>，默认为<code>top-right</code>。</p>
+<h3>Custom Pop-up Position</h3>
+<p>You can make the Notification pop up from any of the four corners of the screen. Use the <code>position</code> property to define the pop-up position of the Notification. Four options are supported: <code>top-right</code>, <code>top-left</code>, <code>bottom-right</code>, <code>bottom-left</code>, with the default being <code>top-right</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;右上角&lt;/jk-button&gt;
@@ -126,8 +126,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>带有偏移</h3>
-<p>让 Notification 偏移一些位置，Notification 提供设置偏移量的功能，通过设置 <code>offset</code> 字段，可以使弹出的消息距屏幕边缘偏移一段距离。注意在同一时刻，所有的 Notification 实例应当具有一个相同的偏移量。</p>
+<h3>With Offset</h3>
+<p>Make the Notification offset by some distance. The Notification provides the function of setting the offset. By setting the <code>offset</code> field, the popped-up message can be offset from the edge of the screen by a certain distance. Note that at the same moment, all Notification instances should have the same offset.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;偏移警告&lt;/jk-button&gt;
@@ -149,8 +149,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>使用 HTML 片段</h3>
-<p><code>message</code> 属性支持传入 HTML 片段，并将<code>useHtml</code>属性设置为 true，<code>message</code> 就会被当作 HTML 片段处理。</p>
+<h3>Using HTML Fragments</h3>
+<p>The <code>message</code> property supports passing in HTML fragments. Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;弹出HTML警告&lt;/jk-button&gt;
@@ -175,122 +175,122 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <div class="warning">
-<p><code>message</code> 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS 攻击</a>。因此在 <code>useHtml</code> 打开的情况下，请确保 <code>message</code> 的内容是可信的，<strong>永远不要</strong>将用户提交的内容赋值给 <code>message</code> 属性。</p>
+<p>Although the <code>message</code> property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>. Therefore, when <code>useHtml</code> is turned on, please ensure that the content of <code>message</code> is trustworthy. <strong>Never</strong> assign user-submitted content to the <code>message</code> property.</p>
 </div>
 <blockquote>
-<p>Message 提供<code>closeAll</code>方法，用于在特定业务时机去清除全部 message。</p>
+<p>Message provides the <code>closeAll</code> method to clear all messages at specific business times.</p>
 </blockquote>
 <h3>Options</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>Title</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>message</td>
-<td>说明文字</td>
+<td>Explanation text</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>useHtml</td>
-<td>是否将 message 属性作为 HTML 片段处理</td>
+<td>Whether to treat the <code>message</code> property as an HTML fragment</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>type</td>
-<td>主题样式，如果不在可选值内将被忽略</td>
+<td>Theme style, will be ignored if not in the optional values</td>
 <td>string</td>
 <td>success/warning/info/error</td>
 <td>—</td>
 </tr>
 <tr>
 <td>iconClass</td>
-<td>自定义图标的类名。若设置了 <code>type</code>，则 <code>iconClass</code> 会被覆盖</td>
+<td>Class name of the custom icon. If <code>type</code> is set, <code>iconClass</code> will be overridden</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>customClass</td>
-<td>自定义类名</td>
+<td>Custom class name</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>duration</td>
-<td>显示时间, 毫秒。设为 0 则不会自动关闭</td>
+<td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
 <td>number</td>
 <td>—</td>
 <td>4500</td>
 </tr>
 <tr>
 <td>position</td>
-<td>自定义弹出位置</td>
+<td>Custom pop-up position</td>
 <td>string</td>
 <td>top-right/top-left/bottom-right/bottom-left</td>
 <td>top-right</td>
 </tr>
 <tr>
 <td>closable</td>
-<td>是否显示关闭按钮</td>
+<td>Whether to display the close button</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>onClose</td>
-<td>关闭时的回调函数</td>
+<td>Callback function when closing</td>
 <td>function</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>onClick</td>
-<td>点击 Notification 时的回调函数</td>
+<td>Callback function when clicking the Notification</td>
 <td>function</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>offset</td>
-<td>偏移的距离，在同一时刻，所有的 Notification 实例应当具有一个相同的偏移量</td>
+<td>Offset distance. At the same moment, all Notification instances should have the same offset</td>
 <td>number</td>
 <td>—</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
-<p>调用 <code>Notification</code> 会返回当前 Notification 的实例。如果需要手动关闭实例，可以调用它的 <code>close</code> 方法。</p>
+<h3>Methods</h3>
+<p>Calling <code>Notification</code> will return the current Notification instance. If you need to manually close the instance, you can call its <code>close</code> method.</p>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
+<th>Method Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>close</td>
-<td>关闭当前的 Notification</td>
+<td>Close the current Notification</td>
 </tr>
 </tbody>
 </table>

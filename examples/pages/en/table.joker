@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Table 表格</h2>
-<p>用于展示多条结构类似的数据，可对数据进行排序、筛选、对比或其他自定义操作。</p>
-<h3>基础表格</h3>
-<p>基础的表格展示用法。</p>
+<h2>Table</h2>
+<p>Used to display multiple pieces of data with similar structures, and can perform operations such as sorting, filtering, comparison, or other custom operations on the data.</p>
+<h3>Basic Table</h3>
+<p>Basic usage for table display.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot;&gt;
@@ -28,9 +28,9 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>带斑马纹表格</h3>
-<p>使用带斑马纹的表格，可以更容易区分出不同行的数据。</p>
-<p><code>stripe</code>属性可以创建带斑马纹的表格。它接受一个<code>Boolean</code>，默认为<code>false</code>，设置为<code>true</code>即为启用。</p>
+<h3>Striped Table</h3>
+<p>Using a striped table makes it easier to distinguish data in different rows.</p>
+<p>The <code>stripe</code> attribute can create a striped table. It accepts a <code>Boolean</code>, with the default value of <code>false</code>. Setting it to <code>true</code> enables the striped effect.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; stripe&gt;
@@ -55,8 +55,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>带边框表格</h3>
-<p>默认情况下，Table 组件是不具有竖直方向的边框的，如果需要，可以使用<code>border</code>属性，它接受一个<code>Boolean</code>，设置为<code>true</code>即可启用。</p>
+<h3>Bordered Table</h3>
+<p>By default, the Table component does not have vertical borders. If needed, you can use the <code>border</code> attribute, which accepts a <code>Boolean</code>. Setting it to <code>true</code> enables the borders.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; border&gt;
@@ -80,9 +80,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>固定表头</h3>
-<p>纵向内容过多时，可选择固定表头。</p>
-<p>只要在<code>jk-table</code>元素中定义了<code>height</code>属性，即可实现固定表头的表格，而不需要额外的代码。</p>
+<h3>Fixed Table Header</h3>
+<p>When there is too much vertical content, you can choose to fix the table header.</p>
+<p>Just define the <code>height</code> attribute in the <code>jk-table</code> element, and a table with a fixed header can be achieved without additional code.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot;&gt;
@@ -114,9 +114,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>固定列</h3>
-<p>横向内容过多时，可选择固定列。</p>
-<p>固定列需要使用<code>fixed</code>属性，它接受 Boolean 值或者<code>left</code> <code>right</code>，表示左边固定还是右边固定。</p>
+<h3>Fixed Columns</h3>
+<p>When there is too much horizontal content, you can choose to fix the columns.</p>
+<p>To fix columns, use the <code>fixed</code> attribute, which accepts a <code>Boolean</code> value or <code>left</code>/<code>right</code>, indicating whether to fix on the left or right.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot; border&gt;
@@ -247,9 +247,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>流体高度</h3>
-<p>当数据量动态变化时，可以为 Table 设置一个最大高度。</p>
-<p>通过设置<code>max-height</code>属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条。</p>
+<h3>Fluid Height</h3>
+<p>When the amount of data changes dynamically, you can set a maximum height for the Table.</p>
+<p>Specify the maximum height for the Table by setting the <code>max-height</code> attribute. If the height required by the table is greater than the maximum height, a scroll bar will be displayed.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -403,9 +403,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>多级表头</h3>
-<p>数据结构比较复杂的时候，可使用多级表头来展现数据的层次关系。</p>
-<p>只需要在 <code>jk-table-column</code> 里面嵌套 <code>jk-table-column</code>，就可以实现多级表头。</p>
+<h3>Multi-level Table Header</h3>
+<p>When the data structure is relatively complex, multi-level table headers can be used to show the hierarchical relationship of the data.</p>
+<p>Just nest <code>jk-table-column</code> inside <code>jk-table-column</code> to achieve a multi-level table header.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; border&gt;
@@ -495,18 +495,18 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>选中行</h3>
-<p>可通过<code>select</code>属性来开启选中行，设置<code>select</code>属性为<strong>true</strong>代表开启选中模式，可配置为<code>mutiple</code>属性来开启多选模式。</p>
-<p>可通过新增<code>jk-table-column</code>组件，并配置 type 为<strong>selection</strong>来展示选中辅助列，<strong>注意</strong>若开启辅助列，则点击行不再进行选中操作。</p>
-<p>通过事件<code>selected-change</code>来观察选中状态变化，其中单选模式下返回单行数据，多选模式下返回多行数据。</p>
-<p>也可以通过以下方法来进行选中行的读取和控制：</p>
+<h3>Selecting Rows</h3>
+<p>You can enable row selection through the <code>select</code> attribute. Setting the <code>select</code> attribute to <strong>true</strong> represents enabling the selection mode, and you can configure the <code>mutiple</code> attribute to enable the multi-selection mode.</p>
+<p>You can add a <code>jk-table-column</code> component and configure the <code>type</code> as <strong>selection</strong> to display the selection assist column. <strong>Note</strong> that if the assist column is enabled, clicking on the row will no longer perform the selection operation.</p>
+<p>Observe the change in the selection state through the <code>selected-change</code> event. In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.</p>
+<p>You can also read and control the selected rows through the following methods:</p>
 <ul>
-<li><code>getSelectedRow</code> 获取选中行，单选模式下返回单行数据，多选模式下返回多行数据</li>
-<li><code>setSelectedRow</code> 选中行，可传入多行或单行数据，<strong>注意</strong>单选模式下传入多行数据时只会选中第一项数据</li>
-<li><code>clearSelectedRow</code> 清除选中行</li>
-<li><code>selectAll</code> 多选模式下，可通过该方法选中全部非禁用数据</li>
+<li><code>getSelectedRow</code> Get the selected row(s). In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.</li>
+<li><code>setSelectedRow</code> Select rows. You can pass in multiple-row or single-row data. <strong>Note</strong> that in the single-selection mode, only the first item of data will be selected when multiple-row data is passed in.</li>
+<li><code>clearSelectedRow</code> Clear the selected rows.</li>
+<li><code>selectAll</code> In the multi-selection mode, all non-disabled data can be selected through this method.</li>
 </ul>
-<p>单选模式示例：</p>
+<p>Single-selection mode example:</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo8)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -553,7 +553,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<p>多选模式示例：</p>
+<p>Multi-selection mode example:</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo9)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -633,11 +633,11 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>排序</h3>
-<p>对表格进行排序，可快速查找或对比数据。</p>
-<p>在列中设置<code>sortable</code>属性即可实现以该列为基准的排序，接受一个<code>Boolean</code>，默认为<code>false</code>。
-可以通过 Table 的<code>default-sort</code>属性设置默认的排序列和排序顺序。可以使用<code>sort-method</code>来自定义排序规则，其中<code>default-sort-order</code>属性默认为<strong>ascending</strong>，可配置<strong>descending</strong>实现排序方式切换。</p>
-<p>如果需要后端排序，需将<code>sortable</code>设置为<code>custom</code>，同时在 Table 上监听<code>sort-change</code>事件，在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。</p>
+<h3>Sorting</h3>
+<p>Sorting the table allows for quick data lookup or comparison.</p>
+<p>Setting the <code>sortable</code> attribute in a column enables sorting based on that column. It accepts a <code>Boolean</code>, with the default value of <code>false</code>.
+You can set the default sorted column and sorting order through the <code>default-sort</code> attribute of the Table. You can use <code>sort-method</code> to customize the sorting rule. The <code>default-sort-order</code> attribute defaults to <strong>ascending</strong>, and can be configured as <strong>descending</strong> to switch the sorting method.</p>
+<p>If backend sorting is required, set <code>sortable</code> to <code>custom</code>, and at the same time, listen to the <code>sort-change</code> event on the Table. In the event callback, you can obtain the field name and sorting order of the current sorting, so as to request the sorted table data from the interface.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo10)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
@@ -662,7 +662,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<p>自定义排序，模拟服务端排序</p>
+<p>Custom sorting, simulating server-side sorting</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo11)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData.value&quot; ref=&quot;table&quot; @sort-change=&quot;handleSortChange&quot;&gt;
@@ -756,13 +756,13 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>筛选</h3>
-<p>对表格进行筛选，可快速查找到自己想看的数据。</p>
-<p>在列中设置<code>filter</code> <code>filter-method</code>属性即可开启该列的筛选，filter 是一个数组，若不设置则默认尝试展示当前列所有可选值，<code>filter-method</code>是一个方法，它用于决定某些数据是否显示，会传入三个参数：<code>当前行数据</code> 、 <code>筛选条件值</code>和<code>筛选列</code>。</p>
-<p>其中 filter 可配置数组，数组可以为<strong>string[]</strong>，也可以为筛选想做转译，例如：</p>
+<h3>Filtering</h3>
+<p>Filtering the table allows you to quickly find the data you want to view.</p>
+<p>Setting the <code>filter</code> and <code>filter-method</code> attributes in a column enables filtering for that column. <code>filter</code> is an array. If not set, it will default to trying to display all optional values of the current column. <code>filter-method</code> is a method used to determine whether certain data is displayed. It is passed three parameters: <code>current row data</code>, <code>filter condition value</code>, and <code>filter column</code>.</p>
+<p>The <code>filter</code> can be configured as an array. The array can be of type <strong>string[]</strong>, or it can be used for translation of filter options, for example:</p>
 <pre><code class="language-js">[
-    { value: &quot;1&quot;, text: &quot;男&quot; },
-    { value: &quot;0&quot;, text: &quot;女&quot; }
+    { value: &quot;1&quot;, text: &quot;Male&quot; },
+    { value: &quot;0&quot;, text: &quot;Female&quot; }
 ];
 </code></pre>
 <DemoContainer component="@(components.DEMO_JOKER_demo12)">
@@ -810,8 +810,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>索引列</h3>
-<p>通过配置<code>jk-table-column</code>组件的 type=&quot;index&quot;来展示索引列，并通过 index 属性来配置起始索引，默认起始位置为 1。</p>
+<h3>Index Column</h3>
+<p>Display the index column by configuring the <code>type=&quot;index&quot;</code> of the <code>jk-table-column</code> component, and configure the starting index through the <code>index</code> attribute. The default starting position is 1.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo13)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -846,10 +846,10 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>自定义列模板</h3>
-<p>自定义列的显示内容，可组合其他组件使用。
-通过 <code>RenderSection</code> 可以获取到 value, row, rowIndex, columnIndex,column, 和 store（table 数据管理）的数据，用法参考 demo。</p>
-<p>其中<code>td</code>区域代表表格内容单元格渲染，<code>th</code>区域代表表头渲染。</p>
+<h3>Custom Column Template</h3>
+<p>Customize the display content of columns and combine with other components.
+Through <code>RenderSection</code>, you can obtain data such as <code>value</code>, <code>row</code>, <code>rowIndex</code>, <code>columnIndex</code>, <code>column</code>, and <code>store</code> (table data management). Refer to the demo for usage.</p>
+<p>The <code>td</code> area represents the rendering of table content cells, and the <code>th</code> area represents the rendering of table headers.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo14)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@model.tableData&quot; select multiple dataChangeNotClearSelected&gt;
@@ -927,9 +927,9 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>展开行</h3>
-<p>当行内容过多并且不想显示横向滚动条时，可以使用 Table 展开行功能。
-通过设置 type=&quot;expand&quot; 和 <code>section('expand',data)</code> 可以开启展开行功能，<code>jk-table-column</code> 的模板会被渲染成为展开行的内容，其中 data 参数包括：<code>当前行数据</code>,<code>行索引</code>,<code>store数据管理</code>。</p>
+<h3>Expanding Rows</h3>
+<p>When there is too much row content and you don't want to display a horizontal scroll bar, you can use the Table's expanding row function.
+By setting <code>type=&quot;expand&quot;</code> and <code>section('expand',data)</code>, the expanding row function can be enabled. The template of <code>jk-table-column</code> will be rendered as the content of the expanded row. The <code>data</code> parameter includes: <code>current row data</code>, <code>row index</code>, and <code>store data management</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo15)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; defaultExpandAll&gt;
@@ -973,10 +973,10 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>树列表</h3>
-<p>支持树类型的数据的显示。当 row 中包含 <code>children</code> 字段时，被视为树形数据。渲染树形数据时，必须要指定 <code>row-key</code>。支持子节点数据异步加载。设置 Table 的 <code>lazy</code> 属性为 true 与加载函数 <code>load</code> 。通过指定 row 中的 <code>isLeafKey</code> 字段来指定哪些行是包含子节点。</p>
+<h3>Tree List</h3>
+<p>Supports the display of tree-type data. When a <code>row</code> contains a <code>children</code> field, it is regarded as tree-shaped data. When rendering tree-shaped data, <code>row-key</code> must be specified. It supports asynchronous loading of child node data. Set the <code>lazy</code> property of the Table to <code>true</code> and the loading function <code>load</code>. Specify which rows contain child nodes by specifying the <code>isLeafKey</code> field in the <code>row</code>.</p>
 <blockquote>
-<p>可通过更改<code>childrenKey</code>和 <code>isLeafKey</code>来配置节点属性和是否叶子属性</p>
+<p>You can configure the node property and the leaf property by changing <code>childrenKey</code> and <code>isLeafKey</code>.</p>
 </blockquote>
 <DemoContainer component="@(components.DEMO_JOKER_demo16)">
 <pre><code class="language-html">&lt;template&gt;
@@ -1022,7 +1022,7 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<p>异步加载</p>
+<p>Asynchronous loading</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo17)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; row-key=&quot;name&quot; lazy load=&quot;@loadChildrenRow&quot;&gt;
@@ -1071,10 +1071,10 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p>注意，树形列表如果启用排序、筛选或索引列，只会对一级列表进行操作，不会对子集作用。</p>
+<p>Note that if sorting, filtering, or an index column is enabled for a tree-shaped list, it will only operate on the first-level list and not on the subsets.</p>
 </blockquote>
-<h3>尺寸</h3>
-<p>通过修改 size 属性来修改表格的大小。</p>
+<h3>Size</h3>
+<p>Modify the size of the table by changing the <code>size</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo18)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -1133,8 +1133,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>大数据同步加载</h3>
-<p>大数据加载（800 条）。</p>
+<h3>Synchronous Loading of Big Data</h3>
+<p>Loading large amounts of data (800 entries).</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo19)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@model.tableData&quot; select multiple height=&quot;250&quot; ref=&quot;table&quot;&gt;
@@ -1178,171 +1178,171 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>data</td>
-<td>显示的数据</td>
+<td>The data to be displayed</td>
 <td>array</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>height</td>
-<td>Table 的高度，默认为自动高度。如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。</td>
+<td>The height of the Table. By default, it is auto-height. If <code>height</code> is of type <code>number</code>, the unit is px; if <code>height</code> is of type <code>string</code>, this height will be set as the value of the Table's <code>style.height</code>, and the height of the Table will be controlled by external styles.</td>
 <td>string/number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>max-height</td>
-<td>Table 的最大高度。合法的值为数字或者单位为 px 的高度。</td>
+<td>The maximum height of the Table. Legal values are numbers or heights with the unit of px.</td>
 <td>string/number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>stripe</td>
-<td>是否为斑马纹 table</td>
+<td>Whether it is a striped table</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>border</td>
-<td>是否带有纵向边框</td>
+<td>Whether to have vertical borders</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>size</td>
-<td>Table 的尺寸</td>
+<td>The size of the Table</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>—</td>
 </tr>
 <tr>
 <td>show-header</td>
-<td>是否显示表头</td>
+<td>Whether to display the table header</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>row-class-name</td>
-<td>行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。</td>
+<td>The callback method for the <code>className</code> of the row. A string can also be used to set a fixed <code>className</code> for all rows.</td>
 <td>Function({row, rowIndex})/String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>row-style</td>
-<td>行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。</td>
+<td>The callback method for the <code>style</code> of the row. A fixed <code>Object</code> can also be used to set the same <code>Style</code> for all rows.</td>
 <td>Function({row, rowIndex})/Object</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>cell-class-name</td>
-<td>单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。</td>
+<td>The callback method for the <code>className</code> of the cell. A string can also be used to set a fixed <code>className</code> for all cells.</td>
 <td>Function({row, column, rowIndex, columnIndex})/String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>cell-style</td>
-<td>单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。</td>
+<td>The callback method for the <code>style</code> of the cell. A fixed <code>Object</code> can also be used to set the same <code>Style</code> for all cells.</td>
 <td>Function({row, column, rowIndex, columnIndex})/Object</td>
 <td>string</td>
 <td>—</td>
 </tr>
 <tr>
 <td>header-row-class-name</td>
-<td>表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。</td>
+<td>The callback method for the <code>className</code> of the table header row. A string can also be used to set a fixed <code>className</code> for all table header rows.</td>
 <td>Function({row, rowIndex})/String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>header-row-style</td>
-<td>表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。</td>
+<td>The callback method for the <code>style</code> of the table header row. A fixed <code>Object</code> can also be used to set the same <code>Style</code> for all table header rows.</td>
 <td>Function({row, rowIndex})/Object</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>header-cell-class-name</td>
-<td>表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。</td>
+<td>The callback method for the <code>className</code> of the table header cell. A string can also be used to set a fixed <code>className</code> for all table header cells.</td>
 <td>Function({row, column, rowIndex, columnIndex})/String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>header-cell-style</td>
-<td>表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。</td>
+<td>The callback method for the <code>style</code> of the table header cell. A fixed <code>Object</code> can also be used to set the same <code>Style</code> for all table header cells.</td>
 <td>Function({row, column, rowIndex, columnIndex})/Object</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>empty-text</td>
-<td>空数据时显示的文本内容，也可以通过 <code>section=&quot;empty&quot;</code> 设置</td>
+<td>The text content to be displayed when there is no data. It can also be set through <code>section=&quot;empty&quot;</code></td>
 <td>String</td>
 <td>—</td>
-<td>暂无数据</td>
+<td>No data yet</td>
 </tr>
 <tr>
 <td>default-sort</td>
-<td>默认的排序列的</td>
+<td>The default sorted column</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>default-sort-order</td>
-<td>默认排序的规则</td>
+<td>The default sorting rule</td>
 <td>ascending</td>
 <td>descending</td>
 <td>-</td>
 </tr>
 <tr>
 <td>childrenKey</td>
-<td>树结构列表时，用于指定子集属性名称</td>
+<td>When it is a tree-structured list, it is used to specify the name of the subset property</td>
 <td></td>
 <td>string</td>
 <td>children</td>
 </tr>
 <tr>
 <td>isLeafKey</td>
-<td>树结构列表时，用于指定是否有子集属性名称</td>
+<td>When it is a tree-structured list, it is used to specify the name of the property indicating whether there is a subset</td>
 <td></td>
 <td>string</td>
 <td>-</td>
 </tr>
 <tr>
 <td>dataChangeNotClearSelected</td>
-<td>数据变更后不清空选中项</td>
+<td>Whether to not clear the selected items after the data changes</td>
 <td></td>
 <td>boolean</td>
 <td>-</td>
 </tr>
 <tr>
 <td>defaultExpandAll</td>
-<td>是否默认展开所有行</td>
+<td>Whether to expand all rows by default</td>
 <td></td>
 <td>boolean</td>
 <td>-</td>
@@ -1353,25 +1353,25 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>selected-change</td>
-<td>当选择项发生变化时会触发该事件</td>
-<td>选中行</td>
+<td>This event is triggered when the selection changes</td>
+<td>Selected rows</td>
 </tr>
 <tr>
 <td>sort-change</td>
-<td>当表格的排序条件发生变化的时候会触发该事件</td>
+<td>This event is triggered when the sorting conditions of the table change</td>
 <td>{ column, order }</td>
 </tr>
 <tr>
 <td>expand-change</td>
-<td>当用户对某一行展开或者关闭的时候会触发该事件</td>
+<td>This event is triggered when a user expands or closes a row</td>
 <td>row, expand</td>
 </tr>
 </tbody>
@@ -1380,45 +1380,45 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>clearSelectedRow</td>
-<td>用于多选表格，清空用户的选择</td>
+<td>Used for multi-selection tables to clear the user's selection</td>
 <td>—</td>
 </tr>
 <tr>
 <td>selectAll</td>
-<td>用于多选表格，切换所有行的选中状态</td>
+<td>Used for multi-selection tables to toggle the selection state of all rows</td>
 <td>-</td>
 </tr>
 <tr>
 <td>setSelectedRow</td>
-<td>用于单选表格，设定某一行为选中行</td>
+<td>Used for single-selection tables to set a certain row as the selected row</td>
 <td>row</td>
 </tr>
 <tr>
 <td>clearSort</td>
-<td>用于清空排序条件，数据会恢复成未排序的状态</td>
+<td>Used to clear the sorting conditions, and the data will return to the unsorted state</td>
 <td>—</td>
 </tr>
 <tr>
 <td>clearFilter</td>
-<td>不传入参数时用于清空所有过滤条件，数据会恢复成未过滤的状态，也可传入由 column.key 组成的数组以清除指定列的过滤条件</td>
+<td>When no parameters are passed in, it is used to clear all filtering conditions, and the data will return to the unfiltered state. An array composed of <code>column.key</code> can also be passed in to clear the filtering conditions of the specified columns</td>
 <td>column.key</td>
 </tr>
 <tr>
 <td>sort</td>
-<td>手动对 Table 进行排序。参数<code>key</code>属性指定排序列，<code>order</code>指定排序顺序。</td>
+<td>Manually sort the Table. The <code>key</code> attribute in the parameter specifies the sorted column, and <code>order</code> specifies the sorting order.</td>
 <td>key: string, order: string</td>
 </tr>
 <tr>
 <td>getSelectRow</td>
-<td>获取选中行</td>
+<td>Get the selected row(s)</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -1427,127 +1427,127 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>type</td>
-<td>对应列的类型。如果设置了 <code>selection</code> 则显示单选/多选框；如果设置了 <code>index</code> 则显示该行的索引（从 1 开始计算）；如果设置了 <code>expand</code> 则显示为一个可展开的按钮</td>
+<td>The type of the corresponding column. If <code>selection</code> is set, a single-selection/multi-selection box will be displayed; if <code>index</code> is set, the index of the row (starting from 1) will be displayed; if <code>expand</code> is set, it will be displayed as an expandable button</td>
 <td>string</td>
 <td>selection/index/expand</td>
 <td>—</td>
 </tr>
 <tr>
 <td>index</td>
-<td>如果设置了 <code>type=index</code>，可以通过传递 <code>index</code> 属性来自定义索引</td>
+<td>If <code>type = index</code> is set, the index can be customized by passing the <code>index</code> attribute</td>
 <td>number, Function(index)</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>key</td>
-<td>column 的 key，如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件</td>
+<td>The <code>key</code> of the column. If the <code>filter-change</code> event is needed, this attribute is required to identify which column's filtering condition it is</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>label</td>
-<td>显示的标题</td>
+<td>The displayed title</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>width</td>
-<td>对应列的宽度</td>
+<td>The width of the corresponding column</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>fixed</td>
-<td>列是否固定在左侧或者右侧，true 表示固定在左侧</td>
+<td>Whether the column is fixed on the left or right. <code>true</code> means fixed on the left</td>
 <td>string, boolean</td>
 <td>true, left, right</td>
 <td>—</td>
 </tr>
 <tr>
 <td>sortable</td>
-<td>对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件</td>
+<td>Whether the corresponding column can be sorted. If set to 'custom', it means the user hopes for remote sorting, and the <code>sort-change</code> event of the Table needs to be listened to</td>
 <td>boolean, string</td>
 <td>true, false, 'custom'</td>
 <td>false</td>
 </tr>
 <tr>
 <td>sort-method</td>
-<td>对数据进行排序的时候使用的方法，仅当 sortable 设置为 true 的时候有效，自定义数据排序，返回新的数据</td>
+<td>The method used when sorting the data, only valid when <code>sortable</code> is set to <code>true</code>. Custom data sorting, returns new data</td>
 <td>—</td>
 <td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>align</td>
-<td>对齐方式</td>
+<td>Alignment method</td>
 <td>String</td>
 <td>left/center/right</td>
 <td>left</td>
 </tr>
 <tr>
 <td>header-align</td>
-<td>表头对齐方式，若不设置该项，则使用表格的对齐方式</td>
+<td>The alignment method of the table header. If this item is not set, the alignment method of the table will be used</td>
 <td>String</td>
 <td>left/center/right</td>
 <td>—</td>
 </tr>
 <tr>
 <td>class</td>
-<td>列的 class</td>
+<td>The class of the column</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>filter</td>
-<td>数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性，默认按当前列数据筛选。</td>
-<td>Array&lt;{ text, value }&gt; 或者 Array&lt;string&gt;</td>
+<td>The options for data filtering, in array format. The elements in the array need to have <code>text</code> and <code>value</code> attributes. By default, it filters according to the data of the current column.</td>
+<td>Array&lt;{ text, value }&gt; or Array&lt;string&gt;</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>filter-method</td>
-<td>数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。</td>
+<td>The method used for data filtering. If it is a multi-selection filter option, it will be executed multiple times for each piece of data, and the data will be displayed if any execution returns <code>true</code>.</td>
 <td>Function(row, filters, col)</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<h3>Table-column Section</h3>
+<h3>Table-column Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>name</th>
-<th>说明</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>td</td>
-<td>自定义列的内容，参数为 {value, row,rowIndex, column, columnIndex,store }</td>
+<td>Customize the content of the column. The parameters are {value, row,rowIndex, column, columnIndex,store }</td>
 </tr>
 <tr>
 <td>th</td>
-<td>自定义表头的内容，参数为 { column, columnIndex,store }</td>
+<td>Customize the content of the table header. The parameters are { column, columnIndex,store }</td>
 </tr>
 <tr>
 <td>expand</td>
-<td>针对展开行的扩展 ， 参数为 { row, rowIndex,store }</td>
+<td>For the expansion of expandable rows, the parameters are { row, rowIndex,store }</td>
 </tr>
 </tbody>
 </table>

@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Dropdown 下拉菜单</h2>
-<p>通过点击或着 hover 来展示下拉菜单。</p>
-<h3>基础用法</h3>
-<p>通过<code>Section</code>来设置触发下拉菜单展示的元素，默认情况下通过<code>click</code>来激活展示。</p>
+<h2>Dropdown</h2>
+<p>Displays a dropdown menu through clicking or hovering.</p>
+<h3>Basic Usage</h3>
+<p>Use <code>Section</code> to set the element that triggers the display of the dropdown menu. By default, it is activated for display through <code>click</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -35,8 +35,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>分割形式</h3>
-<p>配置<code>split-button</code>属性来让那个触发下拉元素呈现为按钮组。</p>
+<h3>Split-form</h3>
+<p>Configure the <code>split-button</code> attribute to make the element triggering the dropdown appear as a button group.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -73,8 +73,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>菜单样式</h3>
-<p>可以通过配置菜单项的图表、分割等属性来展示更丰富的菜单</p>
+<h3>Menu Style</h3>
+<p>You can configure attributes such as the menu item's icon and division to display a more diverse menu.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button&gt;
@@ -91,7 +91,7 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<p>当然，你也可以不使用<code>jk-dropdown-item</code>组件去填充下拉菜单，而是采用自定义的形式。</p>
+<p>Of course, you can also fill the dropdown menu in a custom way instead of using the <code>jk-dropdown-item</code> component.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button&gt;
@@ -168,8 +168,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>禁用</h3>
-<p>通过设置<code>disabled</code>属性实现禁用，该属性会自定更改<code>split-button</code>类型下的按钮状态，若不是分割按钮模式，请自行管理设置内容禁用样式</p>
+<h3>Disabled</h3>
+<p>Achieve disabling by setting the <code>disabled</code> attribute. This attribute will automatically change the button state in the <code>split-button</code> type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button disabled&gt;
@@ -186,9 +186,9 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>尺寸</h3>
-<p>通过设置<code>size</code>尺寸可以更改<code>split-button</code>模式下的按钮尺寸。</p>
-<p>尺寸类型可选值包括：<code>medium</code>、<code>small</code>、<code>mini</code>。</p>
+<h3>Size</h3>
+<p>By setting the <code>size</code> dimension, you can change the size of the button in the <code>split-button</code> mode.
+The available size types include: <code>medium</code>, <code>small</code>, <code>mini</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -247,7 +247,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<p><code>dropdown-menu</code>也可以配置<code>size</code>属性，用于控制下拉菜单的尺寸。</p>
+<p>The <code>dropdown-menu</code> can also be configured with the <code>size</code> attribute to control the size of the dropdown menu.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -310,45 +310,45 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>type</td>
-<td>菜单按钮类型，同 Button 组件(只在<code>split-button</code>为 true 的情况下有效)</td>
+<td>Menu button type, same as the Button component (only valid when <code>split-button</code> is true)</td>
 <td>string</td>
 <td>—</td>
 <td>primary</td>
 </tr>
 <tr>
 <td>size</td>
-<td>菜单尺寸，在<code>split-button</code>为 true 的情况下也对触发按钮生效</td>
+<td>Menu size, also takes effect on the trigger button when <code>split-button</code> is true</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>—</td>
 </tr>
 <tr>
 <td>split-button</td>
-<td>下拉触发元素呈现为按钮组</td>
+<td>The dropdown-triggering element appears as a button group</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>trigger</td>
-<td>触发下拉的行为</td>
+<td>The behavior that triggers the dropdown</td>
 <td>string</td>
 <td>hover, click</td>
 <td>click</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether it is disabled</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
@@ -359,15 +359,15 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td><code>split-button</code> 为 true 时，点击左侧按钮的回调，若不是<code>split-button</code>则代表当前内部元素点击冒泡处理事件</td>
+<td>Callback when clicking the left-hand button when <code>split-button</code> is true. If it is not <code>split-button</code>, it represents the click bubbling handling event of the current internal element</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -376,24 +376,24 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>size</td>
-<td>菜单尺寸</td>
+<td>Menu size</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>-</td>
 </tr>
 <tr>
 <td>placement</td>
-<td>菜单位置</td>
+<td>Menu position</td>
 <td>string</td>
 <td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
 <td>bottom-start</td>
@@ -404,31 +404,31 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>disabled</td>
-<td>禁用</td>
+<td>Disabled</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>divided</td>
-<td>显示分割线</td>
+<td>Display a dividing line</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>图标类名</td>
+<td>Icon class name</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
@@ -439,20 +439,20 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>open</td>
-<td>菜单打开</td>
+<td>Menu opened</td>
 <td>—</td>
 </tr>
 <tr>
 <td>close</td>
-<td>菜单关闭</td>
+<td>Menu closed</td>
 <td>—</td>
 </tr>
 </tbody>

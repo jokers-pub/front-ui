@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Progress 进度条</h2>
-<p>用于展示操作进度，告知用户当前状态和预期。</p>
-<h3>线形进度条</h3>
-<p>Progress 组件设置 percentage 属性即可，表示进度条对应的百分比，必填，必须在 0-100。通过 format 属性来指定进度条文字内容。</p>
+<h2>Progress</h2>
+<p>Used to show the operation progress, informing users of the current status and expectations.</p>
+<h3>Linear Progress Bar</h3>
+<p>For the Progress component, setting the <code>percentage</code> attribute, which is required and must be between 0-100, represents the percentage corresponding to the progress bar. The text content of the progress bar can be specified through the <code>format</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -29,9 +29,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>百分比内显</h3>
-<p>百分比不占用额外控件，适用于文件上传等场景。</p>
-<p>Progress 组件可通过 stroke-width 属性更改进度条的高度，并可通过 text-inside 属性来将进度条描述置于进度条内部。</p>
+<h3>Inner-displayed Percentage</h3>
+<p>The percentage does not take up additional controls, which is suitable for scenarios such as file uploads.</p>
+<p>For the Progress component, the height of the progress bar can be changed through the <code>stroke-width</code> attribute, and the description of the progress bar can be placed inside the progress bar through the <code>text-inside</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -59,8 +59,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>自定义颜色</h3>
-<p>可以通过 color 设置进度条的颜色，color 可以接受颜色字符串，函数和数组。</p>
+<h3>Custom Color</h3>
+<p>The color of the progress bar can be set through <code>color</code>. <code>color</code> can accept color strings, functions, and arrays.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;&lt;jk-progress percentage=&quot;@model.percentage&quot; color=&quot;@model.customColor&quot;&gt;&lt;/jk-progress&gt;&lt;/DemoRow&gt;
@@ -112,8 +112,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>环形进度条</h3>
-<p>Progress 组件可通过 type 属性来指定使用环形进度条，在环形进度条中，还可以通过 width 属性来设置其大小。</p>
+<h3>Circular Progress Bar</h3>
+<p>The Progress component can use the <code>type</code> attribute to specify the use of a circular progress bar. In the circular progress bar, the size can also be set through the <code>width</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -151,8 +151,8 @@ div {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>仪表盘形进度条</h3>
-<p>通过 type 属性来指定使用仪表盘形进度条。</p>
+<h3>Gauge-shaped Progress Bar</h3>
+<p>Use the <code>type</code> attribute to specify the use of a gauge-shaped progress bar.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-progress type=&quot;dashboard&quot; percentage=&quot;@model.percentage&quot; color=&quot;@model.colors&quot;&gt;&lt;/jk-progress&gt;
@@ -199,101 +199,101 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>percentage</td>
-<td>百分比（必填）</td>
+<td>Percentage (required)</td>
 <td>number</td>
 <td>0-100</td>
 <td>0</td>
 </tr>
 <tr>
 <td>type</td>
-<td>进度条类型</td>
+<td>Progress bar type</td>
 <td>string</td>
 <td>line/circle/dashboard</td>
 <td>line</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>strokeWidth</td>
-<td>进度条的宽度，单位 px</td>
+<td>The width of the progress bar, in px</td>
 <td>number</td>
 <td>—</td>
 <td>6</td>
 </tr>
 <tr>
 <td>textInside</td>
-<td>进度条显示文字内置在进度条内（仅 type=line 时可用）</td>
+<td>The progress bar text is displayed inside the progress bar (only available when type = line)</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>status</td>
-<td>进度条当前状态</td>
+<td>The current status of the progress bar</td>
 <td>string</td>
 <td>success/exception/warning</td>
 <td>-</td>
 </tr>
 <tr>
 <td>color</td>
-<td>进度条背景色（会覆盖 status 状态颜色）</td>
+<td>The background color of the progress bar (will override the status color)</td>
 <td>string/function/array</td>
 <td>—</td>
 <td>''</td>
 </tr>
 <tr>
 <td>width</td>
-<td>环形进度条画布宽度（仅 type=circle 或 dashboard 时可用）</td>
+<td>The width of the circular progress bar canvas (only available when type = circle or dashboard)</td>
 <td>number</td>
 <td>—</td>
 <td>126</td>
 </tr>
 <tr>
 <td>showText</td>
-<td>是否显示进度条文字内容</td>
+<td>Whether to display the text content of the progress bar</td>
 <td>boolean</td>
 <td>-</td>
 <td>true</td>
 </tr>
 <tr>
 <td>strokeLinecap</td>
-<td>circle/dashboard 类型路径两端的形状</td>
+<td>The shape of the two ends of the path for circle/dashboard types</td>
 <td>string</td>
 <td>butt/round/square</td>
 <td>round</td>
 </tr>
 <tr>
 <td>format</td>
-<td>指定进度条文字内容</td>
+<td>Specify the text content of the progress bar</td>
 <td>function(percentage)</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>defineBackColor</td>
-<td>指定进度条底色（支持 hex 格式）</td>
+<td>Specify the base color of the progress bar (supports hex format)</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>textColor</td>
-<td>指定进度条字体颜色（支持 hex 格式）</td>
+<td>Specify the font color of the progress bar (supports hex format)</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>

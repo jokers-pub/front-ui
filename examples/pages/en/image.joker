@@ -1,8 +1,8 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Image 图片</h2>
-<p>图片容器，保留原生 img 的特性，支持懒加载，自定义占位、加载失败等</p>
-<h3>基础用法</h3>
+<h2>Image</h2>
+<p>An image container that retains the characteristics of the native <code>img</code>, supports lazy loading, and allows for custom placeholders, handling of load failures, etc.</p>
+<h3>Basic Usage</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -46,7 +46,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>占位内容</h3>
+<h3>Placeholder Content</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__placeholder&quot;&gt;
@@ -90,7 +90,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>加载失败</h3>
+<h3>Load Failure</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__error&quot;&gt;
@@ -124,7 +124,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>懒加载</h3>
+<h3>Lazy Loading</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image&quot;&gt;
@@ -169,7 +169,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>大图预览</h3>
+<h3>Large Image Preview</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__preview&quot;&gt;
@@ -199,69 +199,69 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>src</td>
-<td>图片源，同原生</td>
+<td>Image source, same as the native one</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>fit</td>
-<td>确定图片如何适应容器框，同原生 object-fit</td>
+<td>Determines how the image fits into the container box, same as the native <code>object-fit</code></td>
 <td>string</td>
 <td>fill / contain / cover / none / scale-down</td>
 <td>—</td>
 </tr>
 <tr>
 <td>lazy</td>
-<td>是否开启懒加载</td>
+<td>Whether to enable lazy loading</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>scroll-container</td>
-<td>开启懒加载后，监听 scroll 事件的容器</td>
+<td>After enabling lazy loading, the container that listens to the <code>scroll</code> event</td>
 <td>string / HTMLElement</td>
 <td>—</td>
-<td>最近一个 overflow 值为 auto 或 scroll 的父元素</td>
+<td>The nearest parent element with an <code>overflow</code> value of <code>auto</code> or <code>scroll</code></td>
 </tr>
 <tr>
 <td>preview-src-list</td>
-<td>开启图片预览功能</td>
+<td>Enables the image preview function</td>
 <td>Array</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>z-index</td>
-<td>设置图片预览的 z-index</td>
+<td>Sets the <code>z-index</code> of the image preview</td>
 <td>Number</td>
 <td>—</td>
 <td>2000</td>
 </tr>
 <tr>
 <td>errMsg</td>
-<td>加载错误时的提示</td>
+<td>The prompt when loading fails</td>
 <td>string</td>
 <td>—</td>
-<td>加载失败</td>
+<td>Loading failed</td>
 </tr>
 </tbody>
 </table>
@@ -269,40 +269,40 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>load</td>
-<td>图片加载成功触发</td>
+<td>Triggered when the image is loaded successfully</td>
 <td>(e: Event)</td>
 </tr>
 <tr>
 <td>error</td>
-<td>图片加载失败触发</td>
+<td>Triggered when the image fails to load</td>
 <td>(e: Error)</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
+<th>Event Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>placeholder</td>
-<td>图片未加载的占位内容</td>
+<td>The placeholder content when the image is not loaded</td>
 </tr>
 <tr>
 <td>error</td>
-<td>加载失败的内容</td>
+<td>The content when loading fails</td>
 </tr>
 </tbody>
 </table>

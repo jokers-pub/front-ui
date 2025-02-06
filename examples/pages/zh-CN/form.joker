@@ -736,7 +736,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Form Event</h3>
+<h3>Form Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -807,7 +807,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Form-Item Section</h3>
+<h3>Form-Item Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

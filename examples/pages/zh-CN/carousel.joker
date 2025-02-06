@@ -273,7 +273,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>Carousel 参数</h3>
+<h3>Carousel Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -364,7 +364,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Carousel 事件</h3>
+<h3>Carousel Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -381,7 +381,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Carousel 方法</h3>
+<h3>Carousel Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -408,7 +408,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Carousel-item 属性</h3>
+<h3>Carousel-item Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>

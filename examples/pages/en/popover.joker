@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Popover 弹出框</h2>
-<h3>基础用法</h3>
-<p>Popover 的属性与 Tooltip 很类似，因此对于重复属性，请参考 Tooltip 的文档，在此文档中不做详尽解释。</p>
-<p><code>trigger</code>属性用于设置何时触发 Popover，支持三种触发方式：<code>hover</code>，<code>click</code>， <code>manual</code>。</p>
+<h2>Popover</h2>
+<h3>Basic Usage</h3>
+<p>The attributes of Popover are quite similar to those of Tooltip. Therefore, for the repeated attributes, please refer to the Tooltip documentation and they will not be elaborated in this document.</p>
+<p>The <code>trigger</code> attribute is used to set when to trigger the Popover. It supports three triggering methods: <code>hover</code>, <code>click</code>, and <code>manual</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popover
@@ -56,8 +56,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>嵌套信息</h3>
-<p>可以在 Popover 中嵌套多种类型信息，以下为嵌套表格的例子。利用 section 取代<code>content</code>属性。</p>
+<h3>Nested Information</h3>
+<p>You can nest various types of information in the Popover. The following is an example of nesting a table. Use <code>section</code> instead of the <code>content</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popover trigger=&quot;click&quot; title=&quot;我里面嵌套了一个组件&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
@@ -74,95 +74,95 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>trigger</td>
-<td>触发方式</td>
+<td>Trigger method</td>
 <td>String</td>
 <td>click/hover/manual</td>
 <td>click</td>
 </tr>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>Title</td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>content</td>
-<td>显示的内容，也可以通过 <code>section</code> 传入 DOM</td>
+<td>The content to be displayed. DOM can also be passed in through <code>section</code></td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>width</td>
-<td>宽度</td>
+<td>Width</td>
 <td>String, Number</td>
 <td>—</td>
-<td>最小宽度 150px</td>
+<td>Minimum width 150px</td>
 </tr>
 <tr>
 <td>placement</td>
-<td>出现位置</td>
+<td>Appearance position</td>
 <td>String</td>
 <td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
 <td>bottom</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>Popover 是否可用</td>
+<td>Whether the Popover is available</td>
 <td>Boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>offset</td>
-<td>出现位置的偏移量</td>
+<td>Offset of the appearance position</td>
 <td>Number</td>
 <td>—</td>
 <td>0</td>
 </tr>
 <tr>
 <td>open-delay</td>
-<td>触发方式为 hover 时的显示延迟，单位为毫秒</td>
+<td>Display delay in milliseconds when the trigger method is hover</td>
 <td>Number</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>close-delay</td>
-<td>触发方式为 hover 时的隐藏延迟，单位为毫秒</td>
+<td>Hidden delay in milliseconds when the trigger method is hover</td>
 <td>number</td>
 <td>—</td>
 <td>200</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>Popover 内嵌 HTML 文本</td>
+<td>The embedded HTML text of the Popover</td>
 </tr>
 <tr>
 <td>reference</td>
-<td>触发 Popover 显示的 HTML 元素</td>
+<td>The HTML element that triggers the display of the Popover</td>
 </tr>
 </tbody>
 </table>
@@ -170,42 +170,42 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>show</td>
-<td>显示时触发</td>
+<td>Triggered when showing</td>
 <td>—</td>
 </tr>
 <tr>
 <td>hide</td>
-<td>隐藏时触发</td>
+<td>Triggered when hiding</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>show</td>
-<td>手动模式下可通过该方法进行展示</td>
+<td>Can be used to display in manual mode</td>
 <td>-</td>
 </tr>
 <tr>
 <td>hide</td>
-<td>用于主动隐藏，调用该方法不会参与<code>closeDelay</code>防抖机制中</td>
+<td>Used to actively hide. Calling this method will not be involved in the <code>closeDelay</code> debounce mechanism</td>
 <td>-</td>
 </tr>
 </tbody>

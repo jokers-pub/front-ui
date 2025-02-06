@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Tooltip 文字提示</h2>
-<p>常用于展示鼠标 hover 时的提示信息。</p>
-<h3>基础用法</h3>
-<p>在这里我们提供 9 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。</p>
-<p>使用<code>content</code>属性来决定<code>hover</code>时的提示信息。由<code>placement</code>属性决定展示效果：<code>placement</code>属性值为：<code>方向-对齐位置</code>；四个方向：<code>top</code>、<code>left</code>、<code>right</code>、<code>bottom</code>；三种对齐位置：<code>start</code>, <code>end</code>，默认为<code>bottom</code>。如<code>placement=&quot;left-end&quot;</code>，则提示信息出现在目标元素的左侧，且提示信息的底部与目标元素的底部对齐。</p>
+<h2>Tooltip</h2>
+<p>Often used to display prompt information when the mouse hovers.</p>
+<h3>Basic Usage</h3>
+<p>Here we provide 9 different display directions. You can understand them through the following complete examples and choose the effect you want.</p>
+<p>Use the <code>content</code> attribute to determine the prompt information when hovering. The display effect is determined by the <code>placement</code> attribute. The value of the <code>placement</code> attribute is in the format of <code>direction-alignment position</code>. The four directions are <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>, and the three alignment positions are <code>start</code>, <code>end</code>, with the default being <code>bottom</code>. For example, if <code>placement = &quot;left-end&quot;</code>, the prompt information will appear on the left side of the target element, and the bottom of the prompt information will be aligned with the bottom of the target element.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;box&quot;&gt;
@@ -89,9 +89,9 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>主题</h3>
-<p>Tooltip 组件提供了两个不同的主题：<code>dark</code>和<code>light</code>。</p>
-<p>通过设置<code>effect</code>属性来改变主题，默认为<code>dark</code>。</p>
+<h3>Themes</h3>
+<p>The Tooltip component offers two different themes: <code>dark</code> and <code>light</code>.</p>
+<p>Change the theme by setting the <code>effect</code> attribute, with the default being <code>dark</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
@@ -106,8 +106,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>手动控制</h3>
-<p>通过<code>manual</code>属性来控制是否手动激活，然后通过组件的<code>show</code>和<code>hide</code>方法来自由操作</p>
+<h3>Manual Control</h3>
+<p>Control whether to activate manually through the <code>manual</code> attribute, and then freely operate through the <code>show</code> and <code>hide</code> methods of the component.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; manual effect=&quot;light&quot; ref=&quot;tooltip&quot;&gt;
@@ -139,9 +139,9 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>更多 Content</h3>
-<p>展示多行文本或者是设置文本内容的格式</p>
-<p>用具名 section 分发<code>content</code>，替代<code>tooltip</code>中的<code>content</code>属性。</p>
+<h3>More Content</h3>
+<p>Display multi-line text or set the format of the text content.</p>
+<p>Use the named section to distribute the <code>content</code>, replacing the <code>content</code> attribute in the <code>tooltip</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip placement=&quot;top&quot;&gt;
@@ -155,8 +155,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>禁用</h3>
-<p>通过<code>disabled</code>值，来设置 tooltip 的禁用状态</p>
+<h3>Disabled</h3>
+<p>Set the disabled state of the tooltip through the <code>disabled</code> value.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
@@ -168,8 +168,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>尺寸</h3>
-<p>通过<code>size</code>值，来设置 tooltip 的尺寸</p>
+<h3>Size</h3>
+<p>Set the size of the tooltip through the <code>size</code> value.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -219,8 +219,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>最大宽度</h3>
-<p>若内容过长时，可通过配置<code>maxWidth</code>来配置最大宽度，这样可以使内容多行展示</p>
+<h3>Maximum Width</h3>
+<p>If the content is too long, you can configure the <code>maxWidth</code> to set the maximum width, so that the content can be displayed in multiple lines.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip
@@ -236,87 +236,87 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>effect</td>
-<td>默认提供的主题</td>
+<td>The default provided theme</td>
 <td>String</td>
 <td>dark/light / error</td>
 <td>dark</td>
 </tr>
 <tr>
 <td>content</td>
-<td>显示的内容，也可以通过 section<code>content</code> 传入 DOM</td>
+<td>The content to be displayed. DOM can also be passed in through the section <code>content</code></td>
 <td>String</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>placement</td>
-<td>Tooltip 的出现位置</td>
+<td>The appearance position of the Tooltip</td>
 <td>String</td>
 <td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
 <td>bottom</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>Tooltip 是否可用</td>
+<td>Whether the Tooltip is available</td>
 <td>Boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>offset</td>
-<td>出现位置的偏移量</td>
+<td>The offset of the appearance position</td>
 <td>Number</td>
 <td>—</td>
 <td>0</td>
 </tr>
 <tr>
 <td>transition</td>
-<td>定义渐变动画</td>
+<td>Define the fade-in animation</td>
 <td>String</td>
 <td>—</td>
 <td>jk-fade-in</td>
 </tr>
 <tr>
 <td>open-delay</td>
-<td>延迟出现，单位毫秒</td>
+<td>Delay the appearance, in milliseconds</td>
 <td>Number</td>
 <td>—</td>
 <td>0</td>
 </tr>
 <tr>
 <td>close-delay</td>
-<td>延迟隐藏，单位毫秒（防抖）</td>
+<td>Delay the hiding, in milliseconds (debounce)</td>
 <td>Number</td>
 <td>—</td>
 <td>200</td>
 </tr>
 <tr>
 <td>manual</td>
-<td>手动控制模式，设置为 true 后，mouseenter 和 mouseleave 事件将不会生效</td>
+<td>Manual control mode. After setting it to true, the mouseenter and mouseleave events will not take effect</td>
 <td>Boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>size</td>
-<td>尺寸配置</td>
+<td>Size configuration</td>
 <td>string</td>
 <td>medium、small、mini</td>
 <td></td>
 </tr>
 <tr>
 <td>maxWidth</td>
-<td>最大宽度</td>
+<td>Maximum width</td>
 <td>string</td>
 <td>-</td>
 <td>300px</td>

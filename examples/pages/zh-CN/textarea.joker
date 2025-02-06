@@ -45,7 +45,7 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Input 属性</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -185,7 +185,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Input 事件</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -217,7 +217,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Input 方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>

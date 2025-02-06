@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Dialog 对话框</h2>
-<p>在保留当前页面状态的情况下，告知用户并承载相关操作。</p>
-<h3>基本用法</h3>
-<p>Dialog 弹出一个对话框，适合需要定制性更大的场景。</p>
-<p>需要通过组件的<code>open</code>/<code>close</code>方法来设置弹窗是否展示。Dialog 分为两个部分：<code>body</code>和<code>footer</code>，<code>footer</code>需要具名为<code>footer</code>的<code>section</code>。<code>title</code>属性用于定义标题，它是可选的，默认值为空。最后，本例还展示了<code>before-close</code>的用法。</p>
+<h2>Dialog</h2>
+<p>Informs users and hosts relevant operations while maintaining the current page state.</p>
+<h3>Basic Usage</h3>
+<p>The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
+You need to use the component's <code>open</code>/<code>close</code> methods to set whether the pop-up is displayed. The Dialog consists of two parts: <code>body</code> and <code>footer</code>. The <code>footer</code> requires a <code>section</code> named <code>footer</code>. The <code>title</code> attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of <code>before-close</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -74,11 +74,11 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p><code>before-close</code> 仅当用户通过点击关闭图标或遮罩关闭 Dialog 时起效。</p>
+<p><code>before-close</code> only takes effect when the user closes the Dialog by clicking the close icon or the mask.</p>
 </blockquote>
-<h3>嵌套的 Dialog</h3>
-<p>如果需要在一个 Dialog 内部嵌套另一个 Dialog，需要设置 <code>append-to</code> 属性为<code>body</code>。</p>
-<p>正常情况下，我们不建议使用嵌套的 Dialog，如果需要在页面上同时显示多个 Dialog，可以将它们平级放置。对于确实需要嵌套 Dialog 的场景，我们提供了<code>append-to</code>属性，<strong>可参考核心对 append-to 的说明</strong>。将内层 Dialog 的该属性设置为 body，它就会插入至 body 元素上，从而保证内外层 Dialog 和遮罩层级关系的正确。</p>
+<h3>Nested Dialogs</h3>
+<p>If you need to nest one Dialog inside another, you need to set the <code>append-to</code> property to <code>body</code>.
+Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the <code>append-to</code> property. <strong>Refer to the core's description of append-to</strong>. Set this property of the inner Dialog to <code>body</code>, and it will be inserted into the <code>body</code> element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -118,10 +118,10 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p>append-to 只会影响 DOM 的输出接口，并不会影响 VNode 的数据结构，它仍按开发时的数据结构进行创建，也遵循父子组件销毁机制，无需过度干预。</p>
+<p><code>append-to</code> only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.</p>
 </blockquote>
-<h3>居中布局</h3>
-<p>标题和底部可水平居中，将<code>center</code>设置为<code>true</code>即可使标题和底部居中。<code>center</code>仅影响标题和底部区域。Dialog 的内容是任意的，在一些情况下，内容并不适合居中布局。如果需要内容也水平居中，请自行为其添加 CSS。</p>
+<h3>Centered Layout</h3>
+<p>The title and the bottom can be horizontally centered. Setting <code>center</code> to <code>true</code> will center the title and the bottom. <code>center</code> only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -157,140 +157,140 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p>Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默认 section 不会被渲染到 DOM 上。因此，如果需要执行 DOM 操作，或通过 <code>ref</code> 获取相应组件，请在 <code>open</code> 事件回调中进行。</p>
+<p>The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default <code>section</code> passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through <code>ref</code>, please do so in the <code>open</code> event callback.</p>
 </blockquote>
 <h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
-<td>Dialog 的标题，也可通过具名 section （见下表）传入</td>
+<td>The title of the Dialog, which can also be passed in through a named section (see the table below)</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>width</td>
-<td>Dialog 的宽度</td>
+<td>The width of the Dialog</td>
 <td>string</td>
 <td>—</td>
 <td>50%</td>
 </tr>
 <tr>
 <td>fullscreen</td>
-<td>是否为全屏 Dialog</td>
+<td>Whether it is a full-screen Dialog</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>modal</td>
-<td>是否需要遮罩层</td>
+<td>Whether a mask layer is needed</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>custom-class</td>
-<td>Dialog 的自定义类名</td>
+<td>The custom class name of the Dialog</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>close-on-click-modal</td>
-<td>是否可以通过点击 modal 关闭 Dialog</td>
+<td>Whether the Dialog can be closed by clicking the modal</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>close-on-press-escape</td>
-<td>是否可以通过按下 ESC 关闭 Dialog</td>
+<td>Whether the Dialog can be closed by pressing the ESC key</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>closable</td>
-<td>是否显示关闭按钮</td>
+<td>Whether to display the close button</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>before-close</td>
-<td>关闭前的回调，会暂停 Dialog 的关闭</td>
-<td>function(done)，done 用于关闭 Dialog</td>
+<td>The callback before closing, which will pause the closing of the Dialog</td>
+<td>function(done), where done is used to close the Dialog</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>center</td>
-<td>是否对头部和底部采用居中布局</td>
+<td>Whether to use a centered layout for the header and the bottom</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>destroyOnClose</td>
-<td>是否在关闭时销毁内部</td>
+<td>Whether to destroy the interior when closing</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 </tbody>
 </table>
-<h3>Section</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
 <th>name</th>
-<th>说明</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>Dialog 的内容</td>
+<td>The content of the Dialog</td>
 </tr>
 <tr>
 <td>title</td>
-<td>Dialog 标题区的内容</td>
+<td>The content of the Dialog title area</td>
 </tr>
 <tr>
 <td>footer</td>
-<td>Dialog 按钮操作区的内容</td>
+<td>The content of the Dialog button operation area</td>
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名称</th>
-<th>说明</th>
-<th>方法参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Method Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>open</td>
-<td>打开窗口</td>
+<td>Open the window</td>
 <td>—</td>
 </tr>
 <tr>
 <td>close</td>
-<td>关闭窗口</td>
+<td>Close the window</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -299,30 +299,30 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>open</td>
-<td>Dialog 打开的回调</td>
+<td>The callback when the Dialog is opened</td>
 <td>—</td>
 </tr>
 <tr>
 <td>opened</td>
-<td>Dialog 打开动画结束时的回调</td>
+<td>The callback when the Dialog opening animation ends</td>
 <td>—</td>
 </tr>
 <tr>
 <td>close</td>
-<td>Dialog 关闭的回调</td>
+<td>The callback when the Dialog is closed</td>
 <td>—</td>
 </tr>
 <tr>
 <td>closed</td>
-<td>Dialog 关闭动画结束时的回调</td>
+<td>The callback when the Dialog closing animation ends</td>
 <td>—</td>
 </tr>
 </tbody>

@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Drawer 抽屉</h2>
-<p>Drawer 组件提供了与 <code>Dialog</code> 几乎相同的 API，但在 UI 上带来了不同的体验。</p>
-<h3>基础用法</h3>
-<p>弹出一个侧边栏，可以从多个方向展示</p>
+<h2>Drawer</h2>
+<p>The Drawer component provides almost the same API as the <code>Dialog</code>, but offers a different UI experience.</p>
+<h3>Basic Usage</h3>
+<p>Pops up a sidebar that can be displayed from multiple directions.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -38,8 +38,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>多层嵌套</h3>
-<p>支持多层嵌套，组件内会自动控制<code>zindex</code></p>
+<h3>Multi-layer Nesting</h3>
+<p>Supports multi-layer nesting, and the <code>z-index</code> is automatically controlled within the component.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;handleOpen&quot;&gt;弹出&lt;/jk-button&gt;
@@ -71,31 +71,31 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>direction</td>
-<td>展开方向</td>
+<td>Expansion direction</td>
 <td>string</td>
 <td>left/top/right/bottom</td>
 <td>right</td>
 </tr>
 <tr>
 <td>size</td>
-<td>展开尺寸</td>
+<td>Expansion size</td>
 <td>string</td>
 <td>-</td>
 <td>30%</td>
 </tr>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>Title</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
@@ -106,18 +106,18 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>名称</th>
-<th>说明</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>内容区域</td>
+<td>Content area</td>
 </tr>
 <tr>
 <td>title</td>
-<td>标题区域</td>
+<td>Title area</td>
 </tr>
 </tbody>
 </table>
@@ -125,22 +125,22 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
-<th>返回值</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
+<th>Return Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>open</td>
-<td>打开</td>
+<td>Open</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>close</td>
-<td>关闭</td>
+<td>Close</td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -150,20 +150,20 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>open</td>
-<td>打开</td>
+<td>Opening</td>
 <td>-</td>
 </tr>
 <tr>
 <td>close</td>
-<td>关闭</td>
+<td>Closing</td>
 <td>-</td>
 </tr>
 </tbody>

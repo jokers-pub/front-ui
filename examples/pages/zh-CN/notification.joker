@@ -278,7 +278,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <p>调用 <code>Notification</code> 会返回当前 Notification 的实例。如果需要手动关闭实例，可以调用它的 <code>close</code> 方法。</p>
 <table class="mkd-table">
 <thead>

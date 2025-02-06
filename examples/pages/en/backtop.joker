@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Backtop 回到顶部</h2>
-<p>返回页面顶部的操作按钮</p>
-<h3>基础用法</h3>
-<p>滑动页面即可看到右下方的按钮。</p>
+<h2>Backtop</h2>
+<p>An operation button to return to the top of the page.</p>
+<h3>Basic Usage</h3>
+<p>Scroll the page and you can see the button at the bottom-right corner.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
@@ -11,8 +11,8 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>自定义显示内容</h3>
-<p>显示区域被固定为 40px * 40px 的区域, 其中的内容可支持自定义。</p>
+<h3>Custom Display Content</h3>
+<p>The display area is fixed to a 40px × 40px area, and the content within it can be customized.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
@@ -31,62 +31,62 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Backtop 参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>target</td>
-<td>触发滚动的对象</td>
+<td>The object that triggers the scrolling</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>visibilityHeight</td>
-<td>滚动高度达到此参数值才出现</td>
+<td>The button appears when the scrolling height reaches this parameter value</td>
 <td>number</td>
 <td>—</td>
 <td>200</td>
 </tr>
 <tr>
 <td>right</td>
-<td>控制其显示位置, 距离页面右边距</td>
+<td>Controls its display position, the distance from the right margin of the page</td>
 <td>number</td>
 <td>-</td>
 <td>40</td>
 </tr>
 <tr>
 <td>bottom</td>
-<td>控制其显示位置, 距离页面底部距离</td>
+<td>Controls its display position, the distance from the bottom of the page</td>
 <td>number</td>
 <td>—</td>
 <td>40</td>
 </tr>
 </tbody>
 </table>
-<h3>Backtop 事件</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td>点击按钮触发的事件</td>
-<td>点击事件</td>
+<td>The event triggered when the button is clicked</td>
+<td>Click event</td>
 </tr>
 </tbody>
 </table>

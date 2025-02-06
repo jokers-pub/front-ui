@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Card 卡片</h2>
-<p>将信息聚合在卡片容器中展示。</p>
-<h3>基础用法</h3>
-<p>包含标题，内容和操作。</p>
-<p>Card 组件包括 header 和 body 部分，header 部分需要有显式具名 section 分发，同时也是可选的。</p>
+<h2>Card</h2>
+<p>Displays information aggregated within a card container.</p>
+<h3>Basic Usage</h3>
+<p>Contains a title, content, and actions.
+The Card component consists of a header and a body section. The header section requires an explicit named section distribution and is optional.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;card-demo1&quot;&gt;
@@ -43,8 +43,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>简单卡片</h3>
-<p>卡片可以只有内容区域。</p>
+<h3>Simple Card</h3>
+<p>A card can have only a content area.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;card-demo2&quot;&gt;
@@ -74,9 +74,9 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>带图片</h3>
-<p>可配置定义更丰富的内容展示。</p>
-<p>配置 body-style 属性来自定义 body 部分的 style，我们还使用了布局组件。</p>
+<h3>With Image</h3>
+<p>Allows for configuring and defining a more diverse content display.
+Configure the <code>body-style</code> property to customize the style of the body section. We also use the layout component.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;card-demo3&quot;&gt;
@@ -140,9 +140,9 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>卡片阴影</h3>
-<p>可对阴影的显示进行配置。</p>
-<p>通过 shadow 属性设置卡片阴影出现的时机：always、hover 或 never。</p>
+<h3>Card Shadow</h3>
+<p>Allows for configuring the display of the shadow.
+Set the timing of the card shadow appearance through the <code>shadow</code> property: <code>always</code>, <code>hover</code>, or <code>never</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;12&quot;&gt;
@@ -159,64 +159,64 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Card 参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>header</td>
-<td>设置 header，也可以通过 sections#header 传入 DOM</td>
+<td>Set the header, and it can also be passed as DOM through <code>sections#header</code></td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>bodyStyle</td>
-<td>设置 body 的样式</td>
+<td>Set the style of the body</td>
 <td>object</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>shadow</td>
-<td>设置阴影显示时机</td>
+<td>Set the timing of shadow display</td>
 <td>string</td>
 <td>always / hover / never</td>
 <td>always</td>
 </tr>
 <tr>
 <td>class</td>
-<td>设置卡片类名</td>
+<td>Set the card class name</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Card 区块</h3>
+<h3>Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>名称</th>
-<th>说明</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>内容区域插槽</td>
+<td>Content area slot</td>
 </tr>
 <tr>
 <td>header</td>
-<td>头部区域插槽</td>
+<td>Header area slot</td>
 </tr>
 </tbody>
 </table>

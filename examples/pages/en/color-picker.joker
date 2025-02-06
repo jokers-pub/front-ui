@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>ColorPicker 颜色选择器</h2>
-<p>用于颜色选择，支持多种格式。</p>
-<h3>基础用法</h3>
-<p>使用设置 value 变量进行进行默认值的展示，并通过过去 value 来实现取值</p>
+<h2>ColorPicker</h2>
+<p>Used for color selection, supporting multiple formats.</p>
+<h3>Basic Usage</h3>
+<p>Set the <code>value</code> variable to display the default value and obtain the selected value through the <code>value</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -32,15 +32,15 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>选择透明度</h3>
-<p>ColorPicker 支持普通颜色，也支持带 Alpha 通道的颜色，通过<code>show-alpha</code>属性即可控制是否支持透明度的选择。</p>
+<h3>Select Transparency</h3>
+<p>The ColorPicker supports both ordinary colors and colors with an Alpha channel. You can control whether to support the selection of transparency through the <code>show-alpha</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-color-picker show-alpha value=&quot;rgba(19, 206, 102, 0.8)&quot; format=&quot;rgba&quot; /&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>不同尺寸</h3>
+<h3>Different Sizes</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -59,7 +59,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>只读/禁用</h3>
+<h3>Read-only/Disabled</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -82,72 +82,72 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>绑定值</td>
+<td>Bound value</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether it is disabled</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>size</td>
-<td>尺寸</td>
+<td>Size</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>—</td>
 </tr>
 <tr>
 <td>show-alpha</td>
-<td>是否支持透明度选择</td>
+<td>Whether to support transparency selection</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>format</td>
-<td>写入颜色的格式</td>
+<td>The format for writing colors</td>
 <td>string</td>
 <td>hex / rgba</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>当绑定值变化时触发</td>
-<td>当前值</td>
+<td>Triggered when the bound value changes</td>
+<td>The current value</td>
 </tr>
 </tbody>
 </table>

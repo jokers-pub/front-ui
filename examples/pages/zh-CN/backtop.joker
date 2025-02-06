@@ -31,7 +31,7 @@
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>Backtop 参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -73,7 +73,7 @@
 </tr>
 </tbody>
 </table>
-<h3>Backtop 事件</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>

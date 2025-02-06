@@ -86,7 +86,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>

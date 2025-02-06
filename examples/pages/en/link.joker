@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Link 文字链接</h2>
-<p>文字超链接</p>
-<h3>基础用法</h3>
-<p>基础的文字链接用法。</p>
+<h2>Link</h2>
+<p>Text hyperlinks.</p>
+<h3>Basic Usage</h3>
+<p>The basic usage of text links.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -25,8 +25,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>禁用状态</h3>
-<p>文字链接不可用状态。</p>
+<h3>Disabled State</h3>
+<p>The state where the text link is unavailable.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -48,8 +48,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>下划线</h3>
-<p>文字链接下划线。</p>
+<h3>Underline</h3>
+<p>Underline of the text link.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -66,8 +66,8 @@
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>图标</h3>
-<p>带图标的文字链接可增强辨识度。</p>
+<h3>Icons</h3>
+<p>Text links with icons can enhance recognition.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -92,84 +92,84 @@
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>type</td>
-<td>类型</td>
+<td>Type</td>
 <td>string</td>
 <td>primary / success / warning / danger / info</td>
 <td>default</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>underline</td>
-<td>是否下划线</td>
+<td>Whether to have an underline</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用状态</td>
+<td>Whether it is in a disabled state</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>target</td>
-<td>打开方式</td>
+<td>Opening method</td>
 <td>string</td>
 <td>_blank</td>
 <td>-</td>
 </tr>
 <tr>
 <td>href</td>
-<td>原生 href 属性</td>
+<td>Native href attribute</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>图标类名</td>
+<td>Icon class name</td>
 <td>string</td>
 <td>—</td>
 <td>-</td>
 </tr>
 <tr>
 <td>size</td>
-<td>尺寸</td>
+<td>Size</td>
 <td>string</td>
 <td>medium/small</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h3>Event</h3>
+<h3>Events</h3>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
+<th>Event Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td>点击链接时触发</td>
+<td>Triggered when the link is clicked</td>
 </tr>
 </tbody>
 </table>

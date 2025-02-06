@@ -759,7 +759,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>方法</h3>
+<h3>Methods</h3>
 <p><code>Tree</code> 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。
 <code>Tree</code> 拥有如下方法：</p>
 <table class="mkd-table">
@@ -900,7 +900,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Scoped Section</h3>
+<h3>Scoped Sections</h3>
 <table class="mkd-table">
 <thead>
 <tr>

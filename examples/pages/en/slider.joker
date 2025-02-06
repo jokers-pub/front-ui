@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Slider 滑块</h2>
-<p>通过拖动滑块在一个固定区间内进行选择</p>
-<h3>基础用法</h3>
-<p>在拖动滑块时，显示当前值，通过设置绑定值自定义滑块的初始值</p>
+<h2>Slider</h2>
+<p>Select within a fixed range by dragging the slider.</p>
+<h3>Basic Usage</h3>
+<p>When dragging the slider, display the current value. Customize the initial value of the slider by setting the bound value.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
@@ -62,8 +62,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>离散值</h3>
-<p>选项可以是离散的，改变<code>step</code>的值可以改变步长，通过设置<code>show-stops</code>属性可以显示间断点</p>
+<h3>Discrete Values</h3>
+<p>Options can be discrete. Changing the value of <code>step</code> can change the step size. Setting the <code>show-stops</code> property can display breakpoints.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
@@ -101,10 +101,10 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>带有输入框</h3>
-<p>通过输入框设置精确数值，设置<code>show-input</code>属性会在右侧显示一个输入框</p>
+<h3>With Input Box</h3>
+<p>Set the precise value through the input box. Setting the <code>show-input</code> property will display an input box on the right.</p>
 <blockquote>
-<p>当设置<code>range</code> 或者 <code>show-input</code>时，<code>show-input</code>属性将不生效</p>
+<p>When <code>range</code> or <code>show-input</code> is set, the <code>show-input</code> property will not take effect.</p>
 </blockquote>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
@@ -117,8 +117,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>范围选择</h3>
-<p>支持选择某一数值范围，设置<code>range</code>即可开启范围选择，此时绑定值是一个数组，其元素分别为最小边界值和最大边界值</p>
+<h3>Range Selection</h3>
+<p>Supports selecting a certain numerical range. Setting <code>range</code> enables range selection. At this time, the bound value is an array, and its elements are the minimum and maximum boundary values respectively.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -140,8 +140,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>竖向模式</h3>
-<p>设置<code>vertical</code>可使 Slider 变成竖向模式，此时必须设置高度<code>height</code>属性</p>
+<h3>Vertical Mode</h3>
+<p>Setting <code>vertical</code> can make the Slider in vertical mode. At this time, the <code>height</code> property must be set.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;ul class=&quot;demoContainer&quot;&gt;
@@ -175,8 +175,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>展示标记</h3>
-<p>设置 <code>marks</code> 属性可以展示标记</p>
+<h3>Display Marks</h3>
+<p>Setting the <code>marks</code> property can display marks.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -222,129 +222,129 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>值</td>
-<td>number 或者 number[]</td>
+<td>Value</td>
+<td>number or number[]</td>
 <td>—</td>
 <td>0</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>min</td>
-<td>最小值</td>
+<td>Minimum value</td>
 <td>number</td>
 <td>—</td>
 <td>0</td>
 </tr>
 <tr>
 <td>max</td>
-<td>最大值</td>
+<td>Maximum value</td>
 <td>number</td>
 <td>—</td>
 <td>100</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>Whether to disable</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>step</td>
-<td>步长</td>
+<td>Step size</td>
 <td>number</td>
 <td>—</td>
 <td>1</td>
 </tr>
 <tr>
 <td>show-input</td>
-<td>是否显示输入框，仅在非范围选择时有效</td>
+<td>Whether to display the input box, only valid in non-range selection</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>show-input-controls</td>
-<td>在显示输入框的情况下，是否显示输入框的控制按钮</td>
+<td>Whether to display the control buttons of the input box when the input box is displayed</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>input-size</td>
-<td>输入框的尺寸，具体请参考 input API</td>
+<td>The size of the input box, please refer to the input API for details</td>
 <td>string</td>
 <td>large / medium / small / mini</td>
 <td>small</td>
 </tr>
 <tr>
 <td>show-stops</td>
-<td>是否显示间断点</td>
+<td>Whether to display breakpoints</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>show-tooltip</td>
-<td>是否显示 tooltip</td>
+<td>Whether to display the tooltip</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>format-tooltip</td>
-<td>格式化 tooltip message</td>
+<td>Format the tooltip message</td>
 <td>function(value)</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>range</td>
-<td>是否为范围选择</td>
+<td>Whether it is range selection</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>vertical</td>
-<td>是否竖向模式</td>
+<td>Whether it is in vertical mode</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>height</td>
-<td>Slider 高度，竖向模式时必填</td>
+<td>The height of the Slider, required in vertical mode</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>label</td>
-<td>屏幕阅读器标签</td>
+<td>Screen reader label</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>marks</td>
-<td>标记， key 的类型必须为 number 且取值在闭区间 <code>[min, max]</code> 内，每个标记可以单独设置样式</td>
+<td>Marks. The type of key must be number and the value should be within the closed interval <code>[min, max]</code>. Each mark can be set with a separate style</td>
 <td>object</td>
 <td>—</td>
 <td>—</td>
@@ -355,21 +355,21 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Callback Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>值改变时触发（使用鼠标拖曳时，只在松开鼠标后触发）</td>
-<td>改变后的值</td>
+<td>Triggered when the value changes (when dragging with the mouse, it is only triggered after releasing the mouse)</td>
+<td>The changed value</td>
 </tr>
 <tr>
 <td>input</td>
-<td>该事件覆盖 change 触发时机，当滑块拖拽时也会触发 input</td>
-<td>改变后的值</td>
+<td>This event overrides the trigger timing of <code>change</code>. <code>input</code> will also be triggered when the slider is dragged</td>
+<td>The changed value</td>
 </tr>
 </tbody>
 </table>

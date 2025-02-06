@@ -1,9 +1,9 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>内置过渡动画</h2>
-<p>Joker-UI 内应用在部分组件的过渡动画，你也可以直接使用。在使用前请阅读 <code>transition 组件文档</code> 。</p>
-<h3>fade 淡入淡出</h3>
-<p>提供 <code>jk-fade-in</code> 效果。</p>
+<h2>Built-in Transition Animations</h2>
+<p>The transition animations applied in some components within Joker-UI can also be used directly by you. Before using them, please read the <code>transition component documentation</code>.</p>
+<h3>Fade (Fade In and Out)</h3>
+<p>Provides the <code>jk-fade-in</code> effect.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -44,8 +44,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
 </DemoContainer>
-<h3>zoom 缩放</h3>
-<p>提供 <code>jk-zoom-in-center</code>，<code>jk-zoom-in-top</code> 和 <code>jk-zoom-in-bottom</code> 三种效果。</p>
+<h3>Zoom (Scale)</h3>
+<p>Provides three effects: <code>jk-zoom-in-center</code>, <code>jk-zoom-in-top</code>, and <code>jk-zoom-in-bottom</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;

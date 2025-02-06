@@ -18,6 +18,10 @@ import &quot;@joker.front/ui/index.css&quot;;
     --jk-button-font-color: red;
 }
 </code></pre>
+<h3>可视化开发工具</h3>
+<p>目前 <code>Joker UI</code> 已在 Joker 可视化开发工具中提供可视化操作组件，在可视化开发工具中使用组件会更加方面，通过灵活的拖拽以及可视化的组件参数说明，可以帮助你快速完成组件的使用。</p>
+<p><img src="https://static.jokers.pub/home/component.png" alt="Joker 可视化开发工具" title="可视化开发工具"></p>
+<p><a href="https://lowcode.jokers.pub/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4" target="_blank">组件库地址</a></p>
 
 <BottomNav />
 </div>

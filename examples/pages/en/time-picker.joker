@@ -1,10 +1,10 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>TimePicker 时间选择器</h2>
-<p>用于选择或输入时间</p>
-<h3>固定时间点</h3>
-<p>提供几个固定的时间点供用户选择</p>
-<p>使用 jk-time-select 标签，分别通过<code>start</code>、<code>end</code>和<code>step</code>指定可选的起始时间、结束时间和步长</p>
+<h2>TimePicker</h2>
+<p>Used to select or input time.</p>
+<h3>Fixed Time Points</h3>
+<p>Provides several fixed time points for users to choose from.</p>
+<p>Use the <code>jk-time-select</code> tag, and specify the optional start time, end time, and step through <code>start</code>, <code>end</code>, and <code>step</code> respectively.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-select&gt;
@@ -12,8 +12,8 @@
 
 </code></pre>
 </DemoContainer>
-<h3>固定时间范围</h3>
-<p>若先选择开始时间，则结束时间内备选项的状态会随之改变</p>
+<h3>Fixed Time Range</h3>
+<p>If the start time is selected first, the state of the options in the end time will change accordingly.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -48,9 +48,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
-<h3>任意时间点</h3>
-<p>可以选择任意时间，使用 jk-time-picker 标签，通过<code>minTime</code>/<code>maxTime</code>限制可选时间范围。
-可通过配置 format，来控制是否显示秒。</p>
+<h3>Arbitrary Time Point</h3>
+<p>You can select any time. Use the <code>jk-time-picker</code> tag and limit the selectable time range through <code>minTime</code>/<code>maxTime</code>. You can control whether to display seconds by configuring <code>format</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -67,8 +66,8 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>任意时间范围</h3>
-<p>可选择任意的时间范围</p>
+<h3>Arbitrary Time Range</h3>
+<p>You can select any time range.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -87,7 +86,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>禁用</h3>
+<h3>Disabled</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -102,8 +101,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
-<h3>尺寸</h3>
-<p>参考<code>input</code> size 属性</p>
+<h3>Size</h3>
+<p>Refer to the <code>input</code> size attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -149,115 +148,115 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>value</td>
-<td>绑定值</td>
+<td>Bound value</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>class</td>
-<td>自定义 class 样式</td>
+<td>Custom class style</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>readonly</td>
-<td>完全只读</td>
+<td>Completely read-only</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>禁用</td>
+<td>Disabled</td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>editable</td>
-<td>文本框可输入</td>
+<td>The text box is editable</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>clearable</td>
-<td>是否显示清除按钮</td>
+<td>Whether to display the clear button</td>
 <td>boolean</td>
 <td>—</td>
 <td>true</td>
 </tr>
 <tr>
 <td>size</td>
-<td>输入框尺寸</td>
+<td>Size of the input box</td>
 <td>string</td>
 <td>medium / small / mini</td>
 <td>—</td>
 </tr>
 <tr>
 <td>placeholder</td>
-<td>非范围选择时的占位内容</td>
+<td>Placeholder content when not in range selection</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>start-placeholder</td>
-<td>范围选择时开始日期的占位内容</td>
+<td>Placeholder content for the start date in range selection</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>end-placeholder</td>
-<td>范围选择时结束日期的占位内容</td>
+<td>Placeholder content for the end date in range selection</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>range</td>
-<td>是否为时间范围选择，仅对<code>&lt;jk-time-picker&gt;</code>有效</td>
+<td>Whether it is a time range selection, only valid for <code>&lt;jk-time-picker&gt;</code></td>
 <td>boolean</td>
 <td>—</td>
 <td>false</td>
 </tr>
 <tr>
 <td>range-separator</td>
-<td>选择范围时的分隔符</td>
+<td>Separator when selecting a range</td>
 <td>string</td>
 <td>-</td>
 <td>'-'</td>
 </tr>
 <tr>
 <td>value-format</td>
-<td>可选，绑定值的格式</td>
+<td>Optional, the format of the bound value</td>
 <td>string</td>
 <td>-</td>
 <td>—</td>
 </tr>
 <tr>
 <td>default-value</td>
-<td>可选，选择器打开时默认显示的时间</td>
+<td>Optional, the time displayed by default when the picker is opened</td>
 <td>string</td>
-<td>符合 format 格式</td>
+<td>In line with the <code>format</code> format</td>
 <td>—</td>
 </tr>
 <tr>
 <td>prefix-icon</td>
-<td>自定义头部图标的类名</td>
+<td>Class name of the custom header icon</td>
 <td>string</td>
 <td>—</td>
 <td>el-icon-time</td>
@@ -268,45 +267,45 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>start</td>
-<td>开始时间</td>
+<td>Start time</td>
 <td>string</td>
 <td>—</td>
 <td>09:00</td>
 </tr>
 <tr>
 <td>end</td>
-<td>结束时间</td>
+<td>End time</td>
 <td>string</td>
 <td>—</td>
 <td>18:00</td>
 </tr>
 <tr>
 <td>step</td>
-<td>间隔时间</td>
+<td>Interval time</td>
 <td>string</td>
 <td>—</td>
 <td>00:30</td>
 </tr>
 <tr>
 <td>minTime</td>
-<td>最小时间，小于该时间的时间段将被禁用</td>
+<td>Minimum time, time periods less than this time will be disabled</td>
 <td>string</td>
 <td>—</td>
 <td>00:00</td>
 </tr>
 <tr>
 <td>maxTime</td>
-<td>最大时间，大于该时间的时间段将被禁用</td>
+<td>Maximum time, time periods greater than this time will be disabled</td>
 <td>string</td>
 <td>—</td>
 <td>—</td>
@@ -317,26 +316,26 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Optional Values</th>
+<th>Default Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>selectableRange</td>
-<td>可选时间段，例如<code>'18:30:00 - 20:30:00'</code>或者传入数组<code>['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']</code></td>
+<td>Selectable time periods, such as <code>'18:30:00-20:30:00'</code> or pass in an array <code>['09:30:00-12:00:00', '14:30:00-18:30:00']</code></td>
 <td>string / array</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr>
 <td>format</td>
-<td>时间格式化</td>
+<td>Time formatting</td>
 <td>string</td>
-<td>小时：<code>HH</code>，分：<code>mm</code>，秒：<code>ss</code></td>
+<td>Hours: <code>HH</code>, minutes: <code>mm</code>, seconds: <code>ss</code></td>
 <td>'HH:mm:ss'</td>
 </tr>
 </tbody>
@@ -345,26 +344,26 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Event Name</th>
+<th>Description</th>
+<th>Parameters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>用户确认选定的值时触发</td>
-<td>组件绑定值</td>
+<td>Triggered when the user confirms the selected value</td>
+<td>Component bound value</td>
 </tr>
 <tr>
 <td>blur</td>
-<td>当 input 失去焦点时触发</td>
-<td>组件实例</td>
+<td>Triggered when the input loses focus</td>
+<td>Component instance</td>
 </tr>
 <tr>
 <td>focus</td>
-<td>当 input 获得焦点时触发</td>
-<td>组件实例</td>
+<td>Triggered when the input gains focus</td>
+<td>Component instance</td>
 </tr>
 </tbody>
 </table>
@@ -372,15 +371,15 @@ export default class extends Component {
 <table class="mkd-table">
 <thead>
 <tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
+<th>Method Name</th>
+<th>Description</th>
+<th>Parameter</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>focus</td>
-<td>使 input 获取焦点</td>
+<td>Make the input gain focus</td>
 <td>-</td>
 </tr>
 </tbody>

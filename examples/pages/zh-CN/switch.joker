@@ -114,7 +114,7 @@ export default class extends Component {
 
 </code></pre>
 </DemoContainer>
-<h3>Switch 参数</h3>
+<h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -219,7 +219,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Switch 事件</h3>
+<h3>Evemts</h3>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -236,7 +236,7 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Switch 方法</h3>
+<h3>Methods</h3>
 <table class="mkd-table">
 <thead>
 <tr>
