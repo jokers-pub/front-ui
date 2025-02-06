@@ -195,6 +195,13 @@ export default class extends Component {
     }
 
     @media (max-width: 767px) {
+        .top {
+            p {
+                &:nth-child(2) {
+                    font-size: 34px;
+                }
+            }
+        }
         .desc-list {
             display: block;
         }
