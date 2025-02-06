@@ -15,8 +15,8 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(@algolia/client-search@5.17.1)(search-insights@2.17.3)
       '@joker.front/cli':
-        specifier: ^1.1.135
-        version: 1.1.135(sass@1.70.0)
+        specifier: ^1.1.137
+        version: 1.1.137(sass@1.70.0)
       '@joker.front/core':
         specifier: ^1.3.68
         version: 1.3.68
@@ -376,8 +376,8 @@ packages:
   '@joker.front/ast@1.3.24':
     resolution: {integrity: sha512-IQAsXwc54CG8vciir6glNrE4HJYYLIp8nvU3QfKZQD6Nw/8WGfoqv95qD/eYOGCfN2fpvqpeljPPgGnk+Iqz/A==}
 
-  '@joker.front/cli@1.1.135':
-    resolution: {integrity: sha512-sYDX/sxCJYtBr55gI7+dJsWDrrxLWP8gVZyQTte62cg9UIg+QB+kv9990sOZj7aASFGhHC+pZMlZTIvSMCAOdQ==}
+  '@joker.front/cli@1.1.137':
+    resolution: {integrity: sha512-jTU5logwDRpJW5ZSwArOL859Jx3PmnSzBMN6hAlD4IYha44jxa4F0dT6mcN6XIbJlJozzOBq+6wBbHv12ICv7w==}
     hasBin: true
     peerDependencies:
       less: ^4.2.0
@@ -2748,7 +2748,7 @@ snapshots:
 
   '@joker.front/ast@1.3.24': {}
 
-  '@joker.front/cli@1.1.135(sass@1.70.0)':
+  '@joker.front/cli@1.1.137(sass@1.70.0)':
     dependencies:
       chokidar: 3.6.0
       esbuild: 0.23.1
