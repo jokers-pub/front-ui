@@ -6,7 +6,7 @@
         <div class="top">
             <p>Joker UI</p>
             <p>
-                @(lang === "zh-CN" ? "领先的快速网站搭建工具" : "The Leading Fast - website Building Tool")
+                @(lang === "zh-CN" ? "领先的快速网站搭建工具" : "The Leading Fast-website Building Tool")
             </p>
             <p>
                 @(lang === "zh-CN" ? "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件" : "The Joker UI component library is a meticulously designed and coded project, aiming to provide developers with a series of efficient, easy - to - use, and aesthetically pleasing user interface components")

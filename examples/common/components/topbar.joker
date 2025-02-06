@@ -13,7 +13,7 @@
                     </li>
                 }
             </ul>
-            <a class="lang" href="@(lang === 'zh-CN' ? 'https://front.jokers.pub' : 'https://cn.front.jokers.pub')">
+            <a class="lang" href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')">
                 @(lang === "zh-CN" ? "Enlish" : "中文")
             </a>
             <a href="https://github.com/jokers-pub/front-ui" target="_blank" class="out-link">
@@ -108,7 +108,7 @@ export default class extends Component {
         let defaultTitle =
             this.lang === "zh-CN"
                 ? "Joker-UI 领先的快速网站搭建工具"
-                : "Joker-UI The Leading Fast - website Building Tool";
+                : "Joker-UI The Leading Fast-website Building Tool";
         for (let group of menus) {
             for (let item of group.children) {
                 if (item.path === router.route.value.path) {
