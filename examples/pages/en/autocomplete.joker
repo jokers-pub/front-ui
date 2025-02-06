@@ -1,0 +1,297 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>AutoComplete 自动完成</h2>
+<p>根据输入内容提供对应的输入建议。</p>
+<h3>基础用法</h3>
+<p>autocomplete 是一个可带输入建议的输入框组件，<code>search-load</code> 是一个返回输入建议的方法属性，在该方法中你可以在你的输入建议数据准备好时通过 callback(data) 返回到 autocomplete 组件中。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;激活即列出输入建议：&lt;/span&gt;
+            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;输入后匹配输入建议：&lt;/span&gt;
+            &lt;jk-autocomplete
+                placeholder=&quot;请输入内容&quot;
+                searchLoad=&quot;@querString&quot;
+                triggerOnFocus=&quot;@false&quot;
+                clearable
+                @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+import { sleep } from &quot;@joker.front/shared&quot;;
+export default class extends Component {
+    options = mock();
+
+    async querString(keyword: string, cb: Function) {
+        //模拟数据查询
+        await sleep(1000);
+
+        let result: any[] = [];
+
+        for (let item of this.options) {
+            if (item.value.toLowerCase().indexOf(keyword.toLowerCase()) &gt; -1) {
+                result.push(item);
+            }
+        }
+
+        cb(result);
+    }
+    handleChange(e: VNode.Event&lt;string&gt;) {
+        alert(e.data);
+    }
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-autocomplete) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>自定义模板</h3>
+<p>可自定义输入建议的显示</p>
+<p>使用<code>section</code>自定义输入建议的模板。参数为<code>item</code>，表示当前输入建议对象。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot;&gt;
+                @section(&quot;default&quot;, item) {
+                    &lt;p class=&quot;name&quot;&gt;
+                        @item.value
+                    &lt;/p&gt;
+                    &lt;p class=&quot;addr&quot;&gt;
+                        @item.address
+                    &lt;/p&gt;
+                }
+                @section(&quot;suffix&quot;) {
+                    &lt;i class=&quot;jk-icon-edit&quot;&gt;&lt;/i&gt;
+                }
+            &lt;/jk-autocomplete&gt;
+        &lt;/DemoRow&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+
+    async querString(keyword: string, cb: Function) {
+        let result: any[] = [];
+
+        for (let item of this.options) {
+            if (item.value.toLowerCase().indexOf(keyword.toLowerCase()) &gt; -1) {
+                result.push(item);
+            }
+        }
+
+        cb(result);
+    }
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-autocomplete) {
+        width: 250px;
+    }
+}
+
+p.name,
+p.addr {
+    margin: 0;
+    padding: 0;
+}
+p.name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+p.addr {
+    font-size: 12px;
+    color: #b4b4b4;
+    line-height: 20px;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>Autocomplete Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>placeholder</td>
+<td>输入框占位文本</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>value-key</td>
+<td>输入建议对象中用于显示的键名</td>
+<td>string</td>
+<td>—</td>
+<td>value</td>
+</tr>
+<tr>
+<td>search-load</td>
+<td>返回输入建议的方法，仅当你的输入建议数据 resolve 时，通过调用 callback(data:[]) 来返回它</td>
+<td>Function(queryString, callback)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>trigger-on-focus</td>
+<td>是否在输入框 focus 时显示建议列表</td>
+<td>boolean</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Autocomplete Section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>name</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>自定义输入建议，参数为 { item }</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>输入框头部内容</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td>输入框尾部内容</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>输入框前置内容</td>
+</tr>
+<tr>
+<td>append</td>
+<td>输入框后置内容</td>
+</tr>
+</tbody>
+</table>
+<h3>Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>select</td>
+<td>点击选中建议项时触发</td>
+<td>选中建议项</td>
+</tr>
+<tr>
+<td>change</td>
+<td>在 Input 值改变时触发</td>
+<td>(value: string | number)</td>
+</tr>
+</tbody>
+</table>
+<h3>Methods</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使 input 获取焦点</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo2 from '../../components/autocomplete/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/autocomplete/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

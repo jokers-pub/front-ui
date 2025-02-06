@@ -1,0 +1,359 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Tooltip 文字提示</h2>
+<p>常用于展示鼠标 hover 时的提示信息。</p>
+<h3>基础用法</h3>
+<p>在这里我们提供 9 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。</p>
+<p>使用<code>content</code>属性来决定<code>hover</code>时的提示信息。由<code>placement</code>属性决定展示效果：<code>placement</code>属性值为：<code>方向-对齐位置</code>；四个方向：<code>top</code>、<code>left</code>、<code>right</code>、<code>bottom</code>；三种对齐位置：<code>start</code>, <code>end</code>，默认为<code>bottom</code>。如<code>placement=&quot;left-end&quot;</code>，则提示信息出现在目标元素的左侧，且提示信息的底部与目标元素的底部对齐。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;box&quot;&gt;
+        &lt;div class=&quot;top&quot;&gt;
+            &lt;jk-tooltip content=&quot;Top Left 提示文字&quot; placement=&quot;top-start&quot;&gt;
+                &lt;jk-button&gt;上左&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Top Center 提示文字&quot; placement=&quot;top&quot;&gt;
+                &lt;jk-button&gt;上边&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Top Right 提示文字&quot; placement=&quot;top-end&quot;&gt;
+                &lt;jk-button&gt;上右&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;jk-tooltip content=&quot;Left Top 提示文字&quot; placement=&quot;left-start&quot;&gt;
+                &lt;jk-button&gt;左上&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Left Center 提示文字&quot; placement=&quot;left&quot;&gt;
+                &lt;jk-button&gt;左边&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Left Bottom 提示文字&quot; placement=&quot;left-end&quot;&gt;
+                &lt;jk-button&gt;左下&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;
+            &lt;jk-tooltip content=&quot;Right Top 提示文字&quot; placement=&quot;right-start&quot;&gt;
+                &lt;jk-button&gt;右上&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Right Center 提示文字&quot; placement=&quot;right&quot;&gt;
+                &lt;jk-button&gt;右边&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Right Bottom 提示文字&quot; placement=&quot;right-end&quot;&gt;
+                &lt;jk-button&gt;右下&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;bottom&quot;&gt;
+            &lt;jk-tooltip content=&quot;Bottom Left 提示文字&quot; placement=&quot;bottom-start&quot;&gt;
+                &lt;jk-button&gt;下左&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Bottom Center 提示文字&quot; placement=&quot;bottom&quot;&gt;
+                &lt;jk-button&gt;下边&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+            &lt;jk-tooltip content=&quot;Bottom Right 提示文字&quot; placement=&quot;bottom-end&quot;&gt;
+                &lt;jk-button&gt;下右&lt;/jk-button&gt;
+            &lt;/jk-tooltip&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.box {
+    width: 400px;
+
+    .top {
+        text-align: center;
+    }
+
+    .left {
+        float: left;
+        width: 60px;
+    }
+
+    .right {
+        float: right;
+        width: 60px;
+    }
+
+    .bottom {
+        clear: both;
+        text-align: center;
+    }
+
+    :deep(.jk-button) {
+        margin: 4px;
+    }
+
+    .left .el-tooltip__popper,
+    .right .el-tooltip__popper {
+        padding: 8px 10px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>主题</h3>
+<p>Tooltip 组件提供了两个不同的主题：<code>dark</code>和<code>light</code>。</p>
+<p>通过设置<code>effect</code>属性来改变主题，默认为<code>dark</code>。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;默认主题&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+    &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot;&gt;
+        &lt;jk-button&gt;Light&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+    &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot;&gt;
+        &lt;jk-button&gt;Error&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>手动控制</h3>
+<p>通过<code>manual</code>属性来控制是否手动激活，然后通过组件的<code>show</code>和<code>hide</code>方法来自由操作</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; manual effect=&quot;light&quot; ref=&quot;tooltip&quot;&gt;
+        &lt;jk-button @click=&quot;handleClick&quot;&gt;
+            点击@(model.show ? &quot;关闭&quot; : &quot;打开&quot;)
+        &lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        show: false
+    };
+
+    handleClick() {
+        let tooltip = this.$getRef&lt;VNode.Component&gt;(&quot;tooltip&quot;)?.component;
+        if (this.model.show) {
+            tooltip?.hide();
+        } else {
+            tooltip?.show();
+        }
+
+        this.model.show = !this.model.show;
+    }
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>更多 Content</h3>
+<p>展示多行文本或者是设置文本内容的格式</p>
+<p>用具名 section 分发<code>content</code>，替代<code>tooltip</code>中的<code>content</code>属性。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;更多内容&lt;/jk-button&gt;
+        @section(&quot;content&quot;) {
+            哈哈哈哈哈
+            &lt;br /&gt;
+            hahahahahaha
+        }
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>禁用</h3>
+<p>通过<code>disabled</code>值，来设置 tooltip 的禁用状态</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;默认主题&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; disabled&gt;
+        &lt;jk-button&gt;Disabled&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>尺寸</h3>
+<p>通过<code>size</code>值，来设置 tooltip 的尺寸</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
+            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot;&gt;
+            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot;&gt;
+            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;small&quot;&gt;
+            &lt;jk-button&gt;small&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;small&quot;&gt;
+            &lt;jk-button&gt;small&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;small&quot;&gt;
+            &lt;jk-button&gt;small&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;mini&quot;&gt;
+            &lt;jk-button&gt;mini&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;mini&quot;&gt;
+            &lt;jk-button&gt;mini&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;mini&quot;&gt;
+            &lt;jk-button&gt;mini&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>最大宽度</h3>
+<p>若内容过长时，可通过配置<code>maxWidth</code>来配置最大宽度，这样可以使内容多行展示</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip
+        content=&quot;超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容&quot;
+        maxWidth=&quot;150px&quot;
+        placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;超长内容&lt;/jk-button&gt;
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>effect</td>
+<td>默认提供的主题</td>
+<td>String</td>
+<td>dark/light / error</td>
+<td>dark</td>
+</tr>
+<tr>
+<td>content</td>
+<td>显示的内容，也可以通过 section<code>content</code> 传入 DOM</td>
+<td>String</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>placement</td>
+<td>Tooltip 的出现位置</td>
+<td>String</td>
+<td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
+<td>bottom</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>Tooltip 是否可用</td>
+<td>Boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>出现位置的偏移量</td>
+<td>Number</td>
+<td>—</td>
+<td>0</td>
+</tr>
+<tr>
+<td>transition</td>
+<td>定义渐变动画</td>
+<td>String</td>
+<td>—</td>
+<td>jk-fade-in</td>
+</tr>
+<tr>
+<td>open-delay</td>
+<td>延迟出现，单位毫秒</td>
+<td>Number</td>
+<td>—</td>
+<td>0</td>
+</tr>
+<tr>
+<td>close-delay</td>
+<td>延迟隐藏，单位毫秒（防抖）</td>
+<td>Number</td>
+<td>—</td>
+<td>200</td>
+</tr>
+<tr>
+<td>manual</td>
+<td>手动控制模式，设置为 true 后，mouseenter 和 mouseleave 事件将不会生效</td>
+<td>Boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>size</td>
+<td>尺寸配置</td>
+<td>string</td>
+<td>medium、small、mini</td>
+<td></td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td>最大宽度</td>
+<td>string</td>
+<td>-</td>
+<td>300px</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo7 from '../../components/tooltip/demo7.joker';
+import DEMO_JOKER_demo6 from '../../components/tooltip/demo6.joker';
+import DEMO_JOKER_demo5 from '../../components/tooltip/demo5.joker';
+import DEMO_JOKER_demo4 from '../../components/tooltip/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/tooltip/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/tooltip/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/tooltip/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

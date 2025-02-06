@@ -4,10 +4,22 @@ import path from "node:path";
 import fs from "node:fs";
 import { demoPlugin, divPlugin, linkPlugin } from "./markdown-it-demo";
 import { normalizePath } from "./utils";
+let args: Record<string, string> = {};
 
-let docsRoot = normalizePath(path.join(__dirname, "../docs"));
+for (let i = 2; i < process.argv.length; i++) {
+    let item = process.argv[i];
+
+    let params = item.split("=");
+
+    let name = params[0].replace(/\-\-/, "").trim();
+
+    args[name] = params[1] || "";
+}
+let lang = args.lang;
+
+let docsRoot = normalizePath(path.join(__dirname, "../docs/" + lang));
 let examplesComponentRoot = normalizePath(path.join(__dirname, "../examples/components"));
-let pageRoot = normalizePath(path.join(__dirname, "../examples/pages"));
+let pageRoot = normalizePath(path.join(__dirname, "../examples/pages/" + lang));
 
 let md = new MarkdownIt({});
 md.use(demoPlugin);
@@ -78,7 +90,7 @@ function getScriptPart(fileName: string) {
     let result: string[] = [];
     result.push(`import { Component } from "@joker.front/core";`);
     result.push(`import hljs from "highlight.js/lib/common";`);
-    result.push('import BottomNav from "../common/components/bottom-nav.joker";');
+    result.push('import BottomNav from "../../common/components/bottom-nav.joker";');
 
     let componentPath = normalizePath(path.join(examplesComponentRoot, `/${fileName}`));
     let demosPath = globSync(normalizePath(path.join(componentPath, `/*.joker`)), {});

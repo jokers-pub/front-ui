@@ -1,0 +1,627 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Cascader 级联选择器</h2>
+<p>当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。</p>
+<h3>基础用法</h3>
+<p>有两种触发子菜单的方式，只需为 Cascader 的<code>options</code>属性指定选项数组即可渲染出一个级联选择器。通过<code>props.expandTrigger</code>可以定义展开子级菜单的触发方式。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;默认click：&lt;/span&gt;
+            &lt;jk-cascader options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;hover触发：&lt;/span&gt;
+            &lt;jk-cascader
+                options=&quot;@options&quot;
+                value=&quot;@model.value&quot;
+                @change=&quot;handleChange&quot;
+                expandTrigger=&quot;hover&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+    model = {
+        value: &quot;&quot;
+    };
+    handleChange(e: VNode.Event) {
+        this.model.value = e.data!;
+    }
+}
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>禁用选项</h3>
+<p>通过在数据源中设置 <code>disabled</code> 字段来声明该选项是禁用的，本例中，<code>options</code>指定的数组中的第一个元素含有<code>disabled: true</code>键值对，因此是禁用的。在默认情况下，Cascader 会检查数据中每一项的<code>disabled</code>字段是否为<code>true</code>，如果你的数据中表示禁用含义的字段名不为<code>disabled</code>，可以通过<code>props.disabled</code>属性来指定（详见下方 API 表格）。当然，<code>value</code>、<code>label</code>和<code>children</code>这三个字段名也可以通过同样的方式指定。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;组件disabled：&lt;/span&gt;
+            &lt;jk-cascader disabled options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;选项disabled：&lt;/span&gt;
+            &lt;jk-cascader options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+import { deepClone } from &quot;@joker.front/shared&quot;;
+
+export default class extends Component {
+    options!: any;
+    model = {
+        value: &quot;&quot;
+    };
+    created() {
+        this.options = mock();
+
+        this.options[0].disabled = true;
+    }
+    handleChange(e: VNode.Event) {
+        this.model.value = e.data!;
+    }
+}
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>可清空</h3>
+<p>通过 <code>clearable</code> 设置输入框可清空</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;可清除：&lt;/span&gt;
+            &lt;jk-cascader clearable options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>仅显示最后一级</h3>
+<p>可以仅在输入框中显示选中项最后一级的标签，而不是选中项所在的完整路径。属性<code>show-all-levels</code>定义了是否显示完整的路径，将其赋值为<code>false</code>则仅显示最后一级</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-cascader options=&quot;@options&quot; showAllLevels=&quot;@false&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/DemoRow&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>多选</h3>
+<p>可通过 <code>multiple = true</code> 来开启多选模式。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-cascader multiple options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/DemoRow&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 320px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>动态加载</h3>
+<p>当选中某一级时，动态加载该级下的选项。
+通过<code>lazy</code>开启动态加载，并通过<code>lazyload</code>来设置加载数据源的方法。<code>lazyload</code>方法有两个参数，第一个参数<code>node</code>为当前点击的节点，第二个<code>resolve</code>为数据加载完成的回调(必须调用)。为了更准确的显示节点的状态，还可以对节点数据添加是否为叶子节点的标志位 (默认字段为<code>leaf</code>，可通过<code>props.leaf</code>修改)，否则会简单的以有无子节点来判断是否为叶子节点。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-cascader lazy lazyLoad=&quot;@lazyLoad&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/DemoRow&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { sleep } from &quot;@joker.front/shared&quot;;
+
+export default class extends Component {
+    id = 0;
+    async lazyLoad(node: any, resolve: Function) {
+        let level = node.level;
+
+        //模拟请求耗时
+        await sleep(500);
+
+        if (node.nodeData?.value === 3) {
+            resolve([]);
+            return;
+        }
+
+        // 通过调用resolve将子节点数据返回，通知组件数据加载完成
+        resolve(
+            Array.from({ length: level + 1 }).map(() =&gt; ({
+                value: ++this.id,
+                label: `选项${this.id}`,
+                leaf: level &gt;= 2
+            }))
+        );
+    }
+}
+&lt;/script&gt;
+
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 320px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>可搜索</h3>
+<p>可以快捷地搜索选项并选择。
+将<code>filterable</code>赋值为<code>true</code>即可打开搜索功能，默认会匹配节点的<code>label</code>或所有父节点的<code>label</code>(由<code>show-all-levels</code>决定)中包含输入值的选项。你也可以用<code>filter-method</code>自定义搜索逻辑，接受一个函数，第一个参数是节点<code>node</code>，第二个参数是搜索关键词<code>keyword</code>，通过返回布尔值表示是否命中。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;单选可搜索：&lt;/span&gt;
+            &lt;jk-cascader filterable options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;span&gt;多选可搜索：&lt;/span&gt;
+            &lt;jk-cascader filterable multiple options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+export default class extends Component {
+    options = mock();
+}
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 250px;
+    }
+
+    .row {
+        padding: 30px 24px;
+        overflow: hidden;
+        border-bottom: 1px solid #eff2f6;
+
+        span {
+            font-size: 14px;
+            color: #8492a6;
+            line-height: 44px;
+            font-size: 16px;
+        }
+
+        &amp;:last-child {
+            border-bottom: none;
+        }
+    }
+}
+&lt;/style&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>自定义节点内容</h3>
+<p>可以自定义备选项的节点内容，可以通过<code>section</code>对级联选择器的备选项的节点内容进行自定义，具名区域（section） 会传入两个字段 <code>node</code> 和 <code>data</code>，分别表示当前节点的 Node 对象和数据。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo8)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demoContainer&quot;&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-cascader options=&quot;@option&quot; error&gt;
+                @section(&quot;default&quot;, node) {
+                    &lt;span&gt;@node.label&lt;/span&gt;
+                    &lt;span style=&quot;padding-left:5px; color:red&quot;&gt;（@(node.children.length)）&lt;/span&gt;
+                }
+            &lt;/jk-cascader&gt;
+        &lt;/DemoRow&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { mock } from &quot;./mock&quot;;
+
+export default class extends Component {
+    option = mock();
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.demoContainer {
+    :deep(.jk-cascader) {
+        width: 320px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>Cascader Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选中项绑定值</td>
+<td>-</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>options</td>
+<td>可选项数据源，键名可通过 <code>Props</code> 属性配置</td>
+<td>array</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>props</td>
+<td>配置选项，具体见下表</td>
+<td>object</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>size</td>
+<td>尺寸</td>
+<td>string</td>
+<td>medium / small / mini</td>
+<td>—</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>输入框占位文本</td>
+<td>string</td>
+<td>—</td>
+<td>请选择</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>clearable</td>
+<td>是否支持清空选项</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>show-all-leves</td>
+<td>输入框中是否显示选中值的完整路径</td>
+<td>boolean</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>选项分隔符</td>
+<td>string</td>
+<td>—</td>
+<td>斜杠' / '</td>
+</tr>
+<tr>
+<td>filterable</td>
+<td>是否可搜索选项</td>
+<td>boolean</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>filter-method</td>
+<td>自定义搜索逻辑，第一个参数是节点<code>node</code>，第二个参数是搜索关键词<code>keyword</code>，通过返回布尔值表示是否命中</td>
+<td>function(node, keyword)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Cascader Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>当选中节点变化时触发</td>
+<td>选中节点的值</td>
+</tr>
+</tbody>
+</table>
+<h3>Cascader Section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>自定义备选项的节点内容，参数为 { node }，</td>
+</tr>
+</tbody>
+</table>
+<h3>Props</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expandTrigger</td>
+<td>次级菜单的展开方式</td>
+<td>string</td>
+<td>click / hover</td>
+<td>'click'</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否多选</td>
+<td>boolean</td>
+<td>-</td>
+<td>false</td>
+</tr>
+<tr>
+<td>emitPath</td>
+<td>在选中节点改变时，是否返回由该节点所在的各级菜单的值所组成的数组，若设置 false，则只返回该节点的值</td>
+<td>boolean</td>
+<td>-</td>
+<td>true</td>
+</tr>
+<tr>
+<td>lazy</td>
+<td>是否动态加载子节点，需与 lazyLoad 方法结合使用</td>
+<td>boolean</td>
+<td>-</td>
+<td>false</td>
+</tr>
+<tr>
+<td>lazyLoad</td>
+<td>加载动态数据的方法，仅在 lazy 为 true 时有效</td>
+<td>function(node, resolve)，<code>node</code>为当前点击的节点，<code>resolve</code>为数据加载完成的回调(必须调用)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>value</td>
+<td>指定选项的值为选项对象的某个属性值</td>
+<td>string</td>
+<td>—</td>
+<td>'value'</td>
+</tr>
+<tr>
+<td>label</td>
+<td>指定选项标签为选项对象的某个属性值</td>
+<td>string</td>
+<td>—</td>
+<td>'label'</td>
+</tr>
+<tr>
+<td>children</td>
+<td>指定选项的子选项为选项对象的某个属性值</td>
+<td>string</td>
+<td>—</td>
+<td>'children'</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>指定选项的禁用为选项对象的某个属性值</td>
+<td>string</td>
+<td>—</td>
+<td>'disabled'</td>
+</tr>
+<tr>
+<td>leaf</td>
+<td>指定选项的叶子节点的标志位为选项对象的某个属性值</td>
+<td>string</td>
+<td>—</td>
+<td>'leaf'</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo8 from '../../components/cascader/demo8.joker';
+import DEMO_JOKER_demo7 from '../../components/cascader/demo7.joker';
+import DEMO_JOKER_demo6 from '../../components/cascader/demo6.joker';
+import DEMO_JOKER_demo5 from '../../components/cascader/demo5.joker';
+import DEMO_JOKER_demo4 from '../../components/cascader/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/cascader/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/cascader/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/cascader/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo8,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

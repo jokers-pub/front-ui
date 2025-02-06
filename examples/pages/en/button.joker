@@ -1,0 +1,318 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Button 按钮</h2>
+<p>常用的操作按钮。</p>
+<h3>基础用法</h3>
+<p>基础的按钮用法。</p>
+<p>使用<code>type</code>、<code>plain</code>、<code>round</code>和<code>circle</code>属性来定义 Button 的样式。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button&gt;默认按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot;&gt;主要按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot;&gt;成功按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot;&gt;信息按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot;&gt;警告按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot;&gt;危险按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button plain&gt;朴素按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; plain&gt;主要按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; plain&gt;成功按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; plain&gt;信息按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; plain&gt;警告按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; plain&gt;危险按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button round&gt;圆角按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; round&gt;主要按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; round&gt;成功按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; round&gt;信息按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; round&gt;警告按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; round&gt;危险按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button icon=&quot;jk-icon-search&quot; circle&gt;&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-edit&quot; circle&gt;&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; icon=&quot;jk-icon-check&quot; circle&gt;&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; icon=&quot;jk-icon-message&quot; circle&gt;&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; icon=&quot;jk-icon-star-off&quot; circle&gt;&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; icon=&quot;jk-icon-delete&quot; circle&gt;&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+
+
+</code></pre>
+</DemoContainer>
+<h3>禁用状态</h3>
+<p>按钮不可用状态。</p>
+<p>你可以使用<code>disabled</code>属性来定义按钮是否可用，它接收一个<code>Boolean</code>值。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button disabled&gt;默认按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; disabled&gt;主要按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; disabled&gt;成功按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; disabled&gt;信息按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; disabled&gt;警告按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; disabled&gt;危险按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button plain disabled&gt;朴素按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; plain disabled&gt;主要按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; plain disabled&gt;成功按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; plain disabled&gt;信息按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; plain disabled&gt;警告按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; plain disabled&gt;危险按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>文字按钮</h3>
+<p>没有边框和背景色的按钮。属性：<code>link</code></p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-button link&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;success&quot;&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;success&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;warning&quot;&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;warning&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;danger&quot;&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;danger&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;info&quot;&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;info&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>图标按钮</h3>
+<p>带图标的按钮可增强辨识度（有文字）或节省空间（无文字）。</p>
+<p>要设置图标，只需指定<code>icon</code>属性即可。可设置的 icon 列表可以参考 Joker-UI 的 icon 组件，如果想设置在文字右侧的 icon ，只需使用<code>i</code>标签即可使用自定义图标。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-share&quot;&gt;&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-delete&quot;&gt;&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;搜索&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot;&gt;
+        上传
+        &lt;i class=&quot;jk-icon-upload jk-icon--right&quot;&gt;&lt;/i&gt;
+    &lt;/jk-button&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>按钮组</h3>
+<p>以按钮组的方式出现，常用于多项类似操作。</p>
+<p>使用<code>&lt;jk-button-group&gt;</code>标签来嵌套你的按钮。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button-group&gt;
+            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-arrow-left&quot;&gt;上一页&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot;&gt;
+                下一页
+                &lt;i class=&quot;jk-icon-arrow-right&quot;&gt;&lt;/i&gt;
+            &lt;/jk-button&gt;
+        &lt;/jk-button-group&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button-group&gt;
+            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-share&quot;&gt;&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-delete&quot;&gt;&lt;/jk-button&gt;
+        &lt;/jk-button-group&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>加载中</h3>
+<p>点击按钮后进行数据加载操作，在按钮上显示加载状态。</p>
+<p>要设置为 loading 状态，只要设置<code>loading</code>属性为<code>true</code>即可。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-button type=&quot;primary&quot; loading&gt;加载中&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;success&quot; loading&gt;加载中&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;warning&quot; loading&gt;加载中&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;danger&quot; loading&gt;加载中&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;info&quot; loading&gt;加载中&lt;/jk-button&gt;
+&lt;/template&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>不同尺寸</h3>
+<p>Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。</p>
+<p>尺寸有：<code>medium</code>、<code>small</code>、<code>mini</code>，通过设置<code>size</code>属性来配置它们。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button&gt;默认按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;medium&quot;&gt;中等按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;small&quot;&gt;小型按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;mini&quot;&gt;超小按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button round&gt;默认按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;medium&quot; round&gt;中等按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;small&quot; round&gt;小型按钮&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;mini&quot; round&gt;超小按钮&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>尺寸</td>
+<td>string</td>
+<td>medium / small / mini</td>
+<td>—</td>
+</tr>
+<tr>
+<td>type</td>
+<td>类型</td>
+<td>string</td>
+<td>primary / success / warning / danger / info</td>
+<td>—</td>
+</tr>
+<tr>
+<td>plain</td>
+<td>是否朴素按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>full-width</td>
+<td>是否宽度 100%</td>
+<td>boolean</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>link</td>
+<td>是否使用文本展示</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>round</td>
+<td>是否圆角按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>circle</td>
+<td>是否圆形按钮</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否加载中状态</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用状态</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标类名</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>是否默认聚焦</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>native-type</td>
+<td>原生 type 属性</td>
+<td>string</td>
+<td>button / submit / reset</td>
+<td>button</td>
+</tr>
+</tbody>
+</table>
+<h3>Event</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>点击按钮后的响应事件</td>
+<td>VNode.Event</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo7 from '../../components/button/demo7.joker';
+import DEMO_JOKER_demo6 from '../../components/button/demo6.joker';
+import DEMO_JOKER_demo5 from '../../components/button/demo5.joker';
+import DEMO_JOKER_demo4 from '../../components/button/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/button/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/button/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/button/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,283 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Switch 开关</h2>
+<p>表示两种相互对立的状态间的切换，多用于触发「开/关」。</p>
+<h3>基础用法</h3>
+<p>绑定 value 到一个 Boolean 类型的变量。可以使用 activeColor 属性与 inactiveColor 属性来设置开关的背景色。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-switch value=&quot;@model.value&quot; activeColor=&quot;#13ce66&quot; inactiveColor=&quot;#ff4949&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-switch&gt;
+    &lt;p&gt;
+        @model.value
+    &lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value: true
+    };
+
+    handleChange(e: VNode.Event&lt;boolean&gt;) {
+        this.model.value = e.data;
+    }
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<h3>禁用状态</h3>
+<p>设置 disabled 属性，接受一个 Boolean，设置 true 即可禁用。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;label class=&quot;demo2&quot;&gt;&lt;jk-switch value=&quot;@true&quot; disabled&gt;&lt;/jk-switch&gt;&lt;/label&gt;
+    &lt;jk-switch disabled activeColor=&quot;#13ce66&quot; inactiveColor=&quot;#ff4949&quot;&gt;&lt;/jk-switch&gt;
+&lt;/template&gt;
+&lt;style scoped&gt;
+.demo2 {
+    margin-right: 20px;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>文字描述</h3>
+<p>使用 activeText 属性与 inactiveText 属性来设置开关的文字描述。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;label class=&quot;demo&quot;&gt;
+        &lt;jk-switch 
+            value=&quot;@model.value1&quot; 
+            activeText=&quot;按月付费&quot; 
+            inactiveText=&quot;按年付费&quot;&gt;
+        &lt;/jk-switch&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+        &lt;jk-switch 
+            value=&quot;@model.value2&quot; 
+            activeText=&quot;按月付费&quot; 
+            inactiveText=&quot;按年付费&quot; 
+            activeColor=&quot;#13ce66&quot; 
+            inactiveColor=&quot;#ff4949&quot;&gt;
+        &lt;/jk-switch&gt;
+    &lt;/label&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value1: false,
+        value2: true
+    };
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.demo{
+    display: block;
+    margin-bottom: 20px;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>扩展的 value 类型</h3>
+<p>设置 activeValue 和 inactiveValue 属性，接受 Boolean, String 或 Number 类型的值。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-tooltip content=&quot;@model.value&quot; placement=&quot;top&quot;&gt;
+        &lt;jk-switch
+            value=&quot;@model.value&quot;
+            activeValue=&quot;100&quot;
+            inactiveValue=&quot;0&quot;
+            activeColor=&quot;#13ce66&quot;
+            inactiveColor=&quot;#ff4949&quot;
+            @change=&quot;changeValue&quot;&gt;&lt;/jk-switch&gt;
+    &lt;/jk-tooltip&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value: &quot;100&quot;
+    };
+
+    changeValue(e: VNode.Event&lt;string&gt;) {
+        this.model.value = e.data;
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+&lt;/style&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>Switch 参数</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>绑定值</td>
+<td>string / number / boolean</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>width</td>
+<td>switch 的宽度（像素）</td>
+<td>number</td>
+<td>—</td>
+<td>40</td>
+</tr>
+<tr>
+<td>activeIconClass</td>
+<td>switch 打开时所显示图标的类名，设置此项会忽略 activeText</td>
+<td>string</td>
+<td></td>
+<td>—</td>
+</tr>
+<tr>
+<td>inactiveIconClass</td>
+<td>switch 关闭时所显示图标的类名，设置此项会忽略 inactiveText</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>activeText</td>
+<td>switch 打开时的文字描述</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>inactiveText</td>
+<td>switch 关闭时的文字描述</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>activeValue</td>
+<td>switch 打开时的值</td>
+<td>boolean / string / number</td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td>inactiveValue</td>
+<td>switch 关闭时的值</td>
+<td>boolean / string / number</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>activeColor</td>
+<td>switch 打开时的背景色</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>inactiveColor</td>
+<td>switch 关闭时的背景色</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>name</td>
+<td>switch 对应的 name 属性</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>Switch 事件</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>switch 状态发生变化时的回调函数</td>
+<td>变换后的值</td>
+</tr>
+</tbody>
+</table>
+<h3>Switch 方法</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使 Switch 获取焦点</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo4 from '../../components/switch/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/switch/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/switch/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/switch/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

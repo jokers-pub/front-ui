@@ -1,0 +1,349 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Pagination 分页</h2>
+<p>当数据量过多时，使用分页分解数据。</p>
+<h3>基础用法</h3>
+<p>设置<code>layout</code>，表示需要显示的内容，用逗号分隔，布局元素会依次显示。</p>
+<ul>
+<li><code>prev</code>表示上一页</li>
+<li><code>next</code>为下一页</li>
+<li><code>pager</code>表示页码列表，</li>
+<li><code>jumper</code>跳转指定页码</li>
+<li><code>total</code>表示总条目数</li>
+<li><code>sizes</code>用于设置每页显示的页码数量</li>
+</ul>
+<blockquote>
+<p>除此以外还提供了特殊的布局符号<code>-&gt;</code>，<code>-&gt;</code>后的元素会靠右显示。</p>
+</blockquote>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;50&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;1000&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;1000&quot; currentPage=&quot;25&quot; disabled /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>设置最大页码按钮数</h3>
+<p>默认情况下，当总页数超过 7 页时，Pagination 会折叠多余的页码按钮。通过<code>pager-count</code>属性可以设置最大页码按钮数。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;1000&quot; currentPage=&quot;10&quot; pagerCount=&quot;11&quot; pageSize=&quot;20&quot; /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>显示总条目数</h3>
+<p>通过配置 layout，新增<code>total</code>来展示总条目数。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;1000&quot; pageSize=&quot;20&quot; layout=&quot;@(['total', '-&gt;', 'prev', 'pager', 'next'])&quot; /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>设置每页条数</h3>
+<p>通过配置 layout，新增<code>sizes</code>来展示每页条数配置。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination total=&quot;1000&quot; pageSize=&quot;20&quot; layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes'])&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            pageSizes=&quot;@([5, 15, 25, 35])&quot;
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>显示直接前往</h3>
+<p>通过配置 layout，新增<code>jumper</code>来展示直接前往功能。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo5)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>当只有一页时隐藏分页</h3>
+<p>通过配置<code>hide-on-single-page</code>配置不足一页时是否隐藏分页</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo6)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-switch value=&quot;@hideOnSinglePage&quot; @change=&quot;handleChange&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination hideOnSinglePage=&quot;@model.hideOnSinglePage&quot; total=&quot;5&quot; pageSize=&quot;10&quot; /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+
+
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        hideOnSinglePage: false
+    };
+
+    handleChange(e: VNode.Event&lt;boolean&gt;) {
+        this.model.hideOnSinglePage = e.data;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h3>小尺寸分页</h3>
+<p>通过配置<code>small</code>来设置展示小尺寸分页</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            small
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            small
+            disabled
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>带有背景色的分页</h3>
+<p>可通过配置<code>backgournd</code>展示带有背景色的分页，背景色遵循主色规则</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo8)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            background
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            disabled
+            background
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            small
+            background
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-pagination
+            total=&quot;1000&quot;
+            pageSize=&quot;20&quot;
+            small
+            disabled
+            background
+            layout=&quot;@(['total', 'prev', 'pager', 'next', '-&gt;', 'sizes', 'jumper'])&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>small</td>
+<td>是否使用小型分页样式</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>background</td>
+<td>是否为分页按钮添加背景色</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>每页显示条目个数</td>
+<td>number</td>
+<td>—</td>
+<td>10</td>
+</tr>
+<tr>
+<td>total</td>
+<td>总条目数</td>
+<td>number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>page-count</td>
+<td>总页数，total 和 page-count 设置任意一个就可以达到显示页码的功能；如果要支持 page-sizes 的更改，则需要使用 total 属性</td>
+<td>Number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>pager-count</td>
+<td>页码按钮的数量，当总页数超过该值时会折叠</td>
+<td>number</td>
+<td>大于等于 5 且小于等于 21 的奇数</td>
+<td>7</td>
+</tr>
+<tr>
+<td>current-page</td>
+<td>当前页数，支持 .sync 修饰符</td>
+<td>number</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>layout</td>
+<td>组件布局，子组件名用逗号分隔</td>
+<td>string[]</td>
+<td><code>sizes</code>, <code>prev</code>, <code>pager</code>, <code>next</code>, <code>jumper</code>, <code>-&gt;</code>, <code>total</code>, <code>section</code></td>
+<td>'prev, pager, next, jumper, -&gt;, total'</td>
+</tr>
+<tr>
+<td>page-sizes</td>
+<td>每页显示个数选择器的选项设置</td>
+<td>number[]</td>
+<td>—</td>
+<td>[10, 20, 30, 40, 50, 100]</td>
+</tr>
+<tr>
+<td>prev-text</td>
+<td>替代图标显示的上一页文字</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>next-text</td>
+<td>替代图标显示的下一页文字</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>hide-on-single-page</td>
+<td>只有一页时是否隐藏</td>
+<td>boolean</td>
+<td>—</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Events</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size-change</td>
+<td>pageSize 改变时会触发</td>
+<td>每页条数</td>
+</tr>
+<tr>
+<td>change</td>
+<td>currentPage 改变时会触发</td>
+<td>当前页</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo8 from '../../components/pagination/demo8.joker';
+import DEMO_JOKER_demo7 from '../../components/pagination/demo7.joker';
+import DEMO_JOKER_demo6 from '../../components/pagination/demo6.joker';
+import DEMO_JOKER_demo5 from '../../components/pagination/demo5.joker';
+import DEMO_JOKER_demo4 from '../../components/pagination/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/pagination/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/pagination/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/pagination/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo8,
+DEMO_JOKER_demo7,
+DEMO_JOKER_demo6,
+DEMO_JOKER_demo5,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

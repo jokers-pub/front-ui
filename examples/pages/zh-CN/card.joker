@@ -1,0 +1,250 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Card 卡片</h2>
+<p>将信息聚合在卡片容器中展示。</p>
+<h3>基础用法</h3>
+<p>包含标题，内容和操作。</p>
+<p>Card 组件包括 header 和 body 部分，header 部分需要有显式具名 section 分发，同时也是可选的。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;card-demo1&quot;&gt;
+        &lt;jk-card class=&quot;box-card&quot;&gt;
+            @section(&quot;header&quot;) {
+                &lt;span&gt;卡片名称&lt;/span&gt;
+                &lt;jk-button link type=&quot;text&quot;&gt;操作按钮&lt;/jk-button&gt;
+            }
+            @for(let i of [1,2,3,4]) {
+                &lt;div class=&quot;text item&quot;&gt;
+                    列表内容@i
+                &lt;/div&gt;
+            }
+        &lt;/jk-card&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.card-demo1 {
+    :deep(.header) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>简单卡片</h3>
+<p>卡片可以只有内容区域。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;card-demo2&quot;&gt;
+        &lt;jk-card class=&quot;box-card&quot;&gt;
+            @for(let i of [1,2,3,4]) {
+                &lt;div class=&quot;text item&quot;&gt;
+                    列表内容@i
+                &lt;/div&gt;
+            }
+        &lt;/jk-card&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.card-demo2 {
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>带图片</h3>
+<p>可配置定义更丰富的内容展示。</p>
+<p>配置 body-style 属性来自定义 body 部分的 style，我们还使用了布局组件。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;card-demo3&quot;&gt;
+        &lt;jk-row gutter=&quot;20&quot;&gt;
+            @for(let i of [0,1]) {
+                &lt;jk-col span=&quot;8&quot; offset=&quot;@(i &gt; 0 ? 2 : 0)&quot;&gt;
+                    &lt;jk-card bodyStyle=&quot;{ padding: 0px }&quot;&gt;
+                        &lt;img src=&quot;https://picsum.photos/200/200&quot; class=&quot;image&quot; /&gt;
+                        &lt;div style=&quot;padding: 14px;&quot;&gt;
+                            &lt;span&gt;好看的风景&lt;/span&gt;
+                            &lt;div class=&quot;bottom&quot;&gt;
+                                &lt;time class=&quot;time&quot;&gt;
+                                    @currentDate
+                                &lt;/time&gt;
+                                &lt;jk-button link type=&quot;text&quot;&gt;操作按钮&lt;/jk-button&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/jk-card&gt;
+                &lt;/jk-col&gt;
+            }
+        &lt;/jk-row&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    currentDate = new Date().toLocaleString();
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.card-demo3 {
+    :deep(.jk-button) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .text {
+        font-size: 14px;
+    }
+
+    .item {
+        margin-bottom: 18px;
+    }
+    :deep(.box-card) {
+        width: 480px;
+    }
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .image {
+        width: 100%;
+        display: block;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>卡片阴影</h3>
+<p>可对阴影的显示进行配置。</p>
+<p>通过 shadow 属性设置卡片阴影出现的时机：always、hover 或 never。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-row gutter=&quot;12&quot;&gt;
+        &lt;jk-col span=&quot;8&quot;&gt;
+            &lt;jk-card shadow=&quot;always&quot;&gt;总是显示&lt;/jk-card&gt;
+        &lt;/jk-col&gt;
+        &lt;jk-col span=&quot;8&quot;&gt;
+            &lt;jk-card shadow=&quot;hover&quot;&gt;鼠标悬浮时显示&lt;/jk-card&gt;
+        &lt;/jk-col&gt;
+        &lt;jk-col span=&quot;8&quot;&gt;
+            &lt;jk-card shadow=&quot;never&quot;&gt;从不显示&lt;/jk-card&gt;
+        &lt;/jk-col&gt;
+    &lt;/jk-row&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Card 参数</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>设置 header，也可以通过 sections#header 传入 DOM</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>bodyStyle</td>
+<td>设置 body 的样式</td>
+<td>object</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>shadow</td>
+<td>设置阴影显示时机</td>
+<td>string</td>
+<td>always / hover / never</td>
+<td>always</td>
+</tr>
+<tr>
+<td>class</td>
+<td>设置卡片类名</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Card 区块</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>内容区域插槽</td>
+</tr>
+<tr>
+<td>header</td>
+<td>头部区域插槽</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo4 from '../../components/card/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/card/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/card/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/card/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

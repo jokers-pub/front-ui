@@ -20,12 +20,13 @@
 <script>
 import { Component, VNode } from "@joker.front/core";
 import { router } from "@joker.front/router";
-import { MENUS } from "../menu";
+import { MENUS_EN, MENUS_ZH_CN } from "../datas/menu";
+import { getLang } from "../utils";
 export default class extends Component<{ inPanel: boolean }> {
     model = {
         currentRoutePath: ""
     };
-    menus = MENUS;
+    menus = getLang() === "zh-CN" ? MENUS_ZH_CN : MENUS_EN;
 
     mounted() {
         this.$watch(

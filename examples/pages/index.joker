@@ -1,58 +1,95 @@
 <template>
     <div class="home">
+        <div class="logo">
+            <img src="https://static.jokers.pub/joker.png" />
+        </div>
         <div class="top">
             <p>Joker UI</p>
-            <p>网站快速成型工具</p>
-            <p>Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件</p>
+            <p>
+                @(lang === "zh-CN" ? "领先的快速网站搭建工具" : "The Leading Fast - website Building Tool")
+            </p>
+            <p>
+                @(lang === "zh-CN" ? "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件" : "The Joker UI component library is a meticulously designed and coded project, aiming to provide developers with a series of efficient, easy - to - use, and aesthetically pleasing user interface components")
+            </p>
             <div class="nav-btns">
-                <a href="/component/start">快速起步</a>
+                <a href="/component/start">
+                    @(lang === "zh-CN" ? "快速起步" : "Get Started")
+                    <i class="jk-icon-right" />
+                </a>
+                <a href="https://jokers.pub" target="_blank" class="t1">
+                    @(lang === "zh-CN" ? "Joker 全家桶" : "Joker Suite")
+                </a>
+                <a href="https://lowcode.jokers.pub" target="_blank" class="t2">
+                    @(lang === "zh-CN" ? "官方可视化开发平台" : "Official Visual Development Platform")
+                    <i class="jk-icon-medal" />
+                </a>
             </div>
         </div>
         <div class="desc-list">
             <div class="item">
-                <div class="title">设计理念</div>
+                <div class="title">
+                    @(lang === "zh-CN" ? "设计理念" : "Design Concept")
+                </div>
                 <div class="content">
-                    一致性和可用性：遵循最新的UI设计原则，确保界面元素在视觉和功能上的一致性，同时优化用户体验。
-                    模块化和可定制：每个组件都是独立、模块化的，方便开发者根据需要定制和扩展。
+                    @(lang === "zh-CN" ? "一致性和可用性：遵循最新的UI设计原则，确保界面元素在视觉和功能上的一致性，同时优化用户体验。" : "Consistency and Usability: Follow the latest UI design principles to ensure visual and functional consistency of interface elements, and optimize the user experience at the same time.")
+                    <br
+                    />@(lang === "zh-CN" ? "模块化和可定制：每个组件都是独立、模块化的，方便开发者根据需要定制和扩展。" : "Modularity and Customizability: Each component is independent and modular, facilitating developers to customize and expand as needed.")
                 </div>
             </div>
             <div class="item">
-                <div class="title">核心特点</div>
+                <div class="title">
+                    @(lang === "zh-CN" ? "核心特点" : "Core Features")
+                </div>
                 <div class="content">
-                    轻量级且高性能：代码经过优化，确保加载快速，对浏览器性能影响最小。
-                    跨浏览器兼容：兼容主流的现代浏览器，包括Chrome、Firefox、Safari和Edge。
+                    @(lang === "zh-CN" ? "轻量级且高性能：代码经过优化，确保加载快速，对浏览器性能影响最小。" : "Lightweight and High - performance: The code is optimized to ensure fast loading and minimal impact on browser performance.")
+                    <br
+                    />@(lang === "zh-CN" ? "跨浏览器兼容：兼容主流的现代浏览器，包括Chrome、Firefox、Safari和Edge。" : "Cross - browser Compatibility: Compatible with mainstream modern browsers, including Chrome, Firefox, Safari, and Edge.")
                 </div>
             </div>
             <div class="item">
-                <div class="title">应用场景</div>
+                <div class="title">
+                    @(lang === "zh-CN" ? "应用场景" : "Application Scenarios")
+                </div>
                 <div class="content">
-                    这套UI组件库适用于各种Web应用开发，无论是企业级应用、电商平台还是个人项目，都能提供强大支持。
+                    @(lang === "zh-CN" ? "这套UI组件库适用于各种Web应用开发，无论是企业级应用、电商平台还是个人项目，都能提供强大支持。" : "This set of UI component libraries is suitable for various web application developments. Whether it is an enterprise - level application, an e - commerce platform, or a personal project, it can provide strong support.")
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    @(lang === "zh-CN" ? "可视化开发" : "Visual Development")
+                </div>
+                <div class="content">
+                    @(lang === "zh-CN" ? "官方可视化开发工具，少量编码，借图形界面极速搭建页面与组件。丰富库资源搭配实时预览，让开发高效又简单。" : "The official visual development tool requires minimal coding. You can rapidly build pages and components via a graphical interface. Abundant library resources combined with real-time preview make development efficient and hassle-free.")
                 </div>
             </div>
         </div>
-        <div class=""></div>
     </div>
 </template>
 <script>
 import { Component } from "@joker.front/core";
+import { getLang } from "../common/utils";
 export default class extends Component {
-    components = {};
-    mounted() {}
+    lang = getLang();
 }
 </script>
 
 <style lang="scss" scoped>
 .home {
-    .top {
-        padding: 70px 32px;
+    .logo {
+        margin: 30px auto;
         text-align: center;
-        border-bottom: solid 1px var(--jk-border-color-base);
+    }
+    .top {
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
         margin-bottom: 20px;
+
         p {
             margin: 0;
 
             &:first-child {
-                font-size: 64px;
+                font-size: 60px;
                 font-weight: 900;
                 line-height: 1.25;
                 background-image: linear-gradient(
@@ -90,22 +127,56 @@ export default class extends Component {
                 font-size: 16px;
                 display: inline-block;
                 border-radius: 8px;
-                font-weight: 600;
                 background-color: var(--jk-color-primary);
                 color: #fff;
-                padding: 8px 1em;
+                padding: 10px 1em;
+                text-decoration: none;
+                margin-bottom: 10px;
+                border: 2px solid transparent;
+                i {
+                    margin-left: 10px;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                &.t1 {
+                    margin: 0 15px;
+                }
+                &.t1,
+                &.t2 {
+                    background: #f1f1f1;
+                    color: var(--jk-color-text-regular);
+                }
+
+                &.t1:hover {
+                    opacity: 1;
+                    background: #e5e5e5;
+                }
+
+                &.t2 {
+                    background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+                        linear-gradient(45deg, #42d392, #647eff) border-box;
+                    border: 2px solid transparent;
+                    i {
+                        color: red;
+                    }
+                }
             }
         }
     }
 
     .desc-list {
+        border-top: solid 1px var(--jk-border-color-extra-light);
         display: flex;
         justify-content: center;
-        align-items: center;
-
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-top: 20px;
         .item {
             flex: 0 20%;
-            padding: 28px 36px;
+            padding: 26px 26px;
 
             text-align: left;
 
@@ -118,6 +189,7 @@ export default class extends Component {
             .content {
                 font-weight: 400;
                 font-size: 15px;
+                color: var(--jk-color-text-secondary);
             }
         }
     }

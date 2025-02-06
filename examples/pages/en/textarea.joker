@@ -1,0 +1,272 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Textarea 输入框</h2>
+<p>用于输入多行文本信息</p>
+<h3>基础用法</h3>
+<p>文本域高度可通过 <code>rows</code> 属性控制</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea placeholder=&quot;请输入内容&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea placeholder=&quot;请输入内容&quot; disabled rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>可自适应文本高度的文本域</h3>
+<p>通过设置 <code>autosize</code> 属性可以使得文本域的高度能够根据文本内容自动进行调整，并且 <code>autosize</code> 还可以设定为一个对象，指定最小行数和最大行数。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea placeholder=&quot;请输入内容&quot;&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea placeholder=&quot;请输入内容&quot; autosize=&quot;@({minRows:2,maxRows:4})&quot;&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>输入长度限制</h3>
+<p><code>maxlength</code> 和 <code>minlength</code> 是原生属性，用来限制输入框的字符长度，其中字符长度是用 Javascript 的字符串长度统计的。在使用 <code>maxlength</code> 属性限制最大输入长度的同时，可通过设置 <code>show-word-limit</code> 属性来展示字数统计。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea placeholder=&quot;请输入内容&quot; maxlength=&quot;10&quot; show-word-limit&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-textarea
+            placeholder=&quot;请输入内容&quot;
+            autosize=&quot;@({minRows:2,maxRows:4})&quot;
+            maxlength=&quot;100&quot;
+            show-word-limit&gt;&lt;/jk-textarea&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+</code></pre>
+</DemoContainer>
+<h3>Input 属性</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>类型</td>
+<td>string</td>
+<td>text，<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types" target="_blank">原生 input 的 type 值</a></td>
+<td>text</td>
+</tr>
+<tr>
+<td>value</td>
+<td>绑定值</td>
+<td>string / number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>class</td>
+<td>自定义 class 样式</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>原生属性，最大输入长度</td>
+<td>number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>minlength</td>
+<td>原生属性，最小输入长度</td>
+<td>number</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>show-word-limit</td>
+<td>是否显示输入字数统计</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>输入框占位文本</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>禁用</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框尺寸</td>
+<td>string</td>
+<td>medium / small / mini</td>
+<td>—</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>输入框行数</td>
+<td>number</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>autosize</td>
+<td>自适应内容高度，可传入对象，如，{ minRows: 2, maxRows: 6 }</td>
+<td>boolean / object</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>控制是否能被用户缩放</td>
+<td>string</td>
+<td>none, both, horizontal, vertical</td>
+<td>—</td>
+</tr>
+<tr>
+<td>autocomplete</td>
+<td>原生属性，自动补全</td>
+<td>string</td>
+<td>on, off</td>
+<td>off</td>
+</tr>
+<tr>
+<td>name</td>
+<td>原生属性</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>原生属性，是否只读</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>原生属性，自动获取焦点</td>
+<td>boolean</td>
+<td>true, false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>label</td>
+<td>输入框关联的 label 文字</td>
+<td>string</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>tabindex</td>
+<td>输入框的 tabindex</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Input 事件</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blur</td>
+<td>在 Input 失去焦点时触发</td>
+<td>VNode.Event</td>
+</tr>
+<tr>
+<td>focus</td>
+<td>在 Input 获得焦点时触发</td>
+<td>VNode.Event</td>
+</tr>
+<tr>
+<td>change</td>
+<td>仅在输入框失去焦点或用户按下回车时触发</td>
+<td>VNode.Event</td>
+</tr>
+<tr>
+<td>input</td>
+<td>在 Input 值改变时触发</td>
+<td>VNode.Event</td>
+</tr>
+</tbody>
+</table>
+<h3>Input 方法</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使 input 获取焦点</td>
+<td>—</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使 input 失去焦点</td>
+<td>—</td>
+</tr>
+<tr>
+<td>select</td>
+<td>选中 input 中的文字</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo3 from '../../components/textarea/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/textarea/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/textarea/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

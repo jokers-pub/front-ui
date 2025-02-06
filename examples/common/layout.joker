@@ -3,7 +3,7 @@
         <NavBar />
         <div class="nav-bar">
             <i class="jk-icon-menu" @click="handleOpenMenu" />
-            <span @click="handleOpenMenu">本章菜单</span>
+            <span @click="handleOpenMenu">@(lang === "zh-CN" ? "本章菜单" : "Chapter menu")</span>
         </div>
         <div class="pageContainer">
             <jk-scrollbar ref="scroll" @scroll="handleScroll">
@@ -12,7 +12,7 @@
         </div>
         <ChapterMenu ref="chapterMenu" @go-to="handleMenuGo" />
     </div>
-    <jk-drawer ref="menu-panel" direction="left" title="本章菜单" size="70%">
+    <jk-drawer ref="menu-panel" direction="left" title="@(lang === 'zh-CN' ? '本章菜单' : 'Chapter menu')" size="70%">
         <NavBar inPanel />
     </jk-drawer>
 </template>
@@ -22,6 +22,7 @@ import TopBar from "./components/topbar.joker";
 import NavBar from "./components/navbar.joker";
 import ChapterMenu from "./components/chapter-menu.joker";
 import { router } from "@joker.front/router";
+import { getLang } from "./utils";
 
 export default class extends Component {
     components = {
@@ -29,7 +30,7 @@ export default class extends Component {
         NavBar,
         ChapterMenu
     };
-
+    lang = getLang();
     created() {
         this.$watch(
             () => router.route.value,

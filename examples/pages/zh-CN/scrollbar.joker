@@ -1,0 +1,348 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Scrollbar 滚动条</h2>
+<p>用于替换浏览器原生滚动条。</p>
+<h3>基础用法</h3>
+<p>通过设置 `height`` 属性定义滚动条高度，若不设置则根据父容器高度自适应。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div style=&quot;height:200px&quot;&gt;
+        &lt;jk-scrollbar&gt;
+            @for(let i = 0; i &lt; 20; i++) {
+                &lt;p class=&quot;scrollbar-demo-item&quot;&gt;
+                    @i
+                &lt;/p&gt;
+            }
+        &lt;/jk-scrollbar&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>横向滚动</h3>
+<DemoContainer component="@(components.DEMO_JOKER_demo2)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div&gt;
+        &lt;jk-scrollbar&gt;
+            &lt;div class=&quot;scrollbar-flex-content&quot;&gt;
+                @for(let i = 0; i &lt; 20; i++) {
+                    &lt;p class=&quot;scrollbar-demo-item&quot;&gt;
+                        @i
+                    &lt;/p&gt;
+                }
+            &lt;/div&gt;
+        &lt;/jk-scrollbar&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.scrollbar-flex-content {
+    display: flex;
+    .scrollbar-demo-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 50px;
+        margin: 10px;
+        text-align: center;
+        background: #ecf5ff;
+        color: #409eff;
+    }
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>设置最大尺寸</h3>
+<p>可通过设置父容器的边界值，例如：<code>max-width</code>、<code>max-height</code>来控制滚动条触发时机。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo3)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button @click=&quot;addRow&quot;&gt;添加一行&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;removeRow&quot;&gt;删除一行&lt;/jk-button&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-scrollbar maxHeight=&quot;200px&quot;&gt;
+        @for(let i = 0; i &lt; model.value; i++) {
+            &lt;p class=&quot;scrollbar-demo-item&quot;&gt;
+                @i
+            &lt;/p&gt;
+        }
+    &lt;/jk-scrollbar&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value: 3
+    };
+
+    addRow() {
+        this.model.value++;
+    }
+
+    removeRow() {
+        this.model.value--;
+    }
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>手动滚动</h3>
+<p>通过使用 scrollTo 方法，可以手动控制滚动条的滚动位置。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;jk-scrollbar ref=&quot;scrollbar&quot; height=&quot;300px&quot; @scroll=&quot;handleScroll&quot;&gt;
+        &lt;div ref=&quot;list&quot;&gt;
+            @for(let i = 0; i &lt; 30; i++) {
+                &lt;p class=&quot;scrollbar-demo-item&quot;&gt;
+                    @i
+                &lt;/p&gt;
+            }
+        &lt;/div&gt;
+    &lt;/jk-scrollbar&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-slider max=&quot;@model.max&quot; value=&quot;@model.scrollTop&quot; formatTooltip=&quot;@formatTooltip&quot; @input=&quot;handleSliderInput&quot;
+        /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        scrollTop: 0,
+        max: 0
+    };
+
+    mounted() {
+        this.model.max = this.$getRef(&quot;list&quot;)!.output.clientHeight - 300;
+    }
+
+    handleScroll(e: VNode.Event&lt;any&gt;) {
+        this.model.scrollTop = e.data.top;
+    }
+
+    handleSliderInput(e: VNode.Event) {
+        this.$getRef&lt;VNode.Component&gt;(&quot;scrollbar&quot;)?.component.scrollTo({
+            top: e.data
+        });
+    }
+
+    formatTooltip(val: number) {
+        return val + &quot;px&quot;;
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.scrollbar-demo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: #ecf5ff;
+    color: #409eff;
+}
+&lt;/style&gt;
+</code></pre>
+</DemoContainer>
+<h3>Attributes</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>native</td>
+<td>是否使用原生交互</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>wrapClass</td>
+<td>wrap 元素样式扩展</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>viewClass</td>
+<td>view 元素样式扩展</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class</td>
+<td>根样式扩展</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>noresize</td>
+<td>不响应容器尺寸变化，如果容器尺寸不会发生变化，最好设置它可以优化性能</td>
+<td>boolwan</td>
+<td>—</td>
+<td>false</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>输出的元素 tag</td>
+<td>string</td>
+<td>—</td>
+<td>div</td>
+</tr>
+<tr>
+<td>height</td>
+<td>自定义高度，不设置默认父容器值</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>width</td>
+<td>自定义宽度，不设置默认父容器值</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>自定义最大高度，不设置默认父容器值</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>自定义最大宽度，不设置默认父容器值</td>
+<td>string</td>
+<td>—</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>Section</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>section 名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>默认内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3>方法</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scrollTo</td>
+<td>滚动到位置</td>
+<td>参数参考<code>ScrollToOptions</code></td>
+</tr>
+<tr>
+<td>scrollToEl</td>
+<td>滚动到指定元素的位置</td>
+<td>HTMLElement</td>
+</tr>
+</tbody>
+</table>
+<h3>Event</h3>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scroll</td>
+<td>当滚动触发位置改变时触发</td>
+<td>{top:number,left:number,x:number,y:number}，其中 x，y 代表方向下滚动条进度</td>
+</tr>
+</tbody>
+</table>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo4 from '../../components/scrollbar/demo4.joker';
+import DEMO_JOKER_demo3 from '../../components/scrollbar/demo3.joker';
+import DEMO_JOKER_demo2 from '../../components/scrollbar/demo2.joker';
+import DEMO_JOKER_demo1 from '../../components/scrollbar/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo4,
+DEMO_JOKER_demo3,
+DEMO_JOKER_demo2,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>
