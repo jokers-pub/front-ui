@@ -1,232 +1,232 @@
-## Table 表格
+## Table
 
-用于展示多条结构类似的数据，可对数据进行排序、筛选、对比或其他自定义操作。
+Used to display multiple pieces of data with similar structures, and can perform operations such as sorting, filtering, comparison, or other custom operations on the data.
 
-### 基础表格
+### Basic Table
 
-基础的表格展示用法。
+Basic usage for table display.
 
 !!!demo1!!!
 
-### 带斑马纹表格
+### Striped Table
 
-使用带斑马纹的表格，可以更容易区分出不同行的数据。
+Using a striped table makes it easier to distinguish data in different rows.
 
-`stripe`属性可以创建带斑马纹的表格。它接受一个`Boolean`，默认为`false`，设置为`true`即为启用。
+The `stripe` attribute can create a striped table. It accepts a `Boolean`, with the default value of `false`. Setting it to `true` enables the striped effect.
 
 !!!demo2!!!
 
-### 带边框表格
+### Bordered Table
 
-默认情况下，Table 组件是不具有竖直方向的边框的，如果需要，可以使用`border`属性，它接受一个`Boolean`，设置为`true`即可启用。
+By default, the Table component does not have vertical borders. If needed, you can use the `border` attribute, which accepts a `Boolean`. Setting it to `true` enables the borders.
 
 !!!demo3!!!
 
-### 固定表头
+### Fixed Table Header
 
-纵向内容过多时，可选择固定表头。
+When there is too much vertical content, you can choose to fix the table header.
 
-只要在`jk-table`元素中定义了`height`属性，即可实现固定表头的表格，而不需要额外的代码。
+Just define the `height` attribute in the `jk-table` element, and a table with a fixed header can be achieved without additional code.
 
 !!!demo4!!!
 
-### 固定列
+### Fixed Columns
 
-横向内容过多时，可选择固定列。
+When there is too much horizontal content, you can choose to fix the columns.
 
-固定列需要使用`fixed`属性，它接受 Boolean 值或者`left` `right`，表示左边固定还是右边固定。
+To fix columns, use the `fixed` attribute, which accepts a `Boolean` value or `left`/`right`, indicating whether to fix on the left or right.
 
 !!!demo5!!!
 
-### 流体高度
+### Fluid Height
 
-当数据量动态变化时，可以为 Table 设置一个最大高度。
+When the amount of data changes dynamically, you can set a maximum height for the Table.
 
-通过设置`max-height`属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条。
+Specify the maximum height for the Table by setting the `max-height` attribute. If the height required by the table is greater than the maximum height, a scroll bar will be displayed.
 
 !!!demo6!!!
 
-### 多级表头
+### Multi-level Table Header
 
-数据结构比较复杂的时候，可使用多级表头来展现数据的层次关系。
+When the data structure is relatively complex, multi-level table headers can be used to show the hierarchical relationship of the data.
 
-只需要在 `jk-table-column` 里面嵌套 `jk-table-column`，就可以实现多级表头。
+Just nest `jk-table-column` inside `jk-table-column` to achieve a multi-level table header.
 
 !!!demo7!!!
 
-### 选中行
+### Selecting Rows
 
-可通过`select`属性来开启选中行，设置`select`属性为**true**代表开启选中模式，可配置为`mutiple`属性来开启多选模式。
+You can enable row selection through the `select` attribute. Setting the `select` attribute to **true** represents enabling the selection mode, and you can configure the `mutiple` attribute to enable the multi-selection mode.
 
-可通过新增`jk-table-column`组件，并配置 type 为**selection**来展示选中辅助列，**注意**若开启辅助列，则点击行不再进行选中操作。
+You can add a `jk-table-column` component and configure the `type` as **selection** to display the selection assist column. **Note** that if the assist column is enabled, clicking on the row will no longer perform the selection operation.
 
-通过事件`selected-change`来观察选中状态变化，其中单选模式下返回单行数据，多选模式下返回多行数据。
+Observe the change in the selection state through the `selected-change` event. In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.
 
-也可以通过以下方法来进行选中行的读取和控制：
+You can also read and control the selected rows through the following methods:
 
--   `getSelectedRow` 获取选中行，单选模式下返回单行数据，多选模式下返回多行数据
--   `setSelectedRow` 选中行，可传入多行或单行数据，**注意**单选模式下传入多行数据时只会选中第一项数据
--   `clearSelectedRow` 清除选中行
--   `selectAll` 多选模式下，可通过该方法选中全部非禁用数据
+-   `getSelectedRow` Get the selected row(s). In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.
+-   `setSelectedRow` Select rows. You can pass in multiple-row or single-row data. **Note** that in the single-selection mode, only the first item of data will be selected when multiple-row data is passed in.
+-   `clearSelectedRow` Clear the selected rows.
+-   `selectAll` In the multi-selection mode, all non-disabled data can be selected through this method.
 
-单选模式示例：
+Single-selection mode example:
 
 !!!demo8!!!
 
-多选模式示例：
+Multi-selection mode example:
 
 !!!demo9!!!
 
-### 排序
+### Sorting
 
-对表格进行排序，可快速查找或对比数据。
+Sorting the table allows for quick data lookup or comparison.
 
-在列中设置`sortable`属性即可实现以该列为基准的排序，接受一个`Boolean`，默认为`false`。
-可以通过 Table 的`default-sort`属性设置默认的排序列和排序顺序。可以使用`sort-method`来自定义排序规则，其中`default-sort-order`属性默认为**ascending**，可配置**descending**实现排序方式切换。
+Setting the `sortable` attribute in a column enables sorting based on that column. It accepts a `Boolean`, with the default value of `false`.
+You can set the default sorted column and sorting order through the `default-sort` attribute of the Table. You can use `sort-method` to customize the sorting rule. The `default-sort-order` attribute defaults to **ascending**, and can be configured as **descending** to switch the sorting method.
 
-如果需要后端排序，需将`sortable`设置为`custom`，同时在 Table 上监听`sort-change`事件，在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。
+If backend sorting is required, set `sortable` to `custom`, and at the same time, listen to the `sort-change` event on the Table. In the event callback, you can obtain the field name and sorting order of the current sorting, so as to request the sorted table data from the interface.
 
 !!!demo10!!!
 
-自定义排序，模拟服务端排序
+Custom sorting, simulating server-side sorting
 
 !!!demo11!!!
 
-### 筛选
+### Filtering
 
-对表格进行筛选，可快速查找到自己想看的数据。
+Filtering the table allows you to quickly find the data you want to view.
 
-在列中设置`filter` `filter-method`属性即可开启该列的筛选，filter 是一个数组，若不设置则默认尝试展示当前列所有可选值，`filter-method`是一个方法，它用于决定某些数据是否显示，会传入三个参数：`当前行数据` 、 `筛选条件值`和`筛选列`。
+Setting the `filter` and `filter-method` attributes in a column enables filtering for that column. `filter` is an array. If not set, it will default to trying to display all optional values of the current column. `filter-method` is a method used to determine whether certain data is displayed. It is passed three parameters: `current row data`, `filter condition value`, and `filter column`.
 
-其中 filter 可配置数组，数组可以为**string[]**，也可以为筛选想做转译，例如：
+The `filter` can be configured as an array. The array can be of type **string[]**, or it can be used for translation of filter options, for example:
 
 ```js
 [
-    { value: "1", text: "男" },
-    { value: "0", text: "女" }
+    { value: "1", text: "Male" },
+    { value: "0", text: "Female" }
 ];
 ```
 
 !!!demo12!!!
 
-### 索引列
+### Index Column
 
-通过配置`jk-table-column`组件的 type="index"来展示索引列，并通过 index 属性来配置起始索引，默认起始位置为 1。
+Display the index column by configuring the `type="index"` of the `jk-table-column` component, and configure the starting index through the `index` attribute. The default starting position is 1.
 
 !!!demo13!!!
 
-### 自定义列模板
+### Custom Column Template
 
-自定义列的显示内容，可组合其他组件使用。
-通过 `RenderSection` 可以获取到 value, row, rowIndex, columnIndex,column, 和 store（table 数据管理）的数据，用法参考 demo。
+Customize the display content of columns and combine with other components.
+Through `RenderSection`, you can obtain data such as `value`, `row`, `rowIndex`, `columnIndex`, `column`, and `store` (table data management). Refer to the demo for usage.
 
-其中`td`区域代表表格内容单元格渲染，`th`区域代表表头渲染。
+The `td` area represents the rendering of table content cells, and the `th` area represents the rendering of table headers.
 
 !!!demo14!!!
 
-### 展开行
+### Expanding Rows
 
-当行内容过多并且不想显示横向滚动条时，可以使用 Table 展开行功能。
-通过设置 type="expand" 和 `section('expand',data)` 可以开启展开行功能，`jk-table-column` 的模板会被渲染成为展开行的内容，其中 data 参数包括：`当前行数据`,`行索引`,`store数据管理`。
+When there is too much row content and you don't want to display a horizontal scroll bar, you can use the Table's expanding row function.
+By setting `type="expand"` and `section('expand',data)`, the expanding row function can be enabled. The template of `jk-table-column` will be rendered as the content of the expanded row. The `data` parameter includes: `current row data`, `row index`, and `store data management`.
 
 !!!demo15!!!
 
-### 树列表
+### Tree List
 
-支持树类型的数据的显示。当 row 中包含 `children` 字段时，被视为树形数据。渲染树形数据时，必须要指定 `row-key`。支持子节点数据异步加载。设置 Table 的 `lazy` 属性为 true 与加载函数 `load` 。通过指定 row 中的 `isLeafKey` 字段来指定哪些行是包含子节点。
+Supports the display of tree-type data. When a `row` contains a `children` field, it is regarded as tree-shaped data. When rendering tree-shaped data, `row-key` must be specified. It supports asynchronous loading of child node data. Set the `lazy` property of the Table to `true` and the loading function `load`. Specify which rows contain child nodes by specifying the `isLeafKey` field in the `row`.
 
-> 可通过更改`childrenKey`和 `isLeafKey`来配置节点属性和是否叶子属性
+> You can configure the node property and the leaf property by changing `childrenKey` and `isLeafKey`.
 
 !!!demo16!!!
 
-异步加载
+Asynchronous loading
 
 !!!demo17!!!
 
-> 注意，树形列表如果启用排序、筛选或索引列，只会对一级列表进行操作，不会对子集作用。
+> Note that if sorting, filtering, or an index column is enabled for a tree-shaped list, it will only operate on the first-level list and not on the subsets.
 
-### 尺寸
+### Size
 
-通过修改 size 属性来修改表格的大小。
+Modify the size of the table by changing the `size` attribute.
 
 !!!demo18!!!
 
-### 大数据同步加载
+### Synchronous Loading of Big Data
 
-大数据加载（800 条）。
+Loading large amounts of data (800 entries).
 
 !!!demo19!!!
 
 ### Table Attributes
 
-| 参数                       | 说明                                                                                                                                                                         | 类型                                                  | 可选值                | 默认值   |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------------------- | -------- |
-| data                       | 显示的数据                                                                                                                                                                   | array                                                 | —                     | —        |
-| class                      | 自定义 class 样式                                                                                                                                                            | string                                                | -                     | -        |
-| height                     | Table 的高度，默认为自动高度。如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。 | string/number                                         | —                     | —        |
-| max-height                 | Table 的最大高度。合法的值为数字或者单位为 px 的高度。                                                                                                                       | string/number                                         | —                     | —        |
-| stripe                     | 是否为斑马纹 table                                                                                                                                                           | boolean                                               | —                     | false    |
-| border                     | 是否带有纵向边框                                                                                                                                                             | boolean                                               | —                     | false    |
-| size                       | Table 的尺寸                                                                                                                                                                 | string                                                | medium / small / mini | —        |
-| show-header                | 是否显示表头                                                                                                                                                                 | boolean                                               | —                     | true     |
-| row-class-name             | 行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。                                                                                                | Function({row, rowIndex})/String                      | —                     | —        |
-| row-style                  | 行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。                                                                                                | Function({row, rowIndex})/Object                      | —                     | —        |
-| cell-class-name            | 单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。                                                                                        | Function({row, column, rowIndex, columnIndex})/String | —                     | —        |
-| cell-style                 | 单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。                                                                                        | Function({row, column, rowIndex, columnIndex})/Object | string                | —        |
-| header-row-class-name      | 表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。                                                                                        | Function({row, rowIndex})/String                      | —                     | —        |
-| header-row-style           | 表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。                                                                                        | Function({row, rowIndex})/Object                      | —                     | —        |
-| header-cell-class-name     | 表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。                                                                                | Function({row, column, rowIndex, columnIndex})/String | —                     | —        |
-| header-cell-style          | 表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。                                                                                | Function({row, column, rowIndex, columnIndex})/Object | —                     | —        |
-| empty-text                 | 空数据时显示的文本内容，也可以通过 `section="empty"` 设置                                                                                                                    | String                                                | —                     | 暂无数据 |
-| default-sort               | 默认的排序列的                                                                                                                                                               | string                                                | -                     | -        |
-| default-sort-order         | 默认排序的规则                                                                                                                                                               | ascending                                             | descending            | -        |
-| childrenKey                | 树结构列表时，用于指定子集属性名称                                                                                                                                           |                                                       | string                | children |
-| isLeafKey                  | 树结构列表时，用于指定是否有子集属性名称                                                                                                                                     |                                                       | string                | -        |
-| dataChangeNotClearSelected | 数据变更后不清空选中项                                                                                                                                                       |                                                       | boolean               | -        |
-| defaultExpandAll           | 是否默认展开所有行                                                                                                                                                           |                                                       | boolean               | -        |
+| Parameter                  | Description                                                                                                                                                                                                                                                                      | Type                                                  | Optional Values       | Default Value |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------------------- | ------------- |
+| data                       | The data to be displayed                                                                                                                                                                                                                                                         | array                                                 | —                     | —             |
+| class                      | Custom class style                                                                                                                                                                                                                                                               | string                                                | -                     | -             |
+| height                     | The height of the Table. By default, it is auto-height. If `height` is of type `number`, the unit is px; if `height` is of type `string`, this height will be set as the value of the Table's `style.height`, and the height of the Table will be controlled by external styles. | string/number                                         | —                     | —             |
+| max-height                 | The maximum height of the Table. Legal values are numbers or heights with the unit of px.                                                                                                                                                                                        | string/number                                         | —                     | —             |
+| stripe                     | Whether it is a striped table                                                                                                                                                                                                                                                    | boolean                                               | —                     | false         |
+| border                     | Whether to have vertical borders                                                                                                                                                                                                                                                 | boolean                                               | —                     | false         |
+| size                       | The size of the Table                                                                                                                                                                                                                                                            | string                                                | medium / small / mini | —             |
+| show-header                | Whether to display the table header                                                                                                                                                                                                                                              | boolean                                               | —                     | true          |
+| row-class-name             | The callback method for the `className` of the row. A string can also be used to set a fixed `className` for all rows.                                                                                                                                                           | Function({row, rowIndex})/String                      | —                     | —             |
+| row-style                  | The callback method for the `style` of the row. A fixed `Object` can also be used to set the same `Style` for all rows.                                                                                                                                                          | Function({row, rowIndex})/Object                      | —                     | —             |
+| cell-class-name            | The callback method for the `className` of the cell. A string can also be used to set a fixed `className` for all cells.                                                                                                                                                         | Function({row, column, rowIndex, columnIndex})/String | —                     | —             |
+| cell-style                 | The callback method for the `style` of the cell. A fixed `Object` can also be used to set the same `Style` for all cells.                                                                                                                                                        | Function({row, column, rowIndex, columnIndex})/Object | string                | —             |
+| header-row-class-name      | The callback method for the `className` of the table header row. A string can also be used to set a fixed `className` for all table header rows.                                                                                                                                 | Function({row, rowIndex})/String                      | —                     | —             |
+| header-row-style           | The callback method for the `style` of the table header row. A fixed `Object` can also be used to set the same `Style` for all table header rows.                                                                                                                                | Function({row, rowIndex})/Object                      | —                     | —             |
+| header-cell-class-name     | The callback method for the `className` of the table header cell. A string can also be used to set a fixed `className` for all table header cells.                                                                                                                               | Function({row, column, rowIndex, columnIndex})/String | —                     | —             |
+| header-cell-style          | The callback method for the `style` of the table header cell. A fixed `Object` can also be used to set the same `Style` for all table header cells.                                                                                                                              | Function({row, column, rowIndex, columnIndex})/Object | —                     | —             |
+| empty-text                 | The text content to be displayed when there is no data. It can also be set through `section="empty"`                                                                                                                                                                             | String                                                | —                     | No data yet   |
+| default-sort               | The default sorted column                                                                                                                                                                                                                                                        | string                                                | -                     | -             |
+| default-sort-order         | The default sorting rule                                                                                                                                                                                                                                                         | ascending                                             | descending            | -             |
+| childrenKey                | When it is a tree-structured list, it is used to specify the name of the subset property                                                                                                                                                                                         |                                                       | string                | children      |
+| isLeafKey                  | When it is a tree-structured list, it is used to specify the name of the property indicating whether there is a subset                                                                                                                                                           |                                                       | string                | -             |
+| dataChangeNotClearSelected | Whether to not clear the selected items after the data changes                                                                                                                                                                                                                   |                                                       | boolean               | -             |
+| defaultExpandAll           | Whether to expand all rows by default                                                                                                                                                                                                                                            |                                                       | boolean               | -             |
 
 ### Table Events
 
-| 事件名          | 说明                                         | 参数              |
-| --------------- | -------------------------------------------- | ----------------- |
-| selected-change | 当选择项发生变化时会触发该事件               | 选中行            |
-| sort-change     | 当表格的排序条件发生变化的时候会触发该事件   | { column, order } |
-| expand-change   | 当用户对某一行展开或者关闭的时候会触发该事件 | row, expand       |
+| Event Name      | Description                                                             | Parameters        |
+| --------------- | ----------------------------------------------------------------------- | ----------------- |
+| selected-change | This event is triggered when the selection changes                      | Selected rows     |
+| sort-change     | This event is triggered when the sorting conditions of the table change | { column, order } |
+| expand-change   | This event is triggered when a user expands or closes a row             | row, expand       |
 
 ### Table Methods
 
-| 方法名           | 说明                                                                                                               | 参数                       |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| clearSelectedRow | 用于多选表格，清空用户的选择                                                                                       | —                          |
-| selectAll        | 用于多选表格，切换所有行的选中状态                                                                                 | -                          |
-| setSelectedRow   | 用于单选表格，设定某一行为选中行                                                                                   | row                        |
-| clearSort        | 用于清空排序条件，数据会恢复成未排序的状态                                                                         | —                          |
-| clearFilter      | 不传入参数时用于清空所有过滤条件，数据会恢复成未过滤的状态，也可传入由 column.key 组成的数组以清除指定列的过滤条件 | column.key                 |
-| sort             | 手动对 Table 进行排序。参数`key`属性指定排序列，`order`指定排序顺序。                                              | key: string, order: string |
-| getSelectRow     | 获取选中行                                                                                                         | —                          |
+| Method Name      | Description                                                                                                                                                                                                                                          | Parameters                 |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| clearSelectedRow | Used for multi-selection tables to clear the user's selection                                                                                                                                                                                        | —                          |
+| selectAll        | Used for multi-selection tables to toggle the selection state of all rows                                                                                                                                                                            | -                          |
+| setSelectedRow   | Used for single-selection tables to set a certain row as the selected row                                                                                                                                                                            | row                        |
+| clearSort        | Used to clear the sorting conditions, and the data will return to the unsorted state                                                                                                                                                                 | —                          |
+| clearFilter      | When no parameters are passed in, it is used to clear all filtering conditions, and the data will return to the unfiltered state. An array composed of `column.key` can also be passed in to clear the filtering conditions of the specified columns | column.key                 |
+| sort             | Manually sort the Table. The `key` attribute in the parameter specifies the sorted column, and `order` specifies the sorting order.                                                                                                                  | key: string, order: string |
+| getSelectRow     | Get the selected row(s)                                                                                                                                                                                                                              | —                          |
 
 ### Table-column Attributes
 
-| 参数          | 说明                                                                                                                                                       | 类型                                      | 可选值                 | 默认值 |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ---------------------- | ------ |
-| type          | 对应列的类型。如果设置了 `selection` 则显示单选/多选框；如果设置了 `index` 则显示该行的索引（从 1 开始计算）；如果设置了 `expand` 则显示为一个可展开的按钮 | string                                    | selection/index/expand | —      |
-| index         | 如果设置了 `type=index`，可以通过传递 `index` 属性来自定义索引                                                                                             | number, Function(index)                   | -                      | -      |
-| key           | column 的 key，如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件                                                                   | string                                    | —                      | —      |
-| label         | 显示的标题                                                                                                                                                 | string                                    | —                      | —      |
-| width         | 对应列的宽度                                                                                                                                               | string                                    | —                      | —      |
-| fixed         | 列是否固定在左侧或者右侧，true 表示固定在左侧                                                                                                              | string, boolean                           | true, left, right      | —      |
-| sortable      | 对应列是否可以排序，如果设置为 'custom'，则代表用户希望远程排序，需要监听 Table 的 sort-change 事件                                                        | boolean, string                           | true, false, 'custom'  | false  |
-| sort-method   | 对数据进行排序的时候使用的方法，仅当 sortable 设置为 true 的时候有效，自定义数据排序，返回新的数据                                                         | —                                         | —                      |
-| align         | 对齐方式                                                                                                                                                   | String                                    | left/center/right      | left   |
-| header-align  | 表头对齐方式，若不设置该项，则使用表格的对齐方式                                                                                                           | String                                    | left/center/right      | —      |
-| class         | 列的 class                                                                                                                                                 | string                                    | —                      | —      |
-| filter        | 数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性，默认按当前列数据筛选。                                                                    | Array<{ text, value }> 或者 Array<string> | —                      | —      |
-| filter-method | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。                                                               | Function(row, filters, col)               | —                      | —      |
+| Parameter     | Description                                                                                                                                                                                                                                                          | Type                                    | Optional Values        | Default Value |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------------------- | ------------- |
+| type          | The type of the corresponding column. If `selection` is set, a single-selection/multi-selection box will be displayed; if `index` is set, the index of the row (starting from 1) will be displayed; if `expand` is set, it will be displayed as an expandable button | string                                  | selection/index/expand | —             |
+| index         | If `type = index` is set, the index can be customized by passing the `index` attribute                                                                                                                                                                               | number, Function(index)                 | -                      | -             |
+| key           | The `key` of the column. If the `filter-change` event is needed, this attribute is required to identify which column's filtering condition it is                                                                                                                     | string                                  | —                      | —             |
+| label         | The displayed title                                                                                                                                                                                                                                                  | string                                  | —                      | —             |
+| width         | The width of the corresponding column                                                                                                                                                                                                                                | string                                  | —                      | —             |
+| fixed         | Whether the column is fixed on the left or right. `true` means fixed on the left                                                                                                                                                                                     | string, boolean                         | true, left, right      | —             |
+| sortable      | Whether the corresponding column can be sorted. If set to 'custom', it means the user hopes for remote sorting, and the `sort-change` event of the Table needs to be listened to                                                                                     | boolean, string                         | true, false, 'custom'  | false         |
+| sort-method   | The method used when sorting the data, only valid when `sortable` is set to `true`. Custom data sorting, returns new data                                                                                                                                            | —                                       | —                      |
+| align         | Alignment method                                                                                                                                                                                                                                                     | String                                  | left/center/right      | left          |
+| header-align  | The alignment method of the table header. If this item is not set, the alignment method of the table will be used                                                                                                                                                    | String                                  | left/center/right      | —             |
+| class         | The class of the column                                                                                                                                                                                                                                              | string                                  | —                      | —             |
+| filter        | The options for data filtering, in array format. The elements in the array need to have `text` and `value` attributes. By default, it filters according to the data of the current column.                                                                           | Array<{ text, value }> or Array<string> | —                      | —             |
+| filter-method | The method used for data filtering. If it is a multi-selection filter option, it will be executed multiple times for each piece of data, and the data will be displayed if any execution returns `true`.                                                             | Function(row, filters, col)             | —                      | —             |
 
-### Table-column Section
+### Table-column Sections
 
-| name   | 说明                                                                     |
-| ------ | ------------------------------------------------------------------------ |
-| td     | 自定义列的内容，参数为 {value, row,rowIndex, column, columnIndex,store } |
-| th     | 自定义表头的内容，参数为 { column, columnIndex,store }                   |
-| expand | 针对展开行的扩展 ， 参数为 { row, rowIndex,store }                       |
+| Name   | Description                                                                                               |
+| ------ | --------------------------------------------------------------------------------------------------------- |
+| td     | Customize the content of the column. The parameters are {value, row,rowIndex, column, columnIndex,store } |
+| th     | Customize the content of the table header. The parameters are { column, columnIndex,store }               |
+| expand | For the expansion of expandable rows, the parameters are { row, rowIndex,store }                          |

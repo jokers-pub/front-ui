@@ -1,53 +1,53 @@
-## Progress 进度条
+## Progress
 
-用于展示操作进度，告知用户当前状态和预期。
+Used to show the operation progress, informing users of the current status and expectations.
 
-### 线形进度条
+### Linear Progress Bar
 
-Progress 组件设置 percentage 属性即可，表示进度条对应的百分比，必填，必须在 0-100。通过 format 属性来指定进度条文字内容。
+For the Progress component, setting the `percentage` attribute, which is required and must be between 0-100, represents the percentage corresponding to the progress bar. The text content of the progress bar can be specified through the `format` attribute.
 
 !!!demo1!!!
 
-### 百分比内显
+### Inner-displayed Percentage
 
-百分比不占用额外控件，适用于文件上传等场景。
+The percentage does not take up additional controls, which is suitable for scenarios such as file uploads.
 
-Progress 组件可通过 stroke-width 属性更改进度条的高度，并可通过 text-inside 属性来将进度条描述置于进度条内部。
+For the Progress component, the height of the progress bar can be changed through the `stroke-width` attribute, and the description of the progress bar can be placed inside the progress bar through the `text-inside` attribute.
 
 !!!demo2!!!
 
-### 自定义颜色
+### Custom Color
 
-可以通过 color 设置进度条的颜色，color 可以接受颜色字符串，函数和数组。
+The color of the progress bar can be set through `color`. `color` can accept color strings, functions, and arrays.
 
 !!!demo3!!!
 
-### 环形进度条
+### Circular Progress Bar
 
-Progress 组件可通过 type 属性来指定使用环形进度条，在环形进度条中，还可以通过 width 属性来设置其大小。
+The Progress component can use the `type` attribute to specify the use of a circular progress bar. In the circular progress bar, the size can also be set through the `width` attribute.
 
 !!!demo4!!!
 
-### 仪表盘形进度条
+### Gauge-shaped Progress Bar
 
-通过 type 属性来指定使用仪表盘形进度条。
+Use the `type` attribute to specify the use of a gauge-shaped progress bar.
 
 !!!demo5!!!
 
 ### Attributes
 
-| 参数            | 说明                                                     | 类型                  | 可选值                    | 默认值 |
-| --------------- | -------------------------------------------------------- | --------------------- | ------------------------- | ------ |
-| percentage      | 百分比（必填）                                           | number                | 0-100                     | 0      |
-| type            | 进度条类型                                               | string                | line/circle/dashboard     | line   |
-| class           | 自定义 class 样式                                        | string                | -                         | -      |
-| strokeWidth     | 进度条的宽度，单位 px                                    | number                | —                         | 6      |
-| textInside      | 进度条显示文字内置在进度条内（仅 type=line 时可用）      | boolean               | —                         | false  |
-| status          | 进度条当前状态                                           | string                | success/exception/warning | -      |
-| color           | 进度条背景色（会覆盖 status 状态颜色）                   | string/function/array | —                         | ''     |
-| width           | 环形进度条画布宽度（仅 type=circle 或 dashboard 时可用） | number                | —                         | 126    |
-| showText        | 是否显示进度条文字内容                                   | boolean               | -                         | true   |
-| strokeLinecap   | circle/dashboard 类型路径两端的形状                      | string                | butt/round/square         | round  |
-| format          | 指定进度条文字内容                                       | function(percentage)  | -                         | -      |
-| defineBackColor | 指定进度条底色（支持 hex 格式）                          | string                | -                         | -      |
-| textColor       | 指定进度条字体颜色（支持 hex 格式）                      | string                | -                         | -      |
+| Parameter       | Description                                                                                    | Type                  | Optional Values           | Default Value |
+| --------------- | ---------------------------------------------------------------------------------------------- | --------------------- | ------------------------- | ------------- |
+| percentage      | Percentage (required)                                                                          | number                | 0-100                     | 0             |
+| type            | Progress bar type                                                                              | string                | line/circle/dashboard     | line          |
+| class           | Custom class style                                                                             | string                | -                         | -             |
+| strokeWidth     | The width of the progress bar, in px                                                           | number                | —                         | 6             |
+| textInside      | The progress bar text is displayed inside the progress bar (only available when type = line)   | boolean               | —                         | false         |
+| status          | The current status of the progress bar                                                         | string                | success/exception/warning | -             |
+| color           | The background color of the progress bar (will override the status color)                      | string/function/array | —                         | ''            |
+| width           | The width of the circular progress bar canvas (only available when type = circle or dashboard) | number                | —                         | 126           |
+| showText        | Whether to display the text content of the progress bar                                        | boolean               | -                         | true          |
+| strokeLinecap   | The shape of the two ends of the path for circle/dashboard types                               | string                | butt/round/square         | round         |
+| format          | Specify the text content of the progress bar                                                   | function(percentage)  | -                         | -             |
+| defineBackColor | Specify the base color of the progress bar (supports hex format)                               | string                | -                         | -             |
+| textColor       | Specify the font color of the progress bar (supports hex format)                               | string                | -                         | -             |

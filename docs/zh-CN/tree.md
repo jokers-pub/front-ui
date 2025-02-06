@@ -73,7 +73,7 @@
 | checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —             |
 | checkCanDropIn        | 当前节点是否允许拖入，如果允许拖入，则 drapp 事件 position 位置会返回 in 来决定是否是拖入                        | function                | —      | —             |
 
-### 方法
+### Methods
 
 `Tree` 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。
 `Tree` 拥有如下方法：
@@ -109,7 +109,7 @@
 | node-collapse    | 节点被关闭时触发的事件                 | 参数为 TreeNod                                                                   |
 | drop             | 节点拖动完成后触发                     | 参数为 {dragNode:拖动节点, dropNode: 拖入节点, position: 位置（prev、next、in）} |
 
-### Scoped Section
+### Scoped Sections
 
 | name | 说明                                |
 | ---- | ----------------------------------- |

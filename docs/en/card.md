@@ -1,49 +1,42 @@
-## Card 卡片
+## Card
 
-将信息聚合在卡片容器中展示。
+Displays information aggregated within a card container.
 
-### 基础用法
+### Basic Usage
 
-包含标题，内容和操作。
+Contains a title, content, and actions.
+The Card component consists of a header and a body section. The header section requires an explicit named section distribution and is optional.
+!!! demo1!!!
 
-Card 组件包括 header 和 body 部分，header 部分需要有显式具名 section 分发，同时也是可选的。
+### Simple Card
 
-!!! demo1 !!!
+A card can have only a content area.
+!!! demo2!!!
 
-### 简单卡片
+### With Image
 
-卡片可以只有内容区域。
+Allows for configuring and defining a more diverse content display.
+Configure the `body-style` property to customize the style of the body section. We also use the layout component.
+!!! demo3!!!
 
-!!! demo2 !!!
+### Card Shadow
 
-### 带图片
+Allows for configuring the display of the shadow.
+Set the timing of the card shadow appearance through the `shadow` property: `always`, `hover`, or `never`.
+!!! demo4!!!
 
-可配置定义更丰富的内容展示。
+### Attributes
 
-配置 body-style 属性来自定义 body 部分的 style，我们还使用了布局组件。
+| Parameter | Description                                                                | Type   | Optional Values        | Default Value |
+| --------- | -------------------------------------------------------------------------- | ------ | ---------------------- | ------------- |
+| header    | Set the header, and it can also be passed as DOM through `sections#header` | string | —                      | —             |
+| bodyStyle | Set the style of the body                                                  | object | —                      | -             |
+| shadow    | Set the timing of shadow display                                           | string | always / hover / never | always        |
+| class     | Set the card class name                                                    | string | —                      | -             |
 
-!!! demo3 !!!
+### Sections
 
-### 卡片阴影
-
-可对阴影的显示进行配置。
-
-通过 shadow 属性设置卡片阴影出现的时机：always、hover 或 never。
-
-!!! demo4 !!!
-
-### Card 参数
-
-| 参数      | 说明                                             | 类型   | 可选值                 | 默认值 |
-| --------- | ------------------------------------------------ | ------ | ---------------------- | ------ |
-| header    | 设置 header，也可以通过 sections#header 传入 DOM | string | —                      | —      |
-| bodyStyle | 设置 body 的样式                                 | object | —                      | -      |
-| shadow    | 设置阴影显示时机                                 | string | always / hover / never | always |
-| class     | 设置卡片类名                                     | string | —                      | -      |
-
-### Card 区块
-
-| 名称    | 说明         |
-| ------- | ------------ |
-| default | 内容区域插槽 |
-| header  | 头部区域插槽 |
+| Name    | Description       |
+| ------- | ----------------- |
+| default | Content area slot |
+| header  | Header area slot  |

@@ -1,84 +1,84 @@
-## Steps 步骤条
+## Steps
 
-引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步。
+A step-by-step navigation bar that guides users to complete tasks according to a process. The steps can be set according to the actual application scenario, and the number of steps should not be less than 2.
 
-### 基础用法
+### Basic Usage
 
-简单的步骤条。
+A simple step bar.
 
-设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
 
 !!!demo1!!!
 
-### 含状态步骤条
+### Step Bar with Status
 
-每一步骤显示出该步骤的状态。
+Each step shows the status of that step.
 
-也可以使用 title 具名分发，可以用 sections 的方式来取代属性的设置，在本文档最后的列表中有所有的 sections name 可供参考。
+You can also use the named slot `title`, and use the `sections` method to replace the attribute settings. There is a list of all `sections name` at the end of this document for reference.
 
 !!!demo2!!!
 
-### 有描述的步骤条
+### Step Bar with Descriptions
 
-每个步骤有其对应的步骤状态描述。
+Each step has its corresponding step-status description.
 
 !!!demo3!!!
 
-### 居中的步骤条
+### Centered Step Bar
 
-标题和描述都将居中。
+Both the title and description will be centered.
 
-设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
 
 !!!demo4!!!
 
-### 带图标的步骤条
+### Step Bar with Icons
 
-步骤条内可以启用各种自定义的图标。
+Various custom icons can be enabled within the step bar.
 
-通过 icon 属性来设置图标，图标的类型可以参考 Icon 组件的文档，除此以外，还能通过具名 sections 来使用自定义的图标。
+Set the icon through the `icon` attribute. The types of icons can refer to the documentation of the Icon component. In addition, custom icons can also be used through named `sections`.
 
 !!!demo5!!!
 
-### 竖式步骤条
+### Vertical Step Bar
 
-竖直方向的步骤条。
+A step bar in the vertical direction.
 
-只需要在 jk-steps 元素中设置 direction 属性为 vertical 即可。
+Just set the `direction` attribute to `vertical` in the `jk-steps` element.
 
 !!!demo6!!!
 
-### 简洁风格的步骤条
+### Simple-style Step Bar
 
-设置 simple 可应用简洁风格，该条件下 alignCenter / description / direction / space 都将失效。
+Set `simple` to apply the simple style. Under this condition, `alignCenter`, `description`, `direction`, and `space` will all be invalid.
 
-设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
 
 !!!demo7!!!
 
-### Steps 参数
+### Steps Attributes
 
-| 参数        | 说明                                               | 类型            | 可选值              | 默认值     |
-| ----------- | -------------------------------------------------- | --------------- | ------------------- | ---------- |
-| class       | 自定义 class 样式                                  | string          | -                   | -          |
-| space       | 每个 step 的间距，不填写将自适应间距。支持百分比。 | number / string | —                   | —          |
-| direction   | 显示方向                                           | string          | vertical/horizontal | horizontal |
-| active      | 设置当前激活步骤                                   | number          | —                   | 0          |
-| alignCenter | 进行居中对齐                                       | boolean         | —                   | false      |
-| simple      | 是否应用简洁风格                                   | boolean         | —                   | false      |
+| Parameter   | Description                                                                                       | Type            | Optional Values     | Default Value |
+| ----------- | ------------------------------------------------------------------------------------------------- | --------------- | ------------------- | ------------- |
+| class       | Custom class style                                                                                | string          | -                   | -             |
+| space       | The spacing between each step. If not filled, the spacing will be adaptive. Supports percentages. | number / string | —                   | —             |
+| direction   | Display direction                                                                                 | string          | vertical/horizontal | horizontal    |
+| active      | Set the currently active step                                                                     | number          | —                   | 0             |
+| alignCenter | Perform centered alignment                                                                        | boolean         | —                   | false         |
+| simple      | Whether to apply the simple style                                                                 | boolean         | —                   | false         |
 
-### Step 参数
+### Step Attributes
 
-| 参数        | 说明       | 类型                                                          | 可选值 | 默认值 |
-| ----------- | ---------- | ------------------------------------------------------------- | ------ | ------ |
-| title       | 标题       | string                                                        | —      | —      |
-| description | 描述性文字 | string                                                        | -      | -      |
-| icon        | 图标       | 传入 icon 的 class 全名来自定义 icon，也支持 Section 方式写入 | string | -      |
+| Parameter   | Description      | Type                                                                                                                 | Optional Values | Default Value |
+| ----------- | ---------------- | -------------------------------------------------------------------------------------------------------------------- | --------------- | ------------- |
+| title       | Title            | string                                                                                                               | —               | —             |
+| description | Descriptive text | string                                                                                                               | -               | -             |
+| icon        | Icon             | Pass in the full class name of the icon to customize the icon, and it also supports being written in the Section way | string          | -             |
 
-### Step section
+### Step Sections
 
-| name        | 说明             |
-| ----------- | ---------------- |
-| icon        | 自定义图标       |
-| title       | 自定义标题       |
-| description | 自定义描述性文字 |
+| Name        | Description             |
+| ----------- | ----------------------- |
+| icon        | Custom icon             |
+| title       | Custom title            |
+| description | Custom descriptive text |

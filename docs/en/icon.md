@@ -1,19 +1,19 @@
-## Icon 图标
+## Icon
 
-提供了一套常用的图标集合
+Provides a set of commonly used icon collections.
 
-### 使用方法
+### Usage
 
-直接通过设置类名为`jk-icon-name`的方式来使用，例如：
+It can be used directly by setting the class name as `jk-icon-name`. For example:
 
 !!!demo1!!!
 
-也可以使用`jk-icon`组件，通过设置`name`属性来进行使用，例如：
+You can also use the `jk-icon` component and use it by setting the `name` attribute. For example:
 
 !!!demo2!!!
 
-### 图标集合
+### Icon Collection
 
-> 点击图标复制`class` 名称
+> Click on the icon to copy the `class` name.
 
 !!!demo3!!!

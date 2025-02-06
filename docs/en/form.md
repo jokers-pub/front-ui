@@ -1,50 +1,50 @@
-## Form 表单
+## Form
 
-用于提供表单数据收集、校验、提交等交互功能的组件。
+A component used to provide interactive functions such as form data collection, validation, and submission.
 
-### 典型表单
+### Typical Forms
 
-包括各种表单项，比如输入框、选择器、开关、单选框、多选框等。
+It includes various form items, such as input boxes, selectors, switches, radio boxes, checkboxes, etc.
 
 !!!demo1!!!
 
-### 行内表单
+### Inline Forms
 
-设置为`inline`属性可以让表单变成行内表单，当垂直空间受限且表单较简单时，可以使用行内表单。
+Setting the `inline` attribute can turn the form into an inline form. When vertical space is limited and the form is relatively simple, an inline form can be used.
 
 !!!demo2!!!
 
-### 文本对齐方式
+### Text Alignment
 
-可以通过`label-position`属性来设置标题对齐方式，目前支持：`top`、`left`，当设置为`top`时标题会置于表单项顶部。
+The alignment of the title can be set through the `label-position` attribute. Currently, it supports: `top`, `left`. When set to `top`, the title will be placed at the top of the form item.
 
 !!!demo3!!!
 
-### 表单验证
+### Form Validation
 
-Form 组件提供了表单验证的功能，内部提供了基础的验证方法，可通过添加`validate`来配置验证规则。
+The Form component provides a form validation function. It has basic validation methods internally, and validation rules can be configured by adding `validate`.
 
 !!!demo4!!!
 
-> 在`form-item`中配置`required`只作为是否添加**星号**展示用途，本身不做任何验证操作。
+> Configuring `required` in `form-item` is only used to determine whether to display an **asterisk** and does not perform any validation operations itself.
 
-### 内置规则
+### Built-in Rules
 
-内部提供了常用的校验规则，使用`validate`来进行配置。
+Common validation rules are provided internally, and `validate` is used for configuration.
 
-| 规则                                  | 说明           | 值说明                                                                                |
-| ------------------------------------- | -------------- | ------------------------------------------------------------------------------------- |
-| `Global.isRequired(msg)`              | 非空校验       | 可通过该属性配置错误信息，若未设置则按照`placeholder`进行错误提示                     |
-| `Global.isInt(msg)`                   | 正整数校验     | 错误提示                                                                              |
-| `Global.isNumber(msg)`                | 数值校验       | 错误提示                                                                              |
-| `Global.isPhone(msg)`                 | 手机号格式校验 | 错误提示                                                                              |
-| `Global.isEmail(msg)`                 | 邮箱格式校验   | 错误提示                                                                              |
-| `Global.isMatched(regex,msg)`         | 自定义正则校验 | {pattern:string,msg:string}，其中`pattern`为必填项，用于配置正则规则，`msg`为错误提示 |
-| `Global.isLengthInRange(min,max,msg)` | 长度校验       | `（最小值,最大值,错误信息）`：可通过数组的方式来设置最大值和最小值                    |
+| Rule                                  | Description                           | Value Description                                                                                                                             |
+| ------------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Global.isRequired(msg)`              | Non-empty validation                  | Error information can be configured through this attribute. If not set, the error will be prompted according to `placeholder`.                |
+| `Global.isInt(msg)`                   | Positive integer validation           | Error prompt                                                                                                                                  |
+| `Global.isNumber(msg)`                | Numeric validation                    | Error prompt                                                                                                                                  |
+| `Global.isPhone(msg)`                 | Mobile phone number format validation | Error prompt                                                                                                                                  |
+| `Global.isEmail(msg)`                 | Email format validation               | Error prompt                                                                                                                                  |
+| `Global.isMatched(regex,msg)`         | Custom regular expression validation  | {pattern:string,msg:string}, where `pattern` is a required item used to configure the regular expression rule, and `msg` is the error prompt. |
+| `Global.isLengthInRange(min,max,msg)` | Length validation                     | `（Minimum value, maximum value, error message）`: The maximum and minimum values can be set in the form of an array.                         |
 
 !!!demo5!!!
 
-可通过通过`全局方法注册`来自定义校验规则。下面是一个内置的检查方法代码，可以参考
+Custom validation rules can be registered through `Global method registration`. Here is the code of a built-in check method for reference.
 
 ```ts
 registerGlobalFunction({
@@ -52,11 +52,11 @@ registerGlobalFunction({
         return (value: any) => {
             if (!value) return;
             if (value.length !== 11) {
-                return message || "请输入11位手机号";
+                return message || "Please enter an 11-digit mobile phone number";
             }
 
             if (/^1[3456789]\d{9}$/.test(value) === false) {
-                return message || "手机号码格式错误，请重新输入";
+                return message || "The mobile phone number format is incorrect. Please re-enter.";
             }
         };
     }
@@ -67,91 +67,91 @@ registerGlobalFunction({
 <input validate="@Global.isPhone()" />
 ```
 
-校验的规则是有顺序的：
+The validation rules are in order:
 
-1. `控件.beforeValidate()`
-2. `控件.ctrlValidate`
-3. `控件.props.validate(自定义校验)` 支持数组 多项组合校验
+1. `control.beforeValidate()`
+2. `control.ctrlValidate`
+3. `control.props.validate(Custom validation)` Supports arrays for multiple combined validations
 
-### 自定义验证
+### Custom Validation
 
-可通过配置组件的`validate`参数来自定义验证规则，若验证失败返回提示信息即可，若返回值为空则代表验证成功。该方法支持异步校验。
+Custom validation rules can be configured by setting the `validate` parameter of the component. If the validation fails, return the prompt message. If the return value is empty, it means the validation is successful. This method supports asynchronous validation.
 
 !!!demo6!!!
 
-> 可通过`status-icon`属性在`input`组件中展示检验过程状态。
+> The `status-icon` attribute can be used to display the verification process status in the `input` component.
 
-### 尺寸
+### Size
 
-可通过在`form`中配置`size`属性来对整体表单控件做尺寸设置，若组件已经配置了私有`size`，则无法进行覆盖。
+The size of the overall form control can be set by configuring the `size` attribute in `form`. If the component already has a private `size` configured, it cannot be overridden.
 
 !!!demo7!!!
 
-### 提交
+### Submission
 
-可以通过调用 form 中的`submit`事件实现表单的提交，值得注意的是，提交过程只包括表单的验证和表单的值获取，若校验成功后，则会通过`submit`事件来通知到调用者，并把表单数据一同返回。
+The form submission can be achieved by calling the `submit` event in the form. It should be noted that the submission process only includes form validation and form value acquisition. If the validation is successful, the `submit` event will be used to notify the caller and return the form data together.
 
 !!!demo8!!!
 
-> 在 submit 事件内部处理时，表单会在异步校验过程中，将发起按钮（需是 jk-button）设置为 loading，异步验证成功后解除 loading，转交到 submit 事件自行处理，所以需要调用者自行控制`提交`过程中的 loading，验证中 loading 则无需关心。
+> During the internal processing of the submit event, the form will set the initiating button (which needs to be a jk-button) to loading during the asynchronous validation process. After the asynchronous validation is successful, the loading is removed and transferred to the submit event for self-handling. Therefore, the caller needs to control the loading during the `submission` process by themselves, and there is no need to care about the loading during the validation.
 
-### 表单控件的扩展
+### Expansion of Form Controls
 
-若想添加可被`Form`表单识别的表单控件，需满足以下几个条件：
+If you want to add form controls that can be recognized by the `Form` form, the following conditions need to be met:
 
-1. 在 create 时，需要调用`registerFormCtrl(this)`方法注册表单控件。
-2. 需要在 model 中配置 value 属性
-3. 需要传入 props.name （根据使用场景区分）
-4. 当前控件渲染在 jk-form 组件中（根据使用场景区分）
+1. When creating, the `registerFormCtrl(this)` method needs to be called to register the form control.
+2. The `value` attribute needs to be configured in the model.
+3. `props.name` needs to be passed in (depending on the usage scenario).
+4. The current control is rendered in the jk-form component (depending on the usage scenario).
 
-以下是功能性扩展（非强制约束）
+The following are functional expansions (not mandatory constraints):
 
-1. 在合适的时机触发`this.$trigger("validate")`表单校验事件，一般在内容值变更时触发（不强制）。
-2. `ctrlValidate`若组件内存在此方法， 则在表单执行该项校验时，执行自身内置校验。
-3. `beforeValidate`若组件内存在此方法，则在表单执行该项校验前执行一些前置的数据准备工作。
+1. Trigger the `this.$trigger("validate")` form validation event at an appropriate time, usually when the content value changes (not mandatory).
+2. If the `ctrlValidate` method exists in the component, it will execute its own built-in validation when the form performs this item of validation.
+3. If the `beforeValidate` method exists in the component, some pre-data preparation work will be executed before the form performs this item of validation.
 
 ### Form Attributes
 
-| 参数              | 说明                                                                       | 类型     | 可选值                | 默认值 |
-| ----------------- | -------------------------------------------------------------------------- | -------- | --------------------- | ------ |
-| class             | 自定义 class 样式                                                          | string   | -                     | -      |
-| inline            | 行内表单模式                                                               | boolean  | —                     | false  |
-| label-position    | 表单标签的位置，如果值为 left 或者 right 时，则需要设置 `label-width`      | string   | right/left/top        | right  |
-| label-width       | 表单标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。 | string   | —                     | 80px   |
-| size              | 用于控制该表单内组件的尺寸                                                 | string   | medium / small / mini | —      |
-| showErrorMessage  | 自定义错误提示展示                                                         | Function | -                     | -      |
-| clearErrorMessage | 自定义清空错误提示                                                         | Function | -                     | -      |
+| Parameter         | Description                                                                                                            | Type     | Optional Values       | Default Value |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- | ------------- |
+| class             | Custom class style                                                                                                     | string   | -                     | -             |
+| inline            | Inline form mode                                                                                                       | boolean  | —                     | false         |
+| label-position    | The position of the form label. If the value is left or right, `label-width` needs to be set.                          | string   | right/left/top        | right         |
+| label-width       | The width of the form label, for example, '50px'. Form-items that are direct children of Form will inherit this value. | string   | —                     | 80px          |
+| size              | Used to control the size of components within this form                                                                | string   | medium / small / mini | —             |
+| showErrorMessage  | Custom error message display                                                                                           | Function | -                     | -             |
+| clearErrorMessage | Custom clear error message                                                                                             | Function | -                     | -             |
 
 ### Form Methods
 
-| 方法名   | 说明                                                                                           | 参数                                                                                                                  |
-| -------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| validate | 对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，返回一个 promise | Function(string /string[]) 若不传递参数则执行整个表单控件校验，可以传入 name（string / string[]）实现校验指定控件的值 |
-| reset    | 对整个表单进行重置，将所有字段值重置为初始值并移除校验结果                                     | —                                                                                                                     |
-| getData  | 获取当前表单数据，注意**获取数据未经过表单校验**                                               | Function(string / string[])若不传递参数则获取整个表单控件值，可以传入 name（string / string[]）实现获取指定控件的值   |
-| submit   | 触发表单提交操作                                                                               | -                                                                                                                     |
+| Method Name | Description                                                                                                                                                               | Parameter                                                                                                                                                                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| validate    | A method to validate the entire form. The parameter is a callback function. The callback function will be called after the validation is completed and returns a promise. | Function(string /string[]). If no parameter is passed, the entire form control will be validated. You can pass in name (string / string[]) to validate the value of the specified control.           |
+| reset       | Reset the entire form, reset all field values to their initial values and remove the validation results.                                                                  | —                                                                                                                                                                                                    |
+| getData     | Get the current form data. Note that **the data obtained has not passed form validation**.                                                                                | Function(string / string[]). If no parameter is passed, the values of the entire form control will be obtained. You can pass in name (string / string[]) to get the values of the specified control. |
+| submit      | Trigger the form submission operation.                                                                                                                                    | -                                                                                                                                                                                                    |
 
-### Form Event
+### Form Events
 
-| 事件名        | 说明             | 参数     |
-| ------------- | ---------------- | -------- |
-| before-submit | 触发表单提交前   | -        |
-| submit        | 触发表单提交操作 | 表单数据 |
+| Event Name    | Description                           | Parameter |
+| ------------- | ------------------------------------- | --------- |
+| before-submit | Triggered before form submission      | -         |
+| submit        | Trigger the form submission operation | Form data |
 
 ### Form-Item Attributes
 
-| 参数        | 说明                                                         | 类型    | 可选值 | 默认值 |
-| ----------- | ------------------------------------------------------------ | ------- | ------ | ------ |
-| class       | 自定义 class 样式                                            | string  | -      | -      |
-| label       | 标签文本                                                     | string  | —      | —      |
-| label-width | 表单域标签的的宽度，例如 '50px'。                            | string  | —      | 80px   |
-| required    | 是否必填（用于控制是否显示**星号**，不会参与校验规则的制定） | boolean | —      | false  |
-| inline      | 是否采用 inline 布局                                         | boolean | —      | false  |
+| Parameter   | Description                                                                                                                                 | Type    | Optional Values | Default Value |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------- | --------------- | ------------- |
+| class       | Custom class style                                                                                                                          | string  | -               | -             |
+| label       | Label text                                                                                                                                  | string  | —               | —             |
+| label-width | The width of the form field label, for example, '50px'.                                                                                     | string  | —               | 80px          |
+| required    | Whether it is required (used to control whether to display an **asterisk** and does not participate in the formulation of validation rules) | boolean | —               | false         |
+| inline      | Whether to use an inline layout                                                                                                             | boolean | —               | false         |
 
-### Form-Item Section
+### Form-Item Sections
 
-| name  | 说明             |
-| ----- | ---------------- |
-| —     | Form Item 的内容 |
-| label | 标签文本的内容   |
-| error | 校验失败内容     |
+| name  | Description                       |
+| ----- | --------------------------------- |
+| —     | The content of Form Item          |
+| label | The content of the label text     |
+| error | The content of validation failure |

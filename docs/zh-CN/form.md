@@ -131,7 +131,7 @@ registerGlobalFunction({
 | getData  | 获取当前表单数据，注意**获取数据未经过表单校验**                                               | Function(string / string[])若不传递参数则获取整个表单控件值，可以传入 name（string / string[]）实现获取指定控件的值   |
 | submit   | 触发表单提交操作                                                                               | -                                                                                                                     |
 
-### Form Event
+### Form Events
 
 | 事件名        | 说明             | 参数     |
 | ------------- | ---------------- | -------- |
@@ -148,7 +148,7 @@ registerGlobalFunction({
 | required    | 是否必填（用于控制是否显示**星号**，不会参与校验规则的制定） | boolean | —      | false  |
 | inline      | 是否采用 inline 布局                                         | boolean | —      | false  |
 
-### Form-Item Section
+### Form-Item Sections
 
 | name  | 说明             |
 | ----- | ---------------- |

@@ -1,42 +1,42 @@
-## Password 密码
+## Password
 
-密码输入框
+Password input box
 
-### 基础用法
+### Basic Usage
 
 !!!demo1!!!
 
-### 带 icon 的输入框
+### Input Box with Icon
 
-带有图标标记输入类型
+Mark the input type with an icon.
 
-可以通过 `prefix-icon` 属性在 password 组件首部增加显示图标。
+You can add an icon to the head of the password component through the `prefix-icon` property.
 
 !!!demo2!!!
 
-### 尺寸
+### Size
 
-可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 medium、small 和 mini 三种尺寸。
+You can specify the size of the input box through the `size` property. Besides the default size, there are also three sizes: medium, small, and mini.
 
 !!!demo3!!!
 
-### 输入长度限制
+### Input Length Limit
 
-`maxlength` 和 `minlength` 是原生属性，用来限制输入框的字符长度。
+`maxlength` and `minlength` are native attributes used to limit the character length of the input box.
 
 !!!demo4!!!
 
-### Passoword 属性
+### Attributes
 
-| 参数         | 说明                   | 类型            | 可选值                | 默认值 |
-| ------------ | ---------------------- | --------------- | --------------------- | ------ |
-| value        | 绑定值                 | string / number | —                     | —      |
-| class        | 自定义 class 样式      | string          | -                     | -      |
-| name         | 原生属性               | string          | —                     | —      |
-| size         | 输入框尺寸             | string          | medium / small / mini | —      |
-| maxlength    | 原生属性，最大输入长度 | number          | —                     | —      |
-| minlength    | 原生属性，最小输入长度 | number          | —                     | —      |
-| placeholder  | 输入框占位文本         | string          | —                     | —      |
-| prefix-icon1 | 输入框头部图标         | string          | —                     | —      |
-| autofocus1   | 原生属性，自动获取焦点 | boolean         | true, false           | false  |
-| tabindex     | 输入框的 tabindex      | string          | -                     | -      |
+| Parameter   | Description                            | Type            | Optional Values       | Default Value |
+| ----------- | -------------------------------------- | --------------- | --------------------- | ------------- |
+| value       | Bound value                            | string / number | —                     | —             |
+| class       | Custom class style                     | string          | -                     | -             |
+| name        | Native attribute                       | string          | —                     | —             |
+| size        | Size of the input box                  | string          | medium / small / mini | —             |
+| maxlength   | Native attribute, maximum input length | number          | —                     | —             |
+| minlength   | Native attribute, minimum input length | number          | —                     | —             |
+| placeholder | Placeholder text of the input box      | string          | —                     | —             |
+| prefix-icon | Icon at the head of the input box      | string          | —                     | —             |
+| autofocus   | Native attribute, auto-focus           | boolean         | true, false           | false         |
+| tabindex    | The tabindex of the input box          | string          | -                     | -             |

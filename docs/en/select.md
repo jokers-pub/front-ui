@@ -1,115 +1,114 @@
-## Select 选择器
+## Select
 
-当选项过多时，使用下拉菜单展示并选择内容。
+When there are too many options, use a dropdown menu to display and select content.
 
-### 基础用法
+### Basic Usage
 
-适用广泛的基础单选
-`value`的值为当前被选中的`jk-option`的 value 属性值
+Basic single-selection widely applicable. The value of `value` is the `value` attribute value of the currently selected `jk-option`.
 
 !!!demo1!!!
 
-### 有禁用选项
+### With Disabled Options
 
-在`jk-option`中，设定`disabled`值为 true，即可禁用该选项
+In `jk-option`, set the `disabled` value to `true` to disable the option.
 
 !!!demo2!!!
 
-### 可清空单选
+### Clearable Single-selection
 
-包含清空按钮，可将选择器清空为初始状态
+Contains a clear button to clear the selector to its initial state.
 
-为`jk-select`设置`clearable`属性，则可将选择器清空。需要注意的是，`clearable`属性仅适用于单选。
+Set the `clearable` attribute for `jk-select`, and the selector can be cleared. Note that the `clearable` attribute is only applicable to single-selection.
 
 !!!demo3!!!
 
-### 多选下拉
+### Multiple-selection Dropdown
 
-适用性较广的基础多选，用 Tag 展示已选项
+Basic multiple-selection widely applicable, with selected items displayed as Tags.
 
 !!!demo4!!!
 
-### 自定义模板
+### Custom Template
 
-可以自定义备选项
+You can customize the alternative options.
 
 !!!demo5!!!
 
-### 分组
+### Grouping
 
-备选项进行分组展示
+Display alternative options in groups.
 
 !!!demo6!!!
 
-### 可搜索
+### Searchable
 
-可以利用搜索功能快速查找选项
+You can quickly find options using the search function.
 
-添加`filterable`属性即可启用搜索功能。默认情况下，Select 会找出所有`label`属性包含输入值的选项。如果希望使用其他的搜索逻辑，可以通过传入一个`filter-method`来实现。`filter-method`为一个`Function`，它会在输入值发生变化时调用，参数为当前输入值。
+Adding the `filterable` attribute enables the search function. By default, Select will find all options whose `label` attribute contains the input value. If you want to use other search logic, you can achieve this by passing in a `filter-method`. `filter-method` is a `Function` that will be called when the input value changes, with the current input value as the parameter.
 
 !!!demo7!!!
 
-### 多选可搜索
+### Multiple-selection and Searchable
 
 !!!demo8!!!
 
-### 尺寸
+### Size
 
-可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 medium、small 和 mini 三种尺寸。
+You can specify the size of the input box through the `size` attribute. Besides the default size, there are also three sizes: medium, small, and mini.
 
 !!!demo9!!!
 
-### Select 属性
+### Select Attributes
 
-| 参数           | 说明                                                                                                          | 类型                      | 可选值            | 默认值     |
-| -------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------- | ---------- |
-| value          | 绑定值                                                                                                        | boolean / string / number | —                 | —          |
-| class          | 自定义 class 样式                                                                                             | string                    | -                 | -          |
-| multiple       | 是否多选                                                                                                      | boolean                   | —                 | false      |
-| disabled       | 是否禁用                                                                                                      | boolean                   | —                 | false      |
-| value-key      | 作为 value 唯一标识的键名，绑定值为对象类型时必填                                                             | string                    | —                 | value      |
-| size           | 输入框尺寸                                                                                                    | string                    | medium/small/mini | —          |
-| clearable      | 是否可以清空选项                                                                                              | boolean                   | —                 | false      |
-| multiple-limit | 多选时用户最多可以选择的项目数，为 0 则不限制                                                                 | number                    | —                 | 0          |
-| name           | 用于对接 form 中 name 属性                                                                                    | string                    | —                 | —          |
-| placeholder    | 占位符                                                                                                        | string                    | —                 | 请选择     |
-| filterable     | 是否可搜索                                                                                                    | boolean                   | —                 | false      |
-| filter-method  | 自定义搜索方法，查询时会将关键字、选中 label、选项值传递到改方法内，该方法返回 true/false，来决定选项是否显示 | function                  | —                 | —          |
-| remote         | 是否为远程搜索                                                                                                | boolean                   | —                 | false      |
-| remote-method  | 远程搜索方法                                                                                                  | function                  | —                 | —          |
-| loading        | 是否正在从远程获取数据                                                                                        | boolean                   | —                 | false      |
-| loading-text   | 远程加载时显示的文字                                                                                          | string                    | —                 | 加载中     |
-| no-match-text  | 搜索条件无匹配时显示的文字，也可以使用`section"empty"`设置                                                    | string                    | —                 | 无匹配数据 |
-| no-data-text   | 选项为空时显示的文字，也可以使用`section"empty"`设置                                                          | string                    | —                 | 无数据     |
-| fullWidth      | 是否宽度 100%                                                                                                 | boolean                   | —                 | -          |
-| allowCreate    | 是否允许新建项                                                                                                | boolean                   | —                 | -          |
-| createText     | 新建项文本提示                                                                                                | string                    | —                 | 创建新值   |
+| Parameter      | Description                                                                                                                                                                                         | Type                      | Optional Values   | Default Value    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------- | ---------------- |
+| value          | Bound value                                                                                                                                                                                         | boolean / string / number | —                 | —                |
+| class          | Custom class style                                                                                                                                                                                  | string                    | -                 | -                |
+| multiple       | Whether it is multiple-selection                                                                                                                                                                    | boolean                   | —                 | false            |
+| disabled       | Whether it is disabled                                                                                                                                                                              | boolean                   | —                 | false            |
+| value-key      | The key name used as the unique identifier of the value, required when the bound value is of object type                                                                                            | string                    | —                 | value            |
+| size           | Size of the input box                                                                                                                                                                               | string                    | medium/small/mini | —                |
+| clearable      | Whether the option can be cleared                                                                                                                                                                   | boolean                   | —                 | false            |
+| multiple-limit | The maximum number of items that the user can select in multiple-selection. If it is 0, there is no limit                                                                                           | number                    | —                 | 0                |
+| name           | Used to connect to the `name` attribute in the form                                                                                                                                                 | string                    | —                 | —                |
+| placeholder    | Placeholder                                                                                                                                                                                         | string                    | —                 | Please select    |
+| filterable     | Whether it is searchable                                                                                                                                                                            | boolean                   | —                 | false            |
+| filter-method  | Custom search method. When querying, the keyword, selected label, and option value will be passed into this method. This method returns `true`/`false` to determine whether the option is displayed | function                  | —                 | —                |
+| remote         | Whether it is a remote search                                                                                                                                                                       | boolean                   | —                 | false            |
+| remote-method  | Remote search method                                                                                                                                                                                | function                  | —                 | —                |
+| loading        | Whether data is being fetched remotely                                                                                                                                                              | boolean                   | —                 | false            |
+| loading-text   | The text displayed when loading remotely                                                                                                                                                            | string                    | —                 | Loading...       |
+| no-match-text  | The text displayed when there is no match for the search condition. It can also be set using the `section "empty"`                                                                                  | string                    | —                 | No matching data |
+| no-data-text   | The text displayed when there are no options. It can also be set using the `section "empty"`                                                                                                        | string                    | —                 | No data          |
+| fullWidth      | Whether the width is 100%                                                                                                                                                                           | boolean                   | —                 | -                |
+| allowCreate    | Whether to allow the creation of new items                                                                                                                                                          | boolean                   | —                 | -                |
+| createText     | Text prompt for creating new items                                                                                                                                                                  | string                    | —                 | Create new value |
 
-### Select 事件
+### Select Events
 
-| 事件名称 | 说明                           | 回调参数               |
-| -------- | ------------------------------ | ---------------------- |
-| change   | 选中值发生变化时触发           | 目前的选中值           |
-| new      | 在单选情况下点击创建新值时触发 | 查询值（文本框输入值） |
+| Event Name | Description                                                       | Callback Parameters                           |
+| ---------- | ----------------------------------------------------------------- | --------------------------------------------- |
+| change     | Triggered when the selected value changes                         | The currently selected value                  |
+| new        | Triggered when clicking to create a new value in single-selection | The query value (input value in the text box) |
 
-### Select section
+### Select Sections
 
-|   name  | 说明            |
-| ------- | --------------- |
-| default | Option 组件列表 |
-| empty   | 无选项时的列表  |
+| Name    | Description                    |
+| ------- | ------------------------------ |
+| default | List of Option components      |
+| empty   | List when there are no options |
 
-### Option Group 属性
+### Option Group Attributes
 
-| 参数     | 说明                           | 类型    | 可选值 | 默认值 |
-| -------- | ------------------------------ | ------- | ------ | ------ |
-| label    | 分组的组名                     | string  | —      | —      |
-| disabled | 是否将该分组下所有选项置为禁用 | boolean | —      | false  |
+| Parameter | Description                                  | Type    | Optional Values | Default Value |
+| --------- | -------------------------------------------- | ------- | --------------- | ------------- |
+| label     | The group name of the grouping               | string  | —               | —             |
+| disabled  | Whether to disable all options in this group | boolean | —               | false         |
 
-### Option 属性
+### Option Attributes
 
-| 参数     | 说明                                      | 类型                 | 可选值 | 默认值 |
-| -------- | ----------------------------------------- | -------------------- | ------ | ------ |
-| value    | 选项的值                                  | string/number/object | —      | —      |
-| label    | 选项的标签，若不设置则默认与 `value` 相同 | string/number        | —      | —      |
-| disabled | 是否禁用该选项                            | boolean              | —      | false  |
+| Parameter | Description                                                               | Type                 | Optional Values | Default Value |
+| --------- | ------------------------------------------------------------------------- | -------------------- | --------------- | ------------- |
+| value     | The value of the option                                                   | string/number/object | —               | —             |
+| label     | The label of the option. If not set, it is the same as `value` by default | string/number        | —               | —             |
+| disabled  | Whether to disable this option                                            | boolean              | —               | false         |

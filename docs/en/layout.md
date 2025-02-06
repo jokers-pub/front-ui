@@ -1,74 +1,72 @@
-## Layout 布局
+## Layout
 
-通过基础的24分栏，迅速简便地创建布局
+Create layouts quickly and easily through the basic 24-column system.
 
-### 基础布局
+### Basic Layout
 
-使用单一分栏创建基础的栅格布局。
+Create a basic grid layout using a single column.
 
-通过 row 和 col 组件，并通过 col 组件的 `span` 属性我们就可以自由地组合布局。
+By using the `row` and `col` components, and through the `span` attribute of the `col` component, we can freely combine layouts.
 
 !!!demo1!!!
 
-### 分栏间隔
+### Column Spacing
 
-分栏之间存在间隔。
+There is a spacing between columns.
 
-row 组件 提供 `gutter` 属性来指定每一栏之间的间隔，默认间隔为 0。
+The `row` component provides the `gutter` attribute to specify the spacing between each column, with a default spacing of 0.
 
 !!!demo2!!!
 
-### 混合布局
+### Mixed Layout
 
-通过基础的 1/24 分栏任意扩展组合形成较为复杂的混合布局。
+Arbitrarily expand and combine through the basic 1/24 columns to form a more complex mixed layout.
 
 !!!demo3!!!
 
-### 分栏偏移
+### Column Offset
 
-支持偏移指定的栏数。
+Supports offsetting a specified number of columns.
 
-通过设置 col 组件的 `offset` 属性可以指定分栏偏移的栏数，优化布局效果。
+By setting the `offset` attribute of the `col` component, you can specify the number of columns to offset, optimizing the layout effect.
 
 !!!demo4!!!
 
+### Alignment
 
-### 对齐方式
+Use `flex` layout for flexible alignment of columns.
 
-通过 `flex` 布局来对分栏进行灵活的对齐。
-
-将 `type` 属性赋值为 'flex'，可以启用 flex 布局，您可以通过 `justify` 属性来指定 start, center, end, space-between, space-around 其中的值灵活定义子元素的排版方式。
+Assigning the `type` attribute as 'flex' enables the flex layout. You can use the `justify` attribute to specify values such as `start`, `center`, `end`, `space-between`, `space-around` to flexibly define the layout of child elements.
 
 !!!demo5!!!
 
-### 响应式布局
+### Responsive Layout
 
-参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：`xs`、`sm`、`md`、`lg` 和 `xl`。
+Referencing the responsive design of Bootstrap, five responsive sizes are preset: `xs`, `sm`, `md`, `lg`, and `xl`.
 
 !!!demo6!!!
 
-### Row 属性
+### Row Attributes
 
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| gutter  | 栅格间隔 | number | — | 0 |
-| type    | 布局模式，可选 flex，现代浏览器下有效 | string | — | — |
-| justify | flex 布局下的水平排列方式 | string | start / end / center / space-around / space-between | start |
-| align   | flex 布局下的垂直排列方式 | string | top / middle / bottom | — |
-| tag     | 自定义元素标签 | string | * | div |
+| Parameter | Description                                         | Type   | Optional Values                                     | Default Value |
+| --------- | --------------------------------------------------- | ------ | --------------------------------------------------- | ------------- |
+| gutter    | Grid spacing                                        | number | —                                                   | 0             |
+| type      | Layout mode, 'flex' is available in modern browsers | string | —                                                   | —             |
+| justify   | Horizontal arrangement in flex layout               | string | start / end / center / space-around / space-between | start         |
+| align     | Vertical arrangement in flex layout                 | string | top / middle / bottom                               | —             |
+| tag       | Custom element tag                                  | string | \*                                                  | div           |
 
-### Col 属性
+### Col Attributes
 
-
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| span | 栅格占据的列数 | number | — | 24 |
-| offset | 栅格左侧的间隔格数 | number | — | 0 |
-| push |  栅格向右移动格数 | number | — | 0 |
-| pull |  栅格向左移动格数 | number | — | 0 |
-| xs | `<768px` 响应式栅格数或者栅格属性对象 | number / object (例如： {span: 4, offset: 4}) | — | — |
-| sm | `≥768px` 响应式栅格数或者栅格属性对象 | number / object (例如： {span: 4, offset: 4}) | — | — |
-| md | `≥992px` 响应式栅格数或者栅格属性对象 | number / object (例如： {span: 4, offset: 4}) | — | — |
-| lg | `≥1200px` 响应式栅格数或者栅格属性对象 | number / object (例如： {span: 4, offset: 4}) | — | — |
-| xl | `≥1920px` 响应式栅格数或者栅格属性对象 | number / object (例如： {span: 4, offset: 4}) | — | — |
-| tag | 自定义元素标签 | string | * | div |
+| Parameter | Description                                                   | Type                                         | Optional Values | Default Value |
+| --------- | ------------------------------------------------------------- | -------------------------------------------- | --------------- | ------------- |
+| span      | The number of columns occupied by the grid                    | number                                       | —               | 24            |
+| offset    | The number of grid-spaced cells on the left side of the grid  | number                                       | —               | 0             |
+| push      | The number of cells the grid moves to the right               | number                                       | —               | 0             |
+| pull      | The number of cells the grid moves to the left                | number                                       | —               | 0             |
+| xs        | Responsive grid number or grid attribute object for `<768px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
+| sm        | Responsive grid number or grid attribute object for `≥768px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
+| md        | Responsive grid number or grid attribute object for `≥992px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
+| lg        | Responsive grid number or grid attribute object for `≥1200px` | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
+| xl        | Responsive grid number or grid attribute object for `≥1920px` | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
+| tag       | Custom element tag                                            | string                                       | \*              | div           |

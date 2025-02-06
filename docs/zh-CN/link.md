@@ -39,7 +39,7 @@
 | icon      | 图标类名          | string  | —                                           | -       |
 | size      | 尺寸              | string  | medium/small                                | -       |
 
-### Event
+### Events
 
 | 事件名 | 说明           |
 | ------ | -------------- |

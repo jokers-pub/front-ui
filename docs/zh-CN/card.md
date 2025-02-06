@@ -32,7 +32,7 @@ Card 组件包括 header 和 body 部分，header 部分需要有显式具名 se
 
 !!! demo4 !!!
 
-### Card 参数
+### Attributes
 
 | 参数      | 说明                                             | 类型   | 可选值                 | 默认值 |
 | --------- | ------------------------------------------------ | ------ | ---------------------- | ------ |
@@ -41,7 +41,7 @@ Card 组件包括 header 和 body 部分，header 部分需要有显式具名 se
 | shadow    | 设置阴影显示时机                                 | string | always / hover / never | always |
 | class     | 设置卡片类名                                     | string | —                      | -      |
 
-### Card 区块
+### Sections
 
 | 名称    | 说明         |
 | ------- | ------------ |

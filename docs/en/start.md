@@ -1,12 +1,12 @@
-### 快速上手
+### Quick Start
 
-本指南讲解了如何在你的项目中使用 Joker UI。
+This guide explains how to use Joker UI in your project.
 
-你可以引入整个 Joker UI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Joker UI。
+You can either introduce the entire Joker UI or only import specific components as needed. First, we'll introduce how to import the complete Joker UI.
 
-Joker UI 是使用[Joker Core](https://front.jokers.pub)前端开发框架进行开发的一套 PC 端 UI 框架，可前往[Joker 官网](https://jokers.pub)进行学习了解。
+Joker UI is a PC-side UI framework developed using the [Joker Core](https://front.jokers.pub) front-end development framework. You can visit the [Joker official website](https://jokers.pub) to learn more.
 
-### 安装及使用
+### Installation and Usage
 
 ```ts
 import App from "./app.joker";
@@ -14,13 +14,13 @@ import "@joker.front/ui";
 import "@joker.front/ui/index.css";
 ```
 
-以上代码便完成了 Joker UI 的引入。需要注意的是，样式文件需要单独引入。
+The above code completes the import of Joker UI. Note that the style file needs to be imported separately.
 
-### 主题样式
+### Theme Styles
 
-Joker 采用[CSS variable](https://www.w3school.com.cn/css/css3_variables.asp)的方式来管理 UI 库的主题，我们内部定义了丰富的色彩等相关的配置，我们可以通过修改这些变量来实现对 UI 风格的自定义。
+Joker manages the theme of the UI library using [CSS variables](https://www.w3school.com.cn/css/css3_variables.asp). We have defined a rich set of configurations related to colors, etc. internally. We can customize the UI style by modifying these variables.
 
-例如：
+For example:
 
 ```css
 :root {

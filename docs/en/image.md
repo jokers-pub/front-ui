@@ -1,50 +1,50 @@
-## Image 图片
+## Image
 
-图片容器，保留原生 img 的特性，支持懒加载，自定义占位、加载失败等
+An image container that retains the characteristics of the native `img`, supports lazy loading, and allows for custom placeholders, handling of load failures, etc.
 
-### 基础用法
+### Basic Usage
 
 !!!demo1!!!
 
-### 占位内容
+### Placeholder Content
 
 !!!demo2!!!
 
-### 加载失败
+### Load Failure
 
 !!!demo3!!!
 
-### 懒加载
+### Lazy Loading
 
 !!!demo4!!!
 
-### 大图预览
+### Large Image Preview
 
 !!!demo5!!!
 
 ### Attributes
 
-| 参数             | 说明                                      | 类型                 | 可选值                                     | 默认值                                         |
-| ---------------- | ----------------------------------------- | -------------------- | ------------------------------------------ | ---------------------------------------------- |
-| src              | 图片源，同原生                            | string               | —                                          | —                                              |
-| class            | 自定义 class 样式                         | string               | -                                          | -                                              |
-| fit              | 确定图片如何适应容器框，同原生 object-fit | string               | fill / contain / cover / none / scale-down | —                                              |
-| lazy             | 是否开启懒加载                            | boolean              | —                                          | false                                          |
-| scroll-container | 开启懒加载后，监听 scroll 事件的容器      | string / HTMLElement | —                                          | 最近一个 overflow 值为 auto 或 scroll 的父元素 |
-| preview-src-list | 开启图片预览功能                          | Array                | —                                          | —                                              |
-| z-index          | 设置图片预览的 z-index                    | Number               | —                                          | 2000                                           |
-| errMsg           | 加载错误时的提示                          | string               | —                                          | 加载失败                                       |
+| Parameter        | Description                                                                           | Type                 | Optional Values                            | Default Value                                                             |
+| ---------------- | ------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
+| src              | Image source, same as the native one                                                  | string               | —                                          | —                                                                         |
+| class            | Custom class style                                                                    | string               | -                                          | -                                                                         |
+| fit              | Determines how the image fits into the container box, same as the native `object-fit` | string               | fill / contain / cover / none / scale-down | —                                                                         |
+| lazy             | Whether to enable lazy loading                                                        | boolean              | —                                          | false                                                                     |
+| scroll-container | After enabling lazy loading, the container that listens to the `scroll` event         | string / HTMLElement | —                                          | The nearest parent element with an `overflow` value of `auto` or `scroll` |
+| preview-src-list | Enables the image preview function                                                    | Array                | —                                          | —                                                                         |
+| z-index          | Sets the `z-index` of the image preview                                               | Number               | —                                          | 2000                                                                      |
+| errMsg           | The prompt when loading fails                                                         | string               | —                                          | Loading failed                                                            |
 
 ### Events
 
-| 事件名称 | 说明             | 回调参数   |
-| -------- | ---------------- | ---------- |
-| load     | 图片加载成功触发 | (e: Event) |
-| error    | 图片加载失败触发 | (e: Error) |
+| Event Name | Description                                     | Callback Parameters |
+| ---------- | ----------------------------------------------- | ------------------- |
+| load       | Triggered when the image is loaded successfully | (e: Event)          |
+| error      | Triggered when the image fails to load          | (e: Error)          |
 
-### Section
+### Sections
 
-| 事件名称    | 说明                 |
-| ----------- | -------------------- |
-| placeholder | 图片未加载的占位内容 |
-| error       | 加载失败的内容       |
+| Event Name  | Description                                          |
+| ----------- | ---------------------------------------------------- |
+| placeholder | The placeholder content when the image is not loaded |
+| error       | The content when loading fails                       |

@@ -1,91 +1,90 @@
-## TimePicker 时间选择器
+## TimePicker
 
-用于选择或输入时间
+Used to select or input time.
 
-### 固定时间点
+### Fixed Time Points
 
-提供几个固定的时间点供用户选择
+Provides several fixed time points for users to choose from.
 
-使用 jk-time-select 标签，分别通过`start`、`end`和`step`指定可选的起始时间、结束时间和步长
+Use the `jk-time-select` tag, and specify the optional start time, end time, and step through `start`, `end`, and `step` respectively.
 
 !!!demo1!!!
 
-### 固定时间范围
+### Fixed Time Range
 
-若先选择开始时间，则结束时间内备选项的状态会随之改变
+If the start time is selected first, the state of the options in the end time will change accordingly.
 
 !!!demo2!!!
 
-### 任意时间点
+### Arbitrary Time Point
 
-可以选择任意时间，使用 jk-time-picker 标签，通过`minTime`/`maxTime`限制可选时间范围。
-可通过配置 format，来控制是否显示秒。
+You can select any time. Use the `jk-time-picker` tag and limit the selectable time range through `minTime`/`maxTime`. You can control whether to display seconds by configuring `format`.
 
 !!!demo3!!!
 
-### 任意时间范围
+### Arbitrary Time Range
 
-可选择任意的时间范围
+You can select any time range.
 
 !!!demo4!!!
 
-### 禁用
+### Disabled
 
 !!!demo5!!!
 
-### 尺寸
+### Size
 
-参考`input` size 属性
+Refer to the `input` size attribute.
 
 !!!demo6!!!
 
 ### Attributes
 
-| 参数              | 说明                                           | 类型    | 可选值                | 默认值       |
-| ----------------- | ---------------------------------------------- | ------- | --------------------- | ------------ |
-| value             | 绑定值                                         | string  | —                     | —            |
-| class             | 自定义 class 样式                              | string  | -                     | -            |
-| readonly          | 完全只读                                       | boolean | —                     | false        |
-| disabled          | 禁用                                           | boolean | —                     | false        |
-| editable          | 文本框可输入                                   | boolean | —                     | true         |
-| clearable         | 是否显示清除按钮                               | boolean | —                     | true         |
-| size              | 输入框尺寸                                     | string  | medium / small / mini | —            |
-| placeholder       | 非范围选择时的占位内容                         | string  | —                     | —            |
-| start-placeholder | 范围选择时开始日期的占位内容                   | string  | —                     | —            |
-| end-placeholder   | 范围选择时结束日期的占位内容                   | string  | —                     | —            |
-| range             | 是否为时间范围选择，仅对`<jk-time-picker>`有效 | boolean | —                     | false        |
-| range-separator   | 选择范围时的分隔符                             | string  | -                     | '-'          |
-| value-format      | 可选，绑定值的格式                             | string  | -                     | —            |
-| default-value     | 可选，选择器打开时默认显示的时间               | string  | 符合 format 格式      | —            |
-| prefix-icon       | 自定义头部图标的类名                           | string  | —                     | el-icon-time |
+| Parameter         | Description                                                             | Type    | Optional Values                  | Default Value |
+| ----------------- | ----------------------------------------------------------------------- | ------- | -------------------------------- | ------------- |
+| value             | Bound value                                                             | string  | —                                | —             |
+| class             | Custom class style                                                      | string  | -                                | -             |
+| readonly          | Completely read-only                                                    | boolean | —                                | false         |
+| disabled          | Disabled                                                                | boolean | —                                | false         |
+| editable          | The text box is editable                                                | boolean | —                                | true          |
+| clearable         | Whether to display the clear button                                     | boolean | —                                | true          |
+| size              | Size of the input box                                                   | string  | medium / small / mini            | —             |
+| placeholder       | Placeholder content when not in range selection                         | string  | —                                | —             |
+| start-placeholder | Placeholder content for the start date in range selection               | string  | —                                | —             |
+| end-placeholder   | Placeholder content for the end date in range selection                 | string  | —                                | —             |
+| range             | Whether it is a time range selection, only valid for `<jk-time-picker>` | boolean | —                                | false         |
+| range-separator   | Separator when selecting a range                                        | string  | -                                | '-'           |
+| value-format      | Optional, the format of the bound value                                 | string  | -                                | —             |
+| default-value     | Optional, the time displayed by default when the picker is opened       | string  | In line with the `format` format | —             |
+| prefix-icon       | Class name of the custom header icon                                    | string  | —                                | el-icon-time  |
 
 ### Time Select Options
 
-| 参数    | 说明                                 | 类型   | 可选值 | 默认值 |
-| ------- | ------------------------------------ | ------ | ------ | ------ |
-| start   | 开始时间                             | string | —      | 09:00  |
-| end     | 结束时间                             | string | —      | 18:00  |
-| step    | 间隔时间                             | string | —      | 00:30  |
-| minTime | 最小时间，小于该时间的时间段将被禁用 | string | —      | 00:00  |
-| maxTime | 最大时间，大于该时间的时间段将被禁用 | string | —      | —      |
+| Parameter | Description                                                        | Type   | Optional Values | Default Value |
+| --------- | ------------------------------------------------------------------ | ------ | --------------- | ------------- |
+| start     | Start time                                                         | string | —               | 09:00         |
+| end       | End time                                                           | string | —               | 18:00         |
+| step      | Interval time                                                      | string | —               | 00:30         |
+| minTime   | Minimum time, time periods less than this time will be disabled    | string | —               | 00:00         |
+| maxTime   | Maximum time, time periods greater than this time will be disabled | string | —               | —             |
 
 ### Time Picker Options
 
-| 参数            | 说明                                                                                                | 类型           | 可选值                         | 默认值     |
-| --------------- | --------------------------------------------------------------------------------------------------- | -------------- | ------------------------------ | ---------- |
-| selectableRange | 可选时间段，例如`'18:30:00 - 20:30:00'`或者传入数组`['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']` | string / array | —                              | —          |
-| format          | 时间格式化                                                                                          | string         | 小时：`HH`，分：`mm`，秒：`ss` | 'HH:mm:ss' |
+| Parameter       | Description                                                                                                             | Type           | Optional Values                           | Default Value |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------- | ----------------------------------------- | ------------- |
+| selectableRange | Selectable time periods, such as `'18:30:00-20:30:00'` or pass in an array `['09:30:00-12:00:00', '14:30:00-18:30:00']` | string / array | —                                         | —             |
+| format          | Time formatting                                                                                                         | string         | Hours: `HH`, minutes: `mm`, seconds: `ss` | 'HH:mm:ss'    |
 
 ### Events
 
-| 事件名 | 说明                    | 参数       |
-| ------ | ----------------------- | ---------- |
-| change | 用户确认选定的值时触发  | 组件绑定值 |
-| blur   | 当 input 失去焦点时触发 | 组件实例   |
-| focus  | 当 input 获得焦点时触发 | 组件实例   |
+| Event Name | Description                                         | Parameters            |
+| ---------- | --------------------------------------------------- | --------------------- |
+| change     | Triggered when the user confirms the selected value | Component bound value |
+| blur       | Triggered when the input loses focus                | Component instance    |
+| focus      | Triggered when the input gains focus                | Component instance    |
 
 ### Methods
 
-| 方法名 | 说明              | 参数 |
-| ------ | ----------------- | ---- |
-| focus  | 使 input 获取焦点 | -    |
+| Method Name | Description               | Parameter |
+| ----------- | ------------------------- | --------- |
+| focus       | Make the input gain focus | -         |

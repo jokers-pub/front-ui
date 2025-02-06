@@ -1,53 +1,49 @@
-## Avatar 头像
+## Avatar
 
-用图标、图片或者字符的形式展示用户或事物信息。
+Displays user or object information in the form of icons, images, or characters.
 
-### 基础用法
+### Basic Usage
 
-通过 shape 和 size 设置头像的形状和大小。
+Set the shape and size of the avatar through `shape` and `size`.
+!!! demo1!!!
 
-!!! demo1 !!!
+### Display Types
 
-### 展示类型
+Supports three types: icon, image, and character.
+!!! demo2!!!
 
-支持三种类型：图标、图片和字符
+### Fallback Behavior for Image Loading Failure
 
-!!! demo2 !!!
+When the display type is an image, this is the fallback behavior for image loading failure.
+!!! demo3!!!
 
-### 图片加载失败的 fallback 行为
+### How the Image Fits the Container
 
-当展示类型为图片的时候，图片加载失败的 fallback 行为
-
-!!! demo3 !!!
-
-### 图片如何适应容器框
-
-当展示类型为图片的时候，使用 fit 属性定义图片如何适应容器框，同原生 object-fit。
-
-!!! demo4 !!!
+When the display type is an image, use the `fit` attribute to define how the image fits the container, similar to the native `object-fit`.
+!!! demo4!!!
 
 ### Attributes
 
-| 参数   | 说明                                                                 | 类型          | 可选值                             | 默认值 |
-| ------ | -------------------------------------------------------------------- | ------------- | ---------------------------------- | ------ |
-| icon   | 设置头像的图标类型，参考 Icon 组件                                   | string        | -                                  | —      |
-| size   | 设置头像的大小                                                       | number/string | number/large/medium/small          | large  |
-| shape  | 设置头像的形状                                                       | string        | circle/square                      | circle |
-| src    | 图片头像的资源地址                                                   | string        | —                                  | -      |
-| srcSet | 以逗号分隔的一个或多个字符串列表表明一系列用户代理使用的可能的图像   | string        | —                                  | true   |
-| alt    | 描述图像的替换文本                                                   | string        | —                                  | -      |
-| fit    | 当展示类型为图片的时候，设置图片如何适应容器框                       | string        | fill/contain/cover/none/scale-down | cover  |
-| class  | 自定义 class 样式                                                    | string        | -                                  | -      |
-| error  | 图片类头像加载失败的回调， 返回 false 会关闭组件默认的 fallback 行为 | function      | -                                  | -      |
+| Parameter | Description                                                                                                            | Type          | Optional Values                    | Default Value |
+| --------- | ---------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------- | ------------- |
+| icon      | Set the icon type of the avatar, referring to the Icon component                                                       | string        | -                                  | —             |
+| size      | Set the size of the avatar                                                                                             | number/string | number/large/medium/small          | large         |
+| shape     | Set the shape of the avatar                                                                                            | string        | circle/square                      | circle        |
+| src       | The resource address of the image avatar                                                                               | string        | —                                  | -             |
+| srcSet    | A comma-separated list of one or more strings indicating a series of possible images for user agents to use            | string        | —                                  | true          |
+| alt       | The alternative text describing the image                                                                              | string        | —                                  | -             |
+| fit       | When the display type is an image, set how the image fits the container                                                | string        | fill/contain/cover/none/scale-down | cover         |
+| class     | Custom class style                                                                                                     | string        | -                                  | -             |
+| error     | The callback for image avatar loading failure. Returning false will turn off the component's default fallback behavior | function      | -                                  | -             |
 
-### Event
+### Events
 
-| 事件名 | 说明         | 参数 |
-| ------ | ------------ | ---- |
-| click  | 头像点击触发 | -    |
+| Event Name | Description                          | Parameter |
+| ---------- | ------------------------------------ | --------- |
+| click      | Triggered when the avatar is clicked | -         |
 
-### Section
+### Sections
 
-| 名称    | 描述               |
-| ------- | ------------------ |
-| default | 自定义头像展示内容 |
+| Name    | Description                                   |
+| ------- | --------------------------------------------- |
+| default | Customize the content displayed by the avatar |

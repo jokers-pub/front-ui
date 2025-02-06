@@ -1,83 +1,71 @@
-## Alert 警告
+## Alert
 
-用于页面中展示重要的提示信息。
+Used to display important prompt information on the page.
 
-### 基础用法
+### Basic Usage
 
-页面中的非浮层元素，不会自动消失。
+It is a non-floating element on the page and will not disappear automatically.
+The Alert component provides four themes, specified by the `type` attribute, with the default value being `info`.
+!!! demo1!!!
 
-Alert 组件提供四种主题，由 type 属性指定，默认值为 info。
+### Themes
 
-!!! demo1 !!!
+The Alert component offers two different themes: `light` and `dark`.
+Change the theme by setting the `effect` attribute, with the default being `light`.
+!!! demo2!!!
 
-### 主题
+### Custom Close Button
 
-Alert 组件提供了两个不同的主题：light 和 dark。
+Customize the close button to be text or other symbols.
+In the Alert component, you can set whether it is closable, the text of the close button, and the callback function when closing. The `closable` attribute determines whether it is closable, accepting a `boolean` value, with the default being `true`. You can set the `closeText` attribute to replace the close icon on the right. Note: `closeText` must be text. Set the `close` event to set the callback when closing.
+!!! demo3!!!
 
-通过设置 effect 属性来改变主题，默认为 light。
+### With Icon
 
-!!! demo2 !!!
-
-### 自定义关闭按钮
-
-自定义关闭按钮为文字或其他符号。
-
-在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。closable 属性决定是否可关闭，接受 boolean，默认为 true。你可以设置 closeText 属性来代替右侧的关闭图标，注意：closeText 必须为文本。设置 close 事件来设置关闭时的回调。
-
-!!! demo3 !!!
-
-### 带有 icon
-
-表示某种状态时提升可读性。
-
-通过设置 showIcon 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。
-
+Improve readability when indicating a certain state.
+Display the icon of the Alert by setting the `showIcon` attribute, which can more effectively show your display intention to users.
 !!!demo4!!!
 
-### 文字居中
+### Center-aligned Text
 
-使用 center 属性让文字水平居中。
-
+Use the `center` attribute to center the text horizontally.
 !!!demo5!!!
 
-### 带有辅助性文字介绍
+### With Supplementary Text Introduction
 
-包含标题和内容，解释更详细的警告。
-
-除了必填的 title 属性外，你可以设置 description 属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。
-
+Contains a title and content to explain the warning in more detail.
+In addition to the required `title` attribute, you can set the `description` attribute to help with a better introduction, which we call supplementary text. The supplementary text can only hold single-line text and will be displayed with automatic line breaks.
 !!!demo6!!!
 
-### 带有 icon 和辅助性文字介绍
+### With Icon and Supplementary Text Introduction
 
-最后，这是一个同时具有 icon 和辅助性文字的样例。
-
+Finally, this is an example with both an icon and supplementary text.
 !!!demo7!!!
 
 ### Attributes
 
-| 参数        | 说明                                  | 类型    | 可选值                     | 默认值 |
-| ----------- | ------------------------------------- | ------- | -------------------------- | ------ |
-| title       | 标题                                  | string  | -                          | —      |
-| type        | 主题                                  | string  | success/warning/info/error | info   |
-| description | 辅助性文字。也可通过默认 section 传入 | string  | —                          | -      |
-| closable    | 是否可关闭                            | boolean | —                          | true   |
-| center      | 文字是否居中                          | boolean | —                          | true   |
-| closeText   | 关闭按钮自定义文本                    | string  | —                          | -      |
-| showIcon    | 是否显示图标                          | boolean | —                          | false  |
-| icon        | 更改显示图标                          | string  | —                          | -      |
-| effect      | 选择提供的主题                        | string  | light/dark                 | light  |
-| class       | 自定义 class 样式                     | string  | -                          | -      |
+| Parameter   | Description                                                           | Type    | Optional Values            | Default Value |
+| ----------- | --------------------------------------------------------------------- | ------- | -------------------------- | ------------- |
+| title       | Title                                                                 | string  | -                          | —             |
+| type        | Theme                                                                 | string  | success/warning/info/error | info          |
+| description | Supplementary text. Can also be passed in through the default section | string  | —                          | -             |
+| closable    | Whether it is closable                                                | boolean | —                          | true          |
+| center      | Whether the text is centered                                          | boolean | —                          | true          |
+| closeText   | Custom text for the close button                                      | string  | —                          | -             |
+| showIcon    | Whether to display the icon                                           | boolean | —                          | false         |
+| icon        | Change the displayed icon                                             | string  | —                          | -             |
+| effect      | Select the provided theme                                             | string  | light/dark                 | light         |
+| class       | Custom class style                                                    | string  | -                          | -             |
 
-### Event
+### Events
 
-| 事件名 | 说明                    | 参数 |
-| ------ | ----------------------- | ---- |
-| close  | 关闭 alert 时触发的事件 | -    |
+| Event Name | Description                            | Parameter |
+| ---------- | -------------------------------------- | --------- |
+| close      | Event triggered when closing the alert | -         |
 
-### Section
+### Sections
 
-| 名称  | 描述       |
-| ----- | ---------- |
-| -     | 描述       |
-| title | 标题的内容 |
+| Name  | Description          |
+| ----- | -------------------- |
+| -     | Description          |
+| title | Content of the title |

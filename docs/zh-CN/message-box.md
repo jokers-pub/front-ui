@@ -95,7 +95,7 @@ import { MessageBox } from "@joker.front/ui";
 | roundButton               | 是否使用圆角按钮                                                                                                                     | boolean                                                                                                                                                                                                                      | —                                | false                                           |
 | id                        | 若配置 id，则在同一时刻同一个序列中只会弹出一次                                                                                      | string                                                                                                                                                                                                                       | —                                | -                                               |
 
-### 方法
+### Methods
 
 | 方法名      | 说明             | 参数          |
 | ----------- | ---------------- | ------------- |

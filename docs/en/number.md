@@ -1,91 +1,91 @@
-## InputNumber 计数器
+## InputNumber
 
-仅允许输入标准的数字值，可定义范围
+Only allows the input of standard numeric values, and the range can be defined.
 
-### 基础用法
+### Basic Usage
 
-要使用它，只需要在`jk-number`元素中使用`value`绑定变量即可，变量的初始值即为默认值。
+To use it, simply bind a variable to `value` in the `jk-number` element. The initial value of the variable is the default value.
 
 !!!demo1!!!
 
-### 禁用状态
+### Disabled State
 
-`disabled`属性接受一个`Boolean`，设置为`true`即可禁用整个组件，如果你只需要控制数值在某一范围内，可以设置`min`属性和`max`属性，不设置`min`和`max`时，最小值为 0。
+The `disabled` attribute accepts a `Boolean`. Setting it to `true` disables the entire component. If you only need to control the value within a certain range, you can set the `min` and `max` attributes. When `min` and `max` are not set, the minimum value is 0.
 
 !!!demo2!!!
 
-### 步数
+### Step
 
-允许定义递增递减的步数控制
+Allows the definition of step-by-step control for incrementing and decrementing.
 
-设置`step`属性可以控制步长，接受一个`Number`。
+Setting the `step` attribute can control the step size, which accepts a `Number`.
 
 !!!demo3!!!
 
-### 严格步数
+### Strict Step
 
-`step-strictly`属性接受一个`Boolean`。如果这个属性被设置为`true`，则只能输入步数的倍数。
+The `step-strictly` attribute accepts a `Boolean`. If this attribute is set to `true`, only multiples of the step can be entered.
 
 !!!demo4!!!
 
-### 精度
+### Precision
 
-设置 `precision` 属性可以控制数值精度，接收一个 `Number`。
+Setting the `precision` attribute can control the numerical precision, which accepts a `Number`.
 
 !!!demo5!!!
 
-> `precision` 的值必须是一个非负整数，并且不能小于 `step` 的小数位数。
+> The value of `precision` must be a non-negative integer and cannot be less than the number of decimal places of `step`.
 
-### 尺寸
+### Size
 
-额外提供了 `medium`、`small`、`mini` 三种尺寸的数字输入框
+Three additional sizes of numeric input boxes are provided: `medium`, `small`, and `mini`.
 
 !!!demo6!!!
 
-### 按钮位置
+### Button Position
 
-设置 `controls-position` 属性可以控制按钮位置。
+Setting the `controls-position` attribute can control the position of the buttons.
 
 !!!demo7!!!
 
-### 无控制按钮
+### No Control Buttons
 
-设置 `hidden-controls` 属性可以控制按钮位置。
+Setting the `hidden-controls` attribute can control the position of the buttons.
 
 !!!demo8!!!
 
 ### Attributes
 
-| 参数              | 说明                     | 类型    | 可选值       | 默认值    |
-| ----------------- | ------------------------ | ------- | ------------ | --------- |
-| value             | 绑定值                   | number  | —            | —         |
-| class             | 自定义 class 样式        | string  | -            | -         |
-| min               | 设置计数器允许的最小值   | number  | —            | -Infinity |
-| max               | 设置计数器允许的最大值   | number  | —            | Infinity  |
-| step              | 计数器步长               | number  | —            | 1         |
-| step-strictly     | 是否只能输入 step 的倍数 | boolean | —            | false     |
-| precision         | 数值精度                 | number  | —            | —         |
-| size              | 计数器尺寸               | string  | large, small | —         |
-| disabled          | 是否禁用计数器           | boolean | —            | false     |
-| hidden-controls   | 是否隐藏控制按钮         | boolean | —            | false     |
-| controls-position | 控制按钮位置             | string  | right        | -         |
-| name              | 原生属性                 | string  | —            | —         |
-| label             | 输入框关联的 label 文字  | string  | —            | —         |
-| placeholder       | 输入框默认 placeholder   | string  | -            | -         |
-| fullWidth         | 是否宽度 100%            | boolean | -            | -         |
+| Parameter         | Description                                   | Type    | Optional Values | Default Value |
+| ----------------- | --------------------------------------------- | ------- | --------------- | ------------- |
+| value             | Bound value                                   | number  | —               | —             |
+| class             | Custom class style                            | string  | -               | -             |
+| min               | Set the minimum value allowed by the counter  | number  | —               | -Infinity     |
+| max               | Set the maximum value allowed by the counter  | number  | —               | Infinity      |
+| step              | Counter step size                             | number  | —               | 1             |
+| step-strictly     | Whether only multiples of step can be entered | boolean | —               | false         |
+| precision         | Numerical precision                           | number  | —               | —             |
+| size              | Counter size                                  | string  | large, small    | —             |
+| disabled          | Whether to disable the counter                | boolean | —               | false         |
+| hidden-controls   | Whether to hide the control buttons           | boolean | —               | false         |
+| controls-position | Position of the control buttons               | string  | right           | -             |
+| name              | Native attribute                              | string  | —               | —             |
+| label             | The label text associated with the input box  | string  | —               | —             |
+| placeholder       | Default placeholder of the input box          | string  | -               | -             |
+| fullWidth         | Whether the width is 100%                     | boolean | -               | -             |
 
-### Event
+### Events
 
-| 事件名称 | 说明                        | 回调参数               |
-| -------- | --------------------------- | ---------------------- |
-| change   | 绑定值被改变时触发          | currentValue, oldValue |
-| blur     | 在组件 Input 失去焦点时触发 | VNode.Event            |
-| focus    | 在组件 Input 获得焦点时触发 | VNode.Event            |
+| Event Name | Description                                           | Callback Parameters    |
+| ---------- | ----------------------------------------------------- | ---------------------- |
+| change     | Triggered when the bound value is changed             | currentValue, oldValue |
+| blur       | Triggered when the Input in the component loses focus | VNode.Event            |
+| focus      | Triggered when the Input in the component gains focus | VNode.Event            |
 
-### 方法
+### Methods
 
-| 方法名 | 说明                | 参数 |
-| ------ | ------------------- | ---- |
-| blur   | 使 input 失去焦点   | -    |
-| focus  | 使 input 获取焦点   | -    |
-| select | 选中 input 中的文字 | —    |
+| Method Name | Description                  | Parameter |
+| ----------- | ---------------------------- | --------- |
+| blur        | Make the input lose focus    | -         |
+| focus       | Make the input gain focus    | -         |
+| select      | Select the text in the input | —         |

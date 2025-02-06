@@ -1,43 +1,43 @@
-## Tabs 标签页
+## Tabs
 
-分隔内容上有关联但属于不同类别的数据集合。
+Separate data sets that are related in content but belong to different categories.
 
-### 基本用法
+### Basic Usage
 
-基础的、简洁的标签页。
+Basic and simple tab pages.
 
 !!!demo1!!!
 
-### 位置
+### Position
 
-可通过`position`设置标签的位置。
+You can set the position of the tabs through `position`.
 
 !!!demo2!!!
 
-### 自定义标签页标题
+### Custom Tab Page Title
 
-可通过`jk-tab-panel`中的**label**区块自定义标签标题。
+You can customize the tab title through the **label** section in `jk-tab-panel`.
 
 !!!demo3!!!
 
-### 卡片风格
+### Card Style
 
-可通过配置`card`启用卡片风格。
+You can enable the card style by configuring `card`.
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数       | 说明                                      | 类型    | 可选值                | 默认值 |
-| ---------- | ----------------------------------------- | ------- | --------------------- | ------ |
-| value      | 默认选中 tab 值，对应 tab-panel 中的 name | string  | -                     | —      |
-| card       | 卡片主题                                  | boolean | -                     | -      |
-| position   | tab 位置                                  | string  | top/bottom/right/left | top    |
-| fullHeight | 启用后内容区域高度会自动撑满              | boolean | -                     | -      |
+| Parameter  | Description                                                                | Type    | Optional Values       | Default Value |
+| ---------- | -------------------------------------------------------------------------- | ------- | --------------------- | ------------- |
+| value      | The default selected tab value, corresponding to the `name` in `tab-panel` | string  | -                     | —             |
+| card       | Card theme                                                                 | boolean | -                     | -             |
+| position   | Tab position                                                               | string  | top/bottom/right/left | top           |
+| fullHeight | When enabled, the height of the content area will be automatically filled  | boolean | -                     | -             |
 
-### Event
+### Events
 
-| 事件名 | 说明                  | 参数       |
-| ------ | --------------------- | ---------- |
-| change | 当选中 tab 变更时触发 | tab 项信息 |
-| click  | 当 tab 点击时触发     | tab 项信息 |
+| Event Name | Description                             | Parameters           |
+| ---------- | --------------------------------------- | -------------------- |
+| change     | Triggered when the selected tab changes | Tab item information |
+| click      | Triggered when a tab is clicked         | Tab item information |

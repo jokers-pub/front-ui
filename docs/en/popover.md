@@ -1,50 +1,50 @@
-## Popover 弹出框
+## Popover
 
-### 基础用法
+### Basic Usage
 
-Popover 的属性与 Tooltip 很类似，因此对于重复属性，请参考 Tooltip 的文档，在此文档中不做详尽解释。
+The attributes of Popover are quite similar to those of Tooltip. Therefore, for the repeated attributes, please refer to the Tooltip documentation and they will not be elaborated in this document.
 
-`trigger`属性用于设置何时触发 Popover，支持三种触发方式：`hover`，`click`， `manual`。
+The `trigger` attribute is used to set when to trigger the Popover. It supports three triggering methods: `hover`, `click`, and `manual`.
 
 !!!demo1!!!
 
-### 嵌套信息
+### Nested Information
 
-可以在 Popover 中嵌套多种类型信息，以下为嵌套表格的例子。利用 section 取代`content`属性。
+You can nest various types of information in the Popover. The following is an example of nesting a table. Use `section` instead of the `content` attribute.
 
 !!!demo2!!!
 
 ### Attributes
 
-| 参数        | 说明                                      | 类型           | 可选值                                                                                                    | 默认值         |
-| ----------- | ----------------------------------------- | -------------- | --------------------------------------------------------------------------------------------------------- | -------------- |
-| trigger     | 触发方式                                  | String         | click/hover/manual                                                                                        | click          |
-| title       | 标题                                      | String         | —                                                                                                         | —              |
-| content     | 显示的内容，也可以通过 `section` 传入 DOM | String         | —                                                                                                         | —              |
-| width       | 宽度                                      | String, Number | —                                                                                                         | 最小宽度 150px |
-| placement   | 出现位置                                  | String         | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom         |
-| disabled    | Popover 是否可用                          | Boolean        | —                                                                                                         | false          |
-| offset      | 出现位置的偏移量                          | Number         | —                                                                                                         | 0              |
-| open-delay  | 触发方式为 hover 时的显示延迟，单位为毫秒 | Number         | —                                                                                                         | —              |
-| close-delay | 触发方式为 hover 时的隐藏延迟，单位为毫秒 | number         | —                                                                                                         | 200            |
+| Parameter   | Description                                                              | Type           | Optional Values                                                                                           | Default Value       |
+| ----------- | ------------------------------------------------------------------------ | -------------- | --------------------------------------------------------------------------------------------------------- | ------------------- |
+| trigger     | Trigger method                                                           | String         | click/hover/manual                                                                                        | click               |
+| title       | Title                                                                    | String         | —                                                                                                         | —                   |
+| content     | The content to be displayed. DOM can also be passed in through `section` | String         | —                                                                                                         | —                   |
+| width       | Width                                                                    | String, Number | —                                                                                                         | Minimum width 150px |
+| placement   | Appearance position                                                      | String         | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom              |
+| disabled    | Whether the Popover is available                                         | Boolean        | —                                                                                                         | false               |
+| offset      | Offset of the appearance position                                        | Number         | —                                                                                                         | 0                   |
+| open-delay  | Display delay in milliseconds when the trigger method is hover           | Number         | —                                                                                                         | —                   |
+| close-delay | Hidden delay in milliseconds when the trigger method is hover            | number         | —                                                                                                         | 200                 |
 
-### Section
+### Sections
 
-| 参数      | 说明                          |
-| --------- | ----------------------------- |
-| default   | Popover 内嵌 HTML 文本        |
-| reference | 触发 Popover 显示的 HTML 元素 |
+| Parameter | Description                                               |
+| --------- | --------------------------------------------------------- |
+| default   | The embedded HTML text of the Popover                     |
+| reference | The HTML element that triggers the display of the Popover |
 
 ### Events
 
-| 事件名称 | 说明       | 回调参数 |
-| -------- | ---------- | -------- |
-| show     | 显示时触发 | —        |
-| hide     | 隐藏时触发 | —        |
+| Event Name | Description            | Callback Parameters |
+| ---------- | ---------------------- | ------------------- |
+| show       | Triggered when showing | —                   |
+| hide       | Triggered when hiding  | —                   |
 
-### 方法
+### Methods
 
-| 方法名 | 说明                                                   | 参数 |
-| ------ | ------------------------------------------------------ | ---- |
-| show   | 手动模式下可通过该方法进行展示                         | -    |
-| hide   | 用于主动隐藏，调用该方法不会参与`closeDelay`防抖机制中 | -    |
+| Method Name | Description                                                                                            | Parameter |
+| ----------- | ------------------------------------------------------------------------------------------------------ | --------- |
+| show        | Can be used to display in manual mode                                                                  | -         |
+| hide        | Used to actively hide. Calling this method will not be involved in the `closeDelay` debounce mechanism | -         |

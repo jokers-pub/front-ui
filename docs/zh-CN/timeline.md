@@ -38,7 +38,7 @@ Timeline 可拆分成多个按照时间戳排列的 activity，时间戳是其�
 | size          | 节点尺寸       | string  | normal / large                              | normal |
 | icon          | 节点图标       | string  | -                                           | -      |
 
-### Timeline-Item section
+### Timeline-Item Sections
 
 |   name  | 说明                 |
 | ------- | -------------------- |

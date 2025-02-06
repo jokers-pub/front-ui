@@ -57,7 +57,7 @@ Notification 组件准备了四种通知类型：`success`, `warning`, `info`, `
 | onClick     | 点击 Notification 时的回调函数                                           | function | —                                           | —         |
 | offset      | 偏移的距离，在同一时刻，所有的 Notification 实例应当具有一个相同的偏移量 | number   | —                                           | 0         |
 
-### 方法
+### Methods
 
 调用 `Notification` 会返回当前 Notification 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
 | 方法名 | 说明 |

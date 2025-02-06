@@ -74,7 +74,7 @@
 | placeholder       | 输入框默认 placeholder   | string  | -            | -         |
 | fullWidth         | 是否宽度 100%            | boolean | -            | -         |
 
-### Event
+### Events
 
 | 事件名称 | 说明                        | 回调参数               |
 | -------- | --------------------------- | ---------------------- |
@@ -82,7 +82,7 @@
 | blur     | 在组件 Input 失去焦点时触发 | VNode.Event            |
 | focus    | 在组件 Input 获得焦点时触发 | VNode.Event            |
 
-### 方法
+### Methods
 
 | 方法名 | 说明                | 参数 |
 | ------ | ------------------- | ---- |

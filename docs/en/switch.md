@@ -1,57 +1,57 @@
-## Switch 开关
+## Switch
 
-表示两种相互对立的状态间的切换，多用于触发「开/关」。
+Represents the switch between two mutually opposing states, often used to trigger "on/off".
 
-### 基础用法
+### Basic Usage
 
-绑定 value 到一个 Boolean 类型的变量。可以使用 activeColor 属性与 inactiveColor 属性来设置开关的背景色。
+Bind `value` to a variable of the `Boolean` type. You can use the `activeColor` and `inactiveColor` attributes to set the background color of the switch.
 
 !!!demo1!!!
 
-### 禁用状态
+### Disabled State
 
-设置 disabled 属性，接受一个 Boolean，设置 true 即可禁用。
+Set the `disabled` attribute, which accepts a `Boolean`. Setting it to `true` disables the switch.
 
 !!!demo2!!!
 
-### 文字描述
+### Text Description
 
-使用 activeText 属性与 inactiveText 属性来设置开关的文字描述。
+Use the `activeText` and `inactiveText` attributes to set the text description of the switch.
 
 !!!demo3!!!
 
-### 扩展的 value 类型
+### Extended Value Types
 
-设置 activeValue 和 inactiveValue 属性，接受 Boolean, String 或 Number 类型的值。
+Set the `activeValue` and `inactiveValue` attributes, which can accept values of the `Boolean`, `String`, or `Number` type.
 
 !!!demo4!!!
 
-### Switch 参数
+### Switch Attributes
 
-| 参数              | 说明                                                       | 类型                      | 可选值 | 默认值 |
-| ----------------- | ---------------------------------------------------------- | ------------------------- | ------ | ------ |
-| value             | 绑定值                                                     | string / number / boolean | —      | —      |
-| disabled          | 是否禁用                                                   | boolean                   | —      | false  |
-| class             | 自定义 class 样式                                          | string                    | -      | -      |
-| width             | switch 的宽度（像素）                                      | number                    | —      | 40     |
-| activeIconClass   | switch 打开时所显示图标的类名，设置此项会忽略 activeText   | string                    |        | —      |
-| inactiveIconClass | switch 关闭时所显示图标的类名，设置此项会忽略 inactiveText | string                    | —      | —      |
-| activeText        | switch 打开时的文字描述                                    | string                    | —      | —      |
-| inactiveText      | switch 关闭时的文字描述                                    | string                    | —      | —      |
-| activeValue       | switch 打开时的值                                          | boolean / string / number | —      | true   |
-| inactiveValue     | switch 关闭时的值                                          | boolean / string / number | —      | false  |
-| activeColor       | switch 打开时的背景色                                      | string                    | —      | —      |
-| inactiveColor     | switch 关闭时的背景色                                      | string                    | —      | —      |
-| name              | switch 对应的 name 属性                                    | string                    | —      | —      |
+| Parameter         | Description                                                                                          | Type                      | Optional Values | Default Value |
+| ----------------- | ---------------------------------------------------------------------------------------------------- | ------------------------- | --------------- | ------------- |
+| value             | Bound value                                                                                          | string / number / boolean | —               | —             |
+| disabled          | Whether to disable                                                                                   | boolean                   | —               | false         |
+| class             | Custom class style                                                                                   | string                    | -               | -             |
+| width             | The width of the switch (in pixels)                                                                  | number                    | —               | 40            |
+| activeIconClass   | The class name of the icon displayed when the switch is on. Setting this will ignore `activeText`    | string                    |                 | —             |
+| inactiveIconClass | The class name of the icon displayed when the switch is off. Setting this will ignore `inactiveText` | string                    | —               | —             |
+| activeText        | The text description when the switch is on                                                           | string                    | —               | —             |
+| inactiveText      | The text description when the switch is off                                                          | string                    | —               | —             |
+| activeValue       | The value when the switch is on                                                                      | boolean / string / number | —               | true          |
+| inactiveValue     | The value when the switch is off                                                                     | boolean / string / number | —               | false         |
+| activeColor       | The background color when the switch is on                                                           | string                    | —               | —             |
+| inactiveColor     | The background color when the switch is off                                                          | string                    | —               | —             |
+| name              | The `name` attribute corresponding to the switch                                                     | string                    | —               | —             |
 
-### Switch 事件
+### Switch Events
 
-| 事件名称 | 说明                            | 回调参数   |
-| -------- | ------------------------------- | ---------- |
-| change   | switch 状态发生变化时的回调函数 | 变换后的值 |
+| Event Name | Description                                                | Callback Parameters |
+| ---------- | ---------------------------------------------------------- | ------------------- |
+| change     | The callback function when the state of the switch changes | The changed value   |
 
-### Switch 方法
+### Switch Methods
 
-| 方法名 | 说明               | 参数 |
-| ------ | ------------------ | ---- |
-| focus  | 使 Switch 获取焦点 | -    |
+| Method Name | Description                | Parameter |
+| ----------- | -------------------------- | --------- |
+| focus       | Make the Switch gain focus | -         |

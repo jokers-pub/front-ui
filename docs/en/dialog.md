@@ -1,71 +1,66 @@
-## Dialog 对话框
+## Dialog
 
-在保留当前页面状态的情况下，告知用户并承载相关操作。
+Informs users and hosts relevant operations while maintaining the current page state.
 
-### 基本用法
+### Basic Usage
 
-Dialog 弹出一个对话框，适合需要定制性更大的场景。
-
-需要通过组件的`open`/`close`方法来设置弹窗是否展示。Dialog 分为两个部分：`body`和`footer`，`footer`需要具名为`footer`的`section`。`title`属性用于定义标题，它是可选的，默认值为空。最后，本例还展示了`before-close`的用法。
-
+The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
+You need to use the component's `open`/`close` methods to set whether the pop-up is displayed. The Dialog consists of two parts: `body` and `footer`. The `footer` requires a `section` named `footer`. The `title` attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of `before-close`.
 !!!demo1!!!
 
-> `before-close` 仅当用户通过点击关闭图标或遮罩关闭 Dialog 时起效。
+> `before-close` only takes effect when the user closes the Dialog by clicking the close icon or the mask.
 
-### 嵌套的 Dialog
+### Nested Dialogs
 
-如果需要在一个 Dialog 内部嵌套另一个 Dialog，需要设置 `append-to` 属性为`body`。
-
-正常情况下，我们不建议使用嵌套的 Dialog，如果需要在页面上同时显示多个 Dialog，可以将它们平级放置。对于确实需要嵌套 Dialog 的场景，我们提供了`append-to`属性，**可参考核心对 append-to 的说明**。将内层 Dialog 的该属性设置为 body，它就会插入至 body 元素上，从而保证内外层 Dialog 和遮罩层级关系的正确。
-
+If you need to nest one Dialog inside another, you need to set the `append-to` property to `body`.
+Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the `append-to` property. **Refer to the core's description of append-to**. Set this property of the inner Dialog to `body`, and it will be inserted into the `body` element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.
 !!!demo2!!!
 
-> append-to 只会影响 DOM 的输出接口，并不会影响 VNode 的数据结构，它仍按开发时的数据结构进行创建，也遵循父子组件销毁机制，无需过度干预。
+> `append-to` only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.
 
-### 居中布局
+### Centered Layout
 
-标题和底部可水平居中，将`center`设置为`true`即可使标题和底部居中。`center`仅影响标题和底部区域。Dialog 的内容是任意的，在一些情况下，内容并不适合居中布局。如果需要内容也水平居中，请自行为其添加 CSS。
-
+The title and the bottom can be horizontally centered. Setting `center` to `true` will center the title and the bottom. `center` only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.
 !!!demo3!!!
 
-> Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默认 section 不会被渲染到 DOM 上。因此，如果需要执行 DOM 操作，或通过 `ref` 获取相应组件，请在 `open` 事件回调中进行。
+> The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default `section` passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through `ref`, please do so in the `open` event callback.
 
 ### Attributes
 
-| 参数                  | 说明                                               | 类型                                 | 可选值 | 默认值 |
-| --------------------- | -------------------------------------------------- | ------------------------------------ | ------ | ------ |
-| title                 | Dialog 的标题，也可通过具名 section （见下表）传入 | string                               | —      | —      |
-| width                 | Dialog 的宽度                                      | string                               | —      | 50%    |
-| fullscreen            | 是否为全屏 Dialog                                  | boolean                              | —      | false  |
-| modal                 | 是否需要遮罩层                                     | boolean                              | —      | true   |
-| custom-class          | Dialog 的自定义类名                                | string                               | —      | —      |
-| close-on-click-modal  | 是否可以通过点击 modal 关闭 Dialog                 | boolean                              | —      | false  |
-| close-on-press-escape | 是否可以通过按下 ESC 关闭 Dialog                   | boolean                              | —      | true   |
-| closable              | 是否显示关闭按钮                                   | boolean                              | —      | true   |
-| before-close          | 关闭前的回调，会暂停 Dialog 的关闭                 | function(done)，done 用于关闭 Dialog | —      | —      |
-| center                | 是否对头部和底部采用居中布局                       | boolean                              | —      | false  |
-| destroyOnClose        | 是否在关闭时销毁内部                               | boolean                              | —      | true   |
+| Parameter             | Description                                                                                        | Type                                                   | Optional Values | Default Value |
+| --------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------- | ------------- |
+| title                 | The title of the Dialog, which can also be passed in through a named section (see the table below) | string                                                 | —               | —             |
+| width                 | The width of the Dialog                                                                            | string                                                 | —               | 50%           |
+| fullscreen            | Whether it is a full-screen Dialog                                                                 | boolean                                                | —               | false         |
+| modal                 | Whether a mask layer is needed                                                                     | boolean                                                | —               | true          |
+| custom-class          | The custom class name of the Dialog                                                                | string                                                 | —               | —             |
+| close-on-click-modal  | Whether the Dialog can be closed by clicking the modal                                             | boolean                                                | —               | false         |
+| close-on-press-escape | Whether the Dialog can be closed by pressing the ESC key                                           | boolean                                                | —               | true          |
+| closable              | Whether to display the close button                                                                | boolean                                                | —               | true          |
+| before-close          | The callback before closing, which will pause the closing of the Dialog                            | function(done), where done is used to close the Dialog | —               | —             |
+| center                | Whether to use a centered layout for the header and the bottom                                     | boolean                                                | —               | false         |
+| destroyOnClose        | Whether to destroy the interior when closing                                                       | boolean                                                | —               | true          |
 
-### Section
+### Sections
 
-| name    | 说明                    |
-| ------- | ----------------------- |
-| default | Dialog 的内容           |
-| title   | Dialog 标题区的内容     |
-| footer  | Dialog 按钮操作区的内容 |
+| name    | Description                                     |
+| ------- | ----------------------------------------------- |
+| default | The content of the Dialog                       |
+| title   | The content of the Dialog title area            |
+| footer  | The content of the Dialog button operation area |
 
-### 方法
+### Methods
 
-| 方法名称 | 说明     | 方法参数 |
-| -------- | -------- | -------- |
-| open     | 打开窗口 | —        |
-| close    | 关闭窗口 | —        |
+| Method Name | Description      | Method Parameter |
+| ----------- | ---------------- | ---------------- |
+| open        | Open the window  | —                |
+| close       | Close the window | —                |
 
 ### Events
 
-| 事件名称 | 说明                        | 回调参数 |
-| -------- | --------------------------- | -------- |
-| open     | Dialog 打开的回调           | —        |
-| opened   | Dialog 打开动画结束时的回调 | —        |
-| close    | Dialog 关闭的回调           | —        |
-| closed   | Dialog 关闭动画结束时的回调 | —        |
+| Event Name | Description                                         | Callback Parameter |
+| ---------- | --------------------------------------------------- | ------------------ |
+| open       | The callback when the Dialog is opened              | —                  |
+| opened     | The callback when the Dialog opening animation ends | —                  |
+| close      | The callback when the Dialog is closed              | —                  |
+| closed     | The callback when the Dialog closing animation ends | —                  |

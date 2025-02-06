@@ -1,78 +1,69 @@
-## Carousel 走马灯
+## Carousel
 
-在有限空间内，循环播放同一类型的图片、文字等内容。
+Circularly plays the same type of content such as images and text within a limited space.
 
-### 基础用法
+### Basic Usage
 
-适用广泛的基础用法。
+A widely applicable basic usage.
+By using the `<jk-carousel>` and `<jk-carousel-item>` tags together, you get a carousel. The content of the slides can be anything and needs to be placed within the `<jk-carousel-item>` tag. By default, the switch is triggered when the mouse hovers over the indicator at the bottom. By setting the `trigger` attribute to `click`, a click-triggered effect can be achieved.
+!!! demo1!!!
 
-结合使用 jk-carousel 和 jk-carousel-item 标签就得到了一个走马灯。幻灯片的内容是任意的，需要放在 jk-carousel-item 标签中。默认情况下，在鼠标 hover 底部的指示器时就会触发切换。通过设置 trigger 属性为 click，可以达到点击触发的效果。
+### Indicator
 
-!!! demo1 !!!
+The display position of the indicator can be set outside the container.
+The `indicatorPosition` attribute defines the position of the indicator. By default, it is displayed inside the carousel. Setting it to `outside` will display it outside, and setting it to `none` will not display the indicator.
+!!! demo2!!!
 
-### 指示器
+### Switch Arrows
 
-可以将指示器的显示位置设置在容器外部
+The display timing of the switch arrows can be set.
+The `arrow` attribute defines the display timing of the switch arrows. By default, the switch arrows are only displayed when the mouse hovers over the carousel. If `arrow` is set to `always`, they will be displayed all the time; setting it to `never` will hide them all the time.
+!!! demo3!!!
 
-indicatorPosition 属性定义了指示器的位置。默认情况下，它会显示在走马灯内部，设置为 outside 则会显示在外部；设置为 none 则不会显示指示器。
+### Card-style
 
-!!! demo2 !!!
+When there is extra space in the width direction of the page but a shortage in the height direction, the card style can be used.
+Setting the `type` attribute to `card` enables the card mode. In terms of interaction, the biggest difference between the card mode and the general mode is that you can switch by directly clicking on the slides on both sides.
+!!! demo4!!!
 
-### 切换箭头
+### Direction
 
-可以设置切换箭头的显示时机
+By default, `direction` is `horizontal`. Set `direction` to `vertical` to make the carousel display vertically.
+!!! demo5!!!
 
-arrow 属性定义了切换箭头的显示时机。默认情况下，切换箭头只有在鼠标 hover 到走马灯上时才会显示；若将 arrow 设置为 always，则会一直显示；设置为 never，则会一直隐藏。
+### Carousel Attributes
 
-!!! demo3 !!!
+| Parameter         | Description                                                            | Type    | Optional Values     | Default Value |
+| ----------------- | ---------------------------------------------------------------------- | ------- | ------------------- | ------------- |
+| height            | The height of the carousel                                             | string  | —                   | —             |
+| class             | Custom class style                                                     | string  | -                   | -             |
+| initialIndex      | The index of the activated slide in the initial state, starting from 0 | number  | —                   | 0             |
+| trigger           | The triggering method of the indicator                                 | string  | click               | -             |
+| autoplay          | Whether to switch automatically                                        | boolean | —                   | true          |
+| interval          | The time interval for automatic switching, in milliseconds             | number  | -                   | 3000          |
+| indicatorPosition | The position of the indicator                                          | string  | outside/none        | —             |
+| arrow             | The display timing of the switch arrows                                | string  | always/hover/never  | hover         |
+| type              | The type of the carousel                                               | string  | card                | -             |
+| loop              | Whether to display in a loop                                           | boolean | -                   | true          |
+| direction         | The display direction of the carousel                                  | string  | horizontal/vertical | horizontal    |
 
-### 卡片化
+### Carousel Events
 
-当页面宽度方向空间空余，但高度方向空间匮乏时，可使用卡片风格
+| Event Name | Description                          | Callback Parameters                                                            |
+| ---------- | ------------------------------------ | ------------------------------------------------------------------------------ |
+| change     | Triggered when the slide is switched | The index of the currently activated slide and the index of the original slide |
 
-将 type 属性设置为 card 即可启用卡片模式。从交互上来说，卡片模式和一般模式的最大区别在于，可以通过直接点击两侧的幻灯片进行切换。
+### Carousel Methods
 
-!!! demo4 !!!
+| Method Name   | Description                  | Parameter                                                                                                                       |
+| ------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| setActiveItem | Manually switch the slide    | The index of the slide to be switched, starting from 0; or the `name` attribute value of the corresponding `<jk-carousel-item>` |
+| prev          | Switch to the previous slide | -                                                                                                                               |
+| next          | Switch to the next slide     | -                                                                                                                               |
 
-### 方向
+### Carousel-item Attributes
 
-默认情况下，direction 为 horizontal。通过设置 direction 为 vertical 来让走马灯在垂直方向上显示。
-
-!!! demo5 !!!
-
-### Carousel 参数
-
-| 参数              | 说明                                  | 类型    | 可选值              | 默认值     |
-| ----------------- | ------------------------------------- | ------- | ------------------- | ---------- |
-| height            | 走马灯的高度                          | string  | —                   | —          |
-| class             | 自定义 class 样式                     | string  | -                   | -          |
-| initialIndex      | 初始状态激活的幻灯片的索引，从 0 开始 | number  | —                   | 0          |
-| trigger           | 指示器的触发方式                      | string  | click               | -          |
-| autoplay          | 是否自动切换                          | boolean | —                   | true       |
-| interval          | 自动切换的时间间隔，单位为毫秒        | number  | -                   | 3000       |
-| indicatorPosition | 指示器的位置                          | string  | outside/none        | —          |
-| arrow             | 切换箭头的显示时机                    | string  | always/hover/never  | hover      |
-| type              | 走马灯的类型                          | string  | card                | -          |
-| loop              | 是否循环显示                          | boolean | -                   | true       |
-| direction         | 走马灯展示的方向                      | string  | horizontal/vertical | horizontal |
-
-### Carousel 事件
-
-| 事件名称 | 说明             | 回调参数                               |
-| -------- | ---------------- | -------------------------------------- |
-| change   | 幻灯片切换时触发 | 目前激活的幻灯片的索引，原幻灯片的索引 |
-
-### Carousel 方法
-
-| 方法名        | 说明               | 参数                                                                      |
-| ------------- | ------------------ | ------------------------------------------------------------------------- |
-| setActiveItem | 手动切换幻灯片     | 需要切换的幻灯片的索引，从 0 开始；或相应 jk-carousel-item 的 name 属性值 |
-| prev          | 切换至上一张幻灯片 | -                                                                         |
-| next          | 切换至下一张幻灯片 | -                                                                         |
-
-### Carousel-item 属性
-
-| 参数  | 说明                                      | 类型   | 可选值 | 默认值 |
-| ----- | ----------------------------------------- | ------ | ------ | ------ |
-| name  | 幻灯片的名字，可用作 setActiveItem 的参数 | string | —      | —      |
-| label | 该幻灯片所对应指示器的文本                | string | —      | —      |
+| Parameter | Description                                                                 | Type   | Optional Values | Default Value |
+| --------- | --------------------------------------------------------------------------- | ------ | --------------- | ------------- |
+| name      | The name of the slide, which can be used as a parameter for `setActiveItem` | string | —               | —             |
+| label     | The text of the indicator corresponding to this slide                       | string | —               | —             |

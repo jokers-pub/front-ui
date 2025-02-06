@@ -1,116 +1,116 @@
-## Tree 树形控件
+## Tree
 
-用清晰的层级结构展示信息，可展开或折叠。
+Displays information in a clear hierarchical structure, which can be expanded or collapsed.
 
-### 基础用法
+### Basic Usage
 
-基础的树形结构展示。
+Displays a basic tree-shaped structure.
 
 !!!demo1!!!
 
-### 可选择
+### Selectable
 
-适用于需要选择层级时使用，该 Demo 还展示了动态加载。
+Suitable for scenarios where hierarchical selection is required. This demo also shows dynamic loading.
 
 !!!demo2!!!
 
-### 节点禁用以及选择
+### Node Disabling and Selection
 
-通过设置`disabled`可以实现节点的禁用，该属性一般配合`show-checkbox`进行使用。
+Setting `disabled` can disable nodes. This property is generally used in combination with `show-checkbox`.
 
-本示例还展示了如何获取和设置选中的节点，如果想通过**key**进行获取和设置，建议配置对应的`node-key`
+This example also shows how to get and set selected nodes. If you want to get and set nodes by **key**, it is recommended to configure the corresponding `node-key`.
 
-> 若不配置 node-key 或取值为 undefind 时，则会默认生成一个内部 id 作为 key
+> If `node-key` is not configured or its value is `undefined`, an internal ID will be generated as the key by default.
 
 !!!demo3!!!
 
-### 自定义节点模板
+### Custom Node Template
 
-通过使用`section`可以实现自定义节点模板的展示。
+By using `section`, you can display a custom node template.
 
 !!!demo4!!!
 
-### 节点过滤
+### Node Filtering
 
-通过关键字过滤节点，在需要对节点进行过滤时，调用 Tree 实例的`filter`方法，参数为关键字。需要注意的是，此时需要设置`filter-method`，值为过滤函数，默认该方法会根据节点的 label 进行字符过滤查询。
+Filter nodes by keywords. When nodes need to be filtered, call the `filter` method of the Tree instance, with the keyword as the parameter. Note that at this time, `filter-method` needs to be set, with the value being the filtering function. By default, this method will perform character-based filtering queries according to the node's label.
 
 !!!demo5!!!
 
-### 可拖拽
+### Draggable
 
-通过开启`draggable`字段来启动树节点的拖拽功能，并可以配置哪些节点可拖动，哪些节点可拖入节点。
+Enable the drag-and-drop function of tree nodes by enabling the `draggable` field, and configure which nodes can be dragged and which nodes can accept dropped nodes.
 
 !!!demo6!!!
 
 ### Attributes
 
-| 参数                  | 说明                                                                                                             | 类型                    | 可选值 | 默认值        |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------- | ------ | ------------- |
-| data                  | 展示数据                                                                                                         | array                   | —      | —             |
-| class                 | 自定义 class 样式                                                                                                | string                  | -      | -             |
-| empty-text            | 内容为空的时候展示的文本                                                                                         | String                  | —      | —             |
-| empty-size            | 空面板尺寸本                                                                                                     | String                  | —      | —             |
-| node-key              | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的                                                             | String                  | —      | —             |
-| load                  | 加载子树数据的方法，仅当 lazy 属性为 true 时生效                                                                 | function(node, resolve) | —      | —             |
-| default-expand-all    | 是否默认展开所有节点                                                                                             | boolean                 | —      | false         |
-| expand-on-click-node  | 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。 | boolean                 | —      | true          |
-| check-on-click-node   | 是否在点击节点的时候选中节点，默认值为 false，即只有在点击复选框时才会选中节点。                                 | boolean                 | —      | false         |
-| default-expanded-keys | 默认展开的节点的 key 的数组                                                                                      | array                   | —      | —             |
-| show-checkbox         | 节点是否可被选择                                                                                                 | boolean                 | —      | false         |
-| default-checked-keys  | 默认勾选的节点的 key 的数组                                                                                      | array                   | —      | —             |
-| current-node-key      | 当前选中的节点                                                                                                   | string, number          | —      | —             |
-| filter-method         | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏                  | Function(node,value)    | —      | —             |
-| indent                | 相邻级节点间的水平缩进，单位为像素                                                                               | number                  | —      | 16            |
-| icon-class            | 自定义树节点的图标                                                                                               | string                  | -      | -             |
-| lazy                  | 是否懒加载子节点，需与 load 方法结合使用                                                                         | boolean                 | —      | false         |
-| labelKey              | 指定节点标签为节点对象的某个属性值                                                                               | string                  | —      | label         |
-| childrenKey           | 指定子树为节点对象的某个属性值                                                                                   | string                  | —      | children      |
-| disabledKey           | 指定节点选择框是否禁用为节点对象的某个属性值                                                                     | string                  | —      | disabled      |
-| expandKey             | 指定节点是否默认展开对象的某个属性值                                                                             | string                  | —      | expand        |
-| isLeafKey             | 指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效                                                         | string                  | —      | isLeaf        |
-| virtualKey            | 高级用法：是否是虚拟节点，虚拟节点不参与到整个 checkbox 的选中过程，一般在开启选中时生效。                       | string                  | —      | isVirtualNode |
-| draggable             | 是否开启拖拽功能                                                                                                 | boolean                 | —      | —             |
-| checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —             |
-| checkCanDropIn        | 当前节点是否允许拖入，如果允许拖入，则 drapp 事件 position 位置会返回 in 来决定是否是拖入                        | function                | —      | —             |
+| Parameter             | Description                                                                                                                                                                          | Type                    | Optional Values | Default Value |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | --------------- | ------------- |
+| data                  | Data to be displayed                                                                                                                                                                 | array                   | —               | —             |
+| class                 | Custom class style                                                                                                                                                                   | string                  | -               | -             |
+| empty-text            | Text to be displayed when the content is empty                                                                                                                                       | String                  | —               | —             |
+| empty-size            | Size of the empty panel                                                                                                                                                              | String                  | —               | —             |
+| node-key              | The property used as a unique identifier for each tree node, which should be unique throughout the tree                                                                              | String                  | —               | —             |
+| load                  | Method for loading subtree data, only takes effect when the `lazy` property is `true`                                                                                                | function(node, resolve) | —               | —             |
+| default-expand-all    | Whether to expand all nodes by default                                                                                                                                               | boolean                 | —               | false         |
+| expand-on-click-node  | Whether to expand or collapse the node when clicking on the node. The default value is `true`. If it is `false`, the node will only expand or collapse when clicking the arrow icon. | boolean                 | —               | true          |
+| check-on-click-node   | Whether to select the node when clicking on the node. The default value is `false`, meaning the node is only selected when clicking the checkbox.                                    | boolean                 | —               | false         |
+| default-expanded-keys | Array of keys of nodes to be expanded by default                                                                                                                                     | array                   | —               | —             |
+| show-checkbox         | Whether the node can be selected                                                                                                                                                     | boolean                 | —               | false         |
+| default-checked-keys  | Array of keys of nodes to be checked by default                                                                                                                                      | array                   | —               | —             |
+| current-node-key      | The currently selected node                                                                                                                                                          | string, number          | —               | —             |
+| filter-method         | The method executed when filtering tree nodes. Return `true` to indicate that the node can be displayed, and `false` to indicate that the node will be hidden                        | Function(node,value)    | —               | —             |
+| indent                | Horizontal indent between adjacent levels of nodes, in pixels                                                                                                                        | number                  | —               | 16            |
+| icon-class            | Custom icon for tree nodes                                                                                                                                                           | string                  | -               | -             |
+| lazy                  | Whether to lazy-load child nodes, needs to be used in combination with the `load` method                                                                                             | boolean                 | —               | false         |
+| labelKey              | Specify the node label as a certain property value of the node object                                                                                                                | string                  | —               | label         |
+| childrenKey           | Specify the subtree as a certain property value of the node object                                                                                                                   | string                  | —               | children      |
+| disabledKey           | Specify whether the node checkbox is disabled as a certain property value of the node object                                                                                         | string                  | —               | disabled      |
+| expandKey             | Specify whether the node is expanded by default as a certain property value of the object                                                                                            | string                  | —               | expand        |
+| isLeafKey             | Specify whether the node is a leaf node, only takes effect when the `lazy` property is specified                                                                                     | string                  | —               | isLeaf        |
+| virtualKey            | Advanced usage: Whether it is a virtual node. Virtual nodes do not participate in the entire checkbox selection process, generally takes effect when selection is enabled.           | string                  | —               | isVirtualNode |
+| draggable             | Whether to enable the drag-and-drop function                                                                                                                                         | boolean                 | —               | —             |
+| checkDraggabled       | Method to check whether a node is allowed to be dragged. It returns `true`/`false` to determine whether the current node can be dragged                                              | function                | —               | —             |
+| checkCanDropIn        | Whether the current node allows dropping in. If dropping in is allowed, the `drapp` event `position` will return `in` to indicate dropping in                                        | function                | —               | —             |
 
-### 方法
+### Methods
 
-`Tree` 内部使用了 Node 类型的对象来包装用户传入的数据，用来保存目前节点的状态。
-`Tree` 拥有如下方法：
+The `Tree` internally uses the `Node`-type object to wrap the data passed in by the user to save the current state of the node.
+The `Tree` has the following methods:
 
-| 方法名          | 说明                                                                                                                          | 参数                                                                                                                                    |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| filter          | 对树节点进行筛选操作                                                                                                          |                                                                                                                                         |
-| getCheckedNodes | 若节点可被选择（即 `show-checkbox` 为 `true`），则返回目前被选中的节点所组成的数组                                            | (leafOnly, includeHalfChecked) 接收两个 boolean 类型的参数，1. 是否只是叶子节点，默认值为 `false` 2. 是否包含半选节点，默认值为 `false` |
-| getCheckedKeys  | 若节点可被选择（即 `show-checkbox` 为 `true`），则返回目前被选中的节点的 key 所组成的数组                                     | (leafOnly, includeHalfChecked) 接收两个 boolean 类型的参数，1. 是否只是叶子节点，默认值为 `false` 2. 是否包含半选节点，默认值为 `false` |
-| setCheckedKeys  | 通过 keys 设置目前勾选的节点，使用此方法必须设置 node-key 属性                                                                | (keys, leafOnly) 接收两个参数，1. 勾选节点的 key 的数组 2. boolean 类型的参数，若为 `true` 则仅设置叶子节点的选中状态，默认值为 `false` |
-| checkNode       | 设置节点选中状态｜ 两个参数，1. 勾选节点的 key 或者 TreeNode 2. boolean 类型，节点是否选中                                    |
-| getCurrentNode  | 获取当前被选中节点，                                                                                                          | —                                                                                                                                       |
-| setCurrentNode  | 通过 node 设置某个节点的当前选中状态                                                                                          | 可传入 TreeNode 或者节点 key , 若传入 undefined，则代表取消选中                                                                         |
-| getNodeByKey    | 根据节点 key 获取节点                                                                                                         | key                                                                                                                                     |
-| removeNode      | 删除 Tree 中的一个节点                                                                                                        | 可传入 TreeNode 或者节点 Key                                                                                                            |
-| appendNode      | 传入节点数据，在 root 中挂载一个新的节点，如果需要在某一个节点下新增可先获取到该节点，然后调用节点的 insterChild 方法进行添加 | -                                                                                                                                       |
-| checkedAll      | 勾选所有节点                                                                                                                  | -                                                                                                                                       |
-| clearChecked    | 取消勾选所有节点                                                                                                              | -                                                                                                                                       |
-| collapseNode    | 折叠节点                                                                                                                      | 需要传入要操作的 TreeNode                                                                                                               |
-| expandNode      | 展开节点                                                                                                                      | 需要传入要操作的 TreeNode                                                                                                               |
-| getAllNodeData  | 获取所有 NodeData，并以`childrens`做层级                                                                                      | -                                                                                                                                       |
-| getNode         | 根据条件获取指定节点                                                                                                          | (node:TreeNode)=>boolean/void                                                                                                           |
-| reload          | 重新渲染                                                                                                                      |                                                                                                                                         |
+| Method Name     | Description                                                                                                                                                                                      | Parameters                                                                                                                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| filter          | Perform filtering operations on tree nodes                                                                                                                                                       |                                                                                                                                                                                                                      |
+| getCheckedNodes | If the node can be selected (i.e., `show-checkbox` is `true`), return an array of currently selected nodes                                                                                       | (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of `false`; 2. Whether to include half-checked nodes, with the default value of `false` |
+| getCheckedKeys  | If the node can be selected (i.e., `show-checkbox` is `true`), return an array of keys of currently selected nodes                                                                               | (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of `false`; 2. Whether to include half-checked nodes, with the default value of `false` |
+| setCheckedKeys  | Set the currently checked nodes through keys. Using this method requires setting the `node-key` property                                                                                         | (keys, leafOnly) Accepts two parameters: 1. An array of keys of checked nodes; 2. A boolean-type parameter. If it is `true`, only the selection state of leaf nodes will be set, with the default value of `false`   |
+| checkNode       | Set the selection state of a node. Two parameters: 1. The key or `TreeNode` of the checked node; 2. A boolean-type parameter indicating whether the node is selected                             |
+| getCurrentNode  | Get the currently selected node                                                                                                                                                                  | —                                                                                                                                                                                                                    |
+| setCurrentNode  | Set the current selection state of a certain node through `node`                                                                                                                                 | Can pass in `TreeNode` or the node key. If `undefined` is passed in, it means canceling the selection                                                                                                                |
+| getNodeByKey    | Get a node according to the node key                                                                                                                                                             | key                                                                                                                                                                                                                  |
+| removeNode      | Delete a node in the `Tree`                                                                                                                                                                      | Can pass in `TreeNode` or the node key                                                                                                                                                                               |
+| appendNode      | Pass in node data to mount a new node in the `root`. If you need to add a node under a certain node, you can first get that node and then call the `insterChild` method of the node for addition | -                                                                                                                                                                                                                    |
+| checkedAll      | Check all nodes                                                                                                                                                                                  | -                                                                                                                                                                                                                    |
+| clearChecked    | Uncheck all nodes                                                                                                                                                                                | -                                                                                                                                                                                                                    |
+| collapseNode    | Collapse a node                                                                                                                                                                                  | Needs to pass in the `TreeNode` to be operated on                                                                                                                                                                    |
+| expandNode      | Expand a node                                                                                                                                                                                    | Needs to pass in the `TreeNode` to be operated on                                                                                                                                                                    |
+| getAllNodeData  | Get all `NodeData` and organize them by `childrens` hierarchy                                                                                                                                    | -                                                                                                                                                                                                                    |
+| getNode         | Get specified nodes according to conditions                                                                                                                                                      | (node:TreeNode)=>boolean/void                                                                                                                                                                                        |
+| reload          | Re-render                                                                                                                                                                                        |                                                                                                                                                                                                                      |
 
 ### Events
 
-| 事件名称         | 说明                                   | 回调参数                                                                         |
-| ---------------- | -------------------------------------- | -------------------------------------------------------------------------------- |
-| node-contextmenu | 当某一节点被鼠标右键点击时会触发该事件 | 参数为 TreeNod                                                                   |
-| check            | 当复选框被点击的时候触发               | 参数为 TreeNod，可通过获取节点的 checked 来判断选中状态                          |
-| current-change   | 当前选中节点变化时触发的事件           | 参数为 TreeNod                                                                   |
-| node-expand      | 节点被展开时触发的事件                 | 参数为 TreeNode                                                                  |
-| node-collapse    | 节点被关闭时触发的事件                 | 参数为 TreeNod                                                                   |
-| drop             | 节点拖动完成后触发                     | 参数为 {dragNode:拖动节点, dropNode: 拖入节点, position: 位置（prev、next、in）} |
+| Event Name       | Description                                              | Callback Parameters                                                                                          |
+| ---------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| node-contextmenu | Triggered when a node is right-clicked with the mouse    | Parameter is `TreeNode`                                                                                      |
+| check            | Triggered when the checkbox is clicked                   | Parameter is `TreeNode`. You can determine the selection state by getting the `checked` property of the node |
+| current-change   | Event triggered when the currently selected node changes | Parameter is `TreeNode`                                                                                      |
+| node-expand      | Event triggered when a node is expanded                  | Parameter is `TreeNode`                                                                                      |
+| node-collapse    | Event triggered when a node is closed                    | Parameter is `TreeNode`                                                                                      |
+| drop             | Triggered after the node dragging is completed           | Parameter is {dragNode: dragged node, dropNode: dropped-into node, position: position (prev, next, in)}      |
 
-### Scoped Section
+### Scoped Sections
 
-| name | 说明                                |
-| ---- | ----------------------------------- |
-| —    | 自定义树节点的内容，参数为 TreeNode |
+| Name | Description                                                          |
+| ---- | -------------------------------------------------------------------- |
+| —    | Custom content of the tree node, with the parameter being `TreeNode` |

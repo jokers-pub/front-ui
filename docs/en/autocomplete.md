@@ -1,51 +1,48 @@
-## AutoComplete 自动完成
+## AutoComplete
 
-根据输入内容提供对应的输入建议。
+Provides corresponding input suggestions based on the input content.
 
-### 基础用法
+### Basic Usage
 
-autocomplete 是一个可带输入建议的输入框组件，`search-load` 是一个返回输入建议的方法属性，在该方法中你可以在你的输入建议数据准备好时通过 callback(data) 返回到 autocomplete 组件中。
-
+`autocomplete` is an input box component with input suggestions. `search-load` is a method attribute that returns input suggestions. In this method, when your input suggestion data is ready, you can return it to the `autocomplete` component through `callback(data)`.
 !!!demo1!!!
 
-### 自定义模板
+### Custom Template
 
-可自定义输入建议的显示
-
-使用`section`自定义输入建议的模板。参数为`item`，表示当前输入建议对象。
-
+You can customize the display of input suggestions.
+Use `section` to customize the template of input suggestions. The parameter is `item`, representing the current input suggestion object.
 !!!demo2!!!
 
 ### Autocomplete Attributes
 
-| 参数             | 说明                                                                                     | 类型                            | 可选值 | 默认值 |
-| ---------------- | ---------------------------------------------------------------------------------------- | ------------------------------- | ------ | ------ |
-| placeholder      | 输入框占位文本                                                                           | string                          | —      | —      |
-| disabled         | 禁用                                                                                     | boolean                         | —      | false  |
-| value-key        | 输入建议对象中用于显示的键名                                                             | string                          | —      | value  |
-| search-load      | 返回输入建议的方法，仅当你的输入建议数据 resolve 时，通过调用 callback(data:[]) 来返回它 | Function(queryString, callback) | —      | —      |
-| trigger-on-focus | 是否在输入框 focus 时显示建议列表                                                        | boolean                         | —      | true   |
-| class            | 自定义 class 样式                                                                        | string                          | -      | -      |
+| Parameter        | Description                                                                                                                        | Type                            | Optional Values | Default Value |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------- | ------------- |
+| placeholder      | Placeholder text of the input box                                                                                                  | string                          | —               | —             |
+| disabled         | Disable                                                                                                                            | boolean                         | —               | false         |
+| value-key        | The key name in the input suggestion object used for display                                                                       | string                          | —               | value         |
+| search-load      | The method to return input suggestions. Only when your input suggestion data is resolved, return it by calling `callback(data:[])` | Function(queryString, callback) | —               | —             |
+| trigger-on-focus | Whether to display the suggestion list when the input box gets focus                                                               | boolean                         | —               | true          |
+| class            | Custom class style                                                                                                                 | string                          | -               | -             |
 
-### Autocomplete Section
+### Autocomplete Sections
 
-| name    | 说明                            |
-| ------- | ------------------------------- |
-| default | 自定义输入建议，参数为 { item } |
-| prefix  | 输入框头部内容                  |
-| suffix  | 输入框尾部内容                  |
-| prepend | 输入框前置内容                  |
-| append  | 输入框后置内容                  |
+| Name    | Description                                                |
+| ------- | ---------------------------------------------------------- |
+| default | Customize input suggestions, with the parameter `{ item }` |
+| prefix  | Content at the head of the input box                       |
+| suffix  | Content at the tail of the input box                       |
+| prepend | Pre-placed content of the input box                        |
+| append  | Post-placed content of the input box                       |
 
 ### Events
 
-| 事件名称 | 说明                  | 回调参数                  |
-| -------- | --------------------- | ------------------------- |
-| select   | 点击选中建议项时触发  | 选中建议项                |
-| change   | 在 Input 值改变时触发 | (value: string \| number) |
+| Event Name | Description                                        | Callback Parameters         |
+| ---------- | -------------------------------------------------- | --------------------------- |
+| select     | Triggered when clicking to select a suggested item | The selected suggested item |
+| change     | Triggered when the value of the Input changes      | (value: string \| number)   |
 
 ### Methods
 
-| 方法名 | 说明              | 参数 |
-| ------ | ----------------- | ---- |
-| focus  | 使 input 获取焦点 | -    |
+| Method Name | Description              | Parameter |
+| ----------- | ------------------------ | --------- |
+| focus       | Make the input get focus | -         |

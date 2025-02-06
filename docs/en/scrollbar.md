@@ -1,59 +1,59 @@
-## Scrollbar 滚动条
+## Scrollbar
 
-用于替换浏览器原生滚动条。
+Used to replace the browser's native scrollbar.
 
-### 基础用法
+### Basic Usage
 
-通过设置 `height`` 属性定义滚动条高度，若不设置则根据父容器高度自适应。
+Define the height of the scrollbar by setting the `height` attribute. If not set, it will adapt to the height of the parent container.
 
 !!!demo1!!!
 
-### 横向滚动
+### Horizontal Scrolling
 
 !!!demo2!!!
 
-### 设置最大尺寸
+### Set Maximum Dimensions
 
-可通过设置父容器的边界值，例如：`max-width`、`max-height`来控制滚动条触发时机。
+You can control the triggering time of the scrollbar by setting the boundary values of the parent container, such as `max-width` and `max-height`.
 
 !!!demo3!!!
 
-### 手动滚动
+### Manual Scrolling
 
-通过使用 scrollTo 方法，可以手动控制滚动条的滚动位置。
+By using the `scrollTo` method, you can manually control the scrolling position of the scrollbar.
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数       | 说明                                                                 | 类型    | 可选值 | 默认值 |
-| ---------- | -------------------------------------------------------------------- | ------- | ------ | ------ |
-| native     | 是否使用原生交互                                                     | boolean | —      | false  |
-| wrapClass  | wrap 元素样式扩展                                                    | string  | —      | -      |
-| viewClass  | view 元素样式扩展                                                    | string  | —      | -      |
-| class      | 根样式扩展                                                           | string  | —      | -      |
-| noresize   | 不响应容器尺寸变化，如果容器尺寸不会发生变化，最好设置它可以优化性能 | boolwan | —      | false  |
-| tag        | 输出的元素 tag                                                       | string  | —      | div    |
-| height     | 自定义高度，不设置默认父容器值                                       | string  | —      | -      |
-| width      | 自定义宽度，不设置默认父容器值                                       | string  | —      | -      |
-| max-height | 自定义最大高度，不设置默认父容器值                                   | string  | —      | -      |
-| max-width  | 自定义最大宽度，不设置默认父容器值                                   | string  | —      | -      |
+| Parameter  | Description                                                                                                                          | Type    | Optional Values | Default Value |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------- | --------------- | ------------- |
+| native     | Whether to use native interaction                                                                                                    | boolean | —               | false         |
+| wrapClass  | Style extension of the `wrap` element                                                                                                | string  | —               | -             |
+| viewClass  | Style extension of the `view` element                                                                                                | string  | —               | -             |
+| class      | Root style extension                                                                                                                 | string  | —               | -             |
+| noresize   | Do not respond to container size changes. If the container size will not change, it is best to set this for performance optimization | boolean | —               | false         |
+| tag        | The output element tag                                                                                                               | string  | —               | div           |
+| height     | Custom height. If not set, it defaults to the value of the parent container                                                          | string  | —               | -             |
+| width      | Custom width. If not set, it defaults to the value of the parent container                                                           | string  | —               | -             |
+| max-height | Custom maximum height. If not set, it defaults to the value of the parent container                                                  | string  | —               | -             |
+| max-width  | Custom maximum width. If not set, it defaults to the value of the parent container                                                   | string  | —               | -             |
 
-### Section
+### Sections
 
-| section 名 | 说明     | 参数 |
-| ---------- | -------- | ---- |
-| default    | 默认内容 | -    |
+| Section Name | Description     | Parameter |
+| ------------ | --------------- | --------- |
+| default      | Default content | -         |
 
-### 方法
+### Methods
 
-| 方法名称   | 说明                 | 参数                      |
-| ---------- | -------------------- | ------------------------- |
-| scrollTo   | 滚动到位置           | 参数参考`ScrollToOptions` |
-| scrollToEl | 滚动到指定元素的位置 | HTMLElement               |
+| Method Name | Description                                   | Parameter                             |
+| ----------- | --------------------------------------------- | ------------------------------------- |
+| scrollTo    | Scroll to a position                          | Parameters refer to `ScrollToOptions` |
+| scrollToEl  | Scroll to the position of a specified element | HTMLElement                           |
 
-### Event
+### Events
 
-| 事件名称 | 说明                     | 回调参数                                                                   |
-| -------- | ------------------------ | -------------------------------------------------------------------------- |
-| scroll   | 当滚动触发位置改变时触发 | {top:number,left:number,x:number,y:number}，其中 x，y 代表方向下滚动条进度 |
+| Event Name | Description                                          | Callback Parameters                                                                                                                  |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| scroll     | Triggered when the scroll-triggered position changes | {top:number,left:number,x:number,y:number}, where `x` and `y` represent the progress of the scrollbar in the corresponding direction |

@@ -1,29 +1,29 @@
-## Result 结果
+## Result
 
-用于对用户的操作结果或者异常状态做反馈。
+Used to provide feedback on the user's operation results or abnormal states.
 
-### 基础用法
+### Basic Usage
 
 !!!demo1!!!
 
-### 自定义内容
+### Custom Content
 
 !!!demo2!!!
 
 ### Attributes
 
-| 参数     | 说明              | 类型   | 可选值                           | 默认值 |
-| -------- | ----------------- | ------ | -------------------------------- | ------ |
-| title    | 标题              | string | —                                | —      |
-| class    | 自定义 class 样式 | string | -                                | -      |
-| subTitle | 二级标题          | string | —                                | —      |
-| icon     | 图标类型          | string | success / warning / info / error | info   |
+| Parameter | Description        | Type   | Optional Values                  | Default Value |
+| --------- | ------------------ | ------ | -------------------------------- | ------------- |
+| title     | Title              | string | —                                | —             |
+| class     | Custom class style | string | -                                | -             |
+| subTitle  | Secondary title    | string | —                                | —             |
+| icon      | Icon type          | string | success / warning / info / error | info          |
 
-### Section
+### Sections
 
-| 名称     | 描述           |
-| -------- | -------------- |
-| icon     | 自定义图标     |
-| title    | 自定义标题     |
-| subTitle | 自定义二级标题 |
-| default  | 内容           |
+| Name     | Description            |
+| -------- | ---------------------- |
+| icon     | Custom icon            |
+| title    | Custom title           |
+| subTitle | Custom secondary title |
+| default  | Content                |

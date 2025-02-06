@@ -1,68 +1,69 @@
-## Message 消息提示
+## Message
 
-常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。
+It is often used for feedback prompts after active operations. The difference from Notification is that the latter is more used for passive reminders of system-level notifications.
 
-### 基础用法
+### Basic Usage
 
-从顶部出现，3 秒后自动消失。在配置上与 Notification 非常类似，所以部分 options 在此不做详尽解释，文末有 options 列表，可以结合 Notification 的文档理解它们。
+It appears from the top and disappears automatically after 3 seconds. In terms of configuration, it is very similar to Notification. Therefore, some options are not explained in detail here. There is a list of options at the end of the article. You can combine it with the documentation of Notification to understand them.
 
 !!!demo1!!!
 
-### 不同状态
+### Different States
 
-用来显示「成功、警告、消息、错误」类的操作反馈。当需要自定义更多属性时，Message 也可以接收一个对象为参数。比如，设置`type`字段可以定义不同的状态，默认为`info`。此时正文内容以`message`的值传入。
+Used to display operation feedback of "success, warning, message, error" types. When more properties need to be customized, Message can also accept an object as a parameter. For example, setting the `type` field can define different states, with the default being `info`. At this time, the body content is passed in as the value of `message`.
 
-> 目前 Message，提供了常用的 4 种跳用方法，包括`info`,`success`,`warning`,`error`
+> Currently, Message provides 4 commonly used calling methods, including `info`, `success`, `warning`, and `error`.
 
 !!!demo2!!!
 
-### 可关闭
+### Closable
 
-可以添加关闭按钮，默认的 Message 是不可以被人工关闭的，如果需要可手动关闭的 Message，可以使用`showClose`字段。此外，和 Notification 一样，Message 拥有可控的`duration`，设置`0`为不会被自动关闭，默认为 3000 毫秒。
+You can add a close button. By default, the Message cannot be manually closed. If you need a manually closable Message, you can use the `showClose` field. In addition, like Notification, Message has a controllable `duration`. Setting it to `0` means it will not be automatically closed, with the default being 3000 milliseconds.
 
 !!!demo3!!!
 
-### 文字居中
+### Text Centered
 
-使用 `center` 属性让文字水平居中。
+Use the `center` property to center the text horizontally.
 
 !!!demo4!!!
 
-### 使用 HTML 片段
+### Using HTML Fragments
 
-将`useHtml`属性设置为 true，`message` 就会被当作 HTML 片段处理。
+Set the `useHtml` property to `true`, and `message` will be treated as an HTML fragment.
 
 !!!demo5!!!
 
 :::warning
-`message` 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。因此在 `useHtml` 打开的情况下，请确保 `message` 的内容是可信的，**永远不要**将用户提交的内容赋值给 `message` 属性。
+Although the `message` property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Therefore, when `useHtml` is turned on, please ensure that the content of `message` is trustworthy. **Never** assign user-submitted content to the `message` property.
 :::
 
-> Message 提供`closeAll`方法，用于在特定业务时机去清除全部 message。
+> Message provides the `closeAll` method to clear all messages at specific business times.
 
 ### Options
 
-| 参数        | 说明                                  | 类型    | 可选值                     | 默认值 |
-| ----------- | ------------------------------------- | ------- | -------------------------- | ------ |
-| message     | 消息文字                              | string  | —                          | —      |
-| type        | 主题                                  | string  | success/warning/info/error | info   |
-| iconClass   | 自定义图标的类名，会覆盖 `type`       | string  | —                          | —      |
-| useHtml     | 是否将 message 属性作为 HTML 片段处理 | boolean | —                          | false  |
-| customClass | 自定义类名                            | string  | —                          | —      |
-| duration    | 显示时间, 毫秒。设为 0 则不会自动关闭 | number  | —                          | 3000   |
-| closable    | 是否显示关闭按钮                      | boolean | —                          | false  |
-| center      | 文字是否居中                          | boolean | —                          | false  |
-| offset      | Message 距离窗口顶部的偏移量          | number  | —                          | 20     |
+| Parameter   | Description                                                         | Type    | Optional Values            | Default Value |
+| ----------- | ------------------------------------------------------------------- | ------- | -------------------------- | ------------- |
+| message     | Message text                                                        | string  | —                          | —             |
+| type        | Theme                                                               | string  | success/warning/info/error | info          |
+| iconClass   | Class name of the custom icon, which will override `type`           | string  | —                          | —             |
+| useHtml     | Whether to treat the `message` property as an HTML fragment         | boolean | —                          | false         |
+| customClass | Custom class name                                                   | string  | —                          | —             |
+| duration    | Display time in milliseconds. Set to 0 to prevent automatic closure | number  | —                          | 3000          |
+| closable    | Whether to display the close button                                 | boolean | —                          | false         |
+| center      | Whether the text is centered                                        | boolean | —                          | false         |
+| offset      | The offset of the Message from the top of the window                | number  | —                          | 20            |
 
-### 方法
+### Methods
 
-调用 `Message` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
-| 方法名 | 说明 |
-| ---- | ---- |
-| close | 关闭当前的 Message |
+Calling `Message` will return the current Message instance. If you need to manually close the instance, you can call its `close` method.
 
-### Event
+| Method Name | Description               |
+| ----------- | ------------------------- |
+| close       | Close the current Message |
 
-| 事件名 | 说明                |
-| ------ | ------------------- |
-| close  | 关闭 Message 时触发 |
+### Events
+
+| Event Name | Description                          |
+| ---------- | ------------------------------------ |
+| close      | Triggered when the Message is closed |

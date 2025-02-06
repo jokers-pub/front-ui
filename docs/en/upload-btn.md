@@ -1,45 +1,45 @@
-## Upload Btn 上传按钮组件
+## Upload Button
 
-提供文件选择交互按钮。
+Provides an interactive button for file selection.
 
-### 基础用法
+### Basic Usage
 
 !!!demo1!!!
 
-### 多文件上传
+### Multiple File Upload
 
-通过配置`multiple`来启用多选文件选择。
+Enable multi-file selection by configuring the `multiple` property.
 
 !!!demo2!!!
 
-### 限制选择类型
+### Limit Selection Types
 
-可通过配置`mimeType`属性来限制上传类型，该属性可以传入`string`、`string[]`类型的值。
+You can limit the upload types by configuring the `mimeType` property. This property can accept values of type `string` or `string[]`.
 
 !!!demo3!!!
 
-### 限制传入文件大小
+### Limit File Size
 
-通过配置`maxFileSize`属性来限制每个文件的最大大小，单位为**kb**。
+Limit the maximum size of each file by configuring the `maxFileSize` property. The unit is **kb**.
 
 !!!demo4!!!
 
-### 参数
+### Attributes
 
-| 参数         | 说明                                              | 类型              | 可选值 | 默认值 |
-| ------------ | ------------------------------------------------- | ----------------- | ------ | ------ |
-| icon         | 按钮 icon 图标                                    | string            | —      | —      |
-| btnType      | 按钮类型，对应 jk-button 的 type 类型             | string            | -      | -      |
-| title        | 按钮文本，若有指定 default 区域，则设置该属性无效 | string            | —      | —      |
-| btnSize      | 按钮大小，对应 jk-button 的 size 类型             | string            | —      | —      |
-| disabled     | 是否禁用                                          | boolean           | —      | false  |
-| multiple     | 是否启用多选                                      | boolean           | —      | false  |
-| maxFileCount | 最大上传个数                                      | number            | —      |
-| mimeType     | 限制文件类型，支持通配符例如：**(image/\*)**      | string / string[] | —      | —      |
-| maxFileSize  | 单个文件最大大小限制，单位**kb**                  | number            | —      |
+| Parameter    | Description                                                                       | Type              | Optional Values | Default Value |
+| ------------ | --------------------------------------------------------------------------------- | ----------------- | --------------- | ------------- |
+| icon         | Button icon                                                                       | string            | —               | —             |
+| btnType      | Button type, corresponding to the `type` of `jk-button`                           | string            | -               | -             |
+| title        | Button text. If the `default` area is specified, setting this property is invalid | string            | —               | —             |
+| btnSize      | Button size, corresponding to the `size` of `jk-button`                           | string            | —               | —             |
+| disabled     | Whether to disable                                                                | boolean           | —               | false         |
+| multiple     | Whether to enable multi-selection                                                 | boolean           | —               | false         |
+| maxFileCount | Maximum number of uploads                                                         | number            | —               | -             |
+| mimeType     | Limit file types, wildcards are supported, e.g., **(image/\*)**                   | string / string[] | —               | —             |
+| maxFileSize  | Maximum size limit for a single file, unit is **kb**                              | number            | —               | -             |
 
 ### Events
 
-| 事件名称 | 说明       | 回调参数 |
-| -------- | ---------- | -------- |
-| change   | 值变更通知 | —        |
+| Event Name | Description                  | Callback Parameters |
+| ---------- | ---------------------------- | ------------------- |
+| change     | Notification of value change | —                   |

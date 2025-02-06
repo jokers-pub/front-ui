@@ -1,60 +1,60 @@
-## Descriptions 描述列表
+## Descriptions
 
-列表形式展示多个字段。
+Displays multiple fields in a list format.
 
-### 基础用法
+### Basic Usage
 
-!!! demo1 !!!
+!!! demo1!!!
 
-### 不同尺寸
+### Different Sizes
 
-!!! demo2 !!!
+!!! demo2!!!
 
-### 垂直列表
+### Vertical List
 
-!!! demo3 !!!
+!!! demo3!!!
 
-### 自定义样式
+### Custom Styles
 
-!!! demo4 !!!
+!!! demo4!!!
 
 ### Descriptions Attributes
 
-| 参数             | 说明                          | 类型    | 可选值                | 默认值     |
-| ---------------- | ----------------------------- | ------- | --------------------- | ---------- |
-| class            | 自定义 class 样式             | string  | -                     | -          |
-| border           | 是否带有边框                  | boolean | -                     | false      |
-| column           | 一行 Descriptions Item 的数量 | number  | -                     | 3          |
-| direction        | 排列的方向                    | string  | vertical / horizontal | horizontal |
-| size             | 列表的尺寸                    | string  | medium / small / mini | -          |
-| title            | 标题文本，显示在左上方        | string  | —                     | -          |
-| extra            | 操作区文本，显示在右上方      | string  | —                     | -          |
-| colon            | 是否显示冒号                  | boolean | —                     | true       |
-| labelClassName   | 自定义标签类名                | string  | -                     | -          |
-| contentClassName | 自定义内容类名                | string  | -                     | -          |
-| labelStyle       | 自定义标签样式                | object  | -                     | -          |
-| contentStyle     | 自定义内容样式                | object  | -                     | -          |
+| Parameter        | Description                                                  | Type    | Optional Values       | Default Value |
+| ---------------- | ------------------------------------------------------------ | ------- | --------------------- | ------------- |
+| class            | Custom class style                                           | string  | -                     | -             |
+| border           | Whether to have a border                                     | boolean | -                     | false         |
+| column           | The number of Descriptions Items in one row                  | number  | -                     | 3             |
+| direction        | The arrangement direction                                    | string  | vertical / horizontal | horizontal    |
+| size             | The size of the list                                         | string  | medium / small / mini | -             |
+| title            | The title text, displayed in the upper-left corner           | string  | —                     | -             |
+| extra            | The operation area text, displayed in the upper-right corner | string  | —                     | -             |
+| colon            | Whether to display a colon                                   | boolean | —                     | true          |
+| labelClassName   | Custom label class name                                      | string  | -                     | -             |
+| contentClassName | Custom content class name                                    | string  | -                     | -             |
+| labelStyle       | Custom label style                                           | object  | -                     | -             |
+| contentStyle     | Custom content style                                         | object  | -                     | -             |
 
-### Descriptions Section
+### Descriptions Sections
 
-| 名称  | 描述                       |
-| ----- | -------------------------- |
-| title | 自定义标题，显示在左上方   |
-| extra | 自定义操作区，显示在右上方 |
+| Name  | Description                                                       |
+| ----- | ----------------------------------------------------------------- |
+| title | Customize the title, displayed in the upper-left corner           |
+| extra | Customize the operation area, displayed in the upper-right corner |
 
 ### Descriptions Item Attributes
 
-| 参数             | 说明           | 类型   | 可选值 | 默认值 |
-| ---------------- | -------------- | ------ | ------ | ------ |
-| label            | 标签文本       | string | -      | -      |
-| span             | 列的数量       | number | -      | 1      |
-| labelClassName   | 自定义标签类名 | string | -      | -      |
-| contentClassName | 自定义内容类名 | string | -      | -      |
-| labelStyle       | 自定义标签样式 | object | -      | -      |
-| contentStyle     | 自定义内容样式 | object | -      | -      |
+| Parameter        | Description               | Type   | Optional Values | Default Value |
+| ---------------- | ------------------------- | ------ | --------------- | ------------- |
+| label            | Label text                | string | -               | -             |
+| span             | The number of columns     | number | -               | 1             |
+| labelClassName   | Custom label class name   | string | -               | -             |
+| contentClassName | Custom content class name | string | -               | -             |
+| labelStyle       | Custom label style        | object | -               | -             |
+| contentStyle     | Custom content style      | object | -               | -             |
 
-### Descriptions Item Section
+### Descriptions Item Sections
 
-| 名称  | 描述           |
-| ----- | -------------- |
-| label | 自定义标签文本 |
+| Name  | Description              |
+| ----- | ------------------------ |
+| label | Customize the label text |

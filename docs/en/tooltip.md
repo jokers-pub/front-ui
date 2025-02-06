@@ -1,67 +1,67 @@
-## Tooltip 文字提示
+## Tooltip
 
-常用于展示鼠标 hover 时的提示信息。
+Often used to display prompt information when the mouse hovers.
 
-### 基础用法
+### Basic Usage
 
-在这里我们提供 9 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。
+Here we provide 9 different display directions. You can understand them through the following complete examples and choose the effect you want.
 
-使用`content`属性来决定`hover`时的提示信息。由`placement`属性决定展示效果：`placement`属性值为：`方向-对齐位置`；四个方向：`top`、`left`、`right`、`bottom`；三种对齐位置：`start`, `end`，默认为`bottom`。如`placement="left-end"`，则提示信息出现在目标元素的左侧，且提示信息的底部与目标元素的底部对齐。
+Use the `content` attribute to determine the prompt information when hovering. The display effect is determined by the `placement` attribute. The value of the `placement` attribute is in the format of `direction-alignment position`. The four directions are `top`, `left`, `right`, `bottom`, and the three alignment positions are `start`, `end`, with the default being `bottom`. For example, if `placement = "left-end"`, the prompt information will appear on the left side of the target element, and the bottom of the prompt information will be aligned with the bottom of the target element.
 
 !!!demo1!!!
 
-### 主题
+### Themes
 
-Tooltip 组件提供了两个不同的主题：`dark`和`light`。
+The Tooltip component offers two different themes: `dark` and `light`.
 
-通过设置`effect`属性来改变主题，默认为`dark`。
+Change the theme by setting the `effect` attribute, with the default being `dark`.
 
 !!!demo2!!!
 
-### 手动控制
+### Manual Control
 
-通过`manual`属性来控制是否手动激活，然后通过组件的`show`和`hide`方法来自由操作
+Control whether to activate manually through the `manual` attribute, and then freely operate through the `show` and `hide` methods of the component.
 
 !!!demo3!!!
 
-### 更多 Content
+### More Content
 
-展示多行文本或者是设置文本内容的格式
+Display multi-line text or set the format of the text content.
 
-用具名 section 分发`content`，替代`tooltip`中的`content`属性。
+Use the named section to distribute the `content`, replacing the `content` attribute in the `tooltip`.
 
 !!!demo4!!!
 
-### 禁用
+### Disabled
 
-通过`disabled`值，来设置 tooltip 的禁用状态
+Set the disabled state of the tooltip through the `disabled` value.
 
 !!!demo5!!!
 
-### 尺寸
+### Size
 
-通过`size`值，来设置 tooltip 的尺寸
+Set the size of the tooltip through the `size` value.
 
 !!!demo6!!!
 
-### 最大宽度
+### Maximum Width
 
-若内容过长时，可通过配置`maxWidth`来配置最大宽度，这样可以使内容多行展示
+If the content is too long, you can configure the `maxWidth` to set the maximum width, so that the content can be displayed in multiple lines.
 
 !!!demo7!!!
 
 ### Attributes
 
-| 参数        | 说明                                                                  | 类型    | 可选值                                                                                                    | 默认值     |
-| ----------- | --------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------- | ---------- |
-| effect      | 默认提供的主题                                                        | String  | dark/light / error                                                                                        | dark       |
-| content     | 显示的内容，也可以通过 section`content` 传入 DOM                      | String  | —                                                                                                         | —          |
-| placement   | Tooltip 的出现位置                                                    | String  | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom     |
-| disabled    | Tooltip 是否可用                                                      | Boolean | —                                                                                                         | false      |
-| offset      | 出现位置的偏移量                                                      | Number  | —                                                                                                         | 0          |
-| transition  | 定义渐变动画                                                          | String  | —                                                                                                         | jk-fade-in |
-| open-delay  | 延迟出现，单位毫秒                                                    | Number  | —                                                                                                         | 0          |
-| close-delay | 延迟隐藏，单位毫秒（防抖）                                            | Number  | —                                                                                                         | 200        |
-| manual      | 手动控制模式，设置为 true 后，mouseenter 和 mouseleave 事件将不会生效 | Boolean | —                                                                                                         | false      |
-| size        | 尺寸配置                                                              | string  | medium、small、mini                                                                                       |            |
-| maxWidth    | 最大宽度                                                              | string  | -                                                                                                         | 300px      |
+| Parameter   | Description                                                                                              | Type    | Optional Values                                                                                           | Default Value |
+| ----------- | -------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------- | ------------- |
+| effect      | The default provided theme                                                                               | String  | dark/light / error                                                                                        | dark          |
+| content     | The content to be displayed. DOM can also be passed in through the section `content`                     | String  | —                                                                                                         | —             |
+| placement   | The appearance position of the Tooltip                                                                   | String  | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom        |
+| disabled    | Whether the Tooltip is available                                                                         | Boolean | —                                                                                                         | false         |
+| offset      | The offset of the appearance position                                                                    | Number  | —                                                                                                         | 0             |
+| transition  | Define the fade-in animation                                                                             | String  | —                                                                                                         | jk-fade-in    |
+| open-delay  | Delay the appearance, in milliseconds                                                                    | Number  | —                                                                                                         | 0             |
+| close-delay | Delay the hiding, in milliseconds (debounce)                                                             | Number  | —                                                                                                         | 200           |
+| manual      | Manual control mode. After setting it to true, the mouseenter and mouseleave events will not take effect | Boolean | —                                                                                                         | false         |
+| size        | Size configuration                                                                                       | string  | medium、small、mini                                                                                       |               |
+| maxWidth    | Maximum width                                                                                            | string  | -                                                                                                         | 300px         |

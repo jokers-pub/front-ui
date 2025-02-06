@@ -1,46 +1,46 @@
-## Timeline 时间线
+## Timeline
 
-可视化地呈现时间流信息。
+Visually presents time-flow information.
 
-### 基础用法
+### Basic Usage
 
-Timeline 可拆分成多个按照时间戳排列的 activity，时间戳是其区分于其他控件的重要特征，使⽤时注意与 Steps 步骤条等区分。
+The Timeline can be split into multiple activities arranged according to timestamps. The timestamp is an important feature that distinguishes it from other controls. When using it, pay attention to differentiating it from components like Steps.
 
 !!!demo1!!!
 
-### ⾃定义节点样式
+### Custom Node Styles
 
-可根据实际场景⾃定义节点尺⼨、颜⾊，或直接使⽤图标。
+You can customize the size and color of nodes according to the actual scenario, or directly use icons.
 
 !!!demo2!!!
 
-### ⾃定义时间戳
+### Custom Timestamp
 
-当内容在垂直⽅向上过⾼时，可将时间戳置于内容之上。
+When the content is too tall in the vertical direction, the timestamp can be placed above the content.
 
 !!!demo3!!!
 
 ### Timeline Attributes
 
-| 参数  | 说明              | 类型   | 可选值 | 默认值 |
-| ----- | ----------------- | ------ | ------ | ------ |
-| class | 自定义 class 样式 | string | -      | -      |
+| Parameter | Description        | Type   | Optional Values | Default Value |
+| --------- | ------------------ | ------ | --------------- | ------------- |
+| class     | Custom class style | string | -               | -             |
 
 ### Timeline-item Attributes
 
-| 参数          | 说明           | 类型    | 可选值                                      | 默认值 |
-| ------------- | -------------- | ------- | ------------------------------------------- | ------ |
-| timestamp     | 时间戳         | string  | -                                           | -      |
-| hideTimestamp | 是否隐藏时间戳 | boolean | -                                           | false  |
-| placement     | 时间戳位置     | string  | top / bottom                                | bottom |
-| type          | 节点类型       | string  | primary / success / warning / danger / info | -      |
-| color         | 节点颜色       | string  | hsl / hsv / hex / rgb                       | -      |
-| size          | 节点尺寸       | string  | normal / large                              | normal |
-| icon          | 节点图标       | string  | -                                           | -      |
+| Parameter     | Description                   | Type    | Optional Values                             | Default Value |
+| ------------- | ----------------------------- | ------- | ------------------------------------------- | ------------- |
+| timestamp     | Timestamp                     | string  | -                                           | -             |
+| hideTimestamp | Whether to hide the timestamp | boolean | -                                           | false         |
+| placement     | Timestamp position            | string  | top / bottom                                | bottom        |
+| type          | Node type                     | string  | primary / success / warning / danger / info | -             |
+| color         | Node color                    | string  | hsl / hsv / hex / rgb                       | -             |
+| size          | Node size                     | string  | normal / large                              | normal        |
+| icon          | Node icon                     | string  | -                                           | -             |
 
-### Timeline-Item section
+### Timeline-Item Sections
 
-|   name  | 说明                 |
-| ------- | -------------------- |
-| default | Timeline-Item 的内容 |
-| dot     | 自定义节点           |
+| Name    | Description              |
+| ------- | ------------------------ |
+| default | Content of Timeline-Item |
+| dot     | Custom node              |

@@ -1,39 +1,37 @@
-## Collapse 折叠面板
+## Collapse
 
-打开 / 折叠展示内容
+Opens or collapses to display content.
 
-### 基础用法
+### Basic Usage
 
-基础折叠面板用法。
-
+Basic usage of the collapse panel.
 !!!demo1!!!
 
-### 手风琴模式
+### Accordion Mode
 
 !!!demo2!!!
 
-### 自定义标题
+### Custom Title
 
 !!!demo3!!!
 
 ### Attributes
 
-| 参数 | 说明  | 类型   | 可选值  | 默认值 |
-| ------ | ------------------------------------------------------------ | ------------- | ------------------------------------------- | ------ |
-| value | 当前激活的面板（手风琴模式为string，否则为Array） | string / Array | - | - |
-| accordion | 是否开启手风琴模式 | boolean | - | false |
+| Parameter | Description                                                            | Type           | Optional Values | Default Value |
+| --------- | ---------------------------------------------------------------------- | -------------- | --------------- | ------------- |
+| value     | The currently active panel (string in accordion mode, otherwise Array) | string / Array | -               | -             |
+| accordion | Whether to enable accordion mode                                       | boolean        | -               | false         |
 
 ### Events
 
-| 事件名称 | 说明  | 回调参数   | 
-| ------ | ------------------------------------------------------------ | ------------- | 
-| change | 当前激活面板改变时触发(如果是手风琴模式，参数 activeNames 类型为string，否则为Array) | 返回激活的面板name值 |
+| Event Name | Description                                                                                                                              | Callback Parameter                           |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| change     | Triggered when the currently active panel changes (if in accordion mode, the parameter `activeNames` is of type string, otherwise Array) | Returns the `name` value of the active panel |
 
 ### Item Attributes
 
-
-| 参数 | 说明  | 类型   | 可选值  | 默认值 |
-| ------ | ------------------------------------------------------------ | ------------- | ------------------------------------------- | ------ |
-| name | 唯一标识符 | string | - | - |
-| title | 标题 | string | - | - |
-| disabled | 是否禁用 | boolean | - | false |
+| Parameter | Description            | Type    | Optional Values | Default Value |
+| --------- | ---------------------- | ------- | --------------- | ------------- |
+| name      | Unique identifier      | string  | -               | -             |
+| title     | Title                  | string  | -               | -             |
+| disabled  | Whether it is disabled | boolean | -               | false         |

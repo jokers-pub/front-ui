@@ -69,13 +69,13 @@ Alert 组件提供了两个不同的主题：light 和 dark。
 | effect      | 选择提供的主题                        | string  | light/dark                 | light  |
 | class       | 自定义 class 样式                     | string  | -                          | -      |
 
-### Event
+### Events
 
 | 事件名 | 说明                    | 参数 |
 | ------ | ----------------------- | ---- |
 | close  | 关闭 alert 时触发的事件 | -    |
 
-### Section
+### Sections
 
 | 名称  | 描述       |
 | ----- | ---------- |

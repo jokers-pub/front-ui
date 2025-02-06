@@ -1,49 +1,49 @@
-## Tag 标签
+## Tag
 
-用于标记和选择。
+Used for marking and selection.
 
-### 基础用法
+### Basic Usage
 
-由`type`属性来选择 tag 的类型，也可以通过`color`属性来自定义背景色。
+The type of the tag is selected by the `type` attribute, and the background color can also be customized through the `color` attribute.
 
 !!!demo1!!!
 
-### 可移除标签
+### Removable Tag
 
-设置`closable`属性可以定义一个标签是否可移除。
+Setting the `closable` attribute can define whether a tag is removable.
 
 !!!demo2!!!
 
-### 不同尺寸
+### Different Sizes
 
-Tag 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
+The Tag component provides three sizes in addition to the default size, allowing you to choose the appropriate button size for different scenarios.
 
-额外的尺寸：`medium`、`small`、`mini`，通过设置`size`属性来配置它们。
+The additional sizes are: `medium`, `small`, and `mini`, which can be configured by setting the `size` attribute.
 
 !!!demo3!!!
 
-### 不同主题
+### Different Themes
 
-Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
+The Tag component offers three different themes: `dark`, `light`, and `plain`.
 
-通过设置`effect`属性来改变主题，默认为 `light`
+The theme can be changed by setting the `effect` attribute, with the default being `light`.
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数     | 说明              | 类型    | 可选值                      | 默认值 |
-| -------- | ----------------- | ------- | --------------------------- | ------ |
-| type     | 类型              | string  | success/info/warning/danger | —      |
-| class    | 自定义 class 样式 | string  | -                           | -      |
-| closable | 是否可关闭        | boolean | —                           | false  |
-| color    | 背景色            | string  | —                           | —      |
-| size     | 尺寸              | string  | medium / small / mini       | —      |
-| effect   | 主题              | string  | dark / light / plain        | light  |
+| Parameter | Description            | Type    | Optional Values             | Default Value |
+| --------- | ---------------------- | ------- | --------------------------- | ------------- |
+| type      | Type                   | string  | success/info/warning/danger | —             |
+| class     | Custom class style     | string  | -                           | -             |
+| closable  | Whether it is closable | boolean | —                           | false         |
+| color     | Background color       | string  | —                           | —             |
+| size      | Size                   | string  | medium / small / mini       | —             |
+| effect    | Theme                  | string  | dark / light / plain        | light         |
 
 ### Events
 
-| 事件名称 | 说明                  | 回调参数 |
-| -------- | --------------------- | -------- |
-| click    | 点击 Tag 时触发的事件 | —        |
-| close    | 点击关闭按钮时触发    | —        |
+| Event Name | Description                                | Callback Parameters |
+| ---------- | ------------------------------------------ | ------------------- |
+| click      | The event triggered when a Tag is clicked  | —                   |
+| close      | Triggered when the close button is clicked | —                   |

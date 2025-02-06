@@ -26,7 +26,7 @@ Popconfirm 的属性与 Popover 很类似，因此对于重复属性，请参考
 | icon                | Icon         | String | —      | jk-icon-question |
 | icon-color          | Icon 颜色    | String | —      | #f90             |
 
-### Section
+### Sections
 
 | 参数    | 说明                             |
 | ------- | -------------------------------- |

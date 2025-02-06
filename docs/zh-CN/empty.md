@@ -40,7 +40,7 @@
 | imageSize   | 图片大小（宽度）  | number | —      | —                 |
 | description | 文本描述          | string | —      | —                 |
 
-### Section
+### Sections
 
 | 名称        | 描述           |
 | ----------- | -------------- |

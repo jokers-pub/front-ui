@@ -1,101 +1,91 @@
-## Checkbox 多选框
+## Checkbox
 
-一组备选项中进行多选
+Allows multiple selections from a set of options.
 
-### 基础用法
+### Basic Usage
 
-单独使用可以表示两种状态之间的切换，写在标签中的内容为 Checkbox 按钮后的介绍。
-
-在 `jk-checkbox` 组件中定义 `value` 绑定变量，单一的 Checkbox 中，默认绑定变量的值会是 `Boolean`，选中为 `true`。
-
+When used alone, it can represent the switch between two states. The content written in the label is the description after the Checkbox button.
+In the `jk-checkbox` component, define the `value` binding variable. In a single Checkbox, the value of the default binding variable will be of type `Boolean`, and `true` when selected.
 !!!demo1!!!
 
-### 禁用状态
+### Disabled State
 
-多选框不可用状态。
-
-只要在 `jk-checkbox` 组件中设置 `disabled` 属性即可，它接受一个 `Boolean`，`true` 为禁用。
-
+The state where the checkbox is unavailable.
+Just set the `disabled` attribute in the `jk-checkbox` component. It accepts a `Boolean` value, with `true` indicating disabled.
 !!!demo2!!!
 
-### 多选框组
+### Checkbox Group
 
-适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。
-
-`jk-checkbox-group` 组件能把多个 Checkbox 管理为一组，只需要在 Group 中使用 `value` 绑定 `Array` 类型的变量即可。 `jk-checkbox` 的 `label` 属性是该 checkbox 对应的值，若该标签中无内容，则该属性也充当 Checkbox 按钮后的介绍。`label` 与数组中的元素值相对应，如果存在指定的值则为选中状态，否则为不选中
-
+Suitable for scenarios where multiple checkboxes are bound to the same array. The selected items in this group of options are represented by whether they are checked or not.
+The `jk-checkbox-group` component can manage multiple checkboxes as a group. You only need to use `value` to bind an `Array`-type variable in the Group. The `label` attribute of the `jk-checkbox` is the value corresponding to this checkbox. If there is no content in the label, this attribute also serves as the description after the Checkbox button. The `label` corresponds to the element value in the array. If the specified value exists, it is in the selected state; otherwise, it is not selected.
 !!!demo3!!!
 
-### indeterminate 状态
+### Indeterminate State
 
-`indeterminate` 属性用以表示 Checkbox 的不确定状态，一般用于实现全选的效果
-
+The `indeterminate` attribute is used to represent the indeterminate state of the checkbox, generally used to achieve the effect of "select all".
 !!!demo4!!!
 
-### 可选项目数量的限制
+### Limit on the Number of Selectable Items
 
-使用 `min` 和 `max` 属性能够限制可以被勾选的项目的数量。
-
+The `min` and `max` attributes can be used to limit the number of items that can be checked.
 !!!demo5!!!
 
-### 按钮样式
+### Button Style
 
-按钮样式的多选组合。
-
+A set of checkboxes in button style.
 !!!demo6!!!
 
-### 带有边框
+### With Border
 
-设置 `border` 属性可以渲染为带有边框的单选框。`jk-checkbox` 只有在设置 `border` 时，`size` 属性才会生效
-
+Setting the `border` attribute can render it as a checkbox with a border. The `size` attribute of the `jk-checkbox` only takes effect when `border` is set.
 !!!demo7!!!
 
-### Checkbox 参数
+### Checkbox Attributes
 
-| 参数          | 说明                                    | 类型                      | 可选值                | 默认值 |
-| ------------- | --------------------------------------- | ------------------------- | --------------------- | ------ |
-| value         | 绑定值                                  | string / number / boolean | —                     | —      |
-| label         | Checkbox 的 value                       | string / number / boolean | —                     | —      |
-| class         | 自定义 class 样式                       | string                    | -                     | -      |
-| disabled      | 是否禁用                                | boolean                   | —                     | false  |
-| border        | 是否显示边框                            | boolean                   | —                     | false  |
-| size          | Checkbox 的尺寸，仅在 border 为真时有效 | string                    | medium / small / mini | —      |
-| name          | 原生 name 属性                          | string                    | —                     | —      |
-| indeterminate | 设置 indeterminate 状态，只负责样式控制 | boolean                   | —                     | —      |
+| Parameter     | Description                                                     | Type                      | Optional Values       | Default Value |
+| ------------- | --------------------------------------------------------------- | ------------------------- | --------------------- | ------------- |
+| value         | Bound value                                                     | string / number / boolean | —                     | —             |
+| label         | The value of the Checkbox                                       | string / number / boolean | —                     | —             |
+| class         | Custom class style                                              | string                    | -                     | -             |
+| disabled      | Whether it is disabled                                          | boolean                   | —                     | false         |
+| border        | Whether to display a border                                     | boolean                   | —                     | false         |
+| size          | The size of the Checkbox, only valid when border is true        | string                    | medium / small / mini | —             |
+| name          | Native name attribute                                           | string                    | —                     | —             |
+| indeterminate | Set the indeterminate state, only responsible for style control | boolean                   | —                     | —             |
 
-### Checkbox 事件
+### Checkbox Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameter |
+| ---------- | ---------------------------------------------------- | ------------------ |
+| change     | The event triggered when the selection state changes | The changed value  |
 
-### Checkbox-button 属性
+### Checkbox-button Attributes
 
-| 参数     | 说明                                         | 类型                      | 可选值 | 默认值 |
-| -------- | -------------------------------------------- | ------------------------- | ------ | ------ |
-| value    | 绑定值                                       | string / number / boolean | —      | —      |
-| label    | 选中状态的值（只有在 checkbox-group 时有效） | string / number / boolean | —      | —      |
-| disabled | 是否禁用                                     | boolean                   | —      | false  |
-| name     | 原生 name 属性                               | string                    | —      | —      |
+| Parameter | Description                                                    | Type                      | Optional Values | Default Value |
+| --------- | -------------------------------------------------------------- | ------------------------- | --------------- | ------------- |
+| value     | Bound value                                                    | string / number / boolean | —               | —             |
+| label     | The value in the selected state (only valid in checkbox-group) | string / number / boolean | —               | —             |
+| disabled  | Whether it is disabled                                         | boolean                   | —               | false         |
+| name      | Native name attribute                                          | string                    | —               | —             |
 
-### Checkbox-button 事件
+### Checkbox-button Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameter |
+| ---------- | ---------------------------------------------------- | ------------------ |
+| change     | The event triggered when the selection state changes | The changed value  |
 
-### Checkbox-group 属性
+### Checkbox-group Attributes
 
-| 参数     | 说明                                                             | 类型    | 可选值                | 默认值 |
-| -------- | ---------------------------------------------------------------- | ------- | --------------------- | ------ |
-| value    | 绑定值                                                           | array   | —                     | []     |
-| size     | 多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效 | string  | medium / small / mini | —      |
-| disabled | 是否禁用                                                         | boolean | —                     | false  |
-| min      | 可被勾选的 checkbox 的最小数量                                   | number  | —                     | -      |
-| max      | 可被勾选的 checkbox 的最大数量                                   | number  | —                     | -      |
+| Parameter | Description                                                                                       | Type    | Optional Values       | Default Value |
+| --------- | ------------------------------------------------------------------------------------------------- | ------- | --------------------- | ------------- |
+| value     | Bound value                                                                                       | array   | —                     | []            |
+| size      | The size of the checkbox group, only valid for button-style checkboxes or checkboxes with borders | string  | medium / small / mini | —             |
+| disabled  | Whether it is disabled                                                                            | boolean | —                     | false         |
+| min       | The minimum number of checkboxes that can be checked                                              | number  | —                     | -             |
+| max       | The maximum number of checkboxes that can be checked                                              | number  | —                     | -             |
 
-### Checkbox-group 事件
+### Checkbox-group Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameter |
+| ---------- | ---------------------------------------------------- | ------------------ |
+| change     | The event triggered when the selection state changes | The changed value  |

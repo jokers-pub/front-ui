@@ -35,7 +35,7 @@
 | position   | tab 位置                                  | string  | top/bottom/right/left | top    |
 | fullHeight | 启用后内容区域高度会自动撑满              | boolean | -                     | -      |
 
-### Event
+### Events
 
 | 事件名 | 说明                  | 参数       |
 | ------ | --------------------- | ---------- |

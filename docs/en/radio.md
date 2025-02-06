@@ -1,90 +1,90 @@
-## Radio 单选框
+## Radio
 
-在一组备选项中进行单选
+Used to make a single selection among a set of alternative options.
 
-### 基础用法
+### Basic Usage
 
-由于选项默认可见，不宜过多，若选项过多，建议使用 Select 选择器。
+Since the options are visible by default, the number of options should not be too large. If there are too many options, it is recommended to use the Select selector.
 
-要使用 Radio 组件 Radio `value`属性的值，`value`可以是`String`、`Number`或`Boolean`。
+To use the Radio component, use the `value` attribute of Radio. The `value` can be `String`, `Number`, or `Boolean`.
 
 !!!demo1!!!
 
-### 禁用状态
+### Disabled State
 
-单选框不可用的状态
+The state where the radio button is unavailable.
 
-只需在`jk-radio`元素中设置`disabled`属性即可，它接收一个`Boolean`，`true`为禁用。
+Just set the `disabled` attribute in the `jk-radio` element. It accepts a `Boolean`, and `true` means disabled.
 
 !!!demo2!!!
 
-### 单选框组
+### Radio Group
 
-适用于在多个互斥的选项中选择的场景
+Suitable for scenarios where a selection is made among multiple mutually exclusive options.
 
-结合父元素`jk-radio-group`和子元素`jk-radio`可以实现单选组，在`jk-radio-group`上绑定`value`，在`jk-radio`上设置好`label`即可，无需再给每一个`jk-radio`绑定变量，另外，还提供了`change`事件来响应选择的变化，它会传入一个参数`value`。
+Combining the parent element `jk-radio-group` and the child element `jk-radio` can achieve a radio group. Bind `value` on the `jk-radio-group` and set `label` on the `jk-radio`. There is no need to bind variables to each `jk-radio` anymore. In addition, a `change` event is provided to respond to changes in the selection, and it will pass in a parameter `value`.
 
 !!!demo3!!!
 
-### 带有边框
+### With Border
 
-设置`border`属性可以渲染为带有边框的单选框。`jk-raido`只有在设置 `border` 时，`size`属性才会生效
+Setting the `border` attribute can render a radio button with a border. The `size` attribute of `jk-raido` only takes effect when `border` is set.
 
 !!!demo4!!!
 
-### 按钮样式
+### Button Style
 
-按钮样式的单选组合。
+A radio combination with a button style.
 
-只需要把`jk-radio`元素换成`jk-radio-button`元素即可，此外，Joker-UI 还提供了`size`属性。
+Just change the `jk-radio` element to the `jk-radio-button` element. In addition, Joker-UI also provides the `size` attribute.
 
 !!!demo5!!!
 
-### Radio 参数
+### Radio Attributes
 
-| 参数       | 说明                                 | 类型                      | 可选值                | 默认值 |
-| ---------- | ------------------------------------ | ------------------------- | --------------------- | ------ |
-| value      | 绑定值                               | string / number / boolean | —                     | —      |
-| class      | 自定义 class 样式                    | string                    | -                     | -      |
-| label      | Radio 的 value                       | string / number / boolean | —                     | —      |
-| hide-label | 是否隐藏 label                       | boolean                   | —                     | —      |
-| disabled   | 是否禁用                             | boolean                   | —                     | false  |
-| border     | 是否显示边框                         | boolean                   | —                     | false  |
-| size       | Radio 的尺寸，仅在 border 为真时有效 | string                    | medium / small / mini | —      |
-| name       | 原生 name 属性                       | string                    | —                     | —      |
+| Parameter  | Description                                       | Type                      | Optional Values       | Default Value |
+| ---------- | ------------------------------------------------- | ------------------------- | --------------------- | ------------- |
+| value      | Bound value                                       | string / number / boolean | —                     | —             |
+| class      | Custom class style                                | string                    | -                     | -             |
+| label      | The value of Radio                                | string / number / boolean | —                     | —             |
+| hide-label | Whether to hide the label                         | boolean                   | —                     | —             |
+| disabled   | Whether to disable                                | boolean                   | —                     | false         |
+| border     | Whether to display the border                     | boolean                   | —                     | false         |
+| size       | The size of Radio, only valid when border is true | string                    | medium / small / mini | —             |
+| name       | Native name attribute                             | string                    | —                     | —             |
 
-### Radio 事件
+### Radio Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameters |
+| ---------- | ---------------------------------------------------- | ------------------- |
+| change     | The event triggered when the selection state changes | The changed value   |
 
-### Radio-button 属性
+### Radio-button Attributes
 
-| 参数     | 说明                                 | 类型                      | 可选值                | 默认值 |
-| -------- | ------------------------------------ | ------------------------- | --------------------- | ------ |
-| value    | 绑定值                               | string / number / boolean | —                     | —      |
-| label    | Radio 的 value                       | string / number / boolean | —                     | —      |
-| disabled | 是否禁用                             | boolean                   | —                     | false  |
-| size     | Radio 的尺寸，仅在 border 为真时有效 | string                    | medium / small / mini | —      |
-| name     | 原生 name 属性                       | string                    | —                     | —      |
+| Parameter | Description                                       | Type                      | Optional Values       | Default Value |
+| --------- | ------------------------------------------------- | ------------------------- | --------------------- | ------------- |
+| value     | Bound value                                       | string / number / boolean | —                     | —             |
+| label     | The value of Radio                                | string / number / boolean | —                     | —             |
+| disabled  | Whether to disable                                | boolean                   | —                     | false         |
+| size      | The size of Radio, only valid when border is true | string                    | medium / small / mini | —             |
+| name      | Native name attribute                             | string                    | —                     | —             |
 
-### Radio-button 事件
+### Radio-button Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameters |
+| ---------- | ---------------------------------------------------- | ------------------- |
+| change     | The event triggered when the selection state changes | The changed value   |
 
-### Radio-group 属性
+### Radio-group Attributes
 
-| 参数     | 说明                                                       | 类型                      | 可选值                | 默认值 |
-| -------- | ---------------------------------------------------------- | ------------------------- | --------------------- | ------ |
-| value    | 绑定值                                                     | string / number / boolean | —                     | —      |
-| size     | 单选框组尺寸，仅对按钮形式的 Radio 或带有边框的 Radio 有效 | string                    | medium / small / mini | —      |
-| disabled | 是否禁用                                                   | boolean                   | —                     | false  |
+| Parameter | Description                                                                            | Type                      | Optional Values       | Default Value |
+| --------- | -------------------------------------------------------------------------------------- | ------------------------- | --------------------- | ------------- |
+| value     | Bound value                                                                            | string / number / boolean | —                     | —             |
+| size      | The size of the radio group, only valid for button-style Radios or Radios with borders | string                    | medium / small / mini | —             |
+| disabled  | Whether to disable                                                                     | boolean                   | —                     | false         |
 
-### Radio-group 事件
+### Radio-group Events
 
-| 事件名称 | 说明                     | 回调参数   |
-| -------- | ------------------------ | ---------- |
-| change   | 选中状态变化时触发的事件 | 变换后的值 |
+| Event Name | Description                                          | Callback Parameters |
+| ---------- | ---------------------------------------------------- | ------------------- |
+| change     | The event triggered when the selection state changes | The changed value   |

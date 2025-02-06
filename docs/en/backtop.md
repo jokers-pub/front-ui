@@ -1,30 +1,28 @@
-## Backtop 回到顶部
+## Backtop
 
-返回页面顶部的操作按钮
+An operation button to return to the top of the page.
 
-### 基础用法
+### Basic Usage
 
-滑动页面即可看到右下方的按钮。
+Scroll the page and you can see the button at the bottom-right corner.
+!!! demo1!!!
 
-!!! demo1 !!!
+### Custom Display Content
 
-### 自定义显示内容
+The display area is fixed to a 40px × 40px area, and the content within it can be customized.
+!!! demo2!!!
 
-显示区域被固定为 40px \* 40px 的区域, 其中的内容可支持自定义。
+### Attributes
 
-!!! demo2 !!!
+| Parameter        | Description                                                                   | Type   | Optional Values | Default Value |
+| ---------------- | ----------------------------------------------------------------------------- | ------ | --------------- | ------------- |
+| target           | The object that triggers the scrolling                                        | string | —               | —             |
+| visibilityHeight | The button appears when the scrolling height reaches this parameter value     | number | —               | 200           |
+| right            | Controls its display position, the distance from the right margin of the page | number | -               | 40            |
+| bottom           | Controls its display position, the distance from the bottom of the page       | number | —               | 40            |
 
-### Backtop 参数
+### Events
 
-| 参数             | 说明                             | 类型   | 可选值 | 默认值 |
-| ---------------- | -------------------------------- | ------ | ------ | ------ |
-| target           | 触发滚动的对象                   | string | —      | —      |
-| visibilityHeight | 滚动高度达到此参数值才出现       | number | —      | 200    |
-| right            | 控制其显示位置, 距离页面右边距   | number | -      | 40     |
-| bottom           | 控制其显示位置, 距离页面底部距离 | number | —      | 40     |
-
-### Backtop 事件
-
-| 事件名称 | 说明               | 回调参数 |
-| -------- | ------------------ | -------- |
-| click    | 点击按钮触发的事件 | 点击事件 |
+| Event Name | Description                                    | Callback Parameter |
+| ---------- | ---------------------------------------------- | ------------------ |
+| click      | The event triggered when the button is clicked | Click event        |

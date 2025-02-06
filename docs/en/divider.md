@@ -1,28 +1,26 @@
-## Divider 分割线
+## Divider
 
-区隔内容的分割线。
+A dividing line that separates content.
 
-### 基础用法
+### Basic Usage
 
-对不同章节的文本段落进行分割。
-
+Used to separate text paragraphs of different chapters.
 !!!demo1!!!
 
-### 设置文案
+### Set Text
 
-可以在分割线上自定义文案内容。
-
+You can customize the text content on the dividing line.
 !!!demo2!!!
 
-### 垂直分割
+### Vertical Division
 
 !!!demo3!!!
 
 ### Attributes
 
-| 参数             | 说明                 | 类型   | 可选值                | 默认值     |
-| ---------------- | -------------------- | ------ | --------------------- | ---------- |
-| class            | 自定义 class 样式    | string | -                     | -          |
-| direction        | 设置分割线方向       | string | horizontal / vertical | horizontal |
-| content-position | 设置分割线文案的位置 | string | left / right / center | center     |
-| background       | 背景色               | string | -                     | -          |
+| Parameter        | Description                                       | Type   | Optional Values       | Default Value |
+| ---------------- | ------------------------------------------------- | ------ | --------------------- | ------------- |
+| class            | Custom class style                                | string | -                     | -             |
+| direction        | Set the direction of the dividing line            | string | horizontal / vertical | horizontal    |
+| content-position | Set the position of the text on the dividing line | string | left / right / center | center        |
+| background       | Background color                                  | string | -                     | -             |

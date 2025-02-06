@@ -1,27 +1,23 @@
-## Color 色彩
+## Color
 
-Joker-UI 为了避免视觉传达差异，使用一套特定的调色板来规定颜色，为你所搭建的产品提供一致的外观视觉感受。
+To avoid visual communication differences, Joker-UI uses a specific color palette to define colors, providing a consistent visual appearance for the products you build.
 
-### 主色
+### Primary Color
 
-Joker-UI 主要品牌颜色是鲜艳、友好的蓝色。
-
+The main brand color of Joker-UI is a bright and friendly blue.
 !!!demo1!!!
 
-### 辅助色
+### Secondary Colors
 
-除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
-
+These are the scene colors other than the primary color, which need to be used in different scenarios (for example, the danger color represents dangerous operations).
 !!!demo2!!!
 
-### 中性色
+### Neutral Colors
 
-中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
-
+Neutral colors are used for text, background, and border colors. By applying different neutral colors, the hierarchical structure can be presented.
 !!!demo3!!!
 
-### 阴影颜色
+### Shadow Colors
 
-提供常用的阴影样式。
-
+Common shadow styles are provided.
 !!!demo4!!!

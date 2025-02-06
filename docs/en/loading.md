@@ -1,22 +1,22 @@
-## Loading 加载
+## Loading
 
-加载数据时显示动效。
+Display animations while data is being loaded.
 
-### 区域展示
+### Regional Display
 
-可通过配置`target`属性来指定 loading 的展示宿主
+You can specify the display host of the loading by configuring the `target` attribute.
 
 !!!demo1!!!
 
-### 全屏展示
+### Full-screen Display
 
-通过设置`fullscreen`或者指定`target`为**body**，实现全屏 Loading
+Set `fullscreen` or specify `target` as **body** to achieve full-screen loading.
 
 !!!demo2!!!
 
-> 请注意，全屏 Loading，只会存在一个，如果重复触发，则返回上一个未完成的 Loading 操作组件
+> Please note that there can only be one full-screen loading. If triggered repeatedly, it will return the previous uncompleted loading operation component.
 
-需要注意的是，以服务的方式调用的全屏 Loading 是单例的：若在前一个全屏 Loading 关闭前再次调用全屏 Loading，并不会创建一个新的 Loading 实例，而是返回现有全屏 Loading 的实例：
+It should be noted that full-screen loading called as a service is a singleton: if you call full-screen loading again before the previous full-screen loading is closed, a new loading instance will not be created, but the existing full-screen loading instance will be returned:
 
 ```js
 let loading1 = Loading({ fullscreen: true });
@@ -24,29 +24,28 @@ let loading2 = Loading({ fullscreen: true });
 console.log(loading1 === loading2); // true
 ```
 
-此时调用它们中任意一个的 close 方法都能关闭这个全屏 Loading。
+At this time, calling the `close` method of either of them can close this full-screen loading.
 
+### Customization
 
-
-### 自定义
-
-可自定义加载文案、图标和背景色。
+You can customize the loading text, icon, and background color.
 
 !!!demo3!!!
 
 ### Options
 
-| 参数        | 说明                                                                                                                                       | 类型                                           | 可选值 | 默认值        |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- | ------ | ------------- |
-| target      | Loading 需要覆盖的 DOM 节点。可传入一个 DOM 对象或字符串；若传入字符串，则会将其作为参数传入 `document.querySelector`以获取到对应 DOM 节点 | Element / string / VNode.Node；支持传入 VNode 节点 | —      | document.body |
-| fullscreen  | 是否全屏                                                                                                                                   | boolean                                        | —      | true          |
-| text        | 显示在加载图标下方的加载文案                                                                                                               | string                                         | —      | —             |
-| spinner     | 自定义加载图标类名                                                                                                                         | string                                         | —      | —             |
-| customClass | Loading 的自定义类名                                                                                                                       | string                                         | —      | —             |
+| Parameter   | Description                                                                                                                                                                                                        | Type                                                     | Optional Values | Default Value |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- | --------------- | ------------- |
+| target      | The DOM node that the Loading needs to cover. You can pass in a DOM object or a string; if a string is passed in, it will be used as a parameter to `document.querySelector` to obtain the corresponding DOM node. | Element / string / VNode.Node; VNode nodes are supported | —               | document.body |
+| fullscreen  | Whether it is full-screen                                                                                                                                                                                          | boolean                                                  | —               | true          |
+| text        | The loading text displayed below the loading icon                                                                                                                                                                  | string                                                   | —               | —             |
+| spinner     | Custom loading icon class name                                                                                                                                                                                     | string                                                   | —               | —             |
+| customClass | Custom class name of the Loading                                                                                                                                                                                   | string                                                   | —               | —             |
 
-### 方法
+### Methods
 
-调用 `Loading` 会返回当前 Loading 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
-| 方法名 | 说明 |
-| ---- | ---- |
-| close | 关闭当前的 Loading |
+Calling `Loading` will return the current Loading instance. If you need to manually close the instance, you can call its `close` method.
+
+| Method Name | Description               |
+| ----------- | ------------------------- |
+| close       | Close the current Loading |

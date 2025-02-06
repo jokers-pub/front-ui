@@ -1,81 +1,71 @@
-## Dropdown 下拉菜单
+## Dropdown
 
-通过点击或着 hover 来展示下拉菜单。
+Displays a dropdown menu through clicking or hovering.
 
-### 基础用法
+### Basic Usage
 
-通过`Section`来设置触发下拉菜单展示的元素，默认情况下通过`click`来激活展示。
-
+Use `Section` to set the element that triggers the display of the dropdown menu. By default, it is activated for display through `click`.
 !!!demo1!!!
 
-### 分割形式
+### Split-form
 
-配置`split-button`属性来让那个触发下拉元素呈现为按钮组。
-
+Configure the `split-button` attribute to make the element triggering the dropdown appear as a button group.
 !!!demo2!!!
 
-### 菜单样式
+### Menu Style
 
-可以通过配置菜单项的图表、分割等属性来展示更丰富的菜单
-
+You can configure attributes such as the menu item's icon and division to display a more diverse menu.
 !!!demo3!!!
-
-当然，你也可以不使用`jk-dropdown-item`组件去填充下拉菜单，而是采用自定义的形式。
-
+Of course, you can also fill the dropdown menu in a custom way instead of using the `jk-dropdown-item` component.
 !!!demo4!!!
 
-### 禁用
+### Disabled
 
-通过设置`disabled`属性实现禁用，该属性会自定更改`split-button`类型下的按钮状态，若不是分割按钮模式，请自行管理设置内容禁用样式
-
+Achieve disabling by setting the `disabled` attribute. This attribute will automatically change the button state in the `split-button` type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.
 !!!demo5!!!
 
-### 尺寸
+### Size
 
-通过设置`size`尺寸可以更改`split-button`模式下的按钮尺寸。
-
-尺寸类型可选值包括：`medium`、`small`、`mini`。
-
+By setting the `size` dimension, you can change the size of the button in the `split-button` mode.
+The available size types include: `medium`, `small`, `mini`.
 !!!demo6!!!
-
-`dropdown-menu`也可以配置`size`属性，用于控制下拉菜单的尺寸。
-
+The `dropdown-menu` can also be configured with the `size` attribute to control the size of the dropdown menu.
 !!!demo7!!!
 
 ### Dropdown Attributes
 
-| 参数         | 说明                                                                 | 类型    | 可选值                | 默认值  |
-| ------------ | -------------------------------------------------------------------- | ------- | --------------------- | ------- |
-| type         | 菜单按钮类型，同 Button 组件(只在`split-button`为 true 的情况下有效) | string  | —                     | primary |
-| size         | 菜单尺寸，在`split-button`为 true 的情况下也对触发按钮生效           | string  | medium / small / mini | —       |
-| split-button | 下拉触发元素呈现为按钮组                                             | boolean | —                     | false   |
-| trigger      | 触发下拉的行为                                                       | string  | hover, click          | click   |
-| disabled     | 是否禁用                                                             | boolean | —                     | false   |
+| Parameter    | Description                                                                             | Type    | Optional Values       | Default Value |
+| ------------ | --------------------------------------------------------------------------------------- | ------- | --------------------- | ------------- |
+| type         | Menu button type, same as the Button component (only valid when `split-button` is true) | string  | —                     | primary       |
+| size         | Menu size, also takes effect on the trigger button when `split-button` is true          | string  | medium / small / mini | —             |
+| split-button | The dropdown-triggering element appears as a button group                               | boolean | —                     | false         |
+| trigger      | The behavior that triggers the dropdown                                                 | string  | hover, click          | click         |
+| disabled     | Whether it is disabled                                                                  | boolean | —                     | false         |
 
 ### Dropdown Events
 
-| 事件名称 | 说明                                                                                                  | 回调参数 |
-| -------- | ----------------------------------------------------------------------------------------------------- | -------- |
-| click    | `split-button` 为 true 时，点击左侧按钮的回调，若不是`split-button`则代表当前内部元素点击冒泡处理事件 | —        |
+| Event Name | Description                                                                                                                                                                           | Callback Parameter |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| click      | Callback when clicking the left-hand button when `split-button` is true. If it is not `split-button`, it represents the click bubbling handling event of the current internal element | —                  |
 
 ### Dropdown Menu Attributes
 
-| 参数      | 说明     | 类型   | 可选值                                                                                                    | 默认值       |
-| --------- | -------- | ------ | --------------------------------------------------------------------------------------------------------- | ------------ |
-| size      | 菜单尺寸 | string | medium / small / mini                                                                                     | -            |
-| placement | 菜单位置 | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start |
+| Parameter | Description   | Type   | Optional Values                                                                                           | Default Value |
+| --------- | ------------- | ------ | --------------------------------------------------------------------------------------------------------- | ------------- |
+| size      | Menu size     | string | medium / small / mini                                                                                     | -             |
+| placement | Menu position | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start  |
 
 ### Dropdown Menu Item Attributes
 
-| 参数     | 说明       | 类型    | 可选值 | 默认值 |
-| -------- | ---------- | ------- | ------ | ------ |
-| disabled | 禁用       | boolean | —      | false  |
-| divided  | 显示分割线 | boolean | —      | false  |
-| icon     | 图标类名   | string  | —      | —      |
+| Parameter | Description             | Type    | Optional Values | Default Value |
+| --------- | ----------------------- | ------- | --------------- | ------------- |
+| disabled  | Disabled                | boolean | —               | false         |
+| divided   | Display a dividing line | boolean | —               | false         |
+| icon      | Icon class name         | string  | —               | —             |
 
 ### Dropdown Menu Events
 
-| 事件名称 | 说明     | 回调参数 |
-| -------- | -------- | -------- |
-| open     | 菜单打开 | —        |
-| close    | 菜单关闭 | —        |
+| Event Name | Description | Callback Parameter |
+| ---------- | ----------- | ------------------ |
+| open       | Menu opened | —                  |
+| close      | Menu closed | —                  |

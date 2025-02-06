@@ -1,84 +1,79 @@
-## DatePicker 日期选择器
+## DatePicker
 
-用于选择或输入日期
+Used to select or input dates.
 
-### 选择日
+### Selecting a Day
 
-以「日」为基本单位，基础的日期选择控件
-
-基本单位由`type`属性指定。快捷选项需配置`shortcuts`，禁用日期通过 `disabledDate` 设置，该属性为函数类型，通过返回`boolean`来判断是否可选。
-
+A basic date-selection control with the "day" as the basic unit.
+The basic unit is specified by the `type` attribute. Shortcut options need to be configured with `shortcuts`, and disabled dates are set through `disabledDate`. This attribute is of function type, and it determines whether a date is selectable by returning a `boolean` value.
 !!!demo1!!!
 
-### 其他日期单位
+### Other Date Units
 
-通过扩展基础的日期选择，可以选择周、月、年。
-
+By extending the basic date selection, weeks, months, and years can be selected.
 !!!demo2!!!
 
-### 选择日期范围
+### Selecting a Date Range
 
-可在一个选择器中便捷地选择一个时间范围
-
+A time range can be conveniently selected in one picker.
 !!!demo3!!!
 
-### 日期格式
+### Date Format
 
-使用`format`指定输入框的格式；使用`value-format`指定绑定值的格式。
-
-默认情况下，组件接受并返回`Date`对象。以下为可用的格式化字符串，以 UTC 2017 年 1 月 2 日 03:04:05 为例：
+Use `format` to specify the format of the input box; use `value-format` to specify the format of the bound value.
+By default, the component accepts and returns `Date` objects. The following are the available formatting strings, taking January 2, 2017, 03:04:05 UTC as an example:
 
 :::warning
-请注意大小写，内部采用`dayjs`进行时间运算及格式化，详细格式值，请参考[dayjs](https://dayjs.fenxianglu.cn/)
+Please note the case. Internally, `dayjs` is used for time operations and formatting. For detailed format values, please refer to [dayjs](https://dayjs.fenxianglu.cn/).
 :::
 
 ### Attributes
 
-| 参数              | 说明                                           | 类型                                                | 可选值                                                              | 默认值       |
-| ----------------- | ---------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------- | ------------ |
-| value             | 绑定值                                         | string(DatePicker) / Array<string>(DateRangePicker) | —                                                                   | —            |
-| class             | 自定义 class 样式                              | string                                              | -                                                                   | -            |
-| readonly          | 完全只读                                       | boolean                                             | —                                                                   | false        |
-| disabled          | 禁用                                           | boolean                                             | —                                                                   | false        |
-| editable          | 文本框可输入                                   | boolean                                             | —                                                                   | true         |
-| clearable         | 是否显示清除按钮                               | boolean                                             | —                                                                   | true         |
-| size              | 输入框尺寸                                     | string                                              | large, small, mini                                                  | —            |
-| placeholder       | 非范围选择时的占位内容                         | string                                              | —                                                                   | —            |
-| start-placeholder | 范围选择时开始日期的占位内容                   | string                                              | —                                                                   | —            |
-| end-placeholder   | 范围选择时结束日期的占位内容                   | string                                              | —                                                                   | —            |
-| type              | 显示类型                                       | string                                              | `year`/`month`/`date`/`week`/`datetime`/`daterange`/`datetimerange` | date         |
-| format            | 显示在输入框中的格式                           | string                                              | 见[日期格式](https://dayjs.fenxianglu.cn/)                          | yyyy-MM-dd   |
-| range-separator   | 选择范围时的分隔符                             | string                                              | —                                                                   | '-'          |
-| default-value     | 可选，选择器打开时默认显示的时间               | string                                              | 遵循 value-format                                                   | —            |
-| value-format      | 可选，绑定值的格式。不指定则绑定值为 Date 对象 | string                                              | 见[日期格式](https://dayjs.fenxianglu.cn/)                          | —            |
-| unlink-panels     | 在范围选择器里取消两个日期面板之间的联动       | boolean                                             | —                                                                   | false        |
-| prefix-icon       | 自定义头部图标的类名                           | string                                              | —                                                                   | jk-icon-date |
+| Parameter         | Description                                                                                 | Type                                                | Optional Values                                                     | Default Value |
+| ----------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------- | ------------- |
+| value             | Bound value                                                                                 | string(DatePicker) / Array<string>(DateRangePicker) | —                                                                   | —             |
+| class             | Custom class style                                                                          | string                                              | -                                                                   | -             |
+| readonly          | Completely read-only                                                                        | boolean                                             | —                                                                   | false         |
+| disabled          | Disabled                                                                                    | boolean                                             | —                                                                   | false         |
+| editable          | The text box is editable                                                                    | boolean                                             | —                                                                   | true          |
+| clearable         | Whether to display the clear button                                                         | boolean                                             | —                                                                   | true          |
+| size              | Size of the input box                                                                       | string                                              | large, small, mini                                                  | —             |
+| placeholder       | Placeholder content when not in range selection                                             | string                                              | —                                                                   | —             |
+| start-placeholder | Placeholder content for the start date in range selection                                   | string                                              | —                                                                   | —             |
+| end-placeholder   | Placeholder content for the end date in range selection                                     | string                                              | —                                                                   | —             |
+| type              | Display type                                                                                | string                                              | `year`/`month`/`date`/`week`/`datetime`/`daterange`/`datetimerange` | date          |
+| format            | The format displayed in the input box                                                       | string                                              | See [Date Format](https://dayjs.fenxianglu.cn/)                     | yyyy-MM-dd    |
+| range-separator   | Separator when selecting a range                                                            | string                                              | —                                                                   | '-'           |
+| default-value     | Optional, the time that is displayed by default when the picker is opened                   | string                                              | Follows value-format                                                | —             |
+| value-format      | Optional, the format of the bound value. If not specified, the bound value is a Date object | string                                              | See [Date Format](https://dayjs.fenxianglu.cn/)                     | —             |
+| unlink-panels     | Cancel the linkage between the two date panels in the range picker                          | boolean                                             | —                                                                   | false         |
+| prefix-icon       | The class name of the custom header icon                                                    | string                                              | —                                                                   | jk-icon-date  |
 
 ### Picker Options
 
-| 参数          | 说明                                                              | 类型           | 可选值 | 默认值 |
-| ------------- | ----------------------------------------------------------------- | -------------- | ------ | ------ |
-| shortcuts     | 设置快捷选项，需要传入 { text, onClick } 对象用法参考 demo 或下表 | Object[]       | —      | —      |
-| disabledDate  | 设置禁用状态，参数为当前日期，要求返回 Boolean                    | Function       | —      | —      |
-| cellClassName | 设置日期的 className                                              | Function(Date) | —      | —      |
+| Parameter     | Description                                                                                                     | Type           | Optional Values | Default Value |
+| ------------- | --------------------------------------------------------------------------------------------------------------- | -------------- | --------------- | ------------- |
+| shortcuts     | Set shortcut options, need to pass in { text, onClick } object. For usage, refer to the demo or the table below | Object[]       | —               | —             |
+| disabledDate  | Set the disabled state, the parameter is the current date, and it is required to return a Boolean               | Function       | —               | —             |
+| cellClassName | Set the className of the date                                                                                   | Function(Date) | —               | —             |
 
 ### Shortcuts
 
-| 参数    | 说明                                                                | 类型     | 可选值 | 默认值 |
-| ------- | ------------------------------------------------------------------- | -------- | ------ | ------ |
-| text    | 标题文本                                                            | string   | —      | —      |
-| onClick | 该方法会传入一个 callback，执行 callback 并传入新的值会进行设置操作 | function | —      | —      |
+| Parameter | Description                                                                                                               | Type     | Optional Values | Default Value |
+| --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | --------------- | ------------- |
+| text      | Title text                                                                                                                | string   | —               | —             |
+| onClick   | This method will pass in a callback. Executing the callback and passing in a new value will perform the setting operation | function | —               | —             |
 
 ### Events
 
-| 事件名称 | 说明                    | 回调参数                                               |
-| -------- | ----------------------- | ------------------------------------------------------ |
-| change   | 用户确认选定的值时触发  | 组件绑定值。格式与绑定值一致，可受 `value-format` 控制 |
-| blur     | 当 input 失去焦点时触发 | 组件实例                                               |
-| focus    | 当 input 获得焦点时触发 | 组件实例                                               |
+| Event Name | Description                                         | Callback Parameters                                                                                              |
+| ---------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| change     | Triggered when the user confirms the selected value | The component-bound value. The format is consistent with the bound value and can be controlled by `value-format` |
+| blur       | Triggered when the input loses focus                | The component instance                                                                                           |
+| focus      | Triggered when the input gets focus                 | The component instance                                                                                           |
 
 ### Methods
 
-| 方法名 | 说明              | 参数 |
-| ------ | ----------------- | ---- |
-| focus  | 使 input 获取焦点 | —    |
+| Method Name | Description              | Parameter |
+| ----------- | ------------------------ | --------- |
+| focus       | Make the input get focus | —         |

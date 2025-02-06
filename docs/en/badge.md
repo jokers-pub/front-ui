@@ -1,45 +1,37 @@
-## Badge 标记
+## Badge
 
-出现在按钮、图标旁的数字或状态标记。
+A numeric or status mark that appears next to buttons or icons.
 
-### 基础用法
+### Basic Usage
 
-展示新消息数量。
-
-定义 value 属性，它接受 Number 或者 String。
-
+Displays the number of new messages.
+Define the `value` attribute, which accepts either a `Number` or a `String`.
 !!!demo1!!!
 
-### 最大值
+### Maximum Value
 
-可自定义最大值。
-
-由 max 属性定义，它接受一个 Number，需要注意的是，只有当 value 为 Number 时，它才会生效。
-
+You can customize the maximum value.
+Defined by the `max` attribute, which accepts a `Number`. Note that it only takes effect when `value` is of type `Number`.
 !!!demo2!!!
 
-### 自定义内容
+### Custom Content
 
-可以显示数字以外的文本内容。
-
-定义 value 为 String 类型是时可以用于显示自定义文本。
-
+It can display text content other than numbers.
+When `value` is defined as a `String` type, it can be used to display custom text.
 !!!demo3!!!
 
-### 小红点
+### Red Dot
 
-以红点的形式标注需要关注的内容。
-
-除了数字外，设置 is-dot 属性，它接受一个 Boolean。
-
+Marks the content that needs attention in the form of a red dot.
+In addition to numbers, set the `is-dot` attribute, which accepts a `Boolean`.
 !!!demo4!!!
 
 ### Attributes
 
-| 参数   | 说明                                                         | 类型          | 可选值                                      | 默认值 |
-| ------ | ------------------------------------------------------------ | ------------- | ------------------------------------------- | ------ |
-| value  | 显示值                                                       | string/number | -                                           | -      |
-| max    | 最大值，超过最大值会显示 '{max}+'，要求 value 是 Number 类型 | number        | -                                           | -      |
-| isDot  | 小圆点                                                       | boolean       | -                                           | false  |
-| hidden | 隐藏 badge                                                   | boolean       | -                                           | false  |
-| type   | 类型                                                         | string        | primary / success / warning / danger / info | -      |
+| Parameter | Description                                                                                                      | Type          | Optional Values                             | Default Value |
+| --------- | ---------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------- | ------------- |
+| value     | Display value                                                                                                    | string/number | -                                           | -             |
+| max       | Maximum value. If the value exceeds the maximum, it will display '{max}+'. The `value` must be of type `Number`. | number        | -                                           | -             |
+| isDot     | Small red dot                                                                                                    | boolean       | -                                           | false         |
+| hidden    | Hide the badge                                                                                                   | boolean       | -                                           | false         |
+| type      | Type                                                                                                             | string        | primary / success / warning / danger / info | -             |

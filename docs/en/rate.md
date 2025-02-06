@@ -1,62 +1,62 @@
-## Rate 评分
+## Rate
 
-评分组件
+Rating component
 
-### 基础用法
+### Basic Usage
 
-评分默认被分为三个等级，可以利用颜色数组对分数及情感倾向进行分级（默认情况下不区分颜色）。三个等级所对应的颜色用`colors`属性设置，而它们对应的两个阈值则通过 `low-threshold` 和 `high-threshold` 设定。你也可以通过传入颜色对象来自定义分段，键名为分段的界限值，键值为对应的颜色。
+By default, the rating is divided into three levels. You can use an array of colors to classify scores and emotional tendencies (by default, no color distinction is made). The colors corresponding to the three levels are set through the `colors` attribute, and the two thresholds corresponding to them are set through `low-threshold` and `high-threshold`. You can also customize the segments by passing in a color object, where the key is the boundary value of the segment and the value is the corresponding color.
 
 !!!demo1!!!
 
-### 辅助文字
+### Auxiliary Text
 
-用辅助文字直接地表达对应分数，为组件设置 `show-text` 属性会在右侧显示辅助文字。通过设置 `texts` 可以为每一个分值指定对应的辅助文字。`texts` 为一个数组，长度应等于最大值 `max`。
+Use auxiliary text to directly express the corresponding score. Setting the `show-text` attribute for the component will display auxiliary text on the right. You can specify the corresponding auxiliary text for each score value by setting `texts`. `texts` is an array with a length equal to the maximum value `max`.
 
 !!!demo2!!!
 
-### 自定义 icon
+### Custom Icon
 
-当有多层评价时，可以用不同类型的 icon 区分评分层级，设置`icon-classes`属性可以自定义不同分段的图标。若传入数组，共有 3 个元素，为 3 个分段所对应的类名；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的类名。本例还使用`void-icon-class`指定了未选中时的图标类名。
+When there are multiple levels of evaluation, different types of icons can be used to distinguish rating levels. Setting the `icon-classes` attribute can customize the icons for different segments. If an array is passed in, it has 3 elements, which are the class names corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding class name. This example also uses `void-icon-class` to specify the class name of the unselected icon.
 
 !!!demo3!!!
 
-### 半星
+### Half-star
 
-可通过设置`allowHalf`属性来设置是否开启半星功能
+You can set the `allowHalf` attribute to enable the half-star function.
 
 !!!demo4!!!
 
-### 只读
+### Read-only
 
-只读的评分用来展示分数，允许出现半星，为组件设置 `disabled` 属性表示组件为只读，支持小数分值。此时若设置 `show-score`，则会在右侧显示目前的分值。
+Read-only ratings are used to display scores. Half-stars are allowed. Setting the `disabled` attribute for the component means the component is read-only and supports decimal scores. At this time, if `show-score` is set, the current score will be displayed on the right.
 
 !!!demo5!!!
 
 ### Attributes
 
-| 参数                     | 说明                                                                                                                            | 类型         | 可选值 | 默认值                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------ | -------------------------------------------------------- |
-| value                    | 值                                                                                                                              | number       | —      | 0                                                        |
-| class                    | 自定义 class 样式                                                                                                               | string       | -      | -                                                        |
-| max                      | 最大分值                                                                                                                        | number       | —      | 5                                                        |
-| disabled                 | 是否为只读                                                                                                                      | boolean      | —      | false                                                    |
-| allow-half               | 是否允许半选                                                                                                                    | boolean      | —      | false                                                    |
-| low-threshold            | 低分和中等分数的界限值，值本身被划分在低分中                                                                                    | number       | —      | 2                                                        |
-| high-threshold           | 高分和中等分数的界限值，值本身被划分在高分中                                                                                    | number       | —      | 4                                                        |
-| colors                   | icon 的颜色。若传入数组，共有 3 个元素，为 3 个分段所对应的颜色；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的颜色 | array/object | —      | ['#F7BA2A', '#F7BA2A', '#F7BA2A']                        |
-| void-color               | 未选中 icon 的颜色                                                                                                              | string       | —      | #C6D1DE                                                  |
-| disabled-void-color      | 只读时未选中 icon 的颜色                                                                                                        | string       | —      | #EFF2F7                                                  |
-| icon-classes             | icon 的类名。若传入数组，共有 3 个元素，为 3 个分段所对应的类名；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的类名 | array/object | —      | ['jk-icon-star-on', 'jk-icon-star-on','jk-icon-star-on'] |
-| void-icon-class          | 未选中 icon 的类名                                                                                                              | string       | —      | jk-icon-star-off                                         |
-| disabled-void-icon-class | 只读时未选中 icon 的类名                                                                                                        | string       | —      | jk-icon-star-on                                          |
-| show-text                | 是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容                                                         | boolean      | —      | false                                                    |
-| show-score               | 是否显示当前分数，show-score 和 show-text 不能同时为真                                                                          | boolean      | —      | false                                                    |
-| text-color               | 辅助文字的颜色                                                                                                                  | string       | —      | #1F2D3D                                                  |
-| texts                    | 辅助文字数组                                                                                                                    | array        | —      | ['极差', '失望', '一般', '满意', '惊喜']                 |
-| score-template           | 分数显示模板                                                                                                                    | string       | —      | {value}                                                  |
+| Parameter                | Description                                                                                                                                                                                                                                                                                           | Type         | Optional Values | Default Value                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------------------------------- |
+| value                    | Value                                                                                                                                                                                                                                                                                                 | number       | —               | 0                                                                 |
+| class                    | Custom class style                                                                                                                                                                                                                                                                                    | string       | -               | -                                                                 |
+| max                      | Maximum score                                                                                                                                                                                                                                                                                         | number       | —               | 5                                                                 |
+| disabled                 | Whether it is read-only                                                                                                                                                                                                                                                                               | boolean      | —               | false                                                             |
+| allow-half               | Whether half-selection is allowed                                                                                                                                                                                                                                                                     | boolean      | —               | false                                                             |
+| low-threshold            | The boundary value between low and medium scores. The value itself is classified as low                                                                                                                                                                                                               | number       | —               | 2                                                                 |
+| high-threshold           | The boundary value between high and medium scores. The value itself is classified as high                                                                                                                                                                                                             | number       | —               | 4                                                                 |
+| colors                   | The colors of the icon. If an array is passed in, it has 3 elements, which are the colors corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding color                | array/object | —               | ['#F7BA2A', '#F7BA2A', '#F7BA2A']                                 |
+| void-color               | The color of the unselected icon                                                                                                                                                                                                                                                                      | string       | —               | #C6D1DE                                                           |
+| disabled-void-color      | The color of the unselected icon in read-only mode                                                                                                                                                                                                                                                    | string       | —               | #EFF2F7                                                           |
+| icon-classes             | The class names of the icon. If an array is passed in, it has 3 elements, which are the class names corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding class name | array/object | —               | ['jk-icon-star-on', 'jk-icon-star-on', 'jk-icon-star-on']         |
+| void-icon-class          | The class name of the unselected icon                                                                                                                                                                                                                                                                 | string       | —               | jk-icon-star-off                                                  |
+| disabled-void-icon-class | The class name of the unselected icon in read-only mode                                                                                                                                                                                                                                               | string       | —               | jk-icon-star-on                                                   |
+| show-text                | Whether to display auxiliary text. If true, the text corresponding to the current score will be selected from the `texts` array                                                                                                                                                                       | boolean      | —               | false                                                             |
+| show-score               | Whether to display the current score. `show-score` and `show-text` cannot be true at the same time                                                                                                                                                                                                    | boolean      | —               | false                                                             |
+| text-color               | The color of the auxiliary text                                                                                                                                                                                                                                                                       | string       | —               | #1F2D3D                                                           |
+| texts                    | The array of auxiliary texts                                                                                                                                                                                                                                                                          | array        | —               | ['Terrible', 'Disappointed', 'Average', 'Satisfied', 'Surprised'] |
+| score-template           | The template for score display                                                                                                                                                                                                                                                                        | string       | —               | {value}                                                           |
 
 ### Events
 
-| 事件名称 | 说明           | 回调参数     |
-| -------- | -------------- | ------------ |
-| change   | 分值改变时触发 | 改变后的分值 |
+| Event Name | Description                            | Callback Parameters     |
+| ---------- | -------------------------------------- | ----------------------- |
+| change     | Triggered when the score value changes | The changed score value |

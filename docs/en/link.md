@@ -1,46 +1,46 @@
-## Link 文字链接
+## Link
 
-文字超链接
+Text hyperlinks.
 
-### 基础用法
+### Basic Usage
 
-基础的文字链接用法。
+The basic usage of text links.
 
 !!!demo1!!!
 
-### 禁用状态
+### Disabled State
 
-文字链接不可用状态。
+The state where the text link is unavailable.
 
 !!!demo2!!!
 
-### 下划线
+### Underline
 
-文字链接下划线。
+Underline of the text link.
 
 !!!demo3!!!
 
-### 图标
+### Icons
 
-带图标的文字链接可增强辨识度。
+Text links with icons can enhance recognition.
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数      | 说明              | 类型    | 可选值                                      | 默认值  |
-| --------- | ----------------- | ------- | ------------------------------------------- | ------- |
-| type      | 类型              | string  | primary / success / warning / danger / info | default |
-| class     | 自定义 class 样式 | string  | -                                           | -       |
-| underline | 是否下划线        | boolean | —                                           | true    |
-| disabled  | 是否禁用状态      | boolean | —                                           | false   |
-| target    | 打开方式          | string  | \_blank                                     | -       |
-| href      | 原生 href 属性    | string  | —                                           | -       |
-| icon      | 图标类名          | string  | —                                           | -       |
-| size      | 尺寸              | string  | medium/small                                | -       |
+| Parameter | Description                       | Type    | Optional Values                             | Default Value |
+| --------- | --------------------------------- | ------- | ------------------------------------------- | ------------- |
+| type      | Type                              | string  | primary / success / warning / danger / info | default       |
+| class     | Custom class style                | string  | -                                           | -             |
+| underline | Whether to have an underline      | boolean | —                                           | true          |
+| disabled  | Whether it is in a disabled state | boolean | —                                           | false         |
+| target    | Opening method                    | string  | \_blank                                     | -             |
+| href      | Native href attribute             | string  | —                                           | -             |
+| icon      | Icon class name                   | string  | —                                           | -             |
+| size      | Size                              | string  | medium/small                                | -             |
 
-### Event
+### Events
 
-| 事件名 | 说明           |
-| ------ | -------------- |
-| click  | 点击链接时触发 |
+| Event Name | Description                        |
+| ---------- | ---------------------------------- |
+| click      | Triggered when the link is clicked |

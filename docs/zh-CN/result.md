@@ -19,7 +19,7 @@
 | subTitle | 二级标题          | string | —                                | —      |
 | icon     | 图标类型          | string | success / warning / info / error | info   |
 
-### Section
+### Sections
 
 | 名称     | 描述           |
 | -------- | -------------- |

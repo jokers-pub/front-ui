@@ -1,97 +1,89 @@
-## Cascader 级联选择器
+## Cascader
 
-当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。
+When a data set has a clear hierarchical structure, it can be viewed and selected step by step through the cascader.
 
-### 基础用法
+### Basic Usage
 
-有两种触发子菜单的方式，只需为 Cascader 的`options`属性指定选项数组即可渲染出一个级联选择器。通过`props.expandTrigger`可以定义展开子级菜单的触发方式。
-
+There are two ways to trigger the sub-menu. Just specify the option array for the `options` attribute of the `Cascader` to render a cascader. The trigger method for expanding the sub-level menu can be defined through `props.expandTrigger`.
 !!!demo1!!!
 
-### 禁用选项
+### Disabled Options
 
-通过在数据源中设置 `disabled` 字段来声明该选项是禁用的，本例中，`options`指定的数组中的第一个元素含有`disabled: true`键值对，因此是禁用的。在默认情况下，Cascader 会检查数据中每一项的`disabled`字段是否为`true`，如果你的数据中表示禁用含义的字段名不为`disabled`，可以通过`props.disabled`属性来指定（详见下方 API 表格）。当然，`value`、`label`和`children`这三个字段名也可以通过同样的方式指定。
-
+Declare that an option is disabled by setting the `disabled` field in the data source. In this example, the first element in the array specified by `options` contains the key-value pair `disabled: true`, so it is disabled. By default, the `Cascader` checks whether the `disabled` field of each item in the data is `true`. If the field name representing the disabled meaning in your data is not `disabled`, it can be specified through the `props.disabled` property (see the API table below for details). Of course, the field names `value`, `label`, and `children` can also be specified in the same way.
 !!!demo2!!!
 
-### 可清空
+### Clearable
 
-通过 `clearable` 设置输入框可清空
-
+Set the input box to be clearable through `clearable`.
 !!!demo3!!!
 
-### 仅显示最后一级
+### Show Only the Last Level
 
-可以仅在输入框中显示选中项最后一级的标签，而不是选中项所在的完整路径。属性`show-all-levels`定义了是否显示完整的路径，将其赋值为`false`则仅显示最后一级
-
+Only the label of the last level of the selected item can be displayed in the input box, instead of the complete path where the selected item is located. The `show-all-levels` property defines whether to display the complete path. Assigning it as `false` will show only the last level.
 !!!demo4!!!
 
-### 多选
+### Multiple Selection
 
-可通过 `multiple = true` 来开启多选模式。
-
+The multiple-selection mode can be enabled by setting `multiple = true`.
 !!!demo5!!!
 
-### 动态加载
+### Dynamic Loading
 
-当选中某一级时，动态加载该级下的选项。
-通过`lazy`开启动态加载，并通过`lazyload`来设置加载数据源的方法。`lazyload`方法有两个参数，第一个参数`node`为当前点击的节点，第二个`resolve`为数据加载完成的回调(必须调用)。为了更准确的显示节点的状态，还可以对节点数据添加是否为叶子节点的标志位 (默认字段为`leaf`，可通过`props.leaf`修改)，否则会简单的以有无子节点来判断是否为叶子节点。
-
+When a certain level is selected, dynamically load the options at that level.
+Enable dynamic loading through `lazy`, and set the method for loading the data source through `lazyload`. The `lazyload` method has two parameters. The first parameter `node` is the currently clicked node, and the second `resolve` is the callback when the data loading is completed (must be called). To more accurately display the state of the node, a flag indicating whether the node is a leaf node can also be added to the node data (the default field is `leaf`, which can be modified through `props.leaf`). Otherwise, it will simply judge whether it is a leaf node by the presence or absence of child nodes.
 !!!demo6!!!
 
-### 可搜索
+### Searchable
 
-可以快捷地搜索选项并选择。
-将`filterable`赋值为`true`即可打开搜索功能，默认会匹配节点的`label`或所有父节点的`label`(由`show-all-levels`决定)中包含输入值的选项。你也可以用`filter-method`自定义搜索逻辑，接受一个函数，第一个参数是节点`node`，第二个参数是搜索关键词`keyword`，通过返回布尔值表示是否命中。
-
+Options can be quickly searched and selected.
+Assigning `filterable` as `true` can turn on the search function. By default, it will match the options whose `label` of the node or the `label` of all parent nodes (determined by `show-all-levels`) contains the input value. You can also customize the search logic with `filter-method`, which accepts a function. The first parameter is the node `node`, and the second parameter is the search keyword `keyword`. Whether it hits is indicated by returning a boolean value.
 !!!demo7!!!
 
-### 自定义节点内容
+### Customize Node Content
 
-可以自定义备选项的节点内容，可以通过`section`对级联选择器的备选项的节点内容进行自定义，具名区域（section） 会传入两个字段 `node` 和 `data`，分别表示当前节点的 Node 对象和数据。
-
+The node content of the alternative options can be customized. The node content of the alternative options of the cascader can be customized through `section`. The named area (section) will be passed two fields, `node` and `data`, representing the Node object and data of the current node respectively.
 !!!demo8!!!
 
 ### Cascader Attributes
 
-| 参数           | 说明                                                                                                | 类型                    | 可选值                | 默认值    |
-| -------------- | --------------------------------------------------------------------------------------------------- | ----------------------- | --------------------- | --------- |
-| value          | 选中项绑定值                                                                                        | -                       | —                     | —         |
-| options        | 可选项数据源，键名可通过 `Props` 属性配置                                                           | array                   | —                     | —         |
-| props          | 配置选项，具体见下表                                                                                | object                  | —                     | —         |
-| class          | 自定义 class 样式                                                                                   | string                  | -                     | -         |
-| size           | 尺寸                                                                                                | string                  | medium / small / mini | —         |
-| placeholder    | 输入框占位文本                                                                                      | string                  | —                     | 请选择    |
-| disabled       | 是否禁用                                                                                            | boolean                 | —                     | false     |
-| clearable      | 是否支持清空选项                                                                                    | boolean                 | —                     | false     |
-| show-all-leves | 输入框中是否显示选中值的完整路径                                                                    | boolean                 | —                     | true      |
-| separator      | 选项分隔符                                                                                          | string                  | —                     | 斜杠' / ' |
-| filterable     | 是否可搜索选项                                                                                      | boolean                 | —                     | —         |
-| filter-method  | 自定义搜索逻辑，第一个参数是节点`node`，第二个参数是搜索关键词`keyword`，通过返回布尔值表示是否命中 | function(node, keyword) | -                     | -         |
+| Parameter       | Description                                                                                                                                                                      | Type                    | Optional Values       | Default Value |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------- | ------------- |
+| value           | The bound value of the selected item                                                                                                                                             | -                       | —                     | —             |
+| options         | The data source of available options, and the key names can be configured through the `Props` attribute                                                                          | array                   | —                     | —             |
+| props           | Configuration options, see the table below for details                                                                                                                           | object                  | —                     | —             |
+| class           | Custom class style                                                                                                                                                               | string                  | -                     | -             |
+| size            | Size                                                                                                                                                                             | string                  | medium / small / mini | —             |
+| placeholder     | Placeholder text of the input box                                                                                                                                                | string                  | —                     | Please select |
+| disabled        | Whether it is disabled                                                                                                                                                           | boolean                 | —                     | false         |
+| clearable       | Whether it supports clearing options                                                                                                                                             | boolean                 | —                     | false         |
+| show-all-levels | Whether to display the complete path of the selected value in the input box                                                                                                      | boolean                 | —                     | true          |
+| separator       | Option separator                                                                                                                                                                 | string                  | —                     | Slash '/'     |
+| filterable      | Whether options can be searched                                                                                                                                                  | boolean                 | —                     | —             |
+| filter-method   | Custom search logic. The first parameter is the node `node`, and the second parameter is the search keyword `keyword`. Whether it hits is indicated by returning a boolean value | function(node, keyword) | -                     | -             |
 
 ### Cascader Events
 
-| 事件名称 | 说明                 | 回调参数     |
-| -------- | -------------------- | ------------ |
-| change   | 当选中节点变化时触发 | 选中节点的值 |
+| Event Name | Description                              | Callback Parameter             |
+| ---------- | ---------------------------------------- | ------------------------------ |
+| change     | Triggered when the selected node changes | The value of the selected node |
 
 ### Cascader Section
 
-| 名称    | 说明                                      |
-| ------- | ----------------------------------------- |
-| default | 自定义备选项的节点内容，参数为 { node }， |
+| Name    | Description                                                                          |
+| ------- | ------------------------------------------------------------------------------------ |
+| default | Customize the node content of the alternative options, with the parameter `{ node }` |
 
 ### Props
 
-| 参数          | 说明                                                                                               | 类型                                                                                     | 可选值        | 默认值     |
-| ------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------- | ---------- |
-| expandTrigger | 次级菜单的展开方式                                                                                 | string                                                                                   | click / hover | 'click'    |
-| multiple      | 是否多选                                                                                           | boolean                                                                                  | -             | false      |
-| emitPath      | 在选中节点改变时，是否返回由该节点所在的各级菜单的值所组成的数组，若设置 false，则只返回该节点的值 | boolean                                                                                  | -             | true       |
-| lazy          | 是否动态加载子节点，需与 lazyLoad 方法结合使用                                                     | boolean                                                                                  | -             | false      |
-| lazyLoad      | 加载动态数据的方法，仅在 lazy 为 true 时有效                                                       | function(node, resolve)，`node`为当前点击的节点，`resolve`为数据加载完成的回调(必须调用) | -             | -          |
-| value         | 指定选项的值为选项对象的某个属性值                                                                 | string                                                                                   | —             | 'value'    |
-| label         | 指定选项标签为选项对象的某个属性值                                                                 | string                                                                                   | —             | 'label'    |
-| children      | 指定选项的子选项为选项对象的某个属性值                                                             | string                                                                                   | —             | 'children' |
-| disabled      | 指定选项的禁用为选项对象的某个属性值                                                               | string                                                                                   | —             | 'disabled' |
-| leaf          | 指定选项的叶子节点的标志位为选项对象的某个属性值                                                   | string                                                                                   | —             | 'leaf'     |
+| Parameter     | Description                                                                                                                                                                                    | Type                                                                                                                                                  | Optional Values | Default Value |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------- |
+| expandTrigger | The expansion method of the secondary menu                                                                                                                                                     | string                                                                                                                                                | click / hover   | 'click'       |
+| multiple      | Whether multiple selection is allowed                                                                                                                                                          | boolean                                                                                                                                               | -               | false         |
+| emitPath      | When the selected node changes, whether to return an array composed of the values of each level of the menu where the node is located. If set to false, only the value of the node is returned | boolean                                                                                                                                               | -               | true          |
+| lazy          | Whether to dynamically load child nodes, needs to be used in combination with the `lazyLoad` method                                                                                            | boolean                                                                                                                                               | -               | false         |
+| lazyLoad      | The method for loading dynamic data, only valid when `lazy` is true                                                                                                                            | function(node, resolve), where `node` is the currently clicked node and `resolve` is the callback when the data loading is completed (must be called) | -               | -             |
+| value         | Specify the value of the option as a certain property value of the option object                                                                                                               | string                                                                                                                                                | —               | 'value'       |
+| label         | Specify the label of the option as a certain property value of the option object                                                                                                               | string                                                                                                                                                | —               | 'label'       |
+| children      | Specify the sub-options of the option as a certain property value of the option object                                                                                                         | string                                                                                                                                                | —               | 'children'    |
+| disabled      | Specify the disabled state of the option as a certain property value of the option object                                                                                                      | string                                                                                                                                                | —               | 'disabled'    |
+| leaf          | Specify the flag of the leaf node of the option as a certain property value of the option object                                                                                               | string                                                                                                                                                | —               | 'leaf'        |

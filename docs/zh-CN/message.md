@@ -54,14 +54,14 @@
 | center      | 文字是否居中                          | boolean | —                          | false  |
 | offset      | Message 距离窗口顶部的偏移量          | number  | —                          | 20     |
 
-### 方法
+### Methods
 
 调用 `Message` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
 | 方法名 | 说明 |
 | ---- | ---- |
 | close | 关闭当前的 Message |
 
-### Event
+### Events
 
 | 事件名 | 说明                |
 | ------ | ------------------- |

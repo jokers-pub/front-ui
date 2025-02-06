@@ -1,34 +1,27 @@
-## Breadcrumb 面包屑
+## Breadcrumb
 
-显示页面的路径，返回之前页面
+Displays the page path for returning to previous pages.
 
-### 基础用法
+### Basic Usage
 
-基础的面包屑用法。
-
-
+Basic usage of the breadcrumb.
 !!!demo1!!!
 
-### 图标分隔符
+### Icon Separator
 
 !!!demo2!!!
 
-### 链接功能
+### Link Functionality
 
 !!!demo3!!!
 
-### 包含图标
+### Include Icons
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数 | 说明  | 类型   | 可选值  | 默认值 |
-| ------ | ------------------------------------------------------------ | ------------- | ------------------------------------------- | ------ |
-| separator | 分隔符 | string | - | "/" |
-| separatorClass | 图标分隔符 class | string | - | - |
-
-
-
-
-
+| Parameter      | Description                  | Type   | Optional Values | Default Value |
+| -------------- | ---------------------------- | ------ | --------------- | ------------- |
+| separator      | Separator                    | string | -               | "/"           |
+| separatorClass | Class for the icon separator | string | -               | -             |

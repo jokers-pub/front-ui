@@ -1,49 +1,45 @@
-## Empty 空状态
+## Empty
 
-空状态时的占位提示。
+Placeholder prompt for the empty state.
 
-### 基础用法
+### Basic Usage
 
-!!! demo1 !!!
+!!! demo1!!!
 
-### 自定义图片
+### Custom Image
 
-通过设置 image 属性传入图片 URL。
+Pass in the image URL by setting the `image` attribute.
+!!! demo2!!!
 
-!!! demo2 !!!
+### Image Size
 
-### 图片尺寸
+Control the size of the image by setting the `image-size` attribute.
+!!! demo3!!!
 
-通过设置 image-size 属性来控制图片大小。
+### Bottom Content
 
-!!! demo3 !!!
+Use the default section to insert content at the bottom.
+!!! demo4!!!
 
-### 底部内容
+### Size
 
-使用默认 section 可在底部插入内容。
-
-!!! demo4 !!!
-
-### 尺寸
-
-通过配置 size 属性来设置尺寸。
-
+Set the size by configuring the `size` attribute.
 !!!demo5!!!
 
 ### Attributes
 
-| 参数        | 说明              | 类型   | 可选值 | 默认值            |
-| ----------- | ----------------- | ------ | ------ | ----------------- |
-| size        | 自定义尺寸        | string | -      | medium/small/mini |
-| class       | 自定义 class 样式 | string | -      | -                 |
-| image       | 图片地址          | string | —      | —                 |
-| imageSize   | 图片大小（宽度）  | number | —      | —                 |
-| description | 文本描述          | string | —      | —                 |
+| Parameter   | Description        | Type   | Optional Values | Default Value     |
+| ----------- | ------------------ | ------ | --------------- | ----------------- |
+| size        | Custom size        | string | -               | medium/small/mini |
+| class       | Custom class style | string | -               | -                 |
+| image       | Image address      | string | —               | —                 |
+| imageSize   | Image size (width) | number | —               | —                 |
+| description | Text description   | string | —               | —                 |
 
-### Section
+### Sections
 
-| 名称        | 描述           |
-| ----------- | -------------- |
-| default     | 自定义底部内容 |
-| image       | 自定义图片     |
-| description | 自定义描述文字 |
+| Name        | Description                    |
+| ----------- | ------------------------------ |
+| default     | Customize bottom content       |
+| image       | Customize the image            |
+| description | Customize the description text |

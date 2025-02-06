@@ -1,40 +1,38 @@
-## ColorPicker 颜色选择器
+## ColorPicker
 
-用于颜色选择，支持多种格式。
+Used for color selection, supporting multiple formats.
 
-### 基础用法
+### Basic Usage
 
-使用设置 value 变量进行进行默认值的展示，并通过过去 value 来实现取值
-
+Set the `value` variable to display the default value and obtain the selected value through the `value`.
 !!!demo1!!!
 
-### 选择透明度
+### Select Transparency
 
-ColorPicker 支持普通颜色，也支持带 Alpha 通道的颜色，通过`show-alpha`属性即可控制是否支持透明度的选择。
-
+The ColorPicker supports both ordinary colors and colors with an Alpha channel. You can control whether to support the selection of transparency through the `show-alpha` attribute.
 !!!demo2!!!
 
-### 不同尺寸
+### Different Sizes
 
 !!!demo3!!!
 
-### 只读/禁用
+### Read-only/Disabled
 
 !!!demo4!!!
 
 ### Attributes
 
-| 参数       | 说明               | 类型    | 可选值                | 默认值 |
-| ---------- | ------------------ | ------- | --------------------- | ------ |
-| value      | 绑定值             | string  | —                     | —      |
-| disabled   | 是否禁用           | boolean | —                     | false  |
-| class      | 自定义 class 样式  | string  | -                     | -      |
-| size       | 尺寸               | string  | medium / small / mini | —      |
-| show-alpha | 是否支持透明度选择 | boolean | —                     | false  |
-| format     | 写入颜色的格式     | string  | hex / rgba            | -      |
+| Parameter  | Description                               | Type    | Optional Values       | Default Value |
+| ---------- | ----------------------------------------- | ------- | --------------------- | ------------- |
+| value      | Bound value                               | string  | —                     | —             |
+| disabled   | Whether it is disabled                    | boolean | —                     | false         |
+| class      | Custom class style                        | string  | -                     | -             |
+| size       | Size                                      | string  | medium / small / mini | —             |
+| show-alpha | Whether to support transparency selection | boolean | —                     | false         |
+| format     | The format for writing colors             | string  | hex / rgba            | -             |
 
-### Event
+### Events
 
-| 事件名称 | 说明               | 回调参数 |
-| -------- | ------------------ | -------- |
-| change   | 当绑定值变化时触发 | 当前值   |
+| Event Name | Description                            | Callback Parameter |
+| ---------- | -------------------------------------- | ------------------ |
+| change     | Triggered when the bound value changes | The current value  |
