@@ -97,7 +97,7 @@ export default class extends Component {
         docsearch({
             container: "#docsearch",
             appId: "U6KJ6739FP",
-            indexName: "joker_ui",
+            indexName: this.lang === "zh-CN" ? "joker_ui" : "joker_ui_en",
             apiKey: "aa7e584e01dfa193ec388bd99e005283",
             insights: true
         });
