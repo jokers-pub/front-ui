@@ -9,7 +9,7 @@
                 @(lang === "zh-CN" ? "领先的快速网站搭建工具" : "The Leading Fast-website Building Tool")
             </p>
             <p>
-                @(lang === "zh-CN" ? "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件" : "The Joker UI component library is a meticulously designed and coded project, aiming to provide developers with a series of efficient, easy - to - use, and aesthetically pleasing user interface components")
+                @(lang === "zh-CN" ? "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件" : "The Joker UI component library is a meticulously designed and coded project, aiming to provide developers with a series of efficient, easy-to-use, and aesthetically pleasing user interface components")
             </p>
             <div class="nav-btns">
                 <a href="/component/start">
@@ -41,9 +41,9 @@
                     @(lang === "zh-CN" ? "核心特点" : "Core Features")
                 </div>
                 <div class="content">
-                    @(lang === "zh-CN" ? "轻量级且高性能：代码经过优化，确保加载快速，对浏览器性能影响最小。" : "Lightweight and High - performance: The code is optimized to ensure fast loading and minimal impact on browser performance.")
+                    @(lang === "zh-CN" ? "轻量级且高性能：代码经过优化，确保加载快速，对浏览器性能影响最小。" : "Lightweight and High-performance: The code is optimized to ensure fast loading and minimal impact on browser performance.")
                     <br
-                    />@(lang === "zh-CN" ? "跨浏览器兼容：兼容主流的现代浏览器，包括Chrome、Firefox、Safari和Edge。" : "Cross - browser Compatibility: Compatible with mainstream modern browsers, including Chrome, Firefox, Safari, and Edge.")
+                    />@(lang === "zh-CN" ? "跨浏览器兼容：兼容主流的现代浏览器，包括Chrome、Firefox、Safari和Edge。" : "Cross-browser Compatibility: Compatible with mainstream modern browsers, including Chrome, Firefox, Safari, and Edge.")
                 </div>
             </div>
             <div class="item">
@@ -51,7 +51,7 @@
                     @(lang === "zh-CN" ? "应用场景" : "Application Scenarios")
                 </div>
                 <div class="content">
-                    @(lang === "zh-CN" ? "这套UI组件库适用于各种Web应用开发，无论是企业级应用、电商平台还是个人项目，都能提供强大支持。" : "This set of UI component libraries is suitable for various web application developments. Whether it is an enterprise - level application, an e - commerce platform, or a personal project, it can provide strong support.")
+                    @(lang === "zh-CN" ? "这套UI组件库适用于各种Web应用开发，无论是企业级应用、电商平台还是个人项目，都能提供强大支持。" : "This set of UI component libraries is suitable for various web application developments. Whether it is an enterprise-level application, an e-commerce platform, or a personal project, it can provide strong support.")
                 </div>
             </div>
             <div class="item">
@@ -83,6 +83,7 @@ export default class extends Component {
         text-align: center;
         max-width: 1000px;
         margin: 0 auto;
+        padding: 0 10px;
         margin-bottom: 20px;
 
         p {
