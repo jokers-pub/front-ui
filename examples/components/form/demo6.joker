@@ -1,25 +1,30 @@
 <template>
-    <jk-form ref="form" @submit="handleFormSubmit">
-        <jk-form-item label="年龄">
+    <jk-form ref="form" @submit="handleFormSubmit" label-width="140px">
+        <jk-form-item label="Age">
             <jk-input
                 name="age"
                 status-icon
                 validate="@([Global.isRequired(), Global.isInt(), validateAge])"
-                placeholder="请输入年龄"
+                placeholder="Please enter your age"
             />
         </jk-form-item>
-        <jk-form-item label="新密码">
-            <jk-input name="pwd" ref="pwd" validate="@([Global.isRequired()])" placeholder="请输入新密码" />
+        <jk-form-item label="New Password">
+            <jk-input
+                name="pwd"
+                ref="pwd"
+                validate="@([Global.isRequired()])"
+                placeholder="Please enter your new password"
+            />
         </jk-form-item>
-        <jk-form-item label="确认密码">
+        <jk-form-item label="Confirm Password">
             <jk-input
                 name="confirmPwd"
                 validate="@([Global.isRequired(), validateConfirmPwd])"
-                placeholder="请输入确认密码"
+                placeholder="Please confirm your password"
             />
         </jk-form-item>
         <jk-form-item>
-            <jk-button type="primary" nativeType="submit">提交</jk-button>
+            <jk-button type="primary" nativeType="submit">Submit</jk-button>
         </jk-form-item>
     </jk-form>
 </template>
@@ -29,31 +34,30 @@ import { sleep } from "@joker.front/shared";
 
 export default class extends Component {
     async validateAge(value: string) {
-        //模拟请求，实现异步校验
+        // Simulate a request to implement asynchronous validation
         await sleep(1500);
 
-        //自定义校验是最后执行，无需考虑非空 && 正整数
+        // Custom validation is performed last, no need to consider non - empty && positive integer
         let age = parseInt(value);
 
         if (age < 22) {
-            return "你的年龄太小了，等22岁之后再来吧";
+            return "You are too young. Come back after you are 22.";
         }
 
         if (age > 30) {
-            return "你已经够成熟了，不需要再了解了";
+            return "You are mature enough and don't need to know more.";
         }
     }
     validateConfirmPwd(value) {
-        let pwd = this.$getRef<VNode.Component>("pwd")?.component.value;
+        let pwd = this.$getRef("pwd")?.component.value;
 
         if (pwd !== value) {
-            return "两次密码不一致";
+            return "The two passwords do not match.";
         }
     }
 
     async handleFormSubmit(e: VNode.Event) {
-        console.log("验证成功", e.data);
+        console.log("Verification succeeded", e.data);
     }
 }
 </script>
-

@@ -1,13 +1,13 @@
 <template>
     <jk-dropdown split-button disabled>
-        更多菜单
+        More Menus
         <jk-dropdown-menu>
-            <jk-dropdown-item icon="jk-icon-circle-plus-outline">创建新项目</jk-dropdown-item>
-            <jk-dropdown-item icon="jk-icon-remove-outline">删除</jk-dropdown-item>
-            <jk-dropdown-item disabled icon="jk-icon-edit">编辑</jk-dropdown-item>
+            <jk-dropdown-item icon="jk-icon-circle-plus-outline">Create a New Project</jk-dropdown-item>
+            <jk-dropdown-item icon="jk-icon-remove-outline">Delete</jk-dropdown-item>
+            <jk-dropdown-item disabled icon="jk-icon-edit">Edit</jk-dropdown-item>
             <jk-dropdown-item divided></jk-dropdown-item>
-            <jk-dropdown-item icon="jk-icon-share">分享项目</jk-dropdown-item>
-            <jk-dropdown-item icon="jk-icon-document-copy">复制项目</jk-dropdown-item>
+            <jk-dropdown-item icon="jk-icon-share">Share the Project</jk-dropdown-item>
+            <jk-dropdown-item icon="jk-icon-document-copy">Copy the Project</jk-dropdown-item>
         </jk-dropdown-menu>
     </jk-dropdown>
 </template>

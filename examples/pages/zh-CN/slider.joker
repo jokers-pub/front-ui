@@ -7,23 +7,23 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;默认：&lt;/span&gt;
+        &lt;span&gt;Default:&lt;/span&gt;
         &lt;jk-slider&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;默认值：&lt;/span&gt;
+        &lt;span&gt;Default value:&lt;/span&gt;
         &lt;jk-slider value=&quot;30&quot;&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;关闭Tooltip：&lt;/span&gt;
+        &lt;span&gt;Hide Tooltip:&lt;/span&gt;
         &lt;jk-slider value=&quot;30&quot; showTooltip=&quot;@false&quot;&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;格式化Tooltip：&lt;/span&gt;
+        &lt;span&gt;Format Tooltip:&lt;/span&gt;
         &lt;jk-slider value=&quot;30&quot; formatTooltip=&quot;@formatTooltip&quot;&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;默认值：&lt;/span&gt;
+        &lt;span&gt;Default value:&lt;/span&gt;
         &lt;jk-slider value=&quot;30&quot; disabled&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -67,11 +67,11 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;不显示间断点：&lt;/span&gt;
+        &lt;span&gt;Do not show breakpoints:&lt;/span&gt;
         &lt;jk-slider step=&quot;10&quot;&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;显示间断点：&lt;/span&gt;
+        &lt;span&gt;Show breakpoints:&lt;/span&gt;
         &lt;jk-slider step=&quot;10&quot; showStops&gt;&lt;/jk-slider&gt;
     &lt;/div&gt;
 &lt;/template&gt;

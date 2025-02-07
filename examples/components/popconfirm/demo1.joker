@@ -1,6 +1,6 @@
 <template>
-    <jk-popconfirm title="你确定要删除此数据吗？" @cancel="cancel" @confirm="confirm">
-        <jk-button>删除</jk-button>
+    <jk-popconfirm title="Are you sure you want to delete this data?" @cancel="cancel" @confirm="confirm">
+        <jk-button>Delete</jk-button>
     </jk-popconfirm>
 </template>
 <script>
@@ -9,10 +9,10 @@ import { Message } from "../../../src";
 
 export default class extends Component {
     cancel() {
-        Message.warning("取消");
+        Message.warning("Cancelled");
     }
     confirm() {
-        Message.success("确定");
+        Message.success("Confirmed");
     }
 }
 </script>

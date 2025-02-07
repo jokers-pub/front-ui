@@ -1,9 +1,9 @@
 <template>
     <DemoRow>
         <jk-button-group>
-            <jk-button type="primary" icon="jk-icon-arrow-left">上一页</jk-button>
+            <jk-button type="primary" icon="jk-icon-arrow-left">Previous Page</jk-button>
             <jk-button type="primary">
-                下一页
+                Next Page
                 <i class="jk-icon-arrow-right"></i>
             </jk-button>
         </jk-button-group>

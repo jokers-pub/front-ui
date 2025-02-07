@@ -199,15 +199,15 @@ export default class extends FormCtrl<{
         this.value = undefined;
     }
     focus() {
-        this.$getRef<VNode.Component>("input")?.component.focus();
+        this.$getRef("input")?.component.focus();
     }
 
     blur() {
-        this.$getRef<VNode.Component>("input")?.component.blur();
+        this.$getRef("input")?.component.blur();
     }
 
     select() {
-        this.$getRef<VNode.Component>("input")?.component.select();
+        this.$getRef("input")?.component.select();
     }
 
     //#region Event

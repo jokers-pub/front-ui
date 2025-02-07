@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-link type="primary" @click="open">点击打开消息弹窗</jk-link>
+        <jk-link type="primary" @click="open">Click to open the message pop-up window</jk-link>
     </DemoRow>
 </template>
 <script>
@@ -9,16 +9,15 @@ import { MessageBox, Message } from "../../../src";
 
 export default class extends Component {
     open() {
-        MessageBox.alert("我是一个alert提示框", {
-            confirmButtonText: "我是OK",
+        MessageBox.alert("I'm an alert prompt box", {
+            confirmButtonText: "I'm OK",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 </script>
-

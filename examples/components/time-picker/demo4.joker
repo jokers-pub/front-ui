@@ -1,14 +1,14 @@
 <template>
     <DemoRow>
-        <jk-time-picker range startPlaceholder="开始时间" endPlaceholder="结束时间"></jk-time-picker>
+        <jk-time-picker range startPlaceholder="Start time" endPlaceholder="End time"></jk-time-picker>
     </DemoRow>
     <DemoRow>
         <jk-time-picker
             range
-            format="HH时mm分"
+            format="HH:mm"
             valueFormat="HH:mm"
-            start-placeholder="开车时间"
-            end-placeholder="到站时间"
+            start-placeholder="Departure time"
+            end-placeholder="Arrival time"
             value="@(['08:30', '15:30'])"></jk-time-picker>
     </DemoRow>
 </template>

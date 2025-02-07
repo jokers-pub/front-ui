@@ -11,12 +11,12 @@ export default class extends Component {
     async loadData(node: TreeNode, callBack: Function) {
         if (node.level === 0) {
             return callBack([
-                { label: "选项1", id: "1" },
-                { label: "选项2", id: "2" }
+                { label: "Option 1", id: "1" },
+                { label: "Option 2", id: "2" }
             ]);
         }
 
-        //模拟请求
+        // Simulate a request
         await sleep(1000);
 
         if (node.level > 3) {
@@ -25,13 +25,13 @@ export default class extends Component {
 
         if (node.key === "1") {
             callBack([
-                { label: "选项1-1", id: "1-1" },
-                { label: "选项2-2", id: "2-2", isVirtualNode: true }
+                { label: "Option 1-1", id: "1-1" },
+                { label: "Option 2-2", id: "2-2", isVirtualNode: true }
             ]);
         } else if (node.key === "2-2") {
             callBack([
-                { label: "选项2-2-1", id: "2-2-1" },
-                { label: "选项2-2-2", id: "2-2-2" }
+                { label: "Option 2-2-1", id: "2-2-1" },
+                { label: "Option 2-2-2", id: "2-2-2" }
             ]);
         } else {
             callBack();

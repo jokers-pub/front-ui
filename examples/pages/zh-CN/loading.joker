@@ -25,7 +25,7 @@ export default class extends Component {
 <p>通过设置<code>fullscreen</code>或者指定<code>target</code>为<strong>body</strong>，实现全屏 Loading</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;showLoading()&quot;&gt;点击我进行全屏Loading&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;showLoading()&quot;&gt;Full-screen loading&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -69,7 +69,7 @@ export default class extends Component {
             target: this.$getRef(&quot;target&quot;)?.output,
             customClass: &quot;custom&quot;,
             spinner: &quot;jk-icon-loading&quot;,
-            text: &quot;拼命在加载，别急&quot;
+            text: &quot;Customize the Loading text.&quot;
         });
     }
 }

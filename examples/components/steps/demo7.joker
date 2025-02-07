@@ -1,13 +1,13 @@
 <template>
     <jk-steps active="1" simple>
-        <jk-step title="步骤 1" icon="jk-icon-edit"></jk-step>
-        <jk-step title="步骤 2" icon="jk-icon-upload"></jk-step>
-        <jk-step title="步骤 3" icon="jk-icon-picture"></jk-step>
+        <jk-step title="Step 1" icon="jk-icon-edit"></jk-step>
+        <jk-step title="Step 2" icon="jk-icon-upload"></jk-step>
+        <jk-step title="Step 3" icon="jk-icon-picture"></jk-step>
     </jk-steps>
     <div style="margin-top: 20px"></div>
     <jk-steps active="1" finishStatus="success" simple>
-        <jk-step title="步骤 1"></jk-step>
-        <jk-step title="步骤 2"></jk-step>
-        <jk-step title="步骤 3"></jk-step>
+        <jk-step title="Step 1"></jk-step>
+        <jk-step title="Step 2"></jk-step>
+        <jk-step title="Step 3"></jk-step>
     </jk-steps>
 </template>

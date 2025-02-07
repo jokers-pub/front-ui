@@ -7,10 +7,18 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
-        &lt;DemoRow&gt;&lt;jk-progress percentage=&quot;@model.percentage1&quot;&gt;&lt;/jk-progress&gt;&lt;/DemoRow&gt;
-        &lt;DemoRow&gt;&lt;jk-progress percentage=&quot;@model.percentage2&quot; format=&quot;@format&quot;&gt;&lt;/jk-progress&gt;&lt;/DemoRow&gt;
-        &lt;DemoRow&gt;&lt;jk-progress percentage=&quot;@model.percentage2&quot; status=&quot;success&quot;&gt;&lt;/jk-progress&gt;&lt;/DemoRow&gt;
-        &lt;DemoRow&gt;&lt;jk-progress percentage=&quot;@model.percentage2&quot; status=&quot;warning&quot;&gt;&lt;/jk-progress&gt;&lt;/DemoRow&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-progress percentage=&quot;@model.percentage1&quot;&gt;&lt;/jk-progress&gt;
+        &lt;/DemoRow&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-progress percentage=&quot;@model.percentage2&quot; format=&quot;@format&quot;&gt;&lt;/jk-progress&gt;
+        &lt;/DemoRow&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-progress percentage=&quot;@model.percentage2&quot; status=&quot;success&quot;&gt;&lt;/jk-progress&gt;
+        &lt;/DemoRow&gt;
+        &lt;DemoRow&gt;
+            &lt;jk-progress percentage=&quot;@model.percentage2&quot; status=&quot;warning&quot;&gt;&lt;/jk-progress&gt;
+        &lt;/DemoRow&gt;
         &lt;jk-progress percentage=&quot;@model.percentage1&quot; status=&quot;exception&quot;&gt;&lt;/jk-progress&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -23,7 +31,7 @@ export default class extends Component {
         percentage2: 100
     };
     format(percentage: number) {
-        return percentage === 100 ? '满' : percentage+'%';
+        return percentage === 100 ? &quot;Full&quot; : percentage + &quot;%&quot;;
     }
 }
 &lt;/script&gt;

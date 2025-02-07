@@ -1,4 +1,4 @@
 <template>
-    <jk-radio disabled value="1">备选项</jk-radio>
-    <jk-radio disabled value="2">备选项</jk-radio>
+    <jk-radio disabled value="1">Option 1</jk-radio>
+    <jk-radio disabled value="2">Option 2</jk-radio>
 </template>

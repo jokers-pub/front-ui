@@ -1,58 +1,62 @@
 <template>
     <DemoRow>
         <jk-radio-group value="@model.ctrlSize" @change="handleRadioChange">
-            <jk-radio-button label="">default</jk-radio-button>
-            <jk-radio-button label="medium">medium</jk-radio-button>
-            <jk-radio-button label="small">small</jk-radio-button>
-            <jk-radio-button label="mini">mini</jk-radio-button>
+            <jk-radio-button value="">default</jk-radio-button>
+            <jk-radio-button value="medium">medium</jk-radio-button>
+            <jk-radio-button value="small">small</jk-radio-button>
+            <jk-radio-button value="mini">mini</jk-radio-button>
         </jk-radio-group>
     </DemoRow>
-    <jk-form ref="form" size="@model.ctrlSize">
-        <jk-form-item label="活动名称">
-            <jk-input name="name" placeholder="请输入活动名称" />
+    <jk-form ref="form" size="@model.ctrlSize" label-width="150px">
+        <jk-form-item label="Event Name">
+            <jk-input name="name" placeholder="Please enter the event name" />
         </jk-form-item>
-        <jk-form-item label="活动区域">
-            <jk-select name="area" placeholder="请选择活动区域">
-                <jk-option label="山东" value="shandong" />
-                <jk-option label="北京" value="beijing" />
+        <jk-form-item label="Event Area">
+            <jk-select name="area" placeholder="Please select the event area">
+                <jk-option label="Shandong" value="shandong" />
+                <jk-option label="Beijing" value="beijing" />
             </jk-select>
         </jk-form-item>
-        <jk-form-item label="活动时间">
+        <jk-form-item label="Event Time">
             <jk-date-picker
                 name="date"
                 type="daterange"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </jk-form-item>
-        <jk-form-item label="推广">
+        <jk-form-item label="Promotion">
             <jk-switch name="promotion" />
         </jk-form-item>
-        <jk-form-item label="参与人数">
-            <jk-number name="userCount" placeholder="请设置人数" validate="@Global.isRequired()" />
+        <jk-form-item label="Participants Count">
+            <jk-number
+                name="userCount"
+                placeholder="Please set the number of participants"
+                validate="@Global.isRequired()"
+            />
         </jk-form-item>
-        <jk-form-item label="活动性质">
+        <jk-form-item label="Event Nature">
             <jk-checkbox-group name="type">
-                <jk-checkbox-button label="自驾游"></jk-checkbox-button>
-                <jk-checkbox-button label="发布会"></jk-checkbox-button>
-                <jk-checkbox-button label="跟团出行"></jk-checkbox-button>
+                <jk-checkbox-button value="1" label="Self-driving tour"></jk-checkbox-button>
+                <jk-checkbox-button value="2" label="Press conference"></jk-checkbox-button>
+                <jk-checkbox-button value="3" label="Group tour"></jk-checkbox-button>
             </jk-checkbox-group>
             <div style="margin-top:5px">
-                <jk-alert show-icon title="自驾游会产生相关费用" type="info"></jk-alert>
+                <jk-alert show-icon title="Self-driving tours incur related costs" type="info"></jk-alert>
             </div>
         </jk-form-item>
-        <jk-form-item label="资金来源">
+        <jk-form-item label="Funding Source">
             <jk-radio-group name="source">
-                <jk-radio-button value="1">品牌商赞助</jk-radio-button>
-                <jk-radio-button value="2">线下场地免费</jk-radio-button>
-                <jk-radio-button value="3">费用均摊</jk-radio-button>
+                <jk-radio-button value="1">Sponsored by brand owners</jk-radio-button>
+                <jk-radio-button value="2">Free offline venue</jk-radio-button>
+                <jk-radio-button value="3">Cost sharing</jk-radio-button>
             </jk-radio-group>
         </jk-form-item>
-        <jk-form-item label="活动要则">
-            <jk-textarea name="note" placeholder="请输入内容" rows="2"></jk-textarea>
+        <jk-form-item label="Event Rules">
+            <jk-textarea name="note" placeholder="Please enter the content" rows="2"></jk-textarea>
         </jk-form-item>
         <jk-form-item>
-            <jk-button type="primary">提交</jk-button>
+            <jk-button type="primary">Submit</jk-button>
         </jk-form-item>
     </jk-form>
 </template>

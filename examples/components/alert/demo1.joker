@@ -1,6 +1,14 @@
 <template>
-    <DemoRow><jk-alert title="成功提示的文案" type="success"></jk-alert></DemoRow>
-    <DemoRow><jk-alert title="消息提示的文案" type="info"></jk-alert></DemoRow>
-    <DemoRow><jk-alert title="警告提示的文案" type="warning"></jk-alert></DemoRow>
-    <DemoRow><jk-alert title="错误提示的文案" type="error"></jk-alert></DemoRow>
+    <DemoRow>
+        <jk-alert title="Text for success prompt" type="success" />
+    </DemoRow>
+    <DemoRow>
+        <jk-alert title="Text for message prompt" type="info" />
+    </DemoRow>
+    <DemoRow>
+        <jk-alert title="Text for warning prompt" type="warning" />
+    </DemoRow>
+    <DemoRow>
+        <jk-alert title="Text for error prompt" type="error" />
+    </DemoRow>
 </template>

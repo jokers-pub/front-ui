@@ -6,12 +6,12 @@
                     <jk-card bodyStyle="{ padding: 0px }">
                         <img src="https://picsum.photos/200/200" class="image" />
                         <div style="padding: 14px;">
-                            <span>好看的风景</span>
+                            <span>Beautiful Scenery</span>
                             <div class="bottom">
                                 <time class="time">
                                     @currentDate
                                 </time>
-                                <jk-button link type="text">操作按钮</jk-button>
+                                <jk-button link type="text">Action Button</jk-button>
                             </div>
                         </div>
                     </jk-card>

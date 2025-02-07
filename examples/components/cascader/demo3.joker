@@ -1,7 +1,7 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>可清除：</span>
+            <span>Clearable:</span>
             <jk-cascader clearable options="@options"></jk-cascader>
         </div>
     </div>

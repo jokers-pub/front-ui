@@ -1,7 +1,6 @@
 <template>
     <jk-alert
-        title="带辅助性文字介绍"
+        title="With auxiliary text introduction"
         type="success"
-        description="这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。 黑灰化肥会挥发发灰黑化肥黑灰挥发化为灰……">
-    </jk-alert>
+        description="This is some supplementary information. Success often comes from hard work and perseverance. Keep up the good work and you'll achieve your goals!"></jk-alert>
 </template>

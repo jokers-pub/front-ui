@@ -1,45 +1,45 @@
 <template>
     <DemoRow>
-        <jk-tooltip content="默认主题" placement="top">
-            <jk-button>默认尺寸</jk-button>
+        <jk-tooltip content="Default theme" placement="top">
+            <jk-button>Default size</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Light主题" effect="light">
-            <jk-button>默认尺寸</jk-button>
+        <jk-tooltip content="Light theme" effect="light">
+            <jk-button>Default size</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Error主题" effect="error">
-            <jk-button>默认尺寸</jk-button>
-        </jk-tooltip>
-    </DemoRow>
-    <DemoRow>
-        <jk-tooltip content="默认主题" placement="top" size="medium">
-            <jk-button>medium</jk-button>
-        </jk-tooltip>
-        <jk-tooltip content="Light主题" effect="light" size="medium">
-            <jk-button>medium</jk-button>
-        </jk-tooltip>
-        <jk-tooltip content="Error主题" effect="error" size="medium">
-            <jk-button>medium</jk-button>
+        <jk-tooltip content="Error theme" effect="error">
+            <jk-button>Default size</jk-button>
         </jk-tooltip>
     </DemoRow>
     <DemoRow>
-        <jk-tooltip content="默认主题" placement="top" size="small">
+        <jk-tooltip content="Default theme" placement="top" size="medium">
+            <jk-button>medium</jk-button>
+        </jk-tooltip>
+        <jk-tooltip content="Light theme" effect="light" size="medium">
+            <jk-button>medium</jk-button>
+        </jk-tooltip>
+        <jk-tooltip content="Error theme" effect="error" size="medium">
+            <jk-button>medium</jk-button>
+        </jk-tooltip>
+    </DemoRow>
+    <DemoRow>
+        <jk-tooltip content="Default theme" placement="top" size="small">
             <jk-button>small</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Light主题" effect="light" size="small">
+        <jk-tooltip content="Light theme" effect="light" size="small">
             <jk-button>small</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Error主题" effect="error" size="small">
+        <jk-tooltip content="Error theme" effect="error" size="small">
             <jk-button>small</jk-button>
         </jk-tooltip>
     </DemoRow>
     <DemoRow>
-        <jk-tooltip content="默认主题" placement="top" size="mini">
+        <jk-tooltip content="Default theme" placement="top" size="mini">
             <jk-button>mini</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Light主题" effect="light" size="mini">
+        <jk-tooltip content="Light theme" effect="light" size="mini">
             <jk-button>mini</jk-button>
         </jk-tooltip>
-        <jk-tooltip content="Error主题" effect="error" size="mini">
+        <jk-tooltip content="Error theme" effect="error" size="mini">
             <jk-button>mini</jk-button>
         </jk-tooltip>
     </DemoRow>

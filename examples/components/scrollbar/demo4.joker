@@ -31,7 +31,7 @@ export default class extends Component {
     }
 
     handleSliderInput(e: VNode.Event) {
-        this.$getRef<VNode.Component>("scrollbar")?.component.scrollTo({
+        this.$getRef("scrollbar")?.component.scrollTo({
             top: e.data
         });
     }

@@ -1,40 +1,40 @@
 <template>
     <DemoRow>
         <jk-table data="@model.tableData">
-            <jk-table-column label="日期" key="date" width="180" />
-            <jk-table-column label="姓名" key="name" width="180" />
-            <jk-table-column label="地址" key="address" />
-            <jk-table-column label="余额" key="money" headerAlign="right" align="right" />
+            <jk-table-column label="Date" key="date" width="180" />
+            <jk-table-column label="Name" key="name" width="180" />
+            <jk-table-column label="Address" key="address" />
+            <jk-table-column label="Balance" key="money" headerAlign="right" align="right" />
         </jk-table>
     </DemoRow>
     <jk-divider>medium</jk-divider>
     <DemoRow>
         <jk-table data="@model.tableData" size="medium">
-            <jk-table-column label="日期" key="date" width="180" />
-            <jk-table-column label="姓名" key="name" width="180" />
-            <jk-table-column label="地址" key="address" />
-            <jk-table-column label="余额" key="money" headerAlign="right" align="right" />
+            <jk-table-column label="Date" key="date" width="180" />
+            <jk-table-column label="Name" key="name" width="180" />
+            <jk-table-column label="Address" key="address" />
+            <jk-table-column label="Balance" key="money" headerAlign="right" align="right" />
         </jk-table>
     </DemoRow>
     <jk-divider>small</jk-divider>
     <DemoRow>
         <jk-table data="@model.tableData" size="small">
-            <jk-table-column label="日期" key="date" width="180" />
-            <jk-table-column label="姓名" key="name" width="180" />
-            <jk-table-column label="地址" key="address" />
-            <jk-table-column label="余额" key="money" headerAlign="right" align="right" />
+            <jk-table-column label="Date" key="date" width="180" />
+            <jk-table-column label="Name" key="name" width="180" />
+            <jk-table-column label="Address" key="address" />
+            <jk-table-column label="Balance" key="money" headerAlign="right" align="right" />
         </jk-table>
     </DemoRow>
     <jk-divider>mini</jk-divider>
     <DemoRow>
         <jk-table data="@model.tableData" size="mini">
-            <jk-table-column label="日期" key="date" width="180" />
-            <jk-table-column label="姓名" key="name" width="180" />
-            <jk-table-column label="地址" key="address" />
-            <jk-table-column label="余额" key="money" headerAlign="right" align="right" />
+            <jk-table-column label="Date" key="date" width="180" />
+            <jk-table-column label="Name" key="name" width="180" />
+            <jk-table-column label="Address" key="address" />
+            <jk-table-column label="Balance" key="money" headerAlign="right" align="right" />
         </jk-table>
     </DemoRow>
-    <jk-button @click="handleClearData">清空数据，查看空数据时尺寸大小</jk-button>
+    <jk-button @click="handleClearData">Clear data to view the size when there is no data</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -42,8 +42,8 @@ import { Component } from "@joker.front/core";
 export default class extends Component {
     model = {
         tableData: [
-            { name: "张三", date: "2023-11-21", address: "山东省济南市", money: 1000 },
-            { name: "李四", date: "2023-11-21", address: "山东省济南市", money: 10 }
+            { name: "Zhang San", date: "2023-11-21", address: "Jinan, Shandong Province", money: 1000 },
+            { name: "Li Si", date: "2023-11-21", address: "Jinan, Shandong Province", money: 10 }
         ]
     };
 

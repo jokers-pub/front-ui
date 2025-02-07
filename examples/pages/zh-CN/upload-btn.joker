@@ -13,11 +13,10 @@ import { Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
-        Message(`选中了${e.data.length}个文件`);
+        Message(`You have selected ${e.data.length} files.`);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>多文件上传</h3>
@@ -25,10 +24,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot;&gt;多选文件上传&lt;/jk-upload-btn&gt;
+        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot;&gt;Multiple file upload&lt;/jk-upload-btn&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot; maxFileCount=&quot;2&quot;&gt;最多选择2个&lt;/jk-upload-btn&gt;
+        &lt;jk-upload-btn multiple @change=&quot;handleClick&quot; maxFileCount=&quot;2&quot;&gt;Select up to 2 files&lt;/jk-upload-btn&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -37,11 +36,10 @@ import { Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
-        Message(`选中了${e.data.length}个文件`);
+        Message(`You have selected ${e.data.length} files.`);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>限制选择类型</h3>
@@ -57,12 +55,11 @@ import { Message } from &quot;../../../src&quot;;
 export default class extends Component {
     handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
         if (e.data.length) {
-            Message(`选中了${e.data[0].name}文件`);
+            Message(`You have selected the file ${e.data[0].name}`);
         }
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>限制传入文件大小</h3>
@@ -78,12 +75,11 @@ import { Message } from &quot;../../../src&quot;;
 export default class extends Component {
     handleClick(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
         if (e.data.length) {
-            Message(`选中的文件大小:${e.data[0].size / 1024}kb`);
+            Message(`The size of the selected file: ${e.data[0].size / 1024} kb`);
         }
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Attributes</h3>

@@ -1,5 +1,5 @@
 <template>
-    <jk-button @click="open">弹出HTML警告</jk-button>
+    <jk-button @click="open">Pop up an HTML warning</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -8,12 +8,11 @@ import { Notification } from "../../../src";
 export default class extends Component {
     open() {
         Notification({
-            title: "提示",
+            title: "Prompt",
             type: "success",
             useHtml: true,
-            message: "已成功收到张三转入的<span style='color:red'>3,000</span>元"
+            message: "Successfully received <span style='color:red'>3,000</span> yuan transferred from Zhang San"
         });
     }
 }
 </script>
-

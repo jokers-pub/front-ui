@@ -1,23 +1,23 @@
 <template>
     <jk-row gutter="20">
         <jk-col span="6">
-            <jk-result icon="success" title="成功提示" subTitle="请根据提示进行操作">
-                <jk-button type="primary" size="medium">返回</jk-button>
+            <jk-result icon="success" title="Success Prompt" subTitle="Please operate according to the prompt">
+                <jk-button type="primary" size="medium">Back</jk-button>
             </jk-result>
         </jk-col>
         <jk-col span="6">
-            <jk-result icon="warning" title="警告提示" subTitle="请根据提示进行操作">
-                <jk-button type="primary" size="medium">返回</jk-button>
+            <jk-result icon="warning" title="Warning Prompt" subTitle="Please operate according to the prompt">
+                <jk-button type="primary" size="medium">Back</jk-button>
             </jk-result>
         </jk-col>
         <jk-col span="6">
-            <jk-result icon="error" title="错误提示" subTitle="请根据提示进行操作">
-                <jk-button type="primary" size="medium">返回</jk-button>
+            <jk-result icon="error" title="Error Prompt" subTitle="Please operate according to the prompt">
+                <jk-button type="primary" size="medium">Back</jk-button>
             </jk-result>
         </jk-col>
         <jk-col span="6">
-            <jk-result icon="info" title="信息提示" subTitle="请根据提示进行操作">
-                <jk-button type="primary" size="medium">返回</jk-button>
+            <jk-result icon="info" title="Information Prompt" subTitle="Please operate according to the prompt">
+                <jk-button type="primary" size="medium">Back</jk-button>
             </jk-result>
         </jk-col>
     </jk-row>

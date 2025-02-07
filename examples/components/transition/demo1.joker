@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-button @click="handleClick">点我</jk-button>
+        <jk-button @click="handleClick">Click!</jk-button>
     </DemoRow>
     <div style="height:120px">
         @if(model.show) {

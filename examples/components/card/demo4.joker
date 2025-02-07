@@ -1,13 +1,13 @@
 <template>
     <jk-row gutter="12">
         <jk-col span="8">
-            <jk-card shadow="always">总是显示</jk-card>
+            <jk-card shadow="always">Always Display</jk-card>
         </jk-col>
         <jk-col span="8">
-            <jk-card shadow="hover">鼠标悬浮时显示</jk-card>
+            <jk-card shadow="hover">Display on Hover</jk-card>
         </jk-col>
         <jk-col span="8">
-            <jk-card shadow="never">从不显示</jk-card>
+            <jk-card shadow="never">Never Display</jk-card>
         </jk-col>
     </jk-row>
 </template>

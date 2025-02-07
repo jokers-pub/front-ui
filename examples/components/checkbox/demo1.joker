@@ -1,7 +1,7 @@
 <template>
     <DemoRow>
-        <jk-checkbox value="@model.value1" @change="handleChange1">备选项1</jk-checkbox>
-        <jk-checkbox value="@model.value2" @change="handleChange2">备选项2</jk-checkbox>
+        <jk-checkbox value="@model.value1" @change="handleChange1">Option 1</jk-checkbox>
+        <jk-checkbox value="@model.value2" @change="handleChange2">Option 2</jk-checkbox>
     </DemoRow>
 </template>
 
@@ -13,10 +13,10 @@ export default class extends Component {
         value2: false
     };
     handleChange1(e: VNode.Event) {
-        console.log(e.data)
+        console.log(e.data);
     }
     handleChange2(e: VNode.Event) {
-        console.log(e.data)
+        console.log(e.data);
     }
 }
 </script>

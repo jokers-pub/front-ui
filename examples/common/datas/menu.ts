@@ -410,7 +410,7 @@ export const MENUS_EN = [
                 title: "Color",
                 path: "/component/color",
                 description:
-                    "Components for handling color - related operations, including color selection and application."
+                    "Components for handling color-related operations, including color selection and application."
             },
             {
                 objectID: "1-4",
@@ -440,17 +440,17 @@ export const MENUS_EN = [
             },
             {
                 objectID: "1-8",
-                title: "Built - in Animations",
+                title: "Built-in Animations",
                 path: "/component/transition",
                 description:
-                    "Provides some components with built - in animation effects, which can be applied to the transition effects of elements."
+                    "Provides some components with built-in animation effects, which can be applied to the transition effects of elements."
             }
         ]
     },
     {
         objectID: "2",
         title: "Form",
-        description: "A collection of form - related components for data collection and user input processing.",
+        description: "A collection of form-related components for data collection and user input processing.",
         children: [
             {
                 objectID: "2-1",
@@ -474,13 +474,13 @@ export const MENUS_EN = [
                 objectID: "2-4",
                 title: "AutoComplete",
                 path: "/component/autocomplete",
-                description: "Input boxes with an auto - completion function that provide input suggestions."
+                description: "Input boxes with an auto-completion function that provide input suggestions."
             },
             {
                 objectID: "2-5",
                 title: "Textarea",
                 path: "/component/textarea",
-                description: "Multi - line text input boxes suitable for entering longer texts."
+                description: "Multi-line text input boxes suitable for entering longer texts."
             },
             {
                 objectID: "2-6",
@@ -510,24 +510,24 @@ export const MENUS_EN = [
                 objectID: "2-10",
                 title: "Cascader",
                 path: "/component/cascader",
-                description: "Multi - level selector components for making selections across multiple levels."
+                description: "Multi-level selector components for making selections across multiple levels."
             },
             {
                 objectID: "2-11",
                 title: "TimePicker",
-                path: "/component/time - picker",
+                path: "/component/time-picker",
                 description: "Components for selecting time, which can be accurate to hours, minutes, seconds, etc."
             },
             {
                 objectID: "2-12",
                 title: "DatePicker",
-                path: "/component/date - picker",
+                path: "/component/date-picker",
                 description: "Components for selecting dates, with functions such as setting date ranges."
             },
             {
                 objectID: "2-13",
                 title: "ColorPicker",
-                path: "/component/color - picker",
+                path: "/component/color-picker",
                 description: "Visual color selection tool components."
             },
             {
@@ -546,7 +546,7 @@ export const MENUS_EN = [
                 objectID: "2-16",
                 title: "Rate",
                 path: "/component/rate",
-                description: "Rating components that allow users to perform star - rating operations."
+                description: "Rating components that allow users to perform star-rating operations."
             },
             {
                 objectID: "2-17",
@@ -579,7 +579,7 @@ export const MENUS_EN = [
                 title: "Tree",
                 path: "/component/tree",
                 description:
-                    "Components that display data in a tree - like structure, with operations such as node expansion and contraction."
+                    "Components that display data in a tree-like structure, with operations such as node expansion and contraction."
             },
             {
                 objectID: "3-4",
@@ -652,7 +652,7 @@ export const MENUS_EN = [
             {
                 objectID: "4-3",
                 title: "MessageBox",
-                path: "/component/message - box",
+                path: "/component/message-box",
                 description: "Popup message box components that can contain more operation buttons."
             },
             {
@@ -685,7 +685,7 @@ export const MENUS_EN = [
                 objectID: "4-8",
                 title: "Popconfirm",
                 path: "/component/popconfirm",
-                description: "Popup bubble - style confirmation box components for operations."
+                description: "Popup bubble-style confirmation box components for operations."
             },
             {
                 objectID: "4-9",
@@ -712,7 +712,7 @@ export const MENUS_EN = [
                 objectID: "5-2",
                 title: "Tabs",
                 path: "/component/tabs",
-                description: "Multi - tab switching components for displaying and switching different contents."
+                description: "Multi-tab switching components for displaying and switching different contents."
             },
             {
                 objectID: "5-3",
@@ -781,7 +781,7 @@ export const MENUS_EN = [
                 objectID: "6-8",
                 title: "Drawer",
                 path: "/component/drawer",
-                description: "Drawer - style components that slide out from the side and can display more content."
+                description: "Drawer-style components that slide out from the side and can display more content."
             }
         ]
     }

@@ -2,23 +2,23 @@
     <DemoRow>
         <jk-table data="@tableData">
             <jk-table-column type="index" index="@model.startIndex" />
-            <jk-table-column label="日期" key="date" width="180" />
-            <jk-table-column label="姓名" key="name" width="180" />
-            <jk-table-column label="地址" key="address" />
-            <jk-table-column label="余额" key="money" headerAlign="right" align="right" />
+            <jk-table-column label="Date" key="date" width="180" />
+            <jk-table-column label="Name" key="name" width="180" />
+            <jk-table-column label="Address" key="address" />
+            <jk-table-column label="Balance" key="money" headerAlign="right" align="right" />
         </jk-table>
     </DemoRow>
-    <jk-button @click="handleClick">设置起始索引为10</jk-button>
+    <jk-button @click="handleClick">Set starting index to 10</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
 
 export default class extends Component {
     tableData = [
-        { name: "张三", date: "2023-11-21", address: "山东省济南市", money: 1000 },
-        { name: "李四", date: "2023-11-21", address: "山东省济南市", money: 10 },
-        { name: "李梅", date: "2023-11-21", address: "山东省济南市", money: 300 },
-        { name: "王武", date: "2023-11-21", address: "山东省济南市", money: 11.9 }
+        { name: "Zhang San", date: "2023-11-21", address: "Jinan, Shandong Province", money: 1000 },
+        { name: "Li Si", date: "2023-11-21", address: "Jinan, Shandong Province", money: 10 },
+        { name: "Li Mei", date: "2023-11-21", address: "Jinan, Shandong Province", money: 300 },
+        { name: "Wang Wu", date: "2023-11-21", address: "Jinan, Shandong Province", money: 11.9 }
     ];
     model = {
         startIndex: 1

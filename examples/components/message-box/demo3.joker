@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-link type="primary" @click="open">请输入邮箱</jk-link>
+        <jk-link type="primary" @click="open">Please enter your email</jk-link>
     </DemoRow>
 </template>
 <script>
@@ -9,16 +9,16 @@ import { Message, MessageBox, Loading } from "../../../src";
 
 export default class extends Component {
     open() {
-        MessageBox.prompt("请输入你的邮箱", "确认邮箱", {
+        MessageBox.prompt("Please enter your email", "Confirm your email", {
             validate(val) {
-                if (!val) return "请输入邮箱";
+                if (!val) return "Please enter an email";
 
                 if (
                     /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/.test(
                         val
                     ) === false
                 ) {
-                    return "邮箱地址不正确";
+                    return "The email address is incorrect";
                 }
             },
             beforeClose(action, com, close) {
@@ -26,10 +26,10 @@ export default class extends Component {
                     let value = com.inputValue;
 
                     let loading = Loading({
-                        text: "正在提交数据"
+                        text: "Submitting data"
                     });
 
-                    Message("正在提交数据：" + value);
+                    Message("Submitting data: " + value);
 
                     setTimeout(() => {
                         loading.close();
@@ -42,11 +42,10 @@ export default class extends Component {
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 </script>
-

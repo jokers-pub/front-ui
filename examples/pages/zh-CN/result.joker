@@ -7,23 +7,23 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;20&quot;&gt;
         &lt;jk-col span=&quot;6&quot;&gt;
-            &lt;jk-result icon=&quot;success&quot; title=&quot;成功提示&quot; subTitle=&quot;请根据提示进行操作&quot;&gt;
-                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;返回&lt;/jk-button&gt;
+            &lt;jk-result icon=&quot;success&quot; title=&quot;Success Prompt&quot; subTitle=&quot;Please operate according to the prompt&quot;&gt;
+                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;Back&lt;/jk-button&gt;
             &lt;/jk-result&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;6&quot;&gt;
-            &lt;jk-result icon=&quot;warning&quot; title=&quot;警告提示&quot; subTitle=&quot;请根据提示进行操作&quot;&gt;
-                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;返回&lt;/jk-button&gt;
+            &lt;jk-result icon=&quot;warning&quot; title=&quot;Warning Prompt&quot; subTitle=&quot;Please operate according to the prompt&quot;&gt;
+                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;Back&lt;/jk-button&gt;
             &lt;/jk-result&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;6&quot;&gt;
-            &lt;jk-result icon=&quot;error&quot; title=&quot;错误提示&quot; subTitle=&quot;请根据提示进行操作&quot;&gt;
-                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;返回&lt;/jk-button&gt;
+            &lt;jk-result icon=&quot;error&quot; title=&quot;Error Prompt&quot; subTitle=&quot;Please operate according to the prompt&quot;&gt;
+                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;Back&lt;/jk-button&gt;
             &lt;/jk-result&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;6&quot;&gt;
-            &lt;jk-result icon=&quot;info&quot; title=&quot;信息提示&quot; subTitle=&quot;请根据提示进行操作&quot;&gt;
-                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;返回&lt;/jk-button&gt;
+            &lt;jk-result icon=&quot;info&quot; title=&quot;Information Prompt&quot; subTitle=&quot;Please operate according to the prompt&quot;&gt;
+                &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;Back&lt;/jk-button&gt;
             &lt;/jk-result&gt;
         &lt;/jk-col&gt;
     &lt;/jk-row&gt;
@@ -33,12 +33,12 @@
 <h3>自定义内容</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-result title=&quot;404&quot; subTitle=&quot;抱歉，请求错误&quot;&gt;
+    &lt;jk-result title=&quot;404&quot; subTitle=&quot;Sorry, the request is incorrect&quot;&gt;
         @section(&quot;icon&quot;) {
             &lt;img src=&quot;/static/result/landscape.png&quot; style=&quot;width:240px&quot; /&gt;
         }
         @section(&quot;extra&quot;) {
-            &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;返回&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; size=&quot;medium&quot;&gt;Back&lt;/jk-button&gt;
         }
     &lt;/jk-result&gt;
 &lt;/template&gt;

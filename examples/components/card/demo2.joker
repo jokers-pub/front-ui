@@ -3,7 +3,7 @@
         <jk-card class="box-card">
             @for(let i of [1,2,3,4]) {
                 <div class="text item">
-                    列表内容@i
+                    List Content @i
                 </div>
             }
         </jk-card>

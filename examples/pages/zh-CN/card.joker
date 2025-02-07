@@ -10,12 +10,12 @@
     &lt;div class=&quot;card-demo1&quot;&gt;
         &lt;jk-card class=&quot;box-card&quot;&gt;
             @section(&quot;header&quot;) {
-                &lt;span&gt;卡片名称&lt;/span&gt;
-                &lt;jk-button link type=&quot;text&quot;&gt;操作按钮&lt;/jk-button&gt;
+                &lt;span&gt;Card Name&lt;/span&gt;
+                &lt;jk-button link type=&quot;text&quot;&gt;Action Button&lt;/jk-button&gt;
             }
             @for(let i of [1,2,3,4]) {
                 &lt;div class=&quot;text item&quot;&gt;
-                    列表内容@i
+                    List Content @i
                 &lt;/div&gt;
             }
         &lt;/jk-card&gt;
@@ -51,7 +51,7 @@
         &lt;jk-card class=&quot;box-card&quot;&gt;
             @for(let i of [1,2,3,4]) {
                 &lt;div class=&quot;text item&quot;&gt;
-                    列表内容@i
+                    List Content @i
                 &lt;/div&gt;
             }
         &lt;/jk-card&gt;
@@ -86,12 +86,12 @@
                     &lt;jk-card bodyStyle=&quot;{ padding: 0px }&quot;&gt;
                         &lt;img src=&quot;https://picsum.photos/200/200&quot; class=&quot;image&quot; /&gt;
                         &lt;div style=&quot;padding: 14px;&quot;&gt;
-                            &lt;span&gt;好看的风景&lt;/span&gt;
+                            &lt;span&gt;Beautiful Scenery&lt;/span&gt;
                             &lt;div class=&quot;bottom&quot;&gt;
                                 &lt;time class=&quot;time&quot;&gt;
                                     @currentDate
                                 &lt;/time&gt;
-                                &lt;jk-button link type=&quot;text&quot;&gt;操作按钮&lt;/jk-button&gt;
+                                &lt;jk-button link type=&quot;text&quot;&gt;Action Button&lt;/jk-button&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/jk-card&gt;
@@ -147,13 +147,13 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;12&quot;&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
-            &lt;jk-card shadow=&quot;always&quot;&gt;总是显示&lt;/jk-card&gt;
+            &lt;jk-card shadow=&quot;always&quot;&gt;Always Display&lt;/jk-card&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
-            &lt;jk-card shadow=&quot;hover&quot;&gt;鼠标悬浮时显示&lt;/jk-card&gt;
+            &lt;jk-card shadow=&quot;hover&quot;&gt;Display on Hover&lt;/jk-card&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
-            &lt;jk-card shadow=&quot;never&quot;&gt;从不显示&lt;/jk-card&gt;
+            &lt;jk-card shadow=&quot;never&quot;&gt;Never Display&lt;/jk-card&gt;
         &lt;/jk-col&gt;
     &lt;/jk-row&gt;
 &lt;/template&gt;

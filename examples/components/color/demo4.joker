@@ -2,19 +2,19 @@
     <jk-row gutter="20">
         <jk-col span="8">
             <div class="demo-container" style="box-shadow:var(--jk-box-shadow-base);">
-                <p>一级</p>
+                <p>Level 1</p>
                 <p>--jk-box-shadow-base</p>
             </div>
         </jk-col>
         <jk-col span="8">
             <div class="demo-container" style="box-shadow:var(--jk-box-shadow-dark);">
-                <p>二级</p>
+                <p>Level 2</p>
                 <p>--jk-box-shadow-dark</p>
             </div>
         </jk-col>
         <jk-col span="8">
             <div class="demo-container" style="box-shadow:var(--jk-box-shadow-light);">
-                <p>三级</p>
+                <p>Level 3</p>
                 <p>--jk-box-shadow-light</p>
             </div>
         </jk-col>

@@ -1,7 +1,7 @@
 <template>
     <div style="width: 240px">
         <p>
-            <label style="margin-right: 16px;">切换 Loading</label>
+            <label style="margin-right: 16px;">Toggle Loading</label>
             <jk-switch value="@model.loading" @change="switchChange" />
         </p>
         <jk-skeleton style="width: 240px" loading="@model.loading" animated throttle="500">
@@ -25,7 +25,6 @@ import { Component, VNode } from "@joker.front/core";
 
 export default class extends Component {
     model = { loading: true };
-    currentDate?: string = "2021-06-01";
 
     switchChange(e: VNode.Event) {
         this.model.loading = e.data!;
@@ -33,5 +32,3 @@ export default class extends Component {
 }
 </script>
 
-<style scoped>
-</style>

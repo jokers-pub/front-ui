@@ -1,24 +1,23 @@
 <template>
-    <jk-button @click="open">可自动关闭</jk-button>
-    <jk-button @click="open1">不会自动关闭</jk-button>
+    <jk-button @click="open">Can close automatically</jk-button>
+    <jk-button @click="open1">Will not close automatically</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
 import { Notification } from "../../../src";
 export default class extends Component {
     open() {
-        Notification({ title: "提示", message: "我是一个提示" });
+        Notification({ title: "Prompt", message: "I'm a prompt" });
     }
     open1() {
         Notification({
-            title: "提示",
-            message: "我是一个提示",
+            title: "Prompt",
+            message: "I'm a prompt",
             duration: 0,
             onClick: () => {
-                alert("你点击了我");
+                alert("You clicked me");
             }
         });
     }
 }
 </script>
-

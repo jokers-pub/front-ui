@@ -1,6 +1,6 @@
 <template>
-    <jk-button @click="open">打开提示</jk-button>
-    <jk-button @click="open1">同序列多次打开，只展示一个</jk-button>
+    <jk-button @click="open">Open the prompt</jk-button>
+    <jk-button @click="open1">Open multiple times in the same sequence, only show one</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -9,7 +9,7 @@ export default class extends Component {
     open() {
         Message({
             center: true,
-            message: "这是一条提示"
+            message: "This is a prompt"
         });
     }
 
@@ -18,7 +18,7 @@ export default class extends Component {
             Message({
                 id: "test",
                 center: true,
-                message: "这是一条提示"
+                message: "This is a prompt"
             });
         }
     }

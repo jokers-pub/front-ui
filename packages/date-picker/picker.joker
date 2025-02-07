@@ -234,7 +234,7 @@ export default class extends FormCtrl<{
     }
 
     get panel() {
-        return this.$getRef<VNode.Component>("panel");
+        return this.$getRef("panel");
     }
 
     inputReference!: HTMLElement;
@@ -254,7 +254,7 @@ export default class extends FormCtrl<{
 
         this.inputReference = this.isRange
             ? this.$getRef("input")?.output
-            : this.$getRef<VNode.Component>("input")?.firstElement?.output;
+            : this.$getRef("input")?.firstElement?.output;
 
         this.inputElements = this.inputReference.querySelectorAll("input");
 

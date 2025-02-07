@@ -6,53 +6,53 @@
 <p>包括各种表单项，比如输入框、选择器、开关、单选框、多选框等。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form ref=&quot;form&quot; label-width=&quot;100px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;活动名称&quot; tip=&quot;测试数据，请理解&quot;&gt;
-            &lt;jk-input name=&quot;name&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
+    &lt;jk-form ref=&quot;form&quot; label-width=&quot;120px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Name&quot; tip=&quot;Test data, please understand&quot;&gt;
+            &lt;jk-input name=&quot;name&quot; placeholder=&quot;Please enter the event name&quot; /&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item
-            label=&quot;活动区域&quot;
-            tip=&quot;测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试&quot;&gt;
-            &lt;jk-select name=&quot;area&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+            label=&quot;Event Area&quot;
+            tip=&quot;Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test&quot;&gt;
+            &lt;jk-select name=&quot;area&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动时间&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Time&quot;&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;推广&quot;&gt;
+        &lt;jk-form-item label=&quot;Promotion&quot;&gt;
             &lt;jk-switch name=&quot;promotion&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动性质&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Nature&quot;&gt;
             &lt;jk-checkbox-group name=&quot;type&quot;&gt;
-                &lt;jk-checkbox label=&quot;美食/餐厅线上活动&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;线下活动&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;自驾游&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;发布会&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;跟团出行&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;1&quot; label=&quot;Food/Restaurant online event&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;2&quot; label=&quot;Offline event&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;3&quot; label=&quot;Self-driving tour&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;4&quot; label=&quot;Press conference&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;5&quot; label=&quot;Group tour&quot;&gt;&lt;/jk-checkbox&gt;
             &lt;/jk-checkbox-group&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;资金来源&quot;&gt;
+        &lt;jk-form-item label=&quot;Funding Source&quot;&gt;
             &lt;jk-radio-group name=&quot;source&quot;&gt;
-                &lt;jk-radio value=&quot;1&quot;&gt;品牌商赞助&lt;/jk-radio&gt;
-                &lt;jk-radio value=&quot;2&quot;&gt;线下场地免费&lt;/jk-radio&gt;
-                &lt;jk-radio value=&quot;3&quot;&gt;费用均摊&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;1&quot;&gt;Sponsored by brand owners&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;2&quot;&gt;Free offline venue&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;3&quot;&gt;Cost sharing&lt;/jk-radio&gt;
             &lt;/jk-radio-group&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;资金比例&quot;&gt;
+        &lt;jk-form-item label=&quot;Funding Ratio&quot;&gt;
             &lt;jk-slider name=&quot;sourcePic&quot; value=&quot;30&quot;&gt;&lt;/jk-slider&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动要则&quot;&gt;
-            &lt;jk-textarea name=&quot;note&quot; placeholder=&quot;请输入内容&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-form-item label=&quot;Event Rules&quot;&gt;
+            &lt;jk-textarea name=&quot;note&quot; placeholder=&quot;Please enter the content&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;提交&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;Submit&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -72,30 +72,29 @@ export default class extends Component {
 <p>设置为<code>inline</code>属性可以让表单变成行内表单，当垂直空间受限且表单较简单时，可以使用行内表单。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form inline&gt;
-        &lt;jk-form-item label=&quot;活动名称&quot;&gt;
-            &lt;jk-input name=&quot;name&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
+    &lt;jk-form inline label-width=&quot;100px&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Name&quot;&gt;
+            &lt;jk-input name=&quot;name&quot; placeholder=&quot;Please enter the event name&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动区域&quot;&gt;
-            &lt;jk-select name=&quot;area&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Event Area&quot;&gt;
+            &lt;jk-select name=&quot;area&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动时间&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Time&quot;&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot;&gt;查询&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot;&gt;Query&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>文本对齐方式</h3>
@@ -104,31 +103,31 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;@model.labelPosition&quot; @change=&quot;handleRadioChange&quot;&gt;
-            &lt;jk-radio-button value=&quot;left&quot;&gt;左对齐&lt;/jk-radio-button&gt;
-            &lt;jk-radio-button value=&quot;right&quot;&gt;右对齐&lt;/jk-radio-button&gt;
-            &lt;jk-radio-button value=&quot;top&quot;&gt;顶部对齐&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;left&quot;&gt;Left alignment&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;right&quot;&gt;Right alignment&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;top&quot;&gt;Top alignment&lt;/jk-radio-button&gt;
         &lt;/jk-radio-group&gt;
     &lt;/DemoRow&gt;
     &lt;jk-form label-position=&quot;@model.labelPosition&quot;&gt;
-        &lt;jk-form-item label=&quot;名称&quot;&gt;
-            &lt;jk-input name=&quot;name&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
+        &lt;jk-form-item label=&quot;Name&quot;&gt;
+            &lt;jk-input name=&quot;name&quot; placeholder=&quot;Please enter the event name&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;区域&quot;&gt;
-            &lt;jk-select name=&quot;area&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Area&quot;&gt;
+            &lt;jk-select name=&quot;area&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;时间&quot;&gt;
+        &lt;jk-form-item label=&quot;Time&quot;&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot;&gt;查询&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot;&gt;Query&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -151,81 +150,89 @@ export default class extends Component {
 <p>Form 组件提供了表单验证的功能，内部提供了基础的验证方法，可通过添加<code>validate</code>来配置验证规则。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;活动名称&quot; required&gt;
-            &lt;jk-input name=&quot;name&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
+    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot; label-width=&quot;130px&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Name&quot; required&gt;
+            &lt;jk-input name=&quot;name&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;Please enter the event name&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动区域&quot; required&gt;
-            &lt;jk-select name=&quot;area&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Event Area&quot; required&gt;
+            &lt;jk-select name=&quot;area&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动时间&quot; required&gt;
+        &lt;jk-form-item label=&quot;Event Time&quot; required&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
-                validate=&quot;@Global.isRequired('请选择活动时间')&quot;
+                validate=&quot;@Global.isRequired('Please select the event time')&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;审核时间&quot; required&gt;
+        &lt;jk-form-item label=&quot;Review Time&quot; required&gt;
             &lt;jk-date-picker
                 name=&quot;examineDate&quot;
                 validate=&quot;@Global.isRequired()&quot;
-                placeholder=&quot;请选择审核时间&quot;&gt;&lt;/jk-date-picker&gt;
+                placeholder=&quot;Please select the review time&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;组织者&quot; required&gt;
+        &lt;jk-form-item label=&quot;Organizer&quot; required&gt;
             &lt;jk-col span=&quot;8&quot;&gt;
                 &lt;jk-form-item labelWidth=&quot;0&quot;&gt;
-                    &lt;jk-select name=&quot;organization&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请选择组织&quot;&gt;
-                        &lt;jk-option label=&quot;北部大区&quot; value=&quot;01&quot;&gt;&lt;/jk-option&gt;
-                        &lt;jk-option label=&quot;南部大区&quot; value=&quot;02&quot;&gt;&lt;/jk-option&gt;
+                    &lt;jk-select
+                        name=&quot;organization&quot;
+                        validate=&quot;@Global.isRequired()&quot;
+                        placeholder=&quot;Please select the organization&quot;&gt;
+                        &lt;jk-option label=&quot;Northern Region&quot; value=&quot;01&quot;&gt;&lt;/jk-option&gt;
+                        &lt;jk-option label=&quot;Southern Region&quot; value=&quot;02&quot;&gt;&lt;/jk-option&gt;
                     &lt;/jk-select&gt;
                 &lt;/jk-form-item&gt;
             &lt;/jk-col&gt;
             &lt;jk-col span=&quot;1&quot;&gt;-&lt;/jk-col&gt;
             &lt;jk-col span=&quot;15&quot;&gt;
                 &lt;jk-form-item labelWidth=&quot;0&quot;&gt;
-                    &lt;jk-select name=&quot;userName&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请选择用户&quot;&gt;
-                        &lt;jk-option label=&quot;张三&quot; value=&quot;01&quot;&gt;&lt;/jk-option&gt;
-                        &lt;jk-option label=&quot;李四&quot; value=&quot;02&quot;&gt;&lt;/jk-option&gt;
+                    &lt;jk-select name=&quot;userName&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;Please select the user&quot;&gt;
+                        &lt;jk-option label=&quot;Zhang San&quot; value=&quot;01&quot;&gt;&lt;/jk-option&gt;
+                        &lt;jk-option label=&quot;Li Si&quot; value=&quot;02&quot;&gt;&lt;/jk-option&gt;
                     &lt;/jk-select&gt;
                 &lt;/jk-form-item&gt;
             &lt;/jk-col&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;推广&quot;&gt;
+        &lt;jk-form-item label=&quot;Promotion&quot;&gt;
             &lt;jk-switch name=&quot;promotion&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;参与人数&quot;&gt;
-            &lt;jk-number name=&quot;userCount&quot; size=&quot;small&quot; placeholder=&quot;请设置人数&quot; validate=&quot;@Global.isRequired()&quot; /&gt;
+        &lt;jk-form-item label=&quot;Participants Count&quot;&gt;
+            &lt;jk-number
+                name=&quot;userCount&quot;
+                size=&quot;small&quot;
+                placeholder=&quot;Please set the number of people&quot;
+                validate=&quot;@Global.isRequired()&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动性质&quot; required&gt;
-            &lt;jk-checkbox-group name=&quot;type&quot; validate=&quot;@Global.isRequired('请选择活动性质')&quot;&gt;
-                &lt;jk-checkbox label=&quot;美食/餐厅线上活动&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;线下活动&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;自驾游&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;发布会&quot;&gt;&lt;/jk-checkbox&gt;
-                &lt;jk-checkbox label=&quot;跟团出行&quot;&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-form-item label=&quot;Event Nature&quot; required&gt;
+            &lt;jk-checkbox-group name=&quot;type&quot; validate=&quot;@Global.isRequired('Please select the event nature')&quot;&gt;
+                &lt;jk-checkbox value=&quot;1&quot; label=&quot;Food/Restaurant online event&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;2&quot; label=&quot;Offline event&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;3&quot; label=&quot;Self-driving tour&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;4&quot; label=&quot;Press conference&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;5&quot; label=&quot;Group tour&quot;&gt;&lt;/jk-checkbox&gt;
             &lt;/jk-checkbox-group&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;资金来源&quot; required&gt;
-            &lt;jk-radio-group name=&quot;source&quot; validate=&quot;@Global.isRequired('请选择资金来源')&quot;&gt;
-                &lt;jk-radio value=&quot;1&quot;&gt;品牌商赞助&lt;/jk-radio&gt;
-                &lt;jk-radio value=&quot;2&quot;&gt;线下场地免费&lt;/jk-radio&gt;
-                &lt;jk-radio value=&quot;3&quot;&gt;费用均摊&lt;/jk-radio&gt;
+        &lt;jk-form-item label=&quot;Funding Source&quot; required&gt;
+            &lt;jk-radio-group name=&quot;source&quot; validate=&quot;@Global.isRequired('Please select the funding source')&quot;&gt;
+                &lt;jk-radio value=&quot;1&quot;&gt;Sponsored by brand owners&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;2&quot;&gt;Free offline venue&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;3&quot;&gt;Cost sharing&lt;/jk-radio&gt;
             &lt;/jk-radio-group&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动要则&quot; required&gt;
+        &lt;jk-form-item label=&quot;Event Rules&quot; required&gt;
             &lt;jk-textarea
                 name=&quot;note&quot;
                 validate=&quot;@Global.isRequired()&quot;
-                placeholder=&quot;请输入活动要则&quot;
+                placeholder=&quot;Please enter the event rules&quot;
                 rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;提交&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;Submit&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -234,11 +241,10 @@ import { Component, VNode } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     async handleFormSubmit(e: VNode.Event) {
-        console.log(&quot;验证成功&quot;, e.data);
+        console.log(&quot;Verification succeeded&quot;, e.data);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <blockquote>
@@ -294,42 +300,50 @@ export default class extends Component {
 </table>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form ref=&quot;form&quot; labelWidth=&quot;100px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;必填验证&quot; required&gt;
-            &lt;jk-input name=&quot;v1&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请输入内容&quot; /&gt;
+    &lt;jk-form ref=&quot;form&quot; labelWidth=&quot;160px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
+        &lt;jk-form-item label=&quot;Required&quot; required&gt;
+            &lt;jk-input name=&quot;v1&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;必填验证&quot; required&gt;
-            &lt;jk-select name=&quot;v2&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Required&quot; required&gt;
+            &lt;jk-select name=&quot;v2&quot; validate=&quot;@Global.isRequired()&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;正整数验证&quot;&gt;
-            &lt;jk-input name=&quot;v3&quot; validate=&quot;@Global.isInt()&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Positive Integer&quot;&gt;
+            &lt;jk-input name=&quot;v3&quot; validate=&quot;@Global.isInt()&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;数值验证&quot;&gt;
-            &lt;jk-input name=&quot;v4&quot; validate=&quot;@Global.isNumber()&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Numeric&quot;&gt;
+            &lt;jk-input name=&quot;v4&quot; validate=&quot;@Global.isNumber()&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;手机号验证&quot;&gt;
-            &lt;jk-input name=&quot;v5&quot; validate=&quot;@Global.isPhone()&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Phone Number&quot;&gt;
+            &lt;jk-input name=&quot;v5&quot; validate=&quot;@Global.isPhone()&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;邮箱验证&quot;&gt;
-            &lt;jk-input name=&quot;v6&quot; validate=&quot;@Global.isEmail()&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Email&quot;&gt;
+            &lt;jk-input name=&quot;v6&quot; validate=&quot;@Global.isEmail()&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;正则&quot;&gt;
-            &lt;jk-input name=&quot;v7&quot; validate=&quot;@Global.isMatched('^\\d+$','请输入0-9的数')&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Regular Expression&quot;&gt;
+            &lt;jk-input
+                name=&quot;v7&quot;
+                validate=&quot;@Global.isMatched('^\\d+$','Please enter a number from 0 - 9')&quot;
+                placeholder=&quot;Please enter the content&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;长度&quot;&gt;
-            &lt;jk-input name=&quot;v8&quot; validate=&quot;@Global.isLengthInRange(3,5)&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Length&quot;&gt;
+            &lt;jk-input name=&quot;v8&quot; validate=&quot;@Global.isLengthInRange(3,5)&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;长度&quot;&gt;
-            &lt;jk-input name=&quot;v9&quot; validate=&quot;@Global.isLengthInRange(0,5)&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Length&quot;&gt;
+            &lt;jk-input name=&quot;v9&quot; validate=&quot;@Global.isLengthInRange(0,5)&quot; placeholder=&quot;Please enter the content&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;长度&quot;&gt;
-            &lt;jk-input name=&quot;v10&quot; validate=&quot;@Global.isLengthInRange(3,5,'请输入3-5个字')&quot; placeholder=&quot;请输入内容&quot; /&gt;
+        &lt;jk-form-item label=&quot;Length&quot;&gt;
+            &lt;jk-input
+                name=&quot;v10&quot;
+                validate=&quot;@Global.isLengthInRange(3,5,'Please enter 3 - 5 characters')&quot;
+                placeholder=&quot;Please enter the content&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;提交&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;Submit&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -338,11 +352,10 @@ import { Component, VNode } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     async handleFormSubmit(e: VNode.Event) {
-        console.log(&quot;验证成功&quot;, e.data);
+        console.log(&quot;Verification succeeded&quot;, e.data);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <p>可通过通过<code>全局方法注册</code>来自定义校验规则。下面是一个内置的检查方法代码，可以参考</p>
@@ -373,27 +386,32 @@ export default class extends Component {
 <p>可通过配置组件的<code>validate</code>参数来自定义验证规则，若验证失败返回提示信息即可，若返回值为空则代表验证成功。该方法支持异步校验。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;年龄&quot;&gt;
+    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot; label-width=&quot;140px&quot;&gt;
+        &lt;jk-form-item label=&quot;Age&quot;&gt;
             &lt;jk-input
                 name=&quot;age&quot;
                 status-icon
                 validate=&quot;@([Global.isRequired(), Global.isInt(), validateAge])&quot;
-                placeholder=&quot;请输入年龄&quot;
+                placeholder=&quot;Please enter your age&quot;
             /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;新密码&quot;&gt;
-            &lt;jk-input name=&quot;pwd&quot; ref=&quot;pwd&quot; validate=&quot;@([Global.isRequired()])&quot; placeholder=&quot;请输入新密码&quot; /&gt;
+        &lt;jk-form-item label=&quot;New Password&quot;&gt;
+            &lt;jk-input
+                name=&quot;pwd&quot;
+                ref=&quot;pwd&quot;
+                validate=&quot;@([Global.isRequired()])&quot;
+                placeholder=&quot;Please enter your new password&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;确认密码&quot;&gt;
+        &lt;jk-form-item label=&quot;Confirm Password&quot;&gt;
             &lt;jk-input
                 name=&quot;confirmPwd&quot;
                 validate=&quot;@([Global.isRequired(), validateConfirmPwd])&quot;
-                placeholder=&quot;请输入确认密码&quot;
+                placeholder=&quot;Please confirm your password&quot;
             /&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;提交&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot;&gt;Submit&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -403,35 +421,33 @@ import { sleep } from &quot;@joker.front/shared&quot;;
 
 export default class extends Component {
     async validateAge(value: string) {
-        //模拟请求，实现异步校验
+        // Simulate a request to implement asynchronous validation
         await sleep(1500);
 
-        //自定义校验是最后执行，无需考虑非空 &amp;&amp; 正整数
+        // Custom validation is performed last, no need to consider non - empty &amp;&amp; positive integer
         let age = parseInt(value);
 
         if (age &lt; 22) {
-            return &quot;你的年龄太小了，等22岁之后再来吧&quot;;
+            return &quot;You are too young. Come back after you are 22.&quot;;
         }
 
         if (age &gt; 30) {
-            return &quot;你已经够成熟了，不需要再了解了&quot;;
+            return &quot;You are mature enough and don't need to know more.&quot;;
         }
     }
     validateConfirmPwd(value) {
-        let pwd = this.$getRef&lt;VNode.Component&gt;(&quot;pwd&quot;)?.component.value;
+        let pwd = this.$getRef(&quot;pwd&quot;)?.component.value;
 
         if (pwd !== value) {
-            return &quot;两次密码不一致&quot;;
+            return &quot;The two passwords do not match.&quot;;
         }
     }
 
     async handleFormSubmit(e: VNode.Event) {
-        console.log(&quot;验证成功&quot;, e.data);
+        console.log(&quot;Verification succeeded&quot;, e.data);
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <blockquote>
@@ -443,58 +459,62 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;@model.ctrlSize&quot; @change=&quot;handleRadioChange&quot;&gt;
-            &lt;jk-radio-button label=&quot;&quot;&gt;default&lt;/jk-radio-button&gt;
-            &lt;jk-radio-button label=&quot;medium&quot;&gt;medium&lt;/jk-radio-button&gt;
-            &lt;jk-radio-button label=&quot;small&quot;&gt;small&lt;/jk-radio-button&gt;
-            &lt;jk-radio-button label=&quot;mini&quot;&gt;mini&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;&quot;&gt;default&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;medium&quot;&gt;medium&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;small&quot;&gt;small&lt;/jk-radio-button&gt;
+            &lt;jk-radio-button value=&quot;mini&quot;&gt;mini&lt;/jk-radio-button&gt;
         &lt;/jk-radio-group&gt;
     &lt;/DemoRow&gt;
-    &lt;jk-form ref=&quot;form&quot; size=&quot;@model.ctrlSize&quot;&gt;
-        &lt;jk-form-item label=&quot;活动名称&quot;&gt;
-            &lt;jk-input name=&quot;name&quot; placeholder=&quot;请输入活动名称&quot; /&gt;
+    &lt;jk-form ref=&quot;form&quot; size=&quot;@model.ctrlSize&quot; label-width=&quot;150px&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Name&quot;&gt;
+            &lt;jk-input name=&quot;name&quot; placeholder=&quot;Please enter the event name&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动区域&quot;&gt;
-            &lt;jk-select name=&quot;area&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Event Area&quot;&gt;
+            &lt;jk-select name=&quot;area&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动时间&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Time&quot;&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;推广&quot;&gt;
+        &lt;jk-form-item label=&quot;Promotion&quot;&gt;
             &lt;jk-switch name=&quot;promotion&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;参与人数&quot;&gt;
-            &lt;jk-number name=&quot;userCount&quot; placeholder=&quot;请设置人数&quot; validate=&quot;@Global.isRequired()&quot; /&gt;
+        &lt;jk-form-item label=&quot;Participants Count&quot;&gt;
+            &lt;jk-number
+                name=&quot;userCount&quot;
+                placeholder=&quot;Please set the number of participants&quot;
+                validate=&quot;@Global.isRequired()&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动性质&quot;&gt;
+        &lt;jk-form-item label=&quot;Event Nature&quot;&gt;
             &lt;jk-checkbox-group name=&quot;type&quot;&gt;
-                &lt;jk-checkbox-button label=&quot;自驾游&quot;&gt;&lt;/jk-checkbox-button&gt;
-                &lt;jk-checkbox-button label=&quot;发布会&quot;&gt;&lt;/jk-checkbox-button&gt;
-                &lt;jk-checkbox-button label=&quot;跟团出行&quot;&gt;&lt;/jk-checkbox-button&gt;
+                &lt;jk-checkbox-button value=&quot;1&quot; label=&quot;Self-driving tour&quot;&gt;&lt;/jk-checkbox-button&gt;
+                &lt;jk-checkbox-button value=&quot;2&quot; label=&quot;Press conference&quot;&gt;&lt;/jk-checkbox-button&gt;
+                &lt;jk-checkbox-button value=&quot;3&quot; label=&quot;Group tour&quot;&gt;&lt;/jk-checkbox-button&gt;
             &lt;/jk-checkbox-group&gt;
             &lt;div style=&quot;margin-top:5px&quot;&gt;
-                &lt;jk-alert show-icon title=&quot;自驾游会产生相关费用&quot; type=&quot;info&quot;&gt;&lt;/jk-alert&gt;
+                &lt;jk-alert show-icon title=&quot;Self-driving tours incur related costs&quot; type=&quot;info&quot;&gt;&lt;/jk-alert&gt;
             &lt;/div&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;资金来源&quot;&gt;
+        &lt;jk-form-item label=&quot;Funding Source&quot;&gt;
             &lt;jk-radio-group name=&quot;source&quot;&gt;
-                &lt;jk-radio-button value=&quot;1&quot;&gt;品牌商赞助&lt;/jk-radio-button&gt;
-                &lt;jk-radio-button value=&quot;2&quot;&gt;线下场地免费&lt;/jk-radio-button&gt;
-                &lt;jk-radio-button value=&quot;3&quot;&gt;费用均摊&lt;/jk-radio-button&gt;
+                &lt;jk-radio-button value=&quot;1&quot;&gt;Sponsored by brand owners&lt;/jk-radio-button&gt;
+                &lt;jk-radio-button value=&quot;2&quot;&gt;Free offline venue&lt;/jk-radio-button&gt;
+                &lt;jk-radio-button value=&quot;3&quot;&gt;Cost sharing&lt;/jk-radio-button&gt;
             &lt;/jk-radio-group&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;活动要则&quot;&gt;
-            &lt;jk-textarea name=&quot;note&quot; placeholder=&quot;请输入内容&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-form-item label=&quot;Event Rules&quot;&gt;
+            &lt;jk-textarea name=&quot;note&quot; placeholder=&quot;Please enter the content&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot;&gt;提交&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot;&gt;Submit&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -516,49 +536,54 @@ export default class extends Component {
 <p>可以通过调用 form 中的<code>submit</code>事件实现表单的提交，值得注意的是，提交过程只包括表单的验证和表单的值获取，若校验成功后，则会通过<code>submit</code>事件来通知到调用者，并把表单数据一同返回。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo8)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot;&gt;
-        &lt;jk-form-item label=&quot;年龄&quot;&gt;
+    &lt;jk-form ref=&quot;form&quot; @submit=&quot;handleFormSubmit&quot; label-width=&quot;130px&quot;&gt;
+        &lt;jk-form-item label=&quot;Age&quot;&gt;
             &lt;jk-input
                 name=&quot;age&quot;
                 status-icon
                 validate=&quot;@([Global.isRequired(), Global.isInt(), validateAge])&quot;
-                placeholder=&quot;请输入年龄&quot;
+                placeholder=&quot;Please enter your age&quot;
             /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;新密码&quot;&gt;
-            &lt;jk-input name=&quot;pwd&quot; ref=&quot;pwd&quot; validate=&quot;@([Global.isRequired()])&quot; placeholder=&quot;请输入新密码&quot; /&gt;
+        &lt;jk-form-item label=&quot;New Password&quot;&gt;
+            &lt;jk-input
+                name=&quot;pwd&quot;
+                ref=&quot;pwd&quot;
+                validate=&quot;@([Global.isRequired()])&quot;
+                placeholder=&quot;Please enter your new password&quot;
+            /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;确认密码&quot;&gt;
+        &lt;jk-form-item label=&quot;Confirm Password&quot;&gt;
             &lt;jk-input
                 name=&quot;confirmPwd&quot;
                 validate=&quot;@([Global.isRequired(), validateConfirmPwd])&quot;
-                placeholder=&quot;请输入确认密码&quot;
+                placeholder=&quot;Please confirm your password&quot;
             /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;区域&quot;&gt;
-            &lt;jk-select name=&quot;area&quot; validate=&quot;@([Global.isRequired()])&quot; placeholder=&quot;请选择活动区域&quot;&gt;
-                &lt;jk-option label=&quot;山东&quot; value=&quot;shandong&quot; /&gt;
-                &lt;jk-option label=&quot;北京&quot; value=&quot;beijing&quot; /&gt;
+        &lt;jk-form-item label=&quot;Area&quot;&gt;
+            &lt;jk-select name=&quot;area&quot; validate=&quot;@([Global.isRequired()])&quot; placeholder=&quot;Please select the event area&quot;&gt;
+                &lt;jk-option label=&quot;Shandong&quot; value=&quot;shandong&quot; /&gt;
+                &lt;jk-option label=&quot;Beijing&quot; value=&quot;beijing&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;推广&quot;&gt;
+        &lt;jk-form-item label=&quot;Promotion&quot;&gt;
             &lt;jk-switch name=&quot;promotion&quot; /&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;资金比例&quot;&gt;
+        &lt;jk-form-item label=&quot;Funding Ratio&quot;&gt;
             &lt;jk-slider name=&quot;sourcePic&quot; value=&quot;30&quot;&gt;&lt;/jk-slider&gt;
         &lt;/jk-form-item&gt;
-        &lt;jk-form-item label=&quot;时间&quot;&gt;
+        &lt;jk-form-item label=&quot;Time&quot;&gt;
             &lt;jk-date-picker
                 name=&quot;date&quot;
                 type=&quot;daterange&quot;
                 validate=&quot;@([Global.isRequired()])&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/jk-form-item&gt;
         &lt;jk-form-item&gt;
-            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot; loading=&quot;@model.loading&quot;&gt;提交&lt;/jk-button&gt;
-            &lt;jk-button nativeType=&quot;reset&quot;&gt;重置&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; nativeType=&quot;submit&quot; loading=&quot;@model.loading&quot;&gt;Submit&lt;/jk-button&gt;
+            &lt;jk-button nativeType=&quot;reset&quot;&gt;Reset&lt;/jk-button&gt;
         &lt;/jk-form-item&gt;
     &lt;/jk-form&gt;
 &lt;/template&gt;
@@ -572,56 +597,54 @@ export default class extends Component {
         loading: false
     };
     async validateAge(value: string) {
-        //模拟请求，实现异步校验
+        // Simulate a request to implement asynchronous validation
         await sleep(1500);
 
-        //自定义校验是最后执行，无需考虑非空 &amp;&amp; 正整数
+        // Custom validation is performed last, no need to consider non - empty &amp;&amp; positive integer
         let age = parseInt(value);
 
         if (age &lt; 22) {
-            return &quot;你的年龄太小了，等22岁之后再来吧&quot;;
+            return &quot;You are too young. Come back after you are 22.&quot;;
         }
 
         if (age &gt; 30) {
-            return &quot;你已经够成熟了，不需要再了解了&quot;;
+            return &quot;You are mature enough and don't need to know more.&quot;;
         }
     }
     validateConfirmPwd(value) {
-        let pwd = this.$getRef&lt;VNode.Component&gt;(&quot;pwd&quot;)?.component.value;
+        let pwd = this.$getRef(&quot;pwd&quot;)?.component.value;
 
         if (pwd !== value) {
-            return &quot;两次密码不一致&quot;;
+            return &quot;The two passwords do not match.&quot;;
         }
     }
 
-    //触发提交
+    // Trigger the submission
     handleSubmitBtnClick(e: VNode.Event) {
-        //若传入e，则form会根据触发事件来控制该按钮的loading状态
-        this.$getRef&lt;VNode.Component&gt;(&quot;form&quot;)?.component.submit(e);
+        // If e is passed in, the form will control the loading state of the button according to the triggering event
+        this.$getRef(&quot;form&quot;)?.component.submit(e);
     }
 
-    //表单提交处理函数
+    // Form submission processing function
     async handleFormSubmit(e: VNode.Event) {
         this.model.loading = true;
-        //验证成功后，才会触发该方法
-        //支持异步处理
+        // This method will only be triggered after successful validation
+        // Supports asynchronous processing
 
-        //模拟接口请求
+        // Simulate an interface request
         await sleep(1000);
 
         console.log(e.data);
 
         Message({
             type: &quot;success&quot;,
-            message: &quot;提交成功&quot;
+            message: &quot;Submission succeeded&quot;
         });
 
         this.model.loading = false;
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <blockquote>

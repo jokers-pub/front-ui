@@ -51,14 +51,14 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__placeholder&quot;&gt;
         &lt;div class=&quot;block&quot;&gt;
-            &lt;p class=&quot;demonstration&quot;&gt;默认&lt;/p&gt;
+            &lt;p class=&quot;demonstration&quot;&gt;Default&lt;/p&gt;
             &lt;jk-image src=&quot;@model.src&quot; style=&quot;width: 300px;height:200px;&quot;&gt;&lt;/jk-image&gt;
         &lt;/div&gt;
         &lt;div class=&quot;block&quot;&gt;
-            &lt;p class=&quot;demonstration&quot;&gt;自定义&lt;/p&gt;
+            &lt;p class=&quot;demonstration&quot;&gt;Custom&lt;/p&gt;
             &lt;jk-image src=&quot;@model.src&quot; style=&quot;width: 300px;height:200px;&quot;&gt;
                 @section(&quot;placeholder&quot;) {
-                    加载中
+                    Loading
                     &lt;span class=&quot;dot&quot;&gt;...&lt;/span&gt;
                 }
             &lt;/jk-image&gt;
@@ -95,11 +95,11 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__error&quot;&gt;
         &lt;div class=&quot;block&quot;&gt;
-            &lt;p class=&quot;demonstration&quot;&gt;默认&lt;/p&gt;
+            &lt;p class=&quot;demonstration&quot;&gt;Default&lt;/p&gt;
             &lt;jk-image style=&quot;width: 300px;height:200px;&quot;&gt;&lt;/jk-image&gt;
         &lt;/div&gt;
         &lt;div class=&quot;block&quot;&gt;
-            &lt;p class=&quot;demonstration&quot;&gt;自定义&lt;/p&gt;
+            &lt;p class=&quot;demonstration&quot;&gt;Custom&lt;/p&gt;
             &lt;jk-image style=&quot;width: 300px;height:200px;&quot;&gt;
                 @section(&quot;error&quot;) {
                     &lt;i class=&quot;jk-icon-picture-outline&quot; /&gt;

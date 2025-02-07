@@ -7,7 +7,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:200px;&quot;&gt;
-        &lt;jk-number value=&quot;1x&quot; /&gt;
+        &lt;jk-number value=&quot;1&quot; /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
@@ -132,21 +132,21 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot; style=&quot;width:200px;&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls placeholder=&quot;请输入内容&quot; /&gt;
+            &lt;jk-number hiddenControls placeholder=&quot;Please enter content&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;medium&quot; placeholder=&quot;请输入内容&quot; /&gt;
+            &lt;jk-number hiddenControls size=&quot;medium&quot; placeholder=&quot;Please enter content&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;small&quot; placeholder=&quot;请输入内容&quot; /&gt;
+            &lt;jk-number hiddenControls size=&quot;small&quot; placeholder=&quot;Please enter content&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;mini&quot; placeholder=&quot;请输入内容&quot; /&gt;
+            &lt;jk-number hiddenControls size=&quot;mini&quot; placeholder=&quot;Please enter content&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls placeholder=&quot;请输入内容&quot;&gt;
+            &lt;jk-number hiddenControls placeholder=&quot;Please enter content&quot;&gt;
                 @section(&quot;prepend&quot;) {
-                    字号
+                    Font size
                 }
                 @section(&quot;append&quot;) {
                     px
@@ -154,9 +154,9 @@
             &lt;/jk-number&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;medium&quot; placeholder=&quot;请输入内容&quot;&gt;
+            &lt;jk-number hiddenControls size=&quot;medium&quot; placeholder=&quot;Please enter content&quot;&gt;
                 @section(&quot;prepend&quot;) {
-                    字号
+                    Font size
                 }
                 @section(&quot;append&quot;) {
                     px
@@ -164,9 +164,9 @@
             &lt;/jk-number&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;small&quot; placeholder=&quot;请输入内容&quot;&gt;
+            &lt;jk-number hiddenControls size=&quot;small&quot; placeholder=&quot;Please enter content&quot;&gt;
                 @section(&quot;prepend&quot;) {
-                    字号
+                    Font size
                 }
                 @section(&quot;append&quot;) {
                     px
@@ -174,9 +174,9 @@
             &lt;/jk-number&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-number hiddenControls size=&quot;mini&quot; placeholder=&quot;请输入内容&quot;&gt;
+            &lt;jk-number hiddenControls size=&quot;mini&quot; placeholder=&quot;Please enter content&quot;&gt;
                 @section(&quot;prepend&quot;) {
-                    字号
+                    Font size
                 }
                 @section(&quot;append&quot;) {
                     px
@@ -190,7 +190,6 @@
     margin-right: 15px;
 }
 &lt;/style&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Attributes</h3>

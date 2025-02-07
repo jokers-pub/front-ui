@@ -197,7 +197,7 @@ export default class extends FormCtrl<{
     mounted() {
         this.containerEl = this.$getRef("container")!.output;
 
-        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+        this.inputContainerEl = this.$getRef("input")!.firstElement!.output;
 
         this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
 
@@ -296,7 +296,7 @@ export default class extends FormCtrl<{
     }
 
     get dropdown() {
-        return this.$getRef<VNode.Component>("dropdown");
+        return this.$getRef("dropdown");
     }
 
     //#endregion
@@ -339,7 +339,7 @@ export default class extends FormCtrl<{
     }
 
     blur() {
-        this.$getRef<VNode.Component>("input")?.component?.blur();
+        this.$getRef("input")?.component?.blur();
     }
 
     hide() {
@@ -469,7 +469,7 @@ export default class extends FormCtrl<{
             if (referenceInput) {
                 referenceInput.focus();
             } else {
-                this.$getRef<VNode.Component>("input")?.component.focus();
+                this.$getRef("input")?.component.focus();
             }
         }
     }

@@ -1,12 +1,12 @@
 <template>
     <div class="item">
         <jk-badge value="@(200)" max="@(99)">
-            <jk-button size="small">评论</jk-button>
+            <jk-button size="small">Comments</jk-button>
         </jk-badge>
     </div>
     <div class="item">
         <jk-badge value="@(100)" max="@(10)">
-            <jk-button size="small">回复</jk-button>
+            <jk-button size="small">Replies</jk-button>
         </jk-badge>
     </div>
 </template>

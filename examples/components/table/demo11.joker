@@ -1,10 +1,10 @@
 <template>
     <jk-table data="@tableData.value" ref="table" @sort-change="handleSortChange">
-        <jk-table-column label="日期" key="date" width="180" sortable="custom" />
-        <jk-table-column label="姓名" key="name" width="180" />
-        <jk-table-column label="地址" key="address" />
+        <jk-table-column label="Date" key="date" width="180" sortable="custom" />
+        <jk-table-column label="Name" key="name" width="180" />
+        <jk-table-column label="Address" key="address" />
         <jk-table-column
-            label="余额"
+            label="Balance"
             key="money"
             headerAlign="right"
             align="right"
@@ -19,28 +19,30 @@ import { ColumnType, SortableOrderType } from "../../../packages/table/store";
 import { sleep } from "@joker.front/shared";
 import { Loading } from "../../../src";
 
+// Table data array, containing user information
 let tableData = [
-    { name: "张三", date: "2023-11-02", address: "山东省济南市", money: 1000 },
-    { name: "李四", date: "2023-11-01", address: "山东省济南市", money: 10 },
-    { name: "李梅", date: "2023-11-03", address: "山东省济南市", money: 300 },
-    { name: "王武", date: "2023-11-04", address: "山东省济南市", money: 11.9 }
+    { name: "Zhang San", date: "2023-11-02", address: "Jinan, Shandong Province", money: 1000 },
+    { name: "Li Si", date: "2023-11-01", address: "Jinan, Shandong Province", money: 10 },
+    { name: "Li Mei", date: "2023-11-03", address: "Jinan, Shandong Province", money: 300 },
+    { name: "Wang Wu", date: "2023-11-04", address: "Jinan, Shandong Province", money: 11.9 }
 ];
+
 export default class extends Component {
-    //为demo做浅劫持
+    // Perform shallow hijacking for the demo
     tableData = new ShallowObserver(tableData.slice(0));
 
-    //记录当前排序列
+    // Record the currently sorted column
     order?: string;
 
-    //当前demo模拟只对date一个字段进行延迟排序，故逻辑较复杂，请根据自身需求调整
+    // The current demo simulates delayed sorting only for the 'date' field, so the logic is relatively complex. Please adjust according to your own needs.
     async handleSortChange(e: VNode.Event<{ column: ColumnType; order: SortableOrderType }>) {
-        //模拟还原数据
+        // Simulate restoring data
         if (this.order && e.data === undefined) {
             this.order = undefined;
             let loading = Loading({
                 target: this.$getRef("table")
             });
-            //模拟请求
+            // Simulate a request
             await sleep(1500);
 
             loading.close();
@@ -49,7 +51,7 @@ export default class extends Component {
             return;
         }
 
-        //不是date列，清空标记
+        // If it's not the 'date' column, clear the marker
         if (e.data?.column.key !== "date") {
             this.order = undefined;
             return;
@@ -60,7 +62,7 @@ export default class extends Component {
             let loading = Loading({
                 target: this.$getRef("table")
             });
-            //模拟请求
+            // Simulate a request
             await sleep(1500);
 
             loading.close();
@@ -74,9 +76,10 @@ export default class extends Component {
             });
         }
     }
-    //金额排序
+
+    // Sorting method for the balance column
     moneySortMethod(datas: Array<any>, col: ColumnType, order: SortableOrderType) {
-        console.log("自定义排序");
+        console.log("Custom sorting");
         return datas.sort((a, b) => {
             if (order === "ascending") {
                 return a.money > b.money ? 1 : -1;

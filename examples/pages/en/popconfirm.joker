@@ -6,8 +6,8 @@
 <p>The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the <code>title</code> attribute is available.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-popconfirm title=&quot;你确定要删除此数据吗？&quot; @cancel=&quot;cancel&quot; @confirm=&quot;confirm&quot;&gt;
-        &lt;jk-button&gt;删除&lt;/jk-button&gt;
+    &lt;jk-popconfirm title=&quot;Are you sure you want to delete this data?&quot; @cancel=&quot;cancel&quot; @confirm=&quot;confirm&quot;&gt;
+        &lt;jk-button&gt;Delete&lt;/jk-button&gt;
     &lt;/jk-popconfirm&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -16,31 +16,31 @@ import { Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     cancel() {
-        Message.warning(&quot;取消&quot;);
+        Message.warning(&quot;Cancelled&quot;);
     }
     confirm() {
-        Message.success(&quot;确定&quot;);
+        Message.success(&quot;Confirmed&quot;);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Customization</h3>
 <p>You can customize the content in Popconfirm.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+<pre><code class="language-html">```html
+&lt;template&gt;
     &lt;jk-popconfirm
-        title=&quot;你确定要删除此数据吗？&quot;
-        confirm-button-text=&quot;好的&quot;
-        cancel-button-text=&quot;不用了&quot;
+        title=&quot;Are you sure you want to delete this data?&quot;
+        confirm-button-text=&quot;OK&quot;
+        cancel-button-text=&quot;No, thanks&quot;
         icon=&quot;jk-icon-info&quot;
         icon-color=&quot;red&quot;&gt;
-        &lt;jk-button&gt;删除&lt;/jk-button&gt;
+        &lt;jk-button&gt;Delete&lt;/jk-button&gt;
     &lt;/jk-popconfirm&gt;
 &lt;/template&gt;
-
 </code></pre>
+<pre><code></code></pre>
 </DemoContainer>
 <h3>Attributes</h3>
 <table class="mkd-table">

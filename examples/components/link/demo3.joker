@@ -1,7 +1,7 @@
 <template>
     <div class="demo-container">
-        <jk-link underline="@false">无下划线</jk-link>
-        <jk-link>有下划线</jk-link>
+        <jk-link underline="@false">No Underline</jk-link>
+        <jk-link>With Underline</jk-link>
     </div>
 </template>
 <style scoped lang="scss">

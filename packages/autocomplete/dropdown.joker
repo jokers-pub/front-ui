@@ -72,7 +72,7 @@ export default class extends Component<{}> {
         let selectOption = this.$getRef("container")?.output.querySelector(".is-hover");
 
         if (selectOption) {
-            this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(selectOption);
+            this.$getRef("scrollbar")?.component.scrollToEl(selectOption);
         }
     }
 }

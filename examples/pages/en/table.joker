@@ -7,10 +7,10 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -18,14 +18,13 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Striped Table</h3>
@@ -34,10 +33,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; stripe&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -45,14 +44,13 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Bordered Table</h3>
@@ -60,10 +58,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; border&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -71,10 +69,10 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
@@ -86,10 +84,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -97,18 +95,18 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 },
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 },
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 },
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 },
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
@@ -120,13 +118,13 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; height=&quot;250&quot; border&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
-        &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
-        &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
-        &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+        &lt;jk-table-column label=&quot;Province&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;City&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;Zip Code&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -135,111 +133,112 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     tableData = [
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000
         },
         {
-            name: &quot;李四&quot;,
+            name: &quot;Li Si&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+            address:
+                &quot;Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province&quot;,
             money: 10
         },
         {
-            name: &quot;李梅&quot;,
+            name: &quot;Li Mei&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 300
         },
         {
-            name: &quot;王武&quot;,
+            name: &quot;Wang Wu&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 11.9
         },
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000
         },
         {
-            name: &quot;李四&quot;,
+            name: &quot;Li Si&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 10
         },
         {
-            name: &quot;李梅&quot;,
+            name: &quot;Li Mei&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 300
         },
         {
-            name: &quot;王武&quot;,
+            name: &quot;Wang Wu&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 11.9
         },
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000
         },
         {
-            name: &quot;李四&quot;,
+            name: &quot;Li Si&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 10
         },
         {
-            name: &quot;李梅&quot;,
+            name: &quot;Li Mei&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 300
         },
         {
-            name: &quot;王武&quot;,
+            name: &quot;Wang Wu&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 11.9
         }
     ];
@@ -254,130 +253,131 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot; max-height=&quot;250&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
-            &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
-            &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
-            &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;120&quot; fixed=&quot;left&quot; /&gt;
+            &lt;jk-table-column label=&quot;Province&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;City&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;Zip Code&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; fixed=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;loadAll&quot;&gt;加载全部&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;loadPart&quot;&gt;加载部分&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;clearData&quot;&gt;清空全部数据&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;loadAll&quot;&gt;Load All&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;loadPart&quot;&gt;Load Part&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;clearData&quot;&gt;Clear All Data&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 let demoData = [
     {
-        name: &quot;张三&quot;,
+        name: &quot;Zhang San&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 1000
     },
     {
-        name: &quot;李四&quot;,
+        name: &quot;Li Si&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+        address:
+            &quot;Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province&quot;,
         money: 10
     },
     {
-        name: &quot;李梅&quot;,
+        name: &quot;Li Mei&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 300
     },
     {
-        name: &quot;王武&quot;,
+        name: &quot;Wang Wu&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 11.9
     },
     {
-        name: &quot;张三&quot;,
+        name: &quot;Zhang San&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 1000
     },
     {
-        name: &quot;李四&quot;,
+        name: &quot;Li Si&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 10
     },
     {
-        name: &quot;李梅&quot;,
+        name: &quot;Li Mei&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 300
     },
     {
-        name: &quot;王武&quot;,
+        name: &quot;Wang Wu&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 11.9
     },
     {
-        name: &quot;张三&quot;,
+        name: &quot;Zhang San&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 1000
     },
     {
-        name: &quot;李四&quot;,
+        name: &quot;Li Si&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 10
     },
     {
-        name: &quot;李梅&quot;,
+        name: &quot;Li Mei&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 300
     },
     {
-        name: &quot;王武&quot;,
+        name: &quot;Wang Wu&quot;,
         date: &quot;2023-11-21&quot;,
-        province: &quot;山东省&quot;,
-        city: &quot;济南市&quot;,
+        province: &quot;Shandong Province&quot;,
+        city: &quot;Jinan&quot;,
         zip: &quot;251900&quot;,
-        address: &quot;山东省济南市&quot;,
+        address: &quot;Jinan, Shandong Province&quot;,
         money: 11.9
     }
 ];
@@ -409,17 +409,17 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; border&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;120&quot; /&gt;
-        &lt;jk-table-column label=&quot;个人信息&quot;&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;120&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot;&gt;
-                &lt;jk-table-column label=&quot;省份&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
-                &lt;jk-table-column label=&quot;城市&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
-                &lt;jk-table-column label=&quot;邮编&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
-                &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;120&quot; /&gt;
+        &lt;jk-table-column label=&quot;Personal Information&quot;&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;120&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot;&gt;
+                &lt;jk-table-column label=&quot;Province&quot; key=&quot;province&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;City&quot; key=&quot;city&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;Zip Code&quot; key=&quot;zip&quot; width=&quot;120&quot; /&gt;
+                &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; width=&quot;300&quot; /&gt;
             &lt;/jk-table-column&gt;
         &lt;/jk-table-column&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; width=&quot;150&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -428,66 +428,67 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     tableData = [
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000
         },
         {
-            name: &quot;李四&quot;,
+            name: &quot;Li Si&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市,山东省济南市,山东省济南市,山东省济南市,山东省济南市&quot;,
+            address:
+                &quot;Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province, Jinan, Shandong Province&quot;,
             money: 10
         },
         {
-            name: &quot;李梅&quot;,
+            name: &quot;Li Mei&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 300
         },
         {
-            name: &quot;王武&quot;,
+            name: &quot;Wang Wu&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 11.9
         },
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000
         },
         {
-            name: &quot;李四&quot;,
+            name: &quot;Li Si&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 10
         },
         {
-            name: &quot;王武&quot;,
+            name: &quot;Wang Wu&quot;,
             date: &quot;2023-11-21&quot;,
-            province: &quot;山东省&quot;,
-            city: &quot;济南市&quot;,
+            province: &quot;Shandong Province&quot;,
+            city: &quot;Jinan&quot;,
             zip: &quot;251900&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 11.9
         }
     ];
@@ -511,19 +512,19 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-table ref=&quot;table1&quot; data=&quot;@model.tableData&quot; select @selected-change=&quot;handleSelectedChange('table2')&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-table ref=&quot;table2&quot; data=&quot;@model.tableData&quot; select @selected-change=&quot;handleSelectedChange('table1')&quot;&gt;
             &lt;jk-table-column type=&quot;selection&quot; disabledMethod=&quot;@disabledMethod&quot; /&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -534,23 +535,22 @@ export default class extends Component {
     model = {
         //存放到model中，使用数据观察代理，以保证两个table行数据一致
         tableData: [
-            { name: &quot;张三&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-            { name: &quot;李四&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-            { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-            { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+            { name: &quot;Zhang San&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+            { name: &quot;Li Si&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+            { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+            { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
         ]
     };
 
     disabledMethod(row: any) {
-        return row.name === &quot;李梅&quot;;
+        return row.name === &quot;Li Mei&quot;;
     }
 
     handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
-        this.$getRef&lt;VNode.Component&gt;(syncTableName)?.component.setSelectedRow([e.data]);
+        this.$getRef(syncTableName)?.component.setSelectedRow([e.data]);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <p>Multi-selection mode example:</p>
@@ -563,10 +563,10 @@ export default class extends Component {
             select
             multiple
             @selected-change=&quot;handleSelectedChange('table2')&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
@@ -577,23 +577,23 @@ export default class extends Component {
             multiple
             @selected-change=&quot;handleSelectedChange('table1')&quot;&gt;
             &lt;jk-table-column type=&quot;selection&quot; disabledMethod=&quot;@disabledMethod&quot; /&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;clear&quot;&gt;清空&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;selectAll&quot;&gt;选中全部&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;clear&quot;&gt;Clear&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;selectAll&quot;&gt;Select All&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot; select multiple&gt;
             &lt;jk-table-column type=&quot;selection&quot; key=&quot;checked&quot; /&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -602,35 +602,33 @@ import { Component, VNode } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        //存放到model中，使用数据观察代理，以保证两个table行数据一致
         tableData: [
-            { name: &quot;张三&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-            { name: &quot;李四&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-            { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300, checked: true },
-            { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+            { name: &quot;Zhang San&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+            { name: &quot;Li Si&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+            { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300, checked: true },
+            { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
         ]
     };
 
     disabledMethod(row: any) {
-        return row.name === &quot;李梅&quot;;
+        return row.name === &quot;Li Mei&quot;;
     }
 
     selectAll() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;table1&quot;)?.component.selectAll();
-        this.$getRef&lt;VNode.Component&gt;(&quot;table2&quot;)?.component.selectAll();
+        this.$getRef(&quot;table1&quot;)?.component.selectAll();
+        this.$getRef(&quot;table2&quot;)?.component.selectAll();
     }
 
     clear() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;table1&quot;)?.component.clearSelectedRow();
-        this.$getRef&lt;VNode.Component&gt;(&quot;table2&quot;)?.component.clearSelectedRow();
+        this.$getRef(&quot;table1&quot;)?.component.clearSelectedRow();
+        this.$getRef(&quot;table2&quot;)?.component.clearSelectedRow();
     }
 
     handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
-        this.$getRef&lt;VNode.Component&gt;(syncTableName)?.component.setSelectedRow(e.data);
+        this.$getRef(syncTableName)?.component.setSelectedRow(e.data);
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Sorting</h3>
@@ -641,10 +639,10 @@ You can set the default sorted column and sorting order through the <code>defaul
 <DemoContainer component="@(components.DEMO_JOKER_demo10)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; sortable /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; sortable /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; sortable /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -652,25 +650,24 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <p>Custom sorting, simulating server-side sorting</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo11)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData.value&quot; ref=&quot;table&quot; @sort-change=&quot;handleSortChange&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable=&quot;custom&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; sortable=&quot;custom&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
         &lt;jk-table-column
-            label=&quot;余额&quot;
+            label=&quot;Balance&quot;
             key=&quot;money&quot;
             headerAlign=&quot;right&quot;
             align=&quot;right&quot;
@@ -685,28 +682,30 @@ import { ColumnType, SortableOrderType } from &quot;../../../packages/table/stor
 import { sleep } from &quot;@joker.front/shared&quot;;
 import { Loading } from &quot;../../../src&quot;;
 
+// Table data array, containing user information
 let tableData = [
-    { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-    { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-    { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-    { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+    { name: &quot;Zhang San&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+    { name: &quot;Li Si&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+    { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+    { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
 ];
+
 export default class extends Component {
-    //为demo做浅劫持
+    // Perform shallow hijacking for the demo
     tableData = new ShallowObserver(tableData.slice(0));
 
-    //记录当前排序列
+    // Record the currently sorted column
     order?: string;
 
-    //当前demo模拟只对date一个字段进行延迟排序，故逻辑较复杂，请根据自身需求调整
+    // The current demo simulates delayed sorting only for the 'date' field, so the logic is relatively complex. Please adjust according to your own needs.
     async handleSortChange(e: VNode.Event&lt;{ column: ColumnType; order: SortableOrderType }&gt;) {
-        //模拟还原数据
+        // Simulate restoring data
         if (this.order &amp;&amp; e.data === undefined) {
             this.order = undefined;
             let loading = Loading({
                 target: this.$getRef(&quot;table&quot;)
             });
-            //模拟请求
+            // Simulate a request
             await sleep(1500);
 
             loading.close();
@@ -715,7 +714,7 @@ export default class extends Component {
             return;
         }
 
-        //不是date列，清空标记
+        // If it's not the 'date' column, clear the marker
         if (e.data?.column.key !== &quot;date&quot;) {
             this.order = undefined;
             return;
@@ -726,7 +725,7 @@ export default class extends Component {
             let loading = Loading({
                 target: this.$getRef(&quot;table&quot;)
             });
-            //模拟请求
+            // Simulate a request
             await sleep(1500);
 
             loading.close();
@@ -740,9 +739,10 @@ export default class extends Component {
             });
         }
     }
-    //金额排序
+
+    // Sorting method for the balance column
     moneySortMethod(datas: Array&lt;any&gt;, col: ColumnType, order: SortableOrderType) {
-        console.log(&quot;自定义排序&quot;);
+        console.log(&quot;Custom sorting&quot;);
         return datas.sort((a, b) =&gt; {
             if (order === &quot;ascending&quot;) {
                 return a.money &gt; b.money ? 1 : -1;
@@ -753,7 +753,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Filtering</h3>
@@ -768,17 +767,17 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo12)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; sortable filter /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; sortable filter /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
         &lt;jk-table-column
-            label=&quot;余额&quot;
+            label=&quot;Balance&quot;
             key=&quot;money&quot;
             headerAlign=&quot;right&quot;
             align=&quot;right&quot;
             filter=&quot;@([
-                { text: '小于100', value: 1 },
-                { text: '大于100', value: 2 }
+                { text: 'Less than 100', value: 1 },
+                { text: 'Greater than 100', value: 2 }
             ])&quot;
             filter-method=&quot;@customFilter&quot;
         /&gt;
@@ -786,14 +785,13 @@ export default class extends Component {
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
-import { ColumnType } from &quot;../../../packages/table/store&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-02&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-01&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-03&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-04&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
     customFilter(row: any, filters: number[]) {
         for (let i = 0; i &lt; filters.length; i++) {
@@ -807,7 +805,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Index Column</h3>
@@ -817,23 +814,23 @@ export default class extends Component {
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@tableData&quot;&gt;
             &lt;jk-table-column type=&quot;index&quot; index=&quot;@model.startIndex&quot; /&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
-    &lt;jk-button @click=&quot;handleClick&quot;&gt;设置起始索引为10&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;handleClick&quot;&gt;Set starting index to 10&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
     model = {
         startIndex: 1
@@ -843,7 +840,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Custom Column Template</h3>
@@ -855,22 +851,22 @@ Through <code>RenderSection</code>, you can obtain data such as <code>value</cod
     &lt;jk-table data=&quot;@model.tableData&quot; select multiple dataChangeNotClearSelected&gt;
         &lt;jk-table-column type=&quot;selection&quot; /&gt;
         &lt;jk-table-column type=&quot;index&quot; /&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot;&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot;&gt;
             @section(&quot;td&quot;, data) {
                 &lt;i class=&quot;jk-icon-time&quot; /&gt;@data.value
             }
         &lt;/jk-table-column&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
-        &lt;jk-table-column label=&quot;操作&quot; headerAlign=&quot;right&quot; align=&quot;right&quot;&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Operation&quot; headerAlign=&quot;right&quot; align=&quot;right&quot;&gt;
             @section(&quot;th&quot;) {
                 &lt;i class=&quot;jk-icon-edit&quot;&gt;&lt;/i&gt;
-                操作
+                Operation
             }
             @section(&quot;td&quot;, data) {
-                &lt;jk-button type=&quot;primary&quot; size=&quot;small&quot; @click=&quot;handleMoveDown(data)&quot;&gt;下移&lt;/jk-button&gt;
-                &lt;jk-button type=&quot;danger&quot; size=&quot;small&quot; @click=&quot;handleDelete(data)&quot;&gt;删除&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;primary&quot; size=&quot;small&quot; @click=&quot;handleMoveDown(data)&quot;&gt;Move Down&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;danger&quot; size=&quot;small&quot; @click=&quot;handleDelete(data)&quot;&gt;Delete&lt;/jk-button&gt;
             }
         &lt;/jk-table-column&gt;
     &lt;/jk-table&gt;
@@ -884,31 +880,31 @@ import { moveDown, remove } from &quot;@joker.front/shared&quot;;
 export default class extends Component {
     model = {
         tableData: [
-            { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-            { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-            { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-            { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+            { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+            { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+            { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+            { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
         ]
     };
 
     handleDelete(
         e: VNode.Event,
         data: {
-            //当前行值，配置column.key才会取值
+            // Current row value, will be retrieved only when column.key is configured
             value: any;
-            //当前行数据
+            // Current row data
             row: any;
-            //行索引
+            // Row index
             rowIndex: number;
-            //列索引
+            // Column index
             cellIndex: number;
-            //列数据
+            // Column data
             column: ColumnType;
-            //存储单元
+            // Storage unit
             store: Store;
         }
     ) {
-        MessageBox.confirm('你确定要删除&quot;' + data.row.name + '&quot;吗？', {
+        MessageBox.confirm('Are you sure you want to delete &quot;' + data.row.name + '&quot;?', {
             callback: (action) =&gt; {
                 if (action === &quot;confirm&quot;) {
                     remove(this.model.tableData, data.row);
@@ -924,7 +920,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Expanding Rows</h3>
@@ -937,25 +932,25 @@ By setting <code>type=&quot;expand&quot;</code> and <code>section('expand',data)
             @section(&quot;expand&quot;, data) {
                 &lt;ul class=&quot;expand-ul&quot;&gt;
                     &lt;li&gt;
-                        姓名：@data.row.name
+                        Name: @data.row.name
                     &lt;/li&gt;
                     &lt;li&gt;
-                        容器：@data.row.date
+                        Date: @data.row.date
                     &lt;/li&gt;
                     &lt;li&gt;
-                        余额：@data.row.money
-                        元
+                        Balance: @data.row.money
+                        Yuan
                     &lt;/li&gt;
                     &lt;li&gt;
-                        地址：@data.row.address
+                        Address: @data.row.address
                     &lt;/li&gt;
                 &lt;/ul&gt;
             }
         &lt;/jk-table-column&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -963,14 +958,13 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Tree List</h3>
@@ -981,10 +975,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo16)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; row-key=&quot;name&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -993,43 +987,42 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     tableData = [
         {
-            name: &quot;张三&quot;,
+            name: &quot;Zhang San&quot;,
             date: &quot;2023-11-21&quot;,
-            address: &quot;山东省济南市&quot;,
+            address: &quot;Jinan, Shandong Province&quot;,
             money: 1000,
             children: [
-                { name: &quot;张三1&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
+                { name: &quot;Zhang San 1&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
                 {
-                    name: &quot;张三2&quot;,
+                    name: &quot;Zhang San 2&quot;,
                     date: &quot;2023-11-21&quot;,
-                    address: &quot;山东省济南市&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
                     money: 10,
                     children: [
-                        { name: &quot;张三12&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-                        { name: &quot;张三22&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-                        { name: &quot;张三32&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+                        { name: &quot;Zhang San 12&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+                        { name: &quot;Zhang San 22&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+                        { name: &quot;Zhang San 32&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 }
                     ]
                 },
-                { name: &quot;张三3&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+                { name: &quot;Zhang San 3&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 }
             ]
         },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
 }
 &lt;/script&gt;
-&lt;/template&gt;
 </code></pre>
 </DemoContainer>
 <p>Asynchronous loading</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo17)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@tableData&quot; row-key=&quot;name&quot; lazy load=&quot;@loadChildrenRow&quot;&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -1038,28 +1031,70 @@ import { sleep } from &quot;@joker.front/shared&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-        { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 10 },
-        { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 300 },
-        { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 11.9 }
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, isLeaf: true, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, isLeaf: true, money: 300 },
+        { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, isLeaf: true, money: 11.9 }
     ];
 
     async loadChildrenRow(row: any, callBack: Function) {
         await sleep(1000);
 
-        if (row.name === &quot;张三&quot;) {
+        if (row.name === &quot;Zhang San&quot;) {
             row.children = [
-                { name: &quot;张三1&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 10 },
-                { name: &quot;张三2&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-                { name: &quot;张三3&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 300 },
-                { name: &quot;张三4&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, isLeaf: true, money: 11.9 }
+                {
+                    name: &quot;Zhang San 1&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    isLeaf: true,
+                    money: 10
+                },
+                { name: &quot;Zhang San 2&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+                {
+                    name: &quot;Zhang San 3&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    isLeaf: true,
+                    money: 300
+                },
+                {
+                    name: &quot;Zhang San 4&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    isLeaf: true,
+                    money: 11.9
+                }
             ];
         } else {
             row.children = [
-                { name: &quot;张三12&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 10 },
-                { name: &quot;张三22&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 10 },
-                { name: &quot;张三32&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 300 },
-                { name: &quot;张三42&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, children: [], money: 11.9 }
+                {
+                    name: &quot;Zhang San 12&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    children: [],
+                    money: 10
+                },
+                {
+                    name: &quot;Zhang San 22&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    children: [],
+                    money: 10
+                },
+                {
+                    name: &quot;Zhang San 32&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    children: [],
+                    money: 300
+                },
+                {
+                    name: &quot;Zhang San 42&quot;,
+                    date: &quot;2023-11-21&quot;,
+                    address: &quot;Jinan, Shandong Province&quot;,
+                    children: [],
+                    money: 11.9
+                }
             ];
         }
 
@@ -1067,7 +1102,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-&lt;/template&gt;
 </code></pre>
 </DemoContainer>
 <blockquote>
@@ -1079,40 +1113,40 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;jk-divider&gt;medium&lt;/jk-divider&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;jk-divider&gt;small&lt;/jk-divider&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;small&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
     &lt;jk-divider&gt;mini&lt;/jk-divider&gt;
     &lt;DemoRow&gt;
         &lt;jk-table data=&quot;@model.tableData&quot; size=&quot;mini&quot;&gt;
-            &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-            &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-            &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+            &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+            &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+            &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
         &lt;/jk-table&gt;
     &lt;/DemoRow&gt;
-    &lt;jk-button @click=&quot;handleClearData&quot;&gt;清空数据，查看空数据时尺寸大小&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;handleClearData&quot;&gt;Clear data to view the size when there is no data&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -1120,8 +1154,8 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     model = {
         tableData: [
-            { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-            { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 }
+            { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+            { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 }
         ]
     };
 
@@ -1130,7 +1164,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Synchronous Loading of Big Data</h3>
@@ -1139,13 +1172,13 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-table data=&quot;@model.tableData&quot; select multiple height=&quot;250&quot; ref=&quot;table&quot;&gt;
         &lt;jk-table-column type=&quot;selection&quot; key=&quot;checked&quot; /&gt;
-        &lt;jk-table-column label=&quot;日期&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;姓名&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
-        &lt;jk-table-column label=&quot;地址&quot; key=&quot;address&quot; /&gt;
-        &lt;jk-table-column label=&quot;余额&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
+        &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
+        &lt;jk-table-column label=&quot;Balance&quot; key=&quot;money&quot; headerAlign=&quot;right&quot; align=&quot;right&quot; /&gt;
     &lt;/jk-table&gt;
-    &lt;jk-button @click=&quot;handleLoadClick&quot;&gt;加载数据&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;handleClick&quot;&gt;选中全部&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;handleLoadClick&quot;&gt;Load data&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;handleClick&quot;&gt;Select all&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component, combinedReply } from &quot;@joker.front/core&quot;;
@@ -1157,13 +1190,14 @@ export default class extends Component {
     handleLoadClick() {
         combinedReply(() =&gt; {
             this.model.tableData = [];
-            for (let i = 0; i &lt; 200; i++)
+            for (let i = 0; i &lt; 200; i++) {
                 this.model.tableData.push(
-                    { name: &quot;张三&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 1000 },
-                    { name: &quot;李四&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 10 },
-                    { name: &quot;李梅&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 300 },
-                    { name: &quot;王武&quot;, date: &quot;2023-11-21&quot;, address: &quot;山东省济南市&quot;, money: 11.9 }
+                    { name: &quot;Zhang San&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
+                    { name: &quot;Li Si&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
+                    { name: &quot;Li Mei&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+                    { name: &quot;Wang Wu&quot;, date: &quot;2023-11-21&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
                 );
+            }
         });
     }
     handleClick() {
@@ -1171,7 +1205,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Table Attributes</h3>

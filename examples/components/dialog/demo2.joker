@@ -1,18 +1,18 @@
 <template>
     <DemoRow>
-        <jk-button @click="open">打开窗口</jk-button>
-        <jk-dialog ref="dialog" title="一级窗口">
-            <p>我是一级外层窗口</p>
-            <jk-dialog ref="dialog2" title="二级嵌套窗口" width="30%">
-                <p>我是弹窗内的内容（默认窗口全部采用append-to="body"）</p>
+        <jk-button @click="open">Open Window</jk-button>
+        <jk-dialog ref="dialog" title="Level 1 Window">
+            <p>I'm the content of the outer level 1 window.</p>
+            <jk-dialog ref="dialog2" title="Level 2 Nested Window" width="30%">
+                <p>I'm the content inside the dialog (by default, all windows use append-to=&quot;body&quot;).</p>
             </jk-dialog>
             @section("footer") {
-                <jk-button type="primary" @click="openChildren1">打开平行子窗口</jk-button>
-                <jk-button type="warning" @click="openChildren2">打开嵌套子窗口</jk-button>
+                <jk-button type="primary" @click="openChildren1">Open Parallel Child Window</jk-button>
+                <jk-button type="warning" @click="openChildren2">Open Nested Child Window</jk-button>
             }
         </jk-dialog>
-        <jk-dialog ref="dialog1" title="二级平行窗口" width="30%">
-            <p>我是弹窗内的内容（平行窗口，建议这样使用）</p>
+        <jk-dialog ref="dialog1" title="Level 2 Parallel Window" width="30%">
+            <p>I'm the content inside the dialog (parallel window, it's recommended to use it like this).</p>
         </jk-dialog>
     </DemoRow>
 </template>
@@ -21,13 +21,13 @@ import { Component, VNode } from "@joker.front/core";
 
 export default class extends Component {
     open() {
-        this.$getRef<VNode.Component>("dialog")?.component.open();
+        this.$getRef("dialog")?.component.open();
     }
     openChildren1() {
-        this.$getRef<VNode.Component>("dialog1")?.component.open();
+        this.$getRef("dialog1")?.component.open();
     }
     openChildren2() {
-        this.$getRef<VNode.Component>("dialog2")?.component.open();
+        this.$getRef("dialog2")?.component.open();
     }
 }
 </script>

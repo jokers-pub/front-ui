@@ -7,10 +7,10 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-textarea placeholder=&quot;请输入内容&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-textarea placeholder=&quot;Please enter content&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-textarea placeholder=&quot;请输入内容&quot; disabled rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-textarea placeholder=&quot;Please enter content&quot; disabled rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
@@ -20,10 +20,10 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-textarea placeholder=&quot;请输入内容&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-textarea placeholder=&quot;Please enter content&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-textarea placeholder=&quot;请输入内容&quot; autosize=&quot;@({minRows:2,maxRows:4})&quot;&gt;&lt;/jk-textarea&gt;
+        &lt;jk-textarea placeholder=&quot;Please enter content&quot; autosize=&quot;@({ minRows: 2, maxRows: 4 })&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
@@ -33,12 +33,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-textarea placeholder=&quot;请输入内容&quot; maxlength=&quot;10&quot; show-word-limit&gt;&lt;/jk-textarea&gt;
+        &lt;jk-textarea placeholder=&quot;Please enter content&quot; maxlength=&quot;10&quot; show-word-limit&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-textarea
-            placeholder=&quot;请输入内容&quot;
-            autosize=&quot;@({minRows:2,maxRows:4})&quot;
+            placeholder=&quot;Please enter content&quot;
+            autosize=&quot;@({ minRows: 2, maxRows: 4 })&quot;
             maxlength=&quot;100&quot;
             show-word-limit&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;

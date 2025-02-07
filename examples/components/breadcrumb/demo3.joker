@@ -16,25 +16,22 @@ export default class extends Component {
     model = {
         breadcrumbs: [
             {
-                name: "首页",
-                url: "#/"
+                name: "Home",
+                url: "/"
             },
             {
                 name: "Button",
-                url: "#/component/button"
+                url: "/component/button"
             },
             {
                 name: "Link",
-                url: "#/component/link"
+                url: "/component/link"
             },
             {
                 name: "Scrollbar",
-                url: "#/component/scrollbar"
+                url: "/component/scrollbar"
             }
         ]
     };
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

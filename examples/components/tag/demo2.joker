@@ -1,11 +1,11 @@
 <template>
     <div class="demo-container">
-        <jk-tag closable>标签一</jk-tag>
-        <jk-tag type="success" closable>标签二</jk-tag>
-        <jk-tag type="info" closable>标签三</jk-tag>
-        <jk-tag type="warning" closable>标签四</jk-tag>
-        <jk-tag type="danger" closable>标签五</jk-tag>
-        <jk-tag color="yellow" closable>自定义颜色</jk-tag>
+        <jk-tag closable>Tag 1</jk-tag>
+        <jk-tag type="success" closable>Tag 2</jk-tag>
+        <jk-tag type="info" closable>Tag 3</jk-tag>
+        <jk-tag type="warning" closable>Tag 4</jk-tag>
+        <jk-tag type="danger" closable>Tag 5</jk-tag>
+        <jk-tag color="yellow" closable>Custom Color</jk-tag>
     </div>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
     <DemoRow>
-        <jk-time-picker value="19:30:25" placeholder="选择时间"></jk-time-picker>
+        <jk-time-picker value="19:30:25" placeholder="Select time"></jk-time-picker>
     </DemoRow>
     <DemoRow>
         <jk-time-picker
             format="HH时mm分"
             valueFormat="HH:mm"
             selectable-range="@([['08:30', '11:30'], '14:00 - 18:00'])"
-            placeholder="选择时间"></jk-time-picker>
+            placeholder="Select time"></jk-time-picker>
     </DemoRow>
 </template>

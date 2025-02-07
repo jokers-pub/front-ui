@@ -94,9 +94,9 @@ export default class extends PickerPanel<{
     }
 
     handleNavigateEnd(e: VNode.Event<"prev" | "next">) {
-        let startPick = this.$getRef<VNode.Component>("timeStartSpinner");
+        let startPick = this.$getRef("timeStartSpinner");
         if (this.pick === startPick) {
-            this.pick = this.$getRef<VNode.Component>("timeEndSpinner");
+            this.pick = this.$getRef("timeEndSpinner");
         } else {
             this.pick = startPick;
         }
@@ -109,7 +109,7 @@ export default class extends PickerPanel<{
     }
 
     mounted() {
-        this.pick = this.$getRef<VNode.Component>("timeStartSpinner");
+        this.pick = this.$getRef("timeStartSpinner");
 
         this.$trigger("select-range", { range: selectRangeMapping.hours });
     }

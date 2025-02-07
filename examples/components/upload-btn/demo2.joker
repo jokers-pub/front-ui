@@ -1,9 +1,9 @@
 <template>
     <DemoRow>
-        <jk-upload-btn multiple @change="handleClick">多选文件上传</jk-upload-btn>
+        <jk-upload-btn multiple @change="handleClick">Multiple file upload</jk-upload-btn>
     </DemoRow>
     <DemoRow>
-        <jk-upload-btn multiple @change="handleClick" maxFileCount="2">最多选择2个</jk-upload-btn>
+        <jk-upload-btn multiple @change="handleClick" maxFileCount="2">Select up to 2 files</jk-upload-btn>
     </DemoRow>
 </template>
 <script>
@@ -12,7 +12,7 @@ import { Message } from "../../../src";
 
 export default class extends Component {
     handleClick(e: VNode.Event<Array<File>>) {
-        Message(`选中了${e.data.length}个文件`);
+        Message(`You have selected ${e.data.length} files.`);
     }
 }
 </script>

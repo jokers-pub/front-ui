@@ -8,8 +8,8 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-checkbox value=&quot;@model.value1&quot; @change=&quot;handleChange1&quot;&gt;备选项1&lt;/jk-checkbox&gt;
-        &lt;jk-checkbox value=&quot;@model.value2&quot; @change=&quot;handleChange2&quot;&gt;备选项2&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;@model.value1&quot; @change=&quot;handleChange1&quot;&gt;Option 1&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;@model.value2&quot; @change=&quot;handleChange2&quot;&gt;Option 2&lt;/jk-checkbox&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 
@@ -21,10 +21,10 @@ export default class extends Component {
         value2: false
     };
     handleChange1(e: VNode.Event) {
-        console.log(e.data)
+        console.log(e.data);
     }
     handleChange2(e: VNode.Event) {
-        console.log(e.data)
+        console.log(e.data);
     }
 }
 &lt;/script&gt;
@@ -35,8 +35,8 @@ export default class extends Component {
 <p>只要在 <code>jk-checkbox</code> 组件中设置 <code>disabled</code> 属性即可，它接受一个 <code>Boolean</code>，<code>true</code> 为禁用。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-checkbox disabled value&gt;备选项1&lt;/jk-checkbox&gt;
-    &lt;jk-checkbox disabled value=&quot;@false&quot;&gt;备选项2&lt;/jk-checkbox&gt;
+    &lt;jk-checkbox disabled value&gt;Option 1&lt;/jk-checkbox&gt;
+    &lt;jk-checkbox disabled value=&quot;@false&quot;&gt;Option 2&lt;/jk-checkbox&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -46,11 +46,11 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-checkbox-group value=&quot;@model.checkList&quot;&gt;
-        &lt;jk-checkbox label=&quot;复选框 A&quot;&gt;&lt;/jk-checkbox&gt;
-        &lt;jk-checkbox label=&quot;复选框 B&quot;&gt;&lt;/jk-checkbox&gt;
-        &lt;jk-checkbox label=&quot;复选框 C&quot;&gt;&lt;/jk-checkbox&gt;
-        &lt;jk-checkbox label=&quot;禁用&quot; disabled&gt;&lt;/jk-checkbox&gt;
-        &lt;jk-checkbox label=&quot;选中且禁用&quot; disabled&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;1&quot; label=&quot;Checkbox A&quot;&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;2&quot; label=&quot;Checkbox B&quot;&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;3&quot; label=&quot;Checkbox C&quot;&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;4&quot; label=&quot;Disabled&quot; disabled&gt;&lt;/jk-checkbox&gt;
+        &lt;jk-checkbox value=&quot;5&quot; label=&quot;Selected and Disabled&quot; disabled&gt;&lt;/jk-checkbox&gt;
     &lt;/jk-checkbox-group&gt;
 &lt;/template&gt;
 
@@ -58,9 +58,7 @@ export default class extends Component {
 import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     model = {
-        checkList: [&quot;选中且禁用&quot;, &quot;复选框 A&quot;],
-        checkAll: false,
-        indeterminate: false
+        checkList: [&quot;5&quot;, &quot;1&quot;]
     };
 }
 &lt;/script&gt;
@@ -72,13 +70,13 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox indeterminate=&quot;@model.indeterminate&quot; value=&quot;@model.checkAll&quot; @change=&quot;handleCheckAllChange&quot;&gt;
-            全选
+            Select All
         &lt;/jk-checkbox&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities&quot; @change=&quot;handleGroupChange&quot;&gt;
             @for(let cityItem of model.cities) {
-                &lt;jk-checkbox label=&quot;@cityItem&quot;&gt;&lt;/jk-checkbox&gt;
+                &lt;jk-checkbox value=&quot;@cityItem&quot; label=&quot;@cityItem&quot;&gt;&lt;/jk-checkbox&gt;
             }
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
@@ -88,8 +86,8 @@ export default class extends Component {
 import { Component, VNode } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     model = {
-        cities: [&quot;上海&quot;, &quot;北京&quot;, &quot;广州&quot;, &quot;深圳&quot;],
-        checkedCities: [&quot;上海&quot;, &quot;北京&quot;],
+        cities: [&quot;Shanghai&quot;, &quot;Beijing&quot;, &quot;Guangzhou&quot;, &quot;Shenzhen&quot;],
+        checkedCities: [&quot;Shanghai&quot;, &quot;Beijing&quot;],
         checkAll: false,
         indeterminate: true
     };
@@ -113,7 +111,7 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-checkbox-group value=&quot;@model.checkedCities&quot; min=&quot;1&quot; max=&quot;2&quot;&gt;
         @for(let cityItem of model.cities) {
-            &lt;jk-checkbox label=&quot;@cityItem&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox value=&quot;@cityItem&quot; label=&quot;@cityItem&quot;&gt;&lt;/jk-checkbox&gt;
         }
     &lt;/jk-checkbox-group&gt;
 &lt;/template&gt;
@@ -122,8 +120,8 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        cities: [&quot;上海&quot;, &quot;北京&quot;, &quot;广州&quot;, &quot;深圳&quot;],
-        checkedCities: [&quot;上海&quot;, &quot;北京&quot;]
+        cities: [&quot;Shanghai&quot;, &quot;Beijing&quot;, &quot;Guangzhou&quot;, &quot;Shenzhen&quot;],
+        checkedCities: [&quot;Shanghai&quot;, &quot;Beijing&quot;]
     };
 }
 &lt;/script&gt;
@@ -135,42 +133,42 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities1&quot;&gt;
-            &lt;jk-checkbox-button label=&quot;上海&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;北京&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;广州&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;深圳&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox-button&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities2&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-checkbox-button label=&quot;上海&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;北京&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;广州&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;深圳&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox-button&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities3&quot; size=&quot;small&quot;&gt;
-            &lt;jk-checkbox-button label=&quot;上海&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;北京&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;广州&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button disabled label=&quot;深圳&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button disabled value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox-button&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities4&quot; size=&quot;mini&quot;&gt;
-            &lt;jk-checkbox-button label=&quot;上海&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button disabled label=&quot;北京&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;广州&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;深圳&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button disabled value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox-button&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities5&quot; size=&quot;mini&quot; disabled&gt;
-            &lt;jk-checkbox-button label=&quot;上海&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;北京&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;广州&quot;&gt;&lt;/jk-checkbox-button&gt;
-            &lt;jk-checkbox-button label=&quot;深圳&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox-button&gt;
+            &lt;jk-checkbox-button value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox-button&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -179,11 +177,11 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        checkedCities1: [&quot;上海&quot;, &quot;北京&quot;],
-        checkedCities2: [&quot;上海&quot;, &quot;北京&quot;],
-        checkedCities3: [&quot;上海&quot;, &quot;北京&quot;],
-        checkedCities4: [&quot;上海&quot;, &quot;北京&quot;],
-        checkedCities5: [&quot;上海&quot;, &quot;北京&quot;]
+        checkedCities1: [&quot;Shanghai&quot;, &quot;Beijing&quot;],
+        checkedCities2: [&quot;Shanghai&quot;, &quot;Beijing&quot;],
+        checkedCities3: [&quot;Shanghai&quot;, &quot;Beijing&quot;],
+        checkedCities4: [&quot;Shanghai&quot;, &quot;Beijing&quot;],
+        checkedCities5: [&quot;Shanghai&quot;, &quot;Beijing&quot;]
     };
 }
 &lt;/script&gt;
@@ -195,42 +193,42 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities1&quot;&gt;
-            &lt;jk-checkbox border label=&quot;上海&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;北京&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;广州&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;深圳&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities2&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-checkbox border label=&quot;上海&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;北京&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;广州&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;深圳&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities3&quot; size=&quot;small&quot;&gt;
-            &lt;jk-checkbox border label=&quot;上海&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;北京&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;广州&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border disabled label=&quot;深圳&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border disabled value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities4&quot; size=&quot;mini&quot;&gt;
-            &lt;jk-checkbox border label=&quot;上海&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border disabled label=&quot;北京&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;广州&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;深圳&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border disabled value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities5&quot; size=&quot;mini&quot; disabled&gt;
-            &lt;jk-checkbox border label=&quot;上海&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;北京&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;广州&quot;&gt;&lt;/jk-checkbox&gt;
-            &lt;jk-checkbox border label=&quot;深圳&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Beijing&quot; label=&quot;Beijing&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Guangzhou&quot; label=&quot;Guangzhou&quot;&gt;&lt;/jk-checkbox&gt;
+            &lt;jk-checkbox border value=&quot;Shenzhen&quot; label=&quot;Shenzhen&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;/jk-checkbox-group&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -239,11 +237,11 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        checkedCities1: [&quot;北京&quot;],
-        checkedCities2: [&quot;北京&quot;],
-        checkedCities3: [&quot;北京&quot;],
-        checkedCities4: [&quot;北京&quot;],
-        checkedCities5: [&quot;北京&quot;]
+        checkedCities1: [&quot;Beijing&quot;],
+        checkedCities2: [&quot;Beijing&quot;],
+        checkedCities3: [&quot;Beijing&quot;],
+        checkedCities4: [&quot;Beijing&quot;],
+        checkedCities5: [&quot;Beijing&quot;]
     };
 }
 &lt;/script&gt;

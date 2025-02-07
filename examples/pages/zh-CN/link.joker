@@ -7,12 +7,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-link href=&quot;http://jokers.pub&quot; target=&quot;_blank&quot;&gt;默认链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;primary&quot;&gt;主要链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;success&quot;&gt;成功链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;warning&quot;&gt;警告链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;danger&quot;&gt;危险链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;info&quot;&gt;信息链接&lt;/jk-link&gt;
+        &lt;jk-link href=&quot;http://jokers.pub&quot; target=&quot;_blank&quot;&gt;Default Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot;&gt;Primary Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;success&quot;&gt;Success Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;warning&quot;&gt;Warning Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;danger&quot;&gt;Danger Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;info&quot;&gt;Info Link&lt;/jk-link&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -30,12 +30,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-link disabled&gt;默认链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;primary&quot; disabled&gt;主要链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;success&quot; disabled&gt;成功链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;warning&quot; disabled&gt;警告链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;danger&quot; disabled&gt;危险链接&lt;/jk-link&gt;
-        &lt;jk-link type=&quot;info&quot; disabled&gt;信息链接&lt;/jk-link&gt;
+        &lt;jk-link disabled&gt;Default Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; disabled&gt;Primary Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;success&quot; disabled&gt;Success Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;warning&quot; disabled&gt;Warning Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;danger&quot; disabled&gt;Danger Link&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;info&quot; disabled&gt;Info Link&lt;/jk-link&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -53,8 +53,8 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-link underline=&quot;@false&quot;&gt;无下划线&lt;/jk-link&gt;
-        &lt;jk-link&gt;有下划线&lt;/jk-link&gt;
+        &lt;jk-link underline=&quot;@false&quot;&gt;No Underline&lt;/jk-link&gt;
+        &lt;jk-link&gt;With Underline&lt;/jk-link&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;
@@ -71,12 +71,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-link icon=&quot;jk-icon-edit&quot;&gt;编辑&lt;/jk-link&gt;
+        &lt;jk-link icon=&quot;jk-icon-edit&quot;&gt;Edit&lt;/jk-link&gt;
         &lt;jk-link type=&quot;warning&quot;&gt;
-            查看
+            View
             &lt;i class=&quot;jk-icon-view&quot;&gt;&lt;/i&gt;
         &lt;/jk-link&gt;
-        &lt;jk-link icon=&quot;jk-icon-delete&quot; type=&quot;danger&quot;&gt;删除&lt;/jk-link&gt;
+        &lt;jk-link icon=&quot;jk-icon-delete&quot; type=&quot;danger&quot;&gt;Delete&lt;/jk-link&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;

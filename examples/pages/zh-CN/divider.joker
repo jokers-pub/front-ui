@@ -6,13 +6,13 @@
 <p>对不同章节的文本段落进行分割。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
+    &lt;p&gt;What you need is not a brand - new start, but action to lead to a brand - new ending.&lt;/p&gt;
     &lt;jk-divider /&gt;
-    &lt;p&gt;好好地享受青春,你无法比此刻更年轻了。&lt;/p&gt;
+    &lt;p&gt;Enjoy your youth well. You'll never be younger than you are at this moment.&lt;/p&gt;
     &lt;jk-divider /&gt;
-    &lt;p&gt;幸好我爱笑,生活才没那么糟糕。&lt;/p&gt;
+    &lt;p&gt;Fortunately, I love to smile, so life isn't that bad.&lt;/p&gt;
     &lt;jk-divider /&gt;
-    &lt;p&gt;能瞬间改变你心情的人,对你一定很重要吧。&lt;/p&gt;
+    &lt;p&gt;The person who can instantly change your mood must be very important to you, right?&lt;/p&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;
 p {
@@ -25,15 +25,15 @@ p {
 <p>可以在分割线上自定义文案内容。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;p&gt;你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。&lt;/p&gt;
-    &lt;jk-divider content-position=&quot;left&quot;&gt;干的漂亮！&lt;/jk-divider&gt;
-    &lt;p&gt;好好地享受青春,你无法比此刻更年轻了。&lt;/p&gt;
+    &lt;p&gt;What you need is not a brand - new start, but action to lead to a brand - new ending.&lt;/p&gt;
+    &lt;jk-divider content-position=&quot;left&quot;&gt;Well done!&lt;/jk-divider&gt;
+    &lt;p&gt;Enjoy your youth to the fullest. You'll never be younger than you are right now.&lt;/p&gt;
     &lt;jk-divider&gt;
         &lt;i class=&quot;jk-icon-star-on&quot;&gt;&lt;/i&gt;
     &lt;/jk-divider&gt;
-    &lt;p&gt;幸好我爱笑,生活才没那么糟糕。&lt;/p&gt;
-    &lt;jk-divider content-position=&quot;right&quot;&gt;66666&lt;/jk-divider&gt;
-    &lt;p&gt;能瞬间改变你心情的人,对你一定很重要吧。&lt;/p&gt;
+    &lt;p&gt;Fortunately, I love to smile, so life isn't that bad.&lt;/p&gt;
+    &lt;jk-divider content-position=&quot;right&quot;&gt;Nice!&lt;/jk-divider&gt;
+    &lt;p&gt;The person who can instantly change your mood must be very important to you, right?&lt;/p&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;
 p {
@@ -45,11 +45,11 @@ p {
 <h3>垂直分割</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;span&gt;雨纷纷&lt;/span&gt;
+    &lt;span&gt;The rain is falling continuously&lt;/span&gt;
     &lt;jk-divider direction=&quot;vertical&quot; /&gt;
-    &lt;span&gt;旧故里&lt;/span&gt;
+    &lt;span&gt;The old hometown&lt;/span&gt;
     &lt;jk-divider direction=&quot;vertical&quot; /&gt;
-    &lt;span&gt;草木深&lt;/span&gt;
+    &lt;span&gt;The grass and trees are overgrown&lt;/span&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>

@@ -1,26 +1,26 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="请选择">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" value="9">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
-            <jk-option label="东北乱炖" value="5" />
-            <jk-option label="酸菜排骨" value="6" />
-            <jk-option label="芹菜鱼丝" value="7" />
-            <jk-option label="拔丝山药" value="8" />
-            <jk-option label="川北凉粉" value="9" />
-            <jk-option label="清炒卷心菜" value="10" />
-            <jk-option label="玉带虾仁" value="11" />
-            <jk-option label="麻婆豆腐" value="12" />
+        <jk-select placeholder="Please select" value="9">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
+            <jk-option label="Eggplant" value="5" />
+            <jk-option label="Fig" value="6" />
+            <jk-option label="Grape" value="7" />
+            <jk-option label="Honeydew" value="8" />
+            <jk-option label="Kiwi" value="9" />
+            <jk-option label="Lemon" value="10" />
+            <jk-option label="Mango" value="11" />
+            <jk-option label="Orange" value="12" />
         </jk-select>
     </DemoRow>
 </template>

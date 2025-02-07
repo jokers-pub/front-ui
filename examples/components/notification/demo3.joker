@@ -1,8 +1,8 @@
 <template>
-    <jk-button @click="open1">右上角</jk-button>
-    <jk-button @click="open2">右下角</jk-button>
-    <jk-button @click="open3">左下角</jk-button>
-    <jk-button @click="open4">左上角</jk-button>
+    <jk-button @click="open1">Top right</jk-button>
+    <jk-button @click="open2">Bottom right</jk-button>
+    <jk-button @click="open3">Bottom left</jk-button>
+    <jk-button @click="open4">Top left</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -10,33 +10,32 @@ import { Notification } from "../../../src";
 export default class extends Component {
     open1() {
         Notification({
-            //默认
+            // Default
             position: "top-right",
-            title: "提示",
-            message: "我是一个提示"
+            title: "Prompt",
+            message: "I'm a prompt"
         });
     }
     open2() {
         Notification({
             position: "bottom-right",
-            title: "提示",
-            message: "我是一个提示"
+            title: "Prompt",
+            message: "I'm a prompt"
         });
     }
     open3() {
         Notification({
             position: "bottom-left",
-            title: "提示",
-            message: "我是一个提示"
+            title: "Prompt",
+            message: "I'm a prompt"
         });
     }
     open4() {
         Notification({
             position: "top-left",
-            title: "提示",
-            message: "我是一个提示"
+            title: "Prompt",
+            message: "I'm a prompt"
         });
     }
 }
 </script>
-

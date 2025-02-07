@@ -11,7 +11,7 @@ export default class extends Component {
             target: this.$getRef("target")?.output,
             customClass: "custom",
             spinner: "jk-icon-loading",
-            text: "拼命在加载，别急"
+            text: "Customize the Loading text."
         });
     }
 }

@@ -1,21 +1,21 @@
 <template>
     <DemoRow>
         <jk-dropdown split-button @click="handleClick">
-            click触发
+            Trigger by click
             <jk-dropdown-menu>
-                <jk-dropdown-item>菜单1</jk-dropdown-item>
-                <jk-dropdown-item>菜单2</jk-dropdown-item>
-                <jk-dropdown-item>菜单3</jk-dropdown-item>
+                <jk-dropdown-item>Menu 1</jk-dropdown-item>
+                <jk-dropdown-item>Menu 2</jk-dropdown-item>
+                <jk-dropdown-item>Menu 3</jk-dropdown-item>
             </jk-dropdown-menu>
         </jk-dropdown>
     </DemoRow>
     <DemoRow>
         <jk-dropdown trigger="hover" split-button @click="handleClick">
-            hover触发
+            Trigger by hover
             <jk-dropdown-menu>
-                <jk-dropdown-item>菜单1</jk-dropdown-item>
-                <jk-dropdown-item>菜单2</jk-dropdown-item>
-                <jk-dropdown-item>菜单3</jk-dropdown-item>
+                <jk-dropdown-item>Menu 1</jk-dropdown-item>
+                <jk-dropdown-item>Menu 2</jk-dropdown-item>
+                <jk-dropdown-item>Menu 3</jk-dropdown-item>
             </jk-dropdown-menu>
         </jk-dropdown>
     </DemoRow>
@@ -27,7 +27,7 @@ import { MessageBox } from "../../../src";
 
 export default class extends Component {
     handleClick() {
-        MessageBox.alert("你点击了按钮");
+        MessageBox.alert("You clicked the button");
     }
 }
 </script>

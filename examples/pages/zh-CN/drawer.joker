@@ -8,14 +8,14 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group @change=&quot;handleRadioChange&quot; value=&quot;@model.direction&quot;&gt;
-            &lt;jk-radio value=&quot;left&quot;&gt;从左到右&lt;/jk-radio&gt;
-            &lt;jk-radio value=&quot;top&quot;&gt;从上到下&lt;/jk-radio&gt;
-            &lt;jk-radio value=&quot;right&quot;&gt;从右到左&lt;/jk-radio&gt;
-            &lt;jk-radio value=&quot;bottom&quot;&gt;从下到上&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;left&quot;&gt;Left to right&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;top&quot;&gt;Top to bottom&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;right&quot;&gt;Right to left&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;bottom&quot;&gt;Bottom to top&lt;/jk-radio&gt;
         &lt;/jk-radio-group&gt;
     &lt;/DemoRow&gt;
-    &lt;jk-button @click=&quot;handleOpen&quot;&gt;弹出&lt;/jk-button&gt;
-    &lt;jk-drawer ref=&quot;drawer&quot; direction=&quot;@model.direction&quot; title=&quot;我是标题&quot;&gt;我是内容。&lt;/jk-drawer&gt;
+    &lt;jk-button @click=&quot;handleOpen&quot;&gt;Pop up&lt;/jk-button&gt;
+    &lt;jk-drawer ref=&quot;drawer&quot; direction=&quot;@model.direction&quot; title=&quot;I'm the title&quot;&gt;I'm the content.&lt;/jk-drawer&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { VNode } from &quot;@joker.front/core&quot;;
@@ -35,20 +35,19 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>多层嵌套</h3>
 <p>支持多层嵌套，组件内会自动控制<code>zindex</code></p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;handleOpen&quot;&gt;弹出&lt;/jk-button&gt;
-    &lt;jk-drawer ref=&quot;drawer&quot; size=&quot;50%&quot; title=&quot;我是标题&quot;&gt;
-        我是内容。
+    &lt;jk-button @click=&quot;handleOpen&quot;&gt;Pop up&lt;/jk-button&gt;
+    &lt;jk-drawer ref=&quot;drawer&quot; size=&quot;50%&quot; title=&quot;I'm the title&quot;&gt;
+        I'm the content.
         &lt;div&gt;
-            &lt;jk-button @click=&quot;handleOpenNext&quot;&gt;再弹出一个&lt;/jk-button&gt;
+            &lt;jk-button @click=&quot;handleOpenNext&quot;&gt;Pop up another one&lt;/jk-button&gt;
         &lt;/div&gt;
-        &lt;jk-drawer ref=&quot;drawer2&quot; title=&quot;我是第二个&quot;&gt;我是第二个内容&lt;/jk-drawer&gt;
+        &lt;jk-drawer ref=&quot;drawer2&quot; title=&quot;I'm the second one&quot;&gt;I'm the second content&lt;/jk-drawer&gt;
     &lt;/jk-drawer&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -64,7 +63,6 @@ export default class extends Component {
     }
 }
 &lt;/script&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Attributes</h3>

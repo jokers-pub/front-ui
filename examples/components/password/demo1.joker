@@ -1,6 +1,6 @@
 <template>
     <div style="width:180px">
-        <jk-password value="@model.val" placeholder="请输入密码" />
+        <jk-password value="@model.val" placeholder="Please enter your password" />
     </div>
 </template>
 <script>
@@ -12,6 +12,3 @@ export default class extends Component {
     };
 }
 </script>
-
-<style scoped>
-</style>

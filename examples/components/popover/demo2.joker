@@ -1,8 +1,8 @@
 <template>
-    <jk-popover trigger="click" title="我里面嵌套了一个组件" placement="right" width="350px">
+    <jk-popover trigger="click" title="I have a nested component inside" placement="right" width="350px">
         <jk-skeleton rows="6" animated />
         @section("reference") {
-            <jk-button>click激活</jk-button>
+            <jk-button>Activate on click</jk-button>
         }
     </jk-popover>
 </template>

@@ -1,11 +1,11 @@
 <template>
     <div class="demo-container">
-        <jk-link icon="jk-icon-edit">编辑</jk-link>
+        <jk-link icon="jk-icon-edit">Edit</jk-link>
         <jk-link type="warning">
-            查看
+            View
             <i class="jk-icon-view"></i>
         </jk-link>
-        <jk-link icon="jk-icon-delete" type="danger">删除</jk-link>
+        <jk-link icon="jk-icon-delete" type="danger">Delete</jk-link>
     </div>
 </template>
 <style scoped lang="scss">

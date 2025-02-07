@@ -7,12 +7,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-tag&gt;标签一&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;success&quot;&gt;标签二&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;info&quot;&gt;标签三&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;warning&quot;&gt;标签四&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;danger&quot;&gt;标签五&lt;/jk-tag&gt;
-        &lt;jk-tag color=&quot;yellow&quot;&gt;自定义颜色&lt;/jk-tag&gt;
+        &lt;jk-tag&gt;Tag 1&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;success&quot;&gt;Tag 2&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;info&quot;&gt;Tag 3&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;warning&quot;&gt;Tag 4&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;danger&quot;&gt;Tag 5&lt;/jk-tag&gt;
+        &lt;jk-tag color=&quot;yellow&quot;&gt;Custom Color&lt;/jk-tag&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -30,12 +30,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-tag closable&gt;标签一&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;success&quot; closable&gt;标签二&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;info&quot; closable&gt;标签三&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;warning&quot; closable&gt;标签四&lt;/jk-tag&gt;
-        &lt;jk-tag type=&quot;danger&quot; closable&gt;标签五&lt;/jk-tag&gt;
-        &lt;jk-tag color=&quot;yellow&quot; closable&gt;自定义颜色&lt;/jk-tag&gt;
+        &lt;jk-tag closable&gt;Tag 1&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;success&quot; closable&gt;Tag 2&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;info&quot; closable&gt;Tag 3&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;warning&quot; closable&gt;Tag 4&lt;/jk-tag&gt;
+        &lt;jk-tag type=&quot;danger&quot; closable&gt;Tag 5&lt;/jk-tag&gt;
+        &lt;jk-tag color=&quot;yellow&quot; closable&gt;Custom Color&lt;/jk-tag&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -54,10 +54,10 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
-        &lt;jk-tag closable&gt;默认尺寸&lt;/jk-tag&gt;
-        &lt;jk-tag size=&quot;medium&quot; closable&gt;中等尺寸&lt;/jk-tag&gt;
-        &lt;jk-tag size=&quot;small&quot; closable&gt;小型标签&lt;/jk-tag&gt;
-        &lt;jk-tag size=&quot;mini&quot; closable&gt;超小标签&lt;/jk-tag&gt;
+        &lt;jk-tag closable&gt;Default Size&lt;/jk-tag&gt;
+        &lt;jk-tag size=&quot;medium&quot; closable&gt;Medium Size&lt;/jk-tag&gt;
+        &lt;jk-tag size=&quot;small&quot; closable&gt;Small Tag&lt;/jk-tag&gt;
+        &lt;jk-tag size=&quot;mini&quot; closable&gt;Extra-small Tag&lt;/jk-tag&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -77,28 +77,28 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;默认（Light）：&lt;/span&gt;
-            &lt;jk-tag closable&gt;标签一&lt;/jk-tag&gt;
-            &lt;jk-tag type=&quot;success&quot; closable&gt;标签二&lt;/jk-tag&gt;
-            &lt;jk-tag type=&quot;info&quot; closable&gt;标签三&lt;/jk-tag&gt;
-            &lt;jk-tag type=&quot;warning&quot; closable&gt;标签四&lt;/jk-tag&gt;
-            &lt;jk-tag type=&quot;danger&quot; closable&gt;标签五&lt;/jk-tag&gt;
+            &lt;span&gt;Default (Light):&lt;/span&gt;
+            &lt;jk-tag closable&gt;Tag 1&lt;/jk-tag&gt;
+            &lt;jk-tag type=&quot;success&quot; closable&gt;Tag 2&lt;/jk-tag&gt;
+            &lt;jk-tag type=&quot;info&quot; closable&gt;Tag 3&lt;/jk-tag&gt;
+            &lt;jk-tag type=&quot;warning&quot; closable&gt;Tag 4&lt;/jk-tag&gt;
+            &lt;jk-tag type=&quot;danger&quot; closable&gt;Tag 5&lt;/jk-tag&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;Dark：&lt;/span&gt;
-            &lt;jk-tag effect=&quot;dark&quot; closable&gt;标签一&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;dark&quot; type=&quot;success&quot; closable&gt;标签二&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;dark&quot; type=&quot;info&quot; closable&gt;标签三&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;dark&quot; type=&quot;warning&quot; closable&gt;标签四&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;dark&quot; type=&quot;danger&quot; closable&gt;标签五&lt;/jk-tag&gt;
+            &lt;span&gt;Dark:&lt;/span&gt;
+            &lt;jk-tag effect=&quot;dark&quot; closable&gt;Tag 1&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;dark&quot; type=&quot;success&quot; closable&gt;Tag 2&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;dark&quot; type=&quot;info&quot; closable&gt;Tag 3&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;dark&quot; type=&quot;warning&quot; closable&gt;Tag 4&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;dark&quot; type=&quot;danger&quot; closable&gt;Tag 5&lt;/jk-tag&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;Plain：&lt;/span&gt;
-            &lt;jk-tag effect=&quot;plain&quot; closable&gt;标签一&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;plain&quot; type=&quot;success&quot; closable&gt;标签二&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;plain&quot; type=&quot;info&quot; closable&gt;标签三&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;plain&quot; type=&quot;warning&quot; closable&gt;标签四&lt;/jk-tag&gt;
-            &lt;jk-tag effect=&quot;plain&quot; type=&quot;danger&quot; closable&gt;标签五&lt;/jk-tag&gt;
+            &lt;span&gt;Plain:&lt;/span&gt;
+            &lt;jk-tag effect=&quot;plain&quot; closable&gt;Tag 1&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;plain&quot; type=&quot;success&quot; closable&gt;Tag 2&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;plain&quot; type=&quot;info&quot; closable&gt;Tag 3&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;plain&quot; type=&quot;warning&quot; closable&gt;Tag 4&lt;/jk-tag&gt;
+            &lt;jk-tag effect=&quot;plain&quot; type=&quot;danger&quot; closable&gt;Tag 5&lt;/jk-tag&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;

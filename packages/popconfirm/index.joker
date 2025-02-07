@@ -50,7 +50,7 @@ export default class extends Component<{
         cancelButtonType: "text"
     };
     get popover() {
-        return this.$getRef<VNode.Component>("popover")?.component;
+        return this.$getRef("popover")?.component;
     }
 
     components = {

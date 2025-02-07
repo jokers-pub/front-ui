@@ -1,11 +1,11 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>默认click：</span>
+            <span>Default click:</span>
             <jk-cascader options="@options" value="@model.value" @change="handleChange"></jk-cascader>
         </div>
         <div class="row">
-            <span>hover触发：</span>
+            <span>Trigger on hover:</span>
             <jk-cascader
                 options="@options"
                 value="@model.value"

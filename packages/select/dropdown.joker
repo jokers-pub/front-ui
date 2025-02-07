@@ -119,7 +119,7 @@ export default class extends Component<{
                 let selectOptionEl = selectOption[0].find((n) => n instanceof VNode.Element)[0]?.output;
 
                 if (selectOptionEl) {
-                    this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(selectOptionEl);
+                    this.$getRef("scrollbar")?.component.scrollToEl(selectOptionEl);
                 }
             }
         }

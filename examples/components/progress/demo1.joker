@@ -1,9 +1,17 @@
 <template>
     <div>
-        <DemoRow><jk-progress percentage="@model.percentage1"></jk-progress></DemoRow>
-        <DemoRow><jk-progress percentage="@model.percentage2" format="@format"></jk-progress></DemoRow>
-        <DemoRow><jk-progress percentage="@model.percentage2" status="success"></jk-progress></DemoRow>
-        <DemoRow><jk-progress percentage="@model.percentage2" status="warning"></jk-progress></DemoRow>
+        <DemoRow>
+            <jk-progress percentage="@model.percentage1"></jk-progress>
+        </DemoRow>
+        <DemoRow>
+            <jk-progress percentage="@model.percentage2" format="@format"></jk-progress>
+        </DemoRow>
+        <DemoRow>
+            <jk-progress percentage="@model.percentage2" status="success"></jk-progress>
+        </DemoRow>
+        <DemoRow>
+            <jk-progress percentage="@model.percentage2" status="warning"></jk-progress>
+        </DemoRow>
         <jk-progress percentage="@model.percentage1" status="exception"></jk-progress>
     </div>
 </template>
@@ -16,7 +24,7 @@ export default class extends Component {
         percentage2: 100
     };
     format(percentage: number) {
-        return percentage === 100 ? '满' : percentage+'%';
+        return percentage === 100 ? "Full" : percentage + "%";
     }
 }
 </script>

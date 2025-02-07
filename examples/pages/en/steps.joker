@@ -15,14 +15,14 @@
         &lt;/jk-steps&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;next&quot;&gt;下一步&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;next&quot;&gt;Next&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
-    model = { active: 0, list: [{ title: &quot;步骤1&quot; }, { title: &quot;步骤2&quot; }, { title: &quot;步骤3&quot; }] };
+    model = { active: 0, list: [{ title: &quot;Step1&quot; }, { title: &quot;Step2&quot; }, { title: &quot;Step3&quot; }] };
 
     next() {
         if (this.model.active++ &gt; 2) this.model.active = 0;
@@ -37,9 +37,9 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps space=&quot;@(200)&quot; active=&quot;1&quot; finishStatus=&quot;success&quot;&gt;
-        &lt;jk-step title=&quot;已完成&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;进行中&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 3&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Completed&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;In progress&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
@@ -49,9 +49,9 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
-        &lt;jk-step title=&quot;步骤 1&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 2&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 3&quot; description=&quot;这段就没那么长了&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot; description=&quot;This one isn't that long.&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
@@ -62,10 +62,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;2&quot; alignCenter&gt;
-        &lt;jk-step title=&quot;步骤1&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤2&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤3&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤4&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 4&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
@@ -76,9 +76,9 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
-        &lt;jk-step title=&quot;步骤 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 3&quot; icon=&quot;jk-icon-picture&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot; icon=&quot;jk-icon-picture&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
@@ -90,9 +90,9 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;height: 300px;&quot;&gt;
         &lt;jk-steps direction=&quot;vertical&quot; active=&quot;1&quot;&gt;
-            &lt;jk-step title=&quot;步骤 1&quot;&gt;&lt;/jk-step&gt;
-            &lt;jk-step title=&quot;步骤 2&quot;&gt;&lt;/jk-step&gt;
-            &lt;jk-step title=&quot;步骤 3&quot; description=&quot;这是一段很长很长很长的描述性文字&quot;&gt;&lt;/jk-step&gt;
+            &lt;jk-step title=&quot;Step 1&quot;&gt;&lt;/jk-step&gt;
+            &lt;jk-step title=&quot;Step 2&quot;&gt;&lt;/jk-step&gt;
+            &lt;jk-step title=&quot;Step 3&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
         &lt;/jk-steps&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -104,15 +104,15 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot; simple&gt;
-        &lt;jk-step title=&quot;步骤 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 3&quot; icon=&quot;jk-icon-picture&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot; icon=&quot;jk-icon-picture&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
     &lt;div style=&quot;margin-top: 20px&quot;&gt;&lt;/div&gt;
     &lt;jk-steps active=&quot;1&quot; finishStatus=&quot;success&quot; simple&gt;
-        &lt;jk-step title=&quot;步骤 1&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 2&quot;&gt;&lt;/jk-step&gt;
-        &lt;jk-step title=&quot;步骤 3&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 1&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 2&quot;&gt;&lt;/jk-step&gt;
+        &lt;jk-step title=&quot;Step 3&quot;&gt;&lt;/jk-step&gt;
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>

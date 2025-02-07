@@ -1,20 +1,20 @@
 <template>
     <div class="demo-container">
         <div class="demo-row">
-            默认：
-            <jk-password placeholder="请输入" />
+            Default:
+            <jk-password placeholder="Please enter" />
         </div>
         <div class="demo-row">
-            medium：
-            <jk-password placeholder="请输入" size="medium" />
+            Medium:
+            <jk-password placeholder="Please enter" size="medium" />
         </div>
         <div class="demo-row">
-            small：
-            <jk-password placeholder="请输入" size="small" />
+            Small:
+            <jk-password placeholder="Please enter" size="small" />
         </div>
         <div class="demo-row">
-            mini：
-            <jk-password placeholder="请输入" size="mini" />
+            Mini:
+            <jk-password placeholder="Please enter" size="mini" />
         </div>
     </div>
 </template>

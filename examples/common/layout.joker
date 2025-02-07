@@ -43,10 +43,10 @@ export default class extends Component {
     }
 
     get scroll() {
-        return this.$getRef<VNode.Component>("scroll")?.component;
+        return this.$getRef("scroll")?.component;
     }
     get chapterMenu() {
-        return this.$getRef<VNode.Component>("chapterMenu")?.component;
+        return this.$getRef("chapterMenu")?.component;
     }
 
     routerViewUpdated() {

@@ -1,8 +1,8 @@
 <template>
     <jk-tooltip placement="top">
-        <jk-button>更多内容</jk-button>
+        <jk-button>More content</jk-button>
         @section("content") {
-            哈哈哈哈哈
+            Hahaha
             <br />
             hahahahahaha
         }

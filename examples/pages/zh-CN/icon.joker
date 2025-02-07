@@ -10,7 +10,7 @@
         &lt;i class=&quot;jk-icon-edit&quot; /&gt;
         &lt;i class=&quot;jk-icon-share&quot; /&gt;
         &lt;i class=&quot;jk-icon-delete&quot; /&gt;
-        &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;搜索&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;Search&lt;/jk-button&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;

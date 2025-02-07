@@ -1,5 +1,5 @@
 <template>
     <div style="width:180px">
-        <jk-password placeholder="请输入" maxlength="6" minlength="6" />
+        <jk-password placeholder="Please enter" maxlength="6" minlength="6" />
     </div>
 </template>

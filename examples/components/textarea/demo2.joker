@@ -1,8 +1,8 @@
 <template>
     <DemoRow>
-        <jk-textarea placeholder="请输入内容"></jk-textarea>
+        <jk-textarea placeholder="Please enter content"></jk-textarea>
     </DemoRow>
     <DemoRow>
-        <jk-textarea placeholder="请输入内容" autosize="@({minRows:2,maxRows:4})"></jk-textarea>
+        <jk-textarea placeholder="Please enter content" autosize="@({ minRows: 2, maxRows: 4 })"></jk-textarea>
     </DemoRow>
 </template>

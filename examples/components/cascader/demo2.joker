@@ -1,11 +1,11 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>组件disabled：</span>
+            <span>Component disabled:</span>
             <jk-cascader disabled options="@options" value="@model.value" @change="handleChange"></jk-cascader>
         </div>
         <div class="row">
-            <span>选项disabled：</span>
+            <span>Option disabled:</span>
             <jk-cascader options="@options" value="@model.value" @change="handleChange"></jk-cascader>
         </div>
     </div>

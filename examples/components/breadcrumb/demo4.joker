@@ -28,17 +28,17 @@ export default class extends Component {
     model = {
         breadcrumbs: [
             {
-                url: "#/",
+                url: "/",
                 icon: "s-home"
             },
             {
-                name: "任务管理"
+                name: "Task Management"
             },
             {
-                name: "任务列表"
+                name: "Task List"
             },
             {
-                name: "任务详情"
+                name: "Task Details"
             }
         ]
     };

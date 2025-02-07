@@ -1,11 +1,11 @@
 <template>
     <DemoRow>
-        <jk-button @click="open">点击打开Dialog</jk-button>
-        <jk-dialog ref="dialog" center title="基本展示" width="30%">
-            <p>我是弹窗内的内容</p>
+        <jk-button @click="open">Click to open Dialog</jk-button>
+        <jk-dialog ref="dialog" center title="Basic Display" width="30%">
+            <p>I'm the content inside the dialog.</p>
             @section("footer") {
-                <jk-button @click="handleDialogCancelClick">取 消</jk-button>
-                <jk-button type="primary" @click="handleDialogConfirmClick">确 定</jk-button>
+                <jk-button @click="handleDialogCancelClick">Cancel</jk-button>
+                <jk-button type="primary" @click="handleDialogConfirmClick">OK</jk-button>
             }
         </jk-dialog>
     </DemoRow>
@@ -15,15 +15,15 @@ import { Component, VNode } from "@joker.front/core";
 
 export default class extends Component {
     open() {
-        this.$getRef<VNode.Component>("dialog")?.component.open();
+        this.$getRef("dialog")?.component.open();
     }
 
     handleDialogCancelClick() {
-        this.$getRef<VNode.Component>("dialog")?.component.close();
+        this.$getRef("dialog")?.component.close();
     }
 
     handleDialogConfirmClick() {
-        this.$getRef<VNode.Component>("dialog")?.component.close();
+        this.$getRef("dialog")?.component.close();
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div style="width:180px">
-        <jk-input placeholder="请输入内容" @input="handleInput" />
+        <jk-input placeholder="Please enter the content" @input="handleInput" />
     </div>
     <p>
         @model.val

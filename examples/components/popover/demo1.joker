@@ -1,43 +1,43 @@
+```html
 <template>
     <jk-popover
         trigger="hover"
-        title="标题"
+        title="Title"
         width="200px"
-        content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+        content="This is a paragraph of content. This is a paragraph of content. This is a paragraph of content. This is a paragraph of content.">
         @section("reference") {
-            <jk-button>hover激活</jk-button>
+            <jk-button>Activate on hover</jk-button>
         }
     </jk-popover>
     <jk-popover
         trigger="click"
-        title="标题"
+        title="Title"
         width="200px"
         placement="bottom"
-        content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+        content="This is a paragraph of content. This is a paragraph of content. This is a paragraph of content. This is a paragraph of content.">
         @section("reference") {
-            <jk-button>click激活</jk-button>
+            <jk-button>Activate on click</jk-button>
         }
     </jk-popover>
     <jk-popover
         trigger="manual"
-        title="标题"
+        title="Title"
         width="200px"
         placement="bottom"
         ref="popover1"
-        content="再点击一次按钮关闭">
+        content="Click the button again to close">
         @section("reference") {
-            <jk-button @click="open">手动激活</jk-button>
+            <jk-button @click="open">Activate manually</jk-button>
         }
     </jk-popover>
 </template>
 <script>
-import { VNode } from "@joker.front/core";
 import { Component } from "@joker.front/core";
 
 export default class extends Component {
     isShow = false;
     open() {
-        let popover = this.$getRef<VNode.Component>("popover1")?.component;
+        let popover = this.$getRef("popover1")?.component;
         if (this.isShow) {
             popover?.hide();
         } else {
@@ -47,3 +47,4 @@ export default class extends Component {
     }
 }
 </script>
+```

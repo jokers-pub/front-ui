@@ -5,46 +5,46 @@
 <p>Popover 的属性与 Tooltip 很类似，因此对于重复属性，请参考 Tooltip 的文档，在此文档中不做详尽解释。</p>
 <p><code>trigger</code>属性用于设置何时触发 Popover，支持三种触发方式：<code>hover</code>，<code>click</code>， <code>manual</code>。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+<pre><code class="language-html">```html
+&lt;template&gt;
     &lt;jk-popover
         trigger=&quot;hover&quot;
-        title=&quot;标题&quot;
+        title=&quot;Title&quot;
         width=&quot;200px&quot;
-        content=&quot;这是一段内容,这是一段内容,这是一段内容,这是一段内容。&quot;&gt;
+        content=&quot;This is a paragraph of content. This is a paragraph of content. This is a paragraph of content. This is a paragraph of content.&quot;&gt;
         @section(&quot;reference&quot;) {
-            &lt;jk-button&gt;hover激活&lt;/jk-button&gt;
+            &lt;jk-button&gt;Activate on hover&lt;/jk-button&gt;
         }
     &lt;/jk-popover&gt;
     &lt;jk-popover
         trigger=&quot;click&quot;
-        title=&quot;标题&quot;
+        title=&quot;Title&quot;
         width=&quot;200px&quot;
         placement=&quot;bottom&quot;
-        content=&quot;这是一段内容,这是一段内容,这是一段内容,这是一段内容。&quot;&gt;
+        content=&quot;This is a paragraph of content. This is a paragraph of content. This is a paragraph of content. This is a paragraph of content.&quot;&gt;
         @section(&quot;reference&quot;) {
-            &lt;jk-button&gt;click激活&lt;/jk-button&gt;
+            &lt;jk-button&gt;Activate on click&lt;/jk-button&gt;
         }
     &lt;/jk-popover&gt;
     &lt;jk-popover
         trigger=&quot;manual&quot;
-        title=&quot;标题&quot;
+        title=&quot;Title&quot;
         width=&quot;200px&quot;
         placement=&quot;bottom&quot;
         ref=&quot;popover1&quot;
-        content=&quot;再点击一次按钮关闭&quot;&gt;
+        content=&quot;Click the button again to close&quot;&gt;
         @section(&quot;reference&quot;) {
-            &lt;jk-button @click=&quot;open&quot;&gt;手动激活&lt;/jk-button&gt;
+            &lt;jk-button @click=&quot;open&quot;&gt;Activate manually&lt;/jk-button&gt;
         }
     &lt;/jk-popover&gt;
 &lt;/template&gt;
 &lt;script&gt;
-import { VNode } from &quot;@joker.front/core&quot;;
 import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     isShow = false;
     open() {
-        let popover = this.$getRef&lt;VNode.Component&gt;(&quot;popover1&quot;)?.component;
+        let popover = this.$getRef(&quot;popover1&quot;)?.component;
         if (this.isShow) {
             popover?.hide();
         } else {
@@ -55,19 +55,19 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
+<pre><code></code></pre>
 </DemoContainer>
 <h3>嵌套信息</h3>
 <p>可以在 Popover 中嵌套多种类型信息，以下为嵌套表格的例子。利用 section 取代<code>content</code>属性。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-popover trigger=&quot;click&quot; title=&quot;我里面嵌套了一个组件&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
+    &lt;jk-popover trigger=&quot;click&quot; title=&quot;I have a nested component inside&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
         &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
         @section(&quot;reference&quot;) {
-            &lt;jk-button&gt;click激活&lt;/jk-button&gt;
+            &lt;jk-button&gt;Activate on click&lt;/jk-button&gt;
         }
     &lt;/jk-popover&gt;
 &lt;/template&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>Attributes</h3>

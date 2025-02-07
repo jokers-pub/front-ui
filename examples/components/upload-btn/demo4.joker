@@ -8,7 +8,7 @@ import { Message } from "../../../src";
 export default class extends Component {
     handleClick(e: VNode.Event<Array<File>>) {
         if (e.data.length) {
-            Message(`选中的文件大小:${e.data[0].size / 1024}kb`);
+            Message(`The size of the selected file: ${e.data[0].size / 1024} kb`);
         }
     }
 }

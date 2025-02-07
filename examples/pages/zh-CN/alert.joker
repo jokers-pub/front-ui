@@ -7,10 +7,18 @@
 <p>Alert 组件提供四种主题，由 type 属性指定，默认值为 info。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;消息提示的文案&quot; type=&quot;info&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;警告提示的文案&quot; type=&quot;warning&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;错误提示的文案&quot; type=&quot;error&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for message prompt&quot; type=&quot;info&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for warning prompt&quot; type=&quot;warning&quot; /&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for error prompt&quot; type=&quot;error&quot; /&gt;
+    &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -19,10 +27,18 @@
 <p>通过设置 effect 属性来改变主题，默认为 light。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;消息提示的文案&quot; type=&quot;info&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;警告提示的文案&quot; type=&quot;warning&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;错误提示的文案&quot; type=&quot;error&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for message prompt&quot; type=&quot;info&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for warning prompt&quot; type=&quot;warning&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for error prompt&quot; type=&quot;error&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -31,17 +47,23 @@
 <p>在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。closable 属性决定是否可关闭，接受 boolean，默认为 true。你可以设置 closeText 属性来代替右侧的关闭图标，注意：closeText 必须为文本。设置 close 事件来设置关闭时的回调。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;不可关闭的 alert&quot; type=&quot;success&quot; closable=&quot;@false&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;自定义 close-text&quot; type=&quot;info&quot; closeText=&quot;知道了&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;设置了回调的 alert&quot; type=&quot;warning&quot; @close=&quot;hello&quot;&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Non - closable alert&quot; type=&quot;success&quot; closable=&quot;@false&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Custom close - text&quot; type=&quot;info&quot; closeText=&quot;Got it&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Alert with callback set&quot; type=&quot;warning&quot; @close=&quot;hello&quot;&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {};
-    hello(){
-        alert('Hello World!');
+    hello() {
+        alert(&quot;Hello World!&quot;);
     }
 }
 &lt;/script&gt;
@@ -52,10 +74,18 @@ export default class extends Component {
 <p>通过设置 showIcon 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;消息提示的文案&quot; type=&quot;info&quot; showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;警告提示的文案&quot; type=&quot;warning&quot; showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;错误提示的文案&quot; type=&quot;error&quot; showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for message prompt&quot; type=&quot;info&quot; showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for warning prompt&quot; type=&quot;warning&quot; showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for error prompt&quot; type=&quot;error&quot; showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -63,10 +93,18 @@ export default class extends Component {
 <p>使用 center 属性让文字水平居中。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;成功提示的文案&quot; type=&quot;success&quot; center showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;消息提示的文案&quot; type=&quot;info&quot; center showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;警告提示的文案&quot; type=&quot;warning&quot; center showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
-    &lt;DemoRow&gt;&lt;jk-alert title=&quot;错误提示的文案&quot; type=&quot;error&quot; center showIcon&gt;&lt;/jk-alert&gt;&lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; center showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for message prompt&quot; type=&quot;info&quot; center showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for warning prompt&quot; type=&quot;warning&quot; center showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-alert title=&quot;Text for error prompt&quot; type=&quot;error&quot; center showIcon&gt;&lt;/jk-alert&gt;
+    &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -76,10 +114,9 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-alert
-        title=&quot;带辅助性文字介绍&quot;
+        title=&quot;With auxiliary text introduction&quot;
         type=&quot;success&quot;
-        description=&quot;这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。 黑灰化肥会挥发发灰黑化肥黑灰挥发化为灰……&quot;&gt;
-    &lt;/jk-alert&gt;
+        description=&quot;This is some supplementary information. Success often comes from hard work and perseverance. Keep up the good work and you'll achieve your goals!&quot;&gt;&lt;/jk-alert&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -89,40 +126,40 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
-            title=&quot;成功提示的文案&quot;
+            title=&quot;Text for success prompt&quot;
             type=&quot;success&quot;
-            description=&quot;文字说明文字说明文字说明文字说明文字说明文字说明&quot;
+            description=&quot;Congratulations! The operation was completed successfully. All data has been saved without any issues.&quot;
             showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
-            title=&quot;消息提示的文案&quot;
+            title=&quot;Text for message prompt&quot;
             type=&quot;info&quot;
-            description=&quot;文字说明文字说明文字说明文字说明文字说明文字说明&quot;
+            description=&quot;Please note that the system will be undergoing maintenance tonight from 10 PM to 2 AM. Plan your work accordingly.&quot;
             showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
-            title=&quot;警告提示的文案&quot;
+            title=&quot;Text for warning prompt&quot;
             type=&quot;warning&quot;
-            description=&quot;文字说明文字说明文字说明文字说明文字说明文字说明&quot;
+            description=&quot;Your account's password is about to expire. Please change it as soon as possible to ensure account security.&quot;
             showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
-            title=&quot;错误提示的文案&quot;
+            title=&quot;Text for error prompt&quot;
             type=&quot;error&quot;
-            description=&quot;文字说明文字说明文字说明文字说明文字说明文字说明&quot;
+            description=&quot;An error occurred while processing your request. Please check your network connection and try again.&quot;
             showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
-            title=&quot;错误提示的文案&quot;
+            title=&quot;Text for error prompt&quot;
             type=&quot;error&quot;
-            description=&quot;文字说明文字说明文字说明文字说明文字说明文字说明&quot;
+            description=&quot;An unexpected error has happened. Our technical team has been notified and will resolve it shortly.&quot;
             showIcon&gt;
             @section(&quot;title&quot;) {
-                我是section标题
+                I'm the section title
             }
         &lt;/jk-alert&gt;
     &lt;/DemoRow&gt;

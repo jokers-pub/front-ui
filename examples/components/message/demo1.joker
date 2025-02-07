@@ -1,12 +1,12 @@
 <template>
-    <jk-button @click="open">打开提示</jk-button>
+    <jk-button @click="open">Open the prompt</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
 import { Message } from "../../../src";
 export default class extends Component {
     open() {
-        Message("这是一条提示");
+        Message("This is a prompt");
     }
 }
 </script>

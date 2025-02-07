@@ -1,19 +1,14 @@
 <template>
     <label class="demo">
-        <jk-switch 
-            value="@model.value1" 
-            activeText="按月付费" 
-            inactiveText="按年付费">
-        </jk-switch>
+        <jk-switch value="@model.value1" activeText="Pay monthly" inactiveText="Pay annually"></jk-switch>
     </label>
     <label>
-        <jk-switch 
-            value="@model.value2" 
-            activeText="按月付费" 
-            inactiveText="按年付费" 
-            activeColor="#13ce66" 
-            inactiveColor="#ff4949">
-        </jk-switch>
+        <jk-switch
+            value="@model.value2"
+            activeText="Pay monthly"
+            inactiveText="Pay annually"
+            activeColor="#13ce66"
+            inactiveColor="#ff4949"></jk-switch>
     </label>
 </template>
 <script>
@@ -28,7 +23,7 @@ export default class extends Component {
 </script>
 
 <style scoped>
-.demo{
+.demo {
     display: block;
     margin-bottom: 20px;
 }

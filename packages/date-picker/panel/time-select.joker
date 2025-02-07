@@ -134,7 +134,7 @@ export default class extends PickerPanel<{
         let aimItem = item ?? this.popperHtmlElement.querySelector(".jk-picker-time-select-panel-item.is-selected");
 
         if (aimItem) {
-            this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(aimItem);
+            this.$getRef("scrollbar")?.component.scrollToEl(aimItem);
         }
     }
 

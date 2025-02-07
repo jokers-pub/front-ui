@@ -50,7 +50,7 @@ export default class extends Component<{
     scrollIntoView() {
         let activeNode = this.$getRef("container")!.output.querySelector(".jk-cascader-node.is-active");
 
-        this.$getRef<VNode.Component>("scrollbar")?.component.scrollToEl(activeNode);
+        this.$getRef("scrollbar")?.component.scrollToEl(activeNode);
     }
 }
 </script>

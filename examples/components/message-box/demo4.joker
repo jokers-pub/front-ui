@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-link type="primary" @click="open">打开消息弹窗</jk-link>
+        <jk-link type="primary" @click="open">Open the message pop-up window</jk-link>
     </DemoRow>
 </template>
 <script>
@@ -9,10 +9,13 @@ import { MessageBox } from "../../../src";
 
 export default class extends Component {
     open() {
-        MessageBox.confirm("你确定要向xxx转账：<span style='color:red'>2,000</span>元吗？", "动帐提示", {
-            useHtml: true
-        });
+        MessageBox.confirm(
+            "Are you sure you want to transfer <span style='color:red'>2,000</span> yuan to xxx?",
+            "Account movement prompt",
+            {
+                useHtml: true
+            }
+        );
     }
 }
 </script>
-

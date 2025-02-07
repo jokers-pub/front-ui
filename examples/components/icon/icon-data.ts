@@ -1,13 +1,11 @@
 export let icons = [
     "lock",
     "unlock",
-
     "key",
     "mobile-phone",
     "location",
     "watch",
     "service",
-
     "location-outline",
     "place",
     "medal",
@@ -22,12 +20,10 @@ export let icons = [
     "switch-button",
     "time",
     "copy-document",
-
     "position",
     "chat-round",
     "crop",
     "close-notification",
-
     "message",
     "chat-line-square",
     "chat-line-round",
@@ -47,7 +43,6 @@ export let icons = [
     "receiving",
     "connection",
     "house",
-
     "collection",
     "data-board",
     "data-line",

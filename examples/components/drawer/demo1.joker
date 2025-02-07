@@ -1,14 +1,14 @@
 <template>
     <DemoRow>
         <jk-radio-group @change="handleRadioChange" value="@model.direction">
-            <jk-radio value="left">从左到右</jk-radio>
-            <jk-radio value="top">从上到下</jk-radio>
-            <jk-radio value="right">从右到左</jk-radio>
-            <jk-radio value="bottom">从下到上</jk-radio>
+            <jk-radio value="left">Left to right</jk-radio>
+            <jk-radio value="top">Top to bottom</jk-radio>
+            <jk-radio value="right">Right to left</jk-radio>
+            <jk-radio value="bottom">Bottom to top</jk-radio>
         </jk-radio-group>
     </DemoRow>
-    <jk-button @click="handleOpen">弹出</jk-button>
-    <jk-drawer ref="drawer" direction="@model.direction" title="我是标题">我是内容。</jk-drawer>
+    <jk-button @click="handleOpen">Pop up</jk-button>
+    <jk-drawer ref="drawer" direction="@model.direction" title="I'm the title">I'm the content.</jk-drawer>
 </template>
 <script>
 import { VNode } from "@joker.front/core";

@@ -8,27 +8,27 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; value=&quot;9&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
-            &lt;jk-option label=&quot;东北乱炖&quot; value=&quot;5&quot; /&gt;
-            &lt;jk-option label=&quot;酸菜排骨&quot; value=&quot;6&quot; /&gt;
-            &lt;jk-option label=&quot;芹菜鱼丝&quot; value=&quot;7&quot; /&gt;
-            &lt;jk-option label=&quot;拔丝山药&quot; value=&quot;8&quot; /&gt;
-            &lt;jk-option label=&quot;川北凉粉&quot; value=&quot;9&quot; /&gt;
-            &lt;jk-option label=&quot;清炒卷心菜&quot; value=&quot;10&quot; /&gt;
-            &lt;jk-option label=&quot;玉带虾仁&quot; value=&quot;11&quot; /&gt;
-            &lt;jk-option label=&quot;麻婆豆腐&quot; value=&quot;12&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; value=&quot;9&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-option label=&quot;Eggplant&quot; value=&quot;5&quot; /&gt;
+            &lt;jk-option label=&quot;Fig&quot; value=&quot;6&quot; /&gt;
+            &lt;jk-option label=&quot;Grape&quot; value=&quot;7&quot; /&gt;
+            &lt;jk-option label=&quot;Honeydew&quot; value=&quot;8&quot; /&gt;
+            &lt;jk-option label=&quot;Kiwi&quot; value=&quot;9&quot; /&gt;
+            &lt;jk-option label=&quot;Lemon&quot; value=&quot;10&quot; /&gt;
+            &lt;jk-option label=&quot;Mango&quot; value=&quot;11&quot; /&gt;
+            &lt;jk-option label=&quot;Orange&quot; value=&quot;12&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -39,19 +39,19 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; disabled value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; disabled value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; disabled&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; disabled&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -63,11 +63,11 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; clearable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+            &lt;jk-option label=&quot;Cat&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Dog&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Bird&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Fish&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -79,39 +79,23 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;请选择&quot; clearable multiple @change=&quot;handleChange&quot;&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-select placeholder=&quot;Please select&quot; clearable multiple @change=&quot;handleChange&quot;&gt;
+                &lt;jk-option label=&quot;Car&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Bike&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Bus&quot; value=&quot;3&quot; /&gt;
+                &lt;jk-option label=&quot;Train&quot; value=&quot;4&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;请选择&quot; clearable multiple value=&quot;@(['2', '4'])&quot;&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-select placeholder=&quot;Please select&quot; clearable multiple value=&quot;@(['2', '4'])&quot;&gt;
+                &lt;jk-option label=&quot;Car&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Bike&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Bus&quot; value=&quot;3&quot; /&gt;
+                &lt;jk-option label=&quot;Train&quot; value=&quot;4&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
     &lt;/div&gt;
 &lt;/template&gt;
-&lt;script&gt;
-import { Component, VNode } from &quot;@joker.front/core&quot;;
-
-export default class extends Component {
-    handleChange(e: VNode.Event) {
-        console.log(e.data);
-    }
-}
-&lt;/script&gt;
-&lt;style lang=&quot;scss&quot; scoped&gt;
-.container {
-    :deep(.jk-select) {
-        width: 240px;
-    }
-}
-&lt;/style&gt;
 </code></pre>
 </DemoContainer>
 <h3>自定义模板</h3>
@@ -119,16 +103,16 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; clearable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot;&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+            &lt;jk-option label=&quot;Pen&quot; value=&quot;1&quot;&gt;
                 @section(&quot;default&quot;, item) {
                     @(item.label)
                     &lt;span&gt;[@(item.value)]&lt;/span&gt;
                 }
             &lt;/jk-option&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-option label=&quot;Book&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cup&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Key&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -139,28 +123,28 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; clearable&gt;
-            &lt;jk-option-group label=&quot;荤菜&quot;&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+            &lt;jk-option-group label=&quot;Meat Dishes&quot;&gt;
+                &lt;jk-option label=&quot;Beef Steak&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Chicken Wings&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Pork Cutlet&quot; value=&quot;3&quot; /&gt;
             &lt;/jk-option-group&gt;
-            &lt;jk-option-group label=&quot;素菜&quot;&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
-                &lt;jk-option label=&quot;西红柿鸡蛋&quot; value=&quot;5&quot; /&gt;
+            &lt;jk-option-group label=&quot;Vegetable Dishes&quot;&gt;
+                &lt;jk-option label=&quot;Spinach Salad&quot; value=&quot;4&quot; /&gt;
+                &lt;jk-option label=&quot;Cucumber Salad&quot; value=&quot;5&quot; /&gt;
             &lt;/jk-option-group&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; clearable filterable&gt;
-            &lt;jk-option-group label=&quot;荤菜&quot;&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; clearable filterable&gt;
+            &lt;jk-option-group label=&quot;Meat Dishes&quot;&gt;
+                &lt;jk-option label=&quot;Beef Steak&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Chicken Wings&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Pork Cutlet&quot; value=&quot;3&quot; /&gt;
             &lt;/jk-option-group&gt;
-            &lt;jk-option-group label=&quot;素菜&quot;&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
-                &lt;jk-option label=&quot;西红柿鸡蛋&quot; value=&quot;5&quot; /&gt;
+            &lt;jk-option-group label=&quot;Vegetable Dishes&quot;&gt;
+                &lt;jk-option label=&quot;Spinach Salad&quot; value=&quot;4&quot; /&gt;
+                &lt;jk-option label=&quot;Cucumber Salad&quot; value=&quot;5&quot; /&gt;
             &lt;/jk-option-group&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
@@ -173,26 +157,31 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; filterable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; filterable&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;异步查询搜索&quot; filterable remote remoteMethod=&quot;@queryData&quot; loading=&quot;@model.loading&quot;&gt;
+        &lt;jk-select
+            placeholder=&quot;Asynchronous query search&quot;
+            filterable
+            remote
+            remoteMethod=&quot;@queryData&quot;
+            loading=&quot;@model.loading&quot;&gt;
             @for(let item of model.options) {
                 &lt;jk-option label=&quot;@item.label&quot; value=&quot;@item.value&quot; /&gt;
             }
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择(可创建新值)&quot; filterable allowCreate @new=&quot;handleCreatNew&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select (can create new value)&quot; filterable allowCreate @new=&quot;handleCreatNew&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -215,13 +204,13 @@ export default class extends Component {
         if (keyword) {
             this.model.loading = true;
             let data = [
-                { label: &quot;鱼香肉丝&quot;, value: &quot;1&quot; },
-                { label: &quot;红烧排骨&quot;, value: &quot;2&quot; },
-                { label: &quot;辣椒炒肉&quot;, value: &quot;3&quot; },
-                { label: &quot;鱼香茄子&quot;, value: &quot;4&quot; }
+                { label: &quot;Apple&quot;, value: &quot;1&quot; },
+                { label: &quot;Banana&quot;, value: &quot;2&quot; },
+                { label: &quot;Cherry&quot;, value: &quot;3&quot; },
+                { label: &quot;Date&quot;, value: &quot;4&quot; }
             ];
 
-            //模拟请求耗时
+            // Simulate request time-consuming
             await sleep(1000);
 
             this.model.options = data.filter((m) =&gt; {
@@ -232,7 +221,7 @@ export default class extends Component {
         }
     }
     handleCreatNew(e: VNode.Event&lt;string&gt;) {
-        Message.info(&quot;触发了New事件，创建新条目&quot; + e.data);
+        Message.info(&quot;The New event is triggered, creating a new item: &quot; + e.data);
     }
 }
 &lt;/script&gt;
@@ -243,16 +232,16 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;请选择&quot; multiple filterable&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-select placeholder=&quot;Please select&quot; multiple filterable&gt;
+                &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+                &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
             &lt;jk-select
-                placeholder=&quot;异步查询搜索&quot;
+                placeholder=&quot;Asynchronous query search&quot;
                 multiple
                 filterable
                 remote
@@ -264,11 +253,11 @@ export default class extends Component {
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;请选择(可新增)&quot; multiple filterable allowCreate&gt;
-                &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-                &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-                &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-                &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+            &lt;jk-select placeholder=&quot;Please select (can add new)&quot; multiple filterable allowCreate&gt;
+                &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+                &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+                &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+                &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
     &lt;/div&gt;
@@ -279,33 +268,30 @@ import { Component } from &quot;@joker.front/core&quot;;
 import { sleep } from &quot;@joker.front/shared&quot;;
 
 export default class extends Component {
-    model: {
-        options: Array&lt;{ label: string; value: string }&gt;;
-        loading: boolean;
-    } = {
+    model = {
         options: [],
         loading: false
     };
 
-    async queryData(keyword: string) {
+    async queryData(keyword) {
         if (!keyword) return;
         this.model.loading = true;
-        let data = [
-            { label: &quot;鱼香肉丝&quot;, value: &quot;1&quot; },
-            { label: &quot;红烧排骨&quot;, value: &quot;2&quot; },
-            { label: &quot;辣椒炒肉&quot;, value: &quot;3&quot; },
-            { label: &quot;鱼香茄子&quot;, value: &quot;4&quot; },
-            { label: &quot;东北乱炖&quot;, value: &quot;5&quot; },
-            { label: &quot;酸菜排骨&quot;, value: &quot;6&quot; },
-            { label: &quot;芹菜鱼丝&quot;, value: &quot;7&quot; },
-            { label: &quot;拔丝山药&quot;, value: &quot;8&quot; },
-            { label: &quot;川北凉粉&quot;, value: &quot;9&quot; },
-            { label: &quot;清炒卷心菜&quot;, value: &quot;10&quot; },
-            { label: &quot;玉带虾仁&quot;, value: &quot;11&quot; },
-            { label: &quot;麻婆豆腐&quot;, value: &quot;12&quot; }
+        const data = [
+            { label: &quot;Apple&quot;, value: &quot;1&quot; },
+            { label: &quot;Banana&quot;, value: &quot;2&quot; },
+            { label: &quot;Cherry&quot;, value: &quot;3&quot; },
+            { label: &quot;Date&quot;, value: &quot;4&quot; },
+            { label: &quot;Eggplant&quot;, value: &quot;5&quot; },
+            { label: &quot;Fig&quot;, value: &quot;6&quot; },
+            { label: &quot;Grape&quot;, value: &quot;7&quot; },
+            { label: &quot;Honeydew&quot;, value: &quot;8&quot; },
+            { label: &quot;Kiwi&quot;, value: &quot;9&quot; },
+            { label: &quot;Lemon&quot;, value: &quot;10&quot; },
+            { label: &quot;Mango&quot;, value: &quot;11&quot; },
+            { label: &quot;Orange&quot;, value: &quot;12&quot; }
         ];
 
-        //模拟请求耗时
+        // Simulate request time-consuming
         await sleep(1000);
 
         this.model.options = data.filter((m) =&gt; {
@@ -330,67 +316,67 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo9)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;small&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;small&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;mini&quot;&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;mini&quot;&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; multiple filterable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; multiple filterable&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;medium&quot; multiple filterable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;medium&quot; multiple filterable&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;small&quot; multiple filterable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;small&quot; multiple filterable&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;请选择&quot; size=&quot;mini&quot; multiple filterable&gt;
-            &lt;jk-option label=&quot;鱼香肉丝&quot; value=&quot;1&quot; /&gt;
-            &lt;jk-option label=&quot;红烧排骨&quot; value=&quot;2&quot; /&gt;
-            &lt;jk-option label=&quot;辣椒炒肉&quot; value=&quot;3&quot; /&gt;
-            &lt;jk-option label=&quot;鱼香茄子&quot; value=&quot;4&quot; /&gt;
+        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;mini&quot; multiple filterable&gt;
+            &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
+            &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
+            &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
+            &lt;jk-option label=&quot;Date&quot; value=&quot;4&quot; /&gt;
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;

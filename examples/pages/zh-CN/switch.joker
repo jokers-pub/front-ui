@@ -46,20 +46,15 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;label class=&quot;demo&quot;&gt;
-        &lt;jk-switch 
-            value=&quot;@model.value1&quot; 
-            activeText=&quot;按月付费&quot; 
-            inactiveText=&quot;按年付费&quot;&gt;
-        &lt;/jk-switch&gt;
+        &lt;jk-switch value=&quot;@model.value1&quot; activeText=&quot;Pay monthly&quot; inactiveText=&quot;Pay annually&quot;&gt;&lt;/jk-switch&gt;
     &lt;/label&gt;
     &lt;label&gt;
-        &lt;jk-switch 
-            value=&quot;@model.value2&quot; 
-            activeText=&quot;按月付费&quot; 
-            inactiveText=&quot;按年付费&quot; 
-            activeColor=&quot;#13ce66&quot; 
-            inactiveColor=&quot;#ff4949&quot;&gt;
-        &lt;/jk-switch&gt;
+        &lt;jk-switch
+            value=&quot;@model.value2&quot;
+            activeText=&quot;Pay monthly&quot;
+            inactiveText=&quot;Pay annually&quot;
+            activeColor=&quot;#13ce66&quot;
+            inactiveColor=&quot;#ff4949&quot;&gt;&lt;/jk-switch&gt;
     &lt;/label&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -74,7 +69,7 @@ export default class extends Component {
 &lt;/script&gt;
 
 &lt;style scoped&gt;
-.demo{
+.demo {
     display: block;
     margin-bottom: 20px;
 }

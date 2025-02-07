@@ -9,47 +9,47 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;box&quot;&gt;
         &lt;div class=&quot;top&quot;&gt;
-            &lt;jk-tooltip content=&quot;Top Left 提示文字&quot; placement=&quot;top-start&quot;&gt;
-                &lt;jk-button&gt;上左&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Top Left Tooltip Text&quot; placement=&quot;top-start&quot;&gt;
+                &lt;jk-button&gt;Top Left&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Top Center 提示文字&quot; placement=&quot;top&quot;&gt;
-                &lt;jk-button&gt;上边&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Top Center Tooltip Text&quot; placement=&quot;top&quot;&gt;
+                &lt;jk-button&gt;Top&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Top Right 提示文字&quot; placement=&quot;top-end&quot;&gt;
-                &lt;jk-button&gt;上右&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Top Right Tooltip Text&quot; placement=&quot;top-end&quot;&gt;
+                &lt;jk-button&gt;Top Right&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
         &lt;/div&gt;
         &lt;div class=&quot;left&quot;&gt;
-            &lt;jk-tooltip content=&quot;Left Top 提示文字&quot; placement=&quot;left-start&quot;&gt;
-                &lt;jk-button&gt;左上&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Left Top Tooltip Text&quot; placement=&quot;left-start&quot;&gt;
+                &lt;jk-button&gt;Left Top&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Left Center 提示文字&quot; placement=&quot;left&quot;&gt;
-                &lt;jk-button&gt;左边&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Left Center Tooltip Text&quot; placement=&quot;left&quot;&gt;
+                &lt;jk-button&gt;Left&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Left Bottom 提示文字&quot; placement=&quot;left-end&quot;&gt;
-                &lt;jk-button&gt;左下&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Left Bottom Tooltip Text&quot; placement=&quot;left-end&quot;&gt;
+                &lt;jk-button&gt;Left Bottom&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
         &lt;/div&gt;
         &lt;div class=&quot;right&quot;&gt;
-            &lt;jk-tooltip content=&quot;Right Top 提示文字&quot; placement=&quot;right-start&quot;&gt;
-                &lt;jk-button&gt;右上&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Right Top Tooltip Text&quot; placement=&quot;right-start&quot;&gt;
+                &lt;jk-button&gt;Right Top&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Right Center 提示文字&quot; placement=&quot;right&quot;&gt;
-                &lt;jk-button&gt;右边&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Right Center Tooltip Text&quot; placement=&quot;right&quot;&gt;
+                &lt;jk-button&gt;Right&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Right Bottom 提示文字&quot; placement=&quot;right-end&quot;&gt;
-                &lt;jk-button&gt;右下&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Right Bottom Tooltip Text&quot; placement=&quot;right-end&quot;&gt;
+                &lt;jk-button&gt;Right Bottom&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
         &lt;/div&gt;
         &lt;div class=&quot;bottom&quot;&gt;
-            &lt;jk-tooltip content=&quot;Bottom Left 提示文字&quot; placement=&quot;bottom-start&quot;&gt;
-                &lt;jk-button&gt;下左&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Bottom Left Tooltip Text&quot; placement=&quot;bottom-start&quot;&gt;
+                &lt;jk-button&gt;Bottom Left&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Bottom Center 提示文字&quot; placement=&quot;bottom&quot;&gt;
-                &lt;jk-button&gt;下边&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Bottom Center Tooltip Text&quot; placement=&quot;bottom&quot;&gt;
+                &lt;jk-button&gt;Bottom&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
-            &lt;jk-tooltip content=&quot;Bottom Right 提示文字&quot; placement=&quot;bottom-end&quot;&gt;
-                &lt;jk-button&gt;下右&lt;/jk-button&gt;
+            &lt;jk-tooltip content=&quot;Bottom Right Tooltip Text&quot; placement=&quot;bottom-end&quot;&gt;
+                &lt;jk-button&gt;Bottom Right&lt;/jk-button&gt;
             &lt;/jk-tooltip&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -94,13 +94,13 @@
 <p>通过设置<code>effect</code>属性来改变主题，默认为<code>dark</code>。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
-        &lt;jk-button&gt;默认主题&lt;/jk-button&gt;
+    &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;Default theme&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
-    &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot;&gt;
+    &lt;jk-tooltip content=&quot;Light theme&quot; effect=&quot;light&quot;&gt;
         &lt;jk-button&gt;Light&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
-    &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot;&gt;
+    &lt;jk-tooltip content=&quot;Error theme&quot; effect=&quot;error&quot;&gt;
         &lt;jk-button&gt;Error&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
 &lt;/template&gt;
@@ -110,9 +110,9 @@
 <p>通过<code>manual</code>属性来控制是否手动激活，然后通过组件的<code>show</code>和<code>hide</code>方法来自由操作</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; manual effect=&quot;light&quot; ref=&quot;tooltip&quot;&gt;
+    &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot; manual effect=&quot;light&quot; ref=&quot;tooltip&quot;&gt;
         &lt;jk-button @click=&quot;handleClick&quot;&gt;
-            点击@(model.show ? &quot;关闭&quot; : &quot;打开&quot;)
+            Click to @(model.show ? &quot;Close&quot; : &quot;Open&quot;)
         &lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
 &lt;/template&gt;
@@ -126,7 +126,7 @@ export default class extends Component {
     };
 
     handleClick() {
-        let tooltip = this.$getRef&lt;VNode.Component&gt;(&quot;tooltip&quot;)?.component;
+        let tooltip = this.$getRef(&quot;tooltip&quot;)?.component;
         if (this.model.show) {
             tooltip?.hide();
         } else {
@@ -145,9 +145,9 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip placement=&quot;top&quot;&gt;
-        &lt;jk-button&gt;更多内容&lt;/jk-button&gt;
+        &lt;jk-button&gt;More content&lt;/jk-button&gt;
         @section(&quot;content&quot;) {
-            哈哈哈哈哈
+            Hahaha
             &lt;br /&gt;
             hahahahahaha
         }
@@ -159,10 +159,10 @@ export default class extends Component {
 <p>通过<code>disabled</code>值，来设置 tooltip 的禁用状态</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
-        &lt;jk-button&gt;默认主题&lt;/jk-button&gt;
+    &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot;&gt;
+        &lt;jk-button&gt;Default theme&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
-    &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; disabled&gt;
+    &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot; disabled&gt;
         &lt;jk-button&gt;Disabled&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
 &lt;/template&gt;
@@ -173,46 +173,46 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot;&gt;
-            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
+        &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot;&gt;
+            &lt;jk-button&gt;Default size&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot;&gt;
-            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
+        &lt;jk-tooltip content=&quot;Light theme&quot; effect=&quot;light&quot;&gt;
+            &lt;jk-button&gt;Default size&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot;&gt;
-            &lt;jk-button&gt;默认尺寸&lt;/jk-button&gt;
-        &lt;/jk-tooltip&gt;
-    &lt;/DemoRow&gt;
-    &lt;DemoRow&gt;
-        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-button&gt;medium&lt;/jk-button&gt;
-        &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-button&gt;medium&lt;/jk-button&gt;
-        &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;medium&quot;&gt;
-            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;jk-tooltip content=&quot;Error theme&quot; effect=&quot;error&quot;&gt;
+            &lt;jk-button&gt;Default size&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;small&quot;&gt;
+        &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Light theme&quot; effect=&quot;light&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+        &lt;jk-tooltip content=&quot;Error theme&quot; effect=&quot;error&quot; size=&quot;medium&quot;&gt;
+            &lt;jk-button&gt;medium&lt;/jk-button&gt;
+        &lt;/jk-tooltip&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot; size=&quot;small&quot;&gt;
             &lt;jk-button&gt;small&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;small&quot;&gt;
+        &lt;jk-tooltip content=&quot;Light theme&quot; effect=&quot;light&quot; size=&quot;small&quot;&gt;
             &lt;jk-button&gt;small&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;small&quot;&gt;
+        &lt;jk-tooltip content=&quot;Error theme&quot; effect=&quot;error&quot; size=&quot;small&quot;&gt;
             &lt;jk-button&gt;small&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-tooltip content=&quot;默认主题&quot; placement=&quot;top&quot; size=&quot;mini&quot;&gt;
+        &lt;jk-tooltip content=&quot;Default theme&quot; placement=&quot;top&quot; size=&quot;mini&quot;&gt;
             &lt;jk-button&gt;mini&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Light主题&quot; effect=&quot;light&quot; size=&quot;mini&quot;&gt;
+        &lt;jk-tooltip content=&quot;Light theme&quot; effect=&quot;light&quot; size=&quot;mini&quot;&gt;
             &lt;jk-button&gt;mini&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
-        &lt;jk-tooltip content=&quot;Error主题&quot; effect=&quot;error&quot; size=&quot;mini&quot;&gt;
+        &lt;jk-tooltip content=&quot;Error theme&quot; effect=&quot;error&quot; size=&quot;mini&quot;&gt;
             &lt;jk-button&gt;mini&lt;/jk-button&gt;
         &lt;/jk-tooltip&gt;
     &lt;/DemoRow&gt;
@@ -224,10 +224,10 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip
-        content=&quot;超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容&quot;
+        content=&quot;Extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content&quot;
         maxWidth=&quot;150px&quot;
         placement=&quot;top&quot;&gt;
-        &lt;jk-button&gt;超长内容&lt;/jk-button&gt;
+        &lt;jk-button&gt;Extremely long content&lt;/jk-button&gt;
     &lt;/jk-tooltip&gt;
 &lt;/template&gt;
 </code></pre>

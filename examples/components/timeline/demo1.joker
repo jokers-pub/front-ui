@@ -1,10 +1,10 @@
 <template>
     <div class="radio">
-        排序：
+        Sorting:
         <div class="group">
             <jk-radio-group value="@model.reverse" @change="radioChange">
-                <jk-radio value="@true">倒序</jk-radio>
-                <jk-radio value="@false">正序</jk-radio>
+                <jk-radio value="@true">Descending order</jk-radio>
+                <jk-radio value="@false">Ascending order</jk-radio>
             </jk-radio-group>
         </div>
     </div>
@@ -24,15 +24,15 @@ export default class extends Component {
         reverse: true,
         activities: [
             {
-                content: "活动按期开始",
+                content: "The event starts on schedule",
                 timestamp: "2023-08-15"
             },
             {
-                content: "通过审核",
+                content: "Passed the review",
                 timestamp: "2018-04-13"
             },
             {
-                content: "创建成功",
+                content: "Created successfully",
                 timestamp: "2018-04-11"
             }
         ]

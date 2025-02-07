@@ -1,18 +1,18 @@
 <template>
     <DemoRow>
-        <jk-button disabled>默认按钮</jk-button>
-        <jk-button type="primary" disabled>主要按钮</jk-button>
-        <jk-button type="success" disabled>成功按钮</jk-button>
-        <jk-button type="info" disabled>信息按钮</jk-button>
-        <jk-button type="warning" disabled>警告按钮</jk-button>
-        <jk-button type="danger" disabled>危险按钮</jk-button>
+        <jk-button disabled>Default Button</jk-button>
+        <jk-button type="primary" disabled>Primary Button</jk-button>
+        <jk-button type="success" disabled>Success Button</jk-button>
+        <jk-button type="info" disabled>Info Button</jk-button>
+        <jk-button type="warning" disabled>Warning Button</jk-button>
+        <jk-button type="danger" disabled>Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
-        <jk-button plain disabled>朴素按钮</jk-button>
-        <jk-button type="primary" plain disabled>主要按钮</jk-button>
-        <jk-button type="success" plain disabled>成功按钮</jk-button>
-        <jk-button type="info" plain disabled>信息按钮</jk-button>
-        <jk-button type="warning" plain disabled>警告按钮</jk-button>
-        <jk-button type="danger" plain disabled>危险按钮</jk-button>
+        <jk-button plain disabled>Plain Button</jk-button>
+        <jk-button type="primary" plain disabled>Primary Button</jk-button>
+        <jk-button type="success" plain disabled>Success Button</jk-button>
+        <jk-button type="info" plain disabled>Info Button</jk-button>
+        <jk-button type="warning" plain disabled>Warning Button</jk-button>
+        <jk-button type="danger" plain disabled>Danger Button</jk-button>
     </DemoRow>
 </template>

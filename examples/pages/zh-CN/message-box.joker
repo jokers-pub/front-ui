@@ -11,7 +11,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -20,20 +20,18 @@ import { MessageBox, Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.alert(&quot;我是一个alert提示框&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.alert(&quot;I'm an alert prompt box&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>确认消息</h3>
@@ -42,19 +40,19 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open1&quot;&gt;点击打开警告弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open1&quot;&gt;Click to open the warning pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open2&quot;&gt;点击打开成功弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open2&quot;&gt;Click to open the success pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open3&quot;&gt;点击打开错误弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open3&quot;&gt;Click to open the error pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open4&quot;&gt;点击打开自定义图标&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open4&quot;&gt;Click to open the custom icon pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -63,68 +61,66 @@ import { MessageBox, Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open1() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             type: &quot;warning&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open2() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             type: &quot;success&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open3() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             type: &quot;error&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open4() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
+            confirmButtonText: &quot;I'm OK&quot;,
             iconClass: &quot;jk-icon-message&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>提交内容</h3>
@@ -134,7 +130,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;请输入邮箱&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Please enter your email&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -143,16 +139,16 @@ import { Message, MessageBox, Loading } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.prompt(&quot;请输入你的邮箱&quot;, &quot;确认邮箱&quot;, {
+        MessageBox.prompt(&quot;Please enter your email&quot;, &quot;Confirm your email&quot;, {
             validate(val) {
-                if (!val) return &quot;请输入邮箱&quot;;
+                if (!val) return &quot;Please enter an email&quot;;
 
                 if (
                     /[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/.test(
                         val
                     ) === false
                 ) {
-                    return &quot;邮箱地址不正确&quot;;
+                    return &quot;The email address is incorrect&quot;;
                 }
             },
             beforeClose(action, com, close) {
@@ -160,10 +156,10 @@ export default class extends Component {
                     let value = com.inputValue;
 
                     let loading = Loading({
-                        text: &quot;正在提交数据&quot;
+                        text: &quot;Submitting data&quot;
                     });
 
-                    Message(&quot;正在提交数据：&quot; + value);
+                    Message(&quot;Submitting data: &quot; + value);
 
                     setTimeout(() =&gt; {
                         loading.close();
@@ -176,15 +172,13 @@ export default class extends Component {
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>使用 HTML 片段</h3>
@@ -195,7 +189,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;打开消息弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -204,14 +198,16 @@ import { MessageBox } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.confirm(&quot;你确定要向xxx转账：&lt;span style='color:red'&gt;2,000&lt;/span&gt;元吗？&quot;, &quot;动帐提示&quot;, {
-            useHtml: true
-        });
+        MessageBox.confirm(
+            &quot;Are you sure you want to transfer &lt;span style='color:red'&gt;2,000&lt;/span&gt; yuan to xxx?&quot;,
+            &quot;Account movement prompt&quot;,
+            {
+                useHtml: true
+            }
+        );
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>队列显示</h3>
@@ -219,7 +215,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;同时打开多个窗口&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Open multiple windows simultaneously&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -228,23 +224,25 @@ import { MessageBox } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.alert(&quot;我是提示框1&quot;, &quot;温馨提示&quot;);
-        MessageBox.alert(&quot;我是提示框2&quot;, &quot;温馨提示&quot;);
-        MessageBox.alert(&quot;我是提示框3&quot;, &quot;温馨提示&quot;);
-        MessageBox.confirm(&quot;我是中间确认框后面还剩余两个弹窗，是否要执行closeAll，关闭所有弹窗？&quot;, &quot;温馨提示&quot;, {
-            callback(action) {
-                if (action === &quot;confirm&quot;) {
-                    MessageBox.closeAll();
+        MessageBox.alert(&quot;I'm prompt box 1&quot;, &quot;Friendly reminder&quot;);
+        MessageBox.alert(&quot;I'm prompt box 2&quot;, &quot;Friendly reminder&quot;);
+        MessageBox.alert(&quot;I'm prompt box 3&quot;, &quot;Friendly reminder&quot;);
+        MessageBox.confirm(
+            &quot;I'm the middle confirmation box. There are still two pop-ups left. Do you want to execute closeAll to close all pop-ups?&quot;,
+            &quot;Friendly reminder&quot;,
+            {
+                callback(action) {
+                    if (action === &quot;confirm&quot;) {
+                        MessageBox.closeAll();
+                    }
                 }
             }
-        });
-        MessageBox.alert(&quot;我是提示框4&quot;, &quot;温馨提示&quot;);
-        MessageBox.alert(&quot;我是提示框5&quot;, &quot;温馨提示&quot;);
+        );
+        MessageBox.alert(&quot;I'm prompt box 4&quot;, &quot;Friendly reminder&quot;);
+        MessageBox.alert(&quot;I'm prompt box 5&quot;, &quot;Friendly reminder&quot;);
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>区分取消与关闭</h3>
@@ -252,7 +250,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -261,21 +259,23 @@ import { MessageBox, Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.confirm(&quot;我是一个confirm提示框，区分cancel和close状态&quot;, &quot;温馨提示&quot;, {
-            confirmButtonText: &quot;我是OK&quot;,
-            distinguishCancelAndClose: true,
-            callback: (action) =&gt; {
-                Message({
-                    type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
-                });
+        MessageBox.confirm(
+            &quot;I'm a confirm prompt box to distinguish between cancel and close states&quot;,
+            &quot;Friendly reminder&quot;,
+            {
+                confirmButtonText: &quot;I'm OK&quot;,
+                distinguishCancelAndClose: true,
+                callback: (action) =&gt; {
+                    Message({
+                        type: &quot;info&quot;,
+                        message: `The pop-up window is closed. The trigger timing is: ${action}`
+                    });
+                }
             }
-        });
+        );
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>居中布局</h3>
@@ -283,7 +283,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;点击打开消息弹窗&lt;/jk-link&gt;
+        &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -292,22 +292,20 @@ import { MessageBox, Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        MessageBox.confirm(&quot;我是一个confirm提示框&quot;, &quot;温馨提示&quot;, {
+        MessageBox.confirm(&quot;I'm a confirm prompt box&quot;, &quot;Friendly reminder&quot;, {
             type: &quot;warning&quot;,
             center: true,
-            confirmButtonText: &quot;我是OK&quot;,
+            confirmButtonText: &quot;I'm OK&quot;,
             callback: (action) =&gt; {
                 Message({
                     type: &quot;info&quot;,
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>引用方式</h3>

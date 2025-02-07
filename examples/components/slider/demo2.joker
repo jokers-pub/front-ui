@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <span>不显示间断点：</span>
+        <span>Do not show breakpoints:</span>
         <jk-slider step="10"></jk-slider>
     </div>
     <div class="row">
-        <span>显示间断点：</span>
+        <span>Show breakpoints:</span>
         <jk-slider step="10" showStops></jk-slider>
     </div>
 </template>

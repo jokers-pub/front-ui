@@ -3,7 +3,7 @@
         <i class="jk-icon-edit" />
         <i class="jk-icon-share" />
         <i class="jk-icon-delete" />
-        <jk-button type="primary" icon="jk-icon-search">搜索</jk-button>
+        <jk-button type="primary" icon="jk-icon-search">Search</jk-button>
     </div>
 </template>
 <style scoped lang="scss">

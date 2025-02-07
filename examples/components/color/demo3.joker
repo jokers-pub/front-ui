@@ -35,8 +35,18 @@
 <script>
 import { Component } from "@joker.front/core";
 export default class extends Component {
-    fontColors = { primary: "主要文字", regular: "常规文字", secondary: "次要文字", placeholder: "占位文字" };
-    borderColors = { base: "一级边框", light: "二级边框", lighter: "三级边框", "extra-light": "四级边框" };
+    fontColors = {
+        primary: "Primary text",
+        regular: "Regular text",
+        secondary: "Secondary text",
+        placeholder: "Placeholder text"
+    };
+    borderColors = {
+        base: "Level 1 border",
+        light: "Level 2 border",
+        lighter: "Level 3 border",
+        "extra-light": "Level 4 border"
+    };
 }
 </script>
 

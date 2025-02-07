@@ -1,40 +1,40 @@
 <template>
     <DemoRow>
         <jk-alert
-            title="成功提示的文案"
+            title="Text for success prompt"
             type="success"
-            description="文字说明文字说明文字说明文字说明文字说明文字说明"
+            description="Congratulations! The operation was completed successfully. All data has been saved without any issues."
             showIcon></jk-alert>
     </DemoRow>
     <DemoRow>
         <jk-alert
-            title="消息提示的文案"
+            title="Text for message prompt"
             type="info"
-            description="文字说明文字说明文字说明文字说明文字说明文字说明"
+            description="Please note that the system will be undergoing maintenance tonight from 10 PM to 2 AM. Plan your work accordingly."
             showIcon></jk-alert>
     </DemoRow>
     <DemoRow>
         <jk-alert
-            title="警告提示的文案"
+            title="Text for warning prompt"
             type="warning"
-            description="文字说明文字说明文字说明文字说明文字说明文字说明"
+            description="Your account's password is about to expire. Please change it as soon as possible to ensure account security."
             showIcon></jk-alert>
     </DemoRow>
     <DemoRow>
         <jk-alert
-            title="错误提示的文案"
+            title="Text for error prompt"
             type="error"
-            description="文字说明文字说明文字说明文字说明文字说明文字说明"
+            description="An error occurred while processing your request. Please check your network connection and try again."
             showIcon></jk-alert>
     </DemoRow>
     <DemoRow>
         <jk-alert
-            title="错误提示的文案"
+            title="Text for error prompt"
             type="error"
-            description="文字说明文字说明文字说明文字说明文字说明文字说明"
+            description="An unexpected error has happened. Our technical team has been notified and will resolve it shortly."
             showIcon>
             @section("title") {
-                我是section标题
+                I'm the section title
             }
         </jk-alert>
     </DemoRow>

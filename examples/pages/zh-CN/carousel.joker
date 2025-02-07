@@ -8,7 +8,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo1&quot;&gt;
-        &lt;span class=&quot;demonstration&quot;&gt;默认 Hover 指示器触发&lt;/span&gt;
+        &lt;span class=&quot;demonstration&quot;&gt;Default: Trigger on Hover&lt;/span&gt;
         &lt;jk-carousel height=&quot;150px&quot;&gt;
             @for(let item of model.list) {
                 &lt;jk-carousel-item&gt;
@@ -20,7 +20,7 @@
         &lt;/jk-carousel&gt;
     &lt;/div&gt;
     &lt;div class=&quot;carouselDemo1&quot;&gt;
-        &lt;span class=&quot;demonstration&quot;&gt;Click 指示器触发&lt;/span&gt;
+        &lt;span class=&quot;demonstration&quot;&gt;Trigger on Click&lt;/span&gt;
         &lt;jk-carousel trigger=&quot;click&quot; height=&quot;150px&quot;&gt;
             @for(let item of model.list) {
                 &lt;jk-carousel-item&gt;

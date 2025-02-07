@@ -1,40 +1,48 @@
 <template>
-    <jk-form ref="form" labelWidth="100px" @submit="handleFormSubmit">
-        <jk-form-item label="必填验证" required>
-            <jk-input name="v1" validate="@Global.isRequired()" placeholder="请输入内容" />
+    <jk-form ref="form" labelWidth="160px" @submit="handleFormSubmit">
+        <jk-form-item label="Required" required>
+            <jk-input name="v1" validate="@Global.isRequired()" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="必填验证" required>
-            <jk-select name="v2" validate="@Global.isRequired()" placeholder="请选择活动区域">
-                <jk-option label="山东" value="shandong" />
-                <jk-option label="北京" value="beijing" />
+        <jk-form-item label="Required" required>
+            <jk-select name="v2" validate="@Global.isRequired()" placeholder="Please select the event area">
+                <jk-option label="Shandong" value="shandong" />
+                <jk-option label="Beijing" value="beijing" />
             </jk-select>
         </jk-form-item>
-        <jk-form-item label="正整数验证">
-            <jk-input name="v3" validate="@Global.isInt()" placeholder="请输入内容" />
+        <jk-form-item label="Positive Integer">
+            <jk-input name="v3" validate="@Global.isInt()" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="数值验证">
-            <jk-input name="v4" validate="@Global.isNumber()" placeholder="请输入内容" />
+        <jk-form-item label="Numeric">
+            <jk-input name="v4" validate="@Global.isNumber()" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="手机号验证">
-            <jk-input name="v5" validate="@Global.isPhone()" placeholder="请输入内容" />
+        <jk-form-item label="Phone Number">
+            <jk-input name="v5" validate="@Global.isPhone()" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="邮箱验证">
-            <jk-input name="v6" validate="@Global.isEmail()" placeholder="请输入内容" />
+        <jk-form-item label="Email">
+            <jk-input name="v6" validate="@Global.isEmail()" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="正则">
-            <jk-input name="v7" validate="@Global.isMatched('^\\d+$','请输入0-9的数')" placeholder="请输入内容" />
+        <jk-form-item label="Regular Expression">
+            <jk-input
+                name="v7"
+                validate="@Global.isMatched('^\\d+$','Please enter a number from 0 - 9')"
+                placeholder="Please enter the content"
+            />
         </jk-form-item>
-        <jk-form-item label="长度">
-            <jk-input name="v8" validate="@Global.isLengthInRange(3,5)" placeholder="请输入内容" />
+        <jk-form-item label="Length">
+            <jk-input name="v8" validate="@Global.isLengthInRange(3,5)" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="长度">
-            <jk-input name="v9" validate="@Global.isLengthInRange(0,5)" placeholder="请输入内容" />
+        <jk-form-item label="Length">
+            <jk-input name="v9" validate="@Global.isLengthInRange(0,5)" placeholder="Please enter the content" />
         </jk-form-item>
-        <jk-form-item label="长度">
-            <jk-input name="v10" validate="@Global.isLengthInRange(3,5,'请输入3-5个字')" placeholder="请输入内容" />
+        <jk-form-item label="Length">
+            <jk-input
+                name="v10"
+                validate="@Global.isLengthInRange(3,5,'Please enter 3 - 5 characters')"
+                placeholder="Please enter the content"
+            />
         </jk-form-item>
         <jk-form-item>
-            <jk-button type="primary" nativeType="submit">提交</jk-button>
+            <jk-button type="primary" nativeType="submit">Submit</jk-button>
         </jk-form-item>
     </jk-form>
 </template>
@@ -43,7 +51,7 @@ import { Component, VNode } from "@joker.front/core";
 
 export default class extends Component {
     async handleFormSubmit(e: VNode.Event) {
-        console.log("验证成功", e.data);
+        console.log("Verification succeeded", e.data);
     }
 }
 </script>

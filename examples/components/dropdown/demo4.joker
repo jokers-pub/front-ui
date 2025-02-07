@@ -1,25 +1,25 @@
 <template>
     <jk-dropdown split-button>
-        自定义
+        Customize
         <jk-dropdown-menu ref="menu">
             <div class="demo-menu">
-                <div class="header">列表</div>
+                <div class="header">List</div>
                 <div class="content">
                     <ul>
                         <li>
-                            <jk-checkbox label="A">删除A</jk-checkbox>
+                            <jk-checkbox label="A">Delete A</jk-checkbox>
                         </li>
                         <li>
-                            <jk-checkbox label="B">删除B</jk-checkbox>
+                            <jk-checkbox label="B">Delete B</jk-checkbox>
                         </li>
                         <li>
-                            <jk-checkbox label="C">删除C</jk-checkbox>
+                            <jk-checkbox label="C">Delete C</jk-checkbox>
                         </li>
                     </ul>
                 </div>
                 <div class="foot" @click="close">
                     <i class="jk-icon-circle-plus"></i>
-                    创建新项目
+                    Create a new project
                 </div>
             </div>
         </jk-dropdown-menu>

@@ -5,7 +5,7 @@
 <h3>基础用法</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-empty description=&quot;描述文字&quot;&gt;&lt;/jk-empty&gt;
+    &lt;jk-empty description=&quot;Descriptive text&quot;&gt;&lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -30,7 +30,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-empty&gt;
-        &lt;jk-button type=&quot;primary&quot;&gt;按钮&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot;&gt;Button&lt;/jk-button&gt;
     &lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
@@ -39,13 +39,13 @@
 <p>通过配置 size 属性来设置尺寸。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-empty description=&quot;描述文字&quot;&gt;&lt;/jk-empty&gt;
+    &lt;jk-empty description=&quot;Descriptive text&quot;&gt;&lt;/jk-empty&gt;
     &lt;jk-divider&gt;medium&lt;/jk-divider&gt;
-    &lt;jk-empty description=&quot;描述文字&quot; size=&quot;medium&quot;&gt;&lt;/jk-empty&gt;
+    &lt;jk-empty description=&quot;Descriptive text&quot; size=&quot;medium&quot;&gt;&lt;/jk-empty&gt;
     &lt;jk-divider&gt;small&lt;/jk-divider&gt;
-    &lt;jk-empty description=&quot;描述文字&quot; size=&quot;small&quot;&gt;&lt;/jk-empty&gt;
+    &lt;jk-empty description=&quot;Descriptive text&quot; size=&quot;small&quot;&gt;&lt;/jk-empty&gt;
     &lt;jk-divider&gt;mini&lt;/jk-divider&gt;
-    &lt;jk-empty description=&quot;描述文字&quot; size=&quot;mini&quot;&gt;&lt;/jk-empty&gt;
+    &lt;jk-empty description=&quot;Descriptive text&quot; size=&quot;mini&quot;&gt;&lt;/jk-empty&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>

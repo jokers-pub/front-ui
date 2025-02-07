@@ -1,7 +1,7 @@
 <template>
     <DemoRow>
-        <jk-button @click="addRow">添加一行</jk-button>
-        <jk-button @click="removeRow">删除一行</jk-button>
+        <jk-button @click="addRow">Add a row</jk-button>
+        <jk-button @click="removeRow">Remove a row</jk-button>
     </DemoRow>
     <jk-scrollbar maxHeight="200px">
         @for(let i = 0; i < model.value; i++) {

@@ -1,42 +1,42 @@
 <template>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities1">
-            <jk-checkbox border label="上海"></jk-checkbox>
-            <jk-checkbox border label="北京"></jk-checkbox>
-            <jk-checkbox border label="广州"></jk-checkbox>
-            <jk-checkbox border label="深圳"></jk-checkbox>
+            <jk-checkbox border value="Shanghai" label="Shanghai"></jk-checkbox>
+            <jk-checkbox border value="Beijing" label="Beijing"></jk-checkbox>
+            <jk-checkbox border value="Guangzhou" label="Guangzhou"></jk-checkbox>
+            <jk-checkbox border value="Shenzhen" label="Shenzhen"></jk-checkbox>
         </jk-checkbox-group>
     </DemoRow>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities2" size="medium">
-            <jk-checkbox border label="上海"></jk-checkbox>
-            <jk-checkbox border label="北京"></jk-checkbox>
-            <jk-checkbox border label="广州"></jk-checkbox>
-            <jk-checkbox border label="深圳"></jk-checkbox>
+            <jk-checkbox border value="Shanghai" label="Shanghai"></jk-checkbox>
+            <jk-checkbox border value="Beijing" label="Beijing"></jk-checkbox>
+            <jk-checkbox border value="Guangzhou" label="Guangzhou"></jk-checkbox>
+            <jk-checkbox border value="Shenzhen" label="Shenzhen"></jk-checkbox>
         </jk-checkbox-group>
     </DemoRow>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities3" size="small">
-            <jk-checkbox border label="上海"></jk-checkbox>
-            <jk-checkbox border label="北京"></jk-checkbox>
-            <jk-checkbox border label="广州"></jk-checkbox>
-            <jk-checkbox border disabled label="深圳"></jk-checkbox>
+            <jk-checkbox border value="Shanghai" label="Shanghai"></jk-checkbox>
+            <jk-checkbox border value="Beijing" label="Beijing"></jk-checkbox>
+            <jk-checkbox border value="Guangzhou" label="Guangzhou"></jk-checkbox>
+            <jk-checkbox border disabled value="Shenzhen" label="Shenzhen"></jk-checkbox>
         </jk-checkbox-group>
     </DemoRow>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities4" size="mini">
-            <jk-checkbox border label="上海"></jk-checkbox>
-            <jk-checkbox border disabled label="北京"></jk-checkbox>
-            <jk-checkbox border label="广州"></jk-checkbox>
-            <jk-checkbox border label="深圳"></jk-checkbox>
+            <jk-checkbox border value="Shanghai" label="Shanghai"></jk-checkbox>
+            <jk-checkbox border disabled value="Beijing" label="Beijing"></jk-checkbox>
+            <jk-checkbox border value="Guangzhou" label="Guangzhou"></jk-checkbox>
+            <jk-checkbox border value="Shenzhen" label="Shenzhen"></jk-checkbox>
         </jk-checkbox-group>
     </DemoRow>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities5" size="mini" disabled>
-            <jk-checkbox border label="上海"></jk-checkbox>
-            <jk-checkbox border label="北京"></jk-checkbox>
-            <jk-checkbox border label="广州"></jk-checkbox>
-            <jk-checkbox border label="深圳"></jk-checkbox>
+            <jk-checkbox border value="Shanghai" label="Shanghai"></jk-checkbox>
+            <jk-checkbox border value="Beijing" label="Beijing"></jk-checkbox>
+            <jk-checkbox border value="Guangzhou" label="Guangzhou"></jk-checkbox>
+            <jk-checkbox border value="Shenzhen" label="Shenzhen"></jk-checkbox>
         </jk-checkbox-group>
     </DemoRow>
 </template>
@@ -45,11 +45,11 @@ import { Component } from "@joker.front/core";
 
 export default class extends Component {
     model = {
-        checkedCities1: ["北京"],
-        checkedCities2: ["北京"],
-        checkedCities3: ["北京"],
-        checkedCities4: ["北京"],
-        checkedCities5: ["北京"]
+        checkedCities1: ["Beijing"],
+        checkedCities2: ["Beijing"],
+        checkedCities3: ["Beijing"],
+        checkedCities4: ["Beijing"],
+        checkedCities5: ["Beijing"]
     };
 }
 </script>

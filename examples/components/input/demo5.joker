@@ -1,13 +1,13 @@
 <template>
     <DemoRow>
-        <jk-input placeholder="请输入内容">
+        <jk-input placeholder="Please enter the content">
             @section("prepend") {
                 Http://
             }
         </jk-input>
     </DemoRow>
     <DemoRow>
-        <jk-input placeholder="请输入内容">
+        <jk-input placeholder="Please enter the content">
             @section("append") {
                 .com
             }

@@ -1,13 +1,13 @@
 <template>
-    <p>你要的不是崭新的开始,你要的是行动,从而转向一个崭新的结局。</p>
-    <jk-divider content-position="left">干的漂亮！</jk-divider>
-    <p>好好地享受青春,你无法比此刻更年轻了。</p>
+    <p>What you need is not a brand - new start, but action to lead to a brand - new ending.</p>
+    <jk-divider content-position="left">Well done!</jk-divider>
+    <p>Enjoy your youth to the fullest. You'll never be younger than you are right now.</p>
     <jk-divider>
         <i class="jk-icon-star-on"></i>
     </jk-divider>
-    <p>幸好我爱笑,生活才没那么糟糕。</p>
-    <jk-divider content-position="right">66666</jk-divider>
-    <p>能瞬间改变你心情的人,对你一定很重要吧。</p>
+    <p>Fortunately, I love to smile, so life isn't that bad.</p>
+    <jk-divider content-position="right">Nice!</jk-divider>
+    <p>The person who can instantly change your mood must be very important to you, right?</p>
 </template>
 <style scoped lang="scss">
 p {

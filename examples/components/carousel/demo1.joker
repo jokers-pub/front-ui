@@ -1,6 +1,6 @@
 <template>
     <div class="carouselDemo1">
-        <span class="demonstration">默认 Hover 指示器触发</span>
+        <span class="demonstration">Default: Trigger on Hover</span>
         <jk-carousel height="150px">
             @for(let item of model.list) {
                 <jk-carousel-item>
@@ -12,7 +12,7 @@
         </jk-carousel>
     </div>
     <div class="carouselDemo1">
-        <span class="demonstration">Click 指示器触发</span>
+        <span class="demonstration">Trigger on Click</span>
         <jk-carousel trigger="click" height="150px">
             @for(let item of model.list) {
                 <jk-carousel-item>

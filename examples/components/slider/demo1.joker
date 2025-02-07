@@ -1,22 +1,22 @@
 <template>
     <div class="row">
-        <span>默认：</span>
+        <span>Default:</span>
         <jk-slider></jk-slider>
     </div>
     <div class="row">
-        <span>默认值：</span>
+        <span>Default value:</span>
         <jk-slider value="30"></jk-slider>
     </div>
     <div class="row">
-        <span>关闭Tooltip：</span>
+        <span>Hide Tooltip:</span>
         <jk-slider value="30" showTooltip="@false"></jk-slider>
     </div>
     <div class="row">
-        <span>格式化Tooltip：</span>
+        <span>Format Tooltip:</span>
         <jk-slider value="30" formatTooltip="@formatTooltip"></jk-slider>
     </div>
     <div class="row">
-        <span>默认值：</span>
+        <span>Default value:</span>
         <jk-slider value="30" disabled></jk-slider>
     </div>
 </template>

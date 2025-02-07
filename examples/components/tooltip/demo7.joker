@@ -1,8 +1,8 @@
 <template>
     <jk-tooltip
-        content="超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容超长内容"
+        content="Extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content, extremely long content"
         maxWidth="150px"
         placement="top">
-        <jk-button>超长内容</jk-button>
+        <jk-button>Extremely long content</jk-button>
     </jk-tooltip>
 </template>

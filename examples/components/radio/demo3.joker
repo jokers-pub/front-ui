@@ -1,9 +1,9 @@
 <template>
     <DemoRow>
         <jk-radio-group value="@model.value" @change="handleChange">
-            <jk-radio value="1">备选项1</jk-radio>
-            <jk-radio value="2">备选项2</jk-radio>
-            <jk-radio value="3">备选项3</jk-radio>
+            <jk-radio value="1">Option 1</jk-radio>
+            <jk-radio value="2">Option 2</jk-radio>
+            <jk-radio value="3">Option 3</jk-radio>
         </jk-radio-group>
     </DemoRow>
     <p>

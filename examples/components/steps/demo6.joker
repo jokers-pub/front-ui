@@ -1,9 +1,9 @@
 <template>
     <div style="height: 300px;">
         <jk-steps direction="vertical" active="1">
-            <jk-step title="步骤 1"></jk-step>
-            <jk-step title="步骤 2"></jk-step>
-            <jk-step title="步骤 3" description="这是一段很长很长很长的描述性文字"></jk-step>
+            <jk-step title="Step 1"></jk-step>
+            <jk-step title="Step 2"></jk-step>
+            <jk-step title="Step 3" description="This is a very long, long, long descriptive text."></jk-step>
         </jk-steps>
     </div>
 </template>

@@ -133,7 +133,7 @@ export default class extends FormCtrl<{
     mounted() {
         this.containerEl = this.$getRef("container")!.output;
 
-        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+        this.inputContainerEl = this.$getRef("input")!.firstElement!.output;
 
         this.handleResize();
 
@@ -193,11 +193,11 @@ export default class extends FormCtrl<{
 
     //#region  方法
     blur() {
-        this.$getRef<VNode.Component>("input")?.component?.blur();
+        this.$getRef("input")?.component?.blur();
     }
 
     focus() {
-        this.$getRef<VNode.Component>("input")?.component?.focus();
+        this.$getRef("input")?.component?.focus();
     }
     hide(notBlur = false) {
         this.model.list.length = 0;
@@ -233,11 +233,11 @@ export default class extends FormCtrl<{
             }
         }
 
-        this.$getRef<VNode.Component>("dropdown")?.component.scrollToSelectedOption();
+        this.$getRef("dropdown")?.component.scrollToSelectedOption();
     }
 
     updatePopper() {
-        this.$getRef<VNode.Component>("dropdown")?.component.updatePopper();
+        this.$getRef("dropdown")?.component.updatePopper();
     }
 
     //#endregion
@@ -306,7 +306,7 @@ export default class extends FormCtrl<{
         }
 
         if (this.model.showPanel) {
-            this.$getRef<VNode.Component>("input")?.component.focus();
+            this.$getRef("input")?.component.focus();
         }
     }
     handleFocus() {
@@ -315,7 +315,7 @@ export default class extends FormCtrl<{
         this.dropMenuShowOnFocus = true;
 
         if (this.props.triggerOnFocus) {
-            this.handleQueryChange(this.$getRef<VNode.Component>("input")?.component.value || "");
+            this.handleQueryChange(this.$getRef("input")?.component.value || "");
         }
     }
 

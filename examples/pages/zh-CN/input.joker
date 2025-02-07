@@ -6,7 +6,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:180px&quot;&gt;
-        &lt;jk-input placeholder=&quot;请输入内容&quot; @input=&quot;handleInput&quot; /&gt;
+        &lt;jk-input placeholder=&quot;Please enter the content&quot; @input=&quot;handleInput&quot; /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         @model.val
@@ -37,7 +37,7 @@ p {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:180px&quot;&gt;
-        &lt;jk-input placeholder=&quot;请输入内容&quot; disabled /&gt;
+        &lt;jk-input placeholder=&quot;Please enter the content&quot; disabled /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
@@ -47,7 +47,7 @@ p {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:180px&quot;&gt;
-        &lt;jk-input placeholder=&quot;请输入内容&quot; clearable /&gt;
+        &lt;jk-input placeholder=&quot;Please enter the content&quot; clearable /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
@@ -60,17 +60,17 @@ p {
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;DemoRow&gt;
             属性方式：
-            &lt;jk-input placeholder=&quot;请选择日期&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
-            &lt;jk-input placeholder=&quot;请输入内容&quot; prefix-icon=&quot;jk-icon-search&quot; /&gt;
+            &lt;jk-input placeholder=&quot;Please select a date&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot; prefix-icon=&quot;jk-icon-search&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
             section方式：
-            &lt;jk-input placeholder=&quot;请选择日期&quot;&gt;
+            &lt;jk-input placeholder=&quot;Please select a date&quot;&gt;
                 @section(&quot;suffix&quot;) {
                     &lt;i class=&quot;jk-icon-date&quot; /&gt;
                 }
             &lt;/jk-input&gt;
-            &lt;jk-input placeholder=&quot;请输入内容&quot;&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot;&gt;
                 @section(&quot;prefix&quot;) {
                     &lt;i class=&quot;jk-icon-search&quot; /&gt;
                 }
@@ -92,14 +92,14 @@ p {
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-input placeholder=&quot;请输入内容&quot;&gt;
+        &lt;jk-input placeholder=&quot;Please enter the content&quot;&gt;
             @section(&quot;prepend&quot;) {
                 Http://
             }
         &lt;/jk-input&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-input placeholder=&quot;请输入内容&quot;&gt;
+        &lt;jk-input placeholder=&quot;Please enter the content&quot;&gt;
             @section(&quot;append&quot;) {
                 .com
             }
@@ -115,12 +115,12 @@ p {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-input placeholder=&quot;请输入&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
-            &lt;jk-input placeholder=&quot;请输入&quot; size=&quot;medium&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot; size=&quot;medium&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-input placeholder=&quot;请输入&quot; size=&quot;small&quot; suffix-icon=&quot;jk-icon-date&quot; autofocus /&gt;
-            &lt;jk-input placeholder=&quot;请输入&quot; size=&quot;mini&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot; size=&quot;small&quot; suffix-icon=&quot;jk-icon-date&quot; autofocus /&gt;
+            &lt;jk-input placeholder=&quot;Please enter the content&quot; size=&quot;mini&quot; suffix-icon=&quot;jk-icon-date&quot; /&gt;
         &lt;/DemoRow&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -137,7 +137,7 @@ p {
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width:180px&quot;&gt;
-        &lt;jk-input placeholder=&quot;请输入&quot; maxlength=&quot;10&quot; show-word-limit /&gt;
+        &lt;jk-input placeholder=&quot;Please enter&quot; maxlength=&quot;10&quot; show-word-limit /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>

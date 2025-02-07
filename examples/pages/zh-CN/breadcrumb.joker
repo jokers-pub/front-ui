@@ -21,13 +21,11 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        breadcrumbs: [&quot;首页&quot;, &quot;任务管理&quot;, &quot;任务列表&quot;, &quot;任务详情&quot;]
+        breadcrumbs: [&quot;Home&quot;, &quot;Task Management&quot;, &quot;Task List&quot;, &quot;Task Details&quot;]
     };
 }
 &lt;/script&gt;
 
-&lt;style lang=&quot;scss&quot; scoped&gt;
-&lt;/style&gt;
 </code></pre>
 </DemoContainer>
 <h3>图标分隔符</h3>
@@ -48,13 +46,11 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     model = {
-        breadcrumbs: [&quot;首页&quot;, &quot;任务管理&quot;, &quot;任务列表&quot;, &quot;任务详情&quot;]
+        breadcrumbs: [&quot;Home&quot;, &quot;Task Management&quot;, &quot;Task List&quot;, &quot;Task Details&quot;]
     };
 }
 &lt;/script&gt;
 
-&lt;style lang=&quot;scss&quot; scoped&gt;
-&lt;/style&gt;
 </code></pre>
 </DemoContainer>
 <h3>链接功能</h3>
@@ -77,28 +73,26 @@ export default class extends Component {
     model = {
         breadcrumbs: [
             {
-                name: &quot;首页&quot;,
-                url: &quot;#/&quot;
+                name: &quot;Home&quot;,
+                url: &quot;/&quot;
             },
             {
                 name: &quot;Button&quot;,
-                url: &quot;#/component/button&quot;
+                url: &quot;/component/button&quot;
             },
             {
                 name: &quot;Link&quot;,
-                url: &quot;#/component/link&quot;
+                url: &quot;/component/link&quot;
             },
             {
                 name: &quot;Scrollbar&quot;,
-                url: &quot;#/component/scrollbar&quot;
+                url: &quot;/component/scrollbar&quot;
             }
         ]
     };
 }
 &lt;/script&gt;
 
-&lt;style lang=&quot;scss&quot; scoped&gt;
-&lt;/style&gt;
 </code></pre>
 </DemoContainer>
 <h3>包含图标</h3>
@@ -133,17 +127,17 @@ export default class extends Component {
     model = {
         breadcrumbs: [
             {
-                url: &quot;#/&quot;,
+                url: &quot;/&quot;,
                 icon: &quot;s-home&quot;
             },
             {
-                name: &quot;任务管理&quot;
+                name: &quot;Task Management&quot;
             },
             {
-                name: &quot;任务列表&quot;
+                name: &quot;Task List&quot;
             },
             {
-                name: &quot;任务详情&quot;
+                name: &quot;Task Details&quot;
             }
         ]
     };

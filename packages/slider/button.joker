@@ -83,11 +83,11 @@ export default class extends Component<{
     }
 
     showToolTip() {
-        this.$getRef<VNode.Component>("tooltip")?.component.show();
+        this.$getRef("tooltip")?.component.show();
     }
 
     hideToolTip() {
-        this.$getRef<VNode.Component>("tooltip")?.component.hide();
+        this.$getRef("tooltip")?.component.hide();
     }
 
     setPosition(newPosition?: number) {

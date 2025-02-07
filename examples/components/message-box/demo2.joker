@@ -1,18 +1,18 @@
 <template>
     <DemoRow>
-        <jk-link type="primary" @click="open">点击打开消息弹窗</jk-link>
+        <jk-link type="primary" @click="open">Click to open the message pop-up window</jk-link>
     </DemoRow>
     <DemoRow>
-        <jk-link type="primary" @click="open1">点击打开警告弹窗</jk-link>
+        <jk-link type="primary" @click="open1">Click to open the warning pop-up window</jk-link>
     </DemoRow>
     <DemoRow>
-        <jk-link type="primary" @click="open2">点击打开成功弹窗</jk-link>
+        <jk-link type="primary" @click="open2">Click to open the success pop-up window</jk-link>
     </DemoRow>
     <DemoRow>
-        <jk-link type="primary" @click="open3">点击打开错误弹窗</jk-link>
+        <jk-link type="primary" @click="open3">Click to open the error pop-up window</jk-link>
     </DemoRow>
     <DemoRow>
-        <jk-link type="primary" @click="open4">点击打开自定义图标</jk-link>
+        <jk-link type="primary" @click="open4">Click to open the custom icon pop-up window</jk-link>
     </DemoRow>
 </template>
 <script>
@@ -21,64 +21,63 @@ import { MessageBox, Message } from "../../../src";
 
 export default class extends Component {
     open() {
-        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
-            confirmButtonText: "我是OK",
+        MessageBox.confirm("I'm a confirm prompt box", "Friendly reminder", {
+            confirmButtonText: "I'm OK",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open1() {
-        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
-            confirmButtonText: "我是OK",
+        MessageBox.confirm("I'm a confirm prompt box", "Friendly reminder", {
+            confirmButtonText: "I'm OK",
             type: "warning",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open2() {
-        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
-            confirmButtonText: "我是OK",
+        MessageBox.confirm("I'm a confirm prompt box", "Friendly reminder", {
+            confirmButtonText: "I'm OK",
             type: "success",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open3() {
-        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
-            confirmButtonText: "我是OK",
+        MessageBox.confirm("I'm a confirm prompt box", "Friendly reminder", {
+            confirmButtonText: "I'm OK",
             type: "error",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
     open4() {
-        MessageBox.confirm("我是一个confirm提示框", "温馨提示", {
-            confirmButtonText: "我是OK",
+        MessageBox.confirm("I'm a confirm prompt box", "Friendly reminder", {
+            confirmButtonText: "I'm OK",
             iconClass: "jk-icon-message",
             callback: (action) => {
                 Message({
                     type: "info",
-                    message: `关闭弹窗，触发时机为: ${action}`
+                    message: `The pop-up window is closed. The trigger timing is: ${action}`
                 });
             }
         });
     }
 }
 </script>
-

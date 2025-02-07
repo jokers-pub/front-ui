@@ -2,12 +2,12 @@
     <div class="card-demo1">
         <jk-card class="box-card">
             @section("header") {
-                <span>卡片名称</span>
-                <jk-button link type="text">操作按钮</jk-button>
+                <span>Card Name</span>
+                <jk-button link type="text">Action Button</jk-button>
             }
             @for(let i of [1,2,3,4]) {
                 <div class="text item">
-                    列表内容@i
+                    List Content @i
                 </div>
             }
         </jk-card>

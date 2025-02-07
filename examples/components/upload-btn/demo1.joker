@@ -7,7 +7,7 @@ import { Message } from "../../../src";
 
 export default class extends Component {
     handleClick(e: VNode.Event<Array<File>>) {
-        Message(`选中了${e.data.length}个文件`);
+        Message(`You have selected ${e.data.length} files.`);
     }
 }
 </script>

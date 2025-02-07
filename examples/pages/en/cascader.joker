@@ -8,11 +8,11 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;默认click：&lt;/span&gt;
+            &lt;span&gt;Default click:&lt;/span&gt;
             &lt;jk-cascader options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;hover触发：&lt;/span&gt;
+            &lt;span&gt;Trigger on hover:&lt;/span&gt;
             &lt;jk-cascader
                 options=&quot;@options&quot;
                 value=&quot;@model.value&quot;
@@ -67,11 +67,11 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;组件disabled：&lt;/span&gt;
+            &lt;span&gt;Component disabled:&lt;/span&gt;
             &lt;jk-cascader disabled options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;选项disabled：&lt;/span&gt;
+            &lt;span&gt;Option disabled:&lt;/span&gt;
             &lt;jk-cascader options=&quot;@options&quot; value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -129,7 +129,7 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;可清除：&lt;/span&gt;
+            &lt;span&gt;Clearable:&lt;/span&gt;
             &lt;jk-cascader clearable options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -299,11 +299,11 @@ Assigning <code>filterable</code> as <code>true</code> can turn on the search fu
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;单选可搜索：&lt;/span&gt;
+            &lt;span&gt;Single selection with search:&lt;/span&gt;
             &lt;jk-cascader filterable options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;多选可搜索：&lt;/span&gt;
+            &lt;span&gt;Multiple selection with search:&lt;/span&gt;
             &lt;jk-cascader filterable multiple options=&quot;@options&quot;&gt;&lt;/jk-cascader&gt;
         &lt;/div&gt;
     &lt;/div&gt;

@@ -1,5 +1,5 @@
 <template>
     <div style="width:200px;">
-        <jk-number value="1x" />
+        <jk-number value="1" />
     </div>
 </template>

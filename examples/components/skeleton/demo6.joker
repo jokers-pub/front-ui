@@ -1,7 +1,7 @@
 <template>
     <div style="width: 400px">
         <p>
-            <jk-button @click="setLoading">点我重新加载</jk-button>
+            <jk-button @click="setLoading">Click me to reload.</jk-button>
         </p>
         <jk-skeleton style="width:400px" loading="@model.loading" animated count="3">
             @section("template") {
@@ -28,13 +28,9 @@ import { Component } from "@joker.front/core";
 
 export default class extends Component {
     model = { loading: false };
-    currentDate?: string = "2021-06-01";
     setLoading() {
         this.model.loading = true;
         setTimeout(() => (this.model.loading = false), 2000);
     }
 }
 </script>
-
-<style scoped>
-</style>

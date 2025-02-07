@@ -1,11 +1,11 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>单选可搜索：</span>
+            <span>Single selection with search:</span>
             <jk-cascader filterable options="@options"></jk-cascader>
         </div>
         <div class="row">
-            <span>多选可搜索：</span>
+            <span>Multiple selection with search:</span>
             <jk-cascader filterable multiple options="@options"></jk-cascader>
         </div>
     </div>

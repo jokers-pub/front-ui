@@ -1,51 +1,51 @@
 <template>
-    <jk-form ref="form" label-width="100px" @submit="handleFormSubmit">
-        <jk-form-item label="活动名称" tip="测试数据，请理解">
-            <jk-input name="name" placeholder="请输入活动名称" />
+    <jk-form ref="form" label-width="120px" @submit="handleFormSubmit">
+        <jk-form-item label="Event Name" tip="Test data, please understand">
+            <jk-input name="name" placeholder="Please enter the event name" />
         </jk-form-item>
         <jk-form-item
-            label="活动区域"
-            tip="测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试，测试数据，请理解，超长文本测试">
-            <jk-select name="area" placeholder="请选择活动区域">
-                <jk-option label="山东" value="shandong" />
-                <jk-option label="北京" value="beijing" />
+            label="Event Area"
+            tip="Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test. Test data, please understand. Super long text test">
+            <jk-select name="area" placeholder="Please select the event area">
+                <jk-option label="Shandong" value="shandong" />
+                <jk-option label="Beijing" value="beijing" />
             </jk-select>
         </jk-form-item>
-        <jk-form-item label="活动时间">
+        <jk-form-item label="Event Time">
             <jk-date-picker
                 name="date"
                 type="daterange"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </jk-form-item>
-        <jk-form-item label="推广">
+        <jk-form-item label="Promotion">
             <jk-switch name="promotion" />
         </jk-form-item>
-        <jk-form-item label="活动性质">
+        <jk-form-item label="Event Nature">
             <jk-checkbox-group name="type">
-                <jk-checkbox label="美食/餐厅线上活动"></jk-checkbox>
-                <jk-checkbox label="线下活动"></jk-checkbox>
-                <jk-checkbox label="自驾游"></jk-checkbox>
-                <jk-checkbox label="发布会"></jk-checkbox>
-                <jk-checkbox label="跟团出行"></jk-checkbox>
+                <jk-checkbox value="1" label="Food/Restaurant online event"></jk-checkbox>
+                <jk-checkbox value="2" label="Offline event"></jk-checkbox>
+                <jk-checkbox value="3" label="Self-driving tour"></jk-checkbox>
+                <jk-checkbox value="4" label="Press conference"></jk-checkbox>
+                <jk-checkbox value="5" label="Group tour"></jk-checkbox>
             </jk-checkbox-group>
         </jk-form-item>
-        <jk-form-item label="资金来源">
+        <jk-form-item label="Funding Source">
             <jk-radio-group name="source">
-                <jk-radio value="1">品牌商赞助</jk-radio>
-                <jk-radio value="2">线下场地免费</jk-radio>
-                <jk-radio value="3">费用均摊</jk-radio>
+                <jk-radio value="1">Sponsored by brand owners</jk-radio>
+                <jk-radio value="2">Free offline venue</jk-radio>
+                <jk-radio value="3">Cost sharing</jk-radio>
             </jk-radio-group>
         </jk-form-item>
-        <jk-form-item label="资金比例">
+        <jk-form-item label="Funding Ratio">
             <jk-slider name="sourcePic" value="30"></jk-slider>
         </jk-form-item>
-        <jk-form-item label="活动要则">
-            <jk-textarea name="note" placeholder="请输入内容" rows="2"></jk-textarea>
+        <jk-form-item label="Event Rules">
+            <jk-textarea name="note" placeholder="Please enter the content" rows="2"></jk-textarea>
         </jk-form-item>
         <jk-form-item>
-            <jk-button type="primary" nativeType="submit">提交</jk-button>
+            <jk-button type="primary" nativeType="submit">Submit</jk-button>
         </jk-form-item>
     </jk-form>
 </template>

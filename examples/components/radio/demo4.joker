@@ -1,42 +1,42 @@
 <template>
     <DemoRow>
-        <jk-radio-group value="北京">
-            <jk-radio border label="上海" value="上海"></jk-radio>
-            <jk-radio border label="北京" value="北京"></jk-radio>
-            <jk-radio border label="广州" value="广州"></jk-radio>
-            <jk-radio border label="深圳" value="深圳"></jk-radio>
+        <jk-radio-group value="Beijing">
+            <jk-radio border label="Shanghai" value="Shanghai"></jk-radio>
+            <jk-radio border label="Beijing" value="Beijing"></jk-radio>
+            <jk-radio border label="Guangzhou" value="Guangzhou"></jk-radio>
+            <jk-radio border label="Shenzhen" value="Shenzhen"></jk-radio>
         </jk-radio-group>
     </DemoRow>
     <DemoRow>
-        <jk-radio-group value="北京" size="medium">
-            <jk-radio border label="上海" value="上海"></jk-radio>
-            <jk-radio border label="北京" value="北京"></jk-radio>
-            <jk-radio border label="广州" value="广州"></jk-radio>
-            <jk-radio border label="深圳" value="深圳"></jk-radio>
+        <jk-radio-group value="Beijing" size="medium">
+            <jk-radio border label="Shanghai" value="Shanghai"></jk-radio>
+            <jk-radio border label="Beijing" value="Beijing"></jk-radio>
+            <jk-radio border label="Guangzhou" value="Guangzhou"></jk-radio>
+            <jk-radio border label="Shenzhen" value="Shenzhen"></jk-radio>
         </jk-radio-group>
     </DemoRow>
     <DemoRow>
-        <jk-radio-group value="北京" size="small">
-            <jk-radio border label="上海" value="上海"></jk-radio>
-            <jk-radio border label="北京" value="北京"></jk-radio>
-            <jk-radio border label="广州" value="广州"></jk-radio>
-            <jk-radio border label="深圳" disabled value="深圳"></jk-radio>
+        <jk-radio-group value="Beijing" size="small">
+            <jk-radio border label="Shanghai" value="Shanghai"></jk-radio>
+            <jk-radio border label="Beijing" value="Beijing"></jk-radio>
+            <jk-radio border label="Guangzhou" value="Guangzhou"></jk-radio>
+            <jk-radio border label="Shenzhen" disabled value="Shenzhen"></jk-radio>
         </jk-radio-group>
     </DemoRow>
     <DemoRow>
-        <jk-radio-group value="北京" size="mini">
-            <jk-radio border label="上海" value="上海"></jk-radio>
-            <jk-radio border label="北京" disabled value="北京"></jk-radio>
-            <jk-radio border label="广州" value="广州"></jk-radio>
-            <jk-radio border label="深圳" value="深圳"></jk-radio>
+        <jk-radio-group value="Beijing" size="mini">
+            <jk-radio border label="Shanghai" value="Shanghai"></jk-radio>
+            <jk-radio border label="Beijing" disabled value="Beijing"></jk-radio>
+            <jk-radio border label="Guangzhou" value="Guangzhou"></jk-radio>
+            <jk-radio border label="Shenzhen" value="Shenzhen"></jk-radio>
         </jk-radio-group>
     </DemoRow>
     <DemoRow>
-        <jk-radio-group value="北京" size="mini" disabled>
-            <jk-radio border label="上海" value="上海"></jk-radio>
-            <jk-radio border label="北京" value="北京"></jk-radio>
-            <jk-radio border label="广州" value="广州"></jk-radio>
-            <jk-radio border label="深圳" value="深圳"></jk-radio>
+        <jk-radio-group value="Beijing" size="mini" disabled>
+            <jk-radio border label="Shanghai" value="Shanghai"></jk-radio>
+            <jk-radio border label="Beijing" value="Beijing"></jk-radio>
+            <jk-radio border label="Guangzhou" value="Guangzhou"></jk-radio>
+            <jk-radio border label="Shenzhen" value="Shenzhen"></jk-radio>
         </jk-radio-group>
     </DemoRow>
 </template>

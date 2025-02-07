@@ -106,8 +106,18 @@ export default class extends Component {
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
-    fontColors = { primary: &quot;主要文字&quot;, regular: &quot;常规文字&quot;, secondary: &quot;次要文字&quot;, placeholder: &quot;占位文字&quot; };
-    borderColors = { base: &quot;一级边框&quot;, light: &quot;二级边框&quot;, lighter: &quot;三级边框&quot;, &quot;extra-light&quot;: &quot;四级边框&quot; };
+    fontColors = {
+        primary: &quot;Primary text&quot;,
+        regular: &quot;Regular text&quot;,
+        secondary: &quot;Secondary text&quot;,
+        placeholder: &quot;Placeholder text&quot;
+    };
+    borderColors = {
+        base: &quot;Level 1 border&quot;,
+        light: &quot;Level 2 border&quot;,
+        lighter: &quot;Level 3 border&quot;,
+        &quot;extra-light&quot;: &quot;Level 4 border&quot;
+    };
 }
 &lt;/script&gt;
 
@@ -136,19 +146,19 @@ export default class extends Component {
     &lt;jk-row gutter=&quot;20&quot;&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
             &lt;div class=&quot;demo-container&quot; style=&quot;box-shadow:var(--jk-box-shadow-base);&quot;&gt;
-                &lt;p&gt;一级&lt;/p&gt;
+                &lt;p&gt;Level 1&lt;/p&gt;
                 &lt;p&gt;--jk-box-shadow-base&lt;/p&gt;
             &lt;/div&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
             &lt;div class=&quot;demo-container&quot; style=&quot;box-shadow:var(--jk-box-shadow-dark);&quot;&gt;
-                &lt;p&gt;二级&lt;/p&gt;
+                &lt;p&gt;Level 2&lt;/p&gt;
                 &lt;p&gt;--jk-box-shadow-dark&lt;/p&gt;
             &lt;/div&gt;
         &lt;/jk-col&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
             &lt;div class=&quot;demo-container&quot; style=&quot;box-shadow:var(--jk-box-shadow-light);&quot;&gt;
-                &lt;p&gt;三级&lt;/p&gt;
+                &lt;p&gt;Level 3&lt;/p&gt;
                 &lt;p&gt;--jk-box-shadow-light&lt;/p&gt;
             &lt;/div&gt;
         &lt;/jk-col&gt;

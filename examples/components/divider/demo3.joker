@@ -1,7 +1,7 @@
 <template>
-    <span>雨纷纷</span>
+    <span>The rain is falling continuously</span>
     <jk-divider direction="vertical" />
-    <span>旧故里</span>
+    <span>The old hometown</span>
     <jk-divider direction="vertical" />
-    <span>草木深</span>
+    <span>The grass and trees are overgrown</span>
 </template>

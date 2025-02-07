@@ -1,9 +1,9 @@
 <template>
-    <jk-empty description="描述文字"></jk-empty>
+    <jk-empty description="Descriptive text"></jk-empty>
     <jk-divider>medium</jk-divider>
-    <jk-empty description="描述文字" size="medium"></jk-empty>
+    <jk-empty description="Descriptive text" size="medium"></jk-empty>
     <jk-divider>small</jk-divider>
-    <jk-empty description="描述文字" size="small"></jk-empty>
+    <jk-empty description="Descriptive text" size="small"></jk-empty>
     <jk-divider>mini</jk-divider>
-    <jk-empty description="描述文字" size="mini"></jk-empty>
+    <jk-empty description="Descriptive text" size="mini"></jk-empty>
 </template>

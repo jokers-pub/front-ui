@@ -1,38 +1,38 @@
 <template>
     <DemoRow>
-        <jk-time-select placeholder="选择时间"></jk-time-select>
+        <jk-time-select placeholder="Select time"></jk-time-select>
     </DemoRow>
     <DemoRow>
-        <jk-time-select placeholder="选择时间" size="medium"></jk-time-select>
+        <jk-time-select placeholder="Select time" size="medium"></jk-time-select>
     </DemoRow>
     <DemoRow>
-        <jk-time-select placeholder="选择时间" size="small"></jk-time-select>
+        <jk-time-select placeholder="Select time" size="small"></jk-time-select>
     </DemoRow>
     <DemoRow>
-        <jk-time-select placeholder="选择时间" size="mini"></jk-time-select>
+        <jk-time-select placeholder="Select time" size="mini"></jk-time-select>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker placeholder="选择时间"></jk-time-picker>
+        <jk-time-picker placeholder="Select time"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker placeholder="选择时间" size="medium"></jk-time-picker>
+        <jk-time-picker placeholder="Select time" size="medium"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker placeholder="选择时间" size="small"></jk-time-picker>
+        <jk-time-picker placeholder="Select time" size="small"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker placeholder="选择时间" size="mini"></jk-time-picker>
+        <jk-time-picker placeholder="Select time" size="mini"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker range startPlaceholder="开始时间" endPlaceholder="结束时间"></jk-time-picker>
+        <jk-time-picker range startPlaceholder="Start time" endPlaceholder="End time"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker range startPlaceholder="开始时间" endPlaceholder="结束时间" size="medium"></jk-time-picker>
+        <jk-time-picker range startPlaceholder="Start time" endPlaceholder="End time" size="medium"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker range startPlaceholder="开始时间" endPlaceholder="结束时间" size="small"></jk-time-picker>
+        <jk-time-picker range startPlaceholder="Start time" endPlaceholder="End time" size="small"></jk-time-picker>
     </DemoRow>
     <DemoRow>
-        <jk-time-picker range startPlaceholder="开始时间" endPlaceholder="结束时间" size="mini"></jk-time-picker>
+        <jk-time-picker range startPlaceholder="Start time" endPlaceholder="End time" size="mini"></jk-time-picker>
     </DemoRow>
 </template>

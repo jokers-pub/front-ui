@@ -1,13 +1,16 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>激活即列出输入建议：</span>
-            <jk-autocomplete placeholder="请输入内容" searchLoad="@querString" @change="handleChange"></jk-autocomplete>
+            <span>List input suggestions upon activation:</span>
+            <jk-autocomplete
+                placeholder="Please enter content"
+                searchLoad="@querString"
+                @change="handleChange"></jk-autocomplete>
         </div>
         <div class="row">
-            <span>输入后匹配输入建议：</span>
+            <span>Match input suggestions after input:</span>
             <jk-autocomplete
-                placeholder="请输入内容"
+                placeholder="Please enter content"
                 searchLoad="@querString"
                 triggerOnFocus="@false"
                 clearable

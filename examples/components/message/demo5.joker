@@ -1,5 +1,6 @@
+```html
 <template>
-    <jk-button @click="open">打开提示</jk-button>
+    <jk-button @click="open">Open the prompt</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -8,9 +9,10 @@ export default class extends Component {
     open() {
         Message({
             type: "success",
-            message: '向你成功转入了<i style="color:red">2,500</i>元',
+            message: 'Successfully transferred <i style="color:red">2,500</i> yuan to you',
             useHtml: true
         });
     }
 }
 </script>
+```

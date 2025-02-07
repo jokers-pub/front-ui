@@ -1,13 +1,13 @@
 <template>
     <DemoRow>
         <jk-checkbox indeterminate="@model.indeterminate" value="@model.checkAll" @change="handleCheckAllChange">
-            全选
+            Select All
         </jk-checkbox>
     </DemoRow>
     <DemoRow>
         <jk-checkbox-group value="@model.checkedCities" @change="handleGroupChange">
             @for(let cityItem of model.cities) {
-                <jk-checkbox label="@cityItem"></jk-checkbox>
+                <jk-checkbox value="@cityItem" label="@cityItem"></jk-checkbox>
             }
         </jk-checkbox-group>
     </DemoRow>
@@ -17,8 +17,8 @@
 import { Component, VNode } from "@joker.front/core";
 export default class extends Component {
     model = {
-        cities: ["上海", "北京", "广州", "深圳"],
-        checkedCities: ["上海", "北京"],
+        cities: ["Shanghai", "Beijing", "Guangzhou", "Shenzhen"],
+        checkedCities: ["Shanghai", "Beijing"],
         checkAll: false,
         indeterminate: true
     };

@@ -7,11 +7,11 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;默认不区分颜色：&lt;/span&gt;
+        &lt;span&gt;Default without color distinction:&lt;/span&gt;
         &lt;jk-rate /&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;区分颜色：&lt;/span&gt;
+        &lt;span&gt;With color distinction:&lt;/span&gt;
         &lt;jk-rate colors=&quot;@(['#99A9BF', '#F7BA2A', '#FF9900'])&quot; /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -40,12 +40,12 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;辅助文字：&lt;/span&gt;
+        &lt;span&gt;Helper text:&lt;/span&gt;
         &lt;jk-rate show-text /&gt;
     &lt;/div&gt;
     &lt;div class=&quot;row&quot;&gt;
-        &lt;span&gt;显示分数：&lt;/span&gt;
-        &lt;jk-rate show-score score-template=&quot;{value}分&quot; /&gt;
+        &lt;span&gt;Show score:&lt;/span&gt;
+        &lt;jk-rate show-score score-template=&quot;{value} points&quot; /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style scoped lang=&quot;scss&quot;&gt;

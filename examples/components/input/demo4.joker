@@ -2,17 +2,17 @@
     <div class="demo-container">
         <DemoRow>
             属性方式：
-            <jk-input placeholder="请选择日期" suffix-icon="jk-icon-date" />
-            <jk-input placeholder="请输入内容" prefix-icon="jk-icon-search" />
+            <jk-input placeholder="Please select a date" suffix-icon="jk-icon-date" />
+            <jk-input placeholder="Please enter the content" prefix-icon="jk-icon-search" />
         </DemoRow>
         <DemoRow>
             section方式：
-            <jk-input placeholder="请选择日期">
+            <jk-input placeholder="Please select a date">
                 @section("suffix") {
                     <i class="jk-icon-date" />
                 }
             </jk-input>
-            <jk-input placeholder="请输入内容">
+            <jk-input placeholder="Please enter the content">
                 @section("prefix") {
                     <i class="jk-icon-search" />
                 }

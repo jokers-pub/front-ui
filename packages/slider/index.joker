@@ -1,12 +1,6 @@
 <template>
     <div
-        class="@([
-            'jk-slider',
-            props.class,
-            {
-                'is-vertical': props.vertical
-            }
-        ])"
+        class="@(['jk-slider', props.class, { 'is-vertical': props.vertical }])"
         role="slider"
         aria-valuemin="@props.min"
         aria-valuemax="@props.max"
@@ -337,7 +331,7 @@ export default class extends FormCtrl<{
         let targetValue = this.props.min! + (percent * (this.props.max! - this.props.min!)) / 100;
 
         if (!this.props.range) {
-            this.$getRef<VNode.Component>("startButton")?.component.setPosition(percent);
+            this.$getRef("startButton")?.component.setPosition(percent);
             return;
         }
 
@@ -349,7 +343,7 @@ export default class extends FormCtrl<{
             buttonName = this.model.startValue > this.model.endValue ? "startButton" : "endButton";
         }
 
-        this.$getRef<VNode.Component>(buttonName)?.component.setPosition(percent);
+        this.$getRef(buttonName)?.component.setPosition(percent);
     }
 
     triggerChange() {

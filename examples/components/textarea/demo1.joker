@@ -1,8 +1,8 @@
 <template>
     <DemoRow>
-        <jk-textarea placeholder="请输入内容" rows="2"></jk-textarea>
+        <jk-textarea placeholder="Please enter content" rows="2"></jk-textarea>
     </DemoRow>
     <DemoRow>
-        <jk-textarea placeholder="请输入内容" disabled rows="2"></jk-textarea>
+        <jk-textarea placeholder="Please enter content" disabled rows="2"></jk-textarea>
     </DemoRow>
 </template>

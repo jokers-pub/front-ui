@@ -6,30 +6,28 @@
 <p>A widely applicable notification bar. The Notification component provides a notification function with the <code>Notification</code> method, which accepts an <code>options</code> literal parameter. In the simplest case, you can set the <code>title</code> and <code>message</code> fields to set the title and body of the notification. By default, the Notification component will automatically close after a certain period of time. However, by setting <code>duration</code>, you can control the time interval for closing. Notably, if set to <code>0</code>, it will not close automatically. Note: <code>duration</code> accepts a <code>Number</code> with the unit of milliseconds, and the default value is <code>4500</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;可自动关闭&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open1&quot;&gt;不会自动关闭&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Can close automatically&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open1&quot;&gt;Will not close automatically&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 import { Notification } from &quot;../../../src&quot;;
 export default class extends Component {
     open() {
-        Notification({ title: &quot;提示&quot;, message: &quot;我是一个提示&quot; });
+        Notification({ title: &quot;Prompt&quot;, message: &quot;I'm a prompt&quot; });
     }
     open1() {
         Notification({
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;,
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;,
             duration: 0,
             onClick: () =&gt; {
-                alert(&quot;你点击了我&quot;);
+                alert(&quot;You clicked me&quot;);
             }
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>With 倾向性</h3>
@@ -37,10 +35,10 @@ export default class extends Component {
 <p>The Notification component has prepared four notification types: <code>success</code>, <code>warning</code>, <code>info</code>, <code>error</code>. Set through the <code>type</code> field, and values other than these will be ignored. At the same time, we have also registered methods for various types of Notification, which can be called directly like <code>open3</code> and <code>open4</code> without passing in the <code>type</code> field.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open1&quot;&gt;成功&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open2&quot;&gt;警告&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open3&quot;&gt;信息&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open4&quot;&gt;错误&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open3&quot;&gt;Info&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open4&quot;&gt;Error&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -49,43 +47,41 @@ export default class extends Component {
     open1() {
         Notification({
             type: &quot;success&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open2() {
         Notification({
             type: &quot;warning&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open3() {
         Notification.info({
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open4() {
         Notification.error({
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>Custom Pop-up Position</h3>
 <p>You can make the Notification pop up from any of the four corners of the screen. Use the <code>position</code> property to define the pop-up position of the Notification. Four options are supported: <code>top-right</code>, <code>top-left</code>, <code>bottom-right</code>, <code>bottom-left</code>, with the default being <code>top-right</code>.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open1&quot;&gt;右上角&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open2&quot;&gt;右下角&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open3&quot;&gt;左下角&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open4&quot;&gt;左上角&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open1&quot;&gt;Top right&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open2&quot;&gt;Bottom right&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open3&quot;&gt;Bottom left&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open4&quot;&gt;Top left&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -93,44 +89,42 @@ import { Notification } from &quot;../../../src&quot;;
 export default class extends Component {
     open1() {
         Notification({
-            //默认
+            // Default
             position: &quot;top-right&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open2() {
         Notification({
             position: &quot;bottom-right&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open3() {
         Notification({
             position: &quot;bottom-left&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
     open4() {
         Notification({
             position: &quot;top-left&quot;,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>With Offset</h3>
 <p>Make the Notification offset by some distance. The Notification provides the function of setting the offset. By setting the <code>offset</code> field, the popped-up message can be offset from the edge of the screen by a certain distance. Note that at the same moment, all Notification instances should have the same offset.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;偏移警告&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Offset warning&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -139,21 +133,19 @@ export default class extends Component {
     open() {
         Notification({
             offset: 100,
-            title: &quot;提示&quot;,
-            message: &quot;我是一个提示&quot;
+            title: &quot;Prompt&quot;,
+            message: &quot;I'm a prompt&quot;
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <h3>Using HTML Fragments</h3>
 <p>The <code>message</code> property supports passing in HTML fragments. Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;弹出HTML警告&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Pop up an HTML warning&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -162,16 +154,14 @@ import { Notification } from &quot;../../../src&quot;;
 export default class extends Component {
     open() {
         Notification({
-            title: &quot;提示&quot;,
+            title: &quot;Prompt&quot;,
             type: &quot;success&quot;,
             useHtml: true,
-            message: &quot;已成功收到张三转入的&lt;span style='color:red'&gt;3,000&lt;/span&gt;元&quot;
+            message: &quot;Successfully received &lt;span style='color:red'&gt;3,000&lt;/span&gt; yuan transferred from Zhang San&quot;
         });
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <div class="warning">

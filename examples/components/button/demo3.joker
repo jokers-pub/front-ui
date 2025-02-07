@@ -1,12 +1,12 @@
 <template>
-    <jk-button link>文字按钮</jk-button>
-    <jk-button link disabled>文字按钮</jk-button>
-    <jk-button link type="success">文字按钮</jk-button>
-    <jk-button link type="success" disabled>文字按钮</jk-button>
+    <jk-button link>Text Button</jk-button>
+    <jk-button link disabled>Text Button</jk-button>
+    <jk-button link type="success">Text Button</jk-button>
+    <jk-button link type="success" disabled>Text Button</jk-button>
     <jk-button link type="warning">文字按钮</jk-button>
-    <jk-button link type="warning" disabled>文字按钮</jk-button>
-    <jk-button link type="danger">文字按钮</jk-button>
-    <jk-button link type="danger" disabled>文字按钮</jk-button>
-    <jk-button link type="info">文字按钮</jk-button>
-    <jk-button link type="info" disabled>文字按钮</jk-button>
+    <jk-button link type="warning" disabled>Text Button</jk-button>
+    <jk-button link type="danger">Text Button</jk-button>
+    <jk-button link type="danger" disabled>Text Button</jk-button>
+    <jk-button link type="info">Text Button</jk-button>
+    <jk-button link type="info" disabled>Text Button</jk-button>
 </template>

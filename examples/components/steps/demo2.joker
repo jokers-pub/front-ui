@@ -1,7 +1,7 @@
 <template>
     <jk-steps space="@(200)" active="1" finishStatus="success">
-        <jk-step title="已完成"></jk-step>
-        <jk-step title="进行中"></jk-step>
-        <jk-step title="步骤 3"></jk-step>
+        <jk-step title="Completed"></jk-step>
+        <jk-step title="In progress"></jk-step>
+        <jk-step title="Step 3"></jk-step>
     </jk-steps>
 </template>

@@ -1,25 +1,30 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="请选择" filterable>
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" filterable>
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="异步查询搜索" filterable remote remoteMethod="@queryData" loading="@model.loading">
+        <jk-select
+            placeholder="Asynchronous query search"
+            filterable
+            remote
+            remoteMethod="@queryData"
+            loading="@model.loading">
             @for(let item of model.options) {
                 <jk-option label="@item.label" value="@item.value" />
             }
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择(可创建新值)" filterable allowCreate @new="handleCreatNew">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select (can create new value)" filterable allowCreate @new="handleCreatNew">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
 </template>
@@ -42,13 +47,13 @@ export default class extends Component {
         if (keyword) {
             this.model.loading = true;
             let data = [
-                { label: "鱼香肉丝", value: "1" },
-                { label: "红烧排骨", value: "2" },
-                { label: "辣椒炒肉", value: "3" },
-                { label: "鱼香茄子", value: "4" }
+                { label: "Apple", value: "1" },
+                { label: "Banana", value: "2" },
+                { label: "Cherry", value: "3" },
+                { label: "Date", value: "4" }
             ];
 
-            //模拟请求耗时
+            // Simulate request time-consuming
             await sleep(1000);
 
             this.model.options = data.filter((m) => {
@@ -59,7 +64,7 @@ export default class extends Component {
         }
     }
     handleCreatNew(e: VNode.Event<string>) {
-        Message.info("触发了New事件，创建新条目" + e.data);
+        Message.info("The New event is triggered, creating a new item: " + e.data);
     }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-    <jk-tooltip content="默认主题" placement="top" manual effect="light" ref="tooltip">
+    <jk-tooltip content="Default theme" placement="top" manual effect="light" ref="tooltip">
         <jk-button @click="handleClick">
-            点击@(model.show ? "关闭" : "打开")
+            Click to @(model.show ? "Close" : "Open")
         </jk-button>
     </jk-tooltip>
 </template>
@@ -15,7 +15,7 @@ export default class extends Component {
     };
 
     handleClick() {
-        let tooltip = this.$getRef<VNode.Component>("tooltip")?.component;
+        let tooltip = this.$getRef("tooltip")?.component;
         if (this.model.show) {
             tooltip?.hide();
         } else {

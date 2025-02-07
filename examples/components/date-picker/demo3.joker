@@ -1,32 +1,32 @@
 <template>
     <div class="demoContainer">
         <div class="row">
-            <span>默认面板：</span>
+            <span>Default panel:</span>
             <jk-date-picker
                 type="daterange"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </div>
         <div class="row">
-            <span>快捷指令：</span>
+            <span>Quick commands:</span>
             <jk-date-picker
                 unlinkPanels
                 shortcuts="@shortcuts"
                 type="daterange"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </div>
         <div class="row">
-            <span>时间区间：</span>
+            <span>Time range:</span>
             <jk-date-picker
                 unlinkPanels
                 shortcuts="@shortcuts"
                 type="datetimerange"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </div>
     </div>
 </template>
@@ -37,7 +37,7 @@ import { Component } from "@joker.front/core";
 export default class extends Component {
     shortcuts = [
         {
-            text: "近一周",
+            text: "Last week",
             onClick: (callBack: Function) => {
                 let end = new Date();
                 let start = new Date();
@@ -46,7 +46,7 @@ export default class extends Component {
             }
         },
         {
-            text: "近一月",
+            text: "Last month",
             onClick: (callBack: Function) => {
                 let end = new Date();
                 let start = new Date();
@@ -55,7 +55,7 @@ export default class extends Component {
             }
         },
         {
-            text: "近三月",
+            text: "Last three months",
             onClick(callBack: Function) {
                 let end = new Date();
                 let start = new Date();
@@ -79,6 +79,8 @@ export default class extends Component {
             color: #8492a6;
             line-height: 44px;
             font-size: 16px;
+            display: inline-block;
+            width: 150px;
         }
 
         &:last-child {

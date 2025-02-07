@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-link type="primary" @click="open">同时打开多个窗口</jk-link>
+        <jk-link type="primary" @click="open">Open multiple windows simultaneously</jk-link>
     </DemoRow>
 </template>
 <script>
@@ -9,19 +9,22 @@ import { MessageBox } from "../../../src";
 
 export default class extends Component {
     open() {
-        MessageBox.alert("我是提示框1", "温馨提示");
-        MessageBox.alert("我是提示框2", "温馨提示");
-        MessageBox.alert("我是提示框3", "温馨提示");
-        MessageBox.confirm("我是中间确认框后面还剩余两个弹窗，是否要执行closeAll，关闭所有弹窗？", "温馨提示", {
-            callback(action) {
-                if (action === "confirm") {
-                    MessageBox.closeAll();
+        MessageBox.alert("I'm prompt box 1", "Friendly reminder");
+        MessageBox.alert("I'm prompt box 2", "Friendly reminder");
+        MessageBox.alert("I'm prompt box 3", "Friendly reminder");
+        MessageBox.confirm(
+            "I'm the middle confirmation box. There are still two pop-ups left. Do you want to execute closeAll to close all pop-ups?",
+            "Friendly reminder",
+            {
+                callback(action) {
+                    if (action === "confirm") {
+                        MessageBox.closeAll();
+                    }
                 }
             }
-        });
-        MessageBox.alert("我是提示框4", "温馨提示");
-        MessageBox.alert("我是提示框5", "温馨提示");
+        );
+        MessageBox.alert("I'm prompt box 4", "Friendly reminder");
+        MessageBox.alert("I'm prompt box 5", "Friendly reminder");
     }
 }
 </script>
-

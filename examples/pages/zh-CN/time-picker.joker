@@ -7,9 +7,8 @@
 <p>使用 jk-time-select 标签，分别通过<code>start</code>、<code>end</code>和<code>step</code>指定可选的起始时间、结束时间和步长</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-select&gt;
+    &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-select&gt;
 &lt;/template&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>固定时间范围</h3>
@@ -21,7 +20,7 @@
             start=&quot;08:30&quot;
             step=&quot;00:10&quot;
             end=&quot;18:30&quot;
-            placeholder=&quot;起始时间&quot;
+            placeholder=&quot;Start time&quot;
             @change=&quot;handleStartChange&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
@@ -30,7 +29,7 @@
             step=&quot;00:10&quot;
             end=&quot;18:30&quot;
             minTime=&quot;@model.startTime&quot;
-            placeholder=&quot;结束时间&quot;&gt;&lt;/jk-time-select&gt;
+            placeholder=&quot;End time&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 
@@ -54,14 +53,14 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker value=&quot;19:30:25&quot; placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker value=&quot;19:30:25&quot; placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-picker
             format=&quot;HH时mm分&quot;
             valueFormat=&quot;HH:mm&quot;
             selectable-range=&quot;@([['08:30', '11:30'], '14:00 - 18:00'])&quot;
-            placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-picker&gt;
+            placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 
@@ -72,32 +71,31 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-picker
             range
-            format=&quot;HH时mm分&quot;
+            format=&quot;HH:mm&quot;
             valueFormat=&quot;HH:mm&quot;
-            start-placeholder=&quot;开车时间&quot;
-            end-placeholder=&quot;到站时间&quot;
+            start-placeholder=&quot;Departure time&quot;
+            end-placeholder=&quot;Arrival time&quot;
             value=&quot;@(['08:30', '15:30'])&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
-
 </code></pre>
 </DemoContainer>
 <h3>禁用</h3>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;选择时间&quot; disabled&gt;&lt;/jk-time-select&gt;
+        &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;Select time&quot; disabled&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker value=&quot;19:30:25&quot; placeholder=&quot;选择时间&quot; disabled&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker value=&quot;19:30:25&quot; placeholder=&quot;Select time&quot; disabled&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker disabled range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker disabled range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
@@ -107,40 +105,40 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-select placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-select&gt;
+        &lt;jk-time-select placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-select placeholder=&quot;选择时间&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-select&gt;
+        &lt;jk-time-select placeholder=&quot;Select time&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-select placeholder=&quot;选择时间&quot; size=&quot;small&quot;&gt;&lt;/jk-time-select&gt;
+        &lt;jk-time-select placeholder=&quot;Select time&quot; size=&quot;small&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-select placeholder=&quot;选择时间&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-select&gt;
+        &lt;jk-time-select placeholder=&quot;Select time&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker placeholder=&quot;选择时间&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker placeholder=&quot;选择时间&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker placeholder=&quot;Select time&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker placeholder=&quot;选择时间&quot; size=&quot;small&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker placeholder=&quot;Select time&quot; size=&quot;small&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker placeholder=&quot;选择时间&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker placeholder=&quot;Select time&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot; size=&quot;medium&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot; size=&quot;small&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot; size=&quot;small&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-time-picker range startPlaceholder=&quot;开始时间&quot; endPlaceholder=&quot;结束时间&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-picker&gt;
+        &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot; size=&quot;mini&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>

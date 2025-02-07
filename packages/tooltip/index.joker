@@ -68,7 +68,7 @@ export default class extends Component<{
     debounceClose = debounce(this.props.closeDelay!, () => this.hideTooltip());
 
     mounted() {
-        this.firstElement = this.$getRef<VNode.Component>("content")?.firstElement?.output;
+        this.firstElement = this.$getRef("content")?.firstElement?.output;
 
         if (this.firstElement === undefined) {
             logger.error(LOGTAG, "[tooltip]未找到参考Element元素");

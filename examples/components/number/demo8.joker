@@ -1,21 +1,21 @@
 <template>
     <div class="demo-container" style="width:200px;">
         <DemoRow>
-            <jk-number hiddenControls placeholder="请输入内容" />
+            <jk-number hiddenControls placeholder="Please enter content" />
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="medium" placeholder="请输入内容" />
+            <jk-number hiddenControls size="medium" placeholder="Please enter content" />
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="small" placeholder="请输入内容" />
+            <jk-number hiddenControls size="small" placeholder="Please enter content" />
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="mini" placeholder="请输入内容" />
+            <jk-number hiddenControls size="mini" placeholder="Please enter content" />
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls placeholder="请输入内容">
+            <jk-number hiddenControls placeholder="Please enter content">
                 @section("prepend") {
-                    字号
+                    Font size
                 }
                 @section("append") {
                     px
@@ -23,9 +23,9 @@
             </jk-number>
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="medium" placeholder="请输入内容">
+            <jk-number hiddenControls size="medium" placeholder="Please enter content">
                 @section("prepend") {
-                    字号
+                    Font size
                 }
                 @section("append") {
                     px
@@ -33,9 +33,9 @@
             </jk-number>
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="small" placeholder="请输入内容">
+            <jk-number hiddenControls size="small" placeholder="Please enter content">
                 @section("prepend") {
-                    字号
+                    Font size
                 }
                 @section("append") {
                     px
@@ -43,9 +43,9 @@
             </jk-number>
         </DemoRow>
         <DemoRow>
-            <jk-number hiddenControls size="mini" placeholder="请输入内容">
+            <jk-number hiddenControls size="mini" placeholder="Please enter content">
                 @section("prepend") {
-                    字号
+                    Font size
                 }
                 @section("append") {
                     px

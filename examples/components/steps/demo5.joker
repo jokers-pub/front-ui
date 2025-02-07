@@ -1,7 +1,7 @@
 <template>
     <jk-steps active="1">
-        <jk-step title="步骤 1" icon="jk-icon-edit"></jk-step>
-        <jk-step title="步骤 2" icon="jk-icon-upload"></jk-step>
-        <jk-step title="步骤 3" icon="jk-icon-picture"></jk-step>
+        <jk-step title="Step 1" icon="jk-icon-edit"></jk-step>
+        <jk-step title="Step 2" icon="jk-icon-upload"></jk-step>
+        <jk-step title="Step 3" icon="jk-icon-picture"></jk-step>
     </jk-steps>
 </template>

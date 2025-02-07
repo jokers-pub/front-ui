@@ -7,14 +7,14 @@
         </jk-steps>
     </DemoRow>
     <DemoRow>
-        <jk-button @click="next">下一步</jk-button>
+        <jk-button @click="next">Next</jk-button>
     </DemoRow>
 </template>
 <script>
 import { Component } from "@joker.front/core";
 
 export default class extends Component {
-    model = { active: 0, list: [{ title: "步骤1" }, { title: "步骤2" }, { title: "步骤3" }] };
+    model = { active: 0, list: [{ title: "Step1" }, { title: "Step2" }, { title: "Step3" }] };
 
     next() {
         if (this.model.active++ > 2) this.model.active = 0;

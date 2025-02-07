@@ -8,13 +8,16 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;激活即列出输入建议：&lt;/span&gt;
-            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
+            &lt;span&gt;List input suggestions upon activation:&lt;/span&gt;
+            &lt;jk-autocomplete
+                placeholder=&quot;Please enter content&quot;
+                searchLoad=&quot;@querString&quot;
+                @change=&quot;handleChange&quot;&gt;&lt;/jk-autocomplete&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;输入后匹配输入建议：&lt;/span&gt;
+            &lt;span&gt;Match input suggestions after input:&lt;/span&gt;
             &lt;jk-autocomplete
-                placeholder=&quot;请输入内容&quot;
+                placeholder=&quot;Please enter content&quot;
                 searchLoad=&quot;@querString&quot;
                 triggerOnFocus=&quot;@false&quot;
                 clearable
@@ -83,7 +86,7 @@ Use <code>section</code> to customize the template of input suggestions. The par
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-autocomplete placeholder=&quot;请输入内容&quot; searchLoad=&quot;@querString&quot;&gt;
+            &lt;jk-autocomplete placeholder=&quot;Please enter content.&quot; searchLoad=&quot;@querString&quot;&gt;
                 @section(&quot;default&quot;, item) {
                     &lt;p class=&quot;name&quot;&gt;
                         @item.value

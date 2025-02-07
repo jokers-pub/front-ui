@@ -1,27 +1,27 @@
 <template>
     <DemoRow>
-        <jk-button>默认按钮</jk-button>
-        <jk-button type="primary">主要按钮</jk-button>
-        <jk-button type="success">成功按钮</jk-button>
-        <jk-button type="info">信息按钮</jk-button>
-        <jk-button type="warning">警告按钮</jk-button>
-        <jk-button type="danger">危险按钮</jk-button>
+        <jk-button>Default Button</jk-button>
+        <jk-button type="primary">Primary Button</jk-button>
+        <jk-button type="success">Success Button</jk-button>
+        <jk-button type="info">Info Button</jk-button>
+        <jk-button type="warning">Warning Button</jk-button>
+        <jk-button type="danger">Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
-        <jk-button plain>朴素按钮</jk-button>
-        <jk-button type="primary" plain>主要按钮</jk-button>
-        <jk-button type="success" plain>成功按钮</jk-button>
-        <jk-button type="info" plain>信息按钮</jk-button>
-        <jk-button type="warning" plain>警告按钮</jk-button>
-        <jk-button type="danger" plain>危险按钮</jk-button>
+        <jk-button plain>Plain Button</jk-button>
+        <jk-button type="primary" plain>Primary Button</jk-button>
+        <jk-button type="success" plain>Success Button</jk-button>
+        <jk-button type="info" plain>Info Button</jk-button>
+        <jk-button type="warning" plain>Warning Button</jk-button>
+        <jk-button type="danger" plain>Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
-        <jk-button round>圆角按钮</jk-button>
-        <jk-button type="primary" round>主要按钮</jk-button>
-        <jk-button type="success" round>成功按钮</jk-button>
-        <jk-button type="info" round>信息按钮</jk-button>
-        <jk-button type="warning" round>警告按钮</jk-button>
-        <jk-button type="danger" round>危险按钮</jk-button>
+        <jk-button round>Round Button</jk-button>
+        <jk-button type="primary" round>Primary Button</jk-button>
+        <jk-button type="success" round>Success Button</jk-button>
+        <jk-button type="info" round>Info Button</jk-button>
+        <jk-button type="warning" round>Warning Button</jk-button>
+        <jk-button type="danger" round>Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
         <jk-button icon="jk-icon-search" circle></jk-button>

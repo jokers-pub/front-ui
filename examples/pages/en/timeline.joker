@@ -7,11 +7,11 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;radio&quot;&gt;
-        排序：
+        Sorting:
         &lt;div class=&quot;group&quot;&gt;
             &lt;jk-radio-group value=&quot;@model.reverse&quot; @change=&quot;radioChange&quot;&gt;
-                &lt;jk-radio value=&quot;@true&quot;&gt;倒序&lt;/jk-radio&gt;
-                &lt;jk-radio value=&quot;@false&quot;&gt;正序&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;@true&quot;&gt;Descending order&lt;/jk-radio&gt;
+                &lt;jk-radio value=&quot;@false&quot;&gt;Ascending order&lt;/jk-radio&gt;
             &lt;/jk-radio-group&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -31,15 +31,15 @@ export default class extends Component {
         reverse: true,
         activities: [
             {
-                content: &quot;活动按期开始&quot;,
+                content: &quot;The event starts on schedule&quot;,
                 timestamp: &quot;2023-08-15&quot;
             },
             {
-                content: &quot;通过审核&quot;,
+                content: &quot;Passed the review&quot;,
                 timestamp: &quot;2018-04-13&quot;
             },
             {
-                content: &quot;创建成功&quot;,
+                content: &quot;Created successfully&quot;,
                 timestamp: &quot;2018-04-11&quot;
             }
         ]
@@ -87,32 +87,29 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     activities = [
         {
-            content: &quot;支持使用图标&quot;,
+            content: &quot;Support the use of icons&quot;,
             timestamp: &quot;2018-04-12 20:46&quot;,
             size: &quot;large&quot;,
             type: &quot;primary&quot;,
             icon: &quot;jk-icon-more&quot;
         },
         {
-            content: &quot;支持自定义颜色&quot;,
+            content: &quot;Support custom colors&quot;,
             timestamp: &quot;2018-04-03 20:46&quot;,
             color: &quot;#0bbd87&quot;
         },
         {
-            content: &quot;支持自定义尺寸&quot;,
+            content: &quot;Support custom sizes&quot;,
             timestamp: &quot;2018-04-03 20:46&quot;,
             size: &quot;large&quot;
         },
         {
-            content: &quot;默认样式的节点&quot;,
+            content: &quot;Nodes with default styles&quot;,
             timestamp: &quot;2018-04-03 20:46&quot;
         }
     ];
 }
 &lt;/script&gt;
-
-&lt;style scoped&gt;
-&lt;/style&gt;
 </code></pre>
 </DemoContainer>
 <h3>Custom Timestamp</h3>
@@ -123,20 +120,20 @@ export default class extends Component {
         &lt;jk-timeline&gt;
             &lt;jk-timeline-item timestamp=&quot;2018/4/12&quot; placement=&quot;top&quot;&gt;
                 &lt;jk-card&gt;
-                    &lt;h4&gt;更新 Github 模板&lt;/h4&gt;
-                    &lt;p&gt;王小虎 提交于 2018/4/12 20:46&lt;/p&gt;
+                    &lt;h4&gt;Update Github template&lt;/h4&gt;
+                    &lt;p&gt;Wang Xiaohu submitted on 2018/4/12 20:46&lt;/p&gt;
                 &lt;/jk-card&gt;
             &lt;/jk-timeline-item&gt;
             &lt;jk-timeline-item timestamp=&quot;2018/4/3&quot; placement=&quot;top&quot;&gt;
                 &lt;jk-card&gt;
-                    &lt;h4&gt;更新 Github 模板&lt;/h4&gt;
-                    &lt;p&gt;王小虎 提交于 2018/4/3 20:46&lt;/p&gt;
+                    &lt;h4&gt;Update Github template&lt;/h4&gt;
+                    &lt;p&gt;Wang Xiaohu submitted on 2018/4/3 20:46&lt;/p&gt;
                 &lt;/jk-card&gt;
             &lt;/jk-timeline-item&gt;
             &lt;jk-timeline-item timestamp=&quot;2018/4/2&quot; placement=&quot;top&quot;&gt;
                 &lt;jk-card&gt;
-                    &lt;h4&gt;更新 Github 模板&lt;/h4&gt;
-                    &lt;p&gt;王小虎 提交于 2018/4/2 20:46&lt;/p&gt;
+                    &lt;h4&gt;Update Github template&lt;/h4&gt;
+                    &lt;p&gt;Wang Xiaohu submitted on 2018/4/2 20:46&lt;/p&gt;
                 &lt;/jk-card&gt;
             &lt;/jk-timeline-item&gt;
         &lt;/jk-timeline&gt;

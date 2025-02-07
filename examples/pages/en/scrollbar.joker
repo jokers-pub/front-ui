@@ -72,8 +72,8 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;addRow&quot;&gt;添加一行&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;removeRow&quot;&gt;删除一行&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;addRow&quot;&gt;Add a row&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;removeRow&quot;&gt;Remove a row&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;jk-scrollbar maxHeight=&quot;200px&quot;&gt;
         @for(let i = 0; i &lt; model.value; i++) {
@@ -152,7 +152,7 @@ export default class extends Component {
     }
 
     handleSliderInput(e: VNode.Event) {
-        this.$getRef&lt;VNode.Component&gt;(&quot;scrollbar&quot;)?.component.scrollTo({
+        this.$getRef(&quot;scrollbar&quot;)?.component.scrollTo({
             top: e.data
         });
     }

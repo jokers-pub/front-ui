@@ -7,7 +7,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;handleClick&quot;&gt;点我&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;div style=&quot;height:120px&quot;&gt;
         @if(model.show) {
@@ -49,7 +49,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;handleClick&quot;&gt;点我&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;div style=&quot;display:flex;height:120px&quot;&gt;
         @if(model.show) {

@@ -1,22 +1,22 @@
 <template>
     <div class="item">
         <jk-badge value="12">
-            <jk-button size="small">评论</jk-button>
+            <jk-button size="small">Comments</jk-button>
         </jk-badge>
     </div>
     <div class="item">
         <jk-badge value="3">
-            <jk-button size="small">回复</jk-button>
+            <jk-button size="small">Replies</jk-button>
         </jk-badge>
     </div>
     <div class="item">
         <jk-badge value="1" type="primary">
-            <jk-button size="small">评论</jk-button>
+            <jk-button size="small">Comments</jk-button>
         </jk-badge>
     </div>
     <div class="item">
         <jk-badge value="2" type="warning">
-            <jk-button size="small">回复</jk-button>
+            <jk-button size="small">Replies</jk-button>
         </jk-badge>
     </div>
 </template>

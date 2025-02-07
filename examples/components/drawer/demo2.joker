@@ -1,11 +1,11 @@
 <template>
-    <jk-button @click="handleOpen">弹出</jk-button>
-    <jk-drawer ref="drawer" size="50%" title="我是标题">
-        我是内容。
+    <jk-button @click="handleOpen">Pop up</jk-button>
+    <jk-drawer ref="drawer" size="50%" title="I'm the title">
+        I'm the content.
         <div>
-            <jk-button @click="handleOpenNext">再弹出一个</jk-button>
+            <jk-button @click="handleOpenNext">Pop up another one</jk-button>
         </div>
-        <jk-drawer ref="drawer2" title="我是第二个">我是第二个内容</jk-drawer>
+        <jk-drawer ref="drawer2" title="I'm the second one">I'm the second content</jk-drawer>
     </jk-drawer>
 </template>
 <script>

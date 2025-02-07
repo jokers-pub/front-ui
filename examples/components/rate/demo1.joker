@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <span>默认不区分颜色：</span>
+        <span>Default without color distinction:</span>
         <jk-rate />
     </div>
     <div class="row">
-        <span>区分颜色：</span>
+        <span>With color distinction:</span>
         <jk-rate colors="@(['#99A9BF', '#F7BA2A', '#FF9900'])" />
     </div>
 </template>

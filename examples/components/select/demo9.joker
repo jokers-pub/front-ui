@@ -1,66 +1,66 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="请选择">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="medium">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="medium">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="small">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="small">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="mini">
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="mini">
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" multiple filterable>
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" multiple filterable>
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="medium" multiple filterable>
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="medium" multiple filterable>
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="small" multiple filterable>
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="small" multiple filterable>
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="请选择" size="mini" multiple filterable>
-            <jk-option label="鱼香肉丝" value="1" />
-            <jk-option label="红烧排骨" value="2" />
-            <jk-option label="辣椒炒肉" value="3" />
-            <jk-option label="鱼香茄子" value="4" />
+        <jk-select placeholder="Please select" size="mini" multiple filterable>
+            <jk-option label="Apple" value="1" />
+            <jk-option label="Banana" value="2" />
+            <jk-option label="Cherry" value="3" />
+            <jk-option label="Date" value="4" />
         </jk-select>
     </DemoRow>
 </template>

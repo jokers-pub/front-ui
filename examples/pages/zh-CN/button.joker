@@ -8,28 +8,28 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button&gt;默认按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot;&gt;主要按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot;&gt;成功按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot;&gt;信息按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot;&gt;警告按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot;&gt;危险按钮&lt;/jk-button&gt;
+        &lt;jk-button&gt;Default Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot;&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot;&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot;&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot;&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot;&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button plain&gt;朴素按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot; plain&gt;主要按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot; plain&gt;成功按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot; plain&gt;信息按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot; plain&gt;警告按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot; plain&gt;危险按钮&lt;/jk-button&gt;
+        &lt;jk-button plain&gt;Plain Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; plain&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; plain&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; plain&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; plain&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; plain&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button round&gt;圆角按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot; round&gt;主要按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot; round&gt;成功按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot; round&gt;信息按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot; round&gt;警告按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot; round&gt;危险按钮&lt;/jk-button&gt;
+        &lt;jk-button round&gt;Round Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; round&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; round&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; round&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; round&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; round&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-button icon=&quot;jk-icon-search&quot; circle&gt;&lt;/jk-button&gt;
@@ -50,20 +50,20 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button disabled&gt;默认按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot; disabled&gt;主要按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot; disabled&gt;成功按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot; disabled&gt;信息按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot; disabled&gt;警告按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot; disabled&gt;危险按钮&lt;/jk-button&gt;
+        &lt;jk-button disabled&gt;Default Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; disabled&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; disabled&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; disabled&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; disabled&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; disabled&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button plain disabled&gt;朴素按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot; plain disabled&gt;主要按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot; plain disabled&gt;成功按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot; plain disabled&gt;信息按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot; plain disabled&gt;警告按钮&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot; plain disabled&gt;危险按钮&lt;/jk-button&gt;
+        &lt;jk-button plain disabled&gt;Plain Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; plain disabled&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; plain disabled&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; plain disabled&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; plain disabled&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; plain disabled&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 
@@ -73,16 +73,16 @@
 <p>没有边框和背景色的按钮。属性：<code>link</code></p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button link&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link disabled&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;success&quot;&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;success&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link disabled&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;success&quot;&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;success&quot; disabled&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;warning&quot;&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;warning&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;danger&quot;&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;danger&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;info&quot;&gt;文字按钮&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;info&quot; disabled&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;warning&quot; disabled&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;danger&quot;&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;danger&quot; disabled&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;info&quot;&gt;Text Button&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;info&quot; disabled&gt;Text Button&lt;/jk-button&gt;
 &lt;/template&gt;
 </code></pre>
 </DemoContainer>
@@ -94,9 +94,9 @@
     &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-button&gt;
     &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-share&quot;&gt;&lt;/jk-button&gt;
     &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-delete&quot;&gt;&lt;/jk-button&gt;
-    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;搜索&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-search&quot;&gt;Search&lt;/jk-button&gt;
     &lt;jk-button type=&quot;primary&quot;&gt;
-        上传
+        Upload
         &lt;i class=&quot;jk-icon-upload jk-icon--right&quot;&gt;&lt;/i&gt;
     &lt;/jk-button&gt;
 &lt;/template&gt;
@@ -109,9 +109,9 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button-group&gt;
-            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-arrow-left&quot;&gt;上一页&lt;/jk-button&gt;
+            &lt;jk-button type=&quot;primary&quot; icon=&quot;jk-icon-arrow-left&quot;&gt;Previous Page&lt;/jk-button&gt;
             &lt;jk-button type=&quot;primary&quot;&gt;
-                下一页
+                Next Page
                 &lt;i class=&quot;jk-icon-arrow-right&quot;&gt;&lt;/i&gt;
             &lt;/jk-button&gt;
         &lt;/jk-button-group&gt;
@@ -131,11 +131,11 @@
 <p>要设置为 loading 状态，只要设置<code>loading</code>属性为<code>true</code>即可。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button type=&quot;primary&quot; loading&gt;加载中&lt;/jk-button&gt;
-    &lt;jk-button type=&quot;success&quot; loading&gt;加载中&lt;/jk-button&gt;
-    &lt;jk-button type=&quot;warning&quot; loading&gt;加载中&lt;/jk-button&gt;
-    &lt;jk-button type=&quot;danger&quot; loading&gt;加载中&lt;/jk-button&gt;
-    &lt;jk-button type=&quot;info&quot; loading&gt;加载中&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;primary&quot; loading&gt;Loading&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;success&quot; loading&gt;Loading&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;warning&quot; loading&gt;Loading&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;danger&quot; loading&gt;Loading&lt;/jk-button&gt;
+    &lt;jk-button type=&quot;info&quot; loading&gt;Loading&lt;/jk-button&gt;
 &lt;/template&gt;
 
 </code></pre>
@@ -146,16 +146,16 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button&gt;默认按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;medium&quot;&gt;中等按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;small&quot;&gt;小型按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;mini&quot;&gt;超小按钮&lt;/jk-button&gt;
+        &lt;jk-button&gt;Default Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;medium&quot;&gt;Medium-sized Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;small&quot;&gt;Small Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;mini&quot;&gt;Extra-small Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button round&gt;默认按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;medium&quot; round&gt;中等按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;small&quot; round&gt;小型按钮&lt;/jk-button&gt;
-        &lt;jk-button size=&quot;mini&quot; round&gt;超小按钮&lt;/jk-button&gt;
+        &lt;jk-button round&gt;Default Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;medium&quot; round&gt;Medium-sized Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;small&quot; round&gt;Small Button&lt;/jk-button&gt;
+        &lt;jk-button size=&quot;mini&quot; round&gt;Extra-small Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>

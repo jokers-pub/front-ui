@@ -8,13 +8,13 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-date-picker placeholder=&quot;请选择日期&quot;&gt;&lt;/jk-date-picker&gt;
+        &lt;jk-date-picker placeholder=&quot;Please select a date&quot;&gt;&lt;/jk-date-picker&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-date-picker
-            placeholder=&quot;带快捷命令的日期选择&quot;
+            placeholder=&quot;Date picker with quick commands&quot;
             shortcuts=&quot;@shortcuts&quot;
-            format=&quot;YYYY年MM月DD日&quot;
+            format=&quot;YYYY-MM-DD&quot;
             value=&quot;2023-09-27&quot;
             disabledDate=&quot;@disabledDate&quot;&gt;&lt;/jk-date-picker&gt;
     &lt;/DemoRow&gt;
@@ -26,13 +26,13 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     shortcuts = [
         {
-            text: &quot;今天&quot;,
+            text: &quot;Today&quot;,
             onClick: (callBack: Function) =&gt; {
                 callBack(new Date());
             }
         },
         {
-            text: &quot;昨天&quot;,
+            text: &quot;Yesterday&quot;,
             onClick: (callBack: Function) =&gt; {
                 let date = new Date();
                 date.setTime(date.getTime() - 3600 * 1000 * 24);
@@ -41,7 +41,7 @@ export default class extends Component {
             }
         },
         {
-            text: &quot;一周前&quot;,
+            text: &quot;One week ago&quot;,
             onClick(callBack: Function) {
                 let date = new Date();
                 date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
@@ -68,25 +68,25 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;月：&lt;/span&gt;
-            &lt;jk-date-picker type=&quot;month&quot; placeholder=&quot;请选择年月&quot;&gt;&lt;/jk-date-picker&gt;
+            &lt;span&gt;Month:&lt;/span&gt;
+            &lt;jk-date-picker type=&quot;month&quot; placeholder=&quot;Please select a year and month&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;周：&lt;/span&gt;
+            &lt;span&gt;Week:&lt;/span&gt;
             &lt;jk-date-picker
-                format=&quot;YYYY 年 ww周&quot;
+                format=&quot;YYYY Week ww&quot;
                 value=&quot;2023-36&quot;
                 type=&quot;week&quot;
                 showWeekNumber
-                placeholder=&quot;请选择周&quot;&gt;&lt;/jk-date-picker&gt;
+                placeholder=&quot;Please select a week&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;年：&lt;/span&gt;
-            &lt;jk-date-picker type=&quot;year&quot; placeholder=&quot;请选择日期&quot;&gt;&lt;/jk-date-picker&gt;
+            &lt;span&gt;Year:&lt;/span&gt;
+            &lt;jk-date-picker type=&quot;year&quot; placeholder=&quot;Please select a year&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;时间：&lt;/span&gt;
-            &lt;jk-date-picker type=&quot;datetime&quot; placeholder=&quot;请选择日期&quot;&gt;&lt;/jk-date-picker&gt;
+            &lt;span&gt;Time:&lt;/span&gt;
+            &lt;jk-date-picker type=&quot;datetime&quot; placeholder=&quot;Please select a date and time&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -120,32 +120,32 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;默认面板：&lt;/span&gt;
+            &lt;span&gt;Default panel:&lt;/span&gt;
             &lt;jk-date-picker
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;快捷指令：&lt;/span&gt;
+            &lt;span&gt;Quick commands:&lt;/span&gt;
             &lt;jk-date-picker
                 unlinkPanels
                 shortcuts=&quot;@shortcuts&quot;
                 type=&quot;daterange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
         &lt;div class=&quot;row&quot;&gt;
-            &lt;span&gt;时间区间：&lt;/span&gt;
+            &lt;span&gt;Time range:&lt;/span&gt;
             &lt;jk-date-picker
                 unlinkPanels
                 shortcuts=&quot;@shortcuts&quot;
                 type=&quot;datetimerange&quot;
-                range-separator=&quot;至&quot;
-                startPlaceholder=&quot;开始日期&quot;
-                endPlaceholder=&quot;结束日期&quot;&gt;&lt;/jk-date-picker&gt;
+                range-separator=&quot;to&quot;
+                startPlaceholder=&quot;Start date&quot;
+                endPlaceholder=&quot;End date&quot;&gt;&lt;/jk-date-picker&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
@@ -156,7 +156,7 @@ import { Component } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     shortcuts = [
         {
-            text: &quot;近一周&quot;,
+            text: &quot;Last week&quot;,
             onClick: (callBack: Function) =&gt; {
                 let end = new Date();
                 let start = new Date();
@@ -165,7 +165,7 @@ export default class extends Component {
             }
         },
         {
-            text: &quot;近一月&quot;,
+            text: &quot;Last month&quot;,
             onClick: (callBack: Function) =&gt; {
                 let end = new Date();
                 let start = new Date();
@@ -174,7 +174,7 @@ export default class extends Component {
             }
         },
         {
-            text: &quot;近三月&quot;,
+            text: &quot;Last three months&quot;,
             onClick(callBack: Function) {
                 let end = new Date();
                 let start = new Date();
@@ -198,6 +198,8 @@ export default class extends Component {
             color: #8492a6;
             line-height: 44px;
             font-size: 16px;
+            display: inline-block;
+            width: 150px;
         }
 
         &amp;:last-child {

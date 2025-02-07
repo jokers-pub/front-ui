@@ -1,14 +1,14 @@
 <template>
     <DemoRow>
-        <jk-button>默认按钮</jk-button>
-        <jk-button size="medium">中等按钮</jk-button>
-        <jk-button size="small">小型按钮</jk-button>
-        <jk-button size="mini">超小按钮</jk-button>
+        <jk-button>Default Button</jk-button>
+        <jk-button size="medium">Medium-sized Button</jk-button>
+        <jk-button size="small">Small Button</jk-button>
+        <jk-button size="mini">Extra-small Button</jk-button>
     </DemoRow>
     <DemoRow>
-        <jk-button round>默认按钮</jk-button>
-        <jk-button size="medium" round>中等按钮</jk-button>
-        <jk-button size="small" round>小型按钮</jk-button>
-        <jk-button size="mini" round>超小按钮</jk-button>
+        <jk-button round>Default Button</jk-button>
+        <jk-button size="medium" round>Medium-sized Button</jk-button>
+        <jk-button size="small" round>Small Button</jk-button>
+        <jk-button size="mini" round>Extra-small Button</jk-button>
     </DemoRow>
 </template>

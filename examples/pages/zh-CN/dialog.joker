@@ -8,29 +8,28 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;open&quot;&gt;点击打开Dialog&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;open1&quot;&gt;全屏窗口&lt;/jk-button&gt;
-        &lt;jk-button @click=&quot;open2&quot;&gt;超长内容窗口&lt;/jk-button&gt;
-        &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;基本展示&quot; width=&quot;30%&quot; before-close=&quot;@dialogBeforeClose&quot;&gt;
-            &lt;p&gt;我是弹窗内的内容&lt;/p&gt;
+        &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;open1&quot;&gt;Full-screen window&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;open2&quot;&gt;Window with extremely long content&lt;/jk-button&gt;
+        &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;Basic display&quot; width=&quot;30%&quot; before-close=&quot;@dialogBeforeClose&quot;&gt;
+            &lt;p&gt;I'm the content inside the dialog.&lt;/p&gt;
             &lt;jk-select&gt;
-                &lt;jk-option label=&quot;选项1&quot; value=&quot;1&quot;&gt;&lt;/jk-option&gt;
-                &lt;jk-option label=&quot;选项2&quot; value=&quot;2&quot;&gt;&lt;/jk-option&gt;
-                &lt;jk-option label=&quot;选项3&quot; value=&quot;3&quot;&gt;&lt;/jk-option&gt;
+                &lt;jk-option label=&quot;Option 1&quot; value=&quot;1&quot;&gt;&lt;/jk-option&gt;
+                &lt;jk-option label=&quot;Option 2&quot; value=&quot;2&quot;&gt;&lt;/jk-option&gt;
+                &lt;jk-option label=&quot;Option 3&quot; value=&quot;3&quot;&gt;&lt;/jk-option&gt;
             &lt;/jk-select&gt;
             @section(&quot;footer&quot;) {
-                &lt;jk-button @click=&quot;handleDialogCancelClick&quot;&gt;取 消&lt;/jk-button&gt;
-                &lt;jk-button type=&quot;primary&quot; @click=&quot;handleDialogConfirmClick&quot;&gt;确 定&lt;/jk-button&gt;
+                &lt;jk-button @click=&quot;handleDialogCancelClick&quot;&gt;Cancel&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;primary&quot; @click=&quot;handleDialogConfirmClick&quot;&gt;OK&lt;/jk-button&gt;
             }
         &lt;/jk-dialog&gt;
     &lt;/DemoRow&gt;
-    &lt;jk-dialog ref=&quot;dialog1&quot; fullscreen title=&quot;全屏展示&quot;&gt;&lt;/jk-dialog&gt;
-    &lt;jk-dialog ref=&quot;dialog2&quot; title=&quot;超长内容窗口&quot;&gt;
+    &lt;jk-dialog ref=&quot;dialog1&quot; fullscreen title=&quot;Full-screen display&quot;&gt;&lt;/jk-dialog&gt;
+    &lt;jk-dialog ref=&quot;dialog2&quot; title=&quot;Window with extremely long content&quot;&gt;
         &lt;ul&gt;
             @for(let i = 0; i &lt; 100; i++) {
                 &lt;li&gt;
-                    我是第@i
-                    行
+                    I'm line @i.
                 &lt;/li&gt;
             }
         &lt;/ul&gt;
@@ -42,17 +41,17 @@ import { MessageBox } from &quot;../../../src&quot;;
 
 export default class extends Component {
     open() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.open();
+        this.$getRef(&quot;dialog&quot;)?.component.open();
     }
     open1() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog1&quot;)?.component.open();
+        this.$getRef(&quot;dialog1&quot;)?.component.open();
     }
     open2() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog2&quot;)?.component.open();
+        this.$getRef(&quot;dialog2&quot;)?.component.open();
     }
     dialogBeforeClose(close: Function) {
-        MessageBox.confirm(&quot;你确定要关闭吗？&quot;, {
-            title: &quot;提示&quot;,
+        MessageBox.confirm(&quot;Are you sure you want to close?&quot;, {
+            title: &quot;Prompt&quot;,
             callback(action) {
                 if (action === &quot;confirm&quot;) {
                     close();
@@ -61,16 +60,14 @@ export default class extends Component {
         });
     }
     handleDialogCancelClick() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.close();
+        this.$getRef(&quot;dialog&quot;)?.component.close();
     }
 
     handleDialogConfirmClick() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.close();
+        this.$getRef(&quot;dialog&quot;)?.component.close();
     }
 }
 &lt;/script&gt;
-
-
 </code></pre>
 </DemoContainer>
 <blockquote>
@@ -82,19 +79,19 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;open&quot;&gt;打开窗口&lt;/jk-button&gt;
-        &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;一级窗口&quot;&gt;
-            &lt;p&gt;我是一级外层窗口&lt;/p&gt;
-            &lt;jk-dialog ref=&quot;dialog2&quot; title=&quot;二级嵌套窗口&quot; width=&quot;30%&quot;&gt;
-                &lt;p&gt;我是弹窗内的内容（默认窗口全部采用append-to=&quot;body&quot;）&lt;/p&gt;
+        &lt;jk-button @click=&quot;open&quot;&gt;Open Window&lt;/jk-button&gt;
+        &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;Level 1 Window&quot;&gt;
+            &lt;p&gt;I'm the content of the outer level 1 window.&lt;/p&gt;
+            &lt;jk-dialog ref=&quot;dialog2&quot; title=&quot;Level 2 Nested Window&quot; width=&quot;30%&quot;&gt;
+                &lt;p&gt;I'm the content inside the dialog (by default, all windows use append-to=&amp;quot;body&amp;quot;).&lt;/p&gt;
             &lt;/jk-dialog&gt;
             @section(&quot;footer&quot;) {
-                &lt;jk-button type=&quot;primary&quot; @click=&quot;openChildren1&quot;&gt;打开平行子窗口&lt;/jk-button&gt;
-                &lt;jk-button type=&quot;warning&quot; @click=&quot;openChildren2&quot;&gt;打开嵌套子窗口&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;primary&quot; @click=&quot;openChildren1&quot;&gt;Open Parallel Child Window&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;warning&quot; @click=&quot;openChildren2&quot;&gt;Open Nested Child Window&lt;/jk-button&gt;
             }
         &lt;/jk-dialog&gt;
-        &lt;jk-dialog ref=&quot;dialog1&quot; title=&quot;二级平行窗口&quot; width=&quot;30%&quot;&gt;
-            &lt;p&gt;我是弹窗内的内容（平行窗口，建议这样使用）&lt;/p&gt;
+        &lt;jk-dialog ref=&quot;dialog1&quot; title=&quot;Level 2 Parallel Window&quot; width=&quot;30%&quot;&gt;
+            &lt;p&gt;I'm the content inside the dialog (parallel window, it's recommended to use it like this).&lt;/p&gt;
         &lt;/jk-dialog&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
@@ -103,13 +100,13 @@ import { Component, VNode } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     open() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.open();
+        this.$getRef(&quot;dialog&quot;)?.component.open();
     }
     openChildren1() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog1&quot;)?.component.open();
+        this.$getRef(&quot;dialog1&quot;)?.component.open();
     }
     openChildren2() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog2&quot;)?.component.open();
+        this.$getRef(&quot;dialog2&quot;)?.component.open();
     }
 }
 &lt;/script&gt;
@@ -125,12 +122,12 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button @click=&quot;open&quot;&gt;点击打开Dialog&lt;/jk-button&gt;
-        &lt;jk-dialog ref=&quot;dialog&quot; center title=&quot;基本展示&quot; width=&quot;30%&quot;&gt;
-            &lt;p&gt;我是弹窗内的内容&lt;/p&gt;
+        &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
+        &lt;jk-dialog ref=&quot;dialog&quot; center title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
+            &lt;p&gt;I'm the content inside the dialog.&lt;/p&gt;
             @section(&quot;footer&quot;) {
-                &lt;jk-button @click=&quot;handleDialogCancelClick&quot;&gt;取 消&lt;/jk-button&gt;
-                &lt;jk-button type=&quot;primary&quot; @click=&quot;handleDialogConfirmClick&quot;&gt;确 定&lt;/jk-button&gt;
+                &lt;jk-button @click=&quot;handleDialogCancelClick&quot;&gt;Cancel&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;primary&quot; @click=&quot;handleDialogConfirmClick&quot;&gt;OK&lt;/jk-button&gt;
             }
         &lt;/jk-dialog&gt;
     &lt;/DemoRow&gt;
@@ -140,15 +137,15 @@ import { Component, VNode } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     open() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.open();
+        this.$getRef(&quot;dialog&quot;)?.component.open();
     }
 
     handleDialogCancelClick() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.close();
+        this.$getRef(&quot;dialog&quot;)?.component.close();
     }
 
     handleDialogConfirmClick() {
-        this.$getRef&lt;VNode.Component&gt;(&quot;dialog&quot;)?.component.close();
+        this.$getRef(&quot;dialog&quot;)?.component.close();
     }
 }
 &lt;/script&gt;

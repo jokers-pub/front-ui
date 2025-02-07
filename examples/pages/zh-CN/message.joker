@@ -6,14 +6,14 @@
 <p>从顶部出现，3 秒后自动消失。在配置上与 Notification 非常类似，所以部分 options 在此不做详尽解释，文末有 options 列表，可以结合 Notification 的文档理解它们。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;打开提示&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
 import { Message } from &quot;../../../src&quot;;
 export default class extends Component {
     open() {
-        Message(&quot;这是一条提示&quot;);
+        Message(&quot;This is a prompt&quot;);
     }
 }
 &lt;/script&gt;
@@ -26,10 +26,10 @@ export default class extends Component {
 </blockquote>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button plain @click=&quot;open1&quot;&gt;成功&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open2&quot;&gt;警告&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open3&quot;&gt;消息&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open4&quot;&gt;错误&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open3&quot;&gt;Message&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open4&quot;&gt;Error&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -39,23 +39,23 @@ export default class extends Component {
     open1() {
         Message({
             type: &quot;success&quot;,
-            message: &quot;我是一个成功提示&quot;
+            message: &quot;I'm a success prompt&quot;
         });
     }
     open2() {
         Message({
             type: &quot;warning&quot;,
-            message: &quot;我是一个警告提示&quot;
+            message: &quot;I'm a warning prompt&quot;
         });
     }
     open3() {
         Message({
             type: &quot;info&quot;,
-            message: &quot;我是一个信息提示&quot;
+            message: &quot;I'm an information prompt&quot;
         });
     }
     open4() {
-        Message.error(&quot;我是一个错误提示&quot;);
+        Message.error(&quot;I'm an error prompt&quot;);
     }
 }
 &lt;/script&gt;
@@ -65,10 +65,10 @@ export default class extends Component {
 <p>可以添加关闭按钮，默认的 Message 是不可以被人工关闭的，如果需要可手动关闭的 Message，可以使用<code>showClose</code>字段。此外，和 Notification 一样，Message 拥有可控的<code>duration</code>，设置<code>0</code>为不会被自动关闭，默认为 3000 毫秒。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button plain @click=&quot;open1&quot;&gt;成功&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open2&quot;&gt;警告&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open3&quot;&gt;消息&lt;/jk-button&gt;
-    &lt;jk-button plain @click=&quot;open4&quot;&gt;错误&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open3&quot;&gt;Message&lt;/jk-button&gt;
+    &lt;jk-button plain @click=&quot;open4&quot;&gt;Error&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -79,21 +79,21 @@ export default class extends Component {
         Message({
             type: &quot;success&quot;,
             closable: true,
-            message: &quot;我是一个成功提示&quot;
+            message: &quot;I'm a success prompt&quot;
         });
     }
     open2() {
         Message({
             type: &quot;warning&quot;,
             closable: true,
-            message: &quot;我是一个警告提示&quot;
+            message: &quot;I'm a warning prompt&quot;
         });
     }
     open3() {
         Message({
             type: &quot;info&quot;,
             closable: true,
-            message: &quot;我是一个信息提示&quot;
+            message: &quot;I'm an information prompt&quot;
         });
     }
     open4() {
@@ -101,7 +101,7 @@ export default class extends Component {
             type: &quot;error&quot;,
             closable: true,
             duration: 5000,
-            message: &quot;我是一个错误提示&quot;
+            message: &quot;I'm an error prompt&quot;
         });
     }
 }
@@ -112,8 +112,8 @@ export default class extends Component {
 <p>使用 <code>center</code> 属性让文字水平居中。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo4)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;打开提示&lt;/jk-button&gt;
-    &lt;jk-button @click=&quot;open1&quot;&gt;同序列多次打开，只展示一个&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
+    &lt;jk-button @click=&quot;open1&quot;&gt;Open multiple times in the same sequence, only show one&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -122,7 +122,7 @@ export default class extends Component {
     open() {
         Message({
             center: true,
-            message: &quot;这是一条提示&quot;
+            message: &quot;This is a prompt&quot;
         });
     }
 
@@ -131,7 +131,7 @@ export default class extends Component {
             Message({
                 id: &quot;test&quot;,
                 center: true,
-                message: &quot;这是一条提示&quot;
+                message: &quot;This is a prompt&quot;
             });
         }
     }
@@ -142,8 +142,9 @@ export default class extends Component {
 <h3>使用 HTML 片段</h3>
 <p>将<code>useHtml</code>属性设置为 true，<code>message</code> 就会被当作 HTML 片段处理。</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
-    &lt;jk-button @click=&quot;open&quot;&gt;打开提示&lt;/jk-button&gt;
+<pre><code class="language-html">```html
+&lt;template&gt;
+    &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
 import { Component } from &quot;@joker.front/core&quot;;
@@ -152,13 +153,14 @@ export default class extends Component {
     open() {
         Message({
             type: &quot;success&quot;,
-            message: '向你成功转入了&lt;i style=&quot;color:red&quot;&gt;2,500&lt;/i&gt;元',
+            message: 'Successfully transferred &lt;i style=&quot;color:red&quot;&gt;2,500&lt;/i&gt; yuan to you',
             useHtml: true
         });
     }
 }
 &lt;/script&gt;
 </code></pre>
+<pre><code></code></pre>
 </DemoContainer>
 <div class="warning">
 <p><code>message</code> 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS 攻击</a>。因此在 <code>useHtml</code> 打开的情况下，请确保 <code>message</code> 的内容是可信的，<strong>永远不要</strong>将用户提交的内容赋值给 <code>message</code> 属性。</p>

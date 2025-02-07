@@ -1,47 +1,52 @@
 <template>
-    <jk-form ref="form" @submit="handleFormSubmit">
-        <jk-form-item label="年龄">
+    <jk-form ref="form" @submit="handleFormSubmit" label-width="130px">
+        <jk-form-item label="Age">
             <jk-input
                 name="age"
                 status-icon
                 validate="@([Global.isRequired(), Global.isInt(), validateAge])"
-                placeholder="请输入年龄"
+                placeholder="Please enter your age"
             />
         </jk-form-item>
-        <jk-form-item label="新密码">
-            <jk-input name="pwd" ref="pwd" validate="@([Global.isRequired()])" placeholder="请输入新密码" />
+        <jk-form-item label="New Password">
+            <jk-input
+                name="pwd"
+                ref="pwd"
+                validate="@([Global.isRequired()])"
+                placeholder="Please enter your new password"
+            />
         </jk-form-item>
-        <jk-form-item label="确认密码">
+        <jk-form-item label="Confirm Password">
             <jk-input
                 name="confirmPwd"
                 validate="@([Global.isRequired(), validateConfirmPwd])"
-                placeholder="请输入确认密码"
+                placeholder="Please confirm your password"
             />
         </jk-form-item>
-        <jk-form-item label="区域">
-            <jk-select name="area" validate="@([Global.isRequired()])" placeholder="请选择活动区域">
-                <jk-option label="山东" value="shandong" />
-                <jk-option label="北京" value="beijing" />
+        <jk-form-item label="Area">
+            <jk-select name="area" validate="@([Global.isRequired()])" placeholder="Please select the event area">
+                <jk-option label="Shandong" value="shandong" />
+                <jk-option label="Beijing" value="beijing" />
             </jk-select>
         </jk-form-item>
-        <jk-form-item label="推广">
+        <jk-form-item label="Promotion">
             <jk-switch name="promotion" />
         </jk-form-item>
-        <jk-form-item label="资金比例">
+        <jk-form-item label="Funding Ratio">
             <jk-slider name="sourcePic" value="30"></jk-slider>
         </jk-form-item>
-        <jk-form-item label="时间">
+        <jk-form-item label="Time">
             <jk-date-picker
                 name="date"
                 type="daterange"
                 validate="@([Global.isRequired()])"
-                range-separator="至"
-                startPlaceholder="开始日期"
-                endPlaceholder="结束日期"></jk-date-picker>
+                range-separator="to"
+                startPlaceholder="Start date"
+                endPlaceholder="End date"></jk-date-picker>
         </jk-form-item>
         <jk-form-item>
-            <jk-button type="primary" nativeType="submit" loading="@model.loading">提交</jk-button>
-            <jk-button nativeType="reset">重置</jk-button>
+            <jk-button type="primary" nativeType="submit" loading="@model.loading">Submit</jk-button>
+            <jk-button nativeType="reset">Reset</jk-button>
         </jk-form-item>
     </jk-form>
 </template>
@@ -55,52 +60,51 @@ export default class extends Component {
         loading: false
     };
     async validateAge(value: string) {
-        //模拟请求，实现异步校验
+        // Simulate a request to implement asynchronous validation
         await sleep(1500);
 
-        //自定义校验是最后执行，无需考虑非空 && 正整数
+        // Custom validation is performed last, no need to consider non - empty && positive integer
         let age = parseInt(value);
 
         if (age < 22) {
-            return "你的年龄太小了，等22岁之后再来吧";
+            return "You are too young. Come back after you are 22.";
         }
 
         if (age > 30) {
-            return "你已经够成熟了，不需要再了解了";
+            return "You are mature enough and don't need to know more.";
         }
     }
     validateConfirmPwd(value) {
-        let pwd = this.$getRef<VNode.Component>("pwd")?.component.value;
+        let pwd = this.$getRef("pwd")?.component.value;
 
         if (pwd !== value) {
-            return "两次密码不一致";
+            return "The two passwords do not match.";
         }
     }
 
-    //触发提交
+    // Trigger the submission
     handleSubmitBtnClick(e: VNode.Event) {
-        //若传入e，则form会根据触发事件来控制该按钮的loading状态
-        this.$getRef<VNode.Component>("form")?.component.submit(e);
+        // If e is passed in, the form will control the loading state of the button according to the triggering event
+        this.$getRef("form")?.component.submit(e);
     }
 
-    //表单提交处理函数
+    // Form submission processing function
     async handleFormSubmit(e: VNode.Event) {
         this.model.loading = true;
-        //验证成功后，才会触发该方法
-        //支持异步处理
+        // This method will only be triggered after successful validation
+        // Supports asynchronous processing
 
-        //模拟接口请求
+        // Simulate an interface request
         await sleep(1000);
 
         console.log(e.data);
 
         Message({
             type: "success",
-            message: "提交成功"
+            message: "Submission succeeded"
         });
 
         this.model.loading = false;
     }
 }
 </script>
-

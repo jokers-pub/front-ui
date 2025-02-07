@@ -99,7 +99,7 @@ export default class extends PickerPanel<{
 
     //pick 对接事件，用于键盘导航
     navigateItem(e: VNode.Event) {
-        this.$getRef<VNode.Component>("timeSpinner")?.component.navigateItem(e);
+        this.$getRef("timeSpinner")?.component.navigateItem(e);
     }
 
     handleSelectRange(e: VNode.Event<keyof TimeMode>) {

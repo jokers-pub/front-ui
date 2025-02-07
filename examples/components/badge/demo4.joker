@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <jk-badge isDot>数据查询</jk-badge>
+        <jk-badge isDot>Data Query</jk-badge>
     </div>
     <div class="item">
         <jk-badge isDot>

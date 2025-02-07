@@ -1,5 +1,5 @@
 <template>
-    <jk-button @click="showLoading()">点击我进行全屏Loading</jk-button>
+    <jk-button @click="showLoading()">Full-screen loading</jk-button>
 </template>
 <script>
 import { Component } from "@joker.front/core";

@@ -203,7 +203,7 @@ export default class extends FormCtrl<{
     async mounted() {
         this.containerEl = this.$getRef("container")!.output;
 
-        this.inputContainerEl = this.$getRef<VNode.Component>("input")!.firstElement!.output;
+        this.inputContainerEl = this.$getRef("input")!.firstElement!.output;
 
         this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
 
@@ -334,7 +334,7 @@ export default class extends FormCtrl<{
 
     //#region  方法
     blur() {
-        this.$getRef<VNode.Component>("input")?.component?.blur();
+        this.$getRef("input")?.component?.blur();
     }
     hide() {
         if (!this.model.showPanel) return;
@@ -530,7 +530,7 @@ export default class extends FormCtrl<{
     }
 
     updatePopper() {
-        this.$getRef<VNode.Component>("dropdown")?.component.updatePopper();
+        this.$getRef("dropdown")?.component.updatePopper();
     }
 
     //#endregion
@@ -599,7 +599,7 @@ export default class extends FormCtrl<{
             if (referenceInput) {
                 referenceInput.focus();
             } else {
-                this.$getRef<VNode.Component>("input")?.component.focus();
+                this.$getRef("input")?.component.focus();
             }
         }
     }

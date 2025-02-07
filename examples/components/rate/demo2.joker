@@ -1,11 +1,11 @@
 <template>
     <div class="row">
-        <span>辅助文字：</span>
+        <span>Helper text:</span>
         <jk-rate show-text />
     </div>
     <div class="row">
-        <span>显示分数：</span>
-        <jk-rate show-score score-template="{value}分" />
+        <span>Show score:</span>
+        <jk-rate show-score score-template="{value} points" />
     </div>
 </template>
 <style scoped lang="scss">

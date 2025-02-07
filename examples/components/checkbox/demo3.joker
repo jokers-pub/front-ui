@@ -1,10 +1,10 @@
 <template>
     <jk-checkbox-group value="@model.checkList">
-        <jk-checkbox label="复选框 A"></jk-checkbox>
-        <jk-checkbox label="复选框 B"></jk-checkbox>
-        <jk-checkbox label="复选框 C"></jk-checkbox>
-        <jk-checkbox label="禁用" disabled></jk-checkbox>
-        <jk-checkbox label="选中且禁用" disabled></jk-checkbox>
+        <jk-checkbox value="1" label="Checkbox A"></jk-checkbox>
+        <jk-checkbox value="2" label="Checkbox B"></jk-checkbox>
+        <jk-checkbox value="3" label="Checkbox C"></jk-checkbox>
+        <jk-checkbox value="4" label="Disabled" disabled></jk-checkbox>
+        <jk-checkbox value="5" label="Selected and Disabled" disabled></jk-checkbox>
     </jk-checkbox-group>
 </template>
 
@@ -12,9 +12,7 @@
 import { Component } from "@joker.front/core";
 export default class extends Component {
     model = {
-        checkList: ["选中且禁用", "复选框 A"],
-        checkAll: false,
-        indeterminate: false
+        checkList: ["5", "1"]
     };
 }
 </script>
