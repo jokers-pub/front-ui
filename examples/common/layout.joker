@@ -34,9 +34,9 @@ export default class extends Component {
     created() {
         this.$watch(
             () => router.route.value,
-            () => {
+            (newData, oldData) => {
                 this.$getRef("menu-panel")?.component.close();
-                showLoading();
+                if (newData.fullPath !== oldData.fullPath) showLoading();
             }
         );
         showLoading();
