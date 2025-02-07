@@ -23,7 +23,7 @@ import NavBar from "./components/navbar.joker";
 import ChapterMenu from "./components/chapter-menu.joker";
 import { router } from "@joker.front/router";
 import { getLang } from "./utils";
-
+import { showLoading, hideLoading } from "./loading";
 export default class extends Component {
     components = {
         TopBar,
@@ -36,8 +36,10 @@ export default class extends Component {
             () => router.route.value,
             () => {
                 this.$getRef("menu-panel")?.component.close();
+                showLoading();
             }
         );
+        showLoading();
     }
 
     get scroll() {
@@ -51,6 +53,9 @@ export default class extends Component {
         this.scroll?.scrollTo({ top: 0, left: 0 });
 
         this.chapterMenu?.refresh();
+        this.$nextUpdatedRender(() => {
+            hideLoading();
+        });
     }
 
     handleScroll(e: VNode.Event<{ y: number }>) {

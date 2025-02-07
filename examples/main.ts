@@ -36,10 +36,3 @@ let router = new Router({
 });
 
 new App().$mount(document.getElementById("app"));
-
-router.beforeRouteCallbacks.add(() => {
-    showLoading();
-});
-router.afterRouteCallbacks.add(() => {
-    hideLoading();
-});
