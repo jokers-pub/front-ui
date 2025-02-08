@@ -15,13 +15,13 @@
         aria-disabled="@isDisabled"
         tabindex="@tabIndex"
         @keydown.space.stop.prevent="handleKeydown">
-        <span class="input    @(isDisabled?'is-disabled':'')    @(value?'is-checked':'')">
+        <span class="input @(isDisabled?'is-disabled':'') @(value?'is-checked':'')">
             <span class="target"></span>
             <input
                 ref="checkbox"
                 type="checkbox"
                 value="@(props.label)"
-                checked="@value"
+                checked="@(value === props.value)"
                 name="@props.name"
                 disabled="@isDisabled"
                 tabindex="-1"
@@ -65,7 +65,9 @@ export default class extends FormCtrl<{
     };
 
     propsOption = {
-        value: false
+        value: {
+            default: false
+        }
     };
 
     mounted() {
@@ -96,7 +98,7 @@ export default class extends FormCtrl<{
 
     set value(val: string | number | boolean | undefined) {
         if (this.group) {
-            this.group.component.checked(this.props.label, val);
+            this.group.component.checked(this.props.value, val);
         } else {
             this.model.value = val;
         }
@@ -105,8 +107,8 @@ export default class extends FormCtrl<{
 
     get isLimitDisabled() {
         if (this.group) {
-            const { max, min } = this.group.component.props;
-            const checkedList = this.group.component.model.value;
+            let { max, min } = this.group.component.props;
+            let checkedList = this.group.component.model.value;
             return (
                 (!!(max || min) && checkedList.length >= max && !this.value) ||
                 (checkedList.length <= min && this.value)
@@ -139,8 +141,13 @@ export default class extends FormCtrl<{
         this.model.focus = false;
     }
     handleChange(e: VNode.Event) {
-        this.value = !this.value;
-        this.group?.component.handleChange(e);
+        if (this.group) {
+            this.value = !this.value;
+            this.group?.component.handleChange(e);
+        } else {
+            this.value = !this.value;
+        }
+
         this.$trigger("change", this.value);
 
         this.triggerValidate();

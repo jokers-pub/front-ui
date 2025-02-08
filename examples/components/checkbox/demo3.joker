@@ -1,5 +1,5 @@
 <template>
-    <jk-checkbox-group value="@model.checkList">
+    <jk-checkbox-group value="@model.checkList" @change="handleCheckboxChange">
         <jk-checkbox value="1" label="Checkbox A"></jk-checkbox>
         <jk-checkbox value="2" label="Checkbox B"></jk-checkbox>
         <jk-checkbox value="3" label="Checkbox C"></jk-checkbox>
@@ -9,10 +9,13 @@
 </template>
 
 <script>
-import { Component } from "@joker.front/core";
+import { Component, VNode } from "@joker.front/core";
 export default class extends Component {
     model = {
         checkList: ["5", "1"]
     };
+    handleCheckboxChange(e: VNode.Event<string>) {
+        console.log(e.data);
+    }
 }
 </script>
