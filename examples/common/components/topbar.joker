@@ -16,7 +16,7 @@
             <a
                 class="lang"
                 href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')@currentPath">
-                @(lang === "zh-CN" ? "English" : "中文")
+                @(lang === "zh-CN" ? "English" : "中文1")
             </a>
             <a href="https://github.com/jokers-pub/front-ui" target="_blank" class="out-link">
                 <svg
