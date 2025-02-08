@@ -21,7 +21,7 @@
                 ref="checkbox"
                 type="checkbox"
                 value="@(props.label)"
-                checked="@(value === props.value)"
+                checked="@value"
                 name="@props.name"
                 disabled="@isDisabled"
                 tabindex="-1"

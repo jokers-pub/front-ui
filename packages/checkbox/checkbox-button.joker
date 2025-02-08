@@ -9,7 +9,7 @@
         <input
             ref="checkbox"
             type="checkbox"
-            value="@(props.label)"
+            checked="@value"
             name="@props.name"
             disabled="@isDisabled"
             tabindex="-1"
@@ -71,7 +71,7 @@ export default class extends FormCtrl<{
 
     set value(val: string | number | boolean | undefined) {
         if (this.group) {
-            this.group.component.checked(this.props.label, val);
+            this.group.component.checked(this.props.value, val);
         } else {
             this.model.value = val;
         }
@@ -115,8 +115,13 @@ export default class extends FormCtrl<{
         this.model.focus = false;
     }
     handleChange(e: VNode.Event) {
-        this.value = !this.value;
-        this.group?.component.handleChange(e);
+        debugger;
+        if (this.group) {
+            this.value = !this.value;
+            this.group?.component.handleChange(e);
+        } else {
+            this.value = !this.value;
+        }
         this.$trigger("change", this.value);
 
         this.triggerValidate();
