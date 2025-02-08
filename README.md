@@ -84,7 +84,7 @@ Welcome to join our active community forum. Here, you can exchange experiences, 
 
 ## Wechat
 
-![Wechat](https://gitee.com/joker_pub/joker-front-core/raw/main/readme/Wechat.jpg)
+![Wechat](https://static.jokers.pub/lowcode/wechat-group.jpg)
 
 # Joker UI
 
@@ -172,4 +172,4 @@ import "@joker.front/ui/index.css";
 
 ## Wechat
 
-![Wechat](https://gitee.com/joker_pub/joker-front-core/raw/main/readme/Wechat.jpg)
+![Wechat](https://static.jokers.pub/lowcode/wechat-group.jpg)
