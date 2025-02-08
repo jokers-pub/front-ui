@@ -76,11 +76,15 @@ Welcome to join our active community forum. Here, you can exchange experiences, 
 
 ## Related Documentation
 
-[Official Website](https://www.jokers.pub)
-
 [Help Documentation](https://ui.jokers.pub)
 
+[Official Website](https://www.jokers.pub)
+
 [Low-Code Platform](http://jokers.pub)
+
+## Wechat
+
+![Wechat](https://gitee.com/joker_pub/joker-front-core/raw/main/readme/Wechat.jpg)
 
 # Joker UI
 
@@ -160,8 +164,12 @@ import "@joker.front/ui/index.css";
 
 ## 相关文档
 
-[官网](https://www.jokers.pub)
-
 [帮助文档](https://ui.jokers.pub)
 
+[官网](https://www.jokers.pub)
+
 [低代码平台](http://jokers.pub)
+
+## Wechat
+
+![Wechat](https://gitee.com/joker_pub/joker-front-core/raw/main/readme/Wechat.jpg)
