@@ -15,7 +15,7 @@
             </ul>
             <a
                 class="lang"
-                href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')@currentPath">
+                href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')@model.currentPath">
                 @(lang === "zh-CN" ? "English" : "中文")
             </a>
             <a href="https://github.com/jokers-pub/front-ui" target="_blank" class="out-link">
@@ -65,7 +65,8 @@ import { getLang } from "../utils";
 import { getNavData } from "../datas/nav";
 export default class extends Component {
     model = {
-        navIsOpen: false
+        navIsOpen: false,
+        currentPath: ""
     };
     menus = getNavData();
 
@@ -91,10 +92,12 @@ export default class extends Component {
             () => router.route.value,
             () => {
                 this.setTitle();
+                this.model.currentPath = router.route.value.fullPath;
             }
         );
 
         this.setTitle();
+        this.model.currentPath = router.route.value.fullPath;
     }
 
     mounted() {
