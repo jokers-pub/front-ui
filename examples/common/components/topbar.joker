@@ -16,7 +16,7 @@
             <a
                 class="lang"
                 href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')@currentPath">
-                @(lang === "zh-CN" ? "English" : "中文1")
+                @(lang === "zh-CN" ? "English" : "中文")
             </a>
             <a href="https://github.com/jokers-pub/front-ui" target="_blank" class="out-link">
                 <svg
@@ -69,7 +69,7 @@ export default class extends Component {
     };
     menus = getNavData();
 
-    currentPath = router.route.value.path;
+    currentPath = router.route.value.fullPath;
     getClassName(path: string) {
         if (path.startsWith("http")) return "";
 
