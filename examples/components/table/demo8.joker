@@ -36,7 +36,7 @@ export default class extends Component {
     }
 
     handleSelectedChange(e: VNode.Event<any>, syncTableName: string) {
-        this.$getRef(syncTableName)?.component.setSelectedRow([e.data]);
+        this.$getRef(syncTableName)?.component.setSelectedRow(e.data);
     }
 }
 </script>

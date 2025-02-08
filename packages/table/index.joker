@@ -241,6 +241,7 @@ export default class extends Component<{
     }
 
     setSelectedRow(selectedRow?: any) {
+        this.store.data.selectedRows.clear();
         if (selectedRow) {
             if (Array.isArray(selectedRow)) {
                 combinedReply(() => {
@@ -249,7 +250,6 @@ export default class extends Component<{
                             this.store.data.selectedRows.add(n);
                         });
                     } else {
-                        this.store.data.selectedRows.clear();
                         this.store.data.selectedRows.add(selectedRow[0]);
                     }
                 });
@@ -258,13 +258,10 @@ export default class extends Component<{
                     this.store.data.selectedRows.add(selectedRow);
                 } else {
                     combinedReply(() => {
-                        this.store.data.selectedRows.clear();
                         this.store.data.selectedRows.add(selectedRow);
                     });
                 }
             }
-        } else {
-            this.store.data.selectedRows.clear();
         }
     }
 

@@ -196,28 +196,25 @@ export default class extends Component<{
 
     //#region events
     handleTrClick(e: VNode.Event, row: any) {
-        //没有辅助列才开启点击行选中
-        if (!this.store.selectionColumn) {
-            if (this.table?.props.select) {
-                if (this.table.props.multiple) {
-                    if (this.store.data.selectedRows.has(row)) {
-                        this.store.data.selectedRows.delete(row);
-                    } else {
-                        this.store.data.selectedRows.add(row);
-                    }
+        if (this.table?.props.select) {
+            if (this.table.props.multiple) {
+                if (this.store.data.selectedRows.has(row)) {
+                    this.store.data.selectedRows.delete(row);
                 } else {
-                    if (this.store.data.selectedRows.has(row)) {
-                        this.store.data.selectedRows.clear();
-                    } else {
-                        combinedReply(() => {
-                            this.store.data.selectedRows.clear();
-                            this.store.data.selectedRows.add(row);
-                        });
-                    }
+                    this.store.data.selectedRows.add(row);
                 }
-
-                this.table.triggerSelectedRowChange();
+            } else {
+                if (this.store.data.selectedRows.has(row)) {
+                    this.store.data.selectedRows.clear();
+                } else {
+                    combinedReply(() => {
+                        this.store.data.selectedRows.clear();
+                        this.store.data.selectedRows.add(row);
+                    });
+                }
             }
+
+            this.table.triggerSelectedRowChange();
         }
     }
 
