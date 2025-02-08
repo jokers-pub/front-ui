@@ -18,3 +18,12 @@
         </DemoRow>
     </div>
 </template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+
+export default class extends Component {
+    handleChange(e: VNode.Event) {
+        console.log(e.data);
+    }
+}
+</script>
