@@ -2,10 +2,11 @@ import dayjs, { ManipulateType } from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-
+import isoWeek from "dayjs/plugin/isoWeek";
 dayjs.extend(advancedFormat);
 dayjs.extend(weekOfYear);
 dayjs.extend(customParseFormat);
+dayjs.extend(isoWeek);
 
 export const DEFAULT_FORMATS: Record<string, string> = {
     date: "YYYY-MM-DD",
