@@ -13,6 +13,7 @@
 </template>
 <script>
 import { Component, ComponentConstructor } from "@joker.front/core";
+import { getLang } from "../utils";
 export default class extends Component<{ component: ComponentConstructor }> {
     components = {
         demo: Component
@@ -20,8 +21,10 @@ export default class extends Component<{ component: ComponentConstructor }> {
     model = {
         showCode: false
     };
+    hideText = getLang() === "zh-CN" ? "- 隐藏代码" : "- Hide code";
+    showText = getLang() === "zh-CN" ? "+ 显示代码" : "+ Show code";
     get barText() {
-        return this.model.showCode ? "- 隐藏代码" : "+ 显示代码";
+        return this.model.showCode ? this.hideText : this.showText;
     }
     created() {
         this.components["demo"] = this.props.component!;
