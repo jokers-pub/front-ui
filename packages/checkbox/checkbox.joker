@@ -2,7 +2,7 @@
     <label
         class="@([
             'jk-checkbox',
-            props.border && size && size,
+            size,
             isDisabled && 'is-disabled',
             model.focus && 'is-focus',
             props.border && 'is-border',
@@ -126,7 +126,7 @@ export default class extends FormCtrl<{
     }
 
     get size() {
-        return this.group?.component.props.size || this.props.size;
+        return this.group?.component.props.size || this.props.size || this.formItemOption?.form.props.size;
     }
 
     handleKeydown(e: VNode.Event) {

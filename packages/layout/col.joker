@@ -68,7 +68,7 @@ export default class extends Component<{
     }
 
     get gutter() {
-        let parent = this.$rootVNode?.closest<VNode.Component>((node) => {
+        let parent = this.$rootVNode?.closest((node) => {
             return (
                 node instanceof VNode.Component && node.component && node.component.name === componentName("layout_row")
             );

@@ -66,7 +66,7 @@ export default class extends Component<{
     });
 
     get table() {
-        return this.$rootVNode?.closest<VNode.Component>(
+        return this.$rootVNode?.closest(
             (n) => n instanceof VNode.Component && n.component.name === componentName("table")
         )?.component;
     }

@@ -32,8 +32,14 @@ export class FormCtrl<T = Record<string, any>> extends Component<
         return this.props.error || this.formItemOption?.ctrl.validateState.value === "error";
     }
 
+    get form() {
+        return this.$root?.closest((n) => {
+            return n instanceof VNode.Component && n.component.name === componentName("form");
+        })?.component;
+    }
+
     get sizeClass() {
-        return this.props.size || this.formItemOption?.form.props.size;
+        return this.props.size || this.form?.props.size;
     }
 
     /** 控件自定义校验 */
@@ -78,13 +84,15 @@ export function registerFormCtrl(com: Component<any>) {
     let name = com.props.name;
 
     if (com.$root && com.$root instanceof VNode.Node) {
-        let form = com.$root?.closest<VNode.Component>((n) => {
+        let form = com.$root?.closest((n) => {
             return n instanceof VNode.Component && n.component.name === componentName("form");
         })?.component;
 
-        if (!form) return;
+        if (!form) {
+            return;
+        }
 
-        let formItem = com.$root?.closest<VNode.Component>((n) => {
+        let formItem = com.$root?.closest((n) => {
             return n instanceof VNode.Component && n.component.name === componentName("form-item");
         })?.component;
 

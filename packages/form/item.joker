@@ -52,7 +52,7 @@ export default class extends Component<{
     name = componentName("form-item");
 
     get form() {
-        let form = this.$rootVNode.closest<VNode.Component>(
+        let form = this.$rootVNode.closest(
             (m) => m instanceof VNode.Component && m.component.name === componentName("form")
         )?.component;
 

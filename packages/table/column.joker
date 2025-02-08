@@ -14,13 +14,13 @@ export default class extends Component<ColumnType> {
     id = "column_" + seed++;
 
     get table() {
-        return this.$rootVNode?.closest<VNode.Component>(
+        return this.$rootVNode?.closest(
             (n) => n instanceof VNode.Component && n.component.name === componentName("table")
         )?.component;
     }
 
     get parent() {
-        return this.$rootVNode?.parent?.parent?.closest<VNode.Component>(
+        return this.$rootVNode?.parent?.parent?.closest(
             (n) =>
                 n instanceof VNode.Component &&
                 (n.component.name === componentName("table") || n.component.name === componentName("table-column"))

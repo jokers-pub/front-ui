@@ -208,7 +208,7 @@ export default class extends FormCtrl<{
 
         this.inputReferenceEl = this.inputContainerEl.querySelector("input")!;
 
-        addResizeListener(this.containerEl, this.handleResize);
+        if (this.props.multiple) addResizeListener(this.containerEl, this.handleResize);
 
         this.$watch(
             () => this.value,
@@ -225,8 +225,8 @@ export default class extends FormCtrl<{
         );
 
         this.setSelected();
-
-        this.resetInputHeight();
+        //用于首次读取宽度
+        this.handleResize();
     }
 
     focus() {
@@ -431,6 +431,7 @@ export default class extends FormCtrl<{
         }
     }
     resetInputHeight = debounce(300, async () => {
+        if (!this.props.multiple) return;
         if (!this.inputReferenceEl) return;
 
         this.initialInputHeight ||= this.inputReferenceEl.getBoundingClientRect().height;

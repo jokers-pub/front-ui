@@ -52,14 +52,14 @@ export default class extends Component<{
         if (e) {
             let btnVNode = e.event?.submitter?.JOKER_NODE as VNode.Node;
             if (btnVNode) {
-                actionBtn = btnVNode.closest<VNode.Component>(
+                actionBtn = btnVNode.closest(
                     (m) => m instanceof VNode.Component && m.component.name === componentName("button")
                 )?.component;
                 if (actionBtn) {
                     actionBtn.model.loading = true;
                 }
             } else {
-                actionBtn = e.target?.closest<VNode.Component>(
+                actionBtn = e.target?.closest(
                     (m) => m instanceof VNode.Component && m.component.name === componentName("button")
                 )?.component;
             }

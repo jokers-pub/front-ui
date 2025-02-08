@@ -27,14 +27,14 @@ export default class extends Component<{
     name = componentName("dropdown-menu");
 
     get dropdown() {
-        return this.$rootVNode.closest<VNode.Component>(
+        return this.$rootVNode.closest(
             (n) => n instanceof VNode.Component && n.component.name === componentName("dropdown")
         );
     }
 
     private popperHandler?: Popper;
 
-    timeout?: number;
+    timeout?: any;
 
     async open(reference: HTMLElement) {
         this.clearTimeOut();

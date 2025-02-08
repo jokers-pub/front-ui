@@ -1,14 +1,7 @@
 <template>
     @if(model.visible) {
         <li
-            class="@([
-                'jk-select-dropdown-item',
-                {
-                    'is-disabled': disabled,
-                    selected: itemSelected,
-                    hover: model.hover
-                }
-            ])"
+            class="@(['jk-select-dropdown-item', { 'is-disabled': disabled, selected: itemSelected, hover: model.hover }])"
             @mouseenter="handleHover"
             @click.stop="handleClick">
             @if($sections.default) {
@@ -44,13 +37,13 @@ export default class extends Component<{
     }
 
     get select() {
-        return this.$rootVNode?.closest<VNode.Component>(
+        return this.$rootVNode?.closest(
             (n) => n instanceof VNode.Component && n.component.name === componentName("select")
         )?.component;
     }
 
     get group() {
-        return this.$rootVNode?.closest<VNode.Component>(
+        return this.$rootVNode?.closest(
             (n) => n instanceof VNode.Component && n.component.name === componentName("select-group")
         )?.component;
     }

@@ -61,7 +61,7 @@ export default class extends Component<{
     }
 
     get collapse() {
-        return this.$rootVNode?.closest<VNode.Component>((n) => {
+        return this.$rootVNode?.closest((n) => {
             return n instanceof VNode.Component && n.component.name === componentName("collapse");
         })?.component;
     }
