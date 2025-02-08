@@ -33,7 +33,7 @@
                 <input
                     disabled="@props.disabled"
                     autocomplete="off"
-                    placeholder="@props.startPlaceholder"
+                    placeholder="@props.endPlaceholder"
                     value="@(displayValue ? displayValue[1] : '')"
                     readonly="@readonly"
                     @focus="handleFocus"
