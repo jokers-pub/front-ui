@@ -2,7 +2,7 @@
     <div class="jk-pagination-sizes">
         <JokerSelect size="mini" value="@props.pageSize" disabled="@props.disabled" @change="handleChange">
             @for(let item of props.pageSizes) {
-                <JokerSelectOption value="@item" label="@(item)条/页"></JokerSelectOption>
+                <JokerSelectOption value="@item" label="@(item)@getValueByLang('pagerPagesize')"></JokerSelectOption>
             }
         </JokerSelect>
     </div>
@@ -12,8 +12,10 @@ import { Component, VNode } from "@joker.front/core";
 import JokerSelect from "../../select/index.joker";
 import JokerSelectOption from "../../select/option.joker";
 import { PropsType } from "./types";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends Component<PropsType> {
+    getValueByLang=getValueByLang
     components = {
         JokerSelect,
         JokerSelectOption

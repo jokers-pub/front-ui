@@ -90,6 +90,7 @@ export * from "../packages/tree/store/node";
 export * from "../packages/tree/store/index";
 export * from "../packages/utils/resize-event";
 export { Node as CascaderNode, Store as CascaderStore } from "../packages/cascader/store";
+export { setLang } from "../packages/utils/lang";
 
 let components = {
     Button,

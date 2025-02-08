@@ -67,7 +67,11 @@ export function registerFormCtrl(com: Component<any>) {
     if (!com.props.name) return;
 
     if ("value" in com.model === false) {
-        logger.warn("表单控件", `注册的控件不符合Form 表单控件规则，缺少model.value属性`, com);
+        logger.warn(
+            "formCtrl",
+            `The registered control does not conform to the rules of the Form form control. The [model.value] property is missing.`,
+            com
+        );
         return;
     }
 

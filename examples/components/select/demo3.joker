@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="Please select" clearable>
+        <jk-select clearable>
             <jk-option label="Cat" value="1" />
             <jk-option label="Dog" value="2" />
             <jk-option label="Bird" value="3" />

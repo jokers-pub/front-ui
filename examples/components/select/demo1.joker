@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="Please select">
+        <jk-select>
             <jk-option label="Apple" value="1" />
             <jk-option label="Banana" value="2" />
             <jk-option label="Cherry" value="3" />
@@ -8,7 +8,7 @@
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="Please select" value="9">
+        <jk-select value="9">
             <jk-option label="Apple" value="1" />
             <jk-option label="Banana" value="2" />
             <jk-option label="Cherry" value="3" />

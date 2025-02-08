@@ -156,11 +156,18 @@ export default class extends FormCtrl<{
         if (this.props.precision !== undefined) {
             if (this.props.precision >= 0 && this.props.precision === parseInt(this.props.precision.toString(), 10)) {
                 if (stepPrecision > this.props.precision) {
-                    logger.warn(LOGTAG, "[number] 值的计算精度大于传入的要求精度");
+                    logger.warn(
+                        LOGTAG,
+                        "[number] The calculation precision of the value is greater than the required precision passed in."
+                    );
                 }
                 return this.props.precision;
             } else {
-                logger.warn(LOGTAG, "[number] props.precision值不符合要求", this.props.precision);
+                logger.warn(
+                    LOGTAG,
+                    "[number] The value of props.precision does not meet the requirements.",
+                    this.props.precision
+                );
             }
         }
 

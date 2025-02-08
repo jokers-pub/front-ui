@@ -13,6 +13,7 @@ import { CtrlItem } from "./form-ctrl";
 import { logger } from "@joker.front/shared";
 import { LOGTAG } from "../config";
 import { Message } from "../message";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends Component<{
     labelWidth: string;
@@ -37,7 +38,7 @@ export default class extends Component<{
 
     async submit(e?: VNode.Event) {
         if (this.isSubmit) {
-            logger.warn(LOGTAG, "Form正在提交中，请勿重复提交");
+            logger.warn(LOGTAG, "The Form is being submitted. Please do not submit it repeatedly.");
             return;
         }
 
@@ -96,10 +97,10 @@ export default class extends Component<{
         if (this.isSubmit) {
             Message({
                 type: "warning",
-                message: "正在提交中，请勿操作"
+                message: getValueByLang("submiting")
             });
 
-            logger.warn(LOGTAG, "Form正在提交中，请勿重置数据");
+            logger.warn(LOGTAG, "The Form is being submitted. Please do not submit it repeatedly.");
             return;
         }
 
@@ -141,7 +142,7 @@ export default class extends Component<{
         if (item?._validateDefferred) {
             item._validateDefferred.cancal = true;
             //取消时只返回name
-            item._validateDefferred.resolve({ name, error: "取消验证" });
+            item._validateDefferred.resolve({ name, error: "cancel validate" });
             item._validateDefferred = undefined;
             //暂时重置状态
             item.validateState.value = "";
@@ -187,7 +188,7 @@ export default class extends Component<{
                         }
                     })
                     .catch(() => {
-                        reject("表单验证失败");
+                        reject("form validate error");
                     });
             } else {
                 resolve(true);
@@ -212,7 +213,7 @@ export default class extends Component<{
                     /<[\s\x00]*SCRIPT|%3C[+\s\x00]*SCRIPT|SELECT\s|INSERT\s|DELETE\s|UPDATE\s|DROP\s|<!--|-->|<[\s\x00]*HEAD|<[\s\x00]*BOY|<[\s\x00]*DIV|<[\s\x00]*TABLE|<[\s\x00]*FRAME|<[\s\x00]*IFRAME|<[\s\x00]*FRAMESET|<[\s\x00]*NOFRAME|<[\s\x00]*PLAINTEXT|<[\s\x00]*LINK|<[\s\x00]*MAP|<[\s\x00]*BGSOUND|<[\s\x00]*FORM|<[\s\x00]*INPUT|<[\s\x00]*SELECT|<[\s\x00]*OPTION|<[\s\x00]*TEXTAREA|<[\s\x00]*APPLET|<[\s\x00]*OBJECT|<[\s\x00]*EMBED|<[\s\x00]*NOSCRIPT|<[\s\x00]*STYLE|%3C[+\s\x00]*HEAD|%3C[+\s\x00]*BOY|%3C[+\s\x00]*FRAME|%3C[+\s\x00]*IFRAME|%3C[+\s\x00]*FRAMESET|%3C[+\s\x00]*NOFRAME|%3C[+\s\x00]*PLAINTEXT|%3C[+\s\x00]*LINK|%3C[+\s\x00]*MAP|%3C[+\s\x00]*BGSOUND|%3C[+\s\x00]*FORM|%3C[+\s\x00]*INPUT|%3C[+\s\x00]*SELECT|%3C[+\s\x00]*OPTION|%3C[+\s\x00]*TEXTAREA|%3C[+\s\x00]*APPLET|%3C[+\s\x00]*OBJECT|%3C[+\s\x00]*EMBED|%3C[+\s\x00]*NOSCRIPT|%3C[+\s\x00]*STYLE|ALERT[\s\x00]*\(|PROMPT[\s\x00]*\(|CONFIRM[\s\x00]*\(/
                 ).test(value.toUpperCase())
             ) {
-                eMsg = "输入内容存在非法字符，请重新填写";
+                eMsg = getValueByLang("illegalCharacters");
             }
         }
 
@@ -235,7 +236,7 @@ export default class extends Component<{
                             } else {
                                 logger.error(
                                     LOGTAG,
-                                    `表单校验，${ctrl.name}存在错误的校验规则配置，校验方法不存在或者不是一个方法`,
+                                    `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
                                     item
                                 );
                             }
@@ -243,7 +244,7 @@ export default class extends Component<{
                     } else {
                         logger.error(
                             LOGTAG,
-                            `表单校验，${ctrl.name}存在错误的校验规则配置，校验方法不存在或者不是一个方法`,
+                            `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
                             ctrl.ctrl.props.validate
                         );
                     }
@@ -270,13 +271,13 @@ export default class extends Component<{
                 cancal: false,
                 active: async function () {
                     let validateResut = await self._validateCtrlItem(ctrl).catch((e) => {
-                        if (e.type === "取消验证") {
+                        if (e.type === "cancel validate") {
                             return;
                         }
-                        let errMsg = "检验失败:" + e?.message;
+                        let errMsg = "validate error:" + e?.message;
                         self.showError(name, errMsg);
 
-                        logger.error(LOGTAG, "Form validate检验出现被迫异常", e);
+                        logger.error(LOGTAG, "A forced exception occurred during Form validate inspection.", e);
                         resolve({ name, error: errMsg });
                     });
 
@@ -341,7 +342,7 @@ export default class extends Component<{
         let ctrl = this.getCtrlItem(nameOrCtrl);
 
         if (!ctrl) {
-            logger.warn(LOGTAG, `Form 未找到要展示错误信息的表单控件`);
+            logger.warn(LOGTAG, `The form control for displaying error messages was not found in the Form.`);
             return;
         }
 

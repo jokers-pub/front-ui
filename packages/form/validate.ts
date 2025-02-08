@@ -1,10 +1,11 @@
 import { registerGlobalFunction } from "@joker.front/core";
 import { CtrlItem } from "./form-ctrl";
+import { getValueByLang } from "../utils/lang";
 
 export const validateGlobalFunction = {
     isRequired(message?: string) {
         return (value?: string, ctrl?: CtrlItem) => {
-            let errorMsg = message || ctrl?.ctrl.props["placeholder"] || `此项为必填项`;
+            let errorMsg = message || ctrl?.ctrl.props["placeholder"] || getValueByLang("validateRequired");
             // 空
             if (value === null || value === undefined) return errorMsg;
             if (Array.isArray(value)) {
@@ -22,14 +23,14 @@ export const validateGlobalFunction = {
     isInt: (message?: string) => {
         return (value: any) => {
             if (isNaN(value) || value.indexOf(".") !== -1 || value.indexOf("-") !== -1) {
-                return message || "请输入正整数类型";
+                return message || getValueByLang("validateIsInt");
             }
         };
     },
     isNumber: (message?: string) => {
         return (value: any) => {
             if (isNaN(value)) {
-                return message || "请填写数字类型的值";
+                return message || getValueByLang("validateIsNumber");
             }
         };
     },
@@ -37,11 +38,11 @@ export const validateGlobalFunction = {
         return (value: any) => {
             if (!value) return;
             if (value.length !== 11) {
-                return message || "请输入11位手机号";
+                return message || getValueByLang("validatePhone1");
             }
 
             if (/^1[3456789]\d{9}$/.test(value) === false) {
-                return message || "手机号码格式错误，请重新输入";
+                return message || getValueByLang("validatePhone2");
             }
         };
     },
@@ -53,18 +54,18 @@ export const validateGlobalFunction = {
                     value
                 ) === false
             ) {
-                return message || "请输入正确的邮箱地址";
+                return message || getValueByLang("validateEmail");
             }
         };
     },
     isMatched: (pattern: string, message?: string) => {
         if (!pattern) {
-            throw new Error("需要配置pattern属性");
+            throw new Error("isMatched:The pattern attribute needs to be configured.");
         }
         return (value: any) => {
             if (!value) return;
 
-            let errorMsg = message || "正则验证失败";
+            let errorMsg = message || getValueByLang("validateMatcher");
 
             if (pattern && errorMsg) {
                 if (pattern.indexOf("/") === 0 && pattern.lastIndexOf("/") === pattern.length - 1) {
@@ -81,16 +82,16 @@ export const validateGlobalFunction = {
         return (value: any) => {
             if (value === undefined) return;
             if (!min && !max) {
-                throw new Error("需配置最小值和最大值");
+                throw new Error("isLengthInRange: The minimum and maximum values need to be configured.");
             }
 
             if (!message) {
                 if (!min) {
-                    message = `输入的长度请勿超过 ${max}`;
+                    message = `${getValueByLang("validateLength1")} ${max}`;
                 } else if (!max) {
-                    message = `输入的长度请勿小于${min}`;
+                    message = `${getValueByLang("validateLength2")} ${min}`;
                 } else {
-                    message = `输入的长度应为 ${min} 到 ${max}`;
+                    message = `${getValueByLang("validateLength3")} ${min} - ${max}`;
                 }
             }
 

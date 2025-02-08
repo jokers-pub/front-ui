@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="Please select" filterable>
+        <jk-select filterable>
             <jk-option label="Apple" value="1" />
             <jk-option label="Banana" value="2" />
             <jk-option label="Cherry" value="3" />

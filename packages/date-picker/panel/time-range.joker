@@ -36,8 +36,12 @@
             </div>
         </div>
         <div class="footer">
-            <JokerLink @click.stop="handleCancel">取消</JokerLink>
-            <JokerLink type="primary" @click.stop="handleConfirm">确定</JokerLink>
+            <JokerLink @click.stop="handleCancel">
+                @getValueByLang("cancel")
+            </JokerLink>
+            <JokerLink type="primary" @click.stop="handleConfirm">
+                @getValueByLang("confirm")
+            </JokerLink>
         </div>
     </div>
 </template>
@@ -47,6 +51,7 @@ import JokerTimeSpinner from "../base/time-spinner.joker";
 import JokerLink from "../../link/index.joker";
 import { VNode } from "@joker.front/core";
 import { TimeMode, addDate, parseTime, validateTimeInRange } from "../utils";
+import { getValueByLang } from "../../utils/lang";
 let selectRangeMapping: Record<keyof TimeMode, number[]> = {
     hours: [0, 2],
     minutes: [3, 5],
@@ -61,6 +66,7 @@ export default class extends PickerPanel<{
     startPlaceholder: string;
     endPlaceholder: string;
 }> {
+    getValueByLang = getValueByLang;
     propsOption = {
         valueFormat: "HH:mm:ss",
         format: "HH:mm:ss"

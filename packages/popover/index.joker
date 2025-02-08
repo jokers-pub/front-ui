@@ -64,7 +64,7 @@ export default class extends Component<{
     };
 
     id = `jk-popover-${guid(4)}`;
-    timeout?: number;
+    timeout?: any;
     popperHandler?: Popper;
     firstElement?: HTMLElement;
 
@@ -74,7 +74,7 @@ export default class extends Component<{
         this.firstElement = this.$getRef("content")?.firstElement?.output;
 
         if (this.firstElement === undefined) {
-            logger.error(LOGTAG, "[popover]未找到参考Element元素");
+            logger.error(LOGTAG, "[popover] The reference Element was not found.");
 
             return;
         }

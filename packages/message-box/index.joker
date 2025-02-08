@@ -100,6 +100,7 @@ import JokerButton from "../button/index.joker";
 import { PopupManager } from "../utils/popup-manager";
 import { zIndexManage } from "../utils/zindex";
 import { Action, PropsOption } from "./index";
+import { getValueByLang } from "../utils/lang";
 let seed = 1;
 
 export default class extends Component<PropsOption> {
@@ -114,10 +115,10 @@ export default class extends Component<PropsOption> {
         showConfirmButton: true,
         closeOnClickModal: true,
         closeOnPressEscape: true,
-        cancelButtonText: "取消",
-        confirmButtonText: "确定",
-        title: "温馨提示",
-        inputPlaceholder: "请输入内容"
+        cancelButtonText: getValueByLang("cancel"),
+        confirmButtonText: getValueByLang("confirm"),
+        title: getValueByLang("messageBoxTitle"),
+        inputPlaceholder: getValueByLang("inputPlaceholder")
     };
 
     components = {
@@ -185,7 +186,7 @@ export default class extends Component<PropsOption> {
         if (result === true) {
             this.model.inputErrorMsg = "";
         } else if (result === false) {
-            this.model.inputErrorMsg = "验证失败";
+            this.model.inputErrorMsg = getValueByLang("validateError");
         } else {
             this.model.inputErrorMsg = result;
         }

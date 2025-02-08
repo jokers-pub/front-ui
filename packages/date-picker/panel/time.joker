@@ -11,8 +11,12 @@
                 selectableRange="@props.selectableRange"></JokerTimeSpinner>
         </div>
         <div class="footer">
-            <JokerLink @click.stop="handleCancel">取消</JokerLink>
-            <JokerLink type="primary" @click.stop="handleConfirm">确定</JokerLink>
+            <JokerLink @click.stop="handleCancel">
+                @getValueByLang("cancel")
+            </JokerLink>
+            <JokerLink type="primary" @click.stop="handleConfirm">
+                @getValueByLang("confirm")
+            </JokerLink>
         </div>
     </div>
 </template>
@@ -22,6 +26,7 @@ import JokerTimeSpinner from "../base/time-spinner.joker";
 import JokerLink from "../../link/index.joker";
 import { VNode } from "@joker.front/core";
 import { TimeMode, parseTime, validateTimeInRange } from "../utils";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends PickerPanel<{
     format: string;
@@ -30,6 +35,7 @@ export default class extends PickerPanel<{
     defaultValue: string;
     selectableRange: Array<string | string[]>;
 }> {
+    getValueByLang = getValueByLang;
     propsOption = {
         valueFormat: "HH:mm:ss",
         format: "HH:mm:ss",

@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="Please select" clearable>
+        <jk-select clearable>
             <jk-option label="Pen" value="1">
                 @section("default", item) {
                     @(item.label)

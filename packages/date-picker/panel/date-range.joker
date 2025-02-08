@@ -16,7 +16,8 @@
                 <div class="item">
                     @if(showTime) {
                         <div class="time-panel">
-                            选择时间：
+                            @getValueByLang("selectTime")
+                            :
                             <JokerTimePicker size="mini" value="@startTime" @change="handleStartTimeChange" />
                         </div>
                     }
@@ -24,23 +25,23 @@
                         <button
                             type="button"
                             @click="leftPrevYear"
-                            aria-label="前一年"
+                            aria-label="@getValueByLang('prevYear')"
                             class="prev-btn jk-icon-d-arrow-left"></button>
                         <button
                             type="button"
                             @click="leftPrevMonth"
-                            aria-label="上一月"
+                            aria-label="@getValueByLang('prevMonth')"
                             class="prev-btn jk-icon-arrow-left"></button>
                         @if(props.unlinkPanels) {
                             <button
                                 type="button"
                                 @click="leftNextYear"
-                                aria-label="后一年"
+                                aria-label="@getValueByLang('nextYear')"
                                 class="next-btn jk-icon-d-arrow-right"></button>
                             <button
                                 type="button"
                                 @click="leftNextMonth"
-                                aria-label="下一月"
+                                aria-label="@getValueByLang('nextMonth')"
                                 class="next-btn jk-icon-arrow-right"></button>
                         }
                         <span class="label">@leftLabel</span>
@@ -63,7 +64,8 @@
                 <div class="item">
                     @if(showTime) {
                         <div class="time-panel">
-                            选择时间：
+                            @getValueByLang("selectTime")
+                            :
                             <JokerTimePicker size="mini" value="@endTime" @change="handleEndTimeChange" />
                         </div>
                     }
@@ -72,23 +74,23 @@
                             <button
                                 type="button"
                                 @click="rightPrevYear"
-                                aria-label="前一年"
+                                aria-label="@getValueByLang('prevYear')"
                                 class="prev-btn jk-icon-d-arrow-left"></button>
                             <button
                                 type="button"
                                 @click="rightPrevMonth"
-                                aria-label="上一月"
+                                aria-label="@getValueByLang('prevMonth')"
                                 class="prev-btn jk-icon-arrow-left"></button>
                         }
                         <button
                             type="button"
                             @click="rightNextYear"
-                            aria-label="后一年"
+                            aria-label="@getValueByLang('nextYear')"
                             class="next-btn jk-icon-d-arrow-right"></button>
                         <button
                             type="button"
                             @click="rightNextMonth"
-                            aria-label="下一月"
+                            aria-label="@getValueByLang('nextMonth')"
                             class="next-btn jk-icon-arrow-right"></button>
                         <span class="label">@rightLabel</span>
                     </div>
@@ -112,7 +114,7 @@
         @if(showTime) {
             <div class="footer">
                 <JokerButton disabled="@(!(model.minDate && model.maxDate))" size="small" @click="handleConfirm">
-                    确定
+                    @getValueByLang("confirm")
                 </JokerButton>
             </div>
         }
@@ -126,6 +128,7 @@ import JokerDateTable from "../base/date-table.joker";
 import JokerTimePicker from "../time-picker";
 
 import { Shortcut, addDate, formatAsFormatAndType, parseAsFormatAndType, setTime, subtractDate } from "../utils";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends PickerPanel<{
     shortcuts: Shortcut[];
@@ -139,6 +142,7 @@ export default class extends PickerPanel<{
     unlinkPanels: boolean;
     type: "daterange" | "datetimerange";
 }> {
+    getValueByLang = getValueByLang;
     model = {
         value: [] as (Date | string)[],
         leftDate: new Date(),
@@ -185,11 +189,11 @@ export default class extends PickerPanel<{
     }
 
     get leftLabel() {
-        return `${this.leftYear} 年 ${this.leftMonth + 1} 月`;
+        return `${this.leftYear} ${getValueByLang("year")} ${this.leftMonth + 1} ${getValueByLang("month")}`;
     }
 
     get rightLabel() {
-        return `${this.rightYear} 年 ${this.rightMonth + 1} 月`;
+        return `${this.rightYear} ${getValueByLang("year")} ${this.rightMonth + 1} ${getValueByLang("month")}`;
     }
     get startTime() {
         if (this.model.minDate) {

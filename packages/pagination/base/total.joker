@@ -1,14 +1,17 @@
 <template>
     @if(props.total !== undefined) {
-        <span class="jk-pagination-total">共 @props.total 条</span>
+        <span class="jk-pagination-total">@text</span>
     }
 </template>
 <script>
 import { Component } from "@joker.front/core";
 import { PropsType } from "./types";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends Component<PropsType> {
-    model = {};
+    get text() {
+        return getValueByLang("pagerTsotal").replace("{total}", this.props.total);
+    }
 }
 </script>
 

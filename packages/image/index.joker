@@ -33,6 +33,7 @@ import JokerImageViewer from "./image-viewer.joker";
 import { throttle } from "@joker.front/shared";
 
 import { getScrollContainer, isInContainer, isHtmlElement, isSupportObjectFit } from "../utils/index";
+import { getValueByLang } from "../utils/lang";
 
 let ObjectFit = {
     NONE: "none",
@@ -55,7 +56,7 @@ export default class extends Component<{
     style: string;
 }> {
     propsOption = {
-        errMsg: "加载失败",
+        errMsg: getValueByLang("imgLoadError"),
         scrollContainer: {},
         previewSrcList: [],
         zIndex: 2000

@@ -37,7 +37,7 @@ export default class extends Component<{
             validate(val) {
                 let allowValues = ["right", "left", "top", "bottom"];
                 if (allowValues.includes(val) === false) {
-                    return "drawer控件中的direction属性只支持：" + allowValues.join(",");
+                    return "The direction property in the Drawer control only supports:" + allowValues.join(",");
                 }
             }
         }

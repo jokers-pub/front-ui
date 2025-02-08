@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <DemoRow>
-            <jk-select placeholder="Please select" clearable multiple @change="handleChange">
+            <jk-select clearable multiple @change="handleChange">
                 <jk-option label="Car" value="1" />
                 <jk-option label="Bike" value="2" />
                 <jk-option label="Bus" value="3" />
@@ -9,7 +9,7 @@
             </jk-select>
         </DemoRow>
         <DemoRow>
-            <jk-select placeholder="Please select" clearable multiple value="@(['2', '4'])">
+            <jk-select clearable multiple value="@(['2', '4'])">
                 <jk-option label="Car" value="1" />
                 <jk-option label="Bike" value="2" />
                 <jk-option label="Bus" value="3" />

@@ -67,7 +67,7 @@ export default class extends Component<PropsOption> {
 
     closed = false;
 
-    timer?: number;
+    timer?: any;
 
     close() {
         if (this.closed) return;

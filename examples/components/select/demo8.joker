@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <DemoRow>
-            <jk-select placeholder="Please select" multiple filterable>
+            <jk-select multiple filterable>
                 <jk-option label="Apple" value="1" />
                 <jk-option label="Banana" value="2" />
                 <jk-option label="Cherry" value="3" />

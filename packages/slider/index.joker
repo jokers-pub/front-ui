@@ -138,7 +138,7 @@ export default class extends FormCtrl<{
     };
     created() {
         if (this.props.range && this.props.showInput) {
-            logger.warn(LOGTAG, "[slider] 开启range区间时，禁用showInput属性");
+            logger.warn(LOGTAG, "[slider] When enabling the range interval, disable the showInput attribute.");
         }
     }
     mounted() {
@@ -174,7 +174,7 @@ export default class extends FormCtrl<{
 
     initValue() {
         if (this.props.min! > this.props.max!) {
-            logger.error(LOGTAG, "[slider] min必须小于max");
+            logger.error(LOGTAG, "[slider] min must be less than max.");
             return;
         }
 
@@ -282,7 +282,7 @@ export default class extends FormCtrl<{
         if (!this.props.showStops) return [];
 
         if (this.props.step === 0) {
-            logger.warn(LOGTAG, "[slider] steps属性不可以设置为0");
+            logger.warn(LOGTAG, "[slider] The steps attribute cannot be set to 0.");
             return;
         }
 

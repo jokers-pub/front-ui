@@ -28,6 +28,7 @@
 import { VNode } from "@joker.front/core";
 import { FormCtrl } from "../form/form-ctrl";
 import { isObject } from "@joker.front/shared";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends FormCtrl<{
     lowThreshold: number;
@@ -59,7 +60,7 @@ export default class extends FormCtrl<{
         voidIconClass: "jk-icon-star-off",
         disabledVoidIconClass: "jk-icon-star-on",
         textColor: "#1f2d3d",
-        texts: ["极差", "失望", "一般", "满意", "惊喜"],
+        texts: getValueByLang("rates"),
         scoreTemplate: "{value}"
     };
 

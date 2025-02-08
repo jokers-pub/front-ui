@@ -1,6 +1,6 @@
 <template>
     <DemoRow>
-        <jk-select placeholder="Please select" clearable>
+        <jk-select clearable>
             <jk-option-group label="Meat Dishes">
                 <jk-option label="Beef Steak" value="1" />
                 <jk-option label="Chicken Wings" value="2" />
@@ -13,7 +13,7 @@
         </jk-select>
     </DemoRow>
     <DemoRow>
-        <jk-select placeholder="Please select" clearable filterable>
+        <jk-select clearable filterable>
             <jk-option-group label="Meat Dishes">
                 <jk-option label="Beef Steak" value="1" />
                 <jk-option label="Chicken Wings" value="2" />

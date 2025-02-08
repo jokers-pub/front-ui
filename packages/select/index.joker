@@ -126,6 +126,7 @@ import JokerTag from "../tag/index.joker";
 import { componentName, isEdge, isIE, valueEquals } from "../utils";
 import { debounce, deepClone, getValueByPath, isObject, remove, removeFilter } from "@joker.front/shared";
 import { addResizeListener, removeResizeListener } from "../utils/resize-event";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends FormCtrl<{
     clearable: boolean;
@@ -166,16 +167,16 @@ export default class extends FormCtrl<{
     debouncedInputChange!: Function;
 
     propsOption = {
-        placeholder: "请选择",
+        placeholder: getValueByLang("selectPlaceholder"),
         valueKey: "value",
         multipleLimit: {
             type: Number,
             default: 0
         },
-        loadingText: "加载中",
-        noDataText: "暂无数据",
-        noMatchText: "无匹配数据",
-        createText: "创建新值"
+        loadingText: getValueByLang("loading"),
+        noDataText: getValueByLang("emptyText"),
+        noMatchText: getValueByLang("noMatchText"),
+        createText: getValueByLang("createNew")
     };
 
     components = {

@@ -48,7 +48,7 @@ export default class extends Component<{
         uiLoading: false
     };
 
-    timeoutHandle?: number;
+    timeoutHandle?: any;
 
     created() {
         this.model.uiLoading = this.props.throttle! <= 0 ? this.props.loading! : false;

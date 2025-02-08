@@ -1,6 +1,6 @@
 <template>
     <div class="jk-pagination-jumper">
-        前往
+        @getValueByLang("pagerGoto")
         <JokerNumber
             min="1"
             max="@props.pageCount"
@@ -15,8 +15,10 @@
 import { Component, VNode } from "@joker.front/core";
 import JokerNumber from "../../number/index.joker";
 import { PropsType } from "./types";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends Component<PropsType> {
+    getValueByLang = getValueByLang;
     model = {
         userInput: "",
         currentPage: 0

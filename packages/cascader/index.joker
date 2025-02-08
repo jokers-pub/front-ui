@@ -96,6 +96,7 @@ import { componentName, isEdge, isIE, valueEquals } from "../utils";
 import { debounce } from "@joker.front/shared";
 import { addResizeListener, removeResizeListener } from "../utils/resize-event";
 import { Store, Node } from "./store";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends FormCtrl<{
     size: string;
@@ -150,15 +151,15 @@ export default class extends FormCtrl<{
         showAllLevels: true,
         emitPath: true,
         expandTrigger: "click",
-        placeholder: "请选择",
+        placeholder: getValueByLang("selectPlaceholder"),
         labelKey: "label",
         valueKey: "value",
         childrenKey: "children",
         leafKey: "leaf",
         disabledKey: "disabled",
-        loadingText: "加载中",
-        noDataText: "暂无数据",
-        noMatchText: "无匹配数据",
+        loadingText: getValueByLang("loading"),
+        noDataText: getValueByLang("emptyText"),
+        noMatchText: getValueByLang("noMatchText"),
         filterMethod: (node: Node, keyword: string) => {
             return node.text.includes(keyword);
         }

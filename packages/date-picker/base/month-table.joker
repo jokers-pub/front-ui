@@ -19,6 +19,7 @@
 import { Component, VNode } from "@joker.front/core";
 import { addDate, getDayCountOfMonth } from "../utils";
 import { range } from "@joker.front/shared";
+import { getValueByLang } from "../../utils/lang";
 
 type CellType = {
     date: Date;
@@ -49,7 +50,7 @@ export default class extends Component<{
             selecting: false
         }
     };
-    monthTextMapping = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
+    monthTextMapping = getValueByLang("months");
     get rows() {
         let result: Array<CellType[]> = [];
 

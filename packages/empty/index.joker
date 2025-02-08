@@ -30,6 +30,7 @@
 </template>
 <script>
 import { Component } from "@joker.front/core";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends Component<{
     image: string;
@@ -40,11 +41,11 @@ export default class extends Component<{
 }> {
     propsOption = {
         image: "",
-        description: ""
+        description: getValueByLang("emptyText")
     };
 
     get emptyDescription() {
-        return this.props.description || "暂无数据";
+        return this.props.description;
     }
 
     get imageStyle() {

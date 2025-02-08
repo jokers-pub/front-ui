@@ -7,7 +7,9 @@
         <thead>
             <tr>
                 @if(props.showWeekNumber) {
-                    <th>周</th>
+                    <th>
+                        @week
+                    </th>
                 }
                 @for(let week of weeks) {
                     <th>
@@ -34,6 +36,7 @@
 <script>
 import { Component, VNode } from "@joker.front/core";
 import { addDate, clearTime, getDayCountOfMonth, getStartDateOfMonth, getWeekNumber, subtractDate } from "../utils";
+import { getValueByLang } from "../../utils/lang";
 
 type CellType = {
     date?: Date;
@@ -72,7 +75,8 @@ export default class extends Component<{
         rows: [] as Array<CellType>[]
     };
 
-    weeks = ["日", "一", "二", "三", "四", "五", "六"];
+    week = getValueByLang("week");
+    weeks = getValueByLang("weeks") || [];
 
     get year() {
         return this.props.date!.getFullYear();

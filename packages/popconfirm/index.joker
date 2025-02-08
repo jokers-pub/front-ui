@@ -27,6 +27,7 @@
 import { Component, VNode } from "@joker.front/core";
 import JokerPopover from "../popover/index.joker";
 import JokerButton from "../button/index.joker";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends Component<{
     disabled: boolean;
@@ -44,8 +45,8 @@ export default class extends Component<{
     propsOption = {
         icon: "jk-icon-question",
         iconColor: "#f90",
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+        confirmButtonText: getValueByLang("confirm"),
+        cancelButtonText: getValueByLang("cancel"),
         confirmButtonType: "primary",
         cancelButtonType: "text"
     };

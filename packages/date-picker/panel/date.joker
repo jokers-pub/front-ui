@@ -15,7 +15,8 @@
             <div class="body">
                 @if(showTime) {
                     <div class="time-panel">
-                        选择时间：
+                        @getValueByLang("selectTime")
+                        :
                         <JokerTimePicker size="mini" value="@time" @change="handleTimeChange" />
                     </div>
                 }
@@ -23,25 +24,25 @@
                     <button
                         type="button"
                         @click="prevYear"
-                        aria-label="前一年"
+                        aria-label="@getValueByLang('prevYear')"
                         class="prev-btn jk-icon-d-arrow-left"></button>
                     @if(model.currentView === "date") {
                         <button
                             type="button"
                             @click="prevMonth"
-                            aria-label="上一月"
+                            aria-label="@getValueByLang('prevMonth')"
                             class="prev-btn jk-icon-arrow-left"></button>
                     }
                     <button
                         type="button"
                         @click="nextYear"
-                        aria-label="后一年"
+                        aria-label="@getValueByLang('nextYear')"
                         class="next-btn jk-icon-d-arrow-right"></button>
                     @if(model.currentView === "date") {
                         <button
                             type="button"
                             @click="nextMonth"
-                            aria-label="下一月"
+                            aria-label="@getValueByLang('nextMonth')"
                             class="next-btn jk-icon-arrow-right"></button>
                     }
                     <span @click="showYearPicker" role="button" class="label">@yearLabel</span>
@@ -88,7 +89,9 @@
                 </div>
                 @if(showTime) {
                     <div class="footer">
-                        <JokerButton size="small" @click="handleConfirm">确定</JokerButton>
+                        <JokerButton size="small" @click="handleConfirm">
+                            @getValueByLang("confirm")
+                        </JokerButton>
                     </div>
                 }
             </div>
@@ -106,6 +109,7 @@ import JokerYearTable from "../base/year-table.joker";
 import JokerTimePicker from "../time-picker";
 
 import { addDate, subtractDate, parseAsFormatAndType, Shortcut, formatAsFormatAndType, setTime } from "../utils";
+import { getValueByLang } from "../../utils/lang";
 
 export default class extends PickerPanel<{
     shortcuts: Shortcut[];
@@ -119,6 +123,7 @@ export default class extends PickerPanel<{
     cellClassName: (date: Date) => string;
     range: boolean;
 }> {
+    getValueByLang = getValueByLang;
     model = {
         currentView: "date" as "date" | "month" | "year" | "week",
         value: undefined as any,
@@ -185,14 +190,14 @@ export default class extends PickerPanel<{
         if (this.model.currentView === "year") {
             let startYear = Math.floor(this.model.date.getFullYear() / 10) * 10;
 
-            return `${startYear} 年 - ${startYear + 9} 年`;
+            return `${startYear} ${getValueByLang("year")} - ${startYear + 9} ${getValueByLang("year")}`;
         }
 
-        return this.model.date.getFullYear() + "年";
+        return this.model.date.getFullYear() + ` ${getValueByLang("year")}`;
     }
 
     get monthLabel() {
-        return this.model.date.getMonth() + 1 + "月";
+        return this.model.date.getMonth() + 1 + ` ${getValueByLang("month")}`;
     }
 
     //#endregion

@@ -152,6 +152,7 @@ import JokerTimePanel from "./panel/time.joker";
 import JokerTimeRangePanel from "./panel/time-range.joker";
 import JokerDatePanel from "./panel/date.joker";
 import JokerDateRangePanel from "./panel/date-range.joker";
+import { getValueByLang } from "../utils/lang";
 
 export default class extends FormCtrl<{
     type: string;
@@ -176,8 +177,8 @@ export default class extends FormCtrl<{
         clearable: true,
         align: "left",
         rangeSeparator: "-",
-        startPlaceholder: "开始",
-        endPlaceholder: "结束"
+        startPlaceholder: getValueByLang("start"),
+        endPlaceholder: getValueByLang("end")
     };
     model = {
         pickerVisible: false,

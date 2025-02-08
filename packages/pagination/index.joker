@@ -54,8 +54,6 @@ import JokerSizes from "./base/sizes.joker";
 import JokerJumper from "./base/jumper.joker";
 
 import { componentName } from "../utils";
-import { logger } from "@joker.front/shared";
-import { LOGTAG } from "../config";
 
 export default class extends Component<{
     pageSize: number;
