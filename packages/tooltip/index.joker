@@ -61,7 +61,7 @@ export default class extends Component<{
     };
 
     id = `jk-tooltip-${guid(4)}`;
-    timeout?: number;
+    timeout?: any;
     popperHandler?: Popper;
     firstElement?: HTMLElement;
 
