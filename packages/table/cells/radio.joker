@@ -1,6 +1,12 @@
 <template>
     @if(!props.isHeader) {
-        <JokerRadio hideLable value="@selectedRowIndex" @change="handleRadioChange" disabled="@disabled" />
+        <JokerRadio
+            hideLable
+            value="@selectedRowIndex"
+            @click.stop
+            @change.stop="handleRadioChange"
+            disabled="@disabled"
+        />
     }
 </template>
 <script>

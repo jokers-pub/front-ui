@@ -13,6 +13,7 @@
         aria-checked="@(checked)"
         aria-disabled="@isDisabled"
         tabindex="@tabIndex"
+        @click="handleClick"
         @keydown.space.stop.prevent="handleKeydown">
         <span class="input @(isDisabled?'is-disabled':'') @(checked?'is-checked':'')">
             <span class="target"></span>
@@ -128,6 +129,9 @@ export default class extends FormCtrl<{
         this.$trigger("change", this.value);
 
         this.triggerValidate();
+    }
+    handleClick(e: VNode.Event) {
+        this.$trigger("click", undefined, e);
     }
 }
 </script>

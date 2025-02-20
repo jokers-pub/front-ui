@@ -201,12 +201,18 @@ export default class extends Component<{
                 if (this.store.data.selectedRows.has(row)) {
                     this.store.data.selectedRows.delete(row);
                 } else {
+                    if (this.store.selectionColumn) {
+                        if (this.store.selectionColumn.disabledMethod?.(this.props.row) === true) return;
+                    }
                     this.store.data.selectedRows.add(row);
                 }
             } else {
                 if (this.store.data.selectedRows.has(row)) {
                     this.store.data.selectedRows.clear();
                 } else {
+                    if (this.store.selectionColumn) {
+                        if (this.store.selectionColumn.disabledMethod?.(this.props.row) === true) return;
+                    }
                     combinedReply(() => {
                         this.store.data.selectedRows.clear();
                         this.store.data.selectedRows.add(row);
