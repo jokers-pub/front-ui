@@ -87,6 +87,8 @@ export default class extends Component<ColumnType> {
         let parent = this.parent!;
         let table = this.table;
 
+        if (!parent) return;
+
         let columns = parent.find(
             (n) => {
                 return n instanceof VNode.Component && n.component.name === componentName("table-column");
