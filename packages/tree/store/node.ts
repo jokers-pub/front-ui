@@ -157,6 +157,7 @@ export class TreeNode {
     }
 
     setChecked(checked: boolean | "half", deep?: boolean, norRecursion?: boolean, passValue?: boolean) {
+        if (checked === this.checked) return;
         this.indeterminate = checked === "half";
         this.checked = checked === true;
 
