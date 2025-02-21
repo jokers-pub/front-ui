@@ -327,7 +327,6 @@ export default class extends PickerPanel<{
 
     //#region  event
     handleShortcutClick(e: VNode.Event, shortcut: Shortcut) {
-        console.log(shortcut);
         shortcut.onClick?.((val) => {
             if (val) {
                 this.triggerChange(val);

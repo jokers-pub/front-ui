@@ -525,8 +525,6 @@ export default class extends FormCtrl<{
     handleTagClose(e: VNode.Event, val: any) {
         let selectedNode = this.selectedOptions.value.find((m) => m.value === val);
         if (selectedNode) {
-            //@ts-ignore
-            console.log(selectedNode[OBJECTPROXY_DEPID]);
             selectedNode.doChecked(false);
 
             this.refreshSelectedNode();
