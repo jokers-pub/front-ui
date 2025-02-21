@@ -22,7 +22,7 @@
         @dragleave.stop="handleDragLeave"
         @drop.stop.prevent="handleDrop"
         @contextmenu="handleContextMenu">
-        <div class="content" style="margin-left:@(paddingLeft)px" @click.self="handleClick">
+        <div class="content" style="margin-left:@(paddingLeft)px" @click="handleClick">
             <span
                 class="@([
                     tree.props.iconClass || 'jk-icon-caret-right',
@@ -44,7 +44,7 @@
                 @RenderSection("default", props.node)
             }
             else {
-                <span class="label" @click.self="handleClick">@props.node.label</span>
+                <span class="label">@props.node.label</span>
             }
             <div class="dropLine"></div>
         </div>
@@ -116,7 +116,9 @@ export default class extends Component<{ node: TreeNode }> {
         return (this.props.node!.level - 1) * this.tree?.props.indent;
     }
     handleClick() {
-        this.tree?.setCurrentNode(this.props.node!);
+        this.tree.store.setCurrentNode(this.props.node);
+
+        this.tree.$trigger("current-change", this.props.node);
 
         this.tree?.props.expandOnClickNode && this.handleExpandIconClick();
     }
