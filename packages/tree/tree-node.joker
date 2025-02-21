@@ -21,17 +21,12 @@
         @dragstart.stop="handleDragStart"
         @dragleave.stop="handleDragLeave"
         @drop.stop.prevent="handleDrop"
-        @click.stop="handleClick"
         @contextmenu="handleContextMenu">
-        <div class="content" style="margin-left:@(paddingLeft)px">
+        <div class="content" style="margin-left:@(paddingLeft)px" @click.self="handleClick">
             <span
                 class="@([
                     tree.props.iconClass || 'jk-icon-caret-right',
-                    {
-                        'expand-icon': true,
-                        'is-leaf': props.node.isLeaf,
-                        expanded: !props.node.isLeaf && props.node.expanded
-                    }
+                    { 'expand-icon': true, 'is-leaf': props.node.isLeaf, expanded: !props.node.isLeaf && props.node.expanded }
                 ])"
                 @click.stop="handleExpandIconClick"></span>
             @if(tree.props.showCheckbox) {
@@ -49,7 +44,7 @@
                 @RenderSection("default", props.node)
             }
             else {
-                <span class="label">@props.node.label</span>
+                <span class="label" @click.self="handleClick">@props.node.label</span>
             }
             <div class="dropLine"></div>
         </div>
