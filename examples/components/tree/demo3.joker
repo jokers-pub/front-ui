@@ -15,6 +15,7 @@
         <jk-button @click="setCheckedByKeys">Set selected by keys</jk-button>
         <jk-button @click="checkedAll">Select all</jk-button>
         <jk-button @click="clear">Clear selection</jk-button>
+        <jk-button @click="selectLeafNode">Select Leaf Node</jk-button>
     </DemoRow>
 </template>
 <script>
@@ -126,6 +127,9 @@ export default class extends Component {
 
     clear() {
         this.tree?.clearChecked();
+    }
+    selectLeafNode() {
+        this.tree?.setCurrentNode("3-2-2");
     }
 }
 </script>

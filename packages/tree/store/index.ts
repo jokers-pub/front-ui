@@ -97,6 +97,12 @@ export class TreeStore {
 
         if (node) {
             this.currentNode.isCurrent = true;
+
+            let parent = node.parent;
+
+            if (node.parent) {
+                parent.expand(true);
+            }
         }
     }
 
