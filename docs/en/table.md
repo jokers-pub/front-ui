@@ -60,7 +60,7 @@ You can enable row selection through the `select` attribute. Setting the `select
 
 You can add a `jk-table-column` component and configure the `type` as **selection** to display the selection assist column. **Note** that if the assist column is enabled, clicking on the row will no longer perform the selection operation.
 
-Observe the change in the selection state through the `selected-change` event. In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.
+Observe the change of the selection status through the event `selected-change`. Whether it is a single selection or a multiple selection, the return value is an array, and each item in the array is the row data.
 
 You can also read and control the selected rows through the following methods:
 
@@ -189,7 +189,7 @@ Loading large amounts of data (800 entries).
 
 | Event Name      | Description                                                             | Parameters        |
 | --------------- | ----------------------------------------------------------------------- | ----------------- |
-| selected-change | This event is triggered when the selection changes                      | Selected rows     |
+| selected-change | This event is triggered when the selection changes                      | Selected rows[]   |
 | sort-change     | This event is triggered when the sorting conditions of the table change | { column, order } |
 | expand-change   | This event is triggered when a user expands or closes a row             | row, expand       |
 

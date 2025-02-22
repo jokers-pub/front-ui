@@ -45,7 +45,7 @@ Just set the <code>disabled</code> attribute in the <code>jk-checkbox</code> com
 The <code>jk-checkbox-group</code> component can manage multiple checkboxes as a group. You only need to use <code>value</code> to bind an <code>Array</code>-type variable in the Group. The <code>label</code> attribute of the <code>jk-checkbox</code> is the value corresponding to this checkbox. If there is no content in the label, this attribute also serves as the description after the Checkbox button. The <code>label</code> corresponds to the element value in the array. If the specified value exists, it is in the selected state; otherwise, it is not selected.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-checkbox-group value=&quot;@model.checkList&quot;&gt;
+    &lt;jk-checkbox-group value=&quot;@model.checkList&quot; @change=&quot;handleCheckboxChange&quot;&gt;
         &lt;jk-checkbox value=&quot;1&quot; label=&quot;Checkbox A&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;2&quot; label=&quot;Checkbox B&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;3&quot; label=&quot;Checkbox C&quot;&gt;&lt;/jk-checkbox&gt;
@@ -55,11 +55,14 @@ The <code>jk-checkbox-group</code> component can manage multiple checkboxes as a
 &lt;/template&gt;
 
 &lt;script&gt;
-import { Component } from &quot;@joker.front/core&quot;;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     model = {
         checkList: [&quot;5&quot;, &quot;1&quot;]
     };
+    handleCheckboxChange(e: VNode.Event&lt;string&gt;) {
+        console.log(e.data);
+    }
 }
 &lt;/script&gt;
 </code></pre>

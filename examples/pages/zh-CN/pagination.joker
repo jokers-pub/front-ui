@@ -240,7 +240,7 @@ export default class extends Component {
 </tr>
 <tr>
 <td>current-page</td>
-<td>当前页数，支持 .sync 修饰符</td>
+<td>当前页数</td>
 <td>number</td>
 <td>—</td>
 <td>1</td>

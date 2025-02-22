@@ -7,7 +7,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+        &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -15,7 +15,7 @@
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; value=&quot;9&quot;&gt;
+        &lt;jk-select value=&quot;9&quot;&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -38,7 +38,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+        &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; disabled value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -46,7 +46,7 @@
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; disabled&gt;
+        &lt;jk-select disabled&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -62,7 +62,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+        &lt;jk-select clearable&gt;
             &lt;jk-option label=&quot;Cat&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Dog&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Bird&quot; value=&quot;3&quot; /&gt;
@@ -78,7 +78,7 @@
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;Please select&quot; clearable multiple @change=&quot;handleChange&quot;&gt;
+            &lt;jk-select clearable multiple @change=&quot;handleChange&quot;&gt;
                 &lt;jk-option label=&quot;Car&quot; value=&quot;1&quot; /&gt;
                 &lt;jk-option label=&quot;Bike&quot; value=&quot;2&quot; /&gt;
                 &lt;jk-option label=&quot;Bus&quot; value=&quot;3&quot; /&gt;
@@ -86,7 +86,7 @@
             &lt;/jk-select&gt;
         &lt;/DemoRow&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;Please select&quot; clearable multiple value=&quot;@(['2', '4'])&quot;&gt;
+            &lt;jk-select clearable multiple value=&quot;@(['2', '4'])&quot;&gt;
                 &lt;jk-option label=&quot;Car&quot; value=&quot;1&quot; /&gt;
                 &lt;jk-option label=&quot;Bike&quot; value=&quot;2&quot; /&gt;
                 &lt;jk-option label=&quot;Bus&quot; value=&quot;3&quot; /&gt;
@@ -95,6 +95,15 @@
         &lt;/DemoRow&gt;
     &lt;/div&gt;
 &lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    handleChange(e: VNode.Event) {
+        console.log(e.data);
+    }
+}
+&lt;/script&gt;
 </code></pre>
 </DemoContainer>
 <h3>Custom Template</h3>
@@ -102,7 +111,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo5)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+        &lt;jk-select clearable&gt;
             &lt;jk-option label=&quot;Pen&quot; value=&quot;1&quot;&gt;
                 @section(&quot;default&quot;, item) {
                     @(item.label)
@@ -122,7 +131,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo6)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; clearable&gt;
+        &lt;jk-select clearable&gt;
             &lt;jk-option-group label=&quot;Meat Dishes&quot;&gt;
                 &lt;jk-option label=&quot;Beef Steak&quot; value=&quot;1&quot; /&gt;
                 &lt;jk-option label=&quot;Chicken Wings&quot; value=&quot;2&quot; /&gt;
@@ -135,7 +144,7 @@
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; clearable filterable&gt;
+        &lt;jk-select clearable filterable&gt;
             &lt;jk-option-group label=&quot;Meat Dishes&quot;&gt;
                 &lt;jk-option label=&quot;Beef Steak&quot; value=&quot;1&quot; /&gt;
                 &lt;jk-option label=&quot;Chicken Wings&quot; value=&quot;2&quot; /&gt;
@@ -156,7 +165,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo7)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; filterable&gt;
+        &lt;jk-select filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -231,7 +240,7 @@ export default class extends Component {
 <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
-            &lt;jk-select placeholder=&quot;Please select&quot; multiple filterable&gt;
+            &lt;jk-select multiple filterable&gt;
                 &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
                 &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
                 &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -315,7 +324,7 @@ export default class extends Component {
 <DemoContainer component="@(components.DEMO_JOKER_demo9)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot;&gt;
+        &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -323,7 +332,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;medium&quot;&gt;
+        &lt;jk-select size=&quot;medium&quot;&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -331,7 +340,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;small&quot;&gt;
+        &lt;jk-select size=&quot;small&quot;&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -339,7 +348,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;mini&quot;&gt;
+        &lt;jk-select size=&quot;mini&quot;&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -347,7 +356,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; multiple filterable&gt;
+        &lt;jk-select multiple filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -355,7 +364,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;medium&quot; multiple filterable&gt;
+        &lt;jk-select size=&quot;medium&quot; multiple filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -363,7 +372,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;small&quot; multiple filterable&gt;
+        &lt;jk-select size=&quot;small&quot; multiple filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;
@@ -371,7 +380,7 @@ export default class extends Component {
         &lt;/jk-select&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-select placeholder=&quot;Please select&quot; size=&quot;mini&quot; multiple filterable&gt;
+        &lt;jk-select size=&quot;mini&quot; multiple filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
             &lt;jk-option label=&quot;Banana&quot; value=&quot;2&quot; /&gt;
             &lt;jk-option label=&quot;Cherry&quot; value=&quot;3&quot; /&gt;

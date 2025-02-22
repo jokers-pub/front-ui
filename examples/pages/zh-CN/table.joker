@@ -499,7 +499,7 @@ export default class extends Component {
 <h3>选中行</h3>
 <p>可通过<code>select</code>属性来开启选中行，设置<code>select</code>属性为<strong>true</strong>代表开启选中模式，可配置为<code>mutiple</code>属性来开启多选模式。</p>
 <p>可通过新增<code>jk-table-column</code>组件，并配置 type 为<strong>selection</strong>来展示选中辅助列，<strong>注意</strong>若开启辅助列，则点击行不再进行选中操作。</p>
-<p>通过事件<code>selected-change</code>来观察选中状态变化，其中单选模式下返回单行数据，多选模式下返回多行数据。</p>
+<p>通过事件<code>selected-change</code>来观察选中状态变化，无论是单选还是多选，返回均为数组，数组项为行数据。</p>
 <p>也可以通过以下方法来进行选中行的读取和控制：</p>
 <ul>
 <li><code>getSelectedRow</code> 获取选中行，单选模式下返回单行数据，多选模式下返回多行数据</li>
@@ -547,7 +547,7 @@ export default class extends Component {
     }
 
     handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
-        this.$getRef(syncTableName)?.component.setSelectedRow([e.data]);
+        this.$getRef(syncTableName)?.component.setSelectedRow(e.data);
     }
 }
 &lt;/script&gt;
@@ -1395,7 +1395,7 @@ export default class extends Component {
 <tr>
 <td>selected-change</td>
 <td>当选择项发生变化时会触发该事件</td>
-<td>选中行</td>
+<td>选中行[]</td>
 </tr>
 <tr>
 <td>sort-change</td>

@@ -152,6 +152,7 @@ export default class extends Component {
         &lt;jk-button @click=&quot;setCheckedByKeys&quot;&gt;Set selected by keys&lt;/jk-button&gt;
         &lt;jk-button @click=&quot;checkedAll&quot;&gt;Select all&lt;/jk-button&gt;
         &lt;jk-button @click=&quot;clear&quot;&gt;Clear selection&lt;/jk-button&gt;
+        &lt;jk-button @click=&quot;selectLeafNode&quot;&gt;Select Leaf Node&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -263,6 +264,9 @@ export default class extends Component {
 
     clear() {
         this.tree?.clearChecked();
+    }
+    selectLeafNode() {
+        this.tree?.setCurrentNode(&quot;3-2-2&quot;);
     }
 }
 &lt;/script&gt;

@@ -45,7 +45,7 @@ export default class extends Component {
 <p><code>jk-checkbox-group</code> 组件能把多个 Checkbox 管理为一组，只需要在 Group 中使用 <code>value</code> 绑定 <code>Array</code> 类型的变量即可。 <code>jk-checkbox</code> 的 <code>label</code> 属性是该 checkbox 对应的值，若该标签中无内容，则该属性也充当 Checkbox 按钮后的介绍。<code>label</code> 与数组中的元素值相对应，如果存在指定的值则为选中状态，否则为不选中</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-checkbox-group value=&quot;@model.checkList&quot;&gt;
+    &lt;jk-checkbox-group value=&quot;@model.checkList&quot; @change=&quot;handleCheckboxChange&quot;&gt;
         &lt;jk-checkbox value=&quot;1&quot; label=&quot;Checkbox A&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;2&quot; label=&quot;Checkbox B&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;3&quot; label=&quot;Checkbox C&quot;&gt;&lt;/jk-checkbox&gt;
@@ -55,11 +55,14 @@ export default class extends Component {
 &lt;/template&gt;
 
 &lt;script&gt;
-import { Component } from &quot;@joker.front/core&quot;;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
 export default class extends Component {
     model = {
         checkList: [&quot;5&quot;, &quot;1&quot;]
     };
+    handleCheckboxChange(e: VNode.Event&lt;string&gt;) {
+        console.log(e.data);
+    }
 }
 &lt;/script&gt;
 </code></pre>

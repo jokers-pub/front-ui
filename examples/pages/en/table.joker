@@ -499,7 +499,7 @@ export default class extends Component {
 <h3>Selecting Rows</h3>
 <p>You can enable row selection through the <code>select</code> attribute. Setting the <code>select</code> attribute to <strong>true</strong> represents enabling the selection mode, and you can configure the <code>mutiple</code> attribute to enable the multi-selection mode.</p>
 <p>You can add a <code>jk-table-column</code> component and configure the <code>type</code> as <strong>selection</strong> to display the selection assist column. <strong>Note</strong> that if the assist column is enabled, clicking on the row will no longer perform the selection operation.</p>
-<p>Observe the change in the selection state through the <code>selected-change</code> event. In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.</p>
+<p>Observe the change of the selection status through the event <code>selected-change</code>. Whether it is a single selection or a multiple selection, the return value is an array, and each item in the array is the row data.</p>
 <p>You can also read and control the selected rows through the following methods:</p>
 <ul>
 <li><code>getSelectedRow</code> Get the selected row(s). In the single-selection mode, single-row data is returned, and in the multi-selection mode, multiple-row data is returned.</li>
@@ -547,7 +547,7 @@ export default class extends Component {
     }
 
     handleSelectedChange(e: VNode.Event&lt;any&gt;, syncTableName: string) {
-        this.$getRef(syncTableName)?.component.setSelectedRow([e.data]);
+        this.$getRef(syncTableName)?.component.setSelectedRow(e.data);
     }
 }
 &lt;/script&gt;
@@ -1395,7 +1395,7 @@ export default class extends Component {
 <tr>
 <td>selected-change</td>
 <td>This event is triggered when the selection changes</td>
-<td>Selected rows</td>
+<td>Selected rows[]</td>
 </tr>
 <tr>
 <td>sort-change</td>
