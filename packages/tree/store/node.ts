@@ -157,15 +157,11 @@ export class TreeNode {
     }
 
     setChecked(checked: boolean | "half", deep?: boolean, norRecursion?: boolean, passValue?: boolean) {
-        if (checked === this.checked) return;
         this.indeterminate = checked === "half";
         this.checked = checked === true;
 
         let descendants = () => {
             if (deep) {
-                if (checked) {
-                    checked = this.children.filter((n) => !n.virtual).some((n) => !n.checked);
-                }
                 for (let child of this.children) {
                     if (child.virtual) continue;
                     passValue ||= checked !== false;
