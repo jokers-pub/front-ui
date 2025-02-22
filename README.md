@@ -82,10 +82,6 @@ Welcome to join our active community forum. Here, you can exchange experiences, 
 
 [Low-Code Platform](http://jokers.pub)
 
-## Wechat
-
-![Wechat](https://static.jokers.pub/lowcode/wechat-group.jpg)
-
 # Joker UI
 
 ## 简介
@@ -169,7 +165,3 @@ import "@joker.front/ui/index.css";
 [官网](https://www.jokers.pub)
 
 [低代码平台](http://jokers.pub)
-
-## Wechat
-
-![Wechat](https://static.jokers.pub/lowcode/wechat-group.jpg)
