@@ -436,7 +436,11 @@ export class Popper {
                 top: Math.round(data.offsets.popper.top)
             };
 
+            //错误的边界 不做样式更新。
+            if (styles.left <= 0 || styles.top <= 0) return;
+
             Object.assign(styles, data.styles);
+
             setStyle(this.popper, styles);
 
             this.popper.setAttribute("x-placement", data.placement);
