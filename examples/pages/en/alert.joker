@@ -211,7 +211,7 @@ In addition to the required <code>title</code> attribute, you can set the <code>
 <td>Whether the text is centered</td>
 <td>boolean</td>
 <td>—</td>
-<td>true</td>
+<td>false</td>
 </tr>
 <tr>
 <td>closeText</td>

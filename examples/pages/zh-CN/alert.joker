@@ -211,7 +211,7 @@ export default class extends Component {
 <td>文字是否居中</td>
 <td>boolean</td>
 <td>—</td>
-<td>true</td>
+<td>false</td>
 </tr>
 <tr>
 <td>closeText</td>

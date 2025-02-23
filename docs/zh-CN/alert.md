@@ -62,7 +62,7 @@ Alert 组件提供了两个不同的主题：light 和 dark。
 | type        | 主题                                  | string  | success/warning/info/error | info   |
 | description | 辅助性文字。也可通过默认 section 传入 | string  | —                          | -      |
 | closable    | 是否可关闭                            | boolean | —                          | true   |
-| center      | 文字是否居中                          | boolean | —                          | true   |
+| center      | 文字是否居中                          | boolean | —                          | false  |
 | closeText   | 关闭按钮自定义文本                    | string  | —                          | -      |
 | showIcon    | 是否显示图标                          | boolean | —                          | false  |
 | icon        | 更改显示图标                          | string  | —                          | -      |

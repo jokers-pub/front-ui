@@ -73,9 +73,9 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo3)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;jk-rate
-        icon-classes=&quot;@(['jk-icon-heavy-rain', 'jk-icon-cloudy-and-sunny', 'jk-icon-sunny'])&quot;
+        icon-classes=&quot;@(['jk-icon-brush', 'jk-icon-data-analysis', 'jk-icon-present'])&quot;
         colors=&quot;@(['#99A9BF', '#F7BA2A', '#FF9900'])&quot;
-        void-icon-class=&quot;jk-icon-cloudy&quot;
+        void-icon-class=&quot;jk-icon-brush&quot;
     /&gt;
 &lt;/template&gt;
 </code></pre>

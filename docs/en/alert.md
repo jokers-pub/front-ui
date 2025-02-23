@@ -50,7 +50,7 @@ Finally, this is an example with both an icon and supplementary text.
 | type        | Theme                                                                 | string  | success/warning/info/error | info          |
 | description | Supplementary text. Can also be passed in through the default section | string  | —                          | -             |
 | closable    | Whether it is closable                                                | boolean | —                          | true          |
-| center      | Whether the text is centered                                          | boolean | —                          | true          |
+| center      | Whether the text is centered                                          | boolean | —                          | false         |
 | closeText   | Custom text for the close button                                      | string  | —                          | -             |
 | showIcon    | Whether to display the icon                                           | boolean | —                          | false         |
 | icon        | Change the displayed icon                                             | string  | —                          | -             |
