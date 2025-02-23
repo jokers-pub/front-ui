@@ -45,7 +45,7 @@ import { FormCtrl } from "../form/form-ctrl";
 export default class extends FormCtrl<{
     value: boolean | string | number;
     disabled: boolean;
-    width: number;
+    width: string;
     activeIconClass: string;
     inactiveIconClass: string;
     activeText: string;
@@ -59,7 +59,7 @@ export default class extends FormCtrl<{
     propsOption = {
         activeValue: true,
         inactiveValue: false,
-        width: 40
+        width: "40px"
     };
     model = {
         value: false
@@ -85,7 +85,7 @@ export default class extends FormCtrl<{
             this.setBackgroundColor();
         }
 
-        this.$getRef("core")!.output.style.width = this.props.width + "px";
+        this.$getRef("core")!.output.style.width = this.props.width;
 
         //设置默认
         this.$getRef("switch")!.output.checked = this.model.value === this.props.activeValue;
