@@ -178,11 +178,11 @@ export default class extends FormCtrl<{
             return;
         }
 
-        let value = parseFloat(this.model.value) || 0;
         if (this.props.range) {
-            if (Array.isArray(value)) {
-                this.model.startValue = Math.max(this.props.min!, value[0]);
-                this.model.endValue = Math.min(this.props.max!, value[1]);
+            debugger;
+            if (Array.isArray(this.model.value)) {
+                this.model.startValue = Math.max(this.props.min!, this.model.value[0]);
+                this.model.endValue = Math.min(this.props.max!, this.model.value[1]);
             } else {
                 this.model.startValue = this.props.min;
                 this.model.endValue = this.props.max;
@@ -190,6 +190,7 @@ export default class extends FormCtrl<{
 
             this.model.oldValue = [this.model.startValue, this.model.endValue];
         } else {
+            let value = parseFloat(this.model.value) || 0;
             if (typeof this.model.value !== "number" && isNaN(this.model.value)) {
                 this.model.startValue = this.props.min;
             } else {
