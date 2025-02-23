@@ -123,6 +123,7 @@ export default class extends Component<{ node: TreeNode }> {
         this.tree?.props.expandOnClickNode && this.handleExpandIconClick();
     }
     handleExpandIconClick() {
+        if (!this.props.node) return;
         if (this.props.node?.isLeaf) return;
 
         if (this.props.node?.expanded) {
