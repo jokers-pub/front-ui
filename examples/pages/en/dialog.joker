@@ -29,7 +29,8 @@ You need to use the component's <code>open</code>/<code>close</code> methods to 
         &lt;ul&gt;
             @for(let i = 0; i &lt; 100; i++) {
                 &lt;li&gt;
-                    I'm line @i.
+                    I'm line @(i)
+                    .
                 &lt;/li&gt;
             }
         &lt;/ul&gt;

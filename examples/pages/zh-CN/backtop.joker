@@ -16,7 +16,7 @@
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
-    &lt;jk-backtop target=&quot;.container .pageContainer .warp&quot; bottom=&quot;100&quot;&gt;
+    &lt;jk-backtop target=&quot;.container .pageContainer .warp&quot; bottom=&quot;100px&quot;&gt;
         &lt;div
             style=&quot;height: 100%;
                 width: 100%;
@@ -60,16 +60,16 @@
 <tr>
 <td>right</td>
 <td>控制其显示位置, 距离页面右边距</td>
-<td>number</td>
+<td>string</td>
 <td>-</td>
-<td>40</td>
+<td>40px</td>
 </tr>
 <tr>
 <td>bottom</td>
 <td>控制其显示位置, 距离页面底部距离</td>
-<td>number</td>
+<td>string</td>
 <td>—</td>
-<td>40</td>
+<td>40px</td>
 </tr>
 </tbody>
 </table>

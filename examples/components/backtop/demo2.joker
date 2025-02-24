@@ -1,6 +1,6 @@
 <template>
     Scroll down to see the bottom-right button.
-    <jk-backtop target=".container .pageContainer .warp" bottom="100">
+    <jk-backtop target=".container .pageContainer .warp" bottom="100px">
         <div
             style="height: 100%;
                 width: 100%;

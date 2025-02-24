@@ -18,8 +18,8 @@ The display area is fixed to a 40px × 40px area, and the content within it can 
 | ---------------- | ----------------------------------------------------------------------------- | ------ | --------------- | ------------- |
 | target           | The object that triggers the scrolling                                        | string | —               | —             |
 | visibilityHeight | The button appears when the scrolling height reaches this parameter value     | number | —               | 200           |
-| right            | Controls its display position, the distance from the right margin of the page | number | -               | 40            |
-| bottom           | Controls its display position, the distance from the bottom of the page       | number | —               | 40            |
+| right            | Controls its display position, the distance from the right margin of the page | string | -               | 40px          |
+| bottom           | Controls its display position, the distance from the bottom of the page       | string | —               | 40px          |
 
 ### Events
 

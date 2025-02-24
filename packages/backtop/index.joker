@@ -1,6 +1,6 @@
 <template>
     @if(model.visible) {
-        <div @click.stop="handleClick" style="@({ right: styleRight, bottom: styleBottom })" class="jk-backtop">
+        <div @click.stop="handleClick" style="@({ right: props.right, bottom: props.bottom })" class="jk-backtop">
             @if($sections.default) {
                 @RenderSection()
             }
@@ -20,22 +20,16 @@ let easeInOutCubic = (value: number) => (value < 0.5 ? cubic(value * 2) / 2 : 1 
 export default class extends Component<{
     visibilityHeight: number;
     target: string;
-    right: number;
-    bottom: number;
+    right: string;
+    bottom: string;
 }> {
     propsOption = {
         visibilityHeight: {
             type: Number,
             default: 200
         },
-        right: {
-            type: Number,
-            default: 40
-        },
-        bottom: {
-            type: Number,
-            default: 40
-        }
+        right: "40px",
+        bottom: "40px"
     };
     model = { visible: false };
     el: any = undefined;
@@ -50,14 +44,6 @@ export default class extends Component<{
 
     beforeDestroy() {
         this.container.removeEventListener("scroll", this.throttledScrollHandler);
-    }
-
-    get styleBottom() {
-        return `${this.props.bottom}px`;
-    }
-
-    get styleRight() {
-        return `${this.props.right}px`;
     }
 
     init() {
