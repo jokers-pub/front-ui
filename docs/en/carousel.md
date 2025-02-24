@@ -60,10 +60,3 @@ By default, `direction` is `horizontal`. Set `direction` to `vertical` to make t
 | setActiveItem | Manually switch the slide    | The index of the slide to be switched, starting from 0; or the `name` attribute value of the corresponding `<jk-carousel-item>` |
 | prev          | Switch to the previous slide | -                                                                                                                               |
 | next          | Switch to the next slide     | -                                                                                                                               |
-
-### Carousel-item Attributes
-
-| Parameter | Description                                                                 | Type   | Optional Values | Default Value |
-| --------- | --------------------------------------------------------------------------- | ------ | --------------- | ------------- |
-| name      | The name of the slide, which can be used as a parameter for `setActiveItem` | string | —               | —             |
-| label     | The text of the indicator corresponding to this slide                       | string | —               | —             |

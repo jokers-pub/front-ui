@@ -27,13 +27,7 @@ import { LOGTAG } from "../config";
 
 let CARD_SCALE = 0.83;
 
-export default class extends Component<{
-    name: string;
-    label: string | number;
-}> {
-    propsOption = {
-        label: ""
-    };
+export default class extends Component {
     name = componentName("carousel-item");
     model = {
         hover: false,

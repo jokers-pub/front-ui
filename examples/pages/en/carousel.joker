@@ -408,34 +408,6 @@ export default class extends Component {
 </tr>
 </tbody>
 </table>
-<h3>Carousel-item Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>The name of the slide, which can be used as a parameter for <code>setActiveItem</code></td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>The text of the indicator corresponding to this slide</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
 
 <BottomNav />
 </div>
