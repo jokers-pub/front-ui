@@ -4,7 +4,7 @@
         ref="carousel"
         @mouseenter.stop="handleMouseEnter"
         @mouseleave.stop="handleMouseLeave">
-        <div class="container" style="height: @props.height">
+        <div class="container" style="@({ height: props.height })">
             @if(arrowDisplay) {
                 <button
                     type="button"
