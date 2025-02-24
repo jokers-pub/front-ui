@@ -11,7 +11,7 @@
                 aria-label="@(props.title || 'dialog')"
                 style="@boxStyle"
                 ref="dialog"
-                class="@(['dialog-box', props.customClass, { 'is-fullscreen': props.fullscreen, 'is-center': props.center }])">
+                class="@(['dialog-box', props.class, { 'is-fullscreen': props.fullscreen, 'is-center': props.center }])">
                 <div class="header">
                     @if($sections.title) {
                         @RenderSection("title")
@@ -47,7 +47,7 @@ export default class extends Component<{
     title: string;
     fullscreen: boolean;
     center: boolean;
-    customClass: string;
+    class: string;
     width: string;
     beforeClose: Function;
     closable: boolean;
