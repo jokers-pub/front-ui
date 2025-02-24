@@ -21,7 +21,8 @@
         <ul>
             @for(let i = 0; i < 100; i++) {
                 <li>
-                    I'm line @i.
+                    I'm line @(i)
+                    .
                 </li>
             }
         </ul>
