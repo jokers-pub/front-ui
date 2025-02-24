@@ -105,7 +105,7 @@ export default class extends Component<{
             (val, oldVal) => {
                 this.resetItemPosition(oldVal);
                 if (oldVal > -1) {
-                    this.$trigger("change", val, oldVal);
+                    this.$trigger("change", val);
                 }
             }
         );
