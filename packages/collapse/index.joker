@@ -17,7 +17,7 @@ export default class extends Component<{
         activeNames: this.props.value ? [].concat(this.props.value) : []
     };
 
-    setActiveNames(names) {
+    setActiveNames(names: string | string[]) {
         names = [].concat(names);
         let value = this.props.accordion ? names[0] : names;
         this.model.activeNames = names;
