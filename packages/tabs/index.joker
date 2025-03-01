@@ -142,7 +142,26 @@ export default class extends Component<{
         white-space: nowrap;
         position: relative;
         transition: 0.3s;
+        overflow: auto;
+        /* 自定义滚动条样式 */
+        /* WebKit 内核浏览器（Chrome、Safari 等） */
+        &::-webkit-scrollbar {
+            width: 6px; /* 滚动条宽度，使其变小 */
+            height: 6px; /* 滚动条高度，使其变小 */
+        }
 
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--jk-scrollbar-background-color); /* 滚动条滑块颜色为灰色 */
+            border-radius: 3px; /* 滚动条滑块圆角 */
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: var(--jk-scrollbar-hover-background-color); /* 滚动条滑块颜色为灰色 */
+            border-radius: 3px; /* 滚动条滑块圆角 */
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent; /* 滚动条轨道背景透明，即没有背景 */
+        }
         .item {
             padding: 0 20px;
             height: 40px;
@@ -189,7 +208,7 @@ export default class extends Component<{
         > .jk-tabs-menus {
             margin: 0 0 15px 0;
             border-bottom: solid 2px var(--jk-border-color-light);
-
+            overflow-y: hidden;
             .bottom-line {
                 bottom: -2px;
                 left: 0;
@@ -202,6 +221,7 @@ export default class extends Component<{
         flex-direction: column-reverse;
         > .jk-tabs-menus {
             margin: 10px 0 0 0;
+            overflow-y: hidden;
             border-top: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: -2px;
@@ -220,6 +240,7 @@ export default class extends Component<{
         > .jk-tabs-menus {
             flex-direction: column;
             margin: 0 0 0 15px;
+            overflow-x: hidden;
             border-left: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: 0;
@@ -237,6 +258,7 @@ export default class extends Component<{
         > .jk-tabs-menus {
             flex-direction: column;
             margin: 0 15px 0 0;
+            overflow-x: hidden;
             border-right: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: 0;

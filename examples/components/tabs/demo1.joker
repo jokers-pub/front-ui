@@ -12,6 +12,30 @@
         <jk-tab-panel label="Settings">
             <div class="demo-content">Settings</div>
         </jk-tab-panel>
+        <jk-tab-panel label="Home">
+            <div class="demo-content">Home</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Issues">
+            <div class="demo-content">Issues</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Repository Activity">
+            <div class="demo-content">Repository Activity</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Settings">
+            <div class="demo-content">Settings</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Home">
+            <div class="demo-content">Home</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Issues">
+            <div class="demo-content">Issues</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Repository Activity">
+            <div class="demo-content">Repository Activity</div>
+        </jk-tab-panel>
+        <jk-tab-panel label="Settings">
+            <div class="demo-content">Settings</div>
+        </jk-tab-panel>
     </jk-tabs>
 </template>
 
