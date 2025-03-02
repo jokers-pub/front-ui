@@ -71,7 +71,7 @@ export default class extends FormCtrl<{
         this.model.show = true;
     }
 
-    async selectFile() {
+    selectFile() {
         this.reloadUpload();
 
         this.$getRef("upload").output.click();
