@@ -1,17 +1,10 @@
 <template>
-    <div class="jk-badge">
+    <div class="@(['jk-badge', props.class])">
         @RenderSection()
         <sup
             style="@(!props.hidden && (content || content === 0 || props.isDot) ? 'display:inline-block' : 'display:none')"
             text="@content"
-            class="@([
-                'content',
-                'content-' + props.type,
-                {
-                    'is-fixed': $sections.default,
-                    'is-dot': props.isDot
-                }
-            ])">
+            class="@(['content', 'content-' + props.type, { 'is-fixed': $sections.default, 'is-dot': props.isDot }])">
             @content
         </sup>
     </div>
@@ -26,6 +19,7 @@ export default class extends Component<{
     isDot: boolean;
     hidden: boolean;
     type: string;
+    class: string;
 }> {
     name = componentName("badge");
     propsOption = {
