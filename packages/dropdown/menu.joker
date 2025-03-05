@@ -41,6 +41,8 @@ export default class extends Component<{
 
         this.model.show = true;
 
+        await this.$nextUpdatedRender();
+
         let popper = this.$getRef("menu")?.output;
 
         if (popper && reference) {
