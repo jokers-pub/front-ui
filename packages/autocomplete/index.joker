@@ -15,6 +15,7 @@
             error="@isError"
             @focus="handleFocus"
             @input="debouncedInputChange"
+            @blur="handleBlur"
             @keydown.down.prevent="handleNavigate('next')"
             @keydown.up.prevent="handleNavigate('prev')"
             @keydown.enter.prevent="handleEnter"
@@ -351,7 +352,9 @@ export default class extends FormCtrl<{
             }
         });
     }
-
+    handleBlur(e: VNode.Event<string>) {
+        this.$trigger("blur", e.data);
+    }
     //#endregion
 
     private triggerChange(val: any) {
