@@ -1,7 +1,7 @@
 <template>
     <colgroup>
         @for(let column of store.data.leafColumnsFlat) {
-            <col width="@column.width" />
+            <col width="@column.width" style="@({ minWidth: column.width ? undefined : '80px' })" />
         }
     </colgroup>
     <thead
