@@ -27,7 +27,7 @@
         @if(props.icon && !model.loading) {
             <i class="@props.icon"></i>
         }
-        @if($sections && $sections.default) {
+        @if($sections && $sections.default && !props.circle) {
             <span>@RenderSection()</span>
         }
     </button>
