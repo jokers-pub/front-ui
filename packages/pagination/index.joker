@@ -1,6 +1,7 @@
 <template>
     @if(!(props.hideOnSinglePage && pageCount === 1)) {
-        <div class="@([{ 'jk-pagination': true, 'is-background': props.background, small: props.small }, props.class])">
+        <div
+            class="@([{ 'jk-pagination': true, 'is-background': props.background, small: props.small }, props.class, props.align])">
             @for(let item of layoutLeft) {
                 <component
                     name="@item"
@@ -69,6 +70,7 @@ export default class extends Component<{
     pageSizes: Array<number>;
     prevText: string;
     nextText: string;
+    align: string;
     layout: string[];
 }> {
     name = componentName("pagination");
@@ -79,7 +81,8 @@ export default class extends Component<{
         pagerCount: { default: 7, type: Number },
         pageSizes: [10, 20, 30, 40, 50, 100],
         layout: ["prev", "pager", "next"],
-        total: Number
+        total: Number,
+        align: "center"
     };
 
     created() {
@@ -267,6 +270,18 @@ export default class extends Component<{
         :deep(.jk-pagination-jumper) {
             font-size: 12px;
         }
+    }
+
+    &.left {
+        text-align: left;
+    }
+
+    &.right {
+        text-align: right;
+    }
+
+    &.center {
+        text-align: center;
     }
 }
 </style>
