@@ -179,7 +179,6 @@ export default class extends FormCtrl<{
         }
 
         if (this.props.range) {
-            debugger;
             if (Array.isArray(this.model.value)) {
                 this.model.startValue = Math.max(this.props.min!, this.model.value[0]);
                 this.model.endValue = Math.min(this.props.max!, this.model.value[1]);

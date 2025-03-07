@@ -115,7 +115,6 @@ export default class extends FormCtrl<{
         this.model.focus = false;
     }
     handleChange(e: VNode.Event) {
-        debugger;
         if (this.group) {
             this.value = !this.value;
             this.group?.component.handleChange(e);
