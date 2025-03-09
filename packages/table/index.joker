@@ -266,7 +266,7 @@ export default class extends Component<{
     }
 
     getSelectRow() {
-        return this.store.data.selectedRows;
+        return Array.from(this.store.data.selectedRows);
     }
 
     clearSelectedRow() {
