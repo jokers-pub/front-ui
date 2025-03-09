@@ -1,6 +1,6 @@
 {
     "name": "@joker.front/ui",
-    "version": "1.0.273",
+    "version": "1.0.274",
     "description": "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件",
     "author": "Zohar",
     "license": "MIT",
@@ -16,10 +16,6 @@
         "./types/*": "./types/*",
         "./package.json": "./package.json",
         "./index.css": "./dist/index.css"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/jokers-pub/front-ui.git"
     },
     "homepage": "https://ui.jokers.pub",
     "keywords": [
