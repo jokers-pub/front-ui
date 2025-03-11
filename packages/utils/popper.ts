@@ -437,7 +437,7 @@ export class Popper {
             };
 
             //错误的边界 不做样式更新。
-            if (styles.left <= 0 || styles.top <= 0) return;
+            if (styles.left <= 0 && styles.top <= 0) return;
 
             Object.assign(styles, data.styles);
 
