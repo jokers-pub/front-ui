@@ -2,6 +2,7 @@
     @if(model.show) {
         <div
             class="jk-dropdown-menu jk-popper @(props.size||'')"
+            style="@({ maxHeight: props.maxHeight })"
             ref="menu"
             append-to="body"
             transition-name="jk-zoom-in-top"
@@ -19,6 +20,7 @@ import { componentName } from "../utils";
 
 export default class extends Component<{
     size: string;
+    maxHeight: string;
     placement: string;
 }> {
     model = {
@@ -88,6 +90,7 @@ export default class extends Component<{
 .jk-dropdown-menu {
     background-color: #fff;
     padding: 10px 0;
+    overflow: auto;
     position: fixed;
     border: solid 1px var(--jk-border-color-lighter);
     border-radius: 5px;
