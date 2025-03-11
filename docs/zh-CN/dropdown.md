@@ -64,6 +64,7 @@
 | --------- | -------- | ------ | --------------------------------------------------------------------------------------------------------- | ------------ |
 | size      | 菜单尺寸 | string | medium / small / mini                                                                                     | -            |
 | placement | 菜单位置 | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start |
+| maxHeight | 最大高度 | string | -                                                                                                         | -            |
 
 ### Dropdown Menu Item Attributes
 

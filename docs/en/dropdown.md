@@ -54,6 +54,7 @@ The `dropdown-menu` can also be configured with the `size` attribute to control 
 | --------- | ------------- | ------ | --------------------------------------------------------------------------------------------------------- | ------------- |
 | size      | Menu size     | string | medium / small / mini                                                                                     | -             |
 | placement | Menu position | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start  |
+| maxHeight | max height    | string | -                                                                                                         | -             |
 
 ### Dropdown Menu Item Attributes
 

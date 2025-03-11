@@ -105,7 +105,13 @@ export default class extends Component {
         },
         {
             content: &quot;Nodes with default styles&quot;,
-            timestamp: &quot;2018-04-03 20:46&quot;
+            timestamp: &quot;2018-04-03 20:46&quot;,
+            size: &quot;small&quot;
+        },
+        {
+            content: &quot;Nodes with default styles&quot;,
+            timestamp: &quot;2018-04-03 20:46&quot;,
+            size: &quot;mini&quot;
         }
     ];
 }

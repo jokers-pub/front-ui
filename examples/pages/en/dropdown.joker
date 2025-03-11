@@ -396,6 +396,13 @@ The available size types include: <code>medium</code>, <code>small</code>, <code
 <td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
 <td>bottom-start</td>
 </tr>
+<tr>
+<td>maxHeight</td>
+<td>max height</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 <h3>Dropdown Menu Item Attributes</h3>
