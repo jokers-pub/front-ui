@@ -564,6 +564,84 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
 </DemoContainer>
+<h3>Non-associated Mode</h3>
+<p>Enable the non-associated mode by turning on the <code>check-strictly</code> field. When checkboxes are displayed, it determines whether to strictly follow the practice of not associating parent and child elements with each other.</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo7)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-tree data=&quot;@treeData&quot; ref=&quot;tree&quot; default-expand-all checkStrictly show-checkbox /&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    treeData = [
+        {
+            label: &quot;Level 1 - 1&quot;,
+            children: [
+                {
+                    label: &quot;Level 2 - 1-1&quot;,
+                    disabled: true,
+                    children: [
+                        {
+                            label: &quot;Level 3 - 1-1-1&quot;
+                        },
+                        {
+                            label: &quot;Level 3 - 1-1-2&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: &quot;Level 1 - 2&quot;,
+            children: [
+                {
+                    label: &quot;Level 2 - 2-1&quot;,
+                    disabled: true,
+                    children: [
+                        {
+                            label: &quot;Level 3 - 2-1-1&quot;
+                        }
+                    ]
+                },
+                {
+                    label: &quot;Level 2 - 2-2&quot;,
+                    children: [
+                        {
+                            label: &quot;Level 3 - 2-2-1&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: &quot;Level 1 - 3&quot;,
+            children: [
+                {
+                    label: &quot;Level 2 - 3-1&quot;,
+                    children: [
+                        {
+                            label: &quot;Level 3 - 3-1-1&quot;
+                        }
+                    ]
+                },
+                {
+                    label: &quot;Level 2 - 3-2&quot;,
+                    children: [
+                        {
+                            label: &quot;Level 3 - 3-2-1&quot;
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
 <h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
@@ -758,6 +836,13 @@ export default class extends Component {
 <td>—</td>
 <td>—</td>
 </tr>
+<tr>
+<td>check-strictly</td>
+<td>Whether, when checkboxes are displayed, the practice of ensuring that parent and child elements are not associated with each other strictly is followed.</td>
+<td>boolean</td>
+<td>-</td>
+<td>false</td>
+</tr>
 </tbody>
 </table>
 <h3>Methods</h3>
@@ -924,6 +1009,7 @@ The <code>Tree</code> has the following methods:</p>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo7 from '../../components/tree/demo7.joker';
 import DEMO_JOKER_demo6 from '../../components/tree/demo6.joker';
 import DEMO_JOKER_demo5 from '../../components/tree/demo5.joker';
 import DEMO_JOKER_demo4 from '../../components/tree/demo4.joker';
@@ -933,6 +1019,7 @@ import DEMO_JOKER_demo1 from '../../components/tree/demo1.joker';
 export default class extends Component {
 components={
 BottomNav,
+DEMO_JOKER_demo7,
 DEMO_JOKER_demo6,
 DEMO_JOKER_demo5,
 DEMO_JOKER_demo4,

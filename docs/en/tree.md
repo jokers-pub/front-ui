@@ -42,6 +42,12 @@ Enable the drag-and-drop function of tree nodes by enabling the `draggable` fiel
 
 !!!demo6!!!
 
+### Non-associated Mode
+
+Enable the non-associated mode by turning on the `check-strictly` field. When checkboxes are displayed, it determines whether to strictly follow the practice of not associating parent and child elements with each other.
+
+!!!demo7!!!
+
 ### Attributes
 
 | Parameter             | Description                                                                                                                                                                          | Type                    | Optional Values | Default Value |
@@ -72,6 +78,7 @@ Enable the drag-and-drop function of tree nodes by enabling the `draggable` fiel
 | draggable             | Whether to enable the drag-and-drop function                                                                                                                                         | boolean                 | —               | —             |
 | checkDraggabled       | Method to check whether a node is allowed to be dragged. It returns `true`/`false` to determine whether the current node can be dragged                                              | function                | —               | —             |
 | checkCanDropIn        | Whether the current node allows dropping in. If dropping in is allowed, the `drapp` event `position` will return `in` to indicate dropping in                                        | function                | —               | —             |
+| check-strictly        | Whether, when checkboxes are displayed, the practice of ensuring that parent and child elements are not associated with each other strictly is followed.                             | boolean                 | -               | false         |
 
 ### Methods
 

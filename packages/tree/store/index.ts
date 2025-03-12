@@ -30,6 +30,8 @@ export type TreeStoreOption = {
     virtualKey: string;
     /** 过滤函数 */
     filterMethod?: Function;
+    /** 非严格模式，checkbox不做上下级关联 */
+    checkStrictly?: boolean;
 };
 
 export class TreeStore {

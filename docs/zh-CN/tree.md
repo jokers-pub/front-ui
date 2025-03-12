@@ -42,6 +42,12 @@
 
 !!!demo6!!!
 
+### 非关联模式
+
+通过开启`check-strictly`字段来开启非关联模式，在显示复选框的情况下，是否严格的遵循父子不互相关联的做法。
+
+!!!demo7!!!
+
 ### Attributes
 
 | 参数                  | 说明                                                                                                             | 类型                    | 可选值 | 默认值        |
@@ -72,6 +78,7 @@
 | draggable             | 是否开启拖拽功能                                                                                                 | boolean                 | —      | —             |
 | checkDraggabled       | 节点是否允许拖动检查方法，该返回 true/false 来决定当前节点是否可拖动                                             | function                | —      | —             |
 | checkCanDropIn        | 当前节点是否允许拖入，如果允许拖入，则 drapp 事件 position 位置会返回 in 来决定是否是拖入                        | function                | —      | —             |
+| check-strictly        | 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法                                                         | boolean                 | -      | false         |
 
 ### Methods
 

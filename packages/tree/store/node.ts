@@ -81,7 +81,10 @@ export class TreeNode {
     }
 
     get disabled(): boolean {
-        return !!(this.nodeData?.[this.store.option.disabledKey] || this.parent?.disabled);
+        return !!(
+            this.nodeData?.[this.store.option.disabledKey] ||
+            (!this.store.option.checkStrictly && this.parent?.disabled)
+        );
     }
 
     get virtual(): boolean {
@@ -161,7 +164,7 @@ export class TreeNode {
         this.checked = checked === true;
 
         let descendants = () => {
-            if (deep) {
+            if (deep && !this.store.option.checkStrictly) {
                 for (let child of this.children) {
                     if (child.virtual) continue;
                     passValue ||= checked !== false;
@@ -187,7 +190,7 @@ export class TreeNode {
             });
         } else {
             let state = getChildState(this.children);
-            if (!this.isLeaf && !state.all && state.allWithoutDisabled) {
+            if (!this.isLeaf && !state.all && state.allWithoutDisabled && !this.store.option.checkStrictly) {
                 this.checked = false;
                 checked = false;
             }
@@ -195,7 +198,7 @@ export class TreeNode {
             descendants();
         }
 
-        if (!this.parent || this.parent.level === 0) return;
+        if (!this.parent || this.parent.level === 0 || this.store.option.checkStrictly) return;
 
         if (!norRecursion) {
             reSetChecked(this.parent);
