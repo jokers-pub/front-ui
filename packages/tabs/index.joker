@@ -142,7 +142,7 @@ export default class extends Component<{
         white-space: nowrap;
         position: relative;
         transition: 0.3s;
-        overflow: auto;
+
         /* 自定义滚动条样式 */
         /* WebKit 内核浏览器（Chrome、Safari 等） */
         &::-webkit-scrollbar {
@@ -221,7 +221,7 @@ export default class extends Component<{
         flex-direction: column-reverse;
         > .jk-tabs-menus {
             margin: 10px 0 0 0;
-            overflow-y: hidden;
+
             border-top: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: -2px;
@@ -240,7 +240,7 @@ export default class extends Component<{
         > .jk-tabs-menus {
             flex-direction: column;
             margin: 0 0 0 15px;
-            overflow-x: hidden;
+
             border-left: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: 0;
@@ -258,7 +258,7 @@ export default class extends Component<{
         > .jk-tabs-menus {
             flex-direction: column;
             margin: 0 15px 0 0;
-            overflow-x: hidden;
+
             border-right: solid 2px var(--jk-border-color-light);
             .bottom-line {
                 top: 0;
