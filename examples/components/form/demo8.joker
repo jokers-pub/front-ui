@@ -4,6 +4,7 @@
             <jk-input
                 name="age"
                 status-icon
+                clearable
                 validate="@([Global.isRequired(), Global.isInt(), validateAge])"
                 placeholder="Please enter your age"
             />

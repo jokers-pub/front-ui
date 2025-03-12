@@ -64,10 +64,10 @@
                 @if(showClear) {
                     <i class="clear jk-icon-circle-close" @mousedown.stop @click.stop="clear" />
                 }
-                @if(isWordLimitVisible) {
+                else if(isWordLimitVisible) {
                     <span class="count"><span class="inner">@(textLength)/@(props.maxlength)</span></span>
                 }
-                @if(formItemOption && formItemOption.ctrl.validateState.value) {
+                else if(formItemOption && formItemOption.ctrl.validateState.value) {
                     <i class="validate @validateIcon" />
                 }
             </span>
@@ -205,6 +205,7 @@ export default class extends FormCtrl<{
         this.$trigger("input", this.value);
         this.$trigger("change", this.value);
         this.$trigger("clear");
+        this.$trigger("validate");
     }
 
     focus() {
