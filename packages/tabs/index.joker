@@ -208,7 +208,6 @@ export default class extends Component<{
         > .jk-tabs-menus {
             margin: 0 0 15px 0;
             border-bottom: solid 2px var(--jk-border-color-light);
-            overflow-y: hidden;
             .bottom-line {
                 bottom: -2px;
                 left: 0;
