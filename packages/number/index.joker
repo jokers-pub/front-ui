@@ -360,6 +360,7 @@ export default class extends FormCtrl<{
     line-height: 38px;
 
     &.full-width {
+        display: block;
         width: 100%;
     }
     :deep(.jk-input) {
@@ -451,9 +452,7 @@ export default class extends FormCtrl<{
     &.small {
         width: 130px;
         line-height: 29px;
-        &.full-width {
-            width: 100%;
-        }
+
         .increase,
         .decrease {
             width: 32px;
@@ -482,9 +481,7 @@ export default class extends FormCtrl<{
     &.mini {
         width: 130px;
         line-height: 25px;
-        &.full-width {
-            width: 100%;
-        }
+
         .increase,
         .decrease {
             width: 28px;
