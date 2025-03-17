@@ -1,7 +1,6 @@
 <template>
-    <div
-        class="jk-form-item @(props.required?'is-required':'') @sizeClass @(props.class||'') @(props.inline?'inline':'')">
-        @if(props.label || $sections.label) {
+    <div class="jk-form-item @(props.required?'is-required':'') @sizeClass @(props.class||'') @(isInline?'inline':'')">
+        @if(props.label || !isInline || $sections.label) {
             <label style="@labelStyle">
                 @if($sections.label) {
                     @RenderSection("label")
@@ -59,6 +58,9 @@ export default class extends Component<{
         return form;
     }
 
+    get isInline() {
+        return this.form?.props.inline ?? this.props.inline;
+    }
     get labelStyle() {
         if (this.form?.props.labelPosition === "top") return {};
 
