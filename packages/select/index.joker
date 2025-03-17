@@ -803,7 +803,7 @@ export default class extends FormCtrl<{
     display: inline-block;
     position: relative;
     &.full-width {
-        width: 100%;
+        display: block;
     }
     &:hover {
         :deep(.jk-input:not(.is-disabled) input) {
