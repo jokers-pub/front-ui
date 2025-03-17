@@ -16,7 +16,7 @@
                 }
             </label>
         }
-        <div class="content" style="@contentStyle">
+        <div class="content">
             @RenderSection()
             @if(model.errorMessage) {
                 @if($sections.error) {
@@ -69,16 +69,6 @@ export default class extends Component<{
         };
     }
 
-    get contentStyle() {
-        if (this.form?.props.labelPosition === "top" || this.form?.props.inline || this.props.inline) return {};
-
-        let labelWidth = this.props.labelWidth || this.form?.props.labelWidth || DEFAULT_LABEL_WIDTH;
-
-        return {
-            marginLeft: labelWidth
-        };
-    }
-
     get sizeClass() {
         return this.form?.props.size || "";
     }
@@ -99,11 +89,10 @@ export default class extends Component<{
 .jk-form-item {
     margin-bottom: 15px;
     text-align: left;
+    display: flex;
     :deep(.jk-form-item) {
         margin-bottom: 0;
     }
-
-    @include clearfix;
 
     > label {
         text-align: right;
@@ -124,7 +113,7 @@ export default class extends Component<{
         line-height: 40px;
         position: relative;
         font-size: 14px;
-        @include clearfix;
+        flex: 1;
 
         > .error {
             color: var(--jk-color-danger);
