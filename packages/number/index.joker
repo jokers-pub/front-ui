@@ -361,7 +361,7 @@ export default class extends FormCtrl<{
 
     &.full-width {
         display: block;
-        width: 100%;
+        width: 100% !important;
     }
     :deep(.jk-input) {
         input {
