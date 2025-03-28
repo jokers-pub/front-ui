@@ -208,6 +208,11 @@ export default class extends Component {
 <td>用于主动隐藏，调用该方法不会参与<code>closeDelay</code>防抖机制中</td>
 <td>-</td>
 </tr>
+<tr>
+<td>updatePosition</td>
+<td>用于主动更新窗口的位置，一般用于当内部展示内容变化时，可以通过该方法实现位置重新计算</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 

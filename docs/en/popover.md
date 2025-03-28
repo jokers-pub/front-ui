@@ -44,7 +44,8 @@ You can nest various types of information in the Popover. The following is an ex
 
 ### Methods
 
-| Method Name | Description                                                                                            | Parameter |
-| ----------- | ------------------------------------------------------------------------------------------------------ | --------- |
-| show        | Can be used to display in manual mode                                                                  | -         |
-| hide        | Used to actively hide. Calling this method will not be involved in the `closeDelay` debounce mechanism | -         |
+| Method Name    | Description                                                                                                                                                          | Parameter |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| show           | Can be used to display in manual mode                                                                                                                                | -         |
+| hide           | Used to actively hide. Calling this method will not be involved in the `closeDelay` debounce mechanism                                                               | -         |
+| updatePosition | It is used to actively update the position of the window. Generally, when the content displayed inside changes, this method can be used to recalculate the position. | -         |

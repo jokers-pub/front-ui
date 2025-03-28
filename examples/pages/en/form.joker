@@ -541,6 +541,7 @@ export default class extends Component {
             &lt;jk-input
                 name=&quot;age&quot;
                 status-icon
+                clearable
                 validate=&quot;@([Global.isRequired(), Global.isInt(), validateAge])&quot;
                 placeholder=&quot;Please enter your age&quot;
             /&gt;

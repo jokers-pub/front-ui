@@ -208,6 +208,11 @@ export default class extends Component {
 <td>Used to actively hide. Calling this method will not be involved in the <code>closeDelay</code> debounce mechanism</td>
 <td>-</td>
 </tr>
+<tr>
+<td>updatePosition</td>
+<td>It is used to actively update the position of the window. Generally, when the content displayed inside changes, this method can be used to recalculate the position.</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 
