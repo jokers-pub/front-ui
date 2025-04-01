@@ -5,7 +5,8 @@
         aria-checked="@checked"
         aria-disabled="@props.disabled"
         tabindex="@tabIndex"
-        @click.space.stop.prevent="handleClick">
+        @keydown.space.prevent="handleClick"
+        @click.prevent="handleClick">
         <input
             ref="switch"
             type="checkbox"
