@@ -27,6 +27,7 @@ Popover 的属性与 Tooltip 很类似，因此对于重复属性，请参考 To
 | offset      | 出现位置的偏移量                          | Number         | —                                                                                                         | 0              |
 | open-delay  | 触发方式为 hover 时的显示延迟，单位为毫秒 | Number         | —                                                                                                         | —              |
 | close-delay | 触发方式为 hover 时的隐藏延迟，单位为毫秒 | number         | —                                                                                                         | 200            |
+| appendTo    | 元素输出容器                              | string         | —                                                                                                         | body           |
 
 ### Sections
 

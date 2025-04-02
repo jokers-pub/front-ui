@@ -145,6 +145,13 @@ export default class extends Component {
 <td>—</td>
 <td>200</td>
 </tr>
+<tr>
+<td>appendTo</td>
+<td>元素输出容器</td>
+<td>string</td>
+<td>—</td>
+<td>body</td>
+</tr>
 </tbody>
 </table>
 <h3>Sections</h3>

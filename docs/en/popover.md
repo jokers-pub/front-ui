@@ -27,6 +27,7 @@ You can nest various types of information in the Popover. The following is an ex
 | offset      | Offset of the appearance position                                        | Number         | —                                                                                                         | 0                   |
 | open-delay  | Display delay in milliseconds when the trigger method is hover           | Number         | —                                                                                                         | —                   |
 | close-delay | Hidden delay in milliseconds when the trigger method is hover            | number         | —                                                                                                         | 200                 |
+| appendTo    | Element output container                                                 | string         | —                                                                                                         | body                |
 
 ### Sections
 
