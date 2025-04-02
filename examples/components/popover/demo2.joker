@@ -1,6 +1,16 @@
 <template>
-    <jk-popover trigger="click" title="I have a nested component inside" placement="right" width="350px">
+    <jk-popover trigger="hover" title="I have a nested component inside" placement="right" width="350px">
         <jk-skeleton rows="6" animated />
+        <jk-popover
+            trigger="hover"
+            appendTo=""
+            title="This is a nested window, and it won't disappear when you move the mouse over it. "
+            placement="right"
+            width="350px">
+            @section("reference") {
+                <jk-button>nested pop-up window</jk-button>
+            }
+        </jk-popover>
         @section("reference") {
             <jk-button>Activate on click</jk-button>
         }
