@@ -2,7 +2,7 @@
     @if(model.show) {
         <div
             class="jk-popover jk-popper"
-            append-to="body"
+            append-to="@props.appendTo"
             ref="popper"
             id="@id"
             role="tooltip"
@@ -44,6 +44,7 @@ export default class extends Component<{
     placement: string;
     offset: number;
     width: string;
+    appendTo?: string;
 }> {
     propsOption = {
         closeDelay: 200,
@@ -53,6 +54,7 @@ export default class extends Component<{
             default: 0
         },
         placement: "top",
+        appendTo: "body",
         offset: {
             type: Number,
             default: 0
