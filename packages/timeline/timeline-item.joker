@@ -65,10 +65,10 @@ export default class extends Component<{
         padding-left: 28px;
         top: -3px;
         .content {
-            color: #303133;
+            color: var(--jk-color-text-regular);
         }
         .timestamp {
-            color: #909399;
+            color: var(--jk-color-text-secondary);
             line-height: 1;
             font-size: 13px;
             &.is-top {
@@ -85,18 +85,18 @@ export default class extends Component<{
         left: 4px;
         top: 5px;
         height: 100%;
-        border-left: 2px solid #e4e7ed;
+        border-left: 2px solid var(--jk-background-color-base);
     }
     .node {
         position: absolute;
-        background-color: #e4e7ed;
+        background-color: var(--jk-background-color-base);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         top: 5px;
         .icon {
-            color: #fff;
+            color: var(--jk-background-color-default);
             font-size: 13px;
         }
         &.normal {
@@ -120,23 +120,23 @@ export default class extends Component<{
             height: 8px;
         }
         &.primary {
-            background-color: #409eff;
+            background-color: var(--jk-color-primary);
         }
 
         &.success {
-            background-color: #67c23a;
+            background-color: var(--jk-color-success);
         }
 
         &.warning {
-            background-color: #e6a23c;
+            background-color: var(--jk-color-warning);
         }
 
         &.danger {
-            background-color: #f56c6c;
+            background-color: var(--jk-color-danger);
         }
 
         &.info {
-            background-color: #909399;
+            background-color: var(--jk-color-info);
         }
     }
     .dot {
