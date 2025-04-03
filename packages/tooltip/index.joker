@@ -197,13 +197,13 @@ export default class extends Component<{
         .popper_arrow {
             bottom: -6px;
             border-bottom-width: 0;
-            border-top-color: var(--jk-color-text-primary);
+            border-top-color: var(--jk-tooltip-background);
 
             &::after {
                 bottom: 1px;
                 margin-left: -5px;
                 border-bottom-width: 0;
-                border-top-color: var(--jk-color-text-primary);
+                border-top-color: var(--jk-tooltip-background);
             }
         }
     }
@@ -213,13 +213,13 @@ export default class extends Component<{
         .popper_arrow {
             top: -6px;
             border-top-width: 0;
-            border-bottom-color: var(--jk-color-text-primary);
+            border-bottom-color: var(--jk-tooltip-background);
 
             &::after {
                 top: 1px;
                 margin-left: -5px;
                 border-top-width: 0;
-                border-bottom-color: var(--jk-color-text-primary);
+                border-bottom-color: var(--jk-tooltip-background);
             }
         }
     }
@@ -229,13 +229,13 @@ export default class extends Component<{
         .popper_arrow {
             left: -6px;
             border-left-width: 0;
-            border-right-color: var(--jk-color-text-primary);
+            border-right-color: var(--jk-tooltip-background);
 
             &::after {
                 left: 1px;
                 bottom: -5px;
                 border-left-width: 0;
-                border-right-color: var(--jk-color-text-primary);
+                border-right-color: var(--jk-tooltip-background);
             }
         }
     }
@@ -245,30 +245,30 @@ export default class extends Component<{
         .popper_arrow {
             right: -6px;
             border-right-width: 0;
-            border-left-color: var(--jk-color-text-primary);
+            border-left-color: var(--jk-tooltip-background);
 
             &::after {
                 right: 1px;
                 bottom: -5px;
                 margin-left: -5px;
                 border-right-width: 0;
-                border-left-color: var(--jk-color-text-primary);
+                border-left-color: var(--jk-tooltip-background);
             }
         }
     }
 
     &.is-dark {
-        background: var(--jk-color-text-primary);
+        background: var(--jk-tooltip-background);
         color: #fff;
     }
 
     &.is-light {
         background: var(--jk-background-color-default);
-        border: solid 1px var(--jk-color-text-primary);
+        border: solid 1px var(--jk-tooltip-background);
 
         &[x-placement^="left"] {
             .popper_arrow {
-                border-left-color: var(--jk-color-text-primary);
+                border-left-color: var(--jk-tooltip-background);
 
                 &::after {
                     border-left-color: #fff;
@@ -277,7 +277,7 @@ export default class extends Component<{
         }
         &[x-placement^="right"] {
             .popper_arrow {
-                border-right-color: var(--jk-color-text-primary);
+                border-right-color: var(--jk-tooltip-background);
 
                 &::after {
                     border-right-color: #fff;
@@ -286,7 +286,7 @@ export default class extends Component<{
         }
         &[x-placement^="top"] {
             .popper_arrow {
-                border-top-color: var(--jk-color-text-primary);
+                border-top-color: var(--jk-tooltip-background);
 
                 &::after {
                     border-top-color: #fff;
@@ -295,7 +295,7 @@ export default class extends Component<{
         }
         &[x-placement^="bottom"] {
             .popper_arrow {
-                border-bottom-color: var(--jk-color-text-primary);
+                border-bottom-color: var(--jk-tooltip-background);
 
                 &::after {
                     border-bottom-color: #fff;
