@@ -219,7 +219,7 @@ export default class extends PickerPanel<{
     color: var(--jk-color-text-regular);
     border: 1px solid var(--jk-border-color-light);
     box-shadow: var(--jk-box-shadow-light);
-    background: #fff;
+    background: var(--jk-background-color-default);
     border-radius: 2px;
     margin: 5px 0;
     user-select: none;

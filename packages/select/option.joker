@@ -150,7 +150,7 @@ export default class extends Component<{
     }
     &.selected {
         color: var(--jk-color-primary);
-        background-color: #fff;
+        background-color: var(--jk-background-color-default);
 
         &.hover {
             background-color: var(--jk-background-color-base);

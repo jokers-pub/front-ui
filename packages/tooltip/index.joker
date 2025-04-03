@@ -263,7 +263,7 @@ export default class extends Component<{
     }
 
     &.is-light {
-        background: #fff;
+        background: var(--jk-background-color-default);
         border: solid 1px var(--jk-color-text-primary);
 
         &[x-placement^="left"] {

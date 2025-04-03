@@ -136,7 +136,7 @@ export default class extends Component<{
     }
     .body {
         color: #606266;
-        background-color: #fff;
+        background-color: var(--jk-background-color-default);
         .table {
             border-collapse: collapse;
             width: 100%;

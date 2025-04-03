@@ -115,7 +115,7 @@ export default class extends Component<PropsType> {
 
     li {
         padding: 0 4px;
-        background: #fff;
+        background: var(--jk-background-color-default);
         vertical-align: top;
         display: inline-block;
         font-size: 13px;

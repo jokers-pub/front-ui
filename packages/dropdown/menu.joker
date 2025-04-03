@@ -88,7 +88,7 @@ export default class extends Component<{
 
 <style lang="scss" scoped>
 .jk-dropdown-menu {
-    background-color: #fff;
+    background-color: var(--jk-background-color-default);
     padding: 10px 0;
     overflow: auto;
     position: fixed;

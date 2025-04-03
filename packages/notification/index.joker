@@ -148,7 +148,7 @@ export default class extends Component<PropsOption> {
     box-sizing: border-box;
     border: solid 1px var(--jk-border-color-lighter);
     position: fixed;
-    background-color: #fff;
+    background-color: var(--jk-background-color-default);
     box-shadow: var(--jk-box-shadow-light);
     transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s;
     overflow: hidden;

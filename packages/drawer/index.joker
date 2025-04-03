@@ -90,7 +90,7 @@ export default class extends Component<{
     .container {
         position: absolute;
         box-sizing: border-box;
-        background: #fff;
+        background: var(--jk-background-color-default);
         display: flex;
         flex-direction: column;
         overflow: hidden;

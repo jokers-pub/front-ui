@@ -176,7 +176,7 @@ export default class extends Component<{
     .dialog-box {
         position: relative;
         margin: 0px auto;
-        background: #fff;
+        background: var(--jk-background-color-default);
         border-radius: 2px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         box-sizing: border-box;

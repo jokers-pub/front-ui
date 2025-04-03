@@ -248,7 +248,7 @@ export default class extends Component<{
 .jk-cascader-dropdown {
     border: solid 1px var(--jk-border-color-light);
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--jk-background-color-default);
     box-shadow: var(--jk-box-shadow-light);
     box-sizing: border-box;
     margin: 5px 0;

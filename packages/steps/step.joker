@@ -219,7 +219,7 @@ export default class extends Component<{ title: string; icon: string; descriptio
             height: 20px;
             font-size: 14px;
             box-sizing: border-box;
-            background: #fff;
+            background: var(--jk-background-color-default);
             transition: 0.15s ease-out;
             &.is-text {
                 border-radius: 50%;

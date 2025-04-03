@@ -189,7 +189,7 @@ export default class extends FormCtrl<{
             color: var(--jk-color-text-placeholder);
             cursor: not-allowed;
             background-image: none;
-            background-color: #fff;
+            background-color: var(--jk-background-color-default);
             border-color: var(--jk-border-color-lighter);
             box-shadow: none;
         }

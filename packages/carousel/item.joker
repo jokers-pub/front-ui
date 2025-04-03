@@ -178,7 +178,7 @@ export default class extends Component {
         height: 100%;
         top: 0;
         left: 0;
-        background-color: #fff;
+        background-color: var(--jk-background-color-default);
         opacity: 0.24;
         transition: 0.2s;
     }

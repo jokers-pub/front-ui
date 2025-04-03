@@ -90,7 +90,7 @@ export default class extends Component<{
 <style lang="scss" scoped>
 .jk-backtop {
     position: fixed;
-    background-color: #fff;
+    background-color: var(--jk-background-color-default);
     width: 40px;
     height: 40px;
     border-radius: 50%;

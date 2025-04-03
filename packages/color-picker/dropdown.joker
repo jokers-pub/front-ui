@@ -92,7 +92,7 @@ export default class extends Component<{ color: Color; showAlpha: boolean }> {
     box-sizing: content-box;
     padding: 6px;
     z-index: 10;
-    background: #fff;
+    background: var(--jk-background-color-default);
     border: solid 1px var(--jk-border-color-lighter);
     border-radius: 4px;
     box-shadow: var(--jk-box-shadow-light);

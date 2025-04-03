@@ -458,7 +458,7 @@ export default class extends Component<{
                 opacity: 0.48;
                 width: 30px;
                 height: 2px;
-                background-color: #fff;
+                background-color: var(--jk-background-color-default);
                 border: none;
                 outline: none;
                 padding: 0;

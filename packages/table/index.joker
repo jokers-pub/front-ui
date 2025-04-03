@@ -317,7 +317,7 @@ export default class extends Component<{
     flex: 1;
     width: 100%;
     max-width: 100%;
-    background: #fff;
+    background: var(--jk-background-color-default);
     font-size: 14px;
     color: var(--jk-color-text-regular);
     position: relative;

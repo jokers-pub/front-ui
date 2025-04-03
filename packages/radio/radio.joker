@@ -313,7 +313,7 @@ export default class extends FormCtrl<{
                 width: 4px;
                 height: 4px;
                 border-radius: 100%;
-                background-color: #fff;
+                background-color: var(--jk-background-color-default);
                 content: "";
                 position: absolute;
                 left: 50%;

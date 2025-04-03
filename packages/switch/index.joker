@@ -166,7 +166,7 @@ export default class extends FormCtrl<{
             transition: all 0.3s;
             width: 16px;
             height: 16px;
-            background-color: #fff;
+            background-color: var(--jk-background-color-default);
         }
     }
     &.is-checked {

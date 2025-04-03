@@ -232,7 +232,7 @@ export default class extends FormCtrl<{
         box-sizing: border-box;
         width: 100%;
         font-size: inherit;
-        background-color: #fff;
+        background-color: var(--jk-background-color-default);
         background-image: none;
         border-radius: 4px;
 
@@ -275,7 +275,7 @@ export default class extends FormCtrl<{
 
     .count {
         color: var(--jk-color-info);
-        background: #fff;
+        background: var(--jk-background-color-default);
         position: absolute;
         font-size: 12px;
         bottom: 5px;

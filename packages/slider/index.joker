@@ -446,7 +446,7 @@ export default class extends FormCtrl<{
             height: 6px;
             width: 6px;
             border-radius: 100%;
-            background-color: #fff;
+            background-color: var(--jk-background-color-default);
             transform: translateX(-50%);
         }
 

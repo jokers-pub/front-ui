@@ -99,7 +99,7 @@ export default class extends Component<{
     box-sizing: border-box;
     border-radius: 4px;
     position: relative;
-    background-color: #fff;
+    background-color: var(--jk-background-color-default);
     overflow: hidden;
     opacity: 1;
     display: flex;

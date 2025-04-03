@@ -256,7 +256,7 @@ tr {
         box-sizing: border-box;
         vertical-align: middle;
 
-        background: #fff;
+        background: var(--jk-background-color-default);
         .cell {
             display: inline-block;
             box-sizing: border-box;

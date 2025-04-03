@@ -107,13 +107,13 @@ export default class extends Component<{
 
     &.is-plain {
         color: var(--jk-color-#{$color});
-        background-color: #fff;
+        background-color: var(--jk-background-color-default);
 
         &.is-disabled {
             &,
             &:hover {
                 color: var(--jk-color-#{$color});
-                background-color: #fff;
+                background-color: var(--jk-background-color-default);
             }
         }
         &:focus {
@@ -199,7 +199,7 @@ export default class extends Component<{
     &.is-plain {
         &:hover,
         &:focus {
-            background: #fff;
+            background: var(--jk-background-color-default);
             border-color: var(--jk-color-primary);
             color: var(--jk-color-primary);
             opacity: 1;
@@ -213,7 +213,7 @@ export default class extends Component<{
                 opacity: 0.5;
                 border-color: var(--jk-border-color-base);
                 color: var(--jk-button-default-font-color);
-                background-color: #fff;
+                background-color: var(--jk-background-color-default);
             }
         }
     }
