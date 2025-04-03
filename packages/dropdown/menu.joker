@@ -2,14 +2,15 @@
     @if(model.show) {
         <div
             class="jk-dropdown-menu jk-popper @(props.size||'')"
-            style="@({ maxHeight: props.maxHeight })"
             ref="menu"
             append-to="body"
             transition-name="jk-zoom-in-top"
             @click.outside="close"
             @mouseenter="clearTimeOut"
             @mouseleave="handleMouseLeave">
-            @RenderSection()
+            <div style="@({ maxHeight: props.maxHeight })">
+                @RenderSection()
+            </div>
         </div>
     }
 </template>
@@ -90,7 +91,6 @@ export default class extends Component<{
 .jk-dropdown-menu {
     background-color: var(--jk-background-color-default);
     padding: 10px 0;
-    overflow: auto;
     position: fixed;
     border: solid 1px var(--jk-border-color-lighter);
     border-radius: 5px;
@@ -107,7 +107,9 @@ export default class extends Component<{
             font-size: 14px;
         }
     }
-
+    > div {
+        overflow: auto;
+    }
     &.small {
         padding: 6px 0;
 
