@@ -85,7 +85,7 @@ export default class extends Component<{
     right: 0;
     overflow: hidden;
     margin: 0;
-    background: rgba(175, 184, 193, 0.2);
+    background: var(--jk-modal-background-color);
 
     .container {
         position: absolute;
