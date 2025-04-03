@@ -18,6 +18,10 @@
         "./index.css": "./dist/index.css"
     },
     "homepage": "https://ui.jokers.pub",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jokers-pub/front-ui.git"
+    },
     "keywords": [
         "joker",
         "ui",
