@@ -20,6 +20,7 @@
             @focus="handleFocus"
             @blur="handleBlur"
             @change="handleChange"
+            @keydown="handleKeyDown"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"></textarea>
@@ -196,7 +197,11 @@ export default class extends FormCtrl<{
             this.handleInput(e);
         }
     }
+    handleKeydown(e: VNode.Event) {
+        if (this.model.isComposing) return;
 
+        this.$trigger("keydown", this.value, e);
+    }
     //#endregion
 
     private setNativeInputValue() {
