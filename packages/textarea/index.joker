@@ -197,7 +197,7 @@ export default class extends FormCtrl<{
             this.handleInput(e);
         }
     }
-    handleKeydown(e: VNode.Event) {
+    handleKeyDown(e: VNode.Event) {
         if (this.model.isComposing) return;
 
         this.$trigger("keydown", this.value, e);
