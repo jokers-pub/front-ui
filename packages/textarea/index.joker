@@ -115,7 +115,13 @@ export default class extends FormCtrl<{
 
         return result.join(";");
     }
-
+    clear() {
+        let inputEl = this.$getRef("input");
+        if (inputEl) {
+            this.value = "";
+            this.$getRef("input").output.value = "";
+        }
+    }
     focus() {
         this.$getRef("input")?.output.focus();
     }
