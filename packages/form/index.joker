@@ -271,14 +271,16 @@ export default class extends Component<{
                 cancal: false,
                 active: async function () {
                     let validateResut = await self._validateCtrlItem(ctrl).catch((e) => {
-                        if (e.type === "cancel validate") {
+                        if (e?.type === "cancel validate") {
                             return;
                         }
-                        let errMsg = "validate error:" + e?.message;
-                        self.showError(name, errMsg);
+                        if (e?.message) {
+                            let errMsg = "validate error:" + e?.message;
+                            self.showError(name, errMsg);
 
-                        logger.error(LOGTAG, "A forced exception occurred during Form validate inspection.", e);
-                        resolve({ name, error: errMsg });
+                            logger.error(LOGTAG, "A forced exception occurred during Form validate inspection.", e);
+                        }
+                        resolve({ name, error: e?.[name] || e?.message });
                     });
 
                     if (this.cancal) {
