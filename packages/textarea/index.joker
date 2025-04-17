@@ -77,6 +77,14 @@ export default class extends FormCtrl<{
         );
 
         this.resize();
+        if (this.props.autofocus) {
+            setTimeout(() => {
+                if (this.$root) {
+                    let input = this.$getRef("input")?.output;
+                    input?.focus();
+                }
+            });
+        }
     }
 
     get isWordLimitVisible() {
