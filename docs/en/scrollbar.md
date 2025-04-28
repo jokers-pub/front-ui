@@ -54,6 +54,6 @@ By using the `scrollTo` method, you can manually control the scrolling position 
 
 ### Events
 
-| Event Name | Description                                          | Callback Parameters                                                                                                                  |
-| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| scroll     | Triggered when the scroll-triggered position changes | {top:number,left:number,x:number,y:number}, where `x` and `y` represent the progress of the scrollbar in the corresponding direction |
+| Event Name | Description                                          | Callback Parameters                                                                                                                                         |
+| ---------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| scroll     | Triggered when the scroll-triggered position changes | {top:number,left:number,x:number,y:number,,isUserScroll?:boolean}, where `x` and `y` represent the progress of the scrollbar in the corresponding direction |
