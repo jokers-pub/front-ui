@@ -61,8 +61,18 @@ export default class extends Component {
 <p>You can nest various types of information in the Popover. The following is an example of nesting a table. Use <code>section</code> instead of the <code>content</code> attribute.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo2)">
 <pre><code class="language-html">&lt;template&gt;
-    &lt;jk-popover trigger=&quot;click&quot; title=&quot;I have a nested component inside&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
+    &lt;jk-popover trigger=&quot;hover&quot; title=&quot;I have a nested component inside&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
         &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
+        &lt;jk-popover
+            trigger=&quot;hover&quot;
+            appendTo=&quot;&quot;
+            title=&quot;This is a nested window, and it won't disappear when you move the mouse over it. &quot;
+            placement=&quot;right&quot;
+            width=&quot;350px&quot;&gt;
+            @section(&quot;reference&quot;) {
+                &lt;jk-button&gt;nested pop-up window&lt;/jk-button&gt;
+            }
+        &lt;/jk-popover&gt;
         @section(&quot;reference&quot;) {
             &lt;jk-button&gt;Activate on click&lt;/jk-button&gt;
         }

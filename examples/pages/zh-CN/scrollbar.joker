@@ -314,7 +314,7 @@ export default class extends Component {
 <tr>
 <td>scroll</td>
 <td>当滚动触发位置改变时触发</td>
-<td>{top:number,left:number,x:number,y:number}，其中 x，y 代表方向下滚动条进度</td>
+<td>{top:number,left:number,x:number,y:number,isUserScroll?:boolean}，其中 x，y 代表方向下滚动条进度</td>
 </tr>
 </tbody>
 </table>
