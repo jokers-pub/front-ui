@@ -1,5 +1,5 @@
 <script>
-import { Component, createCommand, createElement } from "@joker.front/core";
+import { Component, VNode, createCommand, createElement } from "@joker.front/core";
 import { scrollIntoView } from "../utils/scrollbar";
 import { addResizeListener, removeResizeListener } from "../utils/resize-event";
 import { componentName } from "../utils";
@@ -50,7 +50,7 @@ export default class extends Component<{
                             style: "@wrapStyle",
                             ref: "wrap",
                             class: "warp @(props.wrapClass||'')",
-                            "@scroll": "handleScroll"
+                            "@scroll": "handleScroll(true)"
                         },
                         [
                             createElement(
@@ -137,7 +137,7 @@ export default class extends Component<{
         }
     }
 
-    handleScroll() {
+    handleScroll(e?: VNode.Event, isUserScroll?: boolean) {
         let wrap = this.wrapEl;
 
         if (wrap) {
@@ -148,7 +148,8 @@ export default class extends Component<{
                 top: wrap.scrollTop,
                 left: wrap.scrollLeft,
                 y: wrap.scrollTop / (wrap.scrollHeight - wrap.clientHeight),
-                x: wrap.scrollLeft / (wrap.scrollWidth - wrap.clientWidth)
+                x: wrap.scrollLeft / (wrap.scrollWidth - wrap.clientWidth),
+                isUserScroll
             });
         }
     }
