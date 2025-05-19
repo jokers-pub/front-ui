@@ -47,10 +47,11 @@ By using the `scrollTo` method, you can manually control the scrolling position 
 
 ### Methods
 
-| Method Name | Description                                   | Parameter                             |
-| ----------- | --------------------------------------------- | ------------------------------------- |
-| scrollTo    | Scroll to a position                          | Parameters refer to `ScrollToOptions` |
-| scrollToEl  | Scroll to the position of a specified element | HTMLElement                           |
+| Method Name | Description                                                                                         | Parameter                             |
+| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
+| scrollTo    | Scroll to a position                                                                                | Parameters refer to `ScrollToOptions` |
+| scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
+| Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |
 
 ### Events
 
