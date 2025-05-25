@@ -280,27 +280,11 @@ export default class extends Component {
 </tbody>
 </table>
 <h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>scrollTo</td>
-<td>Scroll to a position</td>
-<td>Parameters refer to <code>ScrollToOptions</code></td>
-</tr>
-<tr>
-<td>scrollToEl</td>
-<td>Scroll to the position of a specified element</td>
-<td>HTMLElement</td>
-</tr>
-</tbody>
-</table>
+<p>| Method Name | Description                                                                                         | Parameter                             |
+| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
+| scrollTo    | Scroll to a position                                                                                | Parameters refer to <code>ScrollToOptions</code> |
+| scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
+| Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |</p>
 <h3>Events</h3>
 <table class="mkd-table">
 <thead>

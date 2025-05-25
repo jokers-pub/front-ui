@@ -299,6 +299,11 @@ export default class extends Component {
 <td>滚动到指定元素的位置</td>
 <td>HTMLElement</td>
 </tr>
+<tr>
+<td>update</td>
+<td>重新计算滚动（当内部元素增加或删除时可通过该方法重新计算）</td>
+<td>callBack 计算完成后执行</td>
+</tr>
 </tbody>
 </table>
 <h3>Events</h3>

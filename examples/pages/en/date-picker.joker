@@ -74,7 +74,7 @@ export default class extends Component {
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Week:&lt;/span&gt;
             &lt;jk-date-picker
-                format=&quot;YYYY Week ww&quot;
+                format=&quot;YYYY周ww&quot;
                 value=&quot;2023-36&quot;
                 type=&quot;week&quot;
                 showWeekNumber
