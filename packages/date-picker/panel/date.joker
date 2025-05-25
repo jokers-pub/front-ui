@@ -180,9 +180,10 @@ export default class extends PickerPanel<{
                     this.model.date = new Date(now.getFullYear(), 0);
                     break;
             }
+            return;
         }
 
-        this.model.date ??= this.model.value;
+        this.model.date = this.model.value;
     }
 
     //#region 属性
@@ -336,10 +337,12 @@ export default class extends PickerPanel<{
 
     handleTimeChange(e: VNode.Event<string>) {
         this.model.date = setTime(this.model.date, e.data);
+        debugger;
+        this.triggerChange(this.model.date);
     }
 
     handleConfirm() {
-        this.triggerChange(this.model.date);
+        this.triggerChange(this.model.value);
     }
 
     handleDatePick(e: VNode.Event<any>) {

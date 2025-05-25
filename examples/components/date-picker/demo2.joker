@@ -7,7 +7,7 @@
         <div class="row">
             <span>Week:</span>
             <jk-date-picker
-                format="YYYY Week ww"
+                format="YYYY 周 ww"
                 value="2023-36"
                 type="week"
                 showWeekNumber
