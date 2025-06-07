@@ -11,8 +11,12 @@
                 aria-label="@(props.title || 'dialog')"
                 style="@boxStyle"
                 ref="dialog"
-                class="@(['dialog-box', props.class, { 'is-fullscreen': props.fullscreen, 'is-center': props.center }])">
-                <div class="header">
+                class="@([
+                    'dialog-box',
+                    props.class,
+                    { 'is-fullscreen': props.fullscreen, 'is-center': props.center, 'custom-position': model.customDialogPosition }
+                ])">
+                <div ref="header" class="@(['header', props.draggable && 'draggable'])">
                     @if($sections.title) {
                         @RenderSection("title")
                     }
@@ -20,7 +24,7 @@
                         <span class="title">@props.title</span>
                     }
                     @if(props.closable) {
-                        <button type="button" class="close" aria-label="Close" @click="handleCloseClick">
+                        <button type="button" class="close" aria-label="Close" @click.prevent.stop="handleCloseClick">
                             <i class="jk-icon-close"></i>
                         </button>
                     }
@@ -41,6 +45,8 @@
 import { Component } from "@joker.front/core";
 import { PopupManager } from "../utils/popup-manager";
 import { zIndexManage } from "../utils/zindex";
+import { makeElementDraggable } from "../utils/el-move";
+
 let seed = 0;
 
 export default class extends Component<{
@@ -55,11 +61,13 @@ export default class extends Component<{
     closeOnPressEscape: boolean;
     modal: boolean;
     destroyOnClose: boolean;
+    draggable: boolean;
 }> {
     model = {
         isAppended: false,
         visible: false,
-        zIndex: 0
+        zIndex: 0,
+        customDialogPosition: false
     };
 
     propsOption = {
@@ -86,9 +94,10 @@ export default class extends Component<{
 
         return result;
     }
+    draggableDestroyFunc?: Function;
     async open() {
         if (this.model.visible) return;
-
+        this.model.customDialogPosition = false;
         this.$trigger("open");
         if (!this.model.isAppended) {
             this.model.isAppended = true;
@@ -114,6 +123,17 @@ export default class extends Component<{
             () => {
                 dialog.output.scrollTop = 0;
                 this.$trigger("opened");
+
+                if (this.props.draggable) {
+                    this.draggableDestroyFunc = makeElementDraggable(dialog.output, {
+                        preventDefault: true,
+                        stopPropagation: true,
+                        moveBarEl: this.$getRef("header")?.output,
+                        onDrag: () => {
+                            this.model.customDialogPosition = true;
+                        }
+                    }).destroy;
+                }
             },
             "animation"
         );
@@ -134,6 +154,7 @@ export default class extends Component<{
                     this.model.isAppended = false;
                 }
                 this.$trigger("closed");
+                this.draggableDestroyFunc?.();
             },
             "animation"
         );
@@ -192,9 +213,17 @@ export default class extends Component<{
             height: 100%;
             overflow: auto;
         }
-
+        &.custom-position {
+            position: absolute;
+            left: 40%;
+        }
         .header {
             padding: 20px 20px 10px 20px;
+            display: flex;
+            align-items: center;
+            &.draggable {
+                cursor: move;
+            }
             .title {
                 line-height: 24px;
                 font-size: 18px;

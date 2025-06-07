@@ -157,6 +157,42 @@ export default class extends Component {
 <blockquote>
 <p>The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default <code>section</code> passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through <code>ref</code>, please do so in the <code>open</code> event callback.</p>
 </blockquote>
+<h3>Movable Window</h3>
+<p>We can enable the <code>draggable</code> property of the window component to activate the free movement function of the window.</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo4)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
+        &lt;jk-dialog ref=&quot;dialog&quot; draggable title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
+            &lt;p&gt;I'm the content inside the dialog.&lt;/p&gt;
+            @section(&quot;footer&quot;) {
+                &lt;jk-button @click=&quot;handleDialogCancelClick&quot;&gt;Cancel&lt;/jk-button&gt;
+                &lt;jk-button type=&quot;primary&quot; @click=&quot;handleDialogConfirmClick&quot;&gt;OK&lt;/jk-button&gt;
+            }
+        &lt;/jk-dialog&gt;
+    &lt;/DemoRow&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    open() {
+        this.$getRef(&quot;dialog&quot;)?.component.open();
+    }
+
+    handleDialogCancelClick() {
+        this.$getRef(&quot;dialog&quot;)?.component.close();
+    }
+
+    handleDialogConfirmClick() {
+        this.$getRef(&quot;dialog&quot;)?.component.close();
+    }
+}
+&lt;/script&gt;
+
+
+</code></pre>
+</DemoContainer>
 <h3>Attributes</h3>
 <table class="mkd-table">
 <thead>
@@ -246,6 +282,13 @@ export default class extends Component {
 <td>—</td>
 <td>true</td>
 </tr>
+<tr>
+<td>draggable</td>
+<td>Whether to enable drag-and-drop movement</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
 </tbody>
 </table>
 <h3>Sections</h3>
@@ -333,12 +376,14 @@ export default class extends Component {
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo4 from '../../components/dialog/demo4.joker';
 import DEMO_JOKER_demo3 from '../../components/dialog/demo3.joker';
 import DEMO_JOKER_demo2 from '../../components/dialog/demo2.joker';
 import DEMO_JOKER_demo1 from '../../components/dialog/demo1.joker';
 export default class extends Component {
 components={
 BottomNav,
+DEMO_JOKER_demo4,
 DEMO_JOKER_demo3,
 DEMO_JOKER_demo2,
 DEMO_JOKER_demo1

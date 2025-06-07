@@ -1,0 +1,30 @@
+<template>
+    <DemoRow>
+        <jk-button @click="open">Click to open Dialog</jk-button>
+        <jk-dialog ref="dialog" draggable title="Basic Display" width="30%">
+            <p>I'm the content inside the dialog.</p>
+            @section("footer") {
+                <jk-button @click="handleDialogCancelClick">Cancel</jk-button>
+                <jk-button type="primary" @click="handleDialogConfirmClick">OK</jk-button>
+            }
+        </jk-dialog>
+    </DemoRow>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    open() {
+        this.$getRef("dialog")?.component.open();
+    }
+
+    handleDialogCancelClick() {
+        this.$getRef("dialog")?.component.close();
+    }
+
+    handleDialogConfirmClick() {
+        this.$getRef("dialog")?.component.close();
+    }
+}
+</script>
+

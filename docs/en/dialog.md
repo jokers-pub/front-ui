@@ -25,6 +25,12 @@ The title and the bottom can be horizontally centered. Setting `center` to `true
 
 > The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default `section` passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through `ref`, please do so in the `open` event callback.
 
+### Movable Window
+
+We can enable the `draggable` property of the window component to activate the free movement function of the window.
+
+!!!demo4!!!
+
 ### Attributes
 
 | Parameter             | Description                                                                                        | Type                                                   | Optional Values | Default Value |
@@ -40,6 +46,7 @@ The title and the bottom can be horizontally centered. Setting `center` to `true
 | before-close          | The callback before closing, which will pause the closing of the Dialog                            | function(done), where done is used to close the Dialog | —               | —             |
 | center                | Whether to use a centered layout for the header and the bottom                                     | boolean                                                | —               | false         |
 | destroyOnClose        | Whether to destroy the interior when closing                                                       | boolean                                                | —               | true          |
+| draggable             | Whether to enable drag-and-drop movement                                                           | boolean                                                | —               | false         |
 
 ### Sections
 
