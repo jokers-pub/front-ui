@@ -42,6 +42,9 @@ export function makeElementDraggable(element: HTMLElement, options: DraggableOpt
 
     // 边界限制
     function constrainToBounds(x: number, y: number): Position {
+        if (options.allowOutOfBounds) {
+            return { x, y };
+        }
         const { maxX, maxY } = getMaxBounds();
         return {
             x: Math.max(0, Math.min(x, maxX)),
@@ -199,4 +202,5 @@ export interface DraggableOptions {
     onDrag?: (pos: Position) => void; // 拖拽中回调
     onDragEnd?: (pos: Position) => void; // 拖拽结束回调
     moveBarEl?: string | HTMLElement; // 拖拽条元素选择器或元素引用
+    allowOutOfBounds?: boolean; // 允许拖动超出边界
 }

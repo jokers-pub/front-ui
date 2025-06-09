@@ -289,6 +289,13 @@ export default class extends Component {
 <td>—</td>
 <td>false</td>
 </tr>
+<tr>
+<td>allowOutOfBounds</td>
+<td>是否允许拖拽移动超出边界范围</td>
+<td>boolean</td>
+<td>—</td>
+<td>false</td>
+</tr>
 </tbody>
 </table>
 <h3>Section</h3>

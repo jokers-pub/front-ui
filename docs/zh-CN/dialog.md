@@ -52,6 +52,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
 | center                | 是否对头部和底部采用居中布局                       | boolean                              | —      | false  |
 | destroyOnClose        | 是否在关闭时销毁内部                               | boolean                              | —      | true   |
 | draggable             | 是否开启拖拽移动                                   | boolean                              | —      | false  |
+| allowOutOfBounds      | 是否允许拖拽移动超出边界范围                       | boolean                              | —      | false  |
 
 ### Section
 

@@ -47,6 +47,7 @@ We can enable the `draggable` property of the window component to activate the f
 | center                | Whether to use a centered layout for the header and the bottom                                     | boolean                                                | —               | false         |
 | destroyOnClose        | Whether to destroy the interior when closing                                                       | boolean                                                | —               | true          |
 | draggable             | Whether to enable drag-and-drop movement                                                           | boolean                                                | —               | false         |
+| allowOutOfBounds      | Whether dragging is allowed to move beyond the boundary range                                      | boolean                                                | —               | false         |
 
 ### Sections
 

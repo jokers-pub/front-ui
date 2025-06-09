@@ -62,6 +62,7 @@ export default class extends Component<{
     modal: boolean;
     destroyOnClose: boolean;
     draggable: boolean;
+    allowOutOfBounds: boolean;
 }> {
     model = {
         isAppended: false,
@@ -128,6 +129,7 @@ export default class extends Component<{
                     this.draggableDestroyFunc = makeElementDraggable(dialog.output, {
                         preventDefault: true,
                         stopPropagation: true,
+                        allowOutOfBounds: this.props.allowOutOfBounds,
                         moveBarEl: this.$getRef("header")?.output,
                         onDrag: () => {
                             this.model.customDialogPosition = true;
@@ -193,7 +195,7 @@ export default class extends Component<{
     margin: 0;
     display: flex;
     align-items: center;
-
+    overflow: hidden;
     .dialog-box {
         position: relative;
         margin: 0px auto;
