@@ -114,8 +114,8 @@ export default class extends Component {
         let menus = this.lang === "zh-CN" ? MENUS_ZH_CN : MENUS_EN;
         let defaultTitle =
             this.lang === "zh-CN"
-                ? "Joker-UI 领先的快速网站搭建工具"
-                : "Joker-UI The Leading Fast-website Building Tool";
+                ? "Joker UI 领先的快速网站搭建工具"
+                : "Joker UI - The Leading Rapid Website Building Tool";
         for (let group of menus) {
             for (let item of group.children) {
                 if (item.path === router.route.value.path) {
