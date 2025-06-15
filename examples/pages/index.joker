@@ -176,8 +176,8 @@ export default class extends Component {
         margin: 0 auto;
         padding-top: 20px;
         .item {
-            flex: 0 20%;
-            padding: 26px 26px;
+            flex: 0 25%;
+            padding: 26px 10px;
 
             text-align: left;
 
