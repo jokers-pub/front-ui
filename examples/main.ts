@@ -26,11 +26,11 @@ new Router({
             component: Index
         },
         {
-            path: "/index",
+            path: "index",
             component: Index
         },
         {
-            path: "/component",
+            path: "component",
             component: Layout,
             children: getRouters()
         }
