@@ -138,7 +138,7 @@ export default class extends Component {
             path = path.substring(3);
         }
 
-        return (this.lang === "zh-CN" ? "https://front.jokers.pub" : "https://front.jokers.pub/cn") + path;
+        return (this.lang === "zh-CN" ? "https://ui.jokers.pub" : "https://ui.jokers.pub/cn") + path;
     }
     handleGoHome() {
         router.push(this.lang === "zh-CN" ? "/cn" : "/");
