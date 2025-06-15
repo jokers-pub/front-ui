@@ -16,7 +16,7 @@
                     @(lang === "zh-CN" ? "快速起步" : "Get Started")
                     <i class="jk-icon-right" />
                 </a>
-                <a href="https://jokers.pub" target="_blank" class="t1">
+                <a href="https://jokers.pub@(lang === "zh-CN"?"/cn":"")" target="_blank" class="t1">
                     @(lang === "zh-CN" ? "Joker 全家桶" : "Joker Suite")
                 </a>
                 <a href="https://lowcode.jokers.pub" target="_blank" class="t2">
