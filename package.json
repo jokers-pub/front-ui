@@ -39,7 +39,7 @@
         "build": "joker build --config=build.config.js --sourcemap=true",
         "build:prod": "joker build --config=build.config.js",
         "build:lowcode": "joker build --config=build.lowcode.config.js",
-        "build:demo": "npm run docs:zh-CN && npm run docs:en && joker build --config=joker.demo.build.config.js ./examples",
+        "build:demo": "npm run docs:zh-CN && npm run docs:en && joker build --config=joker.demo.build.config.js ./examples && npm run sitemap",
         "docs:zh-CN": "ts-node build/docs.ts --lang=zh-CN",
         "docs:en": "ts-node build/docs.ts --lang=en",
         "sitemap": "ts-node build/sitemap.ts",

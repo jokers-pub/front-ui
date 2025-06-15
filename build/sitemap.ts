@@ -36,4 +36,4 @@ ${result
 </urlset>
 `;
 
-fs.writeFileSync(path.resolve("./dist/sitemap.xml"), xmlContent, "utf8");
+fs.writeFileSync(path.resolve("./examples/dist/sitemap.xml"), xmlContent, "utf8");
