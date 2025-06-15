@@ -16,9 +16,10 @@ registerGlobalComponent({
 });
 
 registerValidateAll();
-
+let lang = getLang();
 new Router({
     history: import.meta.define.routerType === "html5" ? new WebHistory() : undefined,
+    base: lang === "zh-CN" ? "/cn" : "",
     routes: [
         {
             path: "/",
@@ -36,5 +37,5 @@ new Router({
     ]
 });
 
-setLang(getLang());
+setLang(lang);
 new App().$mount(document.getElementById("app"));

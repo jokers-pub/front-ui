@@ -13,11 +13,7 @@
                     </li>
                 }
             </ul>
-            <a
-                class="lang"
-                href="@(lang === 'zh-CN' ? 'https://ui.jokers.pub' : 'https://cn.ui.jokers.pub')@model.currentPath">
-                @(lang === "zh-CN" ? "English" : "中文")
-            </a>
+            <a class="lang" href="@(langSwtichPath)">@(lang === "zh-CN" ? "English" : "中文")</a>
             <a href="https://github.com/jokers-pub/front-ui" target="_blank" class="out-link">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,12 +69,20 @@ export default class extends Component {
     currentPath = router.route.value.fullPath;
     getClassName(path: string) {
         if (path.startsWith("http")) return "";
-
         let currentRoute = router.route.value;
-        if (currentRoute.fullPath.substring(1).split("/")[0] === "" && path === "/index") return "active";
-        return path.substring(1).split("/").filter(Boolean)[0] === currentRoute.fullPath.substring(1).split("/")[0]
-            ? "active"
-            : "";
+
+        if (currentRoute.fullPath.substring(1).split("/")[0] === "" && (path === "/index" || path === "/cn/index"))
+            return "active";
+
+        if (path.startsWith("/cn")) {
+            return path.substring(1).split("/").filter(Boolean)[1] === currentRoute.fullPath.substring(1).split("/")[1]
+                ? "active"
+                : "";
+        } else {
+            return path.substring(1).split("/").filter(Boolean)[0] === currentRoute.fullPath.substring(1).split("/")[0]
+                ? "active"
+                : "";
+        }
     }
     go(e: VNode.Event, path: string) {
         this.model.navIsOpen = false;
@@ -127,8 +131,17 @@ export default class extends Component {
 
         document.title = defaultTitle;
     }
+    get langSwtichPath() {
+        let path = this.model.currentPath;
+
+        if (path.startsWith("/cn")) {
+            path = path.substring(3);
+        }
+
+        return (this.lang === "zh-CN" ? "https://front.jokers.pub" : "https://front.jokers.pub/cn") + path;
+    }
     handleGoHome() {
-        router.push("/");
+        router.push(this.lang === "zh-CN" ? "/cn" : "/");
     }
     openNav() {
         this.model.navIsOpen = !this.model.navIsOpen;
