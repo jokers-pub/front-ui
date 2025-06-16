@@ -3,10 +3,7 @@
         class="@([
             'jk-link',
             props.type || 'default',
-            {
-                'is-disabled': props.disabled,
-                'is-underline': props.underline && !props.disabled
-            },
+            { 'is-disabled': props.disabled, 'is-underline': props.underline && !props.disabled },
             props.class,
             props.size
         ])"
@@ -58,7 +55,6 @@ $colors: (
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    vertical-align: middle;
     position: relative;
     text-decoration: none;
     outline: none;
