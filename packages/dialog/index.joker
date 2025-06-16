@@ -260,7 +260,6 @@ export default class extends Component<{
             padding: 20px 20px 30px 20px;
             color: var(--jk-color-text-regular);
             font-size: 14px;
-            word-break: break-all;
             overflow: auto;
         }
 
