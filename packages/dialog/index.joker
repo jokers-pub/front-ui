@@ -24,7 +24,12 @@
                         <span class="title">@props.title</span>
                     }
                     @if(props.closable) {
-                        <button type="button" class="close" aria-label="Close" @click.prevent.stop="handleCloseClick">
+                        <button
+                            type="button"
+                            class="close"
+                            aria-label="Close"
+                            @mousedown.stop
+                            @click.prevent.stop="handleCloseClick">
                             <i class="jk-icon-close"></i>
                         </button>
                     }
