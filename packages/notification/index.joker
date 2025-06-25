@@ -150,7 +150,13 @@ export default class extends Component<PropsOption> {
     position: fixed;
     background-color: var(--jk-background-color-default);
     box-shadow: var(--jk-box-shadow-light);
-    transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s;
+    transition:
+        opacity 0.3s,
+        transform 0.3s,
+        left 0.3s,
+        right 0.3s,
+        top 0.4s,
+        bottom 0.3s;
     overflow: hidden;
 
     &.right {
@@ -193,7 +199,6 @@ export default class extends Component<PropsOption> {
             font-size: 14px;
             line-height: 21px;
             color: var(--jk-color-text-regular);
-            text-align: justify;
 
             p {
                 margin: 0;

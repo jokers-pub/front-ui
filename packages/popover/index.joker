@@ -208,8 +208,7 @@ export default class extends Component<{
     z-index: $--index-popper;
     line-height: 1.4;
     min-width: 150px;
-    text-align: justify;
-    word-wrap: break-all;
+
     background: var(--jk-background-color-default);
     font-size: 14px;
     color: var(--jk-color-text-regular);
