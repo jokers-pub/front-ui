@@ -388,6 +388,7 @@ export default class extends Component<{
             flex-direction: column;
             > label {
                 text-align: left;
+                padding: 0;
             }
             > .content {
                 flex: none;
