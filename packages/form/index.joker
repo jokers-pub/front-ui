@@ -379,12 +379,12 @@ export default class extends Component<{
 <style lang="scss" scoped>
 .jk-form {
     &.label-left {
-        :deep(.jk-form-item > label) {
+        :deep(> .jk-form-item > label) {
             text-align: left;
         }
     }
     &.label-top {
-        :deep(.jk-form-item) {
+        :deep(> .jk-form-item) {
             flex-direction: column;
             > label {
                 text-align: left;
@@ -397,7 +397,7 @@ export default class extends Component<{
     }
 
     &.inline {
-        :deep(.jk-form-item) {
+        :deep(> .jk-form-item) {
             display: inline-block;
             margin-right: 10px;
             vertical-align: top;
