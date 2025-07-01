@@ -384,7 +384,7 @@ export default class extends Component<{
         }
     }
     &.label-top {
-        :deep(> .jk-form-item) {
+        :deep(> .jk-form-item:not(.inline)) {
             flex-direction: column;
             > label {
                 text-align: left;
