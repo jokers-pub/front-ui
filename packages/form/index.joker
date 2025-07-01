@@ -1,8 +1,5 @@
 <template>
-    <form
-        class="jk-form @('label-'+props.labelPosition) @(props.inline?'inline':'') @(props.class||'')"
-        @submit.prevent="submit"
-        @reset.prevent="reset">
+    <form class="jk-form  @(props.class||'')" @submit.prevent="submit" @reset.prevent="reset">
         @RenderSection()
     </form>
 </template>
@@ -25,11 +22,6 @@ export default class extends Component<{
     showErrorMessage: (name: string, message: string, ctrl: Component<any>) => void | boolean;
     clearErrorMessage: () => void;
 }> {
-    propsOption = {
-        labelPosition: "right",
-        submit: Function
-    };
-
     isSubmit = false;
 
     name = componentName("form");
@@ -376,42 +368,3 @@ export default class extends Component<{
 }
 </script>
 
-<style lang="scss" scoped>
-.jk-form {
-    &.label-left {
-        :deep(> .jk-form-item > label) {
-            text-align: left;
-        }
-    }
-    &.label-top {
-        :deep(> .jk-form-item:not(.inline)) {
-            flex-direction: column;
-            > label {
-                text-align: left;
-                padding: 0;
-            }
-            > .content {
-                flex: none;
-            }
-        }
-    }
-
-    &.inline {
-        :deep(> .jk-form-item) {
-            display: inline-block;
-            margin-right: 10px;
-            vertical-align: top;
-
-            > label {
-                float: none;
-                display: inline-block;
-            }
-
-            > .content {
-                vertical-align: top;
-                display: inline-block;
-            }
-        }
-    }
-}
-</style>

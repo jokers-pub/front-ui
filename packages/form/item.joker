@@ -1,5 +1,5 @@
 <template>
-    <div class="jk-form-item @(props.required?'is-required':'') @sizeClass @(props.class||'') @(isInline?'inline':'')">
+    <div class="@(['jk-form-item', props.required ? 'is-required' : '', sizeClass, className, props.class || ''])">
         @if(props.label || !isInline || $sections.label) {
             <label style="@labelStyle">
                 @if($sections.label) {
@@ -39,11 +39,15 @@ const DEFAULT_LABEL_WIDTH = "80px";
 export default class extends Component<{
     label: string;
     labelWidth: string;
+    labelPosition: string;
     required: boolean;
     class: string;
     tip: string;
-    inline;
+    inline: boolean;
 }> {
+    propsOption = {
+        labelPosition: "right"
+    };
     model = {
         errorMessage: undefined as string | undefined
     };
@@ -58,8 +62,12 @@ export default class extends Component<{
         return form;
     }
 
-    get isInline() {
-        return this.form?.props.inline ?? this.props.inline;
+    get className() {
+        let form = this.form;
+        if (form?.props.inline || this.props.inline) {
+            return "inline";
+        }
+        return form?.props.labelPosition || this.props.labelPosition;
     }
     get labelStyle() {
         if (this.form?.props.labelPosition === "top") return {};
@@ -185,6 +193,23 @@ export default class extends Component<{
         > .content {
             vertical-align: top;
             display: inline-block;
+        }
+    }
+
+    &.left {
+        > label {
+            text-align: left;
+        }
+    }
+
+    &.top {
+        flex-direction: column;
+        > label {
+            text-align: left;
+            padding: 0;
+        }
+        > .content {
+            flex: none;
         }
     }
 }
