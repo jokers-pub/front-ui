@@ -221,7 +221,7 @@ export default class extends Component<{
                     if (typeof ctrl.ctrl.props.validate === "function") {
                         eMsg = await ctrl.ctrl.props.validate(value, ctrl);
                     } else if (Array.isArray(ctrl.ctrl.props.validate)) {
-                        for (let item of ctrl.ctrl.props.validate) {
+                        for (let item of ctrl.ctrl.props.validate.filter(Boolean)) {
                             if (item && typeof item === "function") {
                                 eMsg = await item(value, ctrl);
                                 if (eMsg) break;
