@@ -7,7 +7,7 @@
         </jk-radio-group>
     </DemoRow>
     <jk-form label-position="@model.labelPosition">
-        <jk-form-item label="Name">
+        <jk-form-item label="Name" required>
             <jk-input name="name" placeholder="Please enter the event name" />
         </jk-form-item>
         <jk-form-item label="Area">
