@@ -202,8 +202,8 @@ export default class extends Component<{
         if (typeof value === "string" && value) {
             if (
                 new RegExp(
-                    /(?!```.*?```|`.*?`|<!--.*?-->)(<[\s\x00]*\/?\s*(SCRIPT|HEAD|BODY|FRAME|IFRAME|FRAMESET|NOFRAME|PLAINTEXT|LINK|MAP|BGSOUND|FORM|INPUT|SELECT|OPTION|TEXTAREA|APPLET|OBJECT|EMBED|NOSCRIPT|STYLE)["'\s\x00>]+|%3C[\s+]*\/?\s*(SCRIPT|HEAD|BODY|FRAME|IFRAME|FRAMESET|NOFRAME|PLAINTEXT|LINK|MAP|BGSOUND|FORM|INPUT|SELECT|OPTION|TEXTAREA|APPLET|OBJECT|EMBED|NOSCRIPT|STYLE)[\s+>]+|\b(SELECT\s+|INSERT\s+|DELETE\s+|UPDATE\s+|DROP\s+)\b|\b(ALERT|PROMPT|CONFIRM)\s*\()/gi
-                ).test(value.toUpperCase())
+                    /(?!```.*?```|`.*?`|<!--.*?-->)(<[\s\x00]*\/?\s*(SCRIPT|IFRAME|OBJECT|EMBED|APPLET)(?![\w-])[\s\S]*?>|%3C[\s+]*\/?\s*(SCRIPT|IFRAME|OBJECT|EMBED|APPLET)(?![\w-])[\s\S]*?>|\b(SELECT\s+(ALL|DISTINCT|[\w*])|INSERT\s+INTO|DELETE\s+FROM|UPDATE\s+\w+\s+SET|DROP\s+(TABLE|DATABASE|VIEW))\b|\b(ALERT|PROMPT|CONFIRM)\s*\()/gi
+                ).test(value)
             ) {
                 eMsg = getValueByLang("illegalCharacters");
             }
