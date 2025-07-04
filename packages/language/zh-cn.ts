@@ -20,7 +20,6 @@ export const LANG_ZH_CN = {
     end: "结束",
     emptyText: "暂无数据",
     submiting: "正在提交中，请勿操作",
-    illegalCharacters: "输入内容存在非法字符，请重新填写",
 
     validateError: "验证失败",
     validateRequired: "此项为必填项",

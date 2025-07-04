@@ -199,47 +199,36 @@ export default class extends Component<{
 
         //通用验证
         let eMsg = "";
-        if (typeof value === "string" && value) {
-            if (
-                new RegExp(
-                    /(?!```.*?```|`.*?`|<!--.*?-->)(<[\s\x00]*\/?\s*(SCRIPT|IFRAME|OBJECT|EMBED|APPLET)(?![\w-])[\s\S]*?>|%3C[\s+]*\/?\s*(SCRIPT|IFRAME|OBJECT|EMBED|APPLET)(?![\w-])[\s\S]*?>|\b(SELECT\s+(ALL|DISTINCT|[\w*])|INSERT\s+INTO|DELETE\s+FROM|UPDATE\s+\w+\s+SET|DROP\s+(TABLE|DATABASE|VIEW))\b|\b(ALERT|PROMPT|CONFIRM)\s*\()/gi
-                ).test(value)
-            ) {
-                eMsg = getValueByLang("illegalCharacters");
-            }
+
+        //自身验证
+        if ("ctrlValidate" in ctrl.ctrl && typeof ctrl.ctrl.ctrlValidate === "function") {
+            eMsg = await ctrl.ctrl.ctrlValidate(value);
         }
 
         if (!eMsg) {
-            //自身验证
-            if ("ctrlValidate" in ctrl.ctrl && typeof ctrl.ctrl.ctrlValidate === "function") {
-                eMsg = await ctrl.ctrl.ctrlValidate(value);
-            }
-
-            if (!eMsg) {
-                //自定义验证
-                if (ctrl.ctrl.props.validate) {
-                    if (typeof ctrl.ctrl.props.validate === "function") {
-                        eMsg = await ctrl.ctrl.props.validate(value, ctrl);
-                    } else if (Array.isArray(ctrl.ctrl.props.validate)) {
-                        for (let item of ctrl.ctrl.props.validate.filter(Boolean)) {
-                            if (item && typeof item === "function") {
-                                eMsg = await item(value, ctrl);
-                                if (eMsg) break;
-                            } else {
-                                logger.error(
-                                    LOGTAG,
-                                    `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
-                                    item
-                                );
-                            }
+            //自定义验证
+            if (ctrl.ctrl.props.validate) {
+                if (typeof ctrl.ctrl.props.validate === "function") {
+                    eMsg = await ctrl.ctrl.props.validate(value, ctrl);
+                } else if (Array.isArray(ctrl.ctrl.props.validate)) {
+                    for (let item of ctrl.ctrl.props.validate.filter(Boolean)) {
+                        if (item && typeof item === "function") {
+                            eMsg = await item(value, ctrl);
+                            if (eMsg) break;
+                        } else {
+                            logger.error(
+                                LOGTAG,
+                                `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
+                                item
+                            );
                         }
-                    } else {
-                        logger.error(
-                            LOGTAG,
-                            `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
-                            ctrl.ctrl.props.validate
-                        );
                     }
+                } else {
+                    logger.error(
+                        LOGTAG,
+                        `Form validation: There is an incorrect validation rule configuration for ${ctrl.name}. The validation method does not exist or is not a function.`,
+                        ctrl.ctrl.props.validate
+                    );
                 }
             }
         }

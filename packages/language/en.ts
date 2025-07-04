@@ -20,7 +20,6 @@ export const LANG_EN = {
     end: "End",
     emptyText: "No data",
     submiting: "Submitting. Please do not operate.",
-    illegalCharacters: "The input contains illegal characters. Please fill it out again.",
 
     validateError: "Validation failed",
     validateRequired: "This field is required",
