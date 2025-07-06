@@ -1,19 +1,22 @@
 <template>
     <div class="@(['jk-form-item', props.required ? 'is-required' : '', sizeClass, className, props.class || ''])">
         @if(props.label || !isInline || $sections.label) {
-            <label style="@labelStyle">
-                @if($sections.label) {
+            @if($sections.label) {
+                <!-- 避免label联动 -->
+                <div class="label" style="@labelStyle">
                     @RenderSection("label")
-                }
-                else {
+                </div>
+            }
+            else {
+                <label style="@labelStyle">
                     @props.label
-                }
-                @if(props.tip) {
-                    <jk-tooltip content="@props.tip" size="mini" placement="top">
-                        <i class="tip jk-icon-info" />
-                    </jk-tooltip>
-                }
-            </label>
+                    @if(props.tip) {
+                        <jk-tooltip content="@props.tip" size="mini" placement="top">
+                            <i class="tip jk-icon-info" />
+                        </jk-tooltip>
+                    }
+                </label>
+            }
         }
         <div class="content">
             @RenderSection()
@@ -104,7 +107,8 @@ export default class extends Component<{
         margin-bottom: 0;
     }
 
-    > label {
+    > label,
+    > .label {
         text-align: right;
         vertical-align: middle;
         float: left;
@@ -134,7 +138,8 @@ export default class extends Component<{
     }
 
     &.is-required {
-        > label {
+        > label,
+        > .label {
             &::before {
                 content: "*";
                 color: var(--jk-color-danger);
@@ -144,7 +149,8 @@ export default class extends Component<{
     }
 
     &.medium {
-        > label {
+        > label,
+        > .label {
             line-height: 36px;
         }
         > .content {
@@ -154,7 +160,8 @@ export default class extends Component<{
 
     &.small {
         margin-bottom: 18px;
-        > label {
+        > label,
+        > .label {
             line-height: 32px;
         }
         > .content {
@@ -168,7 +175,8 @@ export default class extends Component<{
 
     &.mini {
         margin-bottom: 18px;
-        > label {
+        > label,
+        > .label {
             line-height: 28px;
         }
         > .content {
@@ -185,7 +193,8 @@ export default class extends Component<{
         margin-right: 10px;
         vertical-align: top;
 
-        > label {
+        > label,
+        > .label {
             float: none;
             display: inline-block;
         }
@@ -197,14 +206,16 @@ export default class extends Component<{
     }
 
     &.left {
-        > label {
+        > label,
+        > .label {
             text-align: left;
         }
     }
 
     &.top {
         flex-direction: column;
-        > label {
+        > label,
+        > .label {
             text-align: left;
             padding: 0;
         }
