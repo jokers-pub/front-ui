@@ -76,7 +76,6 @@ export default class extends Component<{
     propsOption = {
         showHeader: true,
         data: undefined,
-        emptyText: "暂无数据",
         isLeafKey: "isLeaf",
         childrenKey: "children"
     };
