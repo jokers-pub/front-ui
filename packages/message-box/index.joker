@@ -115,8 +115,8 @@ export default class extends Component<PropsOption> {
         showConfirmButton: true,
         closeOnClickModal: true,
         closeOnPressEscape: true,
-        cancelButtonText: getValueByLang("cancel"),
-        confirmButtonText: getValueByLang("confirm"),
+        cancelButtonText: getValueByLang("messageBox").cancel,
+        confirmButtonText: getValueByLang("messageBox")?.confirm,
         title: getValueByLang("messageBoxTitle"),
         inputPlaceholder: getValueByLang("inputPlaceholder")
     };

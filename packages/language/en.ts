@@ -48,6 +48,10 @@ export const LANG_EN = {
     createNew: "Create new value",
 
     loading: "Loading",
+    messageBox: {
+        confirm: "OK",
+        cancel: "Cancel"
+    },
 
     selectFile: "Select file",
     uploadValidateCount: (maxFileCount: number) => `Please select a maximum of ${maxFileCount} files`,

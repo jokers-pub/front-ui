@@ -46,7 +46,10 @@ export const LANG_ZH_CN = {
     selectPlaceholder: "请选择",
     noMatchText: "无匹配数据",
     createNew: "创建新值",
-
+    messageBox: {
+        confirm: "确定",
+        cancel: "取消"
+    },
     loading: "加载中",
 
     selectFile: "选择文件",
