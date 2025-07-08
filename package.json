@@ -1,6 +1,6 @@
 {
     "name": "@joker.front/ui",
-    "version": "1.0.311",
+    "version": "1.0.312",
     "description": "Joker-UI | Official native UI component library for Joker Framework. Minimalist design with full-scene components, responsive layout & dynamic interactions. Access dev docs, API references & real-world case studies on official site.",
     "author": "Zohar",
     "license": "MIT",
@@ -18,10 +18,6 @@
         "./index.css": "./dist/index.css"
     },
     "homepage": "https://ui.jokers.pub",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/jokers-pub/front-ui.git"
-    },
     "keywords": [
         "joker",
         "ui",
