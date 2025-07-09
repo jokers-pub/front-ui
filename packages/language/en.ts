@@ -20,7 +20,8 @@ export const LANG_EN = {
     end: "End",
     emptyText: "No data",
     submiting: "Submitting. Please do not operate.",
-
+    reset: "Reset",
+    filter: "Filter",
     validateError: "Validation failed",
     validateRequired: "This field is required",
     validateIsInt: "Please enter a positive integer",

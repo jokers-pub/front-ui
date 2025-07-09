@@ -14,8 +14,12 @@
             </jk-scrollbar>
         </div>
         <div class="option">
-            <jk-link type="info" @click="reset">重置</jk-link>
-            <jk-link type="primary" @click="handleSureClick">筛选</jk-link>
+            <jk-link type="info" @click="reset">
+                @getValueByLang("reset")
+            </jk-link>
+            <jk-link type="primary" @click="handleSureClick">
+                @getValueByLang("filter")
+            </jk-link>
         </div>
     </div>
 </template>
@@ -26,7 +30,7 @@ import { componentName } from "../utils";
 import { ColumnType, Store } from "./store";
 import JokerCheckbox from "../checkbox/checkbox.joker";
 import { remove } from "@joker.front/shared";
-
+import { getValueByLang } from "../utils/lang";
 export default class extends Component<{
     key: string;
 }> {
@@ -37,6 +41,7 @@ export default class extends Component<{
         JokerCheckbox
     };
 
+    getValueByLang = getValueByLang;
     popperHandler?: Popper;
 
     isChecked(val: any) {

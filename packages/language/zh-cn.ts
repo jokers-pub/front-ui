@@ -20,7 +20,8 @@ export const LANG_ZH_CN = {
     end: "结束",
     emptyText: "暂无数据",
     submiting: "正在提交中，请勿操作",
-
+    reset: "重置",
+    filter: "筛选",
     validateError: "验证失败",
     validateRequired: "此项为必填项",
     validateIsInt: "请输入正整数类型",

@@ -235,7 +235,11 @@ export class Store {
                                 }
                             });
                         } else {
-                            logger.warn(LOGTAG, "table排序，当前列没有指定排序key，将交由事件处理", col);
+                            logger.warn(
+                                LOGTAG,
+                                "Table sorting: The current column has no specified sorting key, it will be handled by the event",
+                                col
+                            );
                         }
                     }
                 }
@@ -265,7 +269,7 @@ export class Store {
                     order
                 };
             } else {
-                logger.warn(LOGTAG, "table设置排序时发现当前列未配置key");
+                logger.warn(LOGTAG, "Missing configured key for current column while setting table sorting");
             }
         }
 

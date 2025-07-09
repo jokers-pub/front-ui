@@ -47,7 +47,7 @@
     </tr>
     @if(store.expandColumn && store.data.expandRows.includes(props.row)) {
         <tr>
-            <td colspan="@store.data.leafColumnsFlat.length">
+            <td colspan="@store.data.leafColumnsFlat.length" class="expand-cell">
                 @RenderSection(store.expandColumn._sectionExpand, { row: props.row, level: props.level, rowIndex: props.rowIndex, store: store })
             </td>
         </tr>
@@ -296,6 +296,10 @@ tr {
         &.fixed-right {
             position: sticky;
             right: 0;
+        }
+
+        &.expand-cell {
+            padding: 0;
         }
     }
 
