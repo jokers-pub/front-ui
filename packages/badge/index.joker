@@ -62,6 +62,7 @@ export default class extends Component<{
         border: 1px solid #fff;
         &.is-fixed {
             position: absolute;
+            z-index: 1;
             top: 0;
             right: 10px;
             transform: translateY(-50%) translateX(100%);
