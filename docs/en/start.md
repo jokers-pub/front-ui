@@ -35,4 +35,4 @@ Currently, `Joker UI` provides visual operation components in the Joker visual d
 
 ![Joker Visual Development Tool](https://static.jokers.pub/home/component.png "Visual Development Tool")
 
-[Component Library Address](https://lowcode.jokers.pub/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)
+[Component Library Address](https://viscode.jokers.pub/repository/fcaf7ad3-c7d5-45fb-9ec9-7ffd29fb44f4)

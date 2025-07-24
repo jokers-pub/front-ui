@@ -19,7 +19,7 @@
                 <a href="https://jokers.pub@(lang === "zh-CN"?"/cn":"")" target="_blank" class="t1">
                     @(lang === "zh-CN" ? "Joker 全家桶" : "Joker Suite")
                 </a>
-                <a href="https://lowcode.jokers.pub" target="_blank" class="t2">
+                <a href="https://viscode.jokers.pub" target="_blank" class="t2">
                     @(lang === "zh-CN" ? "官方可视化开发平台" : "Official Visual Development Platform")
                     <i class="jk-icon-medal" />
                 </a>
@@ -157,7 +157,8 @@ export default class extends Component {
                 }
 
                 &.t2 {
-                    background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+                    background:
+                        linear-gradient(#f1f1f1, #f1f1f1) padding-box,
                         linear-gradient(45deg, #42d392, #647eff) border-box;
                     border: 2px solid transparent;
                     i {

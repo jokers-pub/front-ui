@@ -18,16 +18,15 @@
         </p>
         <div class="ag">
             <div class="item">
-                <a href="https://lowcode.jokers.pub" target="_blank">
+                <a href="https://viscode.jokers.pub" target="_blank">
                     <img src="https://static.jokers.pub/home/component.png" />
                     <p class="title">
-                        @(lang === "zh-CN" ? "Joker 可视化开发工具" : "Joker Lowcode Platform")
-                        🔥
+                        @(lang === "zh-CN" ? "Joker 可视化开发工具" : "Joker Visual Dev Platform")🔥
                     </p>
                 </a>
             </div>
             <div class="item">
-                <img src="https://static.jokers.pub/lowcode/wechat-group.jpg" />
+                <img src="https://static.jokers.pub/viscode/wechat-group.jpg" />
                 <p class="title">Joker技术交流群 🔥</p>
             </div>
         </div>
