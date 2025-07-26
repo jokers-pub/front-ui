@@ -7,3 +7,4 @@ dist_lowcode
 types
 .npmrc
 build/algoliasearch.ts
+pnpm-lock.yaml
