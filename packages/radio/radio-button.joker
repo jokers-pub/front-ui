@@ -123,7 +123,7 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 @mixin set-size($padding-vertical, $padding-horizontal, $font-size) {
     padding: $padding-vertical $padding-horizontal;
@@ -151,7 +151,7 @@ export default class extends FormCtrl<{
         margin: 0;
         position: relative;
         cursor: pointer;
-        transition: $--all-transition;
+        transition: var.$all-transition;
         -webkit-appearance: none;
 
         @include set-size(12px, 20px, 14px);
@@ -204,7 +204,7 @@ export default class extends FormCtrl<{
 
     &:first-child {
         .target {
-            border-left: $--border-base;
+            border-left: var.$border-base;
             border-radius: 4px 0 0 4px;
             box-shadow: none !important;
         }

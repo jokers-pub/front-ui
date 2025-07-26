@@ -133,7 +133,7 @@ export default class extends Component<{
 </script>
 
 <style scoped lang="scss">
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 .jk-tabs {
     display: flex;
 
@@ -187,7 +187,7 @@ export default class extends Component<{
             position: absolute;
             background-color: var(--jk-color-primary);
             z-index: 1;
-            transition: transform 0.3s $--transition;
+            transition: transform 0.3s var.$transition;
         }
     }
 

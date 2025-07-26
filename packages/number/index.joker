@@ -351,7 +351,7 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 .jk-number {
     position: relative;
@@ -410,13 +410,13 @@ export default class extends FormCtrl<{
         &.increase {
             right: 1px;
             border-radius: 0 4px 4px 0;
-            border-left: $--border-base;
+            border-left: var.$border-base;
         }
 
         &.decrease {
             left: 1px;
             border-radius: 4px 0 0 4px;
-            border-right: $--border-base;
+            border-right: var.$border-base;
         }
 
         &.is-disabled {
@@ -523,7 +523,7 @@ export default class extends FormCtrl<{
 
             &.increase {
                 border-radius: 0 4px 0 0;
-                border-bottom: $--border-base;
+                border-bottom: var.$border-base;
             }
 
             &.decrease {
@@ -532,7 +532,7 @@ export default class extends FormCtrl<{
                 top: auto;
                 left: auto;
                 border-right: none;
-                border-left: $--border-base;
+                border-left: var.$border-base;
                 border-radius: 0 0 4px 0;
             }
         }

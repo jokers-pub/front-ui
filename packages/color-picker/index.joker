@@ -103,7 +103,7 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 .jk-color-picker {
     display: inline-block;
     position: relative;
@@ -151,7 +151,7 @@ export default class extends FormCtrl<{
             text-align: center;
 
             &.is-alpha {
-                background: $--transparent-background;
+                background: var.$transparent-background;
             }
 
             .inner {

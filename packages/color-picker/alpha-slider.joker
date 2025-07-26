@@ -79,13 +79,13 @@ export default class extends Component<{ color: Color }> {
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 .jk-alpha-slider {
     position: relative;
     box-sizing: border-box;
     width: 280px;
     height: 12px;
-    background: $--transparent-background;
+    background: var.$transparent-background;
     margin: 8px 0;
     .bar {
         position: relative;

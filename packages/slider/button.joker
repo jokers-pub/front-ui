@@ -231,7 +231,7 @@ export default class extends Component<{
 </script>
 
 <style scoped lang="scss">
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 .jk-slider-button-wrapper {
     height: 36px;
@@ -245,7 +245,7 @@ export default class extends Component<{
     user-select: none;
     line-height: normal;
 
-    @include vertical-center;
+    @include mixins.vertical-center;
 
     .button {
         width: 16px;

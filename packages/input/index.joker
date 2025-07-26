@@ -299,15 +299,15 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/mixins.scss";
-@import "../../theme/var.scss";
+@use "../../theme/mixins.scss";
+@use "../../theme/var.scss";
 .jk-input {
     position: relative;
     font-size: 14px;
     display: inline-block;
     width: 100%;
 
-    @include scroll-bar;
+    @include mixins.scroll-bar;
 
     &.suffix {
         input {
@@ -374,7 +374,7 @@ export default class extends FormCtrl<{
             vertical-align: middle;
             display: table-cell;
             position: relative;
-            border: $--border-base;
+            border: var.$border-base;
             border-radius: 4px;
             padding: 0 20px;
             width: 1px;
@@ -417,7 +417,7 @@ export default class extends FormCtrl<{
         background-color: var(--jk-background-color-default);
         background-image: none;
         border-radius: 4px;
-        border: $--border-base;
+        border: var.$border-base;
         box-sizing: border-box;
         color: var(--jk-color-text-regular);
         display: inline-block;
@@ -426,7 +426,7 @@ export default class extends FormCtrl<{
         line-height: 40px;
         outline: none;
         padding: 0 15px;
-        transition: $--border-transition-base;
+        transition: var.$border-transition-base;
         width: 100%;
 
         &::-ms-reveal {
@@ -490,7 +490,7 @@ export default class extends FormCtrl<{
             color: var(--jk-color-text-placeholder);
             cursor: pointer;
             font-size: 14px;
-            transition: $--color-transition-base;
+            transition: var.$color-transition-base;
 
             &:hover {
                 color: var(--jk-color-text-secondary);

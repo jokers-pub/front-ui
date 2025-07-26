@@ -199,13 +199,13 @@ export default class extends Component<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 .jk-popover {
     position: absolute;
     border-radius: 4px;
     padding: 12px;
-    z-index: $--index-popper;
+    z-index: var.$index-popper;
     line-height: 1.4;
     min-width: 150px;
 

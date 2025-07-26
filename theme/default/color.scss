@@ -1,27 +1,29 @@
 @use "sass:math";
-
+@use "sass:map";
+@use "sass:color";
+@use "./var.scss";
 @mixin set-color-mix-level($type) {
-    $mix-color: map-get($colors, $type);
+    $mix-color: map.get(var.$colors, $type);
 
     @for $i from 3 through 9 {
         $p: math.percentage(math.div(10-$i, 10));
-        $color: mix($mix-color, $color-white, $p);
+        $color: color.mix($mix-color, var.$color-white, $p);
         --jk-color-#{$type}-light-#{$i}: #{$color};
     }
 
-    --jk-color-#{$type}-dark-2: #{mix($mix-color, $color-black, 80%)};
+    --jk-color-#{$type}-dark-2: #{color.mix($mix-color, var.$color-black, 80%)};
 }
 
 @mixin color-vars {
-    --jk-color-primary: #{$color-primary};
+    --jk-color-primary: #{var.$color-primary};
     @include set-color-mix-level(primary);
-    --jk-color-success: #{$color-success};
+    --jk-color-success: #{var.$color-success};
     @include set-color-mix-level(success);
-    --jk-color-warning: #{$color-warning};
+    --jk-color-warning: #{var.$color-warning};
     @include set-color-mix-level(warning);
-    --jk-color-danger: #{$color-danger};
+    --jk-color-danger: #{var.$color-danger};
     @include set-color-mix-level(danger);
-    --jk-color-info: #{$color-info};
+    --jk-color-info: #{var.$color-info};
     @include set-color-mix-level(info);
 
     //font

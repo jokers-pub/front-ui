@@ -86,7 +86,7 @@ export default class extends Component<{ color: Color; showAlpha: boolean }> {
 </script>
 
 <style lang="scss">
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 .jk-color-pick-dropdown {
     position: absolute;
     box-sizing: content-box;
@@ -103,7 +103,7 @@ export default class extends Component<{ color: Color; showAlpha: boolean }> {
     .options {
         margin-top: 6px;
         text-align: right;
-        @include clearfix;
+        @include mixins.clearfix;
 
         .value {
             float: left;

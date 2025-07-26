@@ -63,11 +63,11 @@ export default class extends Component<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 .jk-row {
     position: relative;
     box-sizing: border-box;
-    @include clearfix;
+    @include mixins.clearfix;
 
     &.is-flex {
         display: flex;

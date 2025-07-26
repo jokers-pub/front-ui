@@ -309,7 +309,7 @@ export default class extends Component<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 .jk-table {
     overflow: auto;
     box-sizing: border-box;

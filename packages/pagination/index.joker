@@ -175,14 +175,14 @@ export default class extends Component<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 .jk-pagination {
     white-space: nowrap;
     padding: 2px 5px;
     color: var(--jk-color-text-primary);
 
-    @include clearfix;
+    @include mixins.clearfix;
 
     .rightwrapper {
         float: right;

@@ -97,7 +97,7 @@ export default class extends Component<{
 </script>
 
 <style scoped lang="scss">
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 .jk-form-item {
     margin-bottom: 15px;

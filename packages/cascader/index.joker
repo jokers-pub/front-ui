@@ -593,7 +593,7 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 .jk-cascader {
     display: inline-block;
@@ -637,7 +637,7 @@ export default class extends FormCtrl<{
         position: absolute;
         line-height: normal;
         white-space: normal;
-        z-index: $--index-normal;
+        z-index: var.$index-normal;
         top: 50%;
         transform: translateY(-50%);
         display: flex;

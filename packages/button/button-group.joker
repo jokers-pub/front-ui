@@ -4,10 +4,10 @@
     </div>
 </template>
 <style scoped lang="scss">
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 .jk-button-group {
-    @include clearfix;
+    @include mixins.clearfix;
     display: inline-block;
     vertical-align: middle;
 

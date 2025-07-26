@@ -156,7 +156,7 @@ export default class extends FormCtrl<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 .jk-checkbox {
     color: var(--jk-color-text-regular);
@@ -174,7 +174,7 @@ export default class extends FormCtrl<{
     &.is-border {
         padding: 12px 20px 0 10px;
         border-radius: 4px;
-        border: $--border-base;
+        border: var.$border-base;
         box-sizing: border-box;
         height: 40px;
 

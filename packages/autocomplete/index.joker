@@ -370,8 +370,8 @@ export default class extends FormCtrl<{
 </script>
 
 <style scoped lang="scss">
-@import "../../theme/var.scss";
-@import "../../theme/mixins.scss";
+@use "../../theme/var.scss";
+@use "../../theme/mixins.scss";
 
 .jk-autocomplete {
     display: inline-block;
@@ -419,7 +419,7 @@ export default class extends FormCtrl<{
     font-size: 20px;
     color: #999;
 
-    @include vertical-center;
+    @include mixins.vertical-center;
 
     .jk-icon-loading {
         vertical-align: middle;

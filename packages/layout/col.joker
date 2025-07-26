@@ -98,10 +98,10 @@ export default class extends Component<{
 </script>
 
 <style lang="scss" scoped>
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 @mixin setBreakpointsContent($size) {
-    @include res($size) {
+    @include mixins.res($size) {
         &.col-#{$size}-0 {
             display: none;
         }

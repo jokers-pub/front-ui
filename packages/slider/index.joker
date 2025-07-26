@@ -405,10 +405,10 @@ export default class extends FormCtrl<{
 </script>
 
 <style scoped lang="scss">
-@import "../../theme/mixins.scss";
+@use "../../theme/mixins.scss";
 
 .jk-slider {
-    @include clearfix;
+    @include mixins.clearfix;
 
     .runway {
         width: 100%;

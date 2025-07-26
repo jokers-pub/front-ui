@@ -1,12 +1,12 @@
-$--transition: cubic-bezier(0.645, 0.045, 0.355, 1);
-$--all-transition: all 0.3s $--transition;
-$--color-transition-base: color 0.2s $--transition;
-$--border-transition-base: border-color 0.2s $--transition;
-$--border-base: solid 1px var(--jk-border-color-base);
-$--transparent-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+$transition: cubic-bezier(0.645, 0.045, 0.355, 1);
+$all-transition: all 0.3s $transition;
+$color-transition-base: color 0.2s $transition;
+$border-transition-base: border-color 0.2s $transition;
+$border-base: solid 1px var(--jk-border-color-base);
+$transparent-background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
 
-$--index-normal: 1;
-$--index-popper: 2000;
+$index-normal: 1;
+$index-popper: 2000;
 
 $color-primary: #409eff;
 $color-success: #67c23a;

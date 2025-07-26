@@ -162,13 +162,13 @@ export default class extends Component<{
 </script>
 
 <style lang="scss">
-@import "../../theme/var.scss";
+@use "../../theme/var.scss";
 
 .jk-tooltip {
     position: absolute;
     border-radius: 4px;
     padding: 10px;
-    z-index: $--index-popper;
+    z-index: var.$index-popper;
     line-height: 1.2;
     min-width: 10px;
     word-wrap: break-word;

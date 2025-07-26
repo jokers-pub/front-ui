@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:meta";
 $breakpoints: (
     "xs": (
         max-width: 768px - 1
@@ -17,8 +19,8 @@ $breakpoints: (
 );
 
 @mixin res($key) {
-    @if map-has-key($breakpoints, $key) {
-        @media only screen and #{inspect(map-get($breakpoints,$key))} {
+    @if map.has-key($breakpoints, $key) {
+        @media only screen and #{meta.inspect(map.get($breakpoints,$key))} {
             @content;
         }
     } @else {
