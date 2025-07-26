@@ -45,7 +45,7 @@
         "sitemap": "ts-node build/sitemap.ts",
         "algoliasearch:zh-CN": "ts-node build/algoliasearch.ts --lang=zh-CN",
         "algoliasearch:en": "ts-node build/algoliasearch.ts --lang=en",
-        "release": "npm run build && joker_release_library",
+        "release": "npm run build && npm publish",
         "release:prod": "npm run build:lowcode && npm run build:prod && npm publish --access public --registry https://registry.npmjs.org/"
     },
     "devDependencies": {
