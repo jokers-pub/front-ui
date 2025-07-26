@@ -1,12 +1,32 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Dialog 对话框</h2>
-<p>在保留当前页面状态的情况下，告知用户并承载相关操作。</p>
-<h3>基本用法</h3>
-<p>Dialog 弹出一个对话框，适合需要定制性更大的场景。</p>
-<p>需要通过组件的<code>open</code>/<code>close</code>方法来设置弹窗是否展示。Dialog 分为两个部分：<code>body</code>和<code>footer</code>，<code>footer</code>需要具名为<code>footer</code>的<code>section</code>。<code>title</code>属性用于定义标题，它是可选的，默认值为空。最后，本例还展示了<code>before-close</code>的用法。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Dialog 对话框</h2>
+        <p>在保留当前页面状态的情况下，告知用户并承载相关操作。</p>
+        <h3>基本用法</h3>
+        <p>Dialog 弹出一个对话框，适合需要定制性更大的场景。</p>
+        <p>
+            需要通过组件的
+            <code>open</code>
+            /
+            <code>close</code>
+            方法来设置弹窗是否展示。Dialog 分为两个部分：
+            <code>body</code>
+            和
+            <code>footer</code>
+            ，
+            <code>footer</code>
+            需要具名为
+            <code>footer</code>
+            的
+            <code>section</code>
+            。
+            <code>title</code>
+            属性用于定义标题，它是可选的，默认值为空。最后，本例还展示了
+            <code>before-close</code>
+            的用法。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-button @click=&quot;open1&quot;&gt;Full-screen window&lt;/jk-button&gt;
@@ -70,15 +90,30 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p><code>before-close</code> 仅当用户通过点击关闭图标或遮罩关闭 Dialog 时起效。</p>
-</blockquote>
-<h3>嵌套的 Dialog</h3>
-<p>如果需要在一个 Dialog 内部嵌套另一个 Dialog，需要设置 <code>append-to</code> 属性为<code>body</code>。</p>
-<p>正常情况下，我们不建议使用嵌套的 Dialog，如果需要在页面上同时显示多个 Dialog，可以将它们平级放置。对于确实需要嵌套 Dialog 的场景，我们提供了<code>append-to</code>属性，<strong>可参考核心对 append-to 的说明</strong>。将内层 Dialog 的该属性设置为 body，它就会插入至 body 元素上，从而保证内外层 Dialog 和遮罩层级关系的正确。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                <code>before-close</code>
+                仅当用户通过点击关闭图标或遮罩关闭 Dialog 时起效。
+            </p>
+        </blockquote>
+        <h3>嵌套的 Dialog</h3>
+        <p>
+            如果需要在一个 Dialog 内部嵌套另一个 Dialog，需要设置
+            <code>append-to</code>
+            属性为
+            <code>body</code>
+            。
+        </p>
+        <p>
+            正常情况下，我们不建议使用嵌套的 Dialog，如果需要在页面上同时显示多个 Dialog，可以将它们平级放置。对于确实需要嵌套 Dialog 的场景，我们提供了
+            <code>append-to</code>
+            属性，
+            <strong>可参考核心对 append-to 的说明</strong>
+            。将内层 Dialog 的该属性设置为 body，它就会插入至 body 元素上，从而保证内外层 Dialog 和遮罩层级关系的正确。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Open Window&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;Level 1 Window&quot;&gt;
@@ -114,14 +149,24 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p>append-to 只会影响 DOM 的输出接口，并不会影响 VNode 的数据结构，它仍按开发时的数据结构进行创建，也遵循父子组件销毁机制，无需过度干预。</p>
-</blockquote>
-<h3>居中布局</h3>
-<p>标题和底部可水平居中，将<code>center</code>设置为<code>true</code>即可使标题和底部居中。<code>center</code>仅影响标题和底部区域。Dialog 的内容是任意的，在一些情况下，内容并不适合居中布局。如果需要内容也水平居中，请自行为其添加 CSS。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                append-to 只会影响 DOM 的输出接口，并不会影响 VNode 的数据结构，它仍按开发时的数据结构进行创建，也遵循父子组件销毁机制，无需过度干预。
+            </p>
+        </blockquote>
+        <h3>居中布局</h3>
+        <p>
+            标题和底部可水平居中，将
+            <code>center</code>
+            设置为
+            <code>true</code>
+            即可使标题和底部居中。
+            <code>center</code>
+            仅影响标题和底部区域。Dialog 的内容是任意的，在一些情况下，内容并不适合居中布局。如果需要内容也水平居中，请自行为其添加 CSS。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; center title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
@@ -153,14 +198,24 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p>Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默认 section 不会被渲染到 DOM 上。因此，如果需要执行 DOM 操作，或通过 <code>ref</code> 获取相应组件，请在 <code>open</code> 事件回调中进行。</p>
-</blockquote>
-<h3>可移动窗口</h3>
-<p>我们可以启用窗口组件的<code>draggable</code>属性，来开启窗口自由移动功能。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默认 section 不会被渲染到 DOM 上。因此，如果需要执行 DOM 操作，或通过
+                <code>ref</code>
+                获取相应组件，请在
+                <code>open</code>
+                事件回调中进行。
+            </p>
+        </blockquote>
+        <h3>可移动窗口</h3>
+        <p>
+            我们可以启用窗口组件的
+            <code>draggable</code>
+            属性，来开启窗口自由移动功能。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; draggable title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
@@ -192,214 +247,215 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Dialog 的标题，也可通过具名 section （见下表）传入</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>width</td>
-<td>Dialog 的宽度</td>
-<td>string</td>
-<td>—</td>
-<td>50%</td>
-</tr>
-<tr>
-<td>fullscreen</td>
-<td>是否为全屏 Dialog</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>modal</td>
-<td>是否需要遮罩层</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>custom-class</td>
-<td>Dialog 的自定义类名</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close-on-click-modal</td>
-<td>是否可以通过点击 modal 关闭 Dialog</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>close-on-press-escape</td>
-<td>是否可以通过按下 ESC 关闭 Dialog</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>是否显示关闭按钮</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>before-close</td>
-<td>关闭前的回调，会暂停 Dialog 的关闭</td>
-<td>function(done)，done 用于关闭 Dialog</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>center</td>
-<td>是否对头部和底部采用居中布局</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>destroyOnClose</td>
-<td>是否在关闭时销毁内部</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>draggable</td>
-<td>是否开启拖拽移动</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>allowOutOfBounds</td>
-<td>是否允许拖拽移动超出边界范围</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Section</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>name</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Dialog 的内容</td>
-</tr>
-<tr>
-<td>title</td>
-<td>Dialog 标题区的内容</td>
-</tr>
-<tr>
-<td>footer</td>
-<td>Dialog 按钮操作区的内容</td>
-</tr>
-</tbody>
-</table>
-<h3>方法</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>方法名称</th>
-<th>说明</th>
-<th>方法参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td>打开窗口</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>关闭窗口</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td>Dialog 打开的回调</td>
-<td>—</td>
-</tr>
-<tr>
-<td>opened</td>
-<td>Dialog 打开动画结束时的回调</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Dialog 关闭的回调</td>
-<td>—</td>
-</tr>
-<tr>
-<td>closed</td>
-<td>Dialog 关闭动画结束时的回调</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Dialog 的标题，也可通过具名 section （见下表）传入</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>Dialog 的宽度</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>fullscreen</td>
+                    <td>是否为全屏 Dialog</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>modal</td>
+                    <td>是否需要遮罩层</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>custom-class</td>
+                    <td>Dialog 的自定义类名</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close-on-click-modal</td>
+                    <td>是否可以通过点击 modal 关闭 Dialog</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>close-on-press-escape</td>
+                    <td>是否可以通过按下 ESC 关闭 Dialog</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>是否显示关闭按钮</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>before-close</td>
+                    <td>关闭前的回调，会暂停 Dialog 的关闭</td>
+                    <td>function(done)，done 用于关闭 Dialog</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>center</td>
+                    <td>是否对头部和底部采用居中布局</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>destroyOnClose</td>
+                    <td>是否在关闭时销毁内部</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>draggable</td>
+                    <td>是否开启拖拽移动</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>allowOutOfBounds</td>
+                    <td>是否允许拖拽移动超出边界范围</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Section</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Dialog 的内容</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Dialog 标题区的内容</td>
+                </tr>
+                <tr>
+                    <td>footer</td>
+                    <td>Dialog 按钮操作区的内容</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>方法</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>方法名称</th>
+                    <th>说明</th>
+                    <th>方法参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>open</td>
+                    <td>打开窗口</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>关闭窗口</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>open</td>
+                    <td>Dialog 打开的回调</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>opened</td>
+                    <td>Dialog 打开动画结束时的回调</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>Dialog 关闭的回调</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>closed</td>
+                    <td>Dialog 关闭动画结束时的回调</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/dialog/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/dialog/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/dialog/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/dialog/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/dialog/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/dialog/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/dialog/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/dialog/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

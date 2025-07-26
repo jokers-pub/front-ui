@@ -1,12 +1,22 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>DatePicker 日期选择器</h2>
-<p>用于选择或输入日期</p>
-<h3>选择日</h3>
-<p>以「日」为基本单位，基础的日期选择控件</p>
-<p>基本单位由<code>type</code>属性指定。快捷选项需配置<code>shortcuts</code>，禁用日期通过 <code>disabledDate</code> 设置，该属性为函数类型，通过返回<code>boolean</code>来判断是否可选。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>DatePicker 日期选择器</h2>
+        <p>用于选择或输入日期</p>
+        <h3>选择日</h3>
+        <p>以「日」为基本单位，基础的日期选择控件</p>
+        <p>
+            基本单位由
+            <code>type</code>
+            属性指定。快捷选项需配置
+            <code>shortcuts</code>
+            ，禁用日期通过
+            <code>disabledDate</code>
+            设置，该属性为函数类型，通过返回
+            <code>boolean</code>
+            来判断是否可选。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-date-picker placeholder=&quot;Please select a date&quot;&gt;&lt;/jk-date-picker&gt;
     &lt;/DemoRow&gt;
@@ -61,11 +71,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>其他日期单位</h3>
-<p>通过扩展基础的日期选择，可以选择周、月、年。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>其他日期单位</h3>
+        <p>通过扩展基础的日期选择，可以选择周、月、年。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Month:&lt;/span&gt;
@@ -113,11 +123,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>选择日期范围</h3>
-<p>可在一个选择器中便捷地选择一个时间范围</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>选择日期范围</h3>
+        <p>可在一个选择器中便捷地选择一个时间范围</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Default panel:&lt;/span&gt;
@@ -209,276 +219,318 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>日期格式</h3>
-<p>使用<code>format</code>指定输入框的格式；使用<code>value-format</code>指定绑定值的格式。</p>
-<p>默认情况下，组件接受并返回<code>Date</code>对象。以下为可用的格式化字符串，以 UTC 2017 年 1 月 2 日 03:04:05 为例：</p>
-<div class="warning">
-<p>请注意大小写，内部采用<code>dayjs</code>进行时间运算及格式化，详细格式值，请参考<a href="https://dayjs.fenxianglu.cn/" target="_blank">dayjs</a></p>
-</div>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>绑定值</td>
-<td>string(DatePicker) / Array&lt;string&gt;(DateRangePicker)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>readonly</td>
-<td>完全只读</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>禁用</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>editable</td>
-<td>文本框可输入</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>clearable</td>
-<td>是否显示清除按钮</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>size</td>
-<td>输入框尺寸</td>
-<td>string</td>
-<td>large, small, mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>非范围选择时的占位内容</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>start-placeholder</td>
-<td>范围选择时开始日期的占位内容</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>end-placeholder</td>
-<td>范围选择时结束日期的占位内容</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>type</td>
-<td>显示类型</td>
-<td>string</td>
-<td><code>year</code>/<code>month</code>/<code>date</code>/<code>week</code>/<code>datetime</code>/<code>daterange</code>/<code>datetimerange</code></td>
-<td>date</td>
-</tr>
-<tr>
-<td>format</td>
-<td>显示在输入框中的格式</td>
-<td>string</td>
-<td>见<a href="https://dayjs.fenxianglu.cn/" target="_blank">日期格式</a></td>
-<td>yyyy-MM-dd</td>
-</tr>
-<tr>
-<td>range-separator</td>
-<td>选择范围时的分隔符</td>
-<td>string</td>
-<td>—</td>
-<td>'-'</td>
-</tr>
-<tr>
-<td>default-value</td>
-<td>可选，选择器打开时默认显示的时间</td>
-<td>string</td>
-<td>遵循 value-format</td>
-<td>—</td>
-</tr>
-<tr>
-<td>value-format</td>
-<td>可选，绑定值的格式。不指定则绑定值为 Date 对象</td>
-<td>string</td>
-<td>见<a href="https://dayjs.fenxianglu.cn/" target="_blank">日期格式</a></td>
-<td>—</td>
-</tr>
-<tr>
-<td>unlink-panels</td>
-<td>在范围选择器里取消两个日期面板之间的联动</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>prefix-icon</td>
-<td>自定义头部图标的类名</td>
-<td>string</td>
-<td>—</td>
-<td>jk-icon-date</td>
-</tr>
-</tbody>
-</table>
-<h3>Picker Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>shortcuts</td>
-<td>设置快捷选项，需要传入 { text, onClick } 对象用法参考 demo 或下表</td>
-<td>Object[]</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabledDate</td>
-<td>设置禁用状态，参数为当前日期，要求返回 Boolean</td>
-<td>Function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>cellClassName</td>
-<td>设置日期的 className</td>
-<td>Function(Date)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Shortcuts</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>text</td>
-<td>标题文本</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>onClick</td>
-<td>该方法会传入一个 callback，执行 callback 并传入新的值会进行设置操作</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>用户确认选定的值时触发</td>
-<td>组件绑定值。格式与绑定值一致，可受 <code>value-format</code> 控制</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>当 input 失去焦点时触发</td>
-<td>组件实例</td>
-</tr>
-<tr>
-<td>focus</td>
-<td>当 input 获得焦点时触发</td>
-<td>组件实例</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>focus</td>
-<td>使 input 获取焦点</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>日期格式</h3>
+        <p>
+            使用
+            <code>format</code>
+            指定输入框的格式；使用
+            <code>value-format</code>
+            指定绑定值的格式。
+        </p>
+        <p>
+            默认情况下，组件接受并返回
+            <code>Date</code>
+            对象。以下为可用的格式化字符串，以 UTC 2017 年 1 月 2 日 03:04:05 为例：
+        </p>
+        <div class="warning">
+            <p>
+                请注意大小写，内部采用
+                <code>dayjs</code>
+                进行时间运算及格式化，详细格式值，请参考
+                <a href="https://dayjs.fenxianglu.cn/" target="_blank">dayjs</a>
+            </p>
+        </div>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>绑定值</td>
+                    <td>string(DatePicker) / Array&lt;string&gt;(DateRangePicker)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>readonly</td>
+                    <td>完全只读</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>禁用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>editable</td>
+                    <td>文本框可输入</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>clearable</td>
+                    <td>是否显示清除按钮</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>输入框尺寸</td>
+                    <td>string</td>
+                    <td>large, small, mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>placeholder</td>
+                    <td>非范围选择时的占位内容</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>start-placeholder</td>
+                    <td>范围选择时开始日期的占位内容</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>end-placeholder</td>
+                    <td>范围选择时结束日期的占位内容</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>显示类型</td>
+                    <td>string</td>
+                    <td>
+                        <code>year</code>
+                        /
+                        <code>month</code>
+                        /
+                        <code>date</code>
+                        /
+                        <code>week</code>
+                        /
+                        <code>datetime</code>
+                        /
+                        <code>daterange</code>
+                        /
+                        <code>datetimerange</code>
+                    </td>
+                    <td>date</td>
+                </tr>
+                <tr>
+                    <td>format</td>
+                    <td>显示在输入框中的格式</td>
+                    <td>string</td>
+                    <td>
+                        见
+                        <a href="https://dayjs.fenxianglu.cn/" target="_blank">日期格式</a>
+                    </td>
+                    <td>yyyy-MM-dd</td>
+                </tr>
+                <tr>
+                    <td>range-separator</td>
+                    <td>选择范围时的分隔符</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>'-'</td>
+                </tr>
+                <tr>
+                    <td>default-value</td>
+                    <td>可选，选择器打开时默认显示的时间</td>
+                    <td>string</td>
+                    <td>遵循 value-format</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>value-format</td>
+                    <td>可选，绑定值的格式。不指定则绑定值为 Date 对象</td>
+                    <td>string</td>
+                    <td>
+                        见
+                        <a href="https://dayjs.fenxianglu.cn/" target="_blank">日期格式</a>
+                    </td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>unlink-panels</td>
+                    <td>在范围选择器里取消两个日期面板之间的联动</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>prefix-icon</td>
+                    <td>自定义头部图标的类名</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>jk-icon-date</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Picker Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>shortcuts</td>
+                    <td>
+                        设置快捷选项，需要传入{text, onClick}对象用法参考 demo 或下表
+                    </td>
+                    <td>Object[]</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabledDate</td>
+                    <td>设置禁用状态，参数为当前日期，要求返回 Boolean</td>
+                    <td>Function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>cellClassName</td>
+                    <td>设置日期的 className</td>
+                    <td>Function(Date)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Shortcuts</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>text</td>
+                    <td>标题文本</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>onClick</td>
+                    <td>该方法会传入一个 callback，执行 callback 并传入新的值会进行设置操作</td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>用户确认选定的值时触发</td>
+                    <td>
+                        组件绑定值。格式与绑定值一致，可受
+                        <code>value-format</code>
+                        控制
+                    </td>
+                </tr>
+                <tr>
+                    <td>blur</td>
+                    <td>当 input 失去焦点时触发</td>
+                    <td>组件实例</td>
+                </tr>
+                <tr>
+                    <td>focus</td>
+                    <td>当 input 获得焦点时触发</td>
+                    <td>组件实例</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>方法名</th>
+                    <th>说明</th>
+                    <th>参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>focus</td>
+                    <td>使 input 获取焦点</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/date-picker/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/date-picker/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/date-picker/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/date-picker/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/date-picker/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/date-picker/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

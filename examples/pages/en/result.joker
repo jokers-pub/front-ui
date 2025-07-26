@@ -1,10 +1,10 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Result</h2>
-<p>Used to provide feedback on the user's operation results or abnormal states.</p>
-<h3>Basic Usage</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Result</h2>
+        <p>Used to provide feedback on the user's operation results or abnormal states.</p>
+        <h3>Basic Usage</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;20&quot;&gt;
         &lt;jk-col span=&quot;6&quot;&gt;
             &lt;jk-result icon=&quot;success&quot; title=&quot;Success Prompt&quot; subTitle=&quot;Please operate according to the prompt&quot;&gt;
@@ -29,10 +29,10 @@
     &lt;/jk-row&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Content</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Content</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-result title=&quot;404&quot; subTitle=&quot;Sorry, the request is incorrect&quot;&gt;
         @section(&quot;icon&quot;) {
             &lt;img src=&quot;/static/result/landscape.png&quot; style=&quot;width:240px&quot; /&gt;
@@ -43,97 +43,98 @@
     &lt;/jk-result&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Title</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>subTitle</td>
-<td>Secondary title</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Icon type</td>
-<td>string</td>
-<td>success / warning / info / error</td>
-<td>info</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td>Custom icon</td>
-</tr>
-<tr>
-<td>title</td>
-<td>Custom title</td>
-</tr>
-<tr>
-<td>subTitle</td>
-<td>Custom secondary title</td>
-</tr>
-<tr>
-<td>default</td>
-<td>Content</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Title</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>subTitle</td>
+                    <td>Secondary title</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icon type</td>
+                    <td>string</td>
+                    <td>success / warning / info / error</td>
+                    <td>info</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>icon</td>
+                    <td>Custom icon</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Custom title</td>
+                </tr>
+                <tr>
+                    <td>subTitle</td>
+                    <td>Custom secondary title</td>
+                </tr>
+                <tr>
+                    <td>default</td>
+                    <td>Content</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/result/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/result/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/result/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/result/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

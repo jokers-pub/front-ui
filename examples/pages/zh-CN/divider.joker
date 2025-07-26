@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Divider 分割线</h2>
-<p>区隔内容的分割线。</p>
-<h3>基础用法</h3>
-<p>对不同章节的文本段落进行分割。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Divider 分割线</h2>
+        <p>区隔内容的分割线。</p>
+        <h3>基础用法</h3>
+        <p>对不同章节的文本段落进行分割。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;p&gt;What you need is not a brand - new start, but action to lead to a brand - new ending.&lt;/p&gt;
     &lt;jk-divider /&gt;
     &lt;p&gt;Enjoy your youth well. You'll never be younger than you are at this moment.&lt;/p&gt;
@@ -20,11 +20,11 @@ p {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>设置文案</h3>
-<p>可以在分割线上自定义文案内容。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>设置文案</h3>
+        <p>可以在分割线上自定义文案内容。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;p&gt;What you need is not a brand - new start, but action to lead to a brand - new ending.&lt;/p&gt;
     &lt;jk-divider content-position=&quot;left&quot;&gt;Well done!&lt;/jk-divider&gt;
     &lt;p&gt;Enjoy your youth to the fullest. You'll never be younger than you are right now.&lt;/p&gt;
@@ -41,10 +41,10 @@ p {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>垂直分割</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>垂直分割</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;span&gt;The rain is falling continuously&lt;/span&gt;
     &lt;jk-divider direction=&quot;vertical&quot; /&gt;
     &lt;span&gt;The old hometown&lt;/span&gt;
@@ -52,72 +52,73 @@ p {
     &lt;span&gt;The grass and trees are overgrown&lt;/span&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>设置分割线方向</td>
-<td>string</td>
-<td>horizontal / vertical</td>
-<td>horizontal</td>
-</tr>
-<tr>
-<td>content-position</td>
-<td>设置分割线文案的位置</td>
-<td>string</td>
-<td>left / right / center</td>
-<td>center</td>
-</tr>
-<tr>
-<td>background</td>
-<td>背景色</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>direction</td>
+                    <td>设置分割线方向</td>
+                    <td>string</td>
+                    <td>horizontal / vertical</td>
+                    <td>horizontal</td>
+                </tr>
+                <tr>
+                    <td>content-position</td>
+                    <td>设置分割线文案的位置</td>
+                    <td>string</td>
+                    <td>left / right / center</td>
+                    <td>center</td>
+                </tr>
+                <tr>
+                    <td>background</td>
+                    <td>背景色</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/divider/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/divider/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/divider/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/divider/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/divider/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/divider/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

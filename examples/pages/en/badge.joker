@@ -1,12 +1,20 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Badge</h2>
-<p>A numeric or status mark that appears next to buttons or icons.</p>
-<h3>Basic Usage</h3>
-<p>Displays the number of new messages.
-Define the <code>value</code> attribute, which accepts either a <code>Number</code> or a <code>String</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Badge</h2>
+        <p>A numeric or status mark that appears next to buttons or icons.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Displays the number of new messages.
+            Define the
+            <code>value</code>
+            attribute, which accepts either a
+            <code>Number</code>
+            or a
+            <code>String</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;item&quot;&gt;
         &lt;jk-badge value=&quot;12&quot;&gt;
             &lt;jk-button size=&quot;small&quot;&gt;Comments&lt;/jk-button&gt;
@@ -36,12 +44,22 @@ Define the <code>value</code> attribute, which accepts either a <code>Number</co
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Maximum Value</h3>
-<p>You can customize the maximum value.
-Defined by the <code>max</code> attribute, which accepts a <code>Number</code>. Note that it only takes effect when <code>value</code> is of type <code>Number</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Maximum Value</h3>
+        <p>
+            You can customize the maximum value.
+            Defined by the
+            <code>max</code>
+            attribute, which accepts a
+            <code>Number</code>
+            . Note that it only takes effect when
+            <code>value</code>
+            is of type
+            <code>Number</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;item&quot;&gt;
         &lt;jk-badge value=&quot;@(200)&quot; max=&quot;@(99)&quot;&gt;
             &lt;jk-button size=&quot;small&quot;&gt;Comments&lt;/jk-button&gt;
@@ -61,12 +79,18 @@ Defined by the <code>max</code> attribute, which accepts a <code>Number</code>. 
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Content</h3>
-<p>It can display text content other than numbers.
-When <code>value</code> is defined as a <code>String</code> type, it can be used to display custom text.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Content</h3>
+        <p>
+            It can display text content other than numbers.
+            When
+            <code>value</code>
+            is defined as a
+            <code>String</code>
+            type, it can be used to display custom text.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;item&quot;&gt;
         &lt;jk-badge value=&quot;new&quot;&gt;
             &lt;jk-button size=&quot;small&quot;&gt;Comments&lt;/jk-button&gt;
@@ -86,12 +110,18 @@ When <code>value</code> is defined as a <code>String</code> type, it can be used
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Red Dot</h3>
-<p>Marks the content that needs attention in the form of a red dot.
-In addition to numbers, set the <code>is-dot</code> attribute, which accepts a <code>Boolean</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Red Dot</h3>
+        <p>
+            Marks the content that needs attention in the form of a red dot.
+            In addition to numbers, set the
+            <code>is-dot</code>
+            attribute, which accepts a
+            <code>Boolean</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;item&quot;&gt;
         &lt;jk-badge isDot&gt;Data Query&lt;/jk-badge&gt;
     &lt;/div&gt;
@@ -109,81 +139,88 @@ In addition to numbers, set the <code>is-dot</code> attribute, which accepts a <
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Display value</td>
-<td>string/number</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>max</td>
-<td>Maximum value. If the value exceeds the maximum, it will display '{max}+'. The <code>value</code> must be of type <code>Number</code>.</td>
-<td>number</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>isDot</td>
-<td>Small red dot</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-<tr>
-<td>hidden</td>
-<td>Hide the badge</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>string</td>
-<td>primary / success / warning / danger / info</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Display value</td>
+                    <td>string/number</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>max</td>
+                    <td>
+                        Maximum value. If the value exceeds the maximum, it will display '{max}+'. The
+                        <code>value</code>
+                        must be of type
+                        <code>Number</code>
+                        .
+                    </td>
+                    <td>number</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>isDot</td>
+                    <td>Small red dot</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>hidden</td>
+                    <td>Hide the badge</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Type</td>
+                    <td>string</td>
+                    <td>primary / success / warning / danger / info</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/badge/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/badge/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/badge/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/badge/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/badge/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/badge/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/badge/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/badge/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

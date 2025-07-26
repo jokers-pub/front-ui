@@ -1,15 +1,37 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>MessageBox</h2>
-<p>A set of modal dialog components implemented by simulating the system's message prompt box, used for message prompts, confirmation messages, and content submission.</p>
-<blockquote>
-<p>In terms of scenarios, the role of MessageBox is to beautify the system-built-in <code>alert</code>, <code>confirm</code>, and <code>prompt</code>. Therefore, it is suitable for displaying relatively simple content. If you need to pop up more complex content, please use Dialog.</p>
-</blockquote>
-<h3>Message Prompt</h3>
-<p>It is triggered when the user performs an operation. This dialog box interrupts the user's operation until the user confirms and acknowledges it before it can be closed.</p>
-<p>Calling the <code>MessageBox.alert</code> method can open the message prompt. It simulates the system's <code>alert</code> and cannot be closed by pressing ESC or clicking outside the box. In this example, it accepts two parameters, <code>message</code> and <code>title</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>MessageBox</h2>
+        <p>
+            A set of modal dialog components implemented by simulating the system's message prompt box, used for message prompts, confirmation messages, and content submission.
+        </p>
+        <blockquote>
+            <p>
+                In terms of scenarios, the role of MessageBox is to beautify the system-built-in
+                <code>alert</code>
+                ,
+                <code>confirm</code>
+                , and
+                <code>prompt</code>
+                . Therefore, it is suitable for displaying relatively simple content. If you need to pop up more complex content, please use Dialog.
+            </p>
+        </blockquote>
+        <h3>Message Prompt</h3>
+        <p>
+            It is triggered when the user performs an operation. This dialog box interrupts the user's operation until the user confirms and acknowledges it before it can be closed.
+        </p>
+        <p>
+            Calling the
+            <code>MessageBox.alert</code>
+            method can open the message prompt. It simulates the system's
+            <code>alert</code>
+            and cannot be closed by pressing ESC or clicking outside the box. In this example, it accepts two parameters,
+            <code>message</code>
+            and
+            <code>title</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -33,12 +55,40 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Confirmation Message</h3>
-<p>This dialog box is used when prompting the user to confirm an action they have triggered and asking whether to perform this operation.</p>
-<p>Calling the <code>MessageBox.confirm</code> method can open the message prompt. It simulates the system's <code>confirm</code>. The MessageBox component also has a high degree of customizability. We can pass in <code>options</code> as the third parameter, which is a literal object. The <code>type</code> field indicates the message type and can be <code>success</code>, <code>error</code>, <code>info</code>, and <code>warning</code>. Invalid settings will be ignored. Note that the second parameter, <code>title</code>, must be defined as a <code>String</code> type. If it is an <code>Object</code>, it will be understood as <code>options</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Confirmation Message</h3>
+        <p>
+            This dialog box is used when prompting the user to confirm an action they have triggered and asking whether to perform this operation.
+        </p>
+        <p>
+            Calling the
+            <code>MessageBox.confirm</code>
+            method can open the message prompt. It simulates the system's
+            <code>confirm</code>
+            . The MessageBox component also has a high degree of customizability. We can pass in
+            <code>options</code>
+            as the third parameter, which is a literal object. The
+            <code>type</code>
+            field indicates the message type and can be
+            <code>success</code>
+            ,
+            <code>error</code>
+            ,
+            <code>info</code>
+            , and
+            <code>warning</code>
+            . Invalid settings will be ignored. Note that the second parameter,
+            <code>title</code>
+            , must be defined as a
+            <code>String</code>
+            type. If it is an
+            <code>Object</code>
+            , it will be understood as
+            <code>options</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -122,13 +172,41 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Content Submission</h3>
-<p>It is triggered when the user performs an operation, interrupts the user's operation, and prompts the user to enter information in the dialog box.</p>
-<p>Calling the <code>MessageBox.prompt</code> method can open the message prompt. It simulates the system's <code>prompt</code>. You can use <code>validate</code> to define a validation function, which can return <code>String</code> or <code>Boolean</code>. The returned string is equivalent to defining the <code>error prompt</code> field. Returning <code>false</code> will prompt the default error message. For more precise interaction, it is recommended to return a <code>String</code> error prompt text. In addition, you can use the <code>inputPlaceholder</code> field to define the placeholder of the input box.</p>
-<p>Through <code>beforeClose</code>, you can customize operations, such as data submission, etc., and then let the caller decide whether to <code>close</code> the window.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Content Submission</h3>
+        <p>
+            It is triggered when the user performs an operation, interrupts the user's operation, and prompts the user to enter information in the dialog box.
+        </p>
+        <p>
+            Calling the
+            <code>MessageBox.prompt</code>
+            method can open the message prompt. It simulates the system's
+            <code>prompt</code>
+            . You can use
+            <code>validate</code>
+            to define a validation function, which can return
+            <code>String</code>
+            or
+            <code>Boolean</code>
+            . The returned string is equivalent to defining the
+            <code>error prompt</code>
+            field. Returning
+            <code>false</code>
+            will prompt the default error message. For more precise interaction, it is recommended to return a
+            <code>String</code>
+            error prompt text. In addition, you can use the
+            <code>inputPlaceholder</code>
+            field to define the placeholder of the input box.
+        </p>
+        <p>
+            Through
+            <code>beforeClose</code>
+            , you can customize operations, such as data submission, etc., and then let the caller decide whether to
+            <code>close</code>
+            the window.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Please enter your email&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -180,14 +258,38 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Using HTML Fragments</h3>
-<p>The <code>message</code> property supports passing in HTML fragments. Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
-<div class="warning">
-<p>Although the <code>message</code> property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>. Therefore, when <code>useHtml</code> is turned on, please ensure that the content of <code>message</code> is trustworthy. <strong>Never</strong> assign user-submitted content to the <code>message</code> property.</p>
-</div>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Using HTML Fragments</h3>
+        <p>
+            The
+            <code>message</code>
+            property supports passing in HTML fragments. Set the
+            <code>useHtml</code>
+            property to
+            <code>true</code>
+            , and
+            <code>message</code>
+            will be treated as an HTML fragment.
+        </p>
+        <div class="warning">
+            <p>
+                Although the
+                <code>message</code>
+                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
+                . Therefore, when
+                <code>useHtml</code>
+                is turned on, please ensure that the content of
+                <code>message</code>
+                is trustworthy.
+                <strong>Never</strong>
+                assign user-submitted content to the
+                <code>message</code>
+                property.
+            </p>
+        </div>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -209,11 +311,17 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Queue Display</h3>
-<p>The display form of <code>MessageBox</code> is consistent with the logic of the browser's message prompt box, and it also uses a queue display in a &quot;first-in-first-out&quot; mode. If there is a scenario where we need it, we provide the <code>MessageBox.closeAll</code> method to close the current pop-up window and clear the queue.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Queue Display</h3>
+        <p>
+            The display form of
+            <code>MessageBox</code>
+            is consistent with the logic of the browser's message prompt box, and it also uses a queue display in a &quot;first-in-first-out&quot; mode. If there is a scenario where we need it, we provide the
+            <code>MessageBox.closeAll</code>
+            method to close the current pop-up window and clear the queue.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Open multiple windows simultaneously&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -244,11 +352,19 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Distinguishing Cancellation and Closing</h3>
-<p>In some scenarios, clicking the cancel button and clicking the close button have different meanings. By default, when the user triggers cancellation (clicking the cancel button) and triggering closing (clicking the close button or the mask layer, pressing the ESC key), the parameters of the Promise's reject callback and the <code>callback</code> callback are both 'cancel'. If the <code>distinguishCancelAndClose</code> property is set to <code>true</code>, the parameters of the above two behaviors are 'cancel' and 'close' respectively.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Distinguishing Cancellation and Closing</h3>
+        <p>
+            In some scenarios, clicking the cancel button and clicking the close button have different meanings. By default, when the user triggers cancellation (clicking the cancel button) and triggering closing (clicking the close button or the mask layer, pressing the ESC key), the parameters of the Promise's reject callback and the
+            <code>callback</code>
+            callback are both 'cancel'. If the
+            <code>distinguishCancelAndClose</code>
+            property is set to
+            <code>true</code>
+            , the parameters of the above two behaviors are 'cancel' and 'close' respectively.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -277,11 +393,17 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Centered Layout</h3>
-<p>The content supports a centered layout. Set <code>center</code> to <code>true</code> to enable the centered layout.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Centered Layout</h3>
+        <p>
+            The content supports a centered layout. Set
+            <code>center</code>
+            to
+            <code>true</code>
+            to enable the centered layout.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-link type=&quot;primary&quot; @click=&quot;open&quot;&gt;Click to open the message pop-up window&lt;/jk-link&gt;
     &lt;/DemoRow&gt;
@@ -307,233 +429,302 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Method of Introduction</h3>
-<p>Import <code>MessageBox</code>:</p>
-<pre><code class="language-javascript">import { MessageBox } from &quot;@joker.front/ui&quot;;
+        </DemoContainer>
+        <h3>Method of Introduction</h3>
+        <p>
+            Import
+            <code>MessageBox</code>
+            :
+        </p>
+        <pre><code class="language-javascript">import { MessageBox } from &quot;@joker.front/ui&quot;;
 </code></pre>
-<p>Then the calling methods corresponding to the above four global methods are <code>MessageBox</code>, <code>MessageBox.alert</code>, <code>MessageBox.confirm</code>, and <code>MessageBox.prompt</code> in sequence. The calling parameters are the same as those of the global methods.</p>
-<h3>Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>The title of the MessageBox</td>
-<td>string</td>
-<td>—</td>
-<td>A friendly reminder</td>
-</tr>
-<tr>
-<td>message</td>
-<td>The message body content of the MessageBox</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>useHtml</td>
-<td>Whether to treat the <code>message</code> property as an HTML fragment</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>type</td>
-<td>The message type, used to display the icon</td>
-<td>string</td>
-<td>success / info / warning / error</td>
-<td>—</td>
-</tr>
-<tr>
-<td>iconClass</td>
-<td>The class name of the custom icon, which will override <code>type</code></td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>customClass</td>
-<td>The custom class name of the MessageBox</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>callback</td>
-<td>If not using Promise, this parameter can be used to specify the callback after the MessageBox is closed</td>
-<td>function(action, instance), where the value of <code>action</code> is 'confirm', 'cancel', or 'close', and <code>instance</code> is the MessageBox instance through which you can access the properties and methods on the instance</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>Whether the MessageBox displays the close button in the upper-right corner</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>beforeClose</td>
-<td>The callback before the MessageBox is closed, which will pause the closing of the instance</td>
-<td>function(action, instance, close), where the value of <code>action</code> is 'confirm', 'cancel', or 'close'; <code>instance</code> is the MessageBox instance through which you can access the properties and methods on the instance; <code>close</code> is used to close the MessageBox instance; the value can be read by accessing <code>inputValue</code> in <code>instance</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>distinguishCancelAndClose</td>
-<td>Whether to distinguish between cancellation (clicking the cancel button) and closing (clicking the close button or the mask layer, pressing the ESC key)</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>showCancelButton</td>
-<td>Whether to display the cancel button</td>
-<td>boolean</td>
-<td>—</td>
-<td>false (true when called in the <code>confirm</code> and <code>prompt</code> ways)</td>
-</tr>
-<tr>
-<td>showConfirmButton</td>
-<td>Whether to display the confirm button</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>cancelButtonText</td>
-<td>The text content of the cancel button</td>
-<td>string</td>
-<td>—</td>
-<td>Cancel</td>
-</tr>
-<tr>
-<td>confirmButtonText</td>
-<td>The text content of the confirm button</td>
-<td>string</td>
-<td>—</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>closeOnClickModal</td>
-<td>Whether the MessageBox can be closed by clicking the mask</td>
-<td>boolean</td>
-<td>—</td>
-<td>true (false when called in the <code>alert</code> way)</td>
-</tr>
-<tr>
-<td>closeOnPressEscape</td>
-<td>Whether the MessageBox can be closed by pressing the ESC key</td>
-<td>boolean</td>
-<td>—</td>
-<td>true (false when called in the <code>alert</code> way)</td>
-</tr>
-<tr>
-<td>showInput</td>
-<td>Whether to display the input box</td>
-<td>boolean</td>
-<td>—</td>
-<td>false (true when called in the <code>prompt</code> way)</td>
-</tr>
-<tr>
-<td>inputPlaceholder</td>
-<td>The placeholder of the input box</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>validate</td>
-<td>The validation function of the input box. It can return a boolean or a string. If a string is returned, the return result will be assigned to the error message, where the parameter in <code>validate</code> is the input value of the current text box</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>center</td>
-<td>Whether to use a centered layout</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>roundButton</td>
-<td>Whether to use rounded-corner buttons</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>id</td>
-<td>If <code>id</code> is configured, only one pop-up will appear in the same sequence at the same time</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>close</td>
-<td>Close the current message pop-up</td>
-<td>—</td>
-</tr>
-<tr>
-<td>setErrorMsg</td>
-<td>Manually configure the error message</td>
-<td>errMsg:string</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        <p>
+            Then the calling methods corresponding to the above four global methods are
+            <code>MessageBox</code>
+            ,
+            <code>MessageBox.alert</code>
+            ,
+            <code>MessageBox.confirm</code>
+            , and
+            <code>MessageBox.prompt</code>
+            in sequence. The calling parameters are the same as those of the global methods.
+        </p>
+        <h3>Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>The title of the MessageBox</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>A friendly reminder</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>The message body content of the MessageBox</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>useHtml</td>
+                    <td>
+                        Whether to treat the
+                        <code>message</code>
+                        property as an HTML fragment
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>The message type, used to display the icon</td>
+                    <td>string</td>
+                    <td>success / info / warning / error</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>iconClass</td>
+                    <td>
+                        The class name of the custom icon, which will override
+                        <code>type</code>
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>customClass</td>
+                    <td>The custom class name of the MessageBox</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>callback</td>
+                    <td>
+                        If not using Promise, this parameter can be used to specify the callback after the MessageBox is closed
+                    </td>
+                    <td>
+                        function(action, instance), where the value of
+                        <code>action</code>
+                        is 'confirm', 'cancel', or 'close', and
+                        <code>instance</code>
+                        is the MessageBox instance through which you can access the properties and methods on the instance
+                    </td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>Whether the MessageBox displays the close button in the upper-right corner</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>beforeClose</td>
+                    <td>The callback before the MessageBox is closed, which will pause the closing of the instance</td>
+                    <td>
+                        function(action, instance, close), where the value of
+                        <code>action</code>
+                        is 'confirm', 'cancel', or 'close';
+                        <code>instance</code>
+                        is the MessageBox instance through which you can access the properties and methods on the instance;
+                        <code>close</code>
+                        is used to close the MessageBox instance; the value can be read by accessing
+                        <code>inputValue</code>
+                        in
+                        <code>instance</code>
+                    </td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>distinguishCancelAndClose</td>
+                    <td>
+                        Whether to distinguish between cancellation (clicking the cancel button) and closing (clicking the close button or the mask layer, pressing the ESC key)
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>showCancelButton</td>
+                    <td>Whether to display the cancel button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>
+                        false (true when called in the
+                        <code>confirm</code>
+                        and
+                        <code>prompt</code>
+                        ways)
+                    </td>
+                </tr>
+                <tr>
+                    <td>showConfirmButton</td>
+                    <td>Whether to display the confirm button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>cancelButtonText</td>
+                    <td>The text content of the cancel button</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>Cancel</td>
+                </tr>
+                <tr>
+                    <td>confirmButtonText</td>
+                    <td>The text content of the confirm button</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>OK</td>
+                </tr>
+                <tr>
+                    <td>closeOnClickModal</td>
+                    <td>Whether the MessageBox can be closed by clicking the mask</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>
+                        true (false when called in the
+                        <code>alert</code>
+                        way)
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeOnPressEscape</td>
+                    <td>Whether the MessageBox can be closed by pressing the ESC key</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>
+                        true (false when called in the
+                        <code>alert</code>
+                        way)
+                    </td>
+                </tr>
+                <tr>
+                    <td>showInput</td>
+                    <td>Whether to display the input box</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>
+                        false (true when called in the
+                        <code>prompt</code>
+                        way)
+                    </td>
+                </tr>
+                <tr>
+                    <td>inputPlaceholder</td>
+                    <td>The placeholder of the input box</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>validate</td>
+                    <td>
+                        The validation function of the input box. It can return a boolean or a string. If a string is returned, the return result will be assigned to the error message, where the parameter in
+                        <code>validate</code>
+                        is the input value of the current text box
+                    </td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>center</td>
+                    <td>Whether to use a centered layout</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>roundButton</td>
+                    <td>Whether to use rounded-corner buttons</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>
+                        If
+                        <code>id</code>
+                        is configured, only one pop-up will appear in the same sequence at the same time
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>close</td>
+                    <td>Close the current message pop-up</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>setErrorMsg</td>
+                    <td>Manually configure the error message</td>
+                    <td>errMsg:string</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/message-box/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/message-box/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/message-box/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/message-box/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/message-box/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/message-box/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/message-box/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/message-box/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/message-box/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/message-box/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/message-box/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/message-box/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/message-box/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/message-box/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

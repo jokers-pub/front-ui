@@ -1,11 +1,19 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>内置过渡动画</h2>
-<p>Joker-UI 内应用在部分组件的过渡动画，你也可以直接使用。在使用前请阅读 <code>transition 组件文档</code> 。</p>
-<h3>fade 淡入淡出</h3>
-<p>提供 <code>jk-fade-in</code> 效果。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>内置过渡动画</h2>
+        <p>
+            Joker-UI 内应用在部分组件的过渡动画，你也可以直接使用。在使用前请阅读
+            <code>transition 组件文档</code>
+            。
+        </p>
+        <h3>fade 淡入淡出</h3>
+        <p>
+            提供
+            <code>jk-fade-in</code>
+            效果。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
@@ -43,11 +51,19 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>zoom 缩放</h3>
-<p>提供 <code>jk-zoom-in-center</code>，<code>jk-zoom-in-top</code> 和 <code>jk-zoom-in-bottom</code> 三种效果。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>zoom 缩放</h3>
+        <p>
+            提供
+            <code>jk-zoom-in-center</code>
+            ，
+            <code>jk-zoom-in-top</code>
+            和
+            <code>jk-zoom-in-bottom</code>
+            三种效果。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
@@ -93,28 +109,29 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/transition/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/transition/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/transition/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/transition/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

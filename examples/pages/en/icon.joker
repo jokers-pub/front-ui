@@ -1,11 +1,15 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Icon</h2>
-<p>Provides a set of commonly used icon collections.</p>
-<h3>Usage</h3>
-<p>It can be used directly by setting the class name as <code>jk-icon-name</code>. For example:</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Icon</h2>
+        <p>Provides a set of commonly used icon collections.</p>
+        <h3>Usage</h3>
+        <p>
+            It can be used directly by setting the class name as
+            <code>jk-icon-name</code>
+            . For example:
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;icon-container&quot;&gt;
         &lt;i class=&quot;jk-icon-edit&quot; /&gt;
         &lt;i class=&quot;jk-icon-share&quot; /&gt;
@@ -22,10 +26,16 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<p>You can also use the <code>jk-icon</code> component and use it by setting the <code>name</code> attribute. For example:</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <p>
+            You can also use the
+            <code>jk-icon</code>
+            component and use it by setting the
+            <code>name</code>
+            attribute. For example:
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;icon-container&quot;&gt;
         &lt;jk-icon name=&quot;edit&quot; /&gt;
         &lt;jk-icon name=&quot;share&quot; /&gt;
@@ -41,13 +51,17 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Icon Collection</h3>
-<blockquote>
-<p>Click on the icon to copy the <code>class</code> name.</p>
-</blockquote>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Icon Collection</h3>
+        <blockquote>
+            <p>
+                Click on the icon to copy the
+                <code>class</code>
+                name.
+            </p>
+        </blockquote>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;ul class=&quot;icon-list&quot;&gt;
         @for(let icon of model.icons) {
             &lt;li @click=&quot;handleClick(icon)&quot;&gt;
@@ -122,30 +136,31 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/icon/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/icon/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/icon/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/icon/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/icon/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/icon/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

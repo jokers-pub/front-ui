@@ -1,12 +1,26 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Steps</h2>
-<p>A step-by-step navigation bar that guides users to complete tasks according to a process. The steps can be set according to the actual application scenario, and the number of steps should not be less than 2.</p>
-<h3>Basic Usage</h3>
-<p>A simple step bar.</p>
-<p>Set the <code>active</code> attribute, which accepts a <code>Number</code> indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the <code>space</code> attribute, which accepts a <code>Number</code> in units of px. If not set, it will be adaptive. Set the <code>finishStatus</code> attribute to change the status of completed steps.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Steps</h2>
+        <p>
+            A step-by-step navigation bar that guides users to complete tasks according to a process. The steps can be set according to the actual application scenario, and the number of steps should not be less than 2.
+        </p>
+        <h3>Basic Usage</h3>
+        <p>A simple step bar.</p>
+        <p>
+            Set the
+            <code>active</code>
+            attribute, which accepts a
+            <code>Number</code>
+            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            <code>space</code>
+            attribute, which accepts a
+            <code>Number</code>
+            in units of px. If not set, it will be adaptive. Set the
+            <code>finishStatus</code>
+            attribute to change the status of completed steps.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-steps active=&quot;@model.active&quot; finishStatus=&quot;success&quot;&gt;
             @for(let item of model.list) {
@@ -30,12 +44,20 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Step Bar with Status</h3>
-<p>Each step shows the status of that step.</p>
-<p>You can also use the named slot <code>title</code>, and use the <code>sections</code> method to replace the attribute settings. There is a list of all <code>sections name</code> at the end of this document for reference.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Step Bar with Status</h3>
+        <p>Each step shows the status of that step.</p>
+        <p>
+            You can also use the named slot
+            <code>title</code>
+            , and use the
+            <code>sections</code>
+            method to replace the attribute settings. There is a list of all
+            <code>sections name</code>
+            at the end of this document for reference.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps space=&quot;@(200)&quot; active=&quot;1&quot; finishStatus=&quot;success&quot;&gt;
         &lt;jk-step title=&quot;Completed&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;In progress&quot;&gt;&lt;/jk-step&gt;
@@ -43,11 +65,11 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Step Bar with Descriptions</h3>
-<p>Each step has its corresponding step-status description.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Step Bar with Descriptions</h3>
+        <p>Each step has its corresponding step-status description.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
         &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
@@ -55,12 +77,24 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Centered Step Bar</h3>
-<p>Both the title and description will be centered.</p>
-<p>Set the <code>active</code> attribute, which accepts a <code>Number</code> indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the <code>space</code> attribute, which accepts a <code>Number</code> in units of px. If not set, it will be adaptive. Set the <code>finishStatus</code> attribute to change the status of completed steps.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Centered Step Bar</h3>
+        <p>Both the title and description will be centered.</p>
+        <p>
+            Set the
+            <code>active</code>
+            attribute, which accepts a
+            <code>Number</code>
+            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            <code>space</code>
+            attribute, which accepts a
+            <code>Number</code>
+            in units of px. If not set, it will be adaptive. Set the
+            <code>finishStatus</code>
+            attribute to change the status of completed steps.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;2&quot; alignCenter&gt;
         &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
@@ -69,12 +103,18 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Step Bar with Icons</h3>
-<p>Various custom icons can be enabled within the step bar.</p>
-<p>Set the icon through the <code>icon</code> attribute. The types of icons can refer to the documentation of the Icon component. In addition, custom icons can also be used through named <code>sections</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Step Bar with Icons</h3>
+        <p>Various custom icons can be enabled within the step bar.</p>
+        <p>
+            Set the icon through the
+            <code>icon</code>
+            attribute. The types of icons can refer to the documentation of the Icon component. In addition, custom icons can also be used through named
+            <code>sections</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
         &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
@@ -82,12 +122,20 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Vertical Step Bar</h3>
-<p>A step bar in the vertical direction.</p>
-<p>Just set the <code>direction</code> attribute to <code>vertical</code> in the <code>jk-steps</code> element.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Vertical Step Bar</h3>
+        <p>A step bar in the vertical direction.</p>
+        <p>
+            Just set the
+            <code>direction</code>
+            attribute to
+            <code>vertical</code>
+            in the
+            <code>jk-steps</code>
+            element.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;height: 300px;&quot;&gt;
         &lt;jk-steps direction=&quot;vertical&quot; active=&quot;1&quot;&gt;
             &lt;jk-step title=&quot;Step 1&quot;&gt;&lt;/jk-step&gt;
@@ -97,12 +145,36 @@ export default class extends Component {
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Simple-style Step Bar</h3>
-<p>Set <code>simple</code> to apply the simple style. Under this condition, <code>alignCenter</code>, <code>description</code>, <code>direction</code>, and <code>space</code> will all be invalid.</p>
-<p>Set the <code>active</code> attribute, which accepts a <code>Number</code> indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the <code>space</code> attribute, which accepts a <code>Number</code> in units of px. If not set, it will be adaptive. Set the <code>finishStatus</code> attribute to change the status of completed steps.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Simple-style Step Bar</h3>
+        <p>
+            Set
+            <code>simple</code>
+            to apply the simple style. Under this condition,
+            <code>alignCenter</code>
+            ,
+            <code>description</code>
+            ,
+            <code>direction</code>
+            , and
+            <code>space</code>
+            will all be invalid.
+        </p>
+        <p>
+            Set the
+            <code>active</code>
+            attribute, which accepts a
+            <code>Number</code>
+            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            <code>space</code>
+            attribute, which accepts a
+            <code>Number</code>
+            in units of px. If not set, it will be adaptive. Set the
+            <code>finishStatus</code>
+            attribute to change the status of completed steps.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot; simple&gt;
         &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
@@ -116,152 +188,157 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Steps Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>space</td>
-<td>The spacing between each step. If not filled, the spacing will be adaptive. Supports percentages.</td>
-<td>number / string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>Display direction</td>
-<td>string</td>
-<td>vertical/horizontal</td>
-<td>horizontal</td>
-</tr>
-<tr>
-<td>active</td>
-<td>Set the currently active step</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>alignCenter</td>
-<td>Perform centered alignment</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>simple</td>
-<td>Whether to apply the simple style</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Step Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Title</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>description</td>
-<td>Descriptive text</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Icon</td>
-<td>Pass in the full class name of the icon to customize the icon, and it also supports being written in the Section way</td>
-<td>string</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Step Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td>Custom icon</td>
-</tr>
-<tr>
-<td>title</td>
-<td>Custom title</td>
-</tr>
-<tr>
-<td>description</td>
-<td>Custom descriptive text</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Steps Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>space</td>
+                    <td>
+                        The spacing between each step. If not filled, the spacing will be adaptive. Supports percentages.
+                    </td>
+                    <td>number / string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>direction</td>
+                    <td>Display direction</td>
+                    <td>string</td>
+                    <td>vertical/horizontal</td>
+                    <td>horizontal</td>
+                </tr>
+                <tr>
+                    <td>active</td>
+                    <td>Set the currently active step</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>alignCenter</td>
+                    <td>Perform centered alignment</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>simple</td>
+                    <td>Whether to apply the simple style</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Step Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Title</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>Descriptive text</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icon</td>
+                    <td>
+                        Pass in the full class name of the icon to customize the icon, and it also supports being written in the Section way
+                    </td>
+                    <td>string</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Step Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>icon</td>
+                    <td>Custom icon</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Custom title</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>Custom descriptive text</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/steps/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/steps/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/steps/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/steps/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/steps/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/steps/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/steps/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/steps/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/steps/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/steps/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/steps/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/steps/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/steps/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/steps/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

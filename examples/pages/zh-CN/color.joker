@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Color 色彩</h2>
-<p>Joker-UI 为了避免视觉传达差异，使用一套特定的调色板来规定颜色，为你所搭建的产品提供一致的外观视觉感受。</p>
-<h3>主色</h3>
-<p>Joker-UI 主要品牌颜色是鲜艳、友好的蓝色。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Color 色彩</h2>
+        <p>Joker-UI 为了避免视觉传达差异，使用一套特定的调色板来规定颜色，为你所搭建的产品提供一致的外观视觉感受。</p>
+        <h3>主色</h3>
+        <p>Joker-UI 主要品牌颜色是鲜艳、友好的蓝色。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;div style=&quot;background-color:var(--jk-color-primary-dark-2)&quot;&gt;&lt;/div&gt;
         @for(let i = 3; i &lt; 10; i++) {
@@ -28,11 +28,11 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>辅助色</h3>
-<p>除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>辅助色</h3>
+        <p>除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;6&quot;&gt;
         @for(let name of colors) {
             &lt;jk-col span=&quot;6&quot;&gt;
@@ -65,11 +65,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>中性色</h3>
-<p>中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>中性色</h3>
+        <p>中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-row gutter=&quot;6&quot;&gt;
             @for(let name in fontColors) {
@@ -138,11 +138,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>阴影颜色</h3>
-<p>提供常用的阴影样式。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>阴影颜色</h3>
+        <p>提供常用的阴影样式。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;20&quot;&gt;
         &lt;jk-col span=&quot;8&quot;&gt;
             &lt;div class=&quot;demo-container&quot; style=&quot;box-shadow:var(--jk-box-shadow-base);&quot;&gt;
@@ -177,32 +177,33 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/color/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/color/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/color/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/color/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/color/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/color/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/color/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/color/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

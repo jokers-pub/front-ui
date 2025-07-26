@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Link</h2>
-<p>Text hyperlinks.</p>
-<h3>Basic Usage</h3>
-<p>The basic usage of text links.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Link</h2>
+        <p>Text hyperlinks.</p>
+        <h3>Basic Usage</h3>
+        <p>The basic usage of text links.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-link href=&quot;http://jokers.pub&quot; target=&quot;_blank&quot;&gt;Default Link&lt;/jk-link&gt;
         &lt;jk-link type=&quot;primary&quot;&gt;Primary Link&lt;/jk-link&gt;
@@ -24,11 +24,11 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Disabled State</h3>
-<p>The state where the text link is unavailable.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Disabled State</h3>
+        <p>The state where the text link is unavailable.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-link disabled&gt;Default Link&lt;/jk-link&gt;
         &lt;jk-link type=&quot;primary&quot; disabled&gt;Primary Link&lt;/jk-link&gt;
@@ -47,11 +47,11 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Underline</h3>
-<p>Underline of the text link.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Underline</h3>
+        <p>Underline of the text link.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-link underline=&quot;@false&quot;&gt;No Underline&lt;/jk-link&gt;
         &lt;jk-link&gt;With Underline&lt;/jk-link&gt;
@@ -65,11 +65,11 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Icons</h3>
-<p>Text links with icons can enhance recognition.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Icons</h3>
+        <p>Text links with icons can enhance recognition.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-link icon=&quot;jk-icon-edit&quot;&gt;Edit&lt;/jk-link&gt;
         &lt;jk-link type=&quot;warning&quot;&gt;
@@ -87,117 +87,118 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>string</td>
-<td>primary / success / warning / danger / info</td>
-<td>default</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>underline</td>
-<td>Whether to have an underline</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether it is in a disabled state</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>target</td>
-<td>Opening method</td>
-<td>string</td>
-<td>_blank</td>
-<td>-</td>
-</tr>
-<tr>
-<td>href</td>
-<td>Native href attribute</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Icon class name</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size</td>
-<td>string</td>
-<td>medium/small</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>click</td>
-<td>Triggered when the link is clicked</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>type</td>
+                    <td>Type</td>
+                    <td>string</td>
+                    <td>primary / success / warning / danger / info</td>
+                    <td>default</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>underline</td>
+                    <td>Whether to have an underline</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether it is in a disabled state</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>target</td>
+                    <td>Opening method</td>
+                    <td>string</td>
+                    <td>_blank</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>href</td>
+                    <td>Native href attribute</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icon class name</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size</td>
+                    <td>string</td>
+                    <td>medium/small</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>Triggered when the link is clicked</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/link/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/link/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/link/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/link/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/link/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/link/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/link/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/link/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

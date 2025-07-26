@@ -1,12 +1,26 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Radio</h2>
-<p>Used to make a single selection among a set of alternative options.</p>
-<h3>Basic Usage</h3>
-<p>Since the options are visible by default, the number of options should not be too large. If there are too many options, it is recommended to use the Select selector.</p>
-<p>To use the Radio component, use the <code>value</code> attribute of Radio. The <code>value</code> can be <code>String</code>, <code>Number</code>, or <code>Boolean</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Radio</h2>
+        <p>Used to make a single selection among a set of alternative options.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Since the options are visible by default, the number of options should not be too large. If there are too many options, it is recommended to use the Select selector.
+        </p>
+        <p>
+            To use the Radio component, use the
+            <code>value</code>
+            attribute of Radio. The
+            <code>value</code>
+            can be
+            <code>String</code>
+            ,
+            <code>Number</code>
+            , or
+            <code>Boolean</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;2&quot;&gt;
             &lt;jk-radio value=&quot;1&quot;&gt;Option 1&lt;/jk-radio&gt;
@@ -27,22 +41,52 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Disabled State</h3>
-<p>The state where the radio button is unavailable.</p>
-<p>Just set the <code>disabled</code> attribute in the <code>jk-radio</code> element. It accepts a <code>Boolean</code>, and <code>true</code> means disabled.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Disabled State</h3>
+        <p>The state where the radio button is unavailable.</p>
+        <p>
+            Just set the
+            <code>disabled</code>
+            attribute in the
+            <code>jk-radio</code>
+            element. It accepts a
+            <code>Boolean</code>
+            , and
+            <code>true</code>
+            means disabled.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-radio disabled value=&quot;1&quot;&gt;Option 1&lt;/jk-radio&gt;
     &lt;jk-radio disabled value=&quot;2&quot;&gt;Option 2&lt;/jk-radio&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Radio Group</h3>
-<p>Suitable for scenarios where a selection is made among multiple mutually exclusive options.</p>
-<p>Combining the parent element <code>jk-radio-group</code> and the child element <code>jk-radio</code> can achieve a radio group. Bind <code>value</code> on the <code>jk-radio-group</code> and set <code>label</code> on the <code>jk-radio</code>. There is no need to bind variables to each <code>jk-radio</code> anymore. In addition, a <code>change</code> event is provided to respond to changes in the selection, and it will pass in a parameter <code>value</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Radio Group</h3>
+        <p>Suitable for scenarios where a selection is made among multiple mutually exclusive options.</p>
+        <p>
+            Combining the parent element
+            <code>jk-radio-group</code>
+            and the child element
+            <code>jk-radio</code>
+            can achieve a radio group. Bind
+            <code>value</code>
+            on the
+            <code>jk-radio-group</code>
+            and set
+            <code>label</code>
+            on the
+            <code>jk-radio</code>
+            . There is no need to bind variables to each
+            <code>jk-radio</code>
+            anymore. In addition, a
+            <code>change</code>
+            event is provided to respond to changes in the selection, and it will pass in a parameter
+            <code>value</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;@model.value&quot; @change=&quot;handleChange&quot;&gt;
             &lt;jk-radio value=&quot;1&quot;&gt;Option 1&lt;/jk-radio&gt;
@@ -67,11 +111,21 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>With Border</h3>
-<p>Setting the <code>border</code> attribute can render a radio button with a border. The <code>size</code> attribute of <code>jk-raido</code> only takes effect when <code>border</code> is set.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>With Border</h3>
+        <p>
+            Setting the
+            <code>border</code>
+            attribute can render a radio button with a border. The
+            <code>size</code>
+            attribute of
+            <code>jk-raido</code>
+            only takes effect when
+            <code>border</code>
+            is set.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;Beijing&quot;&gt;
             &lt;jk-radio border label=&quot;Shanghai&quot; value=&quot;Shanghai&quot;&gt;&lt;/jk-radio&gt;
@@ -114,12 +168,20 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Button Style</h3>
-<p>A radio combination with a button style.</p>
-<p>Just change the <code>jk-radio</code> element to the <code>jk-radio-button</code> element. In addition, Joker-UI also provides the <code>size</code> attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Button Style</h3>
+        <p>A radio combination with a button style.</p>
+        <p>
+            Just change the
+            <code>jk-radio</code>
+            element to the
+            <code>jk-radio-button</code>
+            element. In addition, Joker-UI also provides the
+            <code>size</code>
+            attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;Beijing&quot;&gt;
             &lt;jk-radio-button label=&quot;Shanghai&quot; value=&quot;Shanghai&quot;&gt;&lt;/jk-radio-button&gt;
@@ -162,239 +224,240 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Radio Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>label</td>
-<td>The value of Radio</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>hide-label</td>
-<td>Whether to hide the label</td>
-<td>boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>border</td>
-<td>Whether to display the border</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>size</td>
-<td>The size of Radio, only valid when border is true</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Native name attribute</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Radio Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>The event triggered when the selection state changes</td>
-<td>The changed value</td>
-</tr>
-</tbody>
-</table>
-<h3>Radio-button Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>The value of Radio</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>size</td>
-<td>The size of Radio, only valid when border is true</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Native name attribute</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Radio-button Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>The event triggered when the selection state changes</td>
-<td>The changed value</td>
-</tr>
-</tbody>
-</table>
-<h3>Radio-group Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>size</td>
-<td>The size of the radio group, only valid for button-style Radios or Radios with borders</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Radio-group Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>The event triggered when the selection state changes</td>
-<td>The changed value</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Radio Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>The value of Radio</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>hide-label</td>
+                    <td>Whether to hide the label</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td>Whether to display the border</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>The size of Radio, only valid when border is true</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>Native name attribute</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Radio Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>The event triggered when the selection state changes</td>
+                    <td>The changed value</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Radio-button Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>The value of Radio</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>The size of Radio, only valid when border is true</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>Native name attribute</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Radio-button Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>The event triggered when the selection state changes</td>
+                    <td>The changed value</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Radio-group Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>The size of the radio group, only valid for button-style Radios or Radios with borders</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Radio-group Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>The event triggered when the selection state changes</td>
+                    <td>The changed value</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo5 from '../../components/radio/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/radio/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/radio/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/radio/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/radio/demo1.joker';
+import DEMO_JOKER_demo5 from "../../components/radio/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/radio/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/radio/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/radio/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/radio/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

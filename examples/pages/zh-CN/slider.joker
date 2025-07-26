@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Slider 滑块</h2>
-<p>通过拖动滑块在一个固定区间内进行选择</p>
-<h3>基础用法</h3>
-<p>在拖动滑块时，显示当前值，通过设置绑定值自定义滑块的初始值</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Slider 滑块</h2>
+        <p>通过拖动滑块在一个固定区间内进行选择</p>
+        <h3>基础用法</h3>
+        <p>在拖动滑块时，显示当前值，通过设置绑定值自定义滑块的初始值</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
         &lt;span&gt;Default:&lt;/span&gt;
         &lt;jk-slider&gt;&lt;/jk-slider&gt;
@@ -61,11 +61,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>离散值</h3>
-<p>选项可以是离散的，改变<code>step</code>的值可以改变步长，通过设置<code>show-stops</code>属性可以显示间断点</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>离散值</h3>
+        <p>
+            选项可以是离散的，改变
+            <code>step</code>
+            的值可以改变步长，通过设置
+            <code>show-stops</code>
+            属性可以显示间断点
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;row&quot;&gt;
         &lt;span&gt;Do not show breakpoints:&lt;/span&gt;
         &lt;jk-slider step=&quot;10&quot;&gt;&lt;/jk-slider&gt;
@@ -100,14 +106,26 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>带有输入框</h3>
-<p>通过输入框设置精确数值，设置<code>show-input</code>属性会在右侧显示一个输入框</p>
-<blockquote>
-<p>当设置<code>range</code> 或者 <code>show-input</code>时，<code>show-input</code>属性将不生效</p>
-</blockquote>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带有输入框</h3>
+        <p>
+            通过输入框设置精确数值，设置
+            <code>show-input</code>
+            属性会在右侧显示一个输入框
+        </p>
+        <blockquote>
+            <p>
+                当设置
+                <code>range</code>
+                或者
+                <code>show-input</code>
+                时，
+                <code>show-input</code>
+                属性将不生效
+            </p>
+        </blockquote>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-slider show-input /&gt;
     &lt;/DemoRow&gt;
@@ -116,11 +134,15 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>范围选择</h3>
-<p>支持选择某一数值范围，设置<code>range</code>即可开启范围选择，此时绑定值是一个数组，其元素分别为最小边界值和最大边界值</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>范围选择</h3>
+        <p>
+            支持选择某一数值范围，设置
+            <code>range</code>
+            即可开启范围选择，此时绑定值是一个数组，其元素分别为最小边界值和最大边界值
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-slider max=&quot;10&quot; range&gt;&lt;/jk-slider&gt;
     &lt;/DemoRow&gt;
@@ -139,11 +161,17 @@ export default class extends Component {
 &lt;/template&gt;
 
 </code></pre>
-</DemoContainer>
-<h3>竖向模式</h3>
-<p>设置<code>vertical</code>可使 Slider 变成竖向模式，此时必须设置高度<code>height</code>属性</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>竖向模式</h3>
+        <p>
+            设置
+            <code>vertical</code>
+            可使 Slider 变成竖向模式，此时必须设置高度
+            <code>height</code>
+            属性
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;ul class=&quot;demoContainer&quot;&gt;
         &lt;li&gt;
             &lt;jk-slider vertical height=&quot;200px&quot; /&gt;
@@ -174,11 +202,15 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>展示标记</h3>
-<p>设置 <code>marks</code> 属性可以展示标记</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>展示标记</h3>
+        <p>
+            设置
+            <code>marks</code>
+            属性可以展示标记
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-slider
             range
@@ -217,191 +249,196 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>值</td>
-<td>number 或者 number[]</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>min</td>
-<td>最小值</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>max</td>
-<td>最大值</td>
-<td>number</td>
-<td>—</td>
-<td>100</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>是否禁用</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>step</td>
-<td>步长</td>
-<td>number</td>
-<td>—</td>
-<td>1</td>
-</tr>
-<tr>
-<td>show-input</td>
-<td>是否显示输入框，仅在非范围选择时有效</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>show-input-controls</td>
-<td>在显示输入框的情况下，是否显示输入框的控制按钮</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>input-size</td>
-<td>输入框的尺寸，具体请参考 input API</td>
-<td>string</td>
-<td>large / medium / small / mini</td>
-<td>small</td>
-</tr>
-<tr>
-<td>show-stops</td>
-<td>是否显示间断点</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>show-tooltip</td>
-<td>是否显示 tooltip</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>format-tooltip</td>
-<td>格式化 tooltip message</td>
-<td>function(value)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>range</td>
-<td>是否为范围选择</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>vertical</td>
-<td>是否竖向模式</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>height</td>
-<td>Slider 高度，竖向模式时必填</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>屏幕阅读器标签</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>marks</td>
-<td>标记， key 的类型必须为 number 且取值在闭区间 <code>[min, max]</code> 内，每个标记可以单独设置样式</td>
-<td>object</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>值改变时触发（使用鼠标拖曳时，只在松开鼠标后触发）</td>
-<td>改变后的值</td>
-</tr>
-<tr>
-<td>input</td>
-<td>该事件覆盖 change 触发时机，当滑块拖拽时也会触发 input</td>
-<td>改变后的值</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>值</td>
+                    <td>number 或者 number[]</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>min</td>
+                    <td>最小值</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>max</td>
+                    <td>最大值</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>是否禁用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>step</td>
+                    <td>步长</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>show-input</td>
+                    <td>是否显示输入框，仅在非范围选择时有效</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>show-input-controls</td>
+                    <td>在显示输入框的情况下，是否显示输入框的控制按钮</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>input-size</td>
+                    <td>输入框的尺寸，具体请参考 input API</td>
+                    <td>string</td>
+                    <td>large / medium / small / mini</td>
+                    <td>small</td>
+                </tr>
+                <tr>
+                    <td>show-stops</td>
+                    <td>是否显示间断点</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>show-tooltip</td>
+                    <td>是否显示 tooltip</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>format-tooltip</td>
+                    <td>格式化 tooltip message</td>
+                    <td>function(value)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>range</td>
+                    <td>是否为范围选择</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>vertical</td>
+                    <td>是否竖向模式</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>Slider 高度，竖向模式时必填</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>屏幕阅读器标签</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>marks</td>
+                    <td>
+                        标记， key 的类型必须为 number 且取值在闭区间
+                        <code>[min, max]</code>
+                        内，每个标记可以单独设置样式
+                    </td>
+                    <td>object</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>值改变时触发（使用鼠标拖曳时，只在松开鼠标后触发）</td>
+                    <td>改变后的值</td>
+                </tr>
+                <tr>
+                    <td>input</td>
+                    <td>该事件覆盖 change 触发时机，当滑块拖拽时也会触发 input</td>
+                    <td>改变后的值</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo6 from '../../components/slider/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/slider/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/slider/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/slider/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/slider/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/slider/demo1.joker';
+import DEMO_JOKER_demo6 from "../../components/slider/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/slider/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/slider/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/slider/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/slider/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/slider/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

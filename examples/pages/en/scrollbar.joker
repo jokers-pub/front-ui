@@ -1,11 +1,15 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Scrollbar</h2>
-<p>Used to replace the browser's native scrollbar.</p>
-<h3>Basic Usage</h3>
-<p>Define the height of the scrollbar by setting the <code>height</code> attribute. If not set, it will adapt to the height of the parent container.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Scrollbar</h2>
+        <p>Used to replace the browser's native scrollbar.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Define the height of the scrollbar by setting the
+            <code>height</code>
+            attribute. If not set, it will adapt to the height of the parent container.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;height:200px&quot;&gt;
         &lt;jk-scrollbar&gt;
             @for(let i = 0; i &lt; 20; i++) {
@@ -31,10 +35,10 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Horizontal Scrolling</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Horizontal Scrolling</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
         &lt;jk-scrollbar&gt;
             &lt;div class=&quot;scrollbar-flex-content&quot;&gt;
@@ -66,11 +70,17 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Set Maximum Dimensions</h3>
-<p>You can control the triggering time of the scrollbar by setting the boundary values of the parent container, such as <code>max-width</code> and <code>max-height</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Set Maximum Dimensions</h3>
+        <p>
+            You can control the triggering time of the scrollbar by setting the boundary values of the parent container, such as
+            <code>max-width</code>
+            and
+            <code>max-height</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;addRow&quot;&gt;Add a row&lt;/jk-button&gt;
         &lt;jk-button @click=&quot;removeRow&quot;&gt;Remove a row&lt;/jk-button&gt;
@@ -115,11 +125,15 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Manual Scrolling</h3>
-<p>By using the <code>scrollTo</code> method, you can manually control the scrolling position of the scrollbar.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Manual Scrolling</h3>
+        <p>
+            By using the
+            <code>scrollTo</code>
+            method, you can manually control the scrolling position of the scrollbar.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-scrollbar ref=&quot;scrollbar&quot; height=&quot;300px&quot; @scroll=&quot;handleScroll&quot;&gt;
         &lt;div ref=&quot;list&quot;&gt;
             @for(let i = 0; i &lt; 30; i++) {
@@ -177,156 +191,177 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>native</td>
-<td>Whether to use native interaction</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>wrapClass</td>
-<td>Style extension of the <code>wrap</code> element</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>viewClass</td>
-<td>Style extension of the <code>view</code> element</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Root style extension</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>noresize</td>
-<td>Do not respond to container size changes. If the container size will not change, it is best to set this for performance optimization</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>tag</td>
-<td>The output element tag</td>
-<td>string</td>
-<td>—</td>
-<td>div</td>
-</tr>
-<tr>
-<td>height</td>
-<td>Custom height. If not set, it defaults to the value of the parent container</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>width</td>
-<td>Custom width. If not set, it defaults to the value of the parent container</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>max-height</td>
-<td>Custom maximum height. If not set, it defaults to the value of the parent container</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>max-width</td>
-<td>Custom maximum width. If not set, it defaults to the value of the parent container</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Section Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Default content</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<p>| Method Name | Description                                                                                         | Parameter                             |
-| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
-| scrollTo    | Scroll to a position                                                                                | Parameters refer to <code>ScrollToOptions</code> |
-| scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
-| Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |</p>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>scroll</td>
-<td>Triggered when the scroll-triggered position changes</td>
-<td>{top:number,left:number,x:number,y:number,,isUserScroll?:boolean}, where <code>x</code> and <code>y</code> represent the progress of the scrollbar in the corresponding direction</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>native</td>
+                    <td>Whether to use native interaction</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>wrapClass</td>
+                    <td>
+                        Style extension of the
+                        <code>wrap</code>
+                        element
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>viewClass</td>
+                    <td>
+                        Style extension of the
+                        <code>view</code>
+                        element
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Root style extension</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>noresize</td>
+                    <td>
+                        Do not respond to container size changes. If the container size will not change, it is best to set this for performance optimization
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>tag</td>
+                    <td>The output element tag</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>div</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>Custom height. If not set, it defaults to the value of the parent container</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>Custom width. If not set, it defaults to the value of the parent container</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>max-height</td>
+                    <td>Custom maximum height. If not set, it defaults to the value of the parent container</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>max-width</td>
+                    <td>Custom maximum width. If not set, it defaults to the value of the parent container</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Section Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Default content</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <p>
+            | Method Name | Description                                                                                         | Parameter                             |
+            | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
+            | scrollTo    | Scroll to a position                                                                                | Parameters refer to
+            <code>ScrollToOptions</code>
+            |
+            | scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
+            | Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |
+        </p>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>scroll</td>
+                    <td>Triggered when the scroll-triggered position changes</td>
+                    <td>
+                        {top:number,left:number,x:number,y:number,,isUserScroll?:boolean}, where
+                        <code>x</code>
+                        and
+                        <code>y</code>
+                        represent the progress of the scrollbar in the corresponding direction
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/scrollbar/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/scrollbar/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/scrollbar/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/scrollbar/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/scrollbar/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/scrollbar/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/scrollbar/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/scrollbar/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

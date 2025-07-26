@@ -1,11 +1,13 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Timeline</h2>
-<p>Visually presents time-flow information.</p>
-<h3>Basic Usage</h3>
-<p>The Timeline can be split into multiple activities arranged according to timestamps. The timestamp is an important feature that distinguishes it from other controls. When using it, pay attention to differentiating it from components like Steps.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Timeline</h2>
+        <p>Visually presents time-flow information.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            The Timeline can be split into multiple activities arranged according to timestamps. The timestamp is an important feature that distinguishes it from other controls. When using it, pay attention to differentiating it from components like Steps.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;radio&quot;&gt;
         Sorting:
         &lt;div class=&quot;group&quot;&gt;
@@ -60,11 +62,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Node Styles</h3>
-<p>You can customize the size and color of nodes according to the actual scenario, or directly use icons.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Node Styles</h3>
+        <p>You can customize the size and color of nodes according to the actual scenario, or directly use icons.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
         &lt;jk-timeline&gt;
             @for(let (index, activity) in activities) {
@@ -117,11 +119,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Timestamp</h3>
-<p>When the content is too tall in the vertical direction, the timestamp can be placed above the content.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Timestamp</h3>
+        <p>When the content is too tall in the vertical direction, the timestamp can be placed above the content.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
         &lt;jk-timeline&gt;
             &lt;jk-timeline-item timestamp=&quot;2018/4/12&quot; placement=&quot;top&quot;&gt;
@@ -146,133 +148,134 @@ export default class extends Component {
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Timeline Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Timeline-item Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>timestamp</td>
-<td>Timestamp</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>hideTimestamp</td>
-<td>Whether to hide the timestamp</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-<tr>
-<td>placement</td>
-<td>Timestamp position</td>
-<td>string</td>
-<td>top / bottom</td>
-<td>bottom</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Node type</td>
-<td>string</td>
-<td>primary / success / warning / danger / info</td>
-<td>-</td>
-</tr>
-<tr>
-<td>color</td>
-<td>Node color</td>
-<td>string</td>
-<td>hsl / hsv / hex / rgb</td>
-<td>-</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Node size</td>
-<td>string</td>
-<td>normal / large</td>
-<td>normal</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Node icon</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Timeline-Item Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Content of Timeline-Item</td>
-</tr>
-<tr>
-<td>dot</td>
-<td>Custom node</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Timeline Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Timeline-item Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>timestamp</td>
+                    <td>Timestamp</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>hideTimestamp</td>
+                    <td>Whether to hide the timestamp</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>placement</td>
+                    <td>Timestamp position</td>
+                    <td>string</td>
+                    <td>top / bottom</td>
+                    <td>bottom</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Node type</td>
+                    <td>string</td>
+                    <td>primary / success / warning / danger / info</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td>Node color</td>
+                    <td>string</td>
+                    <td>hsl / hsv / hex / rgb</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Node size</td>
+                    <td>string</td>
+                    <td>normal / large</td>
+                    <td>normal</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Node icon</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Timeline-Item Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Content of Timeline-Item</td>
+                </tr>
+                <tr>
+                    <td>dot</td>
+                    <td>Custom node</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/timeline/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/timeline/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/timeline/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/timeline/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/timeline/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/timeline/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

@@ -4,6 +4,8 @@ import path from "node:path";
 import fs from "node:fs";
 import { demoPlugin, divPlugin, linkPlugin } from "./markdown-it-demo";
 import { normalizePath } from "./utils";
+import { prettierify } from "@joker.front/prettier-plugin";
+import prettier from "prettier";
 let args: Record<string, string> = {};
 
 for (let i = 2; i < process.argv.length; i++) {
@@ -67,18 +69,26 @@ for (let file of docs) {
     generatePage(fileName, result);
 }
 
-function generatePage(fileName: string, content: string) {
+async function generatePage(fileName: string, content: string) {
     let result: string[] = [];
 
-    result.push("<template>");
-    result.push("<div ref='container' class='joker-demo-container'>");
-    result.push(content);
-    result.push("<BottomNav />");
-    result.push("</div>");
-    result.push("</template>");
+    result.push(
+        await prettierify(
+            prettier,
+            [
+                "<template>",
+                "<div ref='container' class='joker-demo-container'>",
+                content,
+                "<BottomNav />",
+                "</div>",
+                "</template>"
+            ].join("\n"),
+            "template"
+        )
+    );
 
     result.push("<script>");
-    result.push(getScriptPart(fileName));
+    result.push(await prettierify(prettier, getScriptPart(fileName), "typescript"));
     result.push("</script>");
 
     let str = result.join("\n");

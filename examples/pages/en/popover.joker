@@ -1,11 +1,23 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Popover</h2>
-<h3>Basic Usage</h3>
-<p>The attributes of Popover are quite similar to those of Tooltip. Therefore, for the repeated attributes, please refer to the Tooltip documentation and they will not be elaborated in this document.</p>
-<p>The <code>trigger</code> attribute is used to set when to trigger the Popover. It supports three triggering methods: <code>hover</code>, <code>click</code>, and <code>manual</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">```html
+    <div ref="container" class="joker-demo-container">
+        <h2>Popover</h2>
+        <h3>Basic Usage</h3>
+        <p>
+            The attributes of Popover are quite similar to those of Tooltip. Therefore, for the repeated attributes, please refer to the Tooltip documentation and they will not be elaborated in this document.
+        </p>
+        <p>
+            The
+            <code>trigger</code>
+            attribute is used to set when to trigger the Popover. It supports three triggering methods:
+            <code>hover</code>
+            ,
+            <code>click</code>
+            , and
+            <code>manual</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">```html
 &lt;template&gt;
     &lt;jk-popover
         trigger=&quot;hover&quot;
@@ -55,12 +67,18 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-<pre><code></code></pre>
-</DemoContainer>
-<h3>Nested Information</h3>
-<p>You can nest various types of information in the Popover. The following is an example of nesting a table. Use <code>section</code> instead of the <code>content</code> attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+            <pre><code></code></pre>
+        </DemoContainer>
+        <h3>Nested Information</h3>
+        <p>
+            You can nest various types of information in the Popover. The following is an example of nesting a table. Use
+            <code>section</code>
+            instead of the
+            <code>content</code>
+            attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popover trigger=&quot;hover&quot; title=&quot;I have a nested component inside&quot; placement=&quot;right&quot; width=&quot;350px&quot;&gt;
         &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
         &lt;jk-popover
@@ -79,180 +97,192 @@ export default class extends Component {
     &lt;/jk-popover&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>trigger</td>
-<td>Trigger method</td>
-<td>String</td>
-<td>click/hover/manual</td>
-<td>click</td>
-</tr>
-<tr>
-<td>title</td>
-<td>Title</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>content</td>
-<td>The content to be displayed. DOM can also be passed in through <code>section</code></td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>width</td>
-<td>Width</td>
-<td>String, Number</td>
-<td>—</td>
-<td>Minimum width 150px</td>
-</tr>
-<tr>
-<td>placement</td>
-<td>Appearance position</td>
-<td>String</td>
-<td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
-<td>bottom</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether the Popover is available</td>
-<td>Boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>Offset of the appearance position</td>
-<td>Number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>open-delay</td>
-<td>Display delay in milliseconds when the trigger method is hover</td>
-<td>Number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close-delay</td>
-<td>Hidden delay in milliseconds when the trigger method is hover</td>
-<td>number</td>
-<td>—</td>
-<td>200</td>
-</tr>
-<tr>
-<td>appendTo</td>
-<td>Element output container</td>
-<td>string</td>
-<td>—</td>
-<td>body</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>The embedded HTML text of the Popover</td>
-</tr>
-<tr>
-<td>reference</td>
-<td>The HTML element that triggers the display of the Popover</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>show</td>
-<td>Triggered when showing</td>
-<td>—</td>
-</tr>
-<tr>
-<td>hide</td>
-<td>Triggered when hiding</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>show</td>
-<td>Can be used to display in manual mode</td>
-<td>-</td>
-</tr>
-<tr>
-<td>hide</td>
-<td>Used to actively hide. Calling this method will not be involved in the <code>closeDelay</code> debounce mechanism</td>
-<td>-</td>
-</tr>
-<tr>
-<td>updatePosition</td>
-<td>It is used to actively update the position of the window. Generally, when the content displayed inside changes, this method can be used to recalculate the position.</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>trigger</td>
+                    <td>Trigger method</td>
+                    <td>String</td>
+                    <td>click/hover/manual</td>
+                    <td>click</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>Title</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>content</td>
+                    <td>
+                        The content to be displayed. DOM can also be passed in through
+                        <code>section</code>
+                    </td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>Width</td>
+                    <td>String, Number</td>
+                    <td>—</td>
+                    <td>Minimum width 150px</td>
+                </tr>
+                <tr>
+                    <td>placement</td>
+                    <td>Appearance position</td>
+                    <td>String</td>
+                    <td>
+                        top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end
+                    </td>
+                    <td>bottom</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether the Popover is available</td>
+                    <td>Boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>offset</td>
+                    <td>Offset of the appearance position</td>
+                    <td>Number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>open-delay</td>
+                    <td>Display delay in milliseconds when the trigger method is hover</td>
+                    <td>Number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close-delay</td>
+                    <td>Hidden delay in milliseconds when the trigger method is hover</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>appendTo</td>
+                    <td>Element output container</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>body</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>The embedded HTML text of the Popover</td>
+                </tr>
+                <tr>
+                    <td>reference</td>
+                    <td>The HTML element that triggers the display of the Popover</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>show</td>
+                    <td>Triggered when showing</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td>Triggered when hiding</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>show</td>
+                    <td>Can be used to display in manual mode</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td>
+                        Used to actively hide. Calling this method will not be involved in the
+                        <code>closeDelay</code>
+                        debounce mechanism
+                    </td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>updatePosition</td>
+                    <td>
+                        It is used to actively update the position of the window. Generally, when the content displayed inside changes, this method can be used to recalculate the position.
+                    </td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/popover/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/popover/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/popover/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/popover/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

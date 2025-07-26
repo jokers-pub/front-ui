@@ -1,11 +1,17 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Avatar</h2>
-<p>Displays user or object information in the form of icons, images, or characters.</p>
-<h3>Basic Usage</h3>
-<p>Set the shape and size of the avatar through <code>shape</code> and <code>size</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Avatar</h2>
+        <p>Displays user or object information in the form of icons, images, or characters.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Set the shape and size of the avatar through
+            <code>shape</code>
+            and
+            <code>size</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-row&gt;
             &lt;jk-col span=&quot;12&quot;&gt;
@@ -57,11 +63,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Display Types</h3>
-<p>Supports three types: icon, image, and character.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Display Types</h3>
+        <p>Supports three types: icon, image, and character.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-type&quot;&gt;
         &lt;div&gt;
             &lt;jk-avatar icon=&quot;jk-icon-user&quot;&gt;&lt;/jk-avatar&gt;
@@ -87,11 +93,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Fallback Behavior for Image Loading Failure</h3>
-<p>When the display type is an image, this is the fallback behavior for image loading failure.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Fallback Behavior for Image Loading Failure</h3>
+        <p>When the display type is an image, this is the fallback behavior for image loading failure.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-type&quot;&gt;
         &lt;jk-avatar size=&quot;@(60)&quot; src=&quot;https://empty&quot; error=&quot;@errorHandler&quot;&gt;
             &lt;img src=&quot;/static/avatar/empty.png&quot; /&gt;
@@ -114,11 +120,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>How the Image Fits the Container</h3>
-<p>When the display type is an image, use the <code>fit</code> attribute to define how the image fits the container, similar to the native <code>object-fit</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>How the Image Fits the Container</h3>
+        <p>
+            When the display type is an image, use the
+            <code>fit</code>
+            attribute to define how the image fits the container, similar to the native
+            <code>object-fit</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-fit&quot;&gt;
         @for(let item of model.fits) {
             &lt;div class=&quot;block&quot;&gt;
@@ -157,141 +169,146 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td>Set the icon type of the avatar, referring to the Icon component</td>
-<td>string</td>
-<td>-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Set the size of the avatar</td>
-<td>number/string</td>
-<td>number/large/medium/small</td>
-<td>large</td>
-</tr>
-<tr>
-<td>shape</td>
-<td>Set the shape of the avatar</td>
-<td>string</td>
-<td>circle/square</td>
-<td>circle</td>
-</tr>
-<tr>
-<td>src</td>
-<td>The resource address of the image avatar</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>srcSet</td>
-<td>A comma-separated list of one or more strings indicating a series of possible images for user agents to use</td>
-<td>string</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>alt</td>
-<td>The alternative text describing the image</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>fit</td>
-<td>When the display type is an image, set how the image fits the container</td>
-<td>string</td>
-<td>fill/contain/cover/none/scale-down</td>
-<td>cover</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>error</td>
-<td>The callback for image avatar loading failure. Returning false will turn off the component's default fallback behavior</td>
-<td>function</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>click</td>
-<td>Triggered when the avatar is clicked</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Customize the content displayed by the avatar</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>icon</td>
+                    <td>Set the icon type of the avatar, referring to the Icon component</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Set the size of the avatar</td>
+                    <td>number/string</td>
+                    <td>number/large/medium/small</td>
+                    <td>large</td>
+                </tr>
+                <tr>
+                    <td>shape</td>
+                    <td>Set the shape of the avatar</td>
+                    <td>string</td>
+                    <td>circle/square</td>
+                    <td>circle</td>
+                </tr>
+                <tr>
+                    <td>src</td>
+                    <td>The resource address of the image avatar</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>srcSet</td>
+                    <td>
+                        A comma-separated list of one or more strings indicating a series of possible images for user agents to use
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>alt</td>
+                    <td>The alternative text describing the image</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>fit</td>
+                    <td>When the display type is an image, set how the image fits the container</td>
+                    <td>string</td>
+                    <td>fill/contain/cover/none/scale-down</td>
+                    <td>cover</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>error</td>
+                    <td>
+                        The callback for image avatar loading failure. Returning false will turn off the component's default fallback behavior
+                    </td>
+                    <td>function</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>Triggered when the avatar is clicked</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Customize the content displayed by the avatar</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/avatar/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/avatar/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/avatar/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/avatar/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/avatar/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/avatar/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/avatar/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/avatar/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

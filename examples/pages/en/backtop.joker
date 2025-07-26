@@ -1,20 +1,20 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Backtop</h2>
-<p>An operation button to return to the top of the page.</p>
-<h3>Basic Usage</h3>
-<p>Scroll the page and you can see the button at the bottom-right corner.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Backtop</h2>
+        <p>An operation button to return to the top of the page.</p>
+        <h3>Basic Usage</h3>
+        <p>Scroll the page and you can see the button at the bottom-right corner.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
     &lt;jk-backtop target=&quot;.container .pageContainer .warp&quot;&gt;&lt;/jk-backtop&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Display Content</h3>
-<p>The display area is fixed to a 40px × 40px area, and the content within it can be customized.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Display Content</h3>
+        <p>The display area is fixed to a 40px × 40px area, and the content within it can be customized.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
     &lt;jk-backtop target=&quot;.container .pageContainer .warp&quot; bottom=&quot;100px&quot;&gt;
         &lt;div
@@ -30,87 +30,88 @@
     &lt;/jk-backtop&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>target</td>
-<td>The object that triggers the scrolling</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>visibilityHeight</td>
-<td>The button appears when the scrolling height reaches this parameter value</td>
-<td>number</td>
-<td>—</td>
-<td>200</td>
-</tr>
-<tr>
-<td>right</td>
-<td>Controls its display position, the distance from the right margin of the page</td>
-<td>string</td>
-<td>-</td>
-<td>40px</td>
-</tr>
-<tr>
-<td>bottom</td>
-<td>Controls its display position, the distance from the bottom of the page</td>
-<td>string</td>
-<td>—</td>
-<td>40px</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>click</td>
-<td>The event triggered when the button is clicked</td>
-<td>Click event</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>target</td>
+                    <td>The object that triggers the scrolling</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>visibilityHeight</td>
+                    <td>The button appears when the scrolling height reaches this parameter value</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>right</td>
+                    <td>Controls its display position, the distance from the right margin of the page</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>40px</td>
+                </tr>
+                <tr>
+                    <td>bottom</td>
+                    <td>Controls its display position, the distance from the bottom of the page</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>40px</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>The event triggered when the button is clicked</td>
+                    <td>Click event</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/backtop/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/backtop/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/backtop/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/backtop/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

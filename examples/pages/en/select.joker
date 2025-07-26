@@ -1,11 +1,19 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Select</h2>
-<p>When there are too many options, use a dropdown menu to display and select content.</p>
-<h3>Basic Usage</h3>
-<p>Basic single-selection widely applicable. The value of <code>value</code> is the <code>value</code> attribute value of the currently selected <code>jk-option</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Select</h2>
+        <p>When there are too many options, use a dropdown menu to display and select content.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Basic single-selection widely applicable. The value of
+            <code>value</code>
+            is the
+            <code>value</code>
+            attribute value of the currently selected
+            <code>jk-option</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
@@ -32,11 +40,19 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>With Disabled Options</h3>
-<p>In <code>jk-option</code>, set the <code>disabled</code> value to <code>true</code> to disable the option.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>With Disabled Options</h3>
+        <p>
+            In
+            <code>jk-option</code>
+            , set the
+            <code>disabled</code>
+            value to
+            <code>true</code>
+            to disable the option.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
@@ -55,12 +71,20 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Clearable Single-selection</h3>
-<p>Contains a clear button to clear the selector to its initial state.</p>
-<p>Set the <code>clearable</code> attribute for <code>jk-select</code>, and the selector can be cleared. Note that the <code>clearable</code> attribute is only applicable to single-selection.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Clearable Single-selection</h3>
+        <p>Contains a clear button to clear the selector to its initial state.</p>
+        <p>
+            Set the
+            <code>clearable</code>
+            attribute for
+            <code>jk-select</code>
+            , and the selector can be cleared. Note that the
+            <code>clearable</code>
+            attribute is only applicable to single-selection.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select clearable&gt;
             &lt;jk-option label=&quot;Cat&quot; value=&quot;1&quot; /&gt;
@@ -71,11 +95,11 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Multiple-selection Dropdown</h3>
-<p>Basic multiple-selection widely applicable, with selected items displayed as Tags.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Multiple-selection Dropdown</h3>
+        <p>Basic multiple-selection widely applicable, with selected items displayed as Tags.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
             &lt;jk-select clearable multiple @change=&quot;handleChange&quot;&gt;
@@ -105,11 +129,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Template</h3>
-<p>You can customize the alternative options.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Template</h3>
+        <p>You can customize the alternative options.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select clearable&gt;
             &lt;jk-option label=&quot;Pen&quot; value=&quot;1&quot;&gt;
@@ -125,11 +149,11 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Grouping</h3>
-<p>Display alternative options in groups.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Grouping</h3>
+        <p>Display alternative options in groups.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select clearable&gt;
             &lt;jk-option-group label=&quot;Meat Dishes&quot;&gt;
@@ -158,12 +182,24 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Searchable</h3>
-<p>You can quickly find options using the search function.</p>
-<p>Adding the <code>filterable</code> attribute enables the search function. By default, Select will find all options whose <code>label</code> attribute contains the input value. If you want to use other search logic, you can achieve this by passing in a <code>filter-method</code>. <code>filter-method</code> is a <code>Function</code> that will be called when the input value changes, with the current input value as the parameter.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Searchable</h3>
+        <p>You can quickly find options using the search function.</p>
+        <p>
+            Adding the
+            <code>filterable</code>
+            attribute enables the search function. By default, Select will find all options whose
+            <code>label</code>
+            attribute contains the input value. If you want to use other search logic, you can achieve this by passing in a
+            <code>filter-method</code>
+            .
+            <code>filter-method</code>
+            is a
+            <code>Function</code>
+            that will be called when the input value changes, with the current input value as the parameter.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select filterable&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
@@ -234,10 +270,10 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Multiple-selection and Searchable</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo8)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Multiple-selection and Searchable</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo8)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
         &lt;DemoRow&gt;
             &lt;jk-select multiple filterable&gt;
@@ -318,11 +354,15 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Size</h3>
-<p>You can specify the size of the input box through the <code>size</code> attribute. Besides the default size, there are also three sizes: medium, small, and mini.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo9)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Size</h3>
+        <p>
+            You can specify the size of the input box through the
+            <code>size</code>
+            attribute. Besides the default size, there are also three sizes: medium, small, and mini.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo9)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-select&gt;
             &lt;jk-option label=&quot;Apple&quot; value=&quot;1&quot; /&gt;
@@ -389,307 +429,332 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Select Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>boolean / string / number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>multiple</td>
-<td>Whether it is multiple-selection</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether it is disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>value-key</td>
-<td>The key name used as the unique identifier of the value, required when the bound value is of object type</td>
-<td>string</td>
-<td>—</td>
-<td>value</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size of the input box</td>
-<td>string</td>
-<td>medium/small/mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>clearable</td>
-<td>Whether the option can be cleared</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>multiple-limit</td>
-<td>The maximum number of items that the user can select in multiple-selection. If it is 0, there is no limit</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Used to connect to the <code>name</code> attribute in the form</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Placeholder</td>
-<td>string</td>
-<td>—</td>
-<td>Please select</td>
-</tr>
-<tr>
-<td>filterable</td>
-<td>Whether it is searchable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>filter-method</td>
-<td>Custom search method. When querying, the keyword, selected label, and option value will be passed into this method. This method returns <code>true</code>/<code>false</code> to determine whether the option is displayed</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>remote</td>
-<td>Whether it is a remote search</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>remote-method</td>
-<td>Remote search method</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>loading</td>
-<td>Whether data is being fetched remotely</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>loading-text</td>
-<td>The text displayed when loading remotely</td>
-<td>string</td>
-<td>—</td>
-<td>Loading...</td>
-</tr>
-<tr>
-<td>no-match-text</td>
-<td>The text displayed when there is no match for the search condition. It can also be set using the <code>section &quot;empty&quot;</code></td>
-<td>string</td>
-<td>—</td>
-<td>No matching data</td>
-</tr>
-<tr>
-<td>no-data-text</td>
-<td>The text displayed when there are no options. It can also be set using the <code>section &quot;empty&quot;</code></td>
-<td>string</td>
-<td>—</td>
-<td>No data</td>
-</tr>
-<tr>
-<td>fullWidth</td>
-<td>Whether the width is 100%</td>
-<td>boolean</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>allowCreate</td>
-<td>Whether to allow the creation of new items</td>
-<td>boolean</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>createText</td>
-<td>Text prompt for creating new items</td>
-<td>string</td>
-<td>—</td>
-<td>Create new value</td>
-</tr>
-</tbody>
-</table>
-<h3>Select Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>Triggered when the selected value changes</td>
-<td>The currently selected value</td>
-</tr>
-<tr>
-<td>new</td>
-<td>Triggered when clicking to create a new value in single-selection</td>
-<td>The query value (input value in the text box)</td>
-</tr>
-</tbody>
-</table>
-<h3>Select Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>List of Option components</td>
-</tr>
-<tr>
-<td>empty</td>
-<td>List when there are no options</td>
-</tr>
-</tbody>
-</table>
-<h3>Option Group Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>label</td>
-<td>The group name of the grouping</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable all options in this group</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Option Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>The value of the option</td>
-<td>string/number/object</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>The label of the option. If not set, it is the same as <code>value</code> by default</td>
-<td>string/number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable this option</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Select Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>boolean / string / number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>multiple</td>
+                    <td>Whether it is multiple-selection</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether it is disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>value-key</td>
+                    <td>
+                        The key name used as the unique identifier of the value, required when the bound value is of object type
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>value</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size of the input box</td>
+                    <td>string</td>
+                    <td>medium/small/mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>clearable</td>
+                    <td>Whether the option can be cleared</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>multiple-limit</td>
+                    <td>
+                        The maximum number of items that the user can select in multiple-selection. If it is 0, there is no limit
+                    </td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>
+                        Used to connect to the
+                        <code>name</code>
+                        attribute in the form
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>placeholder</td>
+                    <td>Placeholder</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>Please select</td>
+                </tr>
+                <tr>
+                    <td>filterable</td>
+                    <td>Whether it is searchable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>filter-method</td>
+                    <td>
+                        Custom search method. When querying, the keyword, selected label, and option value will be passed into this method. This method returns
+                        <code>true</code>
+                        /
+                        <code>false</code>
+                        to determine whether the option is displayed
+                    </td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>remote</td>
+                    <td>Whether it is a remote search</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>remote-method</td>
+                    <td>Remote search method</td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>loading</td>
+                    <td>Whether data is being fetched remotely</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>loading-text</td>
+                    <td>The text displayed when loading remotely</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>Loading...</td>
+                </tr>
+                <tr>
+                    <td>no-match-text</td>
+                    <td>
+                        The text displayed when there is no match for the search condition. It can also be set using the
+                        <code>section &quot;empty&quot;</code>
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>No matching data</td>
+                </tr>
+                <tr>
+                    <td>no-data-text</td>
+                    <td>
+                        The text displayed when there are no options. It can also be set using the
+                        <code>section &quot;empty&quot;</code>
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>No data</td>
+                </tr>
+                <tr>
+                    <td>fullWidth</td>
+                    <td>Whether the width is 100%</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>allowCreate</td>
+                    <td>Whether to allow the creation of new items</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>createText</td>
+                    <td>Text prompt for creating new items</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>Create new value</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Select Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered when the selected value changes</td>
+                    <td>The currently selected value</td>
+                </tr>
+                <tr>
+                    <td>new</td>
+                    <td>Triggered when clicking to create a new value in single-selection</td>
+                    <td>The query value (input value in the text box)</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Select Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>List of Option components</td>
+                </tr>
+                <tr>
+                    <td>empty</td>
+                    <td>List when there are no options</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Option Group Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>label</td>
+                    <td>The group name of the grouping</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable all options in this group</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Option Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>The value of the option</td>
+                    <td>string/number/object</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>
+                        The label of the option. If not set, it is the same as
+                        <code>value</code>
+                        by default
+                    </td>
+                    <td>string/number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable this option</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo9 from '../../components/select/demo9.joker';
-import DEMO_JOKER_demo8 from '../../components/select/demo8.joker';
-import DEMO_JOKER_demo7 from '../../components/select/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/select/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/select/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/select/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/select/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/select/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/select/demo1.joker';
+import DEMO_JOKER_demo9 from "../../components/select/demo9.joker";
+import DEMO_JOKER_demo8 from "../../components/select/demo8.joker";
+import DEMO_JOKER_demo7 from "../../components/select/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/select/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/select/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/select/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/select/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/select/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/select/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo9,
-DEMO_JOKER_demo8,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo9,
+        DEMO_JOKER_demo8,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

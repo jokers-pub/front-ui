@@ -1,12 +1,22 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>DatePicker</h2>
-<p>Used to select or input dates.</p>
-<h3>Selecting a Day</h3>
-<p>A basic date-selection control with the &quot;day&quot; as the basic unit.
-The basic unit is specified by the <code>type</code> attribute. Shortcut options need to be configured with <code>shortcuts</code>, and disabled dates are set through <code>disabledDate</code>. This attribute is of function type, and it determines whether a date is selectable by returning a <code>boolean</code> value.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>DatePicker</h2>
+        <p>Used to select or input dates.</p>
+        <h3>Selecting a Day</h3>
+        <p>
+            A basic date-selection control with the &quot;day&quot; as the basic unit.
+            The basic unit is specified by the
+            <code>type</code>
+            attribute. Shortcut options need to be configured with
+            <code>shortcuts</code>
+            , and disabled dates are set through
+            <code>disabledDate</code>
+            . This attribute is of function type, and it determines whether a date is selectable by returning a
+            <code>boolean</code>
+            value.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-date-picker placeholder=&quot;Please select a date&quot;&gt;&lt;/jk-date-picker&gt;
     &lt;/DemoRow&gt;
@@ -61,11 +71,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Other Date Units</h3>
-<p>By extending the basic date selection, weeks, months, and years can be selected.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Other Date Units</h3>
+        <p>By extending the basic date selection, weeks, months, and years can be selected.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Month:&lt;/span&gt;
@@ -113,11 +123,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Selecting a Date Range</h3>
-<p>A time range can be conveniently selected in one picker.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Selecting a Date Range</h3>
+        <p>A time range can be conveniently selected in one picker.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Default panel:&lt;/span&gt;
@@ -209,276 +219,320 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Date Format</h3>
-<p>Use <code>format</code> to specify the format of the input box; use <code>value-format</code> to specify the format of the bound value.
-By default, the component accepts and returns <code>Date</code> objects. The following are the available formatting strings, taking January 2, 2017, 03:04:05 UTC as an example:</p>
-<div class="warning">
-<p>Please note the case. Internally, <code>dayjs</code> is used for time operations and formatting. For detailed format values, please refer to <a href="https://dayjs.fenxianglu.cn/" target="_blank">dayjs</a>.</p>
-</div>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string(DatePicker) / Array&lt;string&gt;(DateRangePicker)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>readonly</td>
-<td>Completely read-only</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>editable</td>
-<td>The text box is editable</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>clearable</td>
-<td>Whether to display the clear button</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size of the input box</td>
-<td>string</td>
-<td>large, small, mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Placeholder content when not in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>start-placeholder</td>
-<td>Placeholder content for the start date in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>end-placeholder</td>
-<td>Placeholder content for the end date in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Display type</td>
-<td>string</td>
-<td><code>year</code>/<code>month</code>/<code>date</code>/<code>week</code>/<code>datetime</code>/<code>daterange</code>/<code>datetimerange</code></td>
-<td>date</td>
-</tr>
-<tr>
-<td>format</td>
-<td>The format displayed in the input box</td>
-<td>string</td>
-<td>See <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a></td>
-<td>yyyy-MM-dd</td>
-</tr>
-<tr>
-<td>range-separator</td>
-<td>Separator when selecting a range</td>
-<td>string</td>
-<td>—</td>
-<td>'-'</td>
-</tr>
-<tr>
-<td>default-value</td>
-<td>Optional, the time that is displayed by default when the picker is opened</td>
-<td>string</td>
-<td>Follows value-format</td>
-<td>—</td>
-</tr>
-<tr>
-<td>value-format</td>
-<td>Optional, the format of the bound value. If not specified, the bound value is a Date object</td>
-<td>string</td>
-<td>See <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a></td>
-<td>—</td>
-</tr>
-<tr>
-<td>unlink-panels</td>
-<td>Cancel the linkage between the two date panels in the range picker</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>prefix-icon</td>
-<td>The class name of the custom header icon</td>
-<td>string</td>
-<td>—</td>
-<td>jk-icon-date</td>
-</tr>
-</tbody>
-</table>
-<h3>Picker Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>shortcuts</td>
-<td>Set shortcut options, need to pass in { text, onClick } object. For usage, refer to the demo or the table below</td>
-<td>Object[]</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabledDate</td>
-<td>Set the disabled state, the parameter is the current date, and it is required to return a Boolean</td>
-<td>Function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>cellClassName</td>
-<td>Set the className of the date</td>
-<td>Function(Date)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Shortcuts</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>text</td>
-<td>Title text</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>onClick</td>
-<td>This method will pass in a callback. Executing the callback and passing in a new value will perform the setting operation</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>Triggered when the user confirms the selected value</td>
-<td>The component-bound value. The format is consistent with the bound value and can be controlled by <code>value-format</code></td>
-</tr>
-<tr>
-<td>blur</td>
-<td>Triggered when the input loses focus</td>
-<td>The component instance</td>
-</tr>
-<tr>
-<td>focus</td>
-<td>Triggered when the input gets focus</td>
-<td>The component instance</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>focus</td>
-<td>Make the input get focus</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Date Format</h3>
+        <p>
+            Use
+            <code>format</code>
+            to specify the format of the input box; use
+            <code>value-format</code>
+            to specify the format of the bound value.
+            By default, the component accepts and returns
+            <code>Date</code>
+            objects. The following are the available formatting strings, taking January 2, 2017, 03:04:05 UTC as an example:
+        </p>
+        <div class="warning">
+            <p>
+                Please note the case. Internally,
+                <code>dayjs</code>
+                is used for time operations and formatting. For detailed format values, please refer to
+                <a href="https://dayjs.fenxianglu.cn/" target="_blank">dayjs</a>
+                .
+            </p>
+        </div>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string(DatePicker) / Array&lt;string&gt;(DateRangePicker)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>readonly</td>
+                    <td>Completely read-only</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>editable</td>
+                    <td>The text box is editable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>clearable</td>
+                    <td>Whether to display the clear button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size of the input box</td>
+                    <td>string</td>
+                    <td>large, small, mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>placeholder</td>
+                    <td>Placeholder content when not in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>start-placeholder</td>
+                    <td>Placeholder content for the start date in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>end-placeholder</td>
+                    <td>Placeholder content for the end date in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Display type</td>
+                    <td>string</td>
+                    <td>
+                        <code>year</code>
+                        /
+                        <code>month</code>
+                        /
+                        <code>date</code>
+                        /
+                        <code>week</code>
+                        /
+                        <code>datetime</code>
+                        /
+                        <code>daterange</code>
+                        /
+                        <code>datetimerange</code>
+                    </td>
+                    <td>date</td>
+                </tr>
+                <tr>
+                    <td>format</td>
+                    <td>The format displayed in the input box</td>
+                    <td>string</td>
+                    <td>
+                        See
+                        <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a>
+                    </td>
+                    <td>yyyy-MM-dd</td>
+                </tr>
+                <tr>
+                    <td>range-separator</td>
+                    <td>Separator when selecting a range</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>'-'</td>
+                </tr>
+                <tr>
+                    <td>default-value</td>
+                    <td>Optional, the time that is displayed by default when the picker is opened</td>
+                    <td>string</td>
+                    <td>Follows value-format</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>value-format</td>
+                    <td>Optional, the format of the bound value. If not specified, the bound value is a Date object</td>
+                    <td>string</td>
+                    <td>
+                        See
+                        <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a>
+                    </td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>unlink-panels</td>
+                    <td>Cancel the linkage between the two date panels in the range picker</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>prefix-icon</td>
+                    <td>The class name of the custom header icon</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>jk-icon-date</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Picker Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>shortcuts</td>
+                    <td>
+                        Set shortcut options, need to pass in{text, onClick}object. For usage, refer to the demo or the table below
+                    </td>
+                    <td>Object[]</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabledDate</td>
+                    <td>
+                        Set the disabled state, the parameter is the current date, and it is required to return a Boolean
+                    </td>
+                    <td>Function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>cellClassName</td>
+                    <td>Set the className of the date</td>
+                    <td>Function(Date)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Shortcuts</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>text</td>
+                    <td>Title text</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>onClick</td>
+                    <td>
+                        This method will pass in a callback. Executing the callback and passing in a new value will perform the setting operation
+                    </td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered when the user confirms the selected value</td>
+                    <td>
+                        The component-bound value. The format is consistent with the bound value and can be controlled by
+                        <code>value-format</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>blur</td>
+                    <td>Triggered when the input loses focus</td>
+                    <td>The component instance</td>
+                </tr>
+                <tr>
+                    <td>focus</td>
+                    <td>Triggered when the input gets focus</td>
+                    <td>The component instance</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>focus</td>
+                    <td>Make the input get focus</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/date-picker/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/date-picker/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/date-picker/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/date-picker/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/date-picker/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/date-picker/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

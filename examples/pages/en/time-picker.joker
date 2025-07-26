@@ -1,20 +1,30 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>TimePicker</h2>
-<p>Used to select or input time.</p>
-<h3>Fixed Time Points</h3>
-<p>Provides several fixed time points for users to choose from.</p>
-<p>Use the <code>jk-time-select</code> tag, and specify the optional start time, end time, and step through <code>start</code>, <code>end</code>, and <code>step</code> respectively.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>TimePicker</h2>
+        <p>Used to select or input time.</p>
+        <h3>Fixed Time Points</h3>
+        <p>Provides several fixed time points for users to choose from.</p>
+        <p>
+            Use the
+            <code>jk-time-select</code>
+            tag, and specify the optional start time, end time, and step through
+            <code>start</code>
+            ,
+            <code>end</code>
+            , and
+            <code>step</code>
+            respectively.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-select&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Fixed Time Range</h3>
-<p>If the start time is selected first, the state of the options in the end time will change accordingly.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Fixed Time Range</h3>
+        <p>If the start time is selected first, the state of the options in the end time will change accordingly.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-select
             start=&quot;08:30&quot;
@@ -46,11 +56,21 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Arbitrary Time Point</h3>
-<p>You can select any time. Use the <code>jk-time-picker</code> tag and limit the selectable time range through <code>minTime</code>/<code>maxTime</code>. You can control whether to display seconds by configuring <code>format</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Arbitrary Time Point</h3>
+        <p>
+            You can select any time. Use the
+            <code>jk-time-picker</code>
+            tag and limit the selectable time range through
+            <code>minTime</code>
+            /
+            <code>maxTime</code>
+            . You can control whether to display seconds by configuring
+            <code>format</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-picker value=&quot;19:30:25&quot; placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
@@ -64,11 +84,11 @@ export default class extends Component {
 &lt;/template&gt;
 
 </code></pre>
-</DemoContainer>
-<h3>Arbitrary Time Range</h3>
-<p>You can select any time range.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Arbitrary Time Range</h3>
+        <p>You can select any time range.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-picker range startPlaceholder=&quot;Start time&quot; endPlaceholder=&quot;End time&quot;&gt;&lt;/jk-time-picker&gt;
     &lt;/DemoRow&gt;
@@ -83,10 +103,10 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Disabled</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Disabled</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-select start=&quot;08:30&quot; step=&quot;00:10&quot; end=&quot;18:30&quot; placeholder=&quot;Select time&quot; disabled&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
@@ -98,11 +118,15 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Size</h3>
-<p>Refer to the <code>input</code> size attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Size</h3>
+        <p>
+            Refer to the
+            <code>input</code>
+            size attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-time-select placeholder=&quot;Select time&quot;&gt;&lt;/jk-time-select&gt;
     &lt;/DemoRow&gt;
@@ -141,276 +165,296 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>readonly</td>
-<td>Completely read-only</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>editable</td>
-<td>The text box is editable</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>clearable</td>
-<td>Whether to display the clear button</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size of the input box</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Placeholder content when not in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>start-placeholder</td>
-<td>Placeholder content for the start date in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>end-placeholder</td>
-<td>Placeholder content for the end date in range selection</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>range</td>
-<td>Whether it is a time range selection, only valid for <code>&lt;jk-time-picker&gt;</code></td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>range-separator</td>
-<td>Separator when selecting a range</td>
-<td>string</td>
-<td>-</td>
-<td>'-'</td>
-</tr>
-<tr>
-<td>value-format</td>
-<td>Optional, the format of the bound value</td>
-<td>string</td>
-<td>-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>default-value</td>
-<td>Optional, the time displayed by default when the picker is opened</td>
-<td>string</td>
-<td>In line with the <code>format</code> format</td>
-<td>—</td>
-</tr>
-<tr>
-<td>prefix-icon</td>
-<td>Class name of the custom header icon</td>
-<td>string</td>
-<td>—</td>
-<td>el-icon-time</td>
-</tr>
-</tbody>
-</table>
-<h3>Time Select Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td>Start time</td>
-<td>string</td>
-<td>—</td>
-<td>09:00</td>
-</tr>
-<tr>
-<td>end</td>
-<td>End time</td>
-<td>string</td>
-<td>—</td>
-<td>18:00</td>
-</tr>
-<tr>
-<td>step</td>
-<td>Interval time</td>
-<td>string</td>
-<td>—</td>
-<td>00:30</td>
-</tr>
-<tr>
-<td>minTime</td>
-<td>Minimum time, time periods less than this time will be disabled</td>
-<td>string</td>
-<td>—</td>
-<td>00:00</td>
-</tr>
-<tr>
-<td>maxTime</td>
-<td>Maximum time, time periods greater than this time will be disabled</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Time Picker Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>selectableRange</td>
-<td>Selectable time periods, such as <code>'18:30:00-20:30:00'</code> or pass in an array <code>['09:30:00-12:00:00', '14:30:00-18:30:00']</code></td>
-<td>string / array</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>format</td>
-<td>Time formatting</td>
-<td>string</td>
-<td>Hours: <code>HH</code>, minutes: <code>mm</code>, seconds: <code>ss</code></td>
-<td>'HH:mm:ss'</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>Triggered when the user confirms the selected value</td>
-<td>Component bound value</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>Triggered when the input loses focus</td>
-<td>Component instance</td>
-</tr>
-<tr>
-<td>focus</td>
-<td>Triggered when the input gains focus</td>
-<td>Component instance</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>focus</td>
-<td>Make the input gain focus</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>readonly</td>
+                    <td>Completely read-only</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>editable</td>
+                    <td>The text box is editable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>clearable</td>
+                    <td>Whether to display the clear button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size of the input box</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>placeholder</td>
+                    <td>Placeholder content when not in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>start-placeholder</td>
+                    <td>Placeholder content for the start date in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>end-placeholder</td>
+                    <td>Placeholder content for the end date in range selection</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>range</td>
+                    <td>
+                        Whether it is a time range selection, only valid for
+                        <code>&lt;jk-time-picker&gt;</code>
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>range-separator</td>
+                    <td>Separator when selecting a range</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>'-'</td>
+                </tr>
+                <tr>
+                    <td>value-format</td>
+                    <td>Optional, the format of the bound value</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>default-value</td>
+                    <td>Optional, the time displayed by default when the picker is opened</td>
+                    <td>string</td>
+                    <td>
+                        In line with the
+                        <code>format</code>
+                        format
+                    </td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>prefix-icon</td>
+                    <td>Class name of the custom header icon</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>el-icon-time</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Time Select Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>start</td>
+                    <td>Start time</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>09:00</td>
+                </tr>
+                <tr>
+                    <td>end</td>
+                    <td>End time</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>18:00</td>
+                </tr>
+                <tr>
+                    <td>step</td>
+                    <td>Interval time</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>00:30</td>
+                </tr>
+                <tr>
+                    <td>minTime</td>
+                    <td>Minimum time, time periods less than this time will be disabled</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>00:00</td>
+                </tr>
+                <tr>
+                    <td>maxTime</td>
+                    <td>Maximum time, time periods greater than this time will be disabled</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Time Picker Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>selectableRange</td>
+                    <td>
+                        Selectable time periods, such as
+                        <code>'18:30:00-20:30:00'</code>
+                        or pass in an array
+                        <code>['09:30:00-12:00:00', '14:30:00-18:30:00']</code>
+                    </td>
+                    <td>string / array</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>format</td>
+                    <td>Time formatting</td>
+                    <td>string</td>
+                    <td>
+                        Hours:
+                        <code>HH</code>
+                        , minutes:
+                        <code>mm</code>
+                        , seconds:
+                        <code>ss</code>
+                    </td>
+                    <td>'HH:mm:ss'</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered when the user confirms the selected value</td>
+                    <td>Component bound value</td>
+                </tr>
+                <tr>
+                    <td>blur</td>
+                    <td>Triggered when the input loses focus</td>
+                    <td>Component instance</td>
+                </tr>
+                <tr>
+                    <td>focus</td>
+                    <td>Triggered when the input gains focus</td>
+                    <td>Component instance</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>focus</td>
+                    <td>Make the input gain focus</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo6 from '../../components/time-picker/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/time-picker/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/time-picker/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/time-picker/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/time-picker/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/time-picker/demo1.joker';
+import DEMO_JOKER_demo6 from "../../components/time-picker/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/time-picker/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/time-picker/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/time-picker/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/time-picker/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/time-picker/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

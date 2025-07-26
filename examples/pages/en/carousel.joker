@@ -1,12 +1,24 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Carousel</h2>
-<p>Circularly plays the same type of content such as images and text within a limited space.</p>
-<h3>Basic Usage</h3>
-<p>A widely applicable basic usage.
-By using the <code>&lt;jk-carousel&gt;</code> and <code>&lt;jk-carousel-item&gt;</code> tags together, you get a carousel. The content of the slides can be anything and needs to be placed within the <code>&lt;jk-carousel-item&gt;</code> tag. By default, the switch is triggered when the mouse hovers over the indicator at the bottom. By setting the <code>trigger</code> attribute to <code>click</code>, a click-triggered effect can be achieved.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Carousel</h2>
+        <p>Circularly plays the same type of content such as images and text within a limited space.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            A widely applicable basic usage.
+            By using the
+            <code>&lt;jk-carousel&gt;</code>
+            and
+            <code>&lt;jk-carousel-item&gt;</code>
+            tags together, you get a carousel. The content of the slides can be anything and needs to be placed within the
+            <code>&lt;jk-carousel-item&gt;</code>
+            tag. By default, the switch is triggered when the mouse hovers over the indicator at the bottom. By setting the
+            <code>trigger</code>
+            attribute to
+            <code>click</code>
+            , a click-triggered effect can be achieved.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo1&quot;&gt;
         &lt;span class=&quot;demonstration&quot;&gt;Default: Trigger on Hover&lt;/span&gt;
         &lt;jk-carousel height=&quot;150px&quot;&gt;
@@ -73,12 +85,20 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Indicator</h3>
-<p>The display position of the indicator can be set outside the container.
-The <code>indicatorPosition</code> attribute defines the position of the indicator. By default, it is displayed inside the carousel. Setting it to <code>outside</code> will display it outside, and setting it to <code>none</code> will not display the indicator.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Indicator</h3>
+        <p>
+            The display position of the indicator can be set outside the container.
+            The
+            <code>indicatorPosition</code>
+            attribute defines the position of the indicator. By default, it is displayed inside the carousel. Setting it to
+            <code>outside</code>
+            will display it outside, and setting it to
+            <code>none</code>
+            will not display the indicator.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo2&quot;&gt;
         &lt;jk-carousel indicatorPosition=&quot;outside&quot;&gt;
             @for(let item of model.list) {
@@ -123,12 +143,22 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Switch Arrows</h3>
-<p>The display timing of the switch arrows can be set.
-The <code>arrow</code> attribute defines the display timing of the switch arrows. By default, the switch arrows are only displayed when the mouse hovers over the carousel. If <code>arrow</code> is set to <code>always</code>, they will be displayed all the time; setting it to <code>never</code> will hide them all the time.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Switch Arrows</h3>
+        <p>
+            The display timing of the switch arrows can be set.
+            The
+            <code>arrow</code>
+            attribute defines the display timing of the switch arrows. By default, the switch arrows are only displayed when the mouse hovers over the carousel. If
+            <code>arrow</code>
+            is set to
+            <code>always</code>
+            , they will be displayed all the time; setting it to
+            <code>never</code>
+            will hide them all the time.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo3&quot;&gt;
         &lt;jk-carousel interval=&quot;5000&quot; arrow=&quot;always&quot;&gt;
             @for(let item of model.list) {
@@ -173,12 +203,18 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Card-style</h3>
-<p>When there is extra space in the width direction of the page but a shortage in the height direction, the card style can be used.
-Setting the <code>type</code> attribute to <code>card</code> enables the card mode. In terms of interaction, the biggest difference between the card mode and the general mode is that you can switch by directly clicking on the slides on both sides.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Card-style</h3>
+        <p>
+            When there is extra space in the width direction of the page but a shortage in the height direction, the card style can be used.
+            Setting the
+            <code>type</code>
+            attribute to
+            <code>card</code>
+            enables the card mode. In terms of interaction, the biggest difference between the card mode and the general mode is that you can switch by directly clicking on the slides on both sides.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo4&quot;&gt;
         &lt;jk-carousel interval=&quot;4000&quot; type=&quot;card&quot; height=&quot;200px&quot;&gt;
             @for(let item of model.list) {
@@ -223,11 +259,21 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Direction</h3>
-<p>By default, <code>direction</code> is <code>horizontal</code>. Set <code>direction</code> to <code>vertical</code> to make the carousel display vertically.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Direction</h3>
+        <p>
+            By default,
+            <code>direction</code>
+            is
+            <code>horizontal</code>
+            . Set
+            <code>direction</code>
+            to
+            <code>vertical</code>
+            to make the carousel display vertically.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;carouselDemo5&quot;&gt;
         &lt;jk-carousel height=&quot;200px&quot; direction=&quot;vertical&quot; autoplay=&quot;@false&quot;&gt;
             @for(let item of model.list) {
@@ -272,169 +318,175 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Carousel Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>height</td>
-<td>The height of the carousel</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>initialIndex</td>
-<td>The index of the activated slide in the initial state, starting from 0</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>trigger</td>
-<td>The triggering method of the indicator</td>
-<td>string</td>
-<td>click</td>
-<td>-</td>
-</tr>
-<tr>
-<td>autoplay</td>
-<td>Whether to switch automatically</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>interval</td>
-<td>The time interval for automatic switching, in milliseconds</td>
-<td>number</td>
-<td>-</td>
-<td>3000</td>
-</tr>
-<tr>
-<td>indicatorPosition</td>
-<td>The position of the indicator</td>
-<td>string</td>
-<td>outside/none</td>
-<td>—</td>
-</tr>
-<tr>
-<td>arrow</td>
-<td>The display timing of the switch arrows</td>
-<td>string</td>
-<td>always/hover/never</td>
-<td>hover</td>
-</tr>
-<tr>
-<td>type</td>
-<td>The type of the carousel</td>
-<td>string</td>
-<td>card</td>
-<td>-</td>
-</tr>
-<tr>
-<td>loop</td>
-<td>Whether to display in a loop</td>
-<td>boolean</td>
-<td>-</td>
-<td>true</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>The display direction of the carousel</td>
-<td>string</td>
-<td>horizontal/vertical</td>
-<td>horizontal</td>
-</tr>
-</tbody>
-</table>
-<h3>Carousel Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>Triggered when the slide is switched</td>
-<td>The index of the currently activated slide and the index of the original slide</td>
-</tr>
-</tbody>
-</table>
-<h3>Carousel Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setActiveItem</td>
-<td>Manually switch the slide</td>
-<td>The index of the slide to be switched, starting from 0; or the <code>name</code> attribute value of the corresponding <code>&lt;jk-carousel-item&gt;</code></td>
-</tr>
-<tr>
-<td>prev</td>
-<td>Switch to the previous slide</td>
-<td>-</td>
-</tr>
-<tr>
-<td>next</td>
-<td>Switch to the next slide</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Carousel Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>height</td>
+                    <td>The height of the carousel</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>initialIndex</td>
+                    <td>The index of the activated slide in the initial state, starting from 0</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>trigger</td>
+                    <td>The triggering method of the indicator</td>
+                    <td>string</td>
+                    <td>click</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>autoplay</td>
+                    <td>Whether to switch automatically</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>interval</td>
+                    <td>The time interval for automatic switching, in milliseconds</td>
+                    <td>number</td>
+                    <td>-</td>
+                    <td>3000</td>
+                </tr>
+                <tr>
+                    <td>indicatorPosition</td>
+                    <td>The position of the indicator</td>
+                    <td>string</td>
+                    <td>outside/none</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>arrow</td>
+                    <td>The display timing of the switch arrows</td>
+                    <td>string</td>
+                    <td>always/hover/never</td>
+                    <td>hover</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>The type of the carousel</td>
+                    <td>string</td>
+                    <td>card</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>loop</td>
+                    <td>Whether to display in a loop</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>direction</td>
+                    <td>The display direction of the carousel</td>
+                    <td>string</td>
+                    <td>horizontal/vertical</td>
+                    <td>horizontal</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Carousel Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered when the slide is switched</td>
+                    <td>The index of the currently activated slide and the index of the original slide</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Carousel Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>setActiveItem</td>
+                    <td>Manually switch the slide</td>
+                    <td>
+                        The index of the slide to be switched, starting from 0; or the
+                        <code>name</code>
+                        attribute value of the corresponding
+                        <code>&lt;jk-carousel-item&gt;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>prev</td>
+                    <td>Switch to the previous slide</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>next</td>
+                    <td>Switch to the next slide</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo5 from '../../components/carousel/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/carousel/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/carousel/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/carousel/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/carousel/demo1.joker';
+import DEMO_JOKER_demo5 from "../../components/carousel/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/carousel/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/carousel/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/carousel/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/carousel/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

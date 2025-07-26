@@ -1,10 +1,14 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Image</h2>
-<p>An image container that retains the characteristics of the native <code>img</code>, supports lazy loading, and allows for custom placeholders, handling of load failures, etc.</p>
-<h3>Basic Usage</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Image</h2>
+        <p>
+            An image container that retains the characteristics of the native
+            <code>img</code>
+            , supports lazy loading, and allows for custom placeholders, handling of load failures, etc.
+        </p>
+        <h3>Basic Usage</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         @for(let fit of model.fits) {
             &lt;div class=&quot;demo-img&quot;&gt;
@@ -45,10 +49,10 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Placeholder Content</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Placeholder Content</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__placeholder&quot;&gt;
         &lt;div class=&quot;block&quot;&gt;
             &lt;p class=&quot;demonstration&quot;&gt;Default&lt;/p&gt;
@@ -89,10 +93,10 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Load Failure</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Load Failure</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__error&quot;&gt;
         &lt;div class=&quot;block&quot;&gt;
             &lt;p class=&quot;demonstration&quot;&gt;Default&lt;/p&gt;
@@ -123,10 +127,10 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Lazy Loading</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Lazy Loading</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image&quot;&gt;
         @for(let url of model.urls) {
             &lt;jk-image src=&quot;@url&quot; lazy&gt;&lt;/jk-image&gt;
@@ -168,10 +172,10 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Large Image Preview</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Large Image Preview</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__preview&quot;&gt;
         &lt;jk-image style=&quot;width: 100px; height: 100px&quot; src=&quot;@model.url&quot; preview-src-list=&quot;@model.srcList&quot;&gt;&lt;/jk-image&gt;
     &lt;/div&gt;
@@ -194,145 +198,164 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>src</td>
-<td>Image source, same as the native one</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>fit</td>
-<td>Determines how the image fits into the container box, same as the native <code>object-fit</code></td>
-<td>string</td>
-<td>fill / contain / cover / none / scale-down</td>
-<td>—</td>
-</tr>
-<tr>
-<td>lazy</td>
-<td>Whether to enable lazy loading</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>scroll-container</td>
-<td>After enabling lazy loading, the container that listens to the <code>scroll</code> event</td>
-<td>string / HTMLElement</td>
-<td>—</td>
-<td>The nearest parent element with an <code>overflow</code> value of <code>auto</code> or <code>scroll</code></td>
-</tr>
-<tr>
-<td>preview-src-list</td>
-<td>Enables the image preview function</td>
-<td>Array</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>z-index</td>
-<td>Sets the <code>z-index</code> of the image preview</td>
-<td>Number</td>
-<td>—</td>
-<td>2000</td>
-</tr>
-<tr>
-<td>errMsg</td>
-<td>The prompt when loading fails</td>
-<td>string</td>
-<td>—</td>
-<td>Loading failed</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>load</td>
-<td>Triggered when the image is loaded successfully</td>
-<td>(e: Event)</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Triggered when the image fails to load</td>
-<td>(e: Error)</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>placeholder</td>
-<td>The placeholder content when the image is not loaded</td>
-</tr>
-<tr>
-<td>error</td>
-<td>The content when loading fails</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>src</td>
+                    <td>Image source, same as the native one</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>fit</td>
+                    <td>
+                        Determines how the image fits into the container box, same as the native
+                        <code>object-fit</code>
+                    </td>
+                    <td>string</td>
+                    <td>fill / contain / cover / none / scale-down</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>lazy</td>
+                    <td>Whether to enable lazy loading</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>scroll-container</td>
+                    <td>
+                        After enabling lazy loading, the container that listens to the
+                        <code>scroll</code>
+                        event
+                    </td>
+                    <td>string / HTMLElement</td>
+                    <td>—</td>
+                    <td>
+                        The nearest parent element with an
+                        <code>overflow</code>
+                        value of
+                        <code>auto</code>
+                        or
+                        <code>scroll</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>preview-src-list</td>
+                    <td>Enables the image preview function</td>
+                    <td>Array</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>z-index</td>
+                    <td>
+                        Sets the
+                        <code>z-index</code>
+                        of the image preview
+                    </td>
+                    <td>Number</td>
+                    <td>—</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>errMsg</td>
+                    <td>The prompt when loading fails</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>Loading failed</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>load</td>
+                    <td>Triggered when the image is loaded successfully</td>
+                    <td>(e: Event)</td>
+                </tr>
+                <tr>
+                    <td>error</td>
+                    <td>Triggered when the image fails to load</td>
+                    <td>(e: Error)</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>placeholder</td>
+                    <td>The placeholder content when the image is not loaded</td>
+                </tr>
+                <tr>
+                    <td>error</td>
+                    <td>The content when loading fails</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo5 from '../../components/image/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/image/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/image/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/image/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/image/demo1.joker';
+import DEMO_JOKER_demo5 from "../../components/image/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/image/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/image/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/image/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/image/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

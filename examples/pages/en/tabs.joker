@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Tabs</h2>
-<p>Separate data sets that are related in content but belong to different categories.</p>
-<h3>Basic Usage</h3>
-<p>Basic and simple tab pages.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Tabs</h2>
+        <p>Separate data sets that are related in content but belong to different categories.</p>
+        <h3>Basic Usage</h3>
+        <p>Basic and simple tab pages.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tabs&gt;
         &lt;jk-tab-panel label=&quot;Home&quot;&gt;
             &lt;div class=&quot;demo-content&quot;&gt;Home&lt;/div&gt;
@@ -55,11 +55,15 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Position</h3>
-<p>You can set the position of the tabs through <code>position</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Position</h3>
+        <p>
+            You can set the position of the tabs through
+            <code>position</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;@model.position&quot; @change=&quot;handlePositionChange&quot;&gt;
             &lt;jk-radio-button value=&quot;top&quot;&gt;top&lt;/jk-radio-button&gt;
@@ -105,11 +109,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Tab Page Title</h3>
-<p>You can customize the tab title through the <strong>label</strong> section in <code>jk-tab-panel</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Tab Page Title</h3>
+        <p>
+            You can customize the tab title through the
+            <strong>label</strong>
+            section in
+            <code>jk-tab-panel</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tabs&gt;
         &lt;jk-tab-panel&gt;
             &lt;div class=&quot;demo-content&quot;&gt;Shoot&lt;/div&gt;
@@ -139,11 +149,15 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Card Style</h3>
-<p>You can enable the card style by configuring <code>card</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Card Style</h3>
+        <p>
+            You can enable the card style by configuring
+            <code>card</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-radio-group value=&quot;@model.position&quot; @change=&quot;handlePositionChange&quot;&gt;
             &lt;jk-radio-button value=&quot;top&quot;&gt;top&lt;/jk-radio-button&gt;
@@ -189,96 +203,102 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>The default selected tab value, corresponding to the <code>name</code> in <code>tab-panel</code></td>
-<td>string</td>
-<td>-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>card</td>
-<td>Card theme</td>
-<td>boolean</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>position</td>
-<td>Tab position</td>
-<td>string</td>
-<td>top/bottom/right/left</td>
-<td>top</td>
-</tr>
-<tr>
-<td>fullHeight</td>
-<td>When enabled, the height of the content area will be automatically filled</td>
-<td>boolean</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>Triggered when the selected tab changes</td>
-<td>Tab item information</td>
-</tr>
-<tr>
-<td>click</td>
-<td>Triggered when a tab is clicked</td>
-<td>Tab item information</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>
+                        The default selected tab value, corresponding to the
+                        <code>name</code>
+                        in
+                        <code>tab-panel</code>
+                    </td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>card</td>
+                    <td>Card theme</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>position</td>
+                    <td>Tab position</td>
+                    <td>string</td>
+                    <td>top/bottom/right/left</td>
+                    <td>top</td>
+                </tr>
+                <tr>
+                    <td>fullHeight</td>
+                    <td>When enabled, the height of the content area will be automatically filled</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered when the selected tab changes</td>
+                    <td>Tab item information</td>
+                </tr>
+                <tr>
+                    <td>click</td>
+                    <td>Triggered when a tab is clicked</td>
+                    <td>Tab item information</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/tabs/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/tabs/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/tabs/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/tabs/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/tabs/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/tabs/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/tabs/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/tabs/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

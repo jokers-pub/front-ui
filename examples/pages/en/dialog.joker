@@ -1,12 +1,32 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Dialog</h2>
-<p>Informs users and hosts relevant operations while maintaining the current page state.</p>
-<h3>Basic Usage</h3>
-<p>The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
-You need to use the component's <code>open</code>/<code>close</code> methods to set whether the pop-up is displayed. The Dialog consists of two parts: <code>body</code> and <code>footer</code>. The <code>footer</code> requires a <code>section</code> named <code>footer</code>. The <code>title</code> attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of <code>before-close</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Dialog</h2>
+        <p>Informs users and hosts relevant operations while maintaining the current page state.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
+            You need to use the component's
+            <code>open</code>
+            /
+            <code>close</code>
+            methods to set whether the pop-up is displayed. The Dialog consists of two parts:
+            <code>body</code>
+            and
+            <code>footer</code>
+            . The
+            <code>footer</code>
+            requires a
+            <code>section</code>
+            named
+            <code>footer</code>
+            . The
+            <code>title</code>
+            attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of
+            <code>before-close</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-button @click=&quot;open1&quot;&gt;Full-screen window&lt;/jk-button&gt;
@@ -70,15 +90,32 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p><code>before-close</code> only takes effect when the user closes the Dialog by clicking the close icon or the mask.</p>
-</blockquote>
-<h3>Nested Dialogs</h3>
-<p>If you need to nest one Dialog inside another, you need to set the <code>append-to</code> property to <code>body</code>.
-Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the <code>append-to</code> property. <strong>Refer to the core's description of append-to</strong>. Set this property of the inner Dialog to <code>body</code>, and it will be inserted into the <code>body</code> element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                <code>before-close</code>
+                only takes effect when the user closes the Dialog by clicking the close icon or the mask.
+            </p>
+        </blockquote>
+        <h3>Nested Dialogs</h3>
+        <p>
+            If you need to nest one Dialog inside another, you need to set the
+            <code>append-to</code>
+            property to
+            <code>body</code>
+            .
+            Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the
+            <code>append-to</code>
+            property.
+            <strong>Refer to the core's description of append-to</strong>
+            . Set this property of the inner Dialog to
+            <code>body</code>
+            , and it will be inserted into the
+            <code>body</code>
+            element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Open Window&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; title=&quot;Level 1 Window&quot;&gt;
@@ -114,14 +151,25 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p><code>append-to</code> only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.</p>
-</blockquote>
-<h3>Centered Layout</h3>
-<p>The title and the bottom can be horizontally centered. Setting <code>center</code> to <code>true</code> will center the title and the bottom. <code>center</code> only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                <code>append-to</code>
+                only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.
+            </p>
+        </blockquote>
+        <h3>Centered Layout</h3>
+        <p>
+            The title and the bottom can be horizontally centered. Setting
+            <code>center</code>
+            to
+            <code>true</code>
+            will center the title and the bottom.
+            <code>center</code>
+            only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; center title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
@@ -153,14 +201,26 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<blockquote>
-<p>The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default <code>section</code> passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through <code>ref</code>, please do so in the <code>open</code> event callback.</p>
-</blockquote>
-<h3>Movable Window</h3>
-<p>We can enable the <code>draggable</code> property of the window component to activate the free movement function of the window.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <blockquote>
+            <p>
+                The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default
+                <code>section</code>
+                passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through
+                <code>ref</code>
+                , please do so in the
+                <code>open</code>
+                event callback.
+            </p>
+        </blockquote>
+        <h3>Movable Window</h3>
+        <p>
+            We can enable the
+            <code>draggable</code>
+            property of the window component to activate the free movement function of the window.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;open&quot;&gt;Click to open Dialog&lt;/jk-button&gt;
         &lt;jk-dialog ref=&quot;dialog&quot; draggable title=&quot;Basic Display&quot; width=&quot;30%&quot;&gt;
@@ -192,214 +252,217 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>The title of the Dialog, which can also be passed in through a named section (see the table below)</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>width</td>
-<td>The width of the Dialog</td>
-<td>string</td>
-<td>—</td>
-<td>50%</td>
-</tr>
-<tr>
-<td>fullscreen</td>
-<td>Whether it is a full-screen Dialog</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>modal</td>
-<td>Whether a mask layer is needed</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>custom-class</td>
-<td>The custom class name of the Dialog</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close-on-click-modal</td>
-<td>Whether the Dialog can be closed by clicking the modal</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>close-on-press-escape</td>
-<td>Whether the Dialog can be closed by pressing the ESC key</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>Whether to display the close button</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>before-close</td>
-<td>The callback before closing, which will pause the closing of the Dialog</td>
-<td>function(done), where done is used to close the Dialog</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>center</td>
-<td>Whether to use a centered layout for the header and the bottom</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>destroyOnClose</td>
-<td>Whether to destroy the interior when closing</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>draggable</td>
-<td>Whether to enable drag-and-drop movement</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>allowOutOfBounds</td>
-<td>Whether dragging is allowed to move beyond the boundary range</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>The content of the Dialog</td>
-</tr>
-<tr>
-<td>title</td>
-<td>The content of the Dialog title area</td>
-</tr>
-<tr>
-<td>footer</td>
-<td>The content of the Dialog button operation area</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Method Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td>Open the window</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Close the window</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td>The callback when the Dialog is opened</td>
-<td>—</td>
-</tr>
-<tr>
-<td>opened</td>
-<td>The callback when the Dialog opening animation ends</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>The callback when the Dialog is closed</td>
-<td>—</td>
-</tr>
-<tr>
-<td>closed</td>
-<td>The callback when the Dialog closing animation ends</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>
+                        The title of the Dialog, which can also be passed in through a named section (see the table below)
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>The width of the Dialog</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>fullscreen</td>
+                    <td>Whether it is a full-screen Dialog</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>modal</td>
+                    <td>Whether a mask layer is needed</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>custom-class</td>
+                    <td>The custom class name of the Dialog</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close-on-click-modal</td>
+                    <td>Whether the Dialog can be closed by clicking the modal</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>close-on-press-escape</td>
+                    <td>Whether the Dialog can be closed by pressing the ESC key</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>Whether to display the close button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>before-close</td>
+                    <td>The callback before closing, which will pause the closing of the Dialog</td>
+                    <td>function(done), where done is used to close the Dialog</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>center</td>
+                    <td>Whether to use a centered layout for the header and the bottom</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>destroyOnClose</td>
+                    <td>Whether to destroy the interior when closing</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>draggable</td>
+                    <td>Whether to enable drag-and-drop movement</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>allowOutOfBounds</td>
+                    <td>Whether dragging is allowed to move beyond the boundary range</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>The content of the Dialog</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>The content of the Dialog title area</td>
+                </tr>
+                <tr>
+                    <td>footer</td>
+                    <td>The content of the Dialog button operation area</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Method Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>open</td>
+                    <td>Open the window</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>Close the window</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>open</td>
+                    <td>The callback when the Dialog is opened</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>opened</td>
+                    <td>The callback when the Dialog opening animation ends</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>The callback when the Dialog is closed</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>closed</td>
+                    <td>The callback when the Dialog closing animation ends</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/dialog/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/dialog/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/dialog/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/dialog/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/dialog/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/dialog/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/dialog/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/dialog/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

@@ -1,11 +1,19 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Built-in Transition Animations</h2>
-<p>The transition animations applied in some components within Joker-UI can also be used directly by you. Before using them, please read the <code>transition component documentation</code>.</p>
-<h3>Fade (Fade In and Out)</h3>
-<p>Provides the <code>jk-fade-in</code> effect.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Built-in Transition Animations</h2>
+        <p>
+            The transition animations applied in some components within Joker-UI can also be used directly by you. Before using them, please read the
+            <code>transition component documentation</code>
+            .
+        </p>
+        <h3>Fade (Fade In and Out)</h3>
+        <p>
+            Provides the
+            <code>jk-fade-in</code>
+            effect.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
@@ -43,11 +51,19 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Zoom (Scale)</h3>
-<p>Provides three effects: <code>jk-zoom-in-center</code>, <code>jk-zoom-in-top</code>, and <code>jk-zoom-in-bottom</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Zoom (Scale)</h3>
+        <p>
+            Provides three effects:
+            <code>jk-zoom-in-center</code>
+            ,
+            <code>jk-zoom-in-top</code>
+            , and
+            <code>jk-zoom-in-bottom</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-button @click=&quot;handleClick&quot;&gt;Click!&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
@@ -93,28 +109,29 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/transition/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/transition/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/transition/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/transition/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

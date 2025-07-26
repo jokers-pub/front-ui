@@ -1,11 +1,31 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Notification</h2>
-<p>It floats in the corner of the page to display global notification reminder messages.</p>
-<h3>Basic Usage</h3>
-<p>A widely applicable notification bar. The Notification component provides a notification function with the <code>Notification</code> method, which accepts an <code>options</code> literal parameter. In the simplest case, you can set the <code>title</code> and <code>message</code> fields to set the title and body of the notification. By default, the Notification component will automatically close after a certain period of time. However, by setting <code>duration</code>, you can control the time interval for closing. Notably, if set to <code>0</code>, it will not close automatically. Note: <code>duration</code> accepts a <code>Number</code> with the unit of milliseconds, and the default value is <code>4500</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Notification</h2>
+        <p>It floats in the corner of the page to display global notification reminder messages.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            A widely applicable notification bar. The Notification component provides a notification function with the
+            <code>Notification</code>
+            method, which accepts an
+            <code>options</code>
+            literal parameter. In the simplest case, you can set the
+            <code>title</code>
+            and
+            <code>message</code>
+            fields to set the title and body of the notification. By default, the Notification component will automatically close after a certain period of time. However, by setting
+            <code>duration</code>
+            , you can control the time interval for closing. Notably, if set to
+            <code>0</code>
+            , it will not close automatically. Note:
+            <code>duration</code>
+            accepts a
+            <code>Number</code>
+            with the unit of milliseconds, and the default value is
+            <code>4500</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Can close automatically&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;Will not close automatically&lt;/jk-button&gt;
 &lt;/template&gt;
@@ -29,12 +49,32 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>With 倾向性</h3>
-<p>Comes with an icon, often used to display system messages of &quot;success, warning, message, error&quot; types.</p>
-<p>The Notification component has prepared four notification types: <code>success</code>, <code>warning</code>, <code>info</code>, <code>error</code>. Set through the <code>type</code> field, and values other than these will be ignored. At the same time, we have also registered methods for various types of Notification, which can be called directly like <code>open3</code> and <code>open4</code> without passing in the <code>type</code> field.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>With 倾向性</h3>
+        <p>
+            Comes with an icon, often used to display system messages of &quot;success, warning, message, error&quot; types.
+        </p>
+        <p>
+            The Notification component has prepared four notification types:
+            <code>success</code>
+            ,
+            <code>warning</code>
+            ,
+            <code>info</code>
+            ,
+            <code>error</code>
+            . Set through the
+            <code>type</code>
+            field, and values other than these will be ignored. At the same time, we have also registered methods for various types of Notification, which can be called directly like
+            <code>open3</code>
+            and
+            <code>open4</code>
+            without passing in the
+            <code>type</code>
+            field.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open3&quot;&gt;Info&lt;/jk-button&gt;
@@ -73,11 +113,25 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Pop-up Position</h3>
-<p>You can make the Notification pop up from any of the four corners of the screen. Use the <code>position</code> property to define the pop-up position of the Notification. Four options are supported: <code>top-right</code>, <code>top-left</code>, <code>bottom-right</code>, <code>bottom-left</code>, with the default being <code>top-right</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Pop-up Position</h3>
+        <p>
+            You can make the Notification pop up from any of the four corners of the screen. Use the
+            <code>position</code>
+            property to define the pop-up position of the Notification. Four options are supported:
+            <code>top-right</code>
+            ,
+            <code>top-left</code>
+            ,
+            <code>bottom-right</code>
+            ,
+            <code>bottom-left</code>
+            , with the default being
+            <code>top-right</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;Top right&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open2&quot;&gt;Bottom right&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open3&quot;&gt;Bottom left&lt;/jk-button&gt;
@@ -119,11 +173,15 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>With Offset</h3>
-<p>Make the Notification offset by some distance. The Notification provides the function of setting the offset. By setting the <code>offset</code> field, the popped-up message can be offset from the edge of the screen by a certain distance. Note that at the same moment, all Notification instances should have the same offset.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>With Offset</h3>
+        <p>
+            Make the Notification offset by some distance. The Notification provides the function of setting the offset. By setting the
+            <code>offset</code>
+            field, the popped-up message can be offset from the edge of the screen by a certain distance. Note that at the same moment, all Notification instances should have the same offset.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Offset warning&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -140,11 +198,21 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Using HTML Fragments</h3>
-<p>The <code>message</code> property supports passing in HTML fragments. Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Using HTML Fragments</h3>
+        <p>
+            The
+            <code>message</code>
+            property supports passing in HTML fragments. Set the
+            <code>useHtml</code>
+            property to
+            <code>true</code>
+            , and
+            <code>message</code>
+            will be treated as an HTML fragment.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Pop up an HTML warning&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -163,154 +231,189 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<div class="warning">
-<p>Although the <code>message</code> property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>. Therefore, when <code>useHtml</code> is turned on, please ensure that the content of <code>message</code> is trustworthy. <strong>Never</strong> assign user-submitted content to the <code>message</code> property.</p>
-</div>
-<blockquote>
-<p>Message provides the <code>closeAll</code> method to clear all messages at specific business times.</p>
-</blockquote>
-<h3>Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Title</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Explanation text</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>useHtml</td>
-<td>Whether to treat the <code>message</code> property as an HTML fragment</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Theme style, will be ignored if not in the optional values</td>
-<td>string</td>
-<td>success/warning/info/error</td>
-<td>—</td>
-</tr>
-<tr>
-<td>iconClass</td>
-<td>Class name of the custom icon. If <code>type</code> is set, <code>iconClass</code> will be overridden</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>customClass</td>
-<td>Custom class name</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
-<td>number</td>
-<td>—</td>
-<td>4500</td>
-</tr>
-<tr>
-<td>position</td>
-<td>Custom pop-up position</td>
-<td>string</td>
-<td>top-right/top-left/bottom-right/bottom-left</td>
-<td>top-right</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>Whether to display the close button</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>onClose</td>
-<td>Callback function when closing</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>onClick</td>
-<td>Callback function when clicking the Notification</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>Offset distance. At the same moment, all Notification instances should have the same offset</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<p>Calling <code>Notification</code> will return the current Notification instance. If you need to manually close the instance, you can call its <code>close</code> method.</p>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>close</td>
-<td>Close the current Notification</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <div class="warning">
+            <p>
+                Although the
+                <code>message</code>
+                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
+                . Therefore, when
+                <code>useHtml</code>
+                is turned on, please ensure that the content of
+                <code>message</code>
+                is trustworthy.
+                <strong>Never</strong>
+                assign user-submitted content to the
+                <code>message</code>
+                property.
+            </p>
+        </div>
+        <blockquote>
+            <p>
+                Message provides the
+                <code>closeAll</code>
+                method to clear all messages at specific business times.
+            </p>
+        </blockquote>
+        <h3>Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Title</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>Explanation text</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>useHtml</td>
+                    <td>
+                        Whether to treat the
+                        <code>message</code>
+                        property as an HTML fragment
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Theme style, will be ignored if not in the optional values</td>
+                    <td>string</td>
+                    <td>success/warning/info/error</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>iconClass</td>
+                    <td>
+                        Class name of the custom icon. If
+                        <code>type</code>
+                        is set,
+                        <code>iconClass</code>
+                        will be overridden
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>customClass</td>
+                    <td>Custom class name</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>4500</td>
+                </tr>
+                <tr>
+                    <td>position</td>
+                    <td>Custom pop-up position</td>
+                    <td>string</td>
+                    <td>top-right/top-left/bottom-right/bottom-left</td>
+                    <td>top-right</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>Whether to display the close button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>onClose</td>
+                    <td>Callback function when closing</td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>onClick</td>
+                    <td>Callback function when clicking the Notification</td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>offset</td>
+                    <td>Offset distance. At the same moment, all Notification instances should have the same offset</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <p>
+            Calling
+            <code>Notification</code>
+            will return the current Notification instance. If you need to manually close the instance, you can call its
+            <code>close</code>
+            method.
+        </p>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>close</td>
+                    <td>Close the current Notification</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo5 from '../../components/notification/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/notification/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/notification/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/notification/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/notification/demo1.joker';
+import DEMO_JOKER_demo5 from "../../components/notification/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/notification/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/notification/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/notification/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/notification/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

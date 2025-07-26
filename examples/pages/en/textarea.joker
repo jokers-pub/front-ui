@@ -1,11 +1,15 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Textarea</h2>
-<p>Used to input multi-line text information.</p>
-<h3>Basic Usage</h3>
-<p>The height of the textarea can be controlled by the <code>rows</code> attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Textarea</h2>
+        <p>Used to input multi-line text information.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            The height of the textarea can be controlled by the
+            <code>rows</code>
+            attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-textarea placeholder=&quot;Please enter content&quot; rows=&quot;2&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
@@ -14,11 +18,17 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Textarea with Auto-adaptive Text Height</h3>
-<p>By setting the <code>autosize</code> attribute, the height of the textarea can be automatically adjusted according to the text content. Moreover, <code>autosize</code> can also be set as an object to specify the minimum and maximum number of rows.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Textarea with Auto-adaptive Text Height</h3>
+        <p>
+            By setting the
+            <code>autosize</code>
+            attribute, the height of the textarea can be automatically adjusted according to the text content. Moreover,
+            <code>autosize</code>
+            can also be set as an object to specify the minimum and maximum number of rows.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-textarea placeholder=&quot;Please enter content&quot;&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
@@ -27,11 +37,20 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Input Length Limit</h3>
-<p><code>maxlength</code> and <code>minlength</code> are native attributes used to limit the character length of the input box, where the character length is counted by the length of the JavaScript string. While using the <code>maxlength</code> attribute to limit the maximum input length, you can set the <code>show-word-limit</code> attribute to display the word count.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Input Length Limit</h3>
+        <p>
+            <code>maxlength</code>
+            and
+            <code>minlength</code>
+            are native attributes used to limit the character length of the input box, where the character length is counted by the length of the JavaScript string. While using the
+            <code>maxlength</code>
+            attribute to limit the maximum input length, you can set the
+            <code>show-word-limit</code>
+            attribute to display the word count.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-textarea placeholder=&quot;Please enter content&quot; maxlength=&quot;10&quot; show-word-limit&gt;&lt;/jk-textarea&gt;
     &lt;/DemoRow&gt;
@@ -44,229 +63,239 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>string</td>
-<td>text, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types" target="_blank">types of native input</a></td>
-<td>text</td>
-</tr>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string / number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>maxlength</td>
-<td>Native attribute, maximum input length</td>
-<td>number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>minlength</td>
-<td>Native attribute, minimum input length</td>
-<td>number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>show-word-limit</td>
-<td>Whether to display the input word count</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>placeholder</td>
-<td>Placeholder text of the input box</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size of the input box</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>rows</td>
-<td>Number of rows of the input box</td>
-<td>number</td>
-<td>—</td>
-<td>1</td>
-</tr>
-<tr>
-<td>autosize</td>
-<td>Auto-adapt to the content height. An object can be passed in, e.g., { minRows: 2, maxRows: 6 }</td>
-<td>boolean / object</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>resize</td>
-<td>Control whether it can be resized by the user</td>
-<td>string</td>
-<td>none, both, horizontal, vertical</td>
-<td>—</td>
-</tr>
-<tr>
-<td>autocomplete</td>
-<td>Native attribute, auto-completion</td>
-<td>string</td>
-<td>on, off</td>
-<td>off</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Native attribute</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>readonly</td>
-<td>Native attribute, whether it is read-only</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>autofocus</td>
-<td>Native attribute, auto-focus</td>
-<td>boolean</td>
-<td>true, false</td>
-<td>false</td>
-</tr>
-<tr>
-<td>label</td>
-<td>The label text associated with the input box</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>tabindex</td>
-<td>The tabindex of the input box</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>blur</td>
-<td>Triggered when the Input loses focus</td>
-<td>VNode.Event</td>
-</tr>
-<tr>
-<td>focus</td>
-<td>Triggered when the Input gains focus</td>
-<td>VNode.Event</td>
-</tr>
-<tr>
-<td>change</td>
-<td>Triggered only when the input box loses focus or the user presses Enter</td>
-<td>VNode.Event</td>
-</tr>
-<tr>
-<td>input</td>
-<td>Triggered when the value of the Input changes</td>
-<td>VNode.Event</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>focus</td>
-<td>Make the input gain focus</td>
-<td>—</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>Make the input lose focus</td>
-<td>—</td>
-</tr>
-<tr>
-<td>select</td>
-<td>Select the text in the input</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>type</td>
+                    <td>Type</td>
+                    <td>string</td>
+                    <td>
+                        text,
+                        <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types"
+                            target="_blank">
+                            types of native input
+                        </a>
+                    </td>
+                    <td>text</td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string / number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>maxlength</td>
+                    <td>Native attribute, maximum input length</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>minlength</td>
+                    <td>Native attribute, minimum input length</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>show-word-limit</td>
+                    <td>Whether to display the input word count</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>placeholder</td>
+                    <td>Placeholder text of the input box</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size of the input box</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>rows</td>
+                    <td>Number of rows of the input box</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>autosize</td>
+                    <td>
+                        Auto-adapt to the content height. An object can be passed in, e.g.,{minRows: 2, maxRows: 6}
+                    </td>
+                    <td>boolean / object</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>resize</td>
+                    <td>Control whether it can be resized by the user</td>
+                    <td>string</td>
+                    <td>none, both, horizontal, vertical</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>autocomplete</td>
+                    <td>Native attribute, auto-completion</td>
+                    <td>string</td>
+                    <td>on, off</td>
+                    <td>off</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>Native attribute</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>readonly</td>
+                    <td>Native attribute, whether it is read-only</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>autofocus</td>
+                    <td>Native attribute, auto-focus</td>
+                    <td>boolean</td>
+                    <td>true, false</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>The label text associated with the input box</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>tabindex</td>
+                    <td>The tabindex of the input box</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>blur</td>
+                    <td>Triggered when the Input loses focus</td>
+                    <td>VNode.Event</td>
+                </tr>
+                <tr>
+                    <td>focus</td>
+                    <td>Triggered when the Input gains focus</td>
+                    <td>VNode.Event</td>
+                </tr>
+                <tr>
+                    <td>change</td>
+                    <td>Triggered only when the input box loses focus or the user presses Enter</td>
+                    <td>VNode.Event</td>
+                </tr>
+                <tr>
+                    <td>input</td>
+                    <td>Triggered when the value of the Input changes</td>
+                    <td>VNode.Event</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>focus</td>
+                    <td>Make the input gain focus</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>blur</td>
+                    <td>Make the input lose focus</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>select</td>
+                    <td>Select the text in the input</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/textarea/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/textarea/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/textarea/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/textarea/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/textarea/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/textarea/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

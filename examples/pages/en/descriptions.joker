@@ -1,10 +1,10 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Descriptions</h2>
-<p>Displays multiple fields in a list format.</p>
-<h3>Basic Usage</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Descriptions</h2>
+        <p>Displays multiple fields in a list format.</p>
+        <h3>Basic Usage</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-descriptions title=&quot;User Information&quot;&gt;
         &lt;jk-descriptions-item label=&quot;Username&quot;&gt;Zhang San&lt;/jk-descriptions-item&gt;
         &lt;jk-descriptions-item label=&quot;Phone Number&quot;&gt;18888888888&lt;/jk-descriptions-item&gt;
@@ -23,10 +23,10 @@
     &lt;/jk-descriptions&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Different Sizes</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Different Sizes</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-radio-group value=&quot;@model.size&quot; @change=&quot;radioChange&quot;&gt;
         &lt;jk-radio label=&quot;&quot;&gt;Default&lt;/jk-radio&gt;
         &lt;jk-radio label=&quot;medium&quot;&gt;Medium&lt;/jk-radio&gt;
@@ -111,10 +111,10 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Vertical List</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Vertical List</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-descriptions title=&quot;Vertical list with border&quot; direction=&quot;vertical&quot; column=&quot;4&quot; border&gt;
         &lt;jk-descriptions-item label=&quot;Username&quot;&gt;kooriookami&lt;/jk-descriptions-item&gt;
         &lt;jk-descriptions-item label=&quot;Phone Number&quot;&gt;18100000000&lt;/jk-descriptions-item&gt;
@@ -139,10 +139,10 @@ export default class extends Component {
     &lt;/jk-descriptions&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Styles</h3>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Styles</h3>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;descriptions-demo&quot;&gt;
         &lt;jk-descriptions title=&quot;Custom style list&quot; column=&quot;3&quot; border&gt;
             &lt;jk-descriptions-item label=&quot;Username&quot; labelClassName=&quot;my-label&quot; contentClassName=&quot;my-content&quot;&gt;
@@ -170,220 +170,221 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Descriptions Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>border</td>
-<td>Whether to have a border</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-<tr>
-<td>column</td>
-<td>The number of Descriptions Items in one row</td>
-<td>number</td>
-<td>-</td>
-<td>3</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>The arrangement direction</td>
-<td>string</td>
-<td>vertical / horizontal</td>
-<td>horizontal</td>
-</tr>
-<tr>
-<td>size</td>
-<td>The size of the list</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>-</td>
-</tr>
-<tr>
-<td>title</td>
-<td>The title text, displayed in the upper-left corner</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>extra</td>
-<td>The operation area text, displayed in the upper-right corner</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>colon</td>
-<td>Whether to display a colon</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>labelClassName</td>
-<td>Custom label class name</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>contentClassName</td>
-<td>Custom content class name</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>labelStyle</td>
-<td>Custom label style</td>
-<td>object</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>contentStyle</td>
-<td>Custom content style</td>
-<td>object</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Descriptions Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Customize the title, displayed in the upper-left corner</td>
-</tr>
-<tr>
-<td>extra</td>
-<td>Customize the operation area, displayed in the upper-right corner</td>
-</tr>
-</tbody>
-</table>
-<h3>Descriptions Item Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>label</td>
-<td>Label text</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>span</td>
-<td>The number of columns</td>
-<td>number</td>
-<td>-</td>
-<td>1</td>
-</tr>
-<tr>
-<td>labelClassName</td>
-<td>Custom label class name</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>contentClassName</td>
-<td>Custom content class name</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>labelStyle</td>
-<td>Custom label style</td>
-<td>object</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>contentStyle</td>
-<td>Custom content style</td>
-<td>object</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Descriptions Item Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>label</td>
-<td>Customize the label text</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Descriptions Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td>Whether to have a border</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>column</td>
+                    <td>The number of Descriptions Items in one row</td>
+                    <td>number</td>
+                    <td>-</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>direction</td>
+                    <td>The arrangement direction</td>
+                    <td>string</td>
+                    <td>vertical / horizontal</td>
+                    <td>horizontal</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>The size of the list</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>The title text, displayed in the upper-left corner</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>extra</td>
+                    <td>The operation area text, displayed in the upper-right corner</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>colon</td>
+                    <td>Whether to display a colon</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>labelClassName</td>
+                    <td>Custom label class name</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>contentClassName</td>
+                    <td>Custom content class name</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>labelStyle</td>
+                    <td>Custom label style</td>
+                    <td>object</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>contentStyle</td>
+                    <td>Custom content style</td>
+                    <td>object</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Descriptions Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Customize the title, displayed in the upper-left corner</td>
+                </tr>
+                <tr>
+                    <td>extra</td>
+                    <td>Customize the operation area, displayed in the upper-right corner</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Descriptions Item Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>label</td>
+                    <td>Label text</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>span</td>
+                    <td>The number of columns</td>
+                    <td>number</td>
+                    <td>-</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>labelClassName</td>
+                    <td>Custom label class name</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>contentClassName</td>
+                    <td>Custom content class name</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>labelStyle</td>
+                    <td>Custom label style</td>
+                    <td>object</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>contentStyle</td>
+                    <td>Custom content style</td>
+                    <td>object</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Descriptions Item Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>label</td>
+                    <td>Customize the label text</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/descriptions/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/descriptions/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/descriptions/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/descriptions/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/descriptions/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/descriptions/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/descriptions/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/descriptions/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

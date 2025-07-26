@@ -1,11 +1,13 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Timeline 时间线</h2>
-<p>可视化地呈现时间流信息。</p>
-<h3>基础用法</h3>
-<p>Timeline 可拆分成多个按照时间戳排列的 activity，时间戳是其区分于其他控件的重要特征，使⽤时注意与 Steps 步骤条等区分。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Timeline 时间线</h2>
+        <p>可视化地呈现时间流信息。</p>
+        <h3>基础用法</h3>
+        <p>
+            Timeline 可拆分成多个按照时间戳排列的 activity，时间戳是其区分于其他控件的重要特征，使⽤时注意与 Steps 步骤条等区分。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;radio&quot;&gt;
         Sorting:
         &lt;div class=&quot;group&quot;&gt;
@@ -60,11 +62,11 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>⾃定义节点样式</h3>
-<p>可根据实际场景⾃定义节点尺⼨、颜⾊，或直接使⽤图标。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>⾃定义节点样式</h3>
+        <p>可根据实际场景⾃定义节点尺⼨、颜⾊，或直接使⽤图标。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
         &lt;jk-timeline&gt;
             @for(let (index, activity) in activities) {
@@ -117,11 +119,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>⾃定义时间戳</h3>
-<p>当内容在垂直⽅向上过⾼时，可将时间戳置于内容之上。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>⾃定义时间戳</h3>
+        <p>当内容在垂直⽅向上过⾼时，可将时间戳置于内容之上。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
         &lt;jk-timeline&gt;
             &lt;jk-timeline-item timestamp=&quot;2018/4/12&quot; placement=&quot;top&quot;&gt;
@@ -146,133 +148,134 @@ export default class extends Component {
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Timeline Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Timeline-item Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>timestamp</td>
-<td>时间戳</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>hideTimestamp</td>
-<td>是否隐藏时间戳</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-<tr>
-<td>placement</td>
-<td>时间戳位置</td>
-<td>string</td>
-<td>top / bottom</td>
-<td>bottom</td>
-</tr>
-<tr>
-<td>type</td>
-<td>节点类型</td>
-<td>string</td>
-<td>primary / success / warning / danger / info</td>
-<td>-</td>
-</tr>
-<tr>
-<td>color</td>
-<td>节点颜色</td>
-<td>string</td>
-<td>hsl / hsv / hex / rgb</td>
-<td>-</td>
-</tr>
-<tr>
-<td>size</td>
-<td>节点尺寸</td>
-<td>string</td>
-<td>normal / large</td>
-<td>normal</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>节点图标</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Timeline-Item Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>name</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Timeline-Item 的内容</td>
-</tr>
-<tr>
-<td>dot</td>
-<td>自定义节点</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Timeline Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Timeline-item Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>timestamp</td>
+                    <td>时间戳</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>hideTimestamp</td>
+                    <td>是否隐藏时间戳</td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>placement</td>
+                    <td>时间戳位置</td>
+                    <td>string</td>
+                    <td>top / bottom</td>
+                    <td>bottom</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>节点类型</td>
+                    <td>string</td>
+                    <td>primary / success / warning / danger / info</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td>节点颜色</td>
+                    <td>string</td>
+                    <td>hsl / hsv / hex / rgb</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>节点尺寸</td>
+                    <td>string</td>
+                    <td>normal / large</td>
+                    <td>normal</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>节点图标</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Timeline-Item Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Timeline-Item 的内容</td>
+                </tr>
+                <tr>
+                    <td>dot</td>
+                    <td>自定义节点</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo3 from '../../components/timeline/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/timeline/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/timeline/demo1.joker';
+import DEMO_JOKER_demo3 from "../../components/timeline/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/timeline/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/timeline/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

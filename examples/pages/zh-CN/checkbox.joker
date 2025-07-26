@@ -1,12 +1,22 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Checkbox 多选框</h2>
-<p>一组备选项中进行多选</p>
-<h3>基础用法</h3>
-<p>单独使用可以表示两种状态之间的切换，写在标签中的内容为 Checkbox 按钮后的介绍。</p>
-<p>在 <code>jk-checkbox</code> 组件中定义 <code>value</code> 绑定变量，单一的 Checkbox 中，默认绑定变量的值会是 <code>Boolean</code>，选中为 <code>true</code>。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Checkbox 多选框</h2>
+        <p>一组备选项中进行多选</p>
+        <h3>基础用法</h3>
+        <p>单独使用可以表示两种状态之间的切换，写在标签中的内容为 Checkbox 按钮后的介绍。</p>
+        <p>
+            在
+            <code>jk-checkbox</code>
+            组件中定义
+            <code>value</code>
+            绑定变量，单一的 Checkbox 中，默认绑定变量的值会是
+            <code>Boolean</code>
+            ，选中为
+            <code>true</code>
+            。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox value=&quot;@model.value1&quot; @change=&quot;handleChange1&quot;&gt;Option 1&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;@model.value2&quot; @change=&quot;handleChange2&quot;&gt;Option 2&lt;/jk-checkbox&gt;
@@ -29,22 +39,45 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>禁用状态</h3>
-<p>多选框不可用状态。</p>
-<p>只要在 <code>jk-checkbox</code> 组件中设置 <code>disabled</code> 属性即可，它接受一个 <code>Boolean</code>，<code>true</code> 为禁用。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>禁用状态</h3>
+        <p>多选框不可用状态。</p>
+        <p>
+            只要在
+            <code>jk-checkbox</code>
+            组件中设置
+            <code>disabled</code>
+            属性即可，它接受一个
+            <code>Boolean</code>
+            ，
+            <code>true</code>
+            为禁用。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-checkbox disabled value&gt;Option 1&lt;/jk-checkbox&gt;
     &lt;jk-checkbox disabled value=&quot;@false&quot;&gt;Option 2&lt;/jk-checkbox&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>多选框组</h3>
-<p>适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。</p>
-<p><code>jk-checkbox-group</code> 组件能把多个 Checkbox 管理为一组，只需要在 Group 中使用 <code>value</code> 绑定 <code>Array</code> 类型的变量即可。 <code>jk-checkbox</code> 的 <code>label</code> 属性是该 checkbox 对应的值，若该标签中无内容，则该属性也充当 Checkbox 按钮后的介绍。<code>label</code> 与数组中的元素值相对应，如果存在指定的值则为选中状态，否则为不选中</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>多选框组</h3>
+        <p>适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。</p>
+        <p>
+            <code>jk-checkbox-group</code>
+            组件能把多个 Checkbox 管理为一组，只需要在 Group 中使用
+            <code>value</code>
+            绑定
+            <code>Array</code>
+            类型的变量即可。
+            <code>jk-checkbox</code>
+            的
+            <code>label</code>
+            属性是该 checkbox 对应的值，若该标签中无内容，则该属性也充当 Checkbox 按钮后的介绍。
+            <code>label</code>
+            与数组中的元素值相对应，如果存在指定的值则为选中状态，否则为不选中
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-checkbox-group value=&quot;@model.checkList&quot; @change=&quot;handleCheckboxChange&quot;&gt;
         &lt;jk-checkbox value=&quot;1&quot; label=&quot;Checkbox A&quot;&gt;&lt;/jk-checkbox&gt;
         &lt;jk-checkbox value=&quot;2&quot; label=&quot;Checkbox B&quot;&gt;&lt;/jk-checkbox&gt;
@@ -66,11 +99,14 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>indeterminate 状态</h3>
-<p><code>indeterminate</code> 属性用以表示 Checkbox 的不确定状态，一般用于实现全选的效果</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>indeterminate 状态</h3>
+        <p>
+            <code>indeterminate</code>
+            属性用以表示 Checkbox 的不确定状态，一般用于实现全选的效果
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox indeterminate=&quot;@model.indeterminate&quot; value=&quot;@model.checkAll&quot; @change=&quot;handleCheckAllChange&quot;&gt;
             Select All
@@ -107,11 +143,17 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>可选项目数量的限制</h3>
-<p>使用 <code>min</code> 和 <code>max</code> 属性能够限制可以被勾选的项目的数量。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>可选项目数量的限制</h3>
+        <p>
+            使用
+            <code>min</code>
+            和
+            <code>max</code>
+            属性能够限制可以被勾选的项目的数量。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-checkbox-group value=&quot;@model.checkedCities&quot; min=&quot;1&quot; max=&quot;2&quot;&gt;
         @for(let cityItem of model.cities) {
             &lt;jk-checkbox value=&quot;@cityItem&quot; label=&quot;@cityItem&quot;&gt;&lt;/jk-checkbox&gt;
@@ -129,11 +171,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>按钮样式</h3>
-<p>按钮样式的多选组合。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>按钮样式</h3>
+        <p>按钮样式的多选组合。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities1&quot;&gt;
             &lt;jk-checkbox-button value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox-button&gt;
@@ -189,11 +231,21 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>带有边框</h3>
-<p>设置 <code>border</code> 属性可以渲染为带有边框的单选框。<code>jk-checkbox</code> 只有在设置 <code>border</code> 时，<code>size</code> 属性才会生效</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带有边框</h3>
+        <p>
+            设置
+            <code>border</code>
+            属性可以渲染为带有边框的单选框。
+            <code>jk-checkbox</code>
+            只有在设置
+            <code>border</code>
+            时，
+            <code>size</code>
+            属性才会生效
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-checkbox-group value=&quot;@model.checkedCities1&quot;&gt;
             &lt;jk-checkbox border value=&quot;Shanghai&quot; label=&quot;Shanghai&quot;&gt;&lt;/jk-checkbox&gt;
@@ -249,250 +301,251 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Checkbox Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>绑定值</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>Checkbox 的 value</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>是否禁用</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>border</td>
-<td>是否显示边框</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Checkbox 的尺寸，仅在 border 为真时有效</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>name</td>
-<td>原生 name 属性</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>indeterminate</td>
-<td>设置 indeterminate 状态，只负责样式控制</td>
-<td>boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Checkbox Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>选中状态变化时触发的事件</td>
-<td>变换后的值</td>
-</tr>
-</tbody>
-</table>
-<h3>Checkbox-button Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>绑定值</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>label</td>
-<td>选中状态的值（只有在 checkbox-group 时有效）</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>是否禁用</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>name</td>
-<td>原生 name 属性</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Checkbox-button Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>选中状态变化时触发的事件</td>
-<td>变换后的值</td>
-</tr>
-</tbody>
-</table>
-<h3>Checkbox-group Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>绑定值</td>
-<td>array</td>
-<td>—</td>
-<td>[]</td>
-</tr>
-<tr>
-<td>size</td>
-<td>多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>是否禁用</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>min</td>
-<td>可被勾选的 checkbox 的最小数量</td>
-<td>number</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>max</td>
-<td>可被勾选的 checkbox 的最大数量</td>
-<td>number</td>
-<td>—</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Checkbox-group Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>选中状态变化时触发的事件</td>
-<td>变换后的值</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Checkbox Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>绑定值</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>Checkbox 的 value</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>是否禁用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td>是否显示边框</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Checkbox 的尺寸，仅在 border 为真时有效</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>原生 name 属性</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>indeterminate</td>
+                    <td>设置 indeterminate 状态，只负责样式控制</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Checkbox Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>选中状态变化时触发的事件</td>
+                    <td>变换后的值</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Checkbox-button Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>绑定值</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>label</td>
+                    <td>选中状态的值（只有在 checkbox-group 时有效）</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>是否禁用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>原生 name 属性</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Checkbox-button Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>选中状态变化时触发的事件</td>
+                    <td>变换后的值</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Checkbox-group Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>绑定值</td>
+                    <td>array</td>
+                    <td>—</td>
+                    <td>[]</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>是否禁用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>min</td>
+                    <td>可被勾选的 checkbox 的最小数量</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>max</td>
+                    <td>可被勾选的 checkbox 的最大数量</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Checkbox-group Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名称</th>
+                    <th>说明</th>
+                    <th>回调参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>选中状态变化时触发的事件</td>
+                    <td>变换后的值</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/checkbox/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/checkbox/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/checkbox/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/checkbox/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/checkbox/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/checkbox/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/checkbox/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/checkbox/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/checkbox/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/checkbox/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/checkbox/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/checkbox/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/checkbox/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/checkbox/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

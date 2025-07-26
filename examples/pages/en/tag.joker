@@ -1,11 +1,17 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Tag</h2>
-<p>Used for marking and selection.</p>
-<h3>Basic Usage</h3>
-<p>The type of the tag is selected by the <code>type</code> attribute, and the background color can also be customized through the <code>color</code> attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Tag</h2>
+        <p>Used for marking and selection.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            The type of the tag is selected by the
+            <code>type</code>
+            attribute, and the background color can also be customized through the
+            <code>color</code>
+            attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-tag&gt;Tag 1&lt;/jk-tag&gt;
         &lt;jk-tag type=&quot;success&quot;&gt;Tag 2&lt;/jk-tag&gt;
@@ -24,11 +30,15 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Removable Tag</h3>
-<p>Setting the <code>closable</code> attribute can define whether a tag is removable.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Removable Tag</h3>
+        <p>
+            Setting the
+            <code>closable</code>
+            attribute can define whether a tag is removable.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-tag closable&gt;Tag 1&lt;/jk-tag&gt;
         &lt;jk-tag type=&quot;success&quot; closable&gt;Tag 2&lt;/jk-tag&gt;
@@ -47,12 +57,24 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Different Sizes</h3>
-<p>The Tag component provides three sizes in addition to the default size, allowing you to choose the appropriate button size for different scenarios.</p>
-<p>The additional sizes are: <code>medium</code>, <code>small</code>, and <code>mini</code>, which can be configured by setting the <code>size</code> attribute.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Different Sizes</h3>
+        <p>
+            The Tag component provides three sizes in addition to the default size, allowing you to choose the appropriate button size for different scenarios.
+        </p>
+        <p>
+            The additional sizes are:
+            <code>medium</code>
+            ,
+            <code>small</code>
+            , and
+            <code>mini</code>
+            , which can be configured by setting the
+            <code>size</code>
+            attribute.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;jk-tag closable&gt;Default Size&lt;/jk-tag&gt;
         &lt;jk-tag size=&quot;medium&quot; closable&gt;Medium Size&lt;/jk-tag&gt;
@@ -69,12 +91,26 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Different Themes</h3>
-<p>The Tag component offers three different themes: <code>dark</code>, <code>light</code>, and <code>plain</code>.</p>
-<p>The theme can be changed by setting the <code>effect</code> attribute, with the default being <code>light</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Different Themes</h3>
+        <p>
+            The Tag component offers three different themes:
+            <code>dark</code>
+            ,
+            <code>light</code>
+            , and
+            <code>plain</code>
+            .
+        </p>
+        <p>
+            The theme can be changed by setting the
+            <code>effect</code>
+            attribute, with the default being
+            <code>light</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
         &lt;div class=&quot;row&quot;&gt;
             &lt;span&gt;Default (Light):&lt;/span&gt;
@@ -128,110 +164,111 @@
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>string</td>
-<td>success/info/warning/danger</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>Whether it is closable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>color</td>
-<td>Background color</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Size</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>effect</td>
-<td>Theme</td>
-<td>string</td>
-<td>dark / light / plain</td>
-<td>light</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>click</td>
-<td>The event triggered when a Tag is clicked</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Triggered when the close button is clicked</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>type</td>
+                    <td>Type</td>
+                    <td>string</td>
+                    <td>success/info/warning/danger</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>Whether it is closable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td>Background color</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>Size</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>effect</td>
+                    <td>Theme</td>
+                    <td>string</td>
+                    <td>dark / light / plain</td>
+                    <td>light</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>The event triggered when a Tag is clicked</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>Triggered when the close button is clicked</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/tag/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/tag/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/tag/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/tag/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/tag/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/tag/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/tag/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/tag/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

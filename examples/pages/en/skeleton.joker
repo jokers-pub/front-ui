@@ -1,36 +1,44 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Skeleton</h2>
-<p>Set a skeleton screen in the position where content needs to be loaded. In some scenarios, it has a better visual effect than Loading.</p>
-<h3>Basic Usage</h3>
-<p>The basic skeleton effect.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Skeleton</h2>
+        <p>
+            Set a skeleton screen in the position where content needs to be loaded. In some scenarios, it has a better visual effect than Loading.
+        </p>
+        <h3>Basic Usage</h3>
+        <p>The basic skeleton effect.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-skeleton /&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>More Parameters</h3>
-<p>You can configure the number of skeleton screen paragraphs to be closer to the real rendering effect. The first line will be rendered with a 33%-length paragraph head.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>More Parameters</h3>
+        <p>
+            You can configure the number of skeleton screen paragraphs to be closer to the real rendering effect. The first line will be rendered with a 33%-length paragraph head.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-skeleton rows=&quot;6&quot; count=&quot;2&quot; /&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Animation Effect</h3>
-<p>Display the animation effect.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Animation Effect</h3>
+        <p>Display the animation effect.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Styles</h3>
-<p>The layout mode provided by Joker-UI sometimes does not meet the requirements. When you want to use your own defined template, you can set the template through a named section.</p>
-<p>We provide different template units for use. For specific optional values, please refer to the API detailed description. When describing the template, it is recommended to be as close as possible to the real DOM structure to avoid jitter caused by the height difference of the DOM.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">
+        </DemoContainer>
+        <h3>Custom Styles</h3>
+        <p>
+            The layout mode provided by Joker-UI sometimes does not meet the requirements. When you want to use your own defined template, you can set the template through a named section.
+        </p>
+        <p>
+            We provide different template units for use. For specific optional values, please refer to the API detailed description. When describing the template, it is recommended to be as close as possible to the real DOM structure to avoid jitter caused by the height difference of the DOM.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">
 &lt;template&gt;
     &lt;jk-skeleton style=&quot;width: 240px&quot;&gt;
         @section(&quot;template&quot;) {
@@ -46,11 +54,15 @@
     &lt;/jk-skeleton&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Loading State</h3>
-<p>After the Loading is completed, we often need to display the real UI. You can control whether to display the real DOM through the value of <code>loading</code>. Then, set the UI to be displayed after the loading is completed through the named section.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Loading State</h3>
+        <p>
+            After the Loading is completed, we often need to display the real UI. You can control whether to display the real DOM through the value of
+            <code>loading</code>
+            . Then, set the UI to be displayed after the loading is completed through the named section.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width: 240px&quot;&gt;
         &lt;p&gt;
             &lt;label style=&quot;margin-right: 16px;&quot;&gt;Toggle Loading&lt;/label&gt;
@@ -85,12 +97,20 @@ export default class extends Component {
 &lt;/script&gt;
 
 </code></pre>
-</DemoContainer>
-<h3>Rendering Multiple Data</h3>
-<p>Most of the time, the skeleton screen is used to render lists. When we need to render a fake UI while fetching data from the server. The <code>count</code> attribute can be used to control how many fake data are rendered on the page.</p>
-<p>Please note that try to keep the size of <code>count</code> to a minimum. Even for a fake UI, too many DOM elements will still cause performance problems, and it will also take longer (relatively) to destroy the skeleton screen.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Rendering Multiple Data</h3>
+        <p>
+            Most of the time, the skeleton screen is used to render lists. When we need to render a fake UI while fetching data from the server. The
+            <code>count</code>
+            attribute can be used to control how many fake data are rendered on the page.
+        </p>
+        <p>
+            Please note that try to keep the size of
+            <code>count</code>
+            to a minimum. Even for a fake UI, too many DOM elements will still cause performance problems, and it will also take longer (relatively) to destroy the skeleton screen.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width: 400px&quot;&gt;
         &lt;p&gt;
             &lt;jk-button @click=&quot;setLoading&quot;&gt;Click me to reload.&lt;/jk-button&gt;
@@ -128,11 +148,15 @@ export default class extends Component {
 &lt;/script&gt;
 
 </code></pre>
-</DemoContainer>
-<h3>Preventing Rendering Jitter</h3>
-<p>Sometimes, the API request returns very quickly. Often, just after the skeleton placeholder is rendered, the real data has already arrived, and the user's interface will flash suddenly. At this time, to avoid this situation, the <code>throttle</code> attribute is needed to solve this problem.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Preventing Rendering Jitter</h3>
+        <p>
+            Sometimes, the API request returns very quickly. Often, just after the skeleton placeholder is rendered, the real data has already arrived, and the user's interface will flash suddenly. At this time, to avoid this situation, the
+            <code>throttle</code>
+            attribute is needed to solve this problem.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;width: 240px&quot;&gt;
         &lt;p&gt;
             &lt;label style=&quot;margin-right: 16px;&quot;&gt;Toggle Loading&lt;/label&gt;
@@ -168,155 +192,160 @@ export default class extends Component {
 
 
 </code></pre>
-</DemoContainer>
-<h3>Skeleton Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>animated</td>
-<td>Whether to use animation</td>
-<td>boolean</td>
-<td>true / false</td>
-<td>false</td>
-</tr>
-<tr>
-<td>count</td>
-<td>How many <code>template</code> to render. It is recommended to use the smallest possible number</td>
-<td>number</td>
-<td>integer</td>
-<td>1</td>
-</tr>
-<tr>
-<td>loading</td>
-<td>Whether to display the skeleton screen</td>
-<td>boolean</td>
-<td>true / false</td>
-<td>true</td>
-</tr>
-<tr>
-<td>rows</td>
-<td>The number of skeleton screen paragraphs</td>
-<td>number</td>
-<td>Positive integer</td>
-<td>4</td>
-</tr>
-<tr>
-<td>throttle</td>
-<td>The time to delay the rendering of the placeholder DOM, in milliseconds</td>
-<td>number</td>
-<td>Positive integer</td>
-<td>0</td>
-</tr>
-<tr>
-<td>style</td>
-<td>In-line style sheet</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>SkeletonItem Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>variant</td>
-<td>The style of the currently displayed placeholder element</td>
-<td>Enum(string)</td>
-<td>p / h1 / h3 / text / caption / button / image / circle / rect</td>
-<td>text</td>
-</tr>
-<tr>
-<td>style</td>
-<td>In-line style sheet</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom style</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Skeleton Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>Used to display the real UI</td>
-</tr>
-<tr>
-<td>template</td>
-<td>Used to display the custom placeholder</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Skeleton Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>animated</td>
+                    <td>Whether to use animation</td>
+                    <td>boolean</td>
+                    <td>true / false</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>count</td>
+                    <td>
+                        How many
+                        <code>template</code>
+                        to render. It is recommended to use the smallest possible number
+                    </td>
+                    <td>number</td>
+                    <td>integer</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>loading</td>
+                    <td>Whether to display the skeleton screen</td>
+                    <td>boolean</td>
+                    <td>true / false</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>rows</td>
+                    <td>The number of skeleton screen paragraphs</td>
+                    <td>number</td>
+                    <td>Positive integer</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>throttle</td>
+                    <td>The time to delay the rendering of the placeholder DOM, in milliseconds</td>
+                    <td>number</td>
+                    <td>Positive integer</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>style</td>
+                    <td>In-line style sheet</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>SkeletonItem Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>variant</td>
+                    <td>The style of the currently displayed placeholder element</td>
+                    <td>Enum(string)</td>
+                    <td>p / h1 / h3 / text / caption / button / image / circle / rect</td>
+                    <td>text</td>
+                </tr>
+                <tr>
+                    <td>style</td>
+                    <td>In-line style sheet</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom style</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Skeleton Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>Used to display the real UI</td>
+                </tr>
+                <tr>
+                    <td>template</td>
+                    <td>Used to display the custom placeholder</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/skeleton/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/skeleton/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/skeleton/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/skeleton/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/skeleton/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/skeleton/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/skeleton/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/skeleton/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/skeleton/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/skeleton/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/skeleton/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/skeleton/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/skeleton/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/skeleton/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

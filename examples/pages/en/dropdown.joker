@@ -1,11 +1,17 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Dropdown</h2>
-<p>Displays a dropdown menu through clicking or hovering.</p>
-<h3>Basic Usage</h3>
-<p>Use <code>Section</code> to set the element that triggers the display of the dropdown menu. By default, it is activated for display through <code>click</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Dropdown</h2>
+        <p>Displays a dropdown menu through clicking or hovering.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Use
+            <code>Section</code>
+            to set the element that triggers the display of the dropdown menu. By default, it is activated for display through
+            <code>click</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-dropdown&gt;
             &lt;a href=&quot;javascript:void(0)&quot;&gt;
@@ -34,11 +40,15 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Split-form</h3>
-<p>Configure the <code>split-button</code> attribute to make the element triggering the dropdown appear as a button group.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Split-form</h3>
+        <p>
+            Configure the
+            <code>split-button</code>
+            attribute to make the element triggering the dropdown appear as a button group.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-dropdown split-button @click=&quot;handleClick&quot;&gt;
             Trigger by click
@@ -72,11 +82,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Menu Style</h3>
-<p>You can configure attributes such as the menu item's icon and division to display a more diverse menu.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Menu Style</h3>
+        <p>You can configure attributes such as the menu item's icon and division to display a more diverse menu.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button&gt;
         More Menus
         &lt;jk-dropdown-menu&gt;
@@ -90,10 +100,14 @@ export default class extends Component {
     &lt;/jk-dropdown&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<p>Of course, you can also fill the dropdown menu in a custom way instead of using the <code>jk-dropdown-item</code> component.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <p>
+            Of course, you can also fill the dropdown menu in a custom way instead of using the
+            <code>jk-dropdown-item</code>
+            component.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button&gt;
         Customize
         &lt;jk-dropdown-menu ref=&quot;menu&quot;&gt;
@@ -167,11 +181,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Disabled</h3>
-<p>Achieve disabling by setting the <code>disabled</code> attribute. This attribute will automatically change the button state in the <code>split-button</code> type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Disabled</h3>
+        <p>
+            Achieve disabling by setting the
+            <code>disabled</code>
+            attribute. This attribute will automatically change the button state in the
+            <code>split-button</code>
+            type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button disabled&gt;
         More Menus
         &lt;jk-dropdown-menu&gt;
@@ -185,12 +205,24 @@ export default class extends Component {
     &lt;/jk-dropdown&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Size</h3>
-<p>By setting the <code>size</code> dimension, you can change the size of the button in the <code>split-button</code> mode.
-The available size types include: <code>medium</code>, <code>small</code>, <code>mini</code>.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Size</h3>
+        <p>
+            By setting the
+            <code>size</code>
+            dimension, you can change the size of the button in the
+            <code>split-button</code>
+            mode.
+            The available size types include:
+            <code>medium</code>
+            ,
+            <code>small</code>
+            ,
+            <code>mini</code>
+            .
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-dropdown split-button&gt;
             Default Size
@@ -245,10 +277,16 @@ The available size types include: <code>medium</code>, <code>small</code>, <code
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<p>The <code>dropdown-menu</code> can also be configured with the <code>size</code> attribute to control the size of the dropdown menu.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <p>
+            The
+            <code>dropdown-menu</code>
+            can also be configured with the
+            <code>size</code>
+            attribute to control the size of the dropdown menu.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-dropdown split-button&gt;
             Default Size
@@ -303,196 +341,213 @@ The available size types include: <code>medium</code>, <code>small</code>, <code
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Dropdown Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>Menu button type, same as the Button component (only valid when <code>split-button</code> is true)</td>
-<td>string</td>
-<td>—</td>
-<td>primary</td>
-</tr>
-<tr>
-<td>size</td>
-<td>Menu size, also takes effect on the trigger button when <code>split-button</code> is true</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>—</td>
-</tr>
-<tr>
-<td>split-button</td>
-<td>The dropdown-triggering element appears as a button group</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>trigger</td>
-<td>The behavior that triggers the dropdown</td>
-<td>string</td>
-<td>hover, click</td>
-<td>click</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether it is disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Dropdown Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>click</td>
-<td>Callback when clicking the left-hand button when <code>split-button</code> is true. If it is not <code>split-button</code>, it represents the click bubbling handling event of the current internal element</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Dropdown Menu Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>size</td>
-<td>Menu size</td>
-<td>string</td>
-<td>medium / small / mini</td>
-<td>-</td>
-</tr>
-<tr>
-<td>placement</td>
-<td>Menu position</td>
-<td>string</td>
-<td>top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end</td>
-<td>bottom-start</td>
-</tr>
-<tr>
-<td>maxHeight</td>
-<td>max height</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Dropdown Menu Item Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>disabled</td>
-<td>Disabled</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>divided</td>
-<td>Display a dividing line</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Icon class name</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Dropdown Menu Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td>Menu opened</td>
-<td>—</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Menu closed</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Dropdown Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>type</td>
+                    <td>
+                        Menu button type, same as the Button component (only valid when
+                        <code>split-button</code>
+                        is true)
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>primary</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>
+                        Menu size, also takes effect on the trigger button when
+                        <code>split-button</code>
+                        is true
+                    </td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>split-button</td>
+                    <td>The dropdown-triggering element appears as a button group</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>trigger</td>
+                    <td>The behavior that triggers the dropdown</td>
+                    <td>string</td>
+                    <td>hover, click</td>
+                    <td>click</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether it is disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Dropdown Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>click</td>
+                    <td>
+                        Callback when clicking the left-hand button when
+                        <code>split-button</code>
+                        is true. If it is not
+                        <code>split-button</code>
+                        , it represents the click bubbling handling event of the current internal element
+                    </td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Dropdown Menu Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>size</td>
+                    <td>Menu size</td>
+                    <td>string</td>
+                    <td>medium / small / mini</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>placement</td>
+                    <td>Menu position</td>
+                    <td>string</td>
+                    <td>
+                        top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end
+                    </td>
+                    <td>bottom-start</td>
+                </tr>
+                <tr>
+                    <td>maxHeight</td>
+                    <td>max height</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Dropdown Menu Item Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>disabled</td>
+                    <td>Disabled</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>divided</td>
+                    <td>Display a dividing line</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icon class name</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Dropdown Menu Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>open</td>
+                    <td>Menu opened</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td>Menu closed</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/dropdown/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/dropdown/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/dropdown/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/dropdown/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/dropdown/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/dropdown/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/dropdown/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/dropdown/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/dropdown/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/dropdown/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/dropdown/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/dropdown/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/dropdown/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/dropdown/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

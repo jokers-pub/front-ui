@@ -1,12 +1,14 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Steps 步骤条</h2>
-<p>引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步。</p>
-<h3>基础用法</h3>
-<p>简单的步骤条。</p>
-<p>设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Steps 步骤条</h2>
+        <p>引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步。</p>
+        <h3>基础用法</h3>
+        <p>简单的步骤条。</p>
+        <p>
+            设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-steps active=&quot;@model.active&quot; finishStatus=&quot;success&quot;&gt;
             @for(let item of model.list) {
@@ -30,12 +32,14 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>含状态步骤条</h3>
-<p>每一步骤显示出该步骤的状态。</p>
-<p>也可以使用 title 具名分发，可以用 sections 的方式来取代属性的设置，在本文档最后的列表中有所有的 sections name 可供参考。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>含状态步骤条</h3>
+        <p>每一步骤显示出该步骤的状态。</p>
+        <p>
+            也可以使用 title 具名分发，可以用 sections 的方式来取代属性的设置，在本文档最后的列表中有所有的 sections name 可供参考。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps space=&quot;@(200)&quot; active=&quot;1&quot; finishStatus=&quot;success&quot;&gt;
         &lt;jk-step title=&quot;Completed&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;In progress&quot;&gt;&lt;/jk-step&gt;
@@ -43,11 +47,11 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>有描述的步骤条</h3>
-<p>每个步骤有其对应的步骤状态描述。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>有描述的步骤条</h3>
+        <p>每个步骤有其对应的步骤状态描述。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
         &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
@@ -55,12 +59,14 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>居中的步骤条</h3>
-<p>标题和描述都将居中。</p>
-<p>设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>居中的步骤条</h3>
+        <p>标题和描述都将居中。</p>
+        <p>
+            设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;2&quot; alignCenter&gt;
         &lt;jk-step title=&quot;Step 1&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; description=&quot;This is a very long, long, long descriptive text.&quot;&gt;&lt;/jk-step&gt;
@@ -69,12 +75,14 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>带图标的步骤条</h3>
-<p>步骤条内可以启用各种自定义的图标。</p>
-<p>通过 icon 属性来设置图标，图标的类型可以参考 Icon 组件的文档，除此以外，还能通过具名 sections 来使用自定义的图标。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带图标的步骤条</h3>
+        <p>步骤条内可以启用各种自定义的图标。</p>
+        <p>
+            通过 icon 属性来设置图标，图标的类型可以参考 Icon 组件的文档，除此以外，还能通过具名 sections 来使用自定义的图标。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
         &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
@@ -82,12 +90,12 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>竖式步骤条</h3>
-<p>竖直方向的步骤条。</p>
-<p>只需要在 jk-steps 元素中设置 direction 属性为 vertical 即可。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>竖式步骤条</h3>
+        <p>竖直方向的步骤条。</p>
+        <p>只需要在 jk-steps 元素中设置 direction 属性为 vertical 即可。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;div style=&quot;height: 300px;&quot;&gt;
         &lt;jk-steps direction=&quot;vertical&quot; active=&quot;1&quot;&gt;
             &lt;jk-step title=&quot;Step 1&quot;&gt;&lt;/jk-step&gt;
@@ -97,12 +105,14 @@ export default class extends Component {
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>简洁风格的步骤条</h3>
-<p>设置 simple 可应用简洁风格，该条件下 alignCenter / description / direction / space 都将失效。</p>
-<p>设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>简洁风格的步骤条</h3>
+        <p>设置 simple 可应用简洁风格，该条件下 alignCenter / description / direction / space 都将失效。</p>
+        <p>
+            设置 active 属性，接受一个 Number，表明步骤的 index，从 0 开始。需要定宽的步骤条时，设置 space 属性即可，它接受 Number，单位为 px，如果不设置，则为自适应。设置 finishStatus 属性可以改变已经完成的步骤的状态。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot; simple&gt;
         &lt;jk-step title=&quot;Step 1&quot; icon=&quot;jk-icon-edit&quot;&gt;&lt;/jk-step&gt;
         &lt;jk-step title=&quot;Step 2&quot; icon=&quot;jk-icon-upload&quot;&gt;&lt;/jk-step&gt;
@@ -116,152 +126,153 @@ export default class extends Component {
     &lt;/jk-steps&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Steps Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>space</td>
-<td>每个 step 的间距，不填写将自适应间距。支持百分比。</td>
-<td>number / string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>显示方向</td>
-<td>string</td>
-<td>vertical/horizontal</td>
-<td>horizontal</td>
-</tr>
-<tr>
-<td>active</td>
-<td>设置当前激活步骤</td>
-<td>number</td>
-<td>—</td>
-<td>0</td>
-</tr>
-<tr>
-<td>alignCenter</td>
-<td>进行居中对齐</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>simple</td>
-<td>是否应用简洁风格</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Step Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>标题</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>description</td>
-<td>描述性文字</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>图标</td>
-<td>传入 icon 的 class 全名来自定义 icon，也支持 Section 方式写入</td>
-<td>string</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Step Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>name</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td>自定义图标</td>
-</tr>
-<tr>
-<td>title</td>
-<td>自定义标题</td>
-</tr>
-<tr>
-<td>description</td>
-<td>自定义描述性文字</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Steps Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>space</td>
+                    <td>每个 step 的间距，不填写将自适应间距。支持百分比。</td>
+                    <td>number / string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>direction</td>
+                    <td>显示方向</td>
+                    <td>string</td>
+                    <td>vertical/horizontal</td>
+                    <td>horizontal</td>
+                </tr>
+                <tr>
+                    <td>active</td>
+                    <td>设置当前激活步骤</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>alignCenter</td>
+                    <td>进行居中对齐</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>simple</td>
+                    <td>是否应用简洁风格</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Step Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>标题</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>描述性文字</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>图标</td>
+                    <td>传入 icon 的 class 全名来自定义 icon，也支持 Section 方式写入</td>
+                    <td>string</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Step Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>icon</td>
+                    <td>自定义图标</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>自定义标题</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>自定义描述性文字</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/steps/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/steps/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/steps/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/steps/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/steps/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/steps/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/steps/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/steps/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/steps/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/steps/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/steps/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/steps/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/steps/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/steps/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

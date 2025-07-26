@@ -1,11 +1,15 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Message</h2>
-<p>It is often used for feedback prompts after active operations. The difference from Notification is that the latter is more used for passive reminders of system-level notifications.</p>
-<h3>Basic Usage</h3>
-<p>It appears from the top and disappears automatically after 3 seconds. In terms of configuration, it is very similar to Notification. Therefore, some options are not explained in detail here. There is a list of options at the end of the article. You can combine it with the documentation of Notification to understand them.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Message</h2>
+        <p>
+            It is often used for feedback prompts after active operations. The difference from Notification is that the latter is more used for passive reminders of system-level notifications.
+        </p>
+        <h3>Basic Usage</h3>
+        <p>
+            It appears from the top and disappears automatically after 3 seconds. In terms of configuration, it is very similar to Notification. Therefore, some options are not explained in detail here. There is a list of options at the end of the article. You can combine it with the documentation of Notification to understand them.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -18,14 +22,32 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Different States</h3>
-<p>Used to display operation feedback of &quot;success, warning, message, error&quot; types. When more properties need to be customized, Message can also accept an object as a parameter. For example, setting the <code>type</code> field can define different states, with the default being <code>info</code>. At this time, the body content is passed in as the value of <code>message</code>.</p>
-<blockquote>
-<p>Currently, Message provides 4 commonly used calling methods, including <code>info</code>, <code>success</code>, <code>warning</code>, and <code>error</code>.</p>
-</blockquote>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Different States</h3>
+        <p>
+            Used to display operation feedback of &quot;success, warning, message, error&quot; types. When more properties need to be customized, Message can also accept an object as a parameter. For example, setting the
+            <code>type</code>
+            field can define different states, with the default being
+            <code>info</code>
+            . At this time, the body content is passed in as the value of
+            <code>message</code>
+            .
+        </p>
+        <blockquote>
+            <p>
+                Currently, Message provides 4 commonly used calling methods, including
+                <code>info</code>
+                ,
+                <code>success</code>
+                ,
+                <code>warning</code>
+                , and
+                <code>error</code>
+                .
+            </p>
+        </blockquote>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button plain @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
     &lt;jk-button plain @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
     &lt;jk-button plain @click=&quot;open3&quot;&gt;Message&lt;/jk-button&gt;
@@ -60,11 +82,19 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Closable</h3>
-<p>You can add a close button. By default, the Message cannot be manually closed. If you need a manually closable Message, you can use the <code>showClose</code> field. In addition, like Notification, Message has a controllable <code>duration</code>. Setting it to <code>0</code> means it will not be automatically closed, with the default being 3000 milliseconds.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Closable</h3>
+        <p>
+            You can add a close button. By default, the Message cannot be manually closed. If you need a manually closable Message, you can use the
+            <code>showClose</code>
+            field. In addition, like Notification, Message has a controllable
+            <code>duration</code>
+            . Setting it to
+            <code>0</code>
+            means it will not be automatically closed, with the default being 3000 milliseconds.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button plain @click=&quot;open1&quot;&gt;Success&lt;/jk-button&gt;
     &lt;jk-button plain @click=&quot;open2&quot;&gt;Warning&lt;/jk-button&gt;
     &lt;jk-button plain @click=&quot;open3&quot;&gt;Message&lt;/jk-button&gt;
@@ -107,11 +137,15 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Text Centered</h3>
-<p>Use the <code>center</code> property to center the text horizontally.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Text Centered</h3>
+        <p>
+            Use the
+            <code>center</code>
+            property to center the text horizontally.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
     &lt;jk-button @click=&quot;open1&quot;&gt;Open multiple times in the same sequence, only show one&lt;/jk-button&gt;
 &lt;/template&gt;
@@ -138,11 +172,19 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Using HTML Fragments</h3>
-<p>Set the <code>useHtml</code> property to <code>true</code>, and <code>message</code> will be treated as an HTML fragment.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">```html
+        </DemoContainer>
+        <h3>Using HTML Fragments</h3>
+        <p>
+            Set the
+            <code>useHtml</code>
+            property to
+            <code>true</code>
+            , and
+            <code>message</code>
+            will be treated as an HTML fragment.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">```html
 &lt;template&gt;
     &lt;jk-button @click=&quot;open&quot;&gt;Open the prompt&lt;/jk-button&gt;
 &lt;/template&gt;
@@ -160,149 +202,181 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-<pre><code></code></pre>
-</DemoContainer>
-<div class="warning">
-<p>Although the <code>message</code> property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>. Therefore, when <code>useHtml</code> is turned on, please ensure that the content of <code>message</code> is trustworthy. <strong>Never</strong> assign user-submitted content to the <code>message</code> property.</p>
-</div>
-<blockquote>
-<p>Message provides the <code>closeAll</code> method to clear all messages at specific business times.</p>
-</blockquote>
-<h3>Options</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>message</td>
-<td>Message text</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Theme</td>
-<td>string</td>
-<td>success/warning/info/error</td>
-<td>info</td>
-</tr>
-<tr>
-<td>iconClass</td>
-<td>Class name of the custom icon, which will override <code>type</code></td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>useHtml</td>
-<td>Whether to treat the <code>message</code> property as an HTML fragment</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>customClass</td>
-<td>Custom class name</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>duration</td>
-<td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
-<td>number</td>
-<td>—</td>
-<td>3000</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>Whether to display the close button</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>center</td>
-<td>Whether the text is centered</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>The offset of the Message from the top of the window</td>
-<td>number</td>
-<td>—</td>
-<td>20</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<p>Calling <code>Message</code> will return the current Message instance. If you need to manually close the instance, you can call its <code>close</code> method.</p>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>close</td>
-<td>Close the current Message</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>close</td>
-<td>Triggered when the Message is closed</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+            <pre><code></code></pre>
+        </DemoContainer>
+        <div class="warning">
+            <p>
+                Although the
+                <code>message</code>
+                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
+                . Therefore, when
+                <code>useHtml</code>
+                is turned on, please ensure that the content of
+                <code>message</code>
+                is trustworthy.
+                <strong>Never</strong>
+                assign user-submitted content to the
+                <code>message</code>
+                property.
+            </p>
+        </div>
+        <blockquote>
+            <p>
+                Message provides the
+                <code>closeAll</code>
+                method to clear all messages at specific business times.
+            </p>
+        </blockquote>
+        <h3>Options</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>message</td>
+                    <td>Message text</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>Theme</td>
+                    <td>string</td>
+                    <td>success/warning/info/error</td>
+                    <td>info</td>
+                </tr>
+                <tr>
+                    <td>iconClass</td>
+                    <td>
+                        Class name of the custom icon, which will override
+                        <code>type</code>
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>useHtml</td>
+                    <td>
+                        Whether to treat the
+                        <code>message</code>
+                        property as an HTML fragment
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>customClass</td>
+                    <td>Custom class name</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>3000</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>Whether to display the close button</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>center</td>
+                    <td>Whether the text is centered</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>offset</td>
+                    <td>The offset of the Message from the top of the window</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <p>
+            Calling
+            <code>Message</code>
+            will return the current Message instance. If you need to manually close the instance, you can call its
+            <code>close</code>
+            method.
+        </p>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>close</td>
+                    <td>Close the current Message</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>close</td>
+                    <td>Triggered when the Message is closed</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo5 from '../../components/message/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/message/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/message/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/message/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/message/demo1.joker';
+import DEMO_JOKER_demo5 from "../../components/message/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/message/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/message/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/message/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/message/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

@@ -1,11 +1,15 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Popconfirm</h2>
-<p>A pop-up bubble confirmation box appears when you click an element.</p>
-<h3>Basic Usage</h3>
-<p>The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the <code>title</code> attribute is available.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Popconfirm</h2>
+        <p>A pop-up bubble confirmation box appears when you click an element.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the
+            <code>title</code>
+            attribute is available.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-popconfirm title=&quot;Are you sure you want to delete this data?&quot; @cancel=&quot;cancel&quot; @confirm=&quot;confirm&quot;&gt;
         &lt;jk-button&gt;Delete&lt;/jk-button&gt;
     &lt;/jk-popconfirm&gt;
@@ -24,11 +28,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Customization</h3>
-<p>You can customize the content in Popconfirm.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">```html
+        </DemoContainer>
+        <h3>Customization</h3>
+        <p>You can customize the content in Popconfirm.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">```html
 &lt;template&gt;
     &lt;jk-popconfirm
         title=&quot;Are you sure you want to delete this data?&quot;
@@ -40,129 +44,130 @@ export default class extends Component {
     &lt;/jk-popconfirm&gt;
 &lt;/template&gt;
 </code></pre>
-<pre><code></code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Title</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>confirm-button-text</td>
-<td>Text of the confirmation button</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>cancel-button-text</td>
-<td>Text of the cancel button</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>confirm-button-type</td>
-<td>Type of the confirmation button</td>
-<td>String</td>
-<td>—</td>
-<td>Primary</td>
-</tr>
-<tr>
-<td>cancel-button-type</td>
-<td>Type of the cancel button</td>
-<td>String</td>
-<td>—</td>
-<td>Text</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>Icon</td>
-<td>String</td>
-<td>—</td>
-<td>jk-icon-question</td>
-</tr>
-<tr>
-<td>icon-color</td>
-<td>Color of the Icon</td>
-<td>String</td>
-<td>—</td>
-<td>#f90</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default</td>
-<td>The HTML element that triggers the display of Popconfirm</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>confirm</td>
-<td>Triggered when the confirmation button is clicked</td>
-<td>—</td>
-</tr>
-<tr>
-<td>cancel</td>
-<td>Triggered when the cancel button is clicked</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+            <pre><code></code></pre>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>Title</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>confirm-button-text</td>
+                    <td>Text of the confirmation button</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>cancel-button-text</td>
+                    <td>Text of the cancel button</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>confirm-button-type</td>
+                    <td>Type of the confirmation button</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>Primary</td>
+                </tr>
+                <tr>
+                    <td>cancel-button-type</td>
+                    <td>Type of the cancel button</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>Text</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>Icon</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>jk-icon-question</td>
+                </tr>
+                <tr>
+                    <td>icon-color</td>
+                    <td>Color of the Icon</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>#f90</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>default</td>
+                    <td>The HTML element that triggers the display of Popconfirm</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>confirm</td>
+                    <td>Triggered when the confirmation button is clicked</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>cancel</td>
+                    <td>Triggered when the cancel button is clicked</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo2 from '../../components/popconfirm/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/popconfirm/demo1.joker';
+import DEMO_JOKER_demo2 from "../../components/popconfirm/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/popconfirm/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

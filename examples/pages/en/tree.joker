@@ -1,11 +1,11 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Tree</h2>
-<p>Displays information in a clear hierarchical structure, which can be expanded or collapsed.</p>
-<h3>Basic Usage</h3>
-<p>Displays a basic tree-shaped structure.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Tree</h2>
+        <p>Displays information in a clear hierarchical structure, which can be expanded or collapsed.</p>
+        <h3>Basic Usage</h3>
+        <p>Displays a basic tree-shaped structure.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tree data=&quot;@treeData&quot; @current-change=&quot;handleCurrentChange&quot; /&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -77,11 +77,11 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Selectable</h3>
-<p>Suitable for scenarios where hierarchical selection is required. This demo also shows dynamic loading.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Selectable</h3>
+        <p>Suitable for scenarios where hierarchical selection is required. This demo also shows dynamic loading.</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tree lazy load=&quot;@loadData&quot; nodeKey=&quot;id&quot; @check=&quot;handleCheck&quot; show-checkbox default-expand-all /&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -127,15 +127,33 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Node Disabling and Selection</h3>
-<p>Setting <code>disabled</code> can disable nodes. This property is generally used in combination with <code>show-checkbox</code>.</p>
-<p>This example also shows how to get and set selected nodes. If you want to get and set nodes by <strong>key</strong>, it is recommended to configure the corresponding <code>node-key</code>.</p>
-<blockquote>
-<p>If <code>node-key</code> is not configured or its value is <code>undefined</code>, an internal ID will be generated as the key by default.</p>
-</blockquote>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Node Disabling and Selection</h3>
+        <p>
+            Setting
+            <code>disabled</code>
+            can disable nodes. This property is generally used in combination with
+            <code>show-checkbox</code>
+            .
+        </p>
+        <p>
+            This example also shows how to get and set selected nodes. If you want to get and set nodes by
+            <strong>key</strong>
+            , it is recommended to configure the corresponding
+            <code>node-key</code>
+            .
+        </p>
+        <blockquote>
+            <p>
+                If
+                <code>node-key</code>
+                is not configured or its value is
+                <code>undefined</code>
+                , an internal ID will be generated as the key by default.
+            </p>
+        </blockquote>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-tree
             ref=&quot;tree&quot;
@@ -271,11 +289,15 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Custom Node Template</h3>
-<p>By using <code>section</code>, you can display a custom node template.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Custom Node Template</h3>
+        <p>
+            By using
+            <code>section</code>
+            , you can display a custom node template.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-tree ref=&quot;tree&quot; data=&quot;@treeData&quot; icon-class=&quot;jk-icon-arrow-right&quot; default-expand-all show-checkbox&gt;
             @section(&quot;default&quot;, node) {
@@ -411,11 +433,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Node Filtering</h3>
-<p>Filter nodes by keywords. When nodes need to be filtered, call the <code>filter</code> method of the Tree instance, with the keyword as the parameter. Note that at this time, <code>filter-method</code> needs to be set, with the value being the filtering function. By default, this method will perform character-based filtering queries according to the node's label.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Node Filtering</h3>
+        <p>
+            Filter nodes by keywords. When nodes need to be filtered, call the
+            <code>filter</code>
+            method of the Tree instance, with the keyword as the parameter. Note that at this time,
+            <code>filter-method</code>
+            needs to be set, with the value being the filtering function. By default, this method will perform character-based filtering queries according to the node's label.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-input placeholder=&quot;Please enter keywords&quot; @input=&quot;handleInput&quot; /&gt;
     &lt;/DemoRow&gt;
@@ -490,11 +518,15 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Draggable</h3>
-<p>Enable the drag-and-drop function of tree nodes by enabling the <code>draggable</code> field, and configure which nodes can be dragged and which nodes can accept dropped nodes.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Draggable</h3>
+        <p>
+            Enable the drag-and-drop function of tree nodes by enabling the
+            <code>draggable</code>
+            field, and configure which nodes can be dragged and which nodes can accept dropped nodes.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-tree data=&quot;@treeData&quot; ref=&quot;tree&quot; default-expand-all draggable /&gt;
     &lt;/DemoRow&gt;
@@ -563,11 +595,15 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Non-associated Mode</h3>
-<p>Enable the non-associated mode by turning on the <code>check-strictly</code> field. When checkboxes are displayed, it determines whether to strictly follow the practice of not associating parent and child elements with each other.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Non-associated Mode</h3>
+        <p>
+            Enable the non-associated mode by turning on the
+            <code>check-strictly</code>
+            field. When checkboxes are displayed, it determines whether to strictly follow the practice of not associating parent and child elements with each other.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-tree data=&quot;@treeData&quot; ref=&quot;tree&quot; default-expand-all checkStrictly show-checkbox /&gt;
     &lt;/DemoRow&gt;
@@ -641,397 +677,551 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td>Data to be displayed</td>
-<td>array</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>empty-text</td>
-<td>Text to be displayed when the content is empty</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>empty-size</td>
-<td>Size of the empty panel</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>node-key</td>
-<td>The property used as a unique identifier for each tree node, which should be unique throughout the tree</td>
-<td>String</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>load</td>
-<td>Method for loading subtree data, only takes effect when the <code>lazy</code> property is <code>true</code></td>
-<td>function(node, resolve)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>default-expand-all</td>
-<td>Whether to expand all nodes by default</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>expand-on-click-node</td>
-<td>Whether to expand or collapse the node when clicking on the node. The default value is <code>true</code>. If it is <code>false</code>, the node will only expand or collapse when clicking the arrow icon.</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>check-on-click-node</td>
-<td>Whether to select the node when clicking on the node. The default value is <code>false</code>, meaning the node is only selected when clicking the checkbox.</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>default-expanded-keys</td>
-<td>Array of keys of nodes to be expanded by default</td>
-<td>array</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>show-checkbox</td>
-<td>Whether the node can be selected</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>default-checked-keys</td>
-<td>Array of keys of nodes to be checked by default</td>
-<td>array</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>current-node-key</td>
-<td>The currently selected node</td>
-<td>string, number</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>filter-method</td>
-<td>The method executed when filtering tree nodes. Return <code>true</code> to indicate that the node can be displayed, and <code>false</code> to indicate that the node will be hidden</td>
-<td>Function(node,value)</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>indent</td>
-<td>Horizontal indent between adjacent levels of nodes, in pixels</td>
-<td>number</td>
-<td>—</td>
-<td>16</td>
-</tr>
-<tr>
-<td>icon-class</td>
-<td>Custom icon for tree nodes</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>lazy</td>
-<td>Whether to lazy-load child nodes, needs to be used in combination with the <code>load</code> method</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>labelKey</td>
-<td>Specify the node label as a certain property value of the node object</td>
-<td>string</td>
-<td>—</td>
-<td>label</td>
-</tr>
-<tr>
-<td>childrenKey</td>
-<td>Specify the subtree as a certain property value of the node object</td>
-<td>string</td>
-<td>—</td>
-<td>children</td>
-</tr>
-<tr>
-<td>disabledKey</td>
-<td>Specify whether the node checkbox is disabled as a certain property value of the node object</td>
-<td>string</td>
-<td>—</td>
-<td>disabled</td>
-</tr>
-<tr>
-<td>expandKey</td>
-<td>Specify whether the node is expanded by default as a certain property value of the object</td>
-<td>string</td>
-<td>—</td>
-<td>expand</td>
-</tr>
-<tr>
-<td>isLeafKey</td>
-<td>Specify whether the node is a leaf node, only takes effect when the <code>lazy</code> property is specified</td>
-<td>string</td>
-<td>—</td>
-<td>isLeaf</td>
-</tr>
-<tr>
-<td>virtualKey</td>
-<td>Advanced usage: Whether it is a virtual node. Virtual nodes do not participate in the entire checkbox selection process, generally takes effect when selection is enabled.</td>
-<td>string</td>
-<td>—</td>
-<td>isVirtualNode</td>
-</tr>
-<tr>
-<td>draggable</td>
-<td>Whether to enable the drag-and-drop function</td>
-<td>boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>checkDraggabled</td>
-<td>Method to check whether a node is allowed to be dragged. It returns <code>true</code>/<code>false</code> to determine whether the current node can be dragged</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>checkCanDropIn</td>
-<td>Whether the current node allows dropping in. If dropping in is allowed, the <code>drapp</code> event <code>position</code> will return <code>in</code> to indicate dropping in</td>
-<td>function</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>check-strictly</td>
-<td>Whether, when checkboxes are displayed, the practice of ensuring that parent and child elements are not associated with each other strictly is followed.</td>
-<td>boolean</td>
-<td>-</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-<h3>Methods</h3>
-<p>The <code>Tree</code> internally uses the <code>Node</code>-type object to wrap the data passed in by the user to save the current state of the node.
-The <code>Tree</code> has the following methods:</p>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>filter</td>
-<td>Perform filtering operations on tree nodes</td>
-<td></td>
-</tr>
-<tr>
-<td>getCheckedNodes</td>
-<td>If the node can be selected (i.e., <code>show-checkbox</code> is <code>true</code>), return an array of currently selected nodes</td>
-<td>(leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of <code>false</code>; 2. Whether to include half-checked nodes, with the default value of <code>false</code></td>
-</tr>
-<tr>
-<td>getCheckedKeys</td>
-<td>If the node can be selected (i.e., <code>show-checkbox</code> is <code>true</code>), return an array of keys of currently selected nodes</td>
-<td>(leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of <code>false</code>; 2. Whether to include half-checked nodes, with the default value of <code>false</code></td>
-</tr>
-<tr>
-<td>setCheckedKeys</td>
-<td>Set the currently checked nodes through keys. Using this method requires setting the <code>node-key</code> property</td>
-<td>(keys, leafOnly) Accepts two parameters: 1. An array of keys of checked nodes; 2. A boolean-type parameter. If it is <code>true</code>, only the selection state of leaf nodes will be set, with the default value of <code>false</code></td>
-</tr>
-<tr>
-<td>checkNode</td>
-<td>Set the selection state of a node. Two parameters: 1. The key or <code>TreeNode</code> of the checked node; 2. A boolean-type parameter indicating whether the node is selected</td>
-<td></td>
-</tr>
-<tr>
-<td>getCurrentNode</td>
-<td>Get the currently selected node</td>
-<td>—</td>
-</tr>
-<tr>
-<td>setCurrentNode</td>
-<td>Set the current selection state of a certain node through <code>node</code></td>
-<td>Can pass in <code>TreeNode</code> or the node key. If <code>undefined</code> is passed in, it means canceling the selection</td>
-</tr>
-<tr>
-<td>getNodeByKey</td>
-<td>Get a node according to the node key</td>
-<td>key</td>
-</tr>
-<tr>
-<td>removeNode</td>
-<td>Delete a node in the <code>Tree</code></td>
-<td>Can pass in <code>TreeNode</code> or the node key</td>
-</tr>
-<tr>
-<td>appendNode</td>
-<td>Pass in node data to mount a new node in the <code>root</code>. If you need to add a node under a certain node, you can first get that node and then call the <code>insterChild</code> method of the node for addition</td>
-<td>-</td>
-</tr>
-<tr>
-<td>checkedAll</td>
-<td>Check all nodes</td>
-<td>-</td>
-</tr>
-<tr>
-<td>clearChecked</td>
-<td>Uncheck all nodes</td>
-<td>-</td>
-</tr>
-<tr>
-<td>collapseNode</td>
-<td>Collapse a node</td>
-<td>Needs to pass in the <code>TreeNode</code> to be operated on</td>
-</tr>
-<tr>
-<td>expandNode</td>
-<td>Expand a node</td>
-<td>Needs to pass in the <code>TreeNode</code> to be operated on</td>
-</tr>
-<tr>
-<td>getAllNodeData</td>
-<td>Get all <code>NodeData</code> and organize them by <code>childrens</code> hierarchy</td>
-<td>-</td>
-</tr>
-<tr>
-<td>getNode</td>
-<td>Get specified nodes according to conditions</td>
-<td>(node:TreeNode)=&gt;boolean/void</td>
-</tr>
-<tr>
-<td>reload</td>
-<td>Re-render</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node-contextmenu</td>
-<td>Triggered when a node is right-clicked with the mouse</td>
-<td>Parameter is <code>TreeNode</code></td>
-</tr>
-<tr>
-<td>check</td>
-<td>Triggered when the checkbox is clicked</td>
-<td>Parameter is <code>TreeNode</code>. You can determine the selection state by getting the <code>checked</code> property of the node</td>
-</tr>
-<tr>
-<td>current-change</td>
-<td>Event triggered when the currently selected node changes</td>
-<td>Parameter is <code>TreeNode</code></td>
-</tr>
-<tr>
-<td>node-expand</td>
-<td>Event triggered when a node is expanded</td>
-<td>Parameter is <code>TreeNode</code></td>
-</tr>
-<tr>
-<td>node-collapse</td>
-<td>Event triggered when a node is closed</td>
-<td>Parameter is <code>TreeNode</code></td>
-</tr>
-<tr>
-<td>drop</td>
-<td>Triggered after the node dragging is completed</td>
-<td>Parameter is {dragNode: dragged node, dropNode: dropped-into node, position: position (prev, next, in)}</td>
-</tr>
-</tbody>
-</table>
-<h3>Scoped Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>—</td>
-<td>Custom content of the tree node, with the parameter being <code>TreeNode</code></td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>data</td>
+                    <td>Data to be displayed</td>
+                    <td>array</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>empty-text</td>
+                    <td>Text to be displayed when the content is empty</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>empty-size</td>
+                    <td>Size of the empty panel</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>node-key</td>
+                    <td>
+                        The property used as a unique identifier for each tree node, which should be unique throughout the tree
+                    </td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>load</td>
+                    <td>
+                        Method for loading subtree data, only takes effect when the
+                        <code>lazy</code>
+                        property is
+                        <code>true</code>
+                    </td>
+                    <td>function(node, resolve)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>default-expand-all</td>
+                    <td>Whether to expand all nodes by default</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>expand-on-click-node</td>
+                    <td>
+                        Whether to expand or collapse the node when clicking on the node. The default value is
+                        <code>true</code>
+                        . If it is
+                        <code>false</code>
+                        , the node will only expand or collapse when clicking the arrow icon.
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>check-on-click-node</td>
+                    <td>
+                        Whether to select the node when clicking on the node. The default value is
+                        <code>false</code>
+                        , meaning the node is only selected when clicking the checkbox.
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>default-expanded-keys</td>
+                    <td>Array of keys of nodes to be expanded by default</td>
+                    <td>array</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>show-checkbox</td>
+                    <td>Whether the node can be selected</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>default-checked-keys</td>
+                    <td>Array of keys of nodes to be checked by default</td>
+                    <td>array</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>current-node-key</td>
+                    <td>The currently selected node</td>
+                    <td>string, number</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>filter-method</td>
+                    <td>
+                        The method executed when filtering tree nodes. Return
+                        <code>true</code>
+                        to indicate that the node can be displayed, and
+                        <code>false</code>
+                        to indicate that the node will be hidden
+                    </td>
+                    <td>Function(node,value)</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>indent</td>
+                    <td>Horizontal indent between adjacent levels of nodes, in pixels</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>icon-class</td>
+                    <td>Custom icon for tree nodes</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>lazy</td>
+                    <td>
+                        Whether to lazy-load child nodes, needs to be used in combination with the
+                        <code>load</code>
+                        method
+                    </td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>labelKey</td>
+                    <td>Specify the node label as a certain property value of the node object</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>label</td>
+                </tr>
+                <tr>
+                    <td>childrenKey</td>
+                    <td>Specify the subtree as a certain property value of the node object</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>children</td>
+                </tr>
+                <tr>
+                    <td>disabledKey</td>
+                    <td>
+                        Specify whether the node checkbox is disabled as a certain property value of the node object
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>disabled</td>
+                </tr>
+                <tr>
+                    <td>expandKey</td>
+                    <td>Specify whether the node is expanded by default as a certain property value of the object</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>expand</td>
+                </tr>
+                <tr>
+                    <td>isLeafKey</td>
+                    <td>
+                        Specify whether the node is a leaf node, only takes effect when the
+                        <code>lazy</code>
+                        property is specified
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>isLeaf</td>
+                </tr>
+                <tr>
+                    <td>virtualKey</td>
+                    <td>
+                        Advanced usage: Whether it is a virtual node. Virtual nodes do not participate in the entire checkbox selection process, generally takes effect when selection is enabled.
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>isVirtualNode</td>
+                </tr>
+                <tr>
+                    <td>draggable</td>
+                    <td>Whether to enable the drag-and-drop function</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>checkDraggabled</td>
+                    <td>
+                        Method to check whether a node is allowed to be dragged. It returns
+                        <code>true</code>
+                        /
+                        <code>false</code>
+                        to determine whether the current node can be dragged
+                    </td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>checkCanDropIn</td>
+                    <td>
+                        Whether the current node allows dropping in. If dropping in is allowed, the
+                        <code>drapp</code>
+                        event
+                        <code>position</code>
+                        will return
+                        <code>in</code>
+                        to indicate dropping in
+                    </td>
+                    <td>function</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>check-strictly</td>
+                    <td>
+                        Whether, when checkboxes are displayed, the practice of ensuring that parent and child elements are not associated with each other strictly is followed.
+                    </td>
+                    <td>boolean</td>
+                    <td>-</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Methods</h3>
+        <p>
+            The
+            <code>Tree</code>
+            internally uses the
+            <code>Node</code>
+            -type object to wrap the data passed in by the user to save the current state of the node.
+            The
+            <code>Tree</code>
+            has the following methods:
+        </p>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>filter</td>
+                    <td>Perform filtering operations on tree nodes</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>getCheckedNodes</td>
+                    <td>
+                        If the node can be selected (i.e.,
+                        <code>show-checkbox</code>
+                        is
+                        <code>true</code>
+                        ), return an array of currently selected nodes
+                    </td>
+                    <td>
+                        (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of
+                        <code>false</code>
+                        ; 2. Whether to include half-checked nodes, with the default value of
+                        <code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>getCheckedKeys</td>
+                    <td>
+                        If the node can be selected (i.e.,
+                        <code>show-checkbox</code>
+                        is
+                        <code>true</code>
+                        ), return an array of keys of currently selected nodes
+                    </td>
+                    <td>
+                        (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of
+                        <code>false</code>
+                        ; 2. Whether to include half-checked nodes, with the default value of
+                        <code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>setCheckedKeys</td>
+                    <td>
+                        Set the currently checked nodes through keys. Using this method requires setting the
+                        <code>node-key</code>
+                        property
+                    </td>
+                    <td>
+                        (keys, leafOnly) Accepts two parameters: 1. An array of keys of checked nodes; 2. A boolean-type parameter. If it is
+                        <code>true</code>
+                        , only the selection state of leaf nodes will be set, with the default value of
+                        <code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>checkNode</td>
+                    <td>
+                        Set the selection state of a node. Two parameters: 1. The key or
+                        <code>TreeNode</code>
+                        of the checked node; 2. A boolean-type parameter indicating whether the node is selected
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>getCurrentNode</td>
+                    <td>Get the currently selected node</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>setCurrentNode</td>
+                    <td>
+                        Set the current selection state of a certain node through
+                        <code>node</code>
+                    </td>
+                    <td>
+                        Can pass in
+                        <code>TreeNode</code>
+                        or the node key. If
+                        <code>undefined</code>
+                        is passed in, it means canceling the selection
+                    </td>
+                </tr>
+                <tr>
+                    <td>getNodeByKey</td>
+                    <td>Get a node according to the node key</td>
+                    <td>key</td>
+                </tr>
+                <tr>
+                    <td>removeNode</td>
+                    <td>
+                        Delete a node in the
+                        <code>Tree</code>
+                    </td>
+                    <td>
+                        Can pass in
+                        <code>TreeNode</code>
+                        or the node key
+                    </td>
+                </tr>
+                <tr>
+                    <td>appendNode</td>
+                    <td>
+                        Pass in node data to mount a new node in the
+                        <code>root</code>
+                        . If you need to add a node under a certain node, you can first get that node and then call the
+                        <code>insterChild</code>
+                        method of the node for addition
+                    </td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>checkedAll</td>
+                    <td>Check all nodes</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>clearChecked</td>
+                    <td>Uncheck all nodes</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>collapseNode</td>
+                    <td>Collapse a node</td>
+                    <td>
+                        Needs to pass in the
+                        <code>TreeNode</code>
+                        to be operated on
+                    </td>
+                </tr>
+                <tr>
+                    <td>expandNode</td>
+                    <td>Expand a node</td>
+                    <td>
+                        Needs to pass in the
+                        <code>TreeNode</code>
+                        to be operated on
+                    </td>
+                </tr>
+                <tr>
+                    <td>getAllNodeData</td>
+                    <td>
+                        Get all
+                        <code>NodeData</code>
+                        and organize them by
+                        <code>childrens</code>
+                        hierarchy
+                    </td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>getNode</td>
+                    <td>Get specified nodes according to conditions</td>
+                    <td>(node:TreeNode)=&gt;boolean/void</td>
+                </tr>
+                <tr>
+                    <td>reload</td>
+                    <td>Re-render</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>node-contextmenu</td>
+                    <td>Triggered when a node is right-clicked with the mouse</td>
+                    <td>
+                        Parameter is
+                        <code>TreeNode</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>check</td>
+                    <td>Triggered when the checkbox is clicked</td>
+                    <td>
+                        Parameter is
+                        <code>TreeNode</code>
+                        . You can determine the selection state by getting the
+                        <code>checked</code>
+                        property of the node
+                    </td>
+                </tr>
+                <tr>
+                    <td>current-change</td>
+                    <td>Event triggered when the currently selected node changes</td>
+                    <td>
+                        Parameter is
+                        <code>TreeNode</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>node-expand</td>
+                    <td>Event triggered when a node is expanded</td>
+                    <td>
+                        Parameter is
+                        <code>TreeNode</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>node-collapse</td>
+                    <td>Event triggered when a node is closed</td>
+                    <td>
+                        Parameter is
+                        <code>TreeNode</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>drop</td>
+                    <td>Triggered after the node dragging is completed</td>
+                    <td>
+                        Parameter is{dragNode: dragged node, dropNode: dropped-into node, position: position (prev, next, in)}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Scoped Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>—</td>
+                    <td>
+                        Custom content of the tree node, with the parameter being
+                        <code>TreeNode</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/tree/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/tree/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/tree/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/tree/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/tree/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/tree/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/tree/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/tree/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/tree/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/tree/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/tree/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/tree/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/tree/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/tree/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

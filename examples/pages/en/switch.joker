@@ -1,11 +1,21 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Switch</h2>
-<p>Represents the switch between two mutually opposing states, often used to trigger &quot;on/off&quot;.</p>
-<h3>Basic Usage</h3>
-<p>Bind <code>value</code> to a variable of the <code>Boolean</code> type. You can use the <code>activeColor</code> and <code>inactiveColor</code> attributes to set the background color of the switch.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Switch</h2>
+        <p>Represents the switch between two mutually opposing states, often used to trigger &quot;on/off&quot;.</p>
+        <h3>Basic Usage</h3>
+        <p>
+            Bind
+            <code>value</code>
+            to a variable of the
+            <code>Boolean</code>
+            type. You can use the
+            <code>activeColor</code>
+            and
+            <code>inactiveColor</code>
+            attributes to set the background color of the switch.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-switch value=&quot;@model.value&quot; activeColor=&quot;#13ce66&quot; inactiveColor=&quot;#ff4949&quot; @change=&quot;handleChange&quot;&gt;&lt;/jk-switch&gt;
     &lt;p&gt;
         @model.value
@@ -26,11 +36,19 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>Disabled State</h3>
-<p>Set the <code>disabled</code> attribute, which accepts a <code>Boolean</code>. Setting it to <code>true</code> disables the switch.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Disabled State</h3>
+        <p>
+            Set the
+            <code>disabled</code>
+            attribute, which accepts a
+            <code>Boolean</code>
+            . Setting it to
+            <code>true</code>
+            disables the switch.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;label class=&quot;demo2&quot;&gt;&lt;jk-switch value=&quot;@true&quot; disabled&gt;&lt;/jk-switch&gt;&lt;/label&gt;
     &lt;jk-switch disabled activeColor=&quot;#13ce66&quot; inactiveColor=&quot;#ff4949&quot;&gt;&lt;/jk-switch&gt;
 &lt;/template&gt;
@@ -40,11 +58,17 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Text Description</h3>
-<p>Use the <code>activeText</code> and <code>inactiveText</code> attributes to set the text description of the switch.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Text Description</h3>
+        <p>
+            Use the
+            <code>activeText</code>
+            and
+            <code>inactiveText</code>
+            attributes to set the text description of the switch.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;label class=&quot;demo&quot;&gt;
         &lt;jk-switch value=&quot;@model.value1&quot; activeText=&quot;Pay monthly&quot; inactiveText=&quot;Pay annually&quot;&gt;&lt;/jk-switch&gt;
     &lt;/label&gt;
@@ -75,11 +99,23 @@ export default class extends Component {
 }
 &lt;/style&gt;
 </code></pre>
-</DemoContainer>
-<h3>Extended Value Types</h3>
-<p>Set the <code>activeValue</code> and <code>inactiveValue</code> attributes, which can accept values of the <code>Boolean</code>, <code>String</code>, or <code>Number</code> type.</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>Extended Value Types</h3>
+        <p>
+            Set the
+            <code>activeValue</code>
+            and
+            <code>inactiveValue</code>
+            attributes, which can accept values of the
+            <code>Boolean</code>
+            ,
+            <code>String</code>
+            , or
+            <code>Number</code>
+            type.
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tooltip content=&quot;@model.value&quot; placement=&quot;top&quot;&gt;
         &lt;jk-switch
             value=&quot;@model.value&quot;
@@ -108,171 +144,182 @@ export default class extends Component {
 &lt;/style&gt;
 
 </code></pre>
-</DemoContainer>
-<h3>Switch Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Type</th>
-<th>Optional Values</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>Bound value</td>
-<td>string / number / boolean</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Whether to disable</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>class</td>
-<td>Custom class style</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>width</td>
-<td>The width of the switch (in pixels)</td>
-<td>number</td>
-<td>—</td>
-<td>40</td>
-</tr>
-<tr>
-<td>activeIconClass</td>
-<td>The class name of the icon displayed when the switch is on. Setting this will ignore <code>activeText</code></td>
-<td>string</td>
-<td></td>
-<td>—</td>
-</tr>
-<tr>
-<td>inactiveIconClass</td>
-<td>The class name of the icon displayed when the switch is off. Setting this will ignore <code>inactiveText</code></td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>activeText</td>
-<td>The text description when the switch is on</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>inactiveText</td>
-<td>The text description when the switch is off</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>activeValue</td>
-<td>The value when the switch is on</td>
-<td>boolean / string / number</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>inactiveValue</td>
-<td>The value when the switch is off</td>
-<td>boolean / string / number</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>activeColor</td>
-<td>The background color when the switch is on</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>inactiveColor</td>
-<td>The background color when the switch is off</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>name</td>
-<td>The <code>name</code> attribute corresponding to the switch</td>
-<td>string</td>
-<td>—</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3>Switch Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Event Name</th>
-<th>Description</th>
-<th>Callback Parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>change</td>
-<td>The callback function when the state of the switch changes</td>
-<td>The changed value</td>
-</tr>
-</tbody>
-</table>
-<h3>Switch Methods</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Description</th>
-<th>Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>focus</td>
-<td>Make the Switch gain focus</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Switch Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Optional Values</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>value</td>
+                    <td>Bound value</td>
+                    <td>string / number / boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>disabled</td>
+                    <td>Whether to disable</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>Custom class style</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>The width of the switch (in pixels)</td>
+                    <td>number</td>
+                    <td>—</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>activeIconClass</td>
+                    <td>
+                        The class name of the icon displayed when the switch is on. Setting this will ignore
+                        <code>activeText</code>
+                    </td>
+                    <td>string</td>
+                    <td></td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>inactiveIconClass</td>
+                    <td>
+                        The class name of the icon displayed when the switch is off. Setting this will ignore
+                        <code>inactiveText</code>
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>activeText</td>
+                    <td>The text description when the switch is on</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>inactiveText</td>
+                    <td>The text description when the switch is off</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>activeValue</td>
+                    <td>The value when the switch is on</td>
+                    <td>boolean / string / number</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>inactiveValue</td>
+                    <td>The value when the switch is off</td>
+                    <td>boolean / string / number</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>activeColor</td>
+                    <td>The background color when the switch is on</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>inactiveColor</td>
+                    <td>The background color when the switch is off</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>
+                        The
+                        <code>name</code>
+                        attribute corresponding to the switch
+                    </td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Switch Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Callback Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>change</td>
+                    <td>The callback function when the state of the switch changes</td>
+                    <td>The changed value</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Switch Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>focus</td>
+                    <td>Make the Switch gain focus</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo4 from '../../components/switch/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/switch/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/switch/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/switch/demo1.joker';
+import DEMO_JOKER_demo4 from "../../components/switch/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/switch/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/switch/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/switch/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>

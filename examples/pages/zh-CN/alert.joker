@@ -1,12 +1,12 @@
 <template>
-<div ref='container' class='joker-demo-container'>
-<h2>Alert 警告</h2>
-<p>用于页面中展示重要的提示信息。</p>
-<h3>基础用法</h3>
-<p>页面中的非浮层元素，不会自动消失。</p>
-<p>Alert 组件提供四种主题，由 type 属性指定，默认值为 info。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo1)">
-<pre><code class="language-html">&lt;template&gt;
+    <div ref="container" class="joker-demo-container">
+        <h2>Alert 警告</h2>
+        <p>用于页面中展示重要的提示信息。</p>
+        <h3>基础用法</h3>
+        <p>页面中的非浮层元素，不会自动消失。</p>
+        <p>Alert 组件提供四种主题，由 type 属性指定，默认值为 info。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo1)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; /&gt;
     &lt;/DemoRow&gt;
@@ -21,12 +21,12 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>主题</h3>
-<p>Alert 组件提供了两个不同的主题：light 和 dark。</p>
-<p>通过设置 effect 属性来改变主题，默认为 light。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo2)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>主题</h3>
+        <p>Alert 组件提供了两个不同的主题：light 和 dark。</p>
+        <p>通过设置 effect 属性来改变主题，默认为 light。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo2)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; effect=&quot;dark&quot;&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
@@ -41,12 +41,14 @@
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>自定义关闭按钮</h3>
-<p>自定义关闭按钮为文字或其他符号。</p>
-<p>在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。closable 属性决定是否可关闭，接受 boolean，默认为 true。你可以设置 closeText 属性来代替右侧的关闭图标，注意：closeText 必须为文本。设置 close 事件来设置关闭时的回调。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo3)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>自定义关闭按钮</h3>
+        <p>自定义关闭按钮为文字或其他符号。</p>
+        <p>
+            在 Alert 组件中，你可以设置是否可关闭，关闭按钮的文本以及关闭时的回调函数。closable 属性决定是否可关闭，接受 boolean，默认为 true。你可以设置 closeText 属性来代替右侧的关闭图标，注意：closeText 必须为文本。设置 close 事件来设置关闭时的回调。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo3)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert title=&quot;Non - closable alert&quot; type=&quot;success&quot; closable=&quot;@false&quot;&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
@@ -68,12 +70,12 @@ export default class extends Component {
 }
 &lt;/script&gt;
 </code></pre>
-</DemoContainer>
-<h3>带有 icon</h3>
-<p>表示某种状态时提升可读性。</p>
-<p>通过设置 showIcon 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo4)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带有 icon</h3>
+        <p>表示某种状态时提升可读性。</p>
+        <p>通过设置 showIcon 属性来显示 Alert 的 icon，这能更有效地向用户展示你的显示意图。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo4)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
@@ -88,11 +90,11 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>文字居中</h3>
-<p>使用 center 属性让文字水平居中。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo5)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>文字居中</h3>
+        <p>使用 center 属性让文字水平居中。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert title=&quot;Text for success prompt&quot; type=&quot;success&quot; center showIcon&gt;&lt;/jk-alert&gt;
     &lt;/DemoRow&gt;
@@ -107,23 +109,25 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>带有辅助性文字介绍</h3>
-<p>包含标题和内容，解释更详细的警告。</p>
-<p>除了必填的 title 属性外，你可以设置 description 属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo6)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带有辅助性文字介绍</h3>
+        <p>包含标题和内容，解释更详细的警告。</p>
+        <p>
+            除了必填的 title 属性外，你可以设置 description 属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo6)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;jk-alert
         title=&quot;With auxiliary text introduction&quot;
         type=&quot;success&quot;
         description=&quot;This is some supplementary information. Success often comes from hard work and perseverance. Keep up the good work and you'll achieve your goals!&quot;&gt;&lt;/jk-alert&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>带有 icon 和辅助性文字介绍</h3>
-<p>最后，这是一个同时具有 icon 和辅助性文字的样例。</p>
-<DemoContainer component="@(components.DEMO_JOKER_demo7)">
-<pre><code class="language-html">&lt;template&gt;
+        </DemoContainer>
+        <h3>带有 icon 和辅助性文字介绍</h3>
+        <p>最后，这是一个同时具有 icon 和辅助性文字的样例。</p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo7)">
+            <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
         &lt;jk-alert
             title=&quot;Text for success prompt&quot;
@@ -165,158 +169,159 @@ export default class extends Component {
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 </code></pre>
-</DemoContainer>
-<h3>Attributes</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>可选值</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>标题</td>
-<td>string</td>
-<td>-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>type</td>
-<td>主题</td>
-<td>string</td>
-<td>success/warning/info/error</td>
-<td>info</td>
-</tr>
-<tr>
-<td>description</td>
-<td>辅助性文字。也可通过默认 section 传入</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>closable</td>
-<td>是否可关闭</td>
-<td>boolean</td>
-<td>—</td>
-<td>true</td>
-</tr>
-<tr>
-<td>center</td>
-<td>文字是否居中</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>closeText</td>
-<td>关闭按钮自定义文本</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>showIcon</td>
-<td>是否显示图标</td>
-<td>boolean</td>
-<td>—</td>
-<td>false</td>
-</tr>
-<tr>
-<td>icon</td>
-<td>更改显示图标</td>
-<td>string</td>
-<td>—</td>
-<td>-</td>
-</tr>
-<tr>
-<td>effect</td>
-<td>选择提供的主题</td>
-<td>string</td>
-<td>light/dark</td>
-<td>light</td>
-</tr>
-<tr>
-<td>class</td>
-<td>自定义 class 样式</td>
-<td>string</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Events</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>事件名</th>
-<th>说明</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>close</td>
-<td>关闭 alert 时触发的事件</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h3>Sections</h3>
-<table class="mkd-table">
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-</td>
-<td>描述</td>
-</tr>
-<tr>
-<td>title</td>
-<td>标题的内容</td>
-</tr>
-</tbody>
-</table>
-
-<BottomNav />
-</div>
+        </DemoContainer>
+        <h3>Attributes</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>可选值</th>
+                    <th>默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>标题</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>主题</td>
+                    <td>string</td>
+                    <td>success/warning/info/error</td>
+                    <td>info</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>辅助性文字。也可通过默认 section 传入</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>closable</td>
+                    <td>是否可关闭</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>center</td>
+                    <td>文字是否居中</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>closeText</td>
+                    <td>关闭按钮自定义文本</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>showIcon</td>
+                    <td>是否显示图标</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>icon</td>
+                    <td>更改显示图标</td>
+                    <td>string</td>
+                    <td>—</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>effect</td>
+                    <td>选择提供的主题</td>
+                    <td>string</td>
+                    <td>light/dark</td>
+                    <td>light</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>自定义 class 样式</td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Events</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>事件名</th>
+                    <th>说明</th>
+                    <th>参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>close</td>
+                    <td>关闭 alert 时触发的事件</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Sections</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-</td>
+                    <td>描述</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>标题的内容</td>
+                </tr>
+            </tbody>
+        </table>
+        <BottomNav />
+    </div>
 </template>
+
 <script>
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
-import DEMO_JOKER_demo7 from '../../components/alert/demo7.joker';
-import DEMO_JOKER_demo6 from '../../components/alert/demo6.joker';
-import DEMO_JOKER_demo5 from '../../components/alert/demo5.joker';
-import DEMO_JOKER_demo4 from '../../components/alert/demo4.joker';
-import DEMO_JOKER_demo3 from '../../components/alert/demo3.joker';
-import DEMO_JOKER_demo2 from '../../components/alert/demo2.joker';
-import DEMO_JOKER_demo1 from '../../components/alert/demo1.joker';
+import DEMO_JOKER_demo7 from "../../components/alert/demo7.joker";
+import DEMO_JOKER_demo6 from "../../components/alert/demo6.joker";
+import DEMO_JOKER_demo5 from "../../components/alert/demo5.joker";
+import DEMO_JOKER_demo4 from "../../components/alert/demo4.joker";
+import DEMO_JOKER_demo3 from "../../components/alert/demo3.joker";
+import DEMO_JOKER_demo2 from "../../components/alert/demo2.joker";
+import DEMO_JOKER_demo1 from "../../components/alert/demo1.joker";
 export default class extends Component {
-components={
-BottomNav,
-DEMO_JOKER_demo7,
-DEMO_JOKER_demo6,
-DEMO_JOKER_demo5,
-DEMO_JOKER_demo4,
-DEMO_JOKER_demo3,
-DEMO_JOKER_demo2,
-DEMO_JOKER_demo1
+    components = {
+        BottomNav,
+        DEMO_JOKER_demo7,
+        DEMO_JOKER_demo6,
+        DEMO_JOKER_demo5,
+        DEMO_JOKER_demo4,
+        DEMO_JOKER_demo3,
+        DEMO_JOKER_demo2,
+        DEMO_JOKER_demo1
+    };
+    mounted() {
+        let container = this.$getRef("container")?.output!;
+        container.querySelectorAll("pre code").forEach((el: HTMLElement) => {
+            hljs.highlightElement(el);
+        });
+    }
 }
-mounted(){
-let container= this.$getRef('container')?.output!;
-container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
-        hljs.highlightElement(el);
-      });
-}
-}
+
 </script>
