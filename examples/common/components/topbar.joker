@@ -122,7 +122,7 @@ export default class extends Component {
                 : "Joker UI - The Leading Rapid Website Building Tool";
         for (let group of menus) {
             for (let item of group.children) {
-                if (item.path === router.route.value.path) {
+                if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
                     return;
                 }
