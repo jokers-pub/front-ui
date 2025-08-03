@@ -95,6 +95,10 @@ export default class extends Component<{
         );
     }
 
+    open() {
+        this.dropdownMenu?.component.open(this.$getRef("container").output);
+    }
+
     handleMouseLeave(e: VNode.Event, isbutton?: boolean) {
         if (this.props.disabled) return;
 
