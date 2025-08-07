@@ -1,46 +1,46 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Pagination</h2>
-        <p>When there is too much data, use pagination to break down the data.</p>
+        <p>When the amount of data is too large, use pagination to split the data.</p>
         <h3>Basic Usage</h3>
         <p>
             Set
             <code>layout</code>
-            to indicate the content to be displayed, separated by commas. The layout elements will be displayed in sequence.
+            to specify the elements to be displayed, separated by commas. The layout components will be displayed in order.
         </p>
         <ul>
             <li>
                 <code>prev</code>
-                represents the previous page.
+                for the previous page
             </li>
             <li>
                 <code>next</code>
-                is the next page.
+                for the next page
             </li>
             <li>
                 <code>pager</code>
-                represents the page number list.
+                for the page number list
             </li>
             <li>
                 <code>jumper</code>
-                is for jumping to a specified page number.
+                for jumping to a specific page
             </li>
             <li>
                 <code>total</code>
-                represents the total number of items.
+                for the total number of entries
             </li>
             <li>
                 <code>sizes</code>
-                is used to set the number of page numbers displayed per page.
+                for setting the number of items displayed per page
             </li>
         </ul>
         <blockquote>
             <p>
-                In addition, a special layout symbol
+                Additionally, a special layout symbol
                 <code>-&gt;</code>
                 is provided. Elements after
                 <code>-&gt;</code>
-                will be displayed on the right.
+                will be aligned to the right.
             </p>
         </blockquote>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
@@ -57,11 +57,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Set the Maximum Number of Page Number Buttons</h3>
+        <h3>Set Maximum Page Button Count</h3>
         <p>
-            By default, when the total number of pages exceeds 7, Pagination will collapse the extra page number buttons. The maximum number of page number buttons can be set through the
+            By default, when the total number of pages exceeds 7, the Pagination component will collapse excess page buttons. The maximum number of page buttons can be set via the
             <code>pager-count</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -71,11 +71,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Display the Total Number of Items</h3>
+        <h3>Display Total Number of Entries</h3>
         <p>
-            By configuring the layout and adding
+            Configure the layout by adding
             <code>total</code>
-            , the total number of items can be displayed.
+            to show the total number of entries.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -85,11 +85,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Set the Number of Items per Page</h3>
+        <h3>Set Items Per Page</h3>
         <p>
-            By configuring the layout and adding
+            Configure the layout by adding
             <code>sizes</code>
-            , the configuration of the number of items per page can be displayed.
+            to display options for the number of items per page.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -107,11 +107,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Display the Direct Jump</h3>
+        <h3>Display Quick Jumper</h3>
         <p>
-            By configuring the layout and adding
+            Configure the layout by adding
             <code>jumper</code>
-            , the direct jump function can be displayed.
+            to enable the quick jump functionality.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -125,11 +125,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Hide Pagination When There is Only One Page</h3>
+        <h3>Hide Pagination When Only One Page Exists</h3>
         <p>
             Configure
             <code>hide-on-single-page</code>
-            to determine whether to hide the pagination when there is less than one page.
+            to hide pagination when there is only one page.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -158,11 +158,11 @@ export default class extends Component {
 
 </code></pre>
         </DemoContainer>
-        <h3>Small-Sized Pagination</h3>
+        <h3>Small-Size Pagination</h3>
         <p>
             Configure
             <code>small</code>
-            to display small-sized pagination.
+            to display pagination in a compact size.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -190,7 +190,7 @@ export default class extends Component {
         <p>
             Configure
             <code>background</code>
-            to display pagination with a background color. The background color follows the main color rule.
+            to enable pagination with a colored background, following the primary color scheme.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo8)">
             <pre><code class="language-html">&lt;template&gt;
@@ -240,42 +240,42 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
+                    <th>Accepted Values</th>
                     <th>Default Value</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>small</td>
-                    <td>Whether to use the small-sized pagination style</td>
+                    <td>Whether to use small pagination style</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class styles</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>background</td>
-                    <td>Whether to add a background color to the pagination buttons</td>
+                    <td>Whether to add a background color to pagination buttons</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>page-size</td>
-                    <td>The number of items displayed per page</td>
+                    <td>Number of items displayed per page</td>
                     <td>number</td>
                     <td>—</td>
                     <td>10</td>
                 </tr>
                 <tr>
                     <td>total</td>
-                    <td>The total number of items</td>
+                    <td>Total number of entries</td>
                     <td>number</td>
                     <td>—</td>
                     <td>—</td>
@@ -283,15 +283,14 @@ export default class extends Component {
                 <tr>
                     <td>page-count</td>
                     <td>
-                        The total number of pages. Setting either
+                        Total page count. Either
                         <code>total</code>
                         or
                         <code>page-count</code>
-                        can achieve the function of displaying page numbers; if you want to support changes in
+                        can be set to enable pagination. If
                         <code>page-sizes</code>
-                        , you need to use the
+                        is needed, use
                         <code>total</code>
-                        attribute
                     </td>
                     <td>Number</td>
                     <td>—</td>
@@ -300,26 +299,22 @@ export default class extends Component {
                 <tr>
                     <td>pager-count</td>
                     <td>
-                        The number of page number buttons. When the total number of pages exceeds this value, it will be collapsed
+                        Number of page buttons to display. Excess buttons are collapsed when the total pages exceed this value.
                     </td>
                     <td>number</td>
-                    <td>Odd numbers greater than or equal to 5 and less than or equal to 21</td>
+                    <td>Odd number ≥5 and ≤21</td>
                     <td>7</td>
                 </tr>
                 <tr>
                     <td>current-page</td>
-                    <td>
-                        The current page number, supports the
-                        <code>.sync</code>
-                        modifier
-                    </td>
+                    <td>Current page number</td>
                     <td>number</td>
                     <td>—</td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <td>layout</td>
-                    <td>The component layout, with sub-component names separated by commas</td>
+                    <td>Component layout, with child component names separated by commas</td>
                     <td>string[]</td>
                     <td>
                         <code>sizes</code>
@@ -342,35 +337,35 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>page-sizes</td>
-                    <td>The option settings for the number-of-items-per-page selector</td>
+                    <td>Options for the page size selector</td>
                     <td>number[]</td>
                     <td>—</td>
                     <td>[10, 20, 30, 40, 50, 100]</td>
                 </tr>
                 <tr>
                     <td>prev-text</td>
-                    <td>The text for the previous page instead of the icon</td>
+                    <td>Custom text to replace the default prev icon</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>next-text</td>
-                    <td>The text for the next page instead of the icon</td>
+                    <td>Custom text to replace the default next icon</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether pagination is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>hide-on-single-page</td>
-                    <td>Whether to hide when there is only one page</td>
+                    <td>Whether to hide pagination when there is only one page</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>-</td>
@@ -389,21 +384,13 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>size-change</td>
-                    <td>
-                        Triggered when the
-                        <code>pageSize</code>
-                        changes
-                    </td>
-                    <td>Number of items per page</td>
+                    <td>Triggered when pageSize changes</td>
+                    <td>New page size</td>
                 </tr>
                 <tr>
                     <td>change</td>
-                    <td>
-                        Triggered when the
-                        <code>currentPage</code>
-                        changes
-                    </td>
-                    <td>Current page</td>
+                    <td>Triggered when currentPage changes</td>
+                    <td>Current page number</td>
                 </tr>
             </tbody>
         </table>

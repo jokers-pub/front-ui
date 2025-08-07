@@ -1,51 +1,50 @@
-## Loading
+## Loading  
 
-Display animations while data is being loaded.
+Displays animation effects during data loading.  
 
-### Regional Display
+### Area Display  
 
-You can specify the display host of the loading by configuring the `target` attribute.
+You can specify the host element for loading display by configuring the `target` property.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Full-screen Display
+### Fullscreen Display  
 
-Set `fullscreen` or specify `target` as **body** to achieve full-screen loading.
+Enable fullscreen Loading by setting `fullscreen` or specifying `target` as **body**.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-> Please note that there can only be one full-screen loading. If triggered repeatedly, it will return the previous uncompleted loading operation component.
+> Note: Only one fullscreen Loading can exist at a time. If triggered repeatedly, the previous incomplete Loading operation component will be returned.  
 
-It should be noted that full-screen loading called as a service is a singleton: if you call full-screen loading again before the previous full-screen loading is closed, a new loading instance will not be created, but the existing full-screen loading instance will be returned:
+It is important to note that fullscreen Loading called as a service is a singleton: if another fullscreen Loading is called before the previous one is closed, it will not create a new Loading instance; instead, it will return the existing fullscreen Loading instance:  
 
-```js
-let loading1 = Loading({ fullscreen: true });
-let loading2 = Loading({ fullscreen: true });
-console.log(loading1 === loading2); // true
-```
+```js  
+let loading1 = Loading({ fullscreen: true });  
+let loading2 = Loading({ fullscreen: true });  
+console.log(loading1 === loading2); // true  
+```  
 
-At this time, calling the `close` method of either of them can close this full-screen loading.
+At this point, calling the `close` method of any of them will close the fullscreen Loading.  
 
-### Customization
+### Customization  
 
-You can customize the loading text, icon, and background color.
+Customizable loading text, icon, and background color.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Options
+### Options  
 
-| Parameter   | Description                                                                                                                                                                                                        | Type                                                     | Optional Values | Default Value |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- | --------------- | ------------- |
-| target      | The DOM node that the Loading needs to cover. You can pass in a DOM object or a string; if a string is passed in, it will be used as a parameter to `document.querySelector` to obtain the corresponding DOM node. | Element / string / VNode.Node; VNode nodes are supported | —               | document.body |
-| fullscreen  | Whether it is full-screen                                                                                                                                                                                          | boolean                                                  | —               | true          |
-| text        | The loading text displayed below the loading icon                                                                                                                                                                  | string                                                   | —               | —             |
-| spinner     | Custom loading icon class name                                                                                                                                                                                     | string                                                   | —               | —             |
-| customClass | Custom class name of the Loading                                                                                                                                                                                   | string                                                   | —               | —             |
+| Parameter     | Description                                                                                                                                       | Type                                               | Options | Default       |  
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- | ------- | ------------- |  
+| target        | The DOM node that Loading needs to cover. Can be a DOM object or a string. If a string is passed, it will be used as input for `document.querySelector` to retrieve the corresponding DOM node. | Element / string / VNode.Node; supports VNode nodes | —       | document.body |  
+| fullscreen    | Whether to display in fullscreen mode                                                                                                   | boolean                                            | —       | true          |  
+| text          | Loading text displayed below the loading icon                                                                                              | string                                             | —       | —             |  
+| spinner       | Custom loading icon class name                                                                                                               | string                                             | —       | —             |  
+| customClass   | Custom class name for Loading                                                                                                              | string                                             | —       | —             |  
 
-### Methods
+### Methods  
 
-Calling `Loading` will return the current Loading instance. If you need to manually close the instance, you can call its `close` method.
-
-| Method Name | Description               |
-| ----------- | ------------------------- |
-| close       | Close the current Loading |
+Calling `Loading` will return the current Loading instance. To manually close the instance, you can call its `close` method.  
+| Method Name | Description |  
+| ---------- | ----------- |  
+| close      | Closes the current Loading |

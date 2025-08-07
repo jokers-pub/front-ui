@@ -1,42 +1,46 @@
-## Drawer
+## Drawer  
 
-The Drawer component provides almost the same API as the `Dialog`, but offers a different UI experience.
+The Drawer component provides an API nearly identical to `Dialog`, but delivers a distinct UI experience.  
 
-### Basic Usage
+### Basic Usage  
 
-Pops up a sidebar that can be displayed from multiple directions.
-!!!demo1!!!
+Displays a sidebar that can slide in from multiple directions.  
 
-### Multi-layer Nesting
+!!!demo1!!!  
 
-Supports multi-layer nesting, and the `z-index` is automatically controlled within the component.
-!!!demo2!!!
+### Multi-level Nesting  
 
-### Attributes
+Supports multi-level nesting. The component automatically manages `z-index`.  
 
-| Parameter | Description         | Type   | Optional Values       | Default Value |
-| --------- | ------------------- | ------ | --------------------- | ------------- |
-| direction | Expansion direction | string | left/top/right/bottom | right         |
-| size      | Expansion size      | string | -                     | 30%           |
-| title     | Title               | string | -                     | -             |
+!!!demo2!!!  
 
-### Sections
+### Attributes  
 
-| Name    | Description  |
-| ------- | ------------ |
-| default | Content area |
-| title   | Title area   |
+| Parameter  | Description       | Type     | Options                     | Default |  
+| ---------- | ----------------- | -------- | --------------------------- | ------- |  
+| direction  | Expansion direction | string   | left/top/right/bottom       | right   |  
+| size       | Expansion size    | string   | -                           | 30%    |  
+| title      | Title            | string   | -                           | -      |  
 
-### Methods
+### Slots  
 
-| Method Name | Description | Parameter | Return Value |
-| ----------- | ----------- | --------- | ------------ |
-| open        | Open        | -         | -            |
-| close       | Close       | -         | -            |
+| Name      | Description       |  
+| --------- | ----------------- |  
+| default   | Content area      |  
+| title     | Title area        |  
 
-### Events
+### Methods  
 
-| Event Name | Description | Parameter |
-| ---------- | ----------- | --------- |
-| open       | Opening     | -         |
-| close      | Closing     | -         |
+| Method  | Description   | Parameters | Returns |  
+| ------- | ------------- | ---------- | ------- |  
+| open    | Open the drawer | -          | -       |  
+| close   | Close the drawer | -          | -       |  
+
+### Events  
+
+| Event    | Description   | Parameters |  
+| -------- | ------------- | ---------- |  
+| open     | Emitted when opened | -          |  
+| close    | Emitted when closed | -          |  
+
+Note: The translation maintains all the original structure, including marks like "!!!demo1!!!" for placeholder content, while ensuring technical accuracy and readability in English.

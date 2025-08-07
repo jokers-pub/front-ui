@@ -1,19 +1,19 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Layout</h2>
-        <p>Create layouts quickly and easily through the basic 24-column system.</p>
+        <p>Quickly and easily create layouts using a 24-column grid system.</p>
         <h3>Basic Layout</h3>
-        <p>Create a basic grid layout using a single column.</p>
+        <p>Create a foundational grid layout using a single column.</p>
         <p>
-            By using the
+            By utilizing the
             <code>row</code>
             and
             <code>col</code>
-            components, and through the
+            components and specifying the
             <code>span</code>
-            attribute of the
+            property of the
             <code>col</code>
-            component, we can freely combine layouts.
+            component, you can freely combine layouts.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -103,14 +103,14 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Column Spacing</h3>
-        <p>There is a spacing between columns.</p>
+        <h3>Column Gutter</h3>
+        <p>Add spacing between columns.</p>
         <p>
             The
             <code>row</code>
-            component provides the
+            component provides a
             <code>gutter</code>
-            attribute to specify the spacing between each column, with a default spacing of 0.
+            property to define the spacing between columns, with a default value of 0.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -139,7 +139,7 @@
 </code></pre>
         </DemoContainer>
         <h3>Mixed Layout</h3>
-        <p>Arbitrarily expand and combine through the basic 1/24 columns to form a more complex mixed layout.</p>
+        <p>Combine and extend the basic 1/24 columns to create complex mixed layouts.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -192,13 +192,13 @@
 </code></pre>
         </DemoContainer>
         <h3>Column Offset</h3>
-        <p>Supports offsetting a specified number of columns.</p>
+        <p>Support for offsetting specified columns.</p>
         <p>
-            By setting the
+            The
             <code>offset</code>
-            attribute of the
+            property of the
             <code>col</code>
-            component, you can specify the number of columns to offset, optimizing the layout effect.
+            component allows you to specify the number of columns to offset, optimizing layout flexibility.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -242,15 +242,17 @@
         <h3>Alignment</h3>
         <p>
             Use
-            <code>flex</code>
-            layout for flexible alignment of columns.
+            <strong>flex</strong>
+            layout for flexible column alignment.
         </p>
         <p>
-            Assigning the
+            By setting the
             <code>type</code>
-            attribute as 'flex' enables the flex layout. You can use the
+            property to
+            <code>'flex'</code>
+            , you enable flexbox layout. The
             <code>justify</code>
-            attribute to specify values such as
+            property can be used to define horizontal alignment with values such as
             <code>start</code>
             ,
             <code>center</code>
@@ -258,9 +260,9 @@
             <code>end</code>
             ,
             <code>space-between</code>
-            ,
+            , or
             <code>space-around</code>
-            to flexibly define the layout of child elements.
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -344,7 +346,7 @@
         </DemoContainer>
         <h3>Responsive Layout</h3>
         <p>
-            Referencing the responsive design of Bootstrap, five responsive sizes are preset:
+            Following Bootstrap’s responsive design approach, we preset five responsive breakpoints:
             <code>xs</code>
             ,
             <code>sm</code>
@@ -394,8 +396,8 @@
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -408,31 +410,55 @@
                 </tr>
                 <tr>
                     <td>type</td>
-                    <td>Layout mode, 'flex' is available in modern browsers</td>
+                    <td>
+                        Layout mode, optional
+                        <code>flex</code>
+                        for modern browsers
+                    </td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>justify</td>
-                    <td>Horizontal arrangement in flex layout</td>
+                    <td>Horizontal alignment in flex layout</td>
                     <td>string</td>
-                    <td>start / end / center / space-around / space-between</td>
-                    <td>start</td>
+                    <td>
+                        <code>start</code>
+                        /
+                        <code>end</code>
+                        /
+                        <code>center</code>
+                        /
+                        <code>space-around</code>
+                        /
+                        <code>space-between</code>
+                    </td>
+                    <td>
+                        <code>start</code>
+                    </td>
                 </tr>
                 <tr>
                     <td>align</td>
-                    <td>Vertical arrangement in flex layout</td>
+                    <td>Vertical alignment in flex layout</td>
                     <td>string</td>
-                    <td>top / middle / bottom</td>
+                    <td>
+                        <code>top</code>
+                        /
+                        <code>middle</code>
+                        /
+                        <code>bottom</code>
+                    </td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>tag</td>
-                    <td>Custom element tag</td>
+                    <td>Custom HTML tag</td>
                     <td>string</td>
                     <td>*</td>
-                    <td>div</td>
+                    <td>
+                        <code>div</code>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -443,35 +469,35 @@
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>span</td>
-                    <td>The number of columns occupied by the grid</td>
+                    <td>Number of columns the grid occupies</td>
                     <td>number</td>
                     <td>—</td>
                     <td>24</td>
                 </tr>
                 <tr>
                     <td>offset</td>
-                    <td>The number of grid-spaced cells on the left side of the grid</td>
+                    <td>Number of columns to offset on the left</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>push</td>
-                    <td>The number of cells the grid moves to the right</td>
+                    <td>Number of columns to move to the right</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>pull</td>
-                    <td>The number of cells the grid moves to the left</td>
+                    <td>Number of columns to move to the left</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
@@ -479,11 +505,15 @@
                 <tr>
                     <td>xs</td>
                     <td>
-                        Responsive grid number or grid attribute object for
                         <code>&lt;768px</code>
+                        Responsive columns or column props
                     </td>
                     <td>
-                        number / object (e.g.,{span: 4, offset: 4})
+                        number / object (e.g.,
+                        <code>
+                            {span: 4, offset: 4}
+                        </code>
+                        )
                     </td>
                     <td>—</td>
                     <td>—</td>
@@ -491,11 +521,15 @@
                 <tr>
                     <td>sm</td>
                     <td>
-                        Responsive grid number or grid attribute object for
                         <code>≥768px</code>
+                        Responsive columns or column props
                     </td>
                     <td>
-                        number / object (e.g.,{span: 4, offset: 4})
+                        number / object (e.g.,
+                        <code>
+                            {span: 4, offset: 4}
+                        </code>
+                        )
                     </td>
                     <td>—</td>
                     <td>—</td>
@@ -503,11 +537,15 @@
                 <tr>
                     <td>md</td>
                     <td>
-                        Responsive grid number or grid attribute object for
                         <code>≥992px</code>
+                        Responsive columns or column props
                     </td>
                     <td>
-                        number / object (e.g.,{span: 4, offset: 4})
+                        number / object (e.g.,
+                        <code>
+                            {span: 4, offset: 4}
+                        </code>
+                        )
                     </td>
                     <td>—</td>
                     <td>—</td>
@@ -515,11 +553,15 @@
                 <tr>
                     <td>lg</td>
                     <td>
-                        Responsive grid number or grid attribute object for
                         <code>≥1200px</code>
+                        Responsive columns or column props
                     </td>
                     <td>
-                        number / object (e.g.,{span: 4, offset: 4})
+                        number / object (e.g.,
+                        <code>
+                            {span: 4, offset: 4}
+                        </code>
+                        )
                     </td>
                     <td>—</td>
                     <td>—</td>
@@ -527,21 +569,27 @@
                 <tr>
                     <td>xl</td>
                     <td>
-                        Responsive grid number or grid attribute object for
                         <code>≥1920px</code>
+                        Responsive columns or column props
                     </td>
                     <td>
-                        number / object (e.g.,{span: 4, offset: 4})
+                        number / object (e.g.,
+                        <code>
+                            {span: 4, offset: 4}
+                        </code>
+                        )
                     </td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>tag</td>
-                    <td>Custom element tag</td>
+                    <td>Custom HTML tag</td>
                     <td>string</td>
                     <td>*</td>
-                    <td>div</td>
+                    <td>
+                        <code>div</code>
+                    </td>
                 </tr>
             </tbody>
         </table>

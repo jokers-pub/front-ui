@@ -1,15 +1,15 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Badge</h2>
-        <p>A numeric or status mark that appears next to buttons or icons.</p>
+        <p>A numeric or status indicator displayed next to buttons or icons.</p>
         <h3>Basic Usage</h3>
+        <p>Displays the count of new messages.</p>
         <p>
-            Displays the number of new messages.
             Define the
             <code>value</code>
-            attribute, which accepts either a
+            property, which accepts a
             <code>Number</code>
-            or a
+            or
             <code>String</code>
             .
         </p>
@@ -46,11 +46,11 @@
 </code></pre>
         </DemoContainer>
         <h3>Maximum Value</h3>
+        <p>Allows customization of the maximum value.</p>
         <p>
-            You can customize the maximum value.
-            Defined by the
+            The
             <code>max</code>
-            attribute, which accepts a
+            property defines the maximum value, accepting a
             <code>Number</code>
             . Note that it only takes effect when
             <code>value</code>
@@ -81,13 +81,13 @@
 </code></pre>
         </DemoContainer>
         <h3>Custom Content</h3>
+        <p>Supports displaying non-numeric text content.</p>
         <p>
-            It can display text content other than numbers.
             When
             <code>value</code>
             is defined as a
             <code>String</code>
-            type, it can be used to display custom text.
+            , it can be used to display custom text.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -112,11 +112,11 @@
 </code></pre>
         </DemoContainer>
         <h3>Red Dot</h3>
+        <p>Displays a small red dot to highlight content requiring attention.</p>
         <p>
-            Marks the content that needs attention in the form of a red dot.
-            In addition to numbers, set the
+            In addition to numeric values, set the
             <code>is-dot</code>
-            attribute, which accepts a
+            property, which accepts a
             <code>Boolean</code>
             .
         </p>
@@ -144,17 +144,17 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Display value</td>
+                    <td>Displayed value</td>
                     <td>string/number</td>
                     <td>-</td>
                     <td>-</td>
@@ -162,11 +162,14 @@
                 <tr>
                     <td>max</td>
                     <td>
-                        Maximum value. If the value exceeds the maximum, it will display '{max}+'. The
+                        Maximum value. Exceeding this displays
+                        <code>
+                            {max}+
+                        </code>
+                        . Requires
                         <code>value</code>
-                        must be of type
+                        to be a
                         <code>Number</code>
-                        .
                     </td>
                     <td>number</td>
                     <td>-</td>
@@ -174,21 +177,21 @@
                 </tr>
                 <tr>
                     <td>isDot</td>
-                    <td>Small red dot</td>
+                    <td>Displays a small dot</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>hidden</td>
-                    <td>Hide the badge</td>
+                    <td>Hides the badge</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>type</td>
-                    <td>Type</td>
+                    <td>Badge type</td>
                     <td>string</td>
                     <td>primary / success / warning / danger / info</td>
                     <td>-</td>

@@ -1,69 +1,68 @@
-## Message
+## Message Prompt
 
-It is often used for feedback prompts after active operations. The difference from Notification is that the latter is more used for passive reminders of system-level notifications.
+Commonly used for feedback prompts after active operations. The key difference from Notification is that the latter is more often used for passive system-level alerts.
 
 ### Basic Usage
 
-It appears from the top and disappears automatically after 3 seconds. In terms of configuration, it is very similar to Notification. Therefore, some options are not explained in detail here. There is a list of options at the end of the article. You can combine it with the documentation of Notification to understand them.
+Appears from the top and automatically disappears after 3 seconds. The configuration is very similar to Notification, so some options won't be explained in detail here. A list of options is provided at the end, which can be understood by referring to Notification's documentation.
 
 !!!demo1!!!
 
 ### Different States
 
-Used to display operation feedback of "success, warning, message, error" types. When more properties need to be customized, Message can also accept an object as a parameter. For example, setting the `type` field can define different states, with the default being `info`. At this time, the body content is passed in as the value of `message`.
+Used to display feedback for operations with "success, warning, message, error" classifications. When more custom properties are needed, Message can also accept an object as a parameter. For example, setting the `type` field can define different states, with the default being `info`. In this case, the main content is passed via the `message` value.  
 
-> Currently, Message provides 4 commonly used calling methods, including `info`, `success`, `warning`, and `error`.
+> Currently, Message provides 4 commonly used invocation methods, including `info`, `success`, `warning`, and `error`.
 
 !!!demo2!!!
 
-### Closable
+### Closable  
 
-You can add a close button. By default, the Message cannot be manually closed. If you need a manually closable Message, you can use the `showClose` field. In addition, like Notification, Message has a controllable `duration`. Setting it to `0` means it will not be automatically closed, with the default being 3000 milliseconds.
+A close button can be added. By default, Message cannot be manually closed. If a manually closable Message is needed, use the `showClose` field. Additionally, like Notification, Message has a controllable `duration`. Setting it to `0` means it won't close automatically; the default is 3000 milliseconds.  
 
 !!!demo3!!!
 
-### Text Centered
+### Centered Text  
 
-Use the `center` property to center the text horizontally.
+Use the `center` property to horizontally center the text.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Using HTML Fragments
+### Using HTML Fragments  
 
-Set the `useHtml` property to `true`, and `message` will be treated as an HTML fragment.
+Set the `useHtml` property to `true`, and `message` will be treated as an HTML fragment.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-:::warning
-Although the `message` property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Therefore, when `useHtml` is turned on, please ensure that the content of `message` is trustworthy. **Never** assign user-submitted content to the `message` property.
+:::warning  
+Although the `message` property supports passing HTML fragments, dynamically rendering arbitrary HTML on a website is highly dangerous as it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Therefore, when `useHtml` is enabled, ensure the content of `message` is trusted. **Never** assign user-submitted content to the `message` property.  
 :::
 
-> Message provides the `closeAll` method to clear all messages at specific business times.
+> Message provides the `closeAll` method, which can be used to clear all messages during specific business scenarios.  
 
-### Options
+### Options  
 
-| Parameter   | Description                                                         | Type    | Optional Values            | Default Value |
-| ----------- | ------------------------------------------------------------------- | ------- | -------------------------- | ------------- |
-| message     | Message text                                                        | string  | —                          | —             |
-| type        | Theme                                                               | string  | success/warning/info/error | info          |
-| iconClass   | Class name of the custom icon, which will override `type`           | string  | —                          | —             |
-| useHtml     | Whether to treat the `message` property as an HTML fragment         | boolean | —                          | false         |
-| customClass | Custom class name                                                   | string  | —                          | —             |
-| duration    | Display time in milliseconds. Set to 0 to prevent automatic closure | number  | —                          | 3000          |
-| closable    | Whether to display the close button                                 | boolean | —                          | false         |
-| center      | Whether the text is centered                                        | boolean | —                          | false         |
-| offset      | The offset of the Message from the top of the window                | number  | —                          | 20            |
+| Parameter     | Description                                  | Type     | Accepted Values               | Default |  
+| ------------- | -------------------------------------------- | -------- | ----------------------------- | ------- |  
+| message       | Message text                                 | string   | —                             | —       |  
+| type          | Theme                                        | string   | success/warning/info/error    | info    |  
+| iconClass     | Custom icon class name, overrides `type`     | string   | —                             | —       |  
+| useHtml       | Whether to treat `message` as HTML fragment  | boolean  | —                             | false   |  
+| customClass   | Custom class name                            | string   | —                             | —       |  
+| duration      | Display duration in ms. 0 means no auto-close | number   | —                             | 3000    |  
+| closable      | Whether to show a close button               | boolean  | —                             | false   |  
+| center        | Whether to center the text                   | boolean  | —                             | false   |  
+| offset        | Offset from the top of the window            | number   | —                             | 20      |  
 
-### Methods
+### Methods  
 
-Calling `Message` will return the current Message instance. If you need to manually close the instance, you can call its `close` method.
+Calling `Message` returns the current Message instance. To manually close it, call its `close` method.  
+| Method | Description |  
+| ------ | ----------- |  
+| close  | Closes the current Message |  
 
-| Method Name | Description               |
-| ----------- | ------------------------- |
-| close       | Close the current Message |
+### Events  
 
-### Events
-
-| Event Name | Description                          |
-| ---------- | ------------------------------------ |
-| close      | Triggered when the Message is closed |
+| Event  | Description                |  
+| ------ | -------------------------- |  
+| close  | Triggered when Message is closed |

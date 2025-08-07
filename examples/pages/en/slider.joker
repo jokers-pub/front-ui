@@ -1,10 +1,10 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Slider</h2>
-        <p>Select within a fixed range by dragging the slider.</p>
+        <h2>Slider Component</h2>
+        <p>Use a slider to select values within a fixed range.</p>
         <h3>Basic Usage</h3>
         <p>
-            When dragging the slider, display the current value. Customize the initial value of the slider by setting the bound value.
+            Display the current value while dragging the slider. Customize the initial value by binding it to a variable.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -66,11 +66,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Discrete Values</h3>
         <p>
-            Options can be discrete. Changing the value of
+            Options can be discrete. Adjust the
             <code>step</code>
-            can change the step size. Setting the
+            property to change the step size. Enable the
             <code>show-stops</code>
-            property can display breakpoints.
+            attribute to display breakpoints.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -111,9 +111,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>With Input Box</h3>
         <p>
-            Set the precise value through the input box. Setting the
+            Set precise values via an input box. Enable the
             <code>show-input</code>
-            property will display an input box on the right.
+            property to display an input box on the right.
         </p>
         <blockquote>
             <p>
@@ -121,7 +121,7 @@ export default class extends Component {
                 <code>range</code>
                 or
                 <code>show-input</code>
-                is set, the
+                is enabled, the
                 <code>show-input</code>
                 property will not take effect.
             </p>
@@ -139,9 +139,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Range Selection</h3>
         <p>
-            Supports selecting a certain numerical range. Setting
+            Supports selecting a value range. Enable
             <code>range</code>
-            enables range selection. At this time, the bound value is an array, and its elements are the minimum and maximum boundary values respectively.
+            to activate range selection, where the bound value becomes an array containing the minimum and maximum boundary values.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -166,11 +166,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Vertical Mode</h3>
         <p>
-            Setting
+            Set
             <code>vertical</code>
-            can make the Slider in vertical mode. At this time, the
+            to transform the slider into vertical mode. The
             <code>height</code>
-            property must be set.
+            attribute must be specified in this case.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -205,11 +205,11 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Display Marks</h3>
+        <h3>Display Markers</h3>
         <p>
-            Setting the
+            Use the
             <code>marks</code>
-            property can display marks.
+            property to display markers.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -256,27 +256,27 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Value</td>
-                    <td>number or number[]</td>
+                    <td>The slider value</td>
+                    <td>number / number[]</td>
                     <td>—</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>min</td>
@@ -294,7 +294,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether the slider is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -308,63 +308,63 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>show-input</td>
-                    <td>Whether to display the input box, only valid in non-range selection</td>
+                    <td>Display an input box (only effective in non-range mode)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>show-input-controls</td>
-                    <td>Whether to display the control buttons of the input box when the input box is displayed</td>
+                    <td>Whether to show control buttons for the input box (when enabled)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>input-size</td>
-                    <td>The size of the input box, please refer to the input API for details</td>
+                    <td>Input box size; refer to the input component's API for details</td>
                     <td>string</td>
                     <td>large / medium / small / mini</td>
                     <td>small</td>
                 </tr>
                 <tr>
                     <td>show-stops</td>
-                    <td>Whether to display breakpoints</td>
+                    <td>Display breakpoints</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>show-tooltip</td>
-                    <td>Whether to display the tooltip</td>
+                    <td>Display tooltip</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>format-tooltip</td>
-                    <td>Format the tooltip message</td>
+                    <td>Format tooltip message</td>
                     <td>function(value)</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>range</td>
-                    <td>Whether it is range selection</td>
+                    <td>Enable range selection</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>vertical</td>
-                    <td>Whether it is in vertical mode</td>
+                    <td>Enable vertical mode</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>height</td>
-                    <td>The height of the Slider, required in vertical mode</td>
+                    <td>Slider height (required in vertical mode)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -379,9 +379,9 @@ export default class extends Component {
                 <tr>
                     <td>marks</td>
                     <td>
-                        Marks. The type of key must be number and the value should be within the closed interval
+                        Markers (keys must be numbers within
                         <code>[min, max]</code>
-                        . Each mark can be set with a separate style
+                        ; each marker can have custom styling)
                     </td>
                     <td>object</td>
                     <td>—</td>
@@ -401,21 +401,17 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>
-                        Triggered when the value changes (when dragging with the mouse, it is only triggered after releasing the mouse)
-                    </td>
-                    <td>The changed value</td>
+                    <td>Triggered when the value changes (only after releasing the mouse when dragging)</td>
+                    <td>Updated value</td>
                 </tr>
                 <tr>
                     <td>input</td>
                     <td>
-                        This event overrides the trigger timing of
+                        Fires continuously while dragging the slider (overrides
                         <code>change</code>
-                        .
-                        <code>input</code>
-                        will also be triggered when the slider is dragged
+                        timing)
                     </td>
-                    <td>The changed value</td>
+                    <td>Updated value</td>
                 </tr>
             </tbody>
         </table>

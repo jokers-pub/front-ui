@@ -1,27 +1,27 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Dialog</h2>
-        <p>Informs users and hosts relevant operations while maintaining the current page state.</p>
-        <h3>Basic Usage</h3>
         <p>
-            The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
-            You need to use the component's
+            Displays a dialog window while preserving current page state to present information and handle related operations.
+        </p>
+        <h3>Basic Usage</h3>
+        <p>The Dialog component creates a customizable pop-up dialog for scenarios requiring higher flexibility.</p>
+        <p>
+            Control the dialog's visibility using the
             <code>open</code>
             /
             <code>close</code>
-            methods to set whether the pop-up is displayed. The Dialog consists of two parts:
+            component methods. A Dialog consists of two sections:
             <code>body</code>
             and
             <code>footer</code>
-            . The
-            <code>footer</code>
-            requires a
+            , where the footer must be a named
             <code>section</code>
-            named
+            with the slot name
             <code>footer</code>
             . The
             <code>title</code>
-            attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of
+            property defines an optional header title (default: empty). This example also demonstrates the usage of
             <code>before-close</code>
             .
         </p>
@@ -94,25 +94,28 @@ export default class extends Component {
         <blockquote>
             <p>
                 <code>before-close</code>
-                only takes effect when the user closes the Dialog by clicking the close icon or the mask.
+                only takes effect when the user closes the Dialog by clicking the close icon or the modal backdrop.
             </p>
         </blockquote>
-        <h3>Nested Dialogs</h3>
+        <h3>Nested Dialog</h3>
         <p>
-            If you need to nest one Dialog inside another, you need to set the
+            To nest a Dialog inside another Dialog, set the
             <code>append-to</code>
             property to
             <code>body</code>
             .
-            Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the
+        </p>
+        <p>
+            Nested Dialogs are generally discouraged. If multiple Dialogs must coexist, keep them at the same hierarchy level. For unavoidable nesting, the
             <code>append-to</code>
-            property.
-            <strong>Refer to the core's description of append-to</strong>
-            . Set this property of the inner Dialog to
-            <code>body</code>
-            , and it will be inserted into the
-            <code>body</code>
-            element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.
+            property ensures proper layering by appending the inner Dialog to the
+            <code>&lt;body&gt;</code>
+            element.
+            <strong>
+                Refer to core documentation for details on
+                <code>append-to</code>
+            </strong>
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -154,19 +157,20 @@ export default class extends Component {
         </DemoContainer>
         <blockquote>
             <p>
+                Note:
                 <code>append-to</code>
-                only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.
+                only affects DOM output structure, not the VNode hierarchy. The component still follows the development-time parent-child lifecycle and destruction mechanisms without requiring manual intervention.
             </p>
         </blockquote>
         <h3>Centered Layout</h3>
         <p>
-            The title and the bottom can be horizontally centered. Setting
+            Enable horizontal centering for the header and footer by setting
             <code>center</code>
             to
             <code>true</code>
-            will center the title and the bottom.
+            . Note:
             <code>center</code>
-            only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.
+            only applies to these sections. Dialog content can be freely structured; for centering content, apply custom CSS as needed.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -204,20 +208,18 @@ export default class extends Component {
         </DemoContainer>
         <blockquote>
             <p>
-                The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default
-                <code>section</code>
-                passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through
+                Dialog content is lazily rendered—default slots are not mounted to the DOM until the first opening. For DOM operations or
                 <code>ref</code>
-                , please do so in the
+                access, perform them in the
                 <code>open</code>
                 event callback.
             </p>
         </blockquote>
-        <h3>Movable Window</h3>
+        <h3>Draggable Dialog</h3>
         <p>
-            We can enable the
+            Enable free dragging by setting the
             <code>draggable</code>
-            property of the window component to activate the free movement function of the window.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -260,126 +262,128 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>title</td>
-                    <td>
-                        The title of the Dialog, which can also be passed in through a named section (see the table below)
-                    </td>
+                    <td>Dialog title (can also be set via named slot, see below)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>width</td>
-                    <td>The width of the Dialog</td>
+                    <td>Dialog width</td>
                     <td>string</td>
                     <td>—</td>
                     <td>50%</td>
                 </tr>
                 <tr>
                     <td>fullscreen</td>
-                    <td>Whether it is a full-screen Dialog</td>
+                    <td>Whether the Dialog is fullscreen</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>modal</td>
-                    <td>Whether a mask layer is needed</td>
+                    <td>Whether a modal backdrop is shown</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>custom-class</td>
-                    <td>The custom class name of the Dialog</td>
+                    <td>Custom CSS class for Dialog</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>close-on-click-modal</td>
-                    <td>Whether the Dialog can be closed by clicking the modal</td>
+                    <td>Whether clicking the backdrop closes the Dialog</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>close-on-press-escape</td>
-                    <td>Whether the Dialog can be closed by pressing the ESC key</td>
+                    <td>Whether pressing ESC closes the Dialog</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>closable</td>
-                    <td>Whether to display the close button</td>
+                    <td>Whether to show the close button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>before-close</td>
-                    <td>The callback before closing, which will pause the closing of the Dialog</td>
-                    <td>function(done), where done is used to close the Dialog</td>
+                    <td>
+                        Callback before closing (halts closing until
+                        <code>done</code>
+                        is called)
+                    </td>
+                    <td>function(done)</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>center</td>
-                    <td>Whether to use a centered layout for the header and the bottom</td>
+                    <td>Whether to center header and footer</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>destroyOnClose</td>
-                    <td>Whether to destroy the interior when closing</td>
+                    <td>Whether to destroy inner content on close</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>draggable</td>
-                    <td>Whether to enable drag-and-drop movement</td>
+                    <td>Whether dragging is enabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>allowOutOfBounds</td>
-                    <td>Whether dragging is allowed to move beyond the boundary range</td>
+                    <td>Whether dragging outside viewport is allowed</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Sections</h3>
+        <h3>Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>name</th>
+                    <th>Name</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>The content of the Dialog</td>
+                    <td>Main content of the Dialog</td>
                 </tr>
                 <tr>
                     <td>title</td>
-                    <td>The content of the Dialog title area</td>
+                    <td>Content for the title section</td>
                 </tr>
                 <tr>
                     <td>footer</td>
-                    <td>The content of the Dialog button operation area</td>
+                    <td>Content for the action buttons</td>
                 </tr>
             </tbody>
         </table>
@@ -387,20 +391,20 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Method Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>open</td>
-                    <td>Open the window</td>
+                    <td>Opens the Dialog</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>Close the window</td>
+                    <td>Closes the Dialog</td>
                     <td>—</td>
                 </tr>
             </tbody>
@@ -409,30 +413,30 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
-                    <th>Callback Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>open</td>
-                    <td>The callback when the Dialog is opened</td>
+                    <td>Triggered when Dialog opens</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>opened</td>
-                    <td>The callback when the Dialog opening animation ends</td>
+                    <td>Triggered after opening animation</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>The callback when the Dialog is closed</td>
+                    <td>Triggered when Dialog closes</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>closed</td>
-                    <td>The callback when the Dialog closing animation ends</td>
+                    <td>Triggered after closing animation</td>
                     <td>—</td>
                 </tr>
             </tbody>

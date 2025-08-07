@@ -1,61 +1,61 @@
-## Textarea
+## Textarea Input Field  
 
-Used to input multi-line text information.
+Used for inputting multi-line text information  
 
-### Basic Usage
+### Basic Usage  
 
-The height of the textarea can be controlled by the `rows` attribute.
+Text area height can be controlled via the `rows` property  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Textarea with Auto-adaptive Text Height
+### Auto-Resizing Textarea  
 
-By setting the `autosize` attribute, the height of the textarea can be automatically adjusted according to the text content. Moreover, `autosize` can also be set as an object to specify the minimum and maximum number of rows.
+By setting the `autosize` property, the height of the text area can automatically adjust based on the text content. Additionally, `autosize` can be configured as an object to specify the minimum and maximum number of rows.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Input Length Limit
+### Input Length Limit  
 
-`maxlength` and `minlength` are native attributes used to limit the character length of the input box, where the character length is counted by the length of the JavaScript string. While using the `maxlength` attribute to limit the maximum input length, you can set the `show-word-limit` attribute to display the word count.
+`maxlength` and `minlength` are native attributes used to restrict the input length. The character count is calculated using JavaScript’s string length. When using the `maxlength` attribute to limit the maximum input length, the `show-word-limit` property can be set to display the character count.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter       | Description                                                                                    | Type             | Optional Values                                                                                                       | Default Value |
-| --------------- | ---------------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
-| type            | Type                                                                                           | string           | text, [types of native input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text          |
-| value           | Bound value                                                                                    | string / number  | —                                                                                                                     | —             |
-| class           | Custom class style                                                                             | string           | -                                                                                                                     | -             |
-| maxlength       | Native attribute, maximum input length                                                         | number           | —                                                                                                                     | —             |
-| minlength       | Native attribute, minimum input length                                                         | number           | —                                                                                                                     | —             |
-| show-word-limit | Whether to display the input word count                                                        | boolean          | —                                                                                                                     | false         |
-| placeholder     | Placeholder text of the input box                                                              | string           | —                                                                                                                     | —             |
-| disabled        | Disabled                                                                                       | boolean          | —                                                                                                                     | false         |
-| size            | Size of the input box                                                                          | string           | medium / small / mini                                                                                                 | —             |
-| rows            | Number of rows of the input box                                                                | number           | —                                                                                                                     | 1             |
-| autosize        | Auto-adapt to the content height. An object can be passed in, e.g., { minRows: 2, maxRows: 6 } | boolean / object | —                                                                                                                     | false         |
-| resize          | Control whether it can be resized by the user                                                  | string           | none, both, horizontal, vertical                                                                                      | —             |
-| autocomplete    | Native attribute, auto-completion                                                              | string           | on, off                                                                                                               | off           |
-| name            | Native attribute                                                                               | string           | —                                                                                                                     | —             |
-| readonly        | Native attribute, whether it is read-only                                                      | boolean          | —                                                                                                                     | false         |
-| autofocus       | Native attribute, auto-focus                                                                   | boolean          | true, false                                                                                                           | false         |
-| label           | The label text associated with the input box                                                   | string           | —                                                                                                                     | —             |
-| tabindex        | The tabindex of the input box                                                                  | string           | -                                                                                                                     | -             |
+| Parameter        | Description                                                                                       | Type             | Allowed Values                                                                                                  | Default |
+|------------------|---------------------------------------------------------------------------------------------------|------------------|-----------------------------------------------------------------------------------------------------------------|---------|
+| type            | Input type                                                                                       | string           | text, [native input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text    |
+| value           | Bound value                                                                                      | string / number  | —                                                                                                               | —       |
+| class           | Custom CSS class                                                                                 | string           | —                                                                                                               | —       |
+| maxlength       | Native attribute, maximum input length                                                           | number           | —                                                                                                               | —       |
+| minlength       | Native attribute, minimum input length                                                           | number           | —                                                                                                               | —       |
+| show-word-limit | Whether to display character count                                                               | boolean          | —                                                                                                               | false   |
+| placeholder     | Input placeholder text                                                                           | string           | —                                                                                                               | —       |
+| disabled        | Disabled state                                                                                   | boolean          | —                                                                                                               | false   |
+| size            | Input field size                                                                                 | string           | medium / small / mini                                                                                           | —       |
+| rows            | Number of text rows                                                                              | number           | —                                                                                                               | 1       |
+| autosize        | Auto-resize height based on content. Can be an object, e.g., `{ minRows: 2, maxRows: 6 }`        | boolean / object | —                                                                                                               | false   |
+| resize          | Controls whether the textarea can be resized by the user                                         | string           | none, both, horizontal, vertical                                                                               | —       |
+| autocomplete    | Native attribute, auto-complete                                                                  | string           | on, off                                                                                                         | off     |
+| name            | Native attribute                                                                                 | string           | —                                                                                                               | —       |
+| readonly        | Native attribute, read-only mode                                                                 | boolean          | —                                                                                                               | false   |
+| autofocus       | Native attribute, auto-focus                                                                     | boolean          | true, false                                                                                                     | false   |
+| label           | Label text associated with the input field                                                       | string           | —                                                                                                               | —       |
+| tabindex        | Input field tabindex                                                                             | string           | —                                                                                                               | —       |
 
-### Events
+### Events  
 
-| Event Name | Description                                                             | Callback Parameters |
-| ---------- | ----------------------------------------------------------------------- | ------------------- |
-| blur       | Triggered when the Input loses focus                                    | VNode.Event         |
-| focus      | Triggered when the Input gains focus                                    | VNode.Event         |
-| change     | Triggered only when the input box loses focus or the user presses Enter | VNode.Event         |
-| input      | Triggered when the value of the Input changes                           | VNode.Event         |
+| Event Name | Description                                                         | Callback Parameter |
+|------------|---------------------------------------------------------------------|--------------------|
+| blur       | Triggers when the Input loses focus                                 | VNode.Event        |
+| focus      | Triggers when the Input gains focus                                 | VNode.Event        |
+| change     | Triggers only when the Input loses focus or the user presses Enter  | VNode.Event        |
+| input      | Triggers when the Input value changes                               | VNode.Event        |
 
-### Methods
+### Methods  
 
-| Method Name | Description                  | Parameter |
-| ----------- | ---------------------------- | --------- |
-| focus       | Make the input gain focus    | —         |
-| blur        | Make the input lose focus    | —         |
-| select      | Select the text in the input | —         |
+| Method  | Description                     | Parameters |
+|---------|---------------------------------|------------|
+| focus   | Focuses the input field         | —          |
+| blur    | Unfocuses the input field       | —          |
+| select  | Selects the text in the input   | —          |

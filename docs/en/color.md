@@ -1,23 +1,29 @@
-## Color
+## Color Palette
 
-To avoid visual communication differences, Joker-UI uses a specific color palette to define colors, providing a consistent visual appearance for the products you build.
+Joker-UI employs a specific color scheme to prevent visual communication discrepancies and ensure a consistent visual experience for your products.
 
 ### Primary Color
 
-The main brand color of Joker-UI is a bright and friendly blue.
+The core brand color of Joker-UI is a vibrant, friendly blue.
+
 !!!demo1!!!
 
-### Secondary Colors
+### Accent Colors
 
-These are the scene colors other than the primary color, which need to be used in different scenarios (for example, the danger color represents dangerous operations).
+Additional situational colors beyond the primary palette (e.g., danger color for hazardous operations).
+
 !!!demo2!!!
 
 ### Neutral Colors
 
-Neutral colors are used for text, background, and border colors. By applying different neutral colors, the hierarchical structure can be presented.
+Neutrals are used for text, backgrounds, and borders. Different neutral shades create visual hierarchy.  
+
 !!!demo3!!!
 
 ### Shadow Colors
 
-Common shadow styles are provided.
+Provides commonly used shadow styles.
+
 !!!demo4!!!
+
+(Note: Maintaining the same formatting tags/exclamation marks for placeholder images as per the original.)

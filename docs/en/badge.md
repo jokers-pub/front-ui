@@ -1,37 +1,45 @@
-## Badge
+## Badge  
 
-A numeric or status mark that appears next to buttons or icons.
+A numeric or status indicator displayed next to buttons or icons.
 
-### Basic Usage
+### Basic Usage  
 
-Displays the number of new messages.
-Define the `value` attribute, which accepts either a `Number` or a `String`.
-!!!demo1!!!
+Displays the count of new messages.  
 
-### Maximum Value
+Define the `value` property, which accepts a `Number` or `String`.  
 
-You can customize the maximum value.
-Defined by the `max` attribute, which accepts a `Number`. Note that it only takes effect when `value` is of type `Number`.
-!!!demo2!!!
+!!!demo1!!!  
 
-### Custom Content
+### Maximum Value  
 
-It can display text content other than numbers.
-When `value` is defined as a `String` type, it can be used to display custom text.
-!!!demo3!!!
+Allows customization of the maximum value.  
 
-### Red Dot
+The `max` property defines the maximum value, accepting a `Number`. Note that it only takes effect when `value` is of type `Number`.  
 
-Marks the content that needs attention in the form of a red dot.
-In addition to numbers, set the `is-dot` attribute, which accepts a `Boolean`.
-!!!demo4!!!
+!!!demo2!!!  
 
-### Attributes
+### Custom Content  
 
-| Parameter | Description                                                                                                      | Type          | Optional Values                             | Default Value |
-| --------- | ---------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------- | ------------- |
-| value     | Display value                                                                                                    | string/number | -                                           | -             |
-| max       | Maximum value. If the value exceeds the maximum, it will display '{max}+'. The `value` must be of type `Number`. | number        | -                                           | -             |
-| isDot     | Small red dot                                                                                                    | boolean       | -                                           | false         |
-| hidden    | Hide the badge                                                                                                   | boolean       | -                                           | false         |
-| type      | Type                                                                                                             | string        | primary / success / warning / danger / info | -             |
+Supports displaying non-numeric text content.  
+
+When `value` is defined as a `String`, it can be used to display custom text.  
+
+!!!demo3!!!  
+
+### Red Dot  
+
+Displays a small red dot to highlight content requiring attention.  
+
+In addition to numeric values, set the `is-dot` property, which accepts a `Boolean`.  
+
+!!!demo4!!!  
+
+### Attributes  
+
+| Attribute | Description                                                  | Type           | Accepted Values                           | Default |  
+|-----------|--------------------------------------------------------------|----------------|------------------------------------------|---------|  
+| value     | Displayed value                                              | string/number  | -                                        | -       |  
+| max       | Maximum value. Exceeding this displays `{max}+`. Requires `value` to be a `Number` | number         | -                                        | -       |  
+| isDot     | Displays a small dot                                         | boolean        | -                                        | false   |  
+| hidden    | Hides the badge                                              | boolean        | -                                        | false   |  
+| type      | Badge type                                                  | string         | primary / success / warning / danger / info | -       |

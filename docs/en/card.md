@@ -1,42 +1,49 @@
-## Card
+## Card 
 
-Displays information aggregated within a card container.
+Displays grouped information within a container card.
 
 ### Basic Usage
 
-Contains a title, content, and actions.
-The Card component consists of a header and a body section. The header section requires an explicit named section distribution and is optional.
-!!! demo1!!!
+Includes title, content, and actions.
+
+The Card component consists of `header` and `body` sections. The `header` section requires a named slot for content distribution and is optional.
+
+!!! demo1 !!!
 
 ### Simple Card
 
-A card can have only a content area.
-!!! demo2!!!
+A card can contain only the content area.
 
-### With Image
+!!! demo2 !!!
 
-Allows for configuring and defining a more diverse content display.
-Configure the `body-style` property to customize the style of the body section. We also use the layout component.
-!!! demo3!!!
+### With Images
+
+Configure to display richer content.
+
+Use the `body-style` property to customize the style of the body section. Layout components are also utilized here.
+
+!!! demo3 !!!
 
 ### Card Shadow
 
-Allows for configuring the display of the shadow.
-Set the timing of the card shadow appearance through the `shadow` property: `always`, `hover`, or `never`.
-!!! demo4!!!
+Configure when to display the shadow.
+
+Set the shadow display timing via the `shadow` property: `always`, `hover`, or `never`.
+
+!!! demo4 !!!
 
 ### Attributes
 
-| Parameter | Description                                                                | Type   | Optional Values        | Default Value |
-| --------- | -------------------------------------------------------------------------- | ------ | ---------------------- | ------------- |
-| header    | Set the header, and it can also be passed as DOM through `sections#header` | string | —                      | —             |
-| bodyStyle | Set the style of the body                                                  | object | —                      | -             |
-| shadow    | Set the timing of shadow display                                           | string | always / hover / never | always        |
-| class     | Set the card class name                                                    | string | —                      | -             |
+| Attribute | Description | Type | Accepted Values | Default |
+| --------- | ----------- | ---- | --------------- | ------- |
+| header    | Sets the header, or pass DOM content via `slot#header` | string | — | — |
+| bodyStyle | Customizes the body section's style | object | — | - |
+| shadow    | Configures when shadow is displayed | string | always / hover / never | always |
+| class     | Adds custom CSS class name | string | — | - |
 
-### Sections
+### Slots
 
-| Name    | Description       |
-| ------- | ----------------- |
+| Name | Description |
+| ---- | ----------- |
 | default | Content area slot |
-| header  | Header area slot  |
+| header  | Header area slot |

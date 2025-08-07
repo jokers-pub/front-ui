@@ -1,6 +1,6 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Descriptions</h2>
+        <h2>Descriptions List</h2>
         <p>Displays multiple fields in a list format.</p>
         <h3>Basic Usage</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
@@ -178,63 +178,63 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Valid Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class styles</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>border</td>
-                    <td>Whether to have a border</td>
+                    <td>Whether to display a border</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>column</td>
-                    <td>The number of Descriptions Items in one row</td>
+                    <td>Number of Descriptions Items per row</td>
                     <td>number</td>
                     <td>-</td>
                     <td>3</td>
                 </tr>
                 <tr>
                     <td>direction</td>
-                    <td>The arrangement direction</td>
+                    <td>Arrangement direction</td>
                     <td>string</td>
                     <td>vertical / horizontal</td>
                     <td>horizontal</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>The size of the list</td>
+                    <td>Size of the list</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>title</td>
-                    <td>The title text, displayed in the upper-left corner</td>
+                    <td>Title text, displays in the top-left</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>extra</td>
-                    <td>The operation area text, displayed in the upper-right corner</td>
+                    <td>Action area text, displays in the top-right</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>colon</td>
-                    <td>Whether to display a colon</td>
+                    <td>Whether to show a colon</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
@@ -255,21 +255,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>labelStyle</td>
-                    <td>Custom label style</td>
+                    <td>Custom label styles</td>
                     <td>object</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>contentStyle</td>
-                    <td>Custom content style</td>
+                    <td>Custom content styles</td>
                     <td>object</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Descriptions Sections</h3>
+        <h3>Descriptions Section</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -280,11 +280,11 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>title</td>
-                    <td>Customize the title, displayed in the upper-left corner</td>
+                    <td>Custom title, displays in the top-left</td>
                 </tr>
                 <tr>
                     <td>extra</td>
-                    <td>Customize the operation area, displayed in the upper-right corner</td>
+                    <td>Custom action area, displays in the top-right</td>
                 </tr>
             </tbody>
         </table>
@@ -295,8 +295,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Valid Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -309,7 +309,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>span</td>
-                    <td>The number of columns</td>
+                    <td>Number of columns</td>
                     <td>number</td>
                     <td>-</td>
                     <td>1</td>
@@ -330,21 +330,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>labelStyle</td>
-                    <td>Custom label style</td>
+                    <td>Custom label styles</td>
                     <td>object</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>contentStyle</td>
-                    <td>Custom content style</td>
+                    <td>Custom content styles</td>
                     <td>object</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Descriptions Item Sections</h3>
+        <h3>Descriptions Item Section</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -355,7 +355,7 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>label</td>
-                    <td>Customize the label text</td>
+                    <td>Custom label text</td>
                 </tr>
             </tbody>
         </table>

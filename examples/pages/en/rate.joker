@@ -1,16 +1,18 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Rate</h2>
+        <h2>Rate Rating</h2>
         <p>Rating component</p>
         <h3>Basic Usage</h3>
         <p>
-            By default, the rating is divided into three levels. You can use an array of colors to classify scores and emotional tendencies (by default, no color distinction is made). The colors corresponding to the three levels are set through the
+            The rating is divided into three levels by default. You can use the
             <code>colors</code>
-            attribute, and the two thresholds corresponding to them are set through
+            array to grade the score and its sentiment (colors are not distinguished by default). The colors corresponding to the three levels are set using the
+            <code>colors</code>
+            attribute, while their thresholds are defined by
             <code>low-threshold</code>
             and
             <code>high-threshold</code>
-            . You can also customize the segments by passing in a color object, where the key is the boundary value of the segment and the value is the corresponding color.
+            . You can also customize segments by passing a color object, where the keys are the segment boundaries and the values are their corresponding colors.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -47,11 +49,11 @@
         <p>
             Use auxiliary text to directly express the corresponding score. Setting the
             <code>show-text</code>
-            attribute for the component will display auxiliary text on the right. You can specify the corresponding auxiliary text for each score value by setting
+            property for the component will display auxiliary text on the right. The
             <code>texts</code>
-            .
+            property can be used to specify auxiliary text for each score.
             <code>texts</code>
-            is an array with a length equal to the maximum value
+            should be an array with a length equal to the maximum value
             <code>max</code>
             .
         </p>
@@ -88,11 +90,11 @@
         </DemoContainer>
         <h3>Custom Icon</h3>
         <p>
-            When there are multiple levels of evaluation, different types of icons can be used to distinguish rating levels. Setting the
+            When there are multiple levels of ratings, different types of icons can be used to distinguish between them. The
             <code>icon-classes</code>
-            attribute can customize the icons for different segments. If an array is passed in, it has 3 elements, which are the class names corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding class name. This example also uses
+            attribute allows customization of icons for different segments. If an array is passed, it should contain three elements corresponding to the class names for the three segments. If an object is passed, segments can be customized, where the keys are the segment boundaries and the values are the corresponding class names. This example also uses
             <code>void-icon-class</code>
-            to specify the class name of the unselected icon.
+            to specify the class name for unselected icons.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -104,11 +106,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Half-star</h3>
+        <h3>Half-Star</h3>
         <p>
-            You can set the
+            Enable half-star functionality by setting the
             <code>allowHalf</code>
-            attribute to enable the half-star function.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -116,13 +118,13 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Read-only</h3>
+        <h3>Read-Only</h3>
         <p>
-            Read-only ratings are used to display scores. Half-stars are allowed. Setting the
+            A read-only rating is used to display scores and allows half-stars. Setting the
             <code>disabled</code>
-            attribute for the component means the component is read-only and supports decimal scores. At this time, if
+            property indicates the component is read-only and supports decimal scores. If
             <code>show-score</code>
-            is set, the current score will be displayed on the right.
+            is enabled, the current score will be displayed on the right.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -139,11 +141,11 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -156,10 +158,10 @@
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class for styling</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>max</td>
@@ -184,14 +186,16 @@
                 </tr>
                 <tr>
                     <td>low-threshold</td>
-                    <td>The boundary value between low and medium scores. The value itself is classified as low</td>
+                    <td>Threshold between low and medium scores, where the value itself falls into the low segment</td>
                     <td>number</td>
                     <td>—</td>
                     <td>2</td>
                 </tr>
                 <tr>
                     <td>high-threshold</td>
-                    <td>The boundary value between high and medium scores. The value itself is classified as high</td>
+                    <td>
+                        Threshold between medium and high scores, where the value itself falls into the high segment
+                    </td>
                     <td>number</td>
                     <td>—</td>
                     <td>4</td>
@@ -199,7 +203,7 @@
                 <tr>
                     <td>colors</td>
                     <td>
-                        The colors of the icon. If an array is passed in, it has 3 elements, which are the colors corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding color
+                        Colors for the icons. If an array is passed, it should contain three elements for the three segments. If an object is passed, segments can be customized, where the keys are the segment boundaries and the values are the corresponding colors.
                     </td>
                     <td>array/object</td>
                     <td>—</td>
@@ -207,14 +211,14 @@
                 </tr>
                 <tr>
                     <td>void-color</td>
-                    <td>The color of the unselected icon</td>
+                    <td>Color for unselected icons</td>
                     <td>string</td>
                     <td>—</td>
                     <td>#C6D1DE</td>
                 </tr>
                 <tr>
                     <td>disabled-void-color</td>
-                    <td>The color of the unselected icon in read-only mode</td>
+                    <td>Color for unselected icons in read-only mode</td>
                     <td>string</td>
                     <td>—</td>
                     <td>#EFF2F7</td>
@@ -222,7 +226,7 @@
                 <tr>
                     <td>icon-classes</td>
                     <td>
-                        The class names of the icon. If an array is passed in, it has 3 elements, which are the class names corresponding to the 3 segments; if an object is passed in, the segments can be customized, with the key being the boundary value of the segment and the value being the corresponding class name
+                        Class names for the icons. If an array is passed, it should contain three elements for the three segments. If an object is passed, segments can be customized, where the keys are the segment boundaries and the values are the corresponding class names.
                     </td>
                     <td>array/object</td>
                     <td>—</td>
@@ -230,14 +234,14 @@
                 </tr>
                 <tr>
                     <td>void-icon-class</td>
-                    <td>The class name of the unselected icon</td>
+                    <td>Class name for unselected icons</td>
                     <td>string</td>
                     <td>—</td>
                     <td>jk-icon-star-off</td>
                 </tr>
                 <tr>
                     <td>disabled-void-icon-class</td>
-                    <td>The class name of the unselected icon in read-only mode</td>
+                    <td>Class name for unselected icons in read-only mode</td>
                     <td>string</td>
                     <td>—</td>
                     <td>jk-icon-star-on</td>
@@ -247,7 +251,7 @@
                     <td>
                         Whether to display auxiliary text. If true, the text corresponding to the current score will be selected from the
                         <code>texts</code>
-                        array
+                        array.
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -260,7 +264,7 @@
                         <code>show-score</code>
                         and
                         <code>show-text</code>
-                        cannot be true at the same time
+                        cannot both be true.
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -268,21 +272,21 @@
                 </tr>
                 <tr>
                     <td>text-color</td>
-                    <td>The color of the auxiliary text</td>
+                    <td>Color of the auxiliary text</td>
                     <td>string</td>
                     <td>—</td>
                     <td>#1F2D3D</td>
                 </tr>
                 <tr>
                     <td>texts</td>
-                    <td>The array of auxiliary texts</td>
+                    <td>Array of auxiliary texts</td>
                     <td>array</td>
                     <td>—</td>
                     <td>['Terrible', 'Disappointed', 'Average', 'Satisfied', 'Surprised']</td>
                 </tr>
                 <tr>
                     <td>score-template</td>
-                    <td>The template for score display</td>
+                    <td>Score display template</td>
                     <td>string</td>
                     <td>—</td>
                     <td>
@@ -303,8 +307,8 @@
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the score value changes</td>
-                    <td>The changed score value</td>
+                    <td>Triggered when the score changes</td>
+                    <td>The updated score value</td>
                 </tr>
             </tbody>
         </table>

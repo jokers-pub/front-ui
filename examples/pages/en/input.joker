@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Input</h2>
-        <p>Used to input characters via mouse or keyboard.</p>
+        <h2>Input Component</h2>
+        <p>Accepts text input via mouse or keyboard</p>
         <h3>Basic Usage</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -34,9 +34,9 @@ p {
         </DemoContainer>
         <h3>Disabled State</h3>
         <p>
-            Specify whether to disable the input component through the
+            Disable the input component using the
             <code>disabled</code>
-            attribute.
+            property
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -48,9 +48,9 @@ p {
         </DemoContainer>
         <h3>Clearable</h3>
         <p>
-            Adding the
+            Use the
             <code>clearable</code>
-            attribute gives you a clearable input box.
+            property to create an input with clear functionality
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -60,16 +60,16 @@ p {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Input Box with Icon</h3>
-        <p>Use an icon to mark the input type.</p>
+        <h3>Input with Icons</h3>
+        <p>Input with icon indicators</p>
         <p>
-            You can add icons to the front and end of the input component through the
+            Display icons at the beginning or end of input using the
             <code>prefix-icon</code>
             and
             <code>suffix-icon</code>
-            attributes, or you can place the icon through
+            properties. Icons can also be placed via the
             <code>section</code>
-            .
+            slot.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -102,12 +102,12 @@ p {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Composite Input Box</h3>
-        <p>It can have pre-or post-elements, usually labels or buttons.</p>
+        <h3>Composite Input</h3>
+        <p>Add prefix or suffix elements, typically labels or buttons</p>
         <p>
-            You can use
+            Use the
             <code>section</code>
-            to specify the pre-or post-content in the input.
+            slot to prepend or append content to the input.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -129,11 +129,11 @@ p {
 
 </code></pre>
         </DemoContainer>
-        <h3>Size</h3>
+        <h3>Sizes</h3>
         <p>
-            You can specify the size of the input box through the
+            Set input size via the
             <code>size</code>
-            attribute. Besides the default size, there are also three sizes: medium, small, and mini.
+            property. Options include medium, small and mini in addition to the default size.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -156,20 +156,16 @@ p {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Input Length Limit</h3>
+        <h3>Input Length Limits</h3>
         <p>
             <code>maxlength</code>
             and
             <code>minlength</code>
-            are native attributes used to limit the character length of the input box. The character length is counted by the length of the JavaScript string. For input boxes of type
-            <code>text</code>
-            or
-            <code>textarea</code>
-            , while using the
-            <code>maxlength</code>
-            attribute to limit the maximum input length, you can set the
+            are native attributes that limit input length, where length is calculated via JavaScript string length counting. For text/textarea inputs, enable the word count display using
             <code>show-word-limit</code>
-            attribute to display the word count.
+            when restricting max length with
+            <code>maxlength</code>
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -186,70 +182,70 @@ p {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>type</td>
-                    <td>Type</td>
+                    <td>Input type</td>
                     <td>string</td>
                     <td>
                         text,
                         <a
                             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types"
                             target="_blank">
-                            native input type values
+                            native input types
                         </a>
                     </td>
                     <td>text</td>
                 </tr>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
-                    <td>string / number</td>
+                    <td>Binding value</td>
+                    <td>string/number</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>maxlength</td>
-                    <td>Native attribute, maximum input length</td>
+                    <td>Native attribute, max input length</td>
                     <td>number</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>minlength</td>
-                    <td>Native attribute, minimum input length</td>
+                    <td>Native attribute, min input length</td>
                     <td>number</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>show-word-limit</td>
-                    <td>Whether to display the input word count</td>
+                    <td>Show word count</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder text of the input box</td>
+                    <td>Input placeholder</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>clearable</td>
-                    <td>Whether it is clearable</td>
+                    <td>Clearable</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -263,100 +259,100 @@ p {
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size of the input box</td>
+                    <td>Input size</td>
                     <td>string</td>
-                    <td>medium / small / mini</td>
+                    <td>medium/small/mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>prefix-icon</td>
-                    <td>Icon at the head of the input box</td>
+                    <td>Prefix icon</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>suffix-icon</td>
-                    <td>Icon at the end of the input box</td>
+                    <td>Suffix icon</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>autocomplete</td>
-                    <td>Native attribute, auto-complete</td>
+                    <td>Native autocomplete</td>
                     <td>string</td>
-                    <td>on, off</td>
+                    <td>on/off</td>
                     <td>off</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>Native attribute</td>
+                    <td>Native name</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>readonly</td>
-                    <td>Native attribute, whether it is read-only</td>
+                    <td>Readonly</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>autofocus</td>
-                    <td>Native attribute, auto-focus</td>
+                    <td>Autofocus</td>
                     <td>boolean</td>
-                    <td>true, false</td>
+                    <td>true/false</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The label text associated with the input box</td>
+                    <td>Associated label text</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>tabindex</td>
-                    <td>The tabindex of the input box</td>
+                    <td>Tab index</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>status-icon</td>
-                    <td>Whether to display the validation status</td>
+                    <td>Show validation icon</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Input Sections</h3>
+        <h3>Input Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>name</th>
+                    <th>Name</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>prefix</td>
-                    <td>Content at the head of the input box</td>
+                    <td>Content prepended to input</td>
                 </tr>
                 <tr>
                     <td>suffix</td>
-                    <td>Content at the end of the input box</td>
+                    <td>Content appended to input</td>
                 </tr>
                 <tr>
                     <td>prepend</td>
-                    <td>Pre-content of the input box</td>
+                    <td>Content placed before input</td>
                 </tr>
                 <tr>
                     <td>append</td>
-                    <td>Post-content of the input box</td>
+                    <td>Content placed after input</td>
                 </tr>
             </tbody>
         </table>
@@ -364,38 +360,38 @@ p {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
-                    <th>Callback Parameters</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>blur</td>
-                    <td>Triggered when the Input loses focus</td>
+                    <td>Triggers when input loses focus</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Triggered when the Input gains focus</td>
+                    <td>Triggers when input gets focus</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>change</td>
-                    <td>Triggered only when the input box loses focus or the user presses Enter</td>
+                    <td>Only triggers when input loses focus or user presses enter</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>input</td>
-                    <td>Triggered when the value of the Input changes</td>
+                    <td>Triggers when input value changes</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>clear</td>
                     <td>
-                        Triggered when clicking the clear button generated by the
+                        Triggers when clear button (via
                         <code>clearable</code>
-                        attribute
+                        ) is clicked
                     </td>
                     <td>VNode.Event</td>
                 </tr>
@@ -405,25 +401,25 @@ p {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Params</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input gain focus</td>
+                    <td>Focus the input</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>blur</td>
-                    <td>Make the input lose focus</td>
+                    <td>Blur the input</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>select</td>
-                    <td>Select the text in the input</td>
+                    <td>Select input text</td>
                     <td>—</td>
                 </tr>
             </tbody>

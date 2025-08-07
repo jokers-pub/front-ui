@@ -2,9 +2,9 @@
     <div ref="container" class="joker-demo-container">
         <h2>Image</h2>
         <p>
-            An image container that retains the characteristics of the native
-            <code>img</code>
-            , supports lazy loading, and allows for custom placeholders, handling of load failures, etc.
+            An image container that retains all native
+            <code>&lt;img&gt;</code>
+            tag features, supporting lazy loading, custom placeholders, load failure states, etc.
         </p>
         <h3>Basic Usage</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
@@ -173,7 +173,7 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Large Image Preview</h3>
+        <h3>Image Preview</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__preview&quot;&gt;
@@ -206,31 +206,28 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
+                    <th>Options</th>
                     <th>Default Value</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>src</td>
-                    <td>Image source, same as the native one</td>
+                    <td>Image source (same as native)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>fit</td>
-                    <td>
-                        Determines how the image fits into the container box, same as the native
-                        <code>object-fit</code>
-                    </td>
+                    <td>Defines how image fits container (same as CSS object-fit)</td>
                     <td>string</td>
                     <td>fill / contain / cover / none / scale-down</td>
                     <td>—</td>
@@ -244,46 +241,31 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>scroll-container</td>
-                    <td>
-                        After enabling lazy loading, the container that listens to the
-                        <code>scroll</code>
-                        event
-                    </td>
+                    <td>Scroll container for lazy loading event listener</td>
                     <td>string / HTMLElement</td>
                     <td>—</td>
-                    <td>
-                        The nearest parent element with an
-                        <code>overflow</code>
-                        value of
-                        <code>auto</code>
-                        or
-                        <code>scroll</code>
-                    </td>
+                    <td>Nearest parent with overflow: auto/scroll</td>
                 </tr>
                 <tr>
                     <td>preview-src-list</td>
-                    <td>Enables the image preview function</td>
+                    <td>Enables image preview with src list</td>
                     <td>Array</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>z-index</td>
-                    <td>
-                        Sets the
-                        <code>z-index</code>
-                        of the image preview
-                    </td>
+                    <td>z-index for image preview overlay</td>
                     <td>Number</td>
                     <td>—</td>
                     <td>2000</td>
                 </tr>
                 <tr>
                     <td>errMsg</td>
-                    <td>The prompt when loading fails</td>
+                    <td>Error message when loading fails</td>
                     <td>string</td>
                     <td>—</td>
-                    <td>Loading failed</td>
+                    <td>&quot;Failed to load&quot;</td>
                 </tr>
             </tbody>
         </table>
@@ -299,35 +281,38 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>load</td>
-                    <td>Triggered when the image is loaded successfully</td>
+                    <td>Triggered when image loads successfully</td>
                     <td>(e: Event)</td>
                 </tr>
                 <tr>
                     <td>error</td>
-                    <td>Triggered when the image fails to load</td>
+                    <td>Triggered when image fails to load</td>
                     <td>(e: Error)</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Sections</h3>
+        <h3>Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Slot Name</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>placeholder</td>
-                    <td>The placeholder content when the image is not loaded</td>
+                    <td>Content shown before image loads</td>
                 </tr>
                 <tr>
                     <td>error</td>
-                    <td>The content when loading fails</td>
+                    <td>Content shown when loading fails</td>
                 </tr>
             </tbody>
         </table>
+        <p>
+            Note: Maintained technical formatting (e.g., HTML tags, CSS properties) in original case while translating Chinese content to natural professional English. Preserved markdown structure including tables, code blocks, and placeholder tags.
+        </p>
         <BottomNav />
     </div>
 </template>

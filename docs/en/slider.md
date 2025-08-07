@@ -1,70 +1,70 @@
-## Slider
+## Slider Component  
 
-Select within a fixed range by dragging the slider.
+Use a slider to select values within a fixed range.  
 
-### Basic Usage
+### Basic Usage  
 
-When dragging the slider, display the current value. Customize the initial value of the slider by setting the bound value.
+Display the current value while dragging the slider. Customize the initial value by binding it to a variable.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Discrete Values
+### Discrete Values  
 
-Options can be discrete. Changing the value of `step` can change the step size. Setting the `show-stops` property can display breakpoints.
+Options can be discrete. Adjust the `step` property to change the step size. Enable the `show-stops` attribute to display breakpoints.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### With Input Box
+### With Input Box  
 
-Set the precise value through the input box. Setting the `show-input` property will display an input box on the right.
+Set precise values via an input box. Enable the `show-input` property to display an input box on the right.  
 
-> When `range` or `show-input` is set, the `show-input` property will not take effect.
+> When `range` or `show-input` is enabled, the `show-input` property will not take effect.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Range Selection
+### Range Selection  
 
-Supports selecting a certain numerical range. Setting `range` enables range selection. At this time, the bound value is an array, and its elements are the minimum and maximum boundary values respectively.
+Supports selecting a value range. Enable `range` to activate range selection, where the bound value becomes an array containing the minimum and maximum boundary values.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Vertical Mode
+### Vertical Mode  
 
-Setting `vertical` can make the Slider in vertical mode. At this time, the `height` property must be set.
+Set `vertical` to transform the slider into vertical mode. The `height` attribute must be specified in this case.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Display Marks
+### Display Markers  
 
-Setting the `marks` property can display marks.
+Use the `marks` property to display markers.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter           | Description                                                                                                                                       | Type               | Optional Values               | Default Value |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ----------------------------- | ------------- |
-| value               | Value                                                                                                                                             | number or number[] | —                             | 0             |
-| class               | Custom class style                                                                                                                                | string             | -                             | -             |
-| min                 | Minimum value                                                                                                                                     | number             | —                             | 0             |
-| max                 | Maximum value                                                                                                                                     | number             | —                             | 100           |
-| disabled            | Whether to disable                                                                                                                                | boolean            | —                             | false         |
-| step                | Step size                                                                                                                                         | number             | —                             | 1             |
-| show-input          | Whether to display the input box, only valid in non-range selection                                                                               | boolean            | —                             | false         |
-| show-input-controls | Whether to display the control buttons of the input box when the input box is displayed                                                           | boolean            | —                             | true          |
-| input-size          | The size of the input box, please refer to the input API for details                                                                              | string             | large / medium / small / mini | small         |
-| show-stops          | Whether to display breakpoints                                                                                                                    | boolean            | —                             | false         |
-| show-tooltip        | Whether to display the tooltip                                                                                                                    | boolean            | —                             | true          |
-| format-tooltip      | Format the tooltip message                                                                                                                        | function(value)    | —                             | —             |
-| range               | Whether it is range selection                                                                                                                     | boolean            | —                             | false         |
-| vertical            | Whether it is in vertical mode                                                                                                                    | boolean            | —                             | false         |
-| height              | The height of the Slider, required in vertical mode                                                                                               | string             | —                             | —             |
-| label               | Screen reader label                                                                                                                               | string             | —                             | —             |
-| marks               | Marks. The type of key must be number and the value should be within the closed interval `[min, max]`. Each mark can be set with a separate style | object             | —                             | —             |
+| Attribute         | Description                                                                                     | Type                  | Accepted Values                | Default  |
+| ----------------- | ---------------------------------------------------------------------------------------------- | --------------------- | ------------------------------ | -------- |
+| value             | The slider value                                                                               | number / number[]     | —                              | 0        |
+| class             | Custom CSS class                                                                               | string                | —                              | —        |
+| min               | Minimum value                                                                                  | number                | —                              | 0        |
+| max               | Maximum value                                                                                  | number                | —                              | 100      |
+| disabled          | Whether the slider is disabled                                                                 | boolean               | —                              | false    |
+| step              | Step size                                                                                      | number                | —                              | 1        |
+| show-input        | Display an input box (only effective in non-range mode)                                        | boolean               | —                              | false    |
+| show-input-controls | Whether to show control buttons for the input box (when enabled)                          | boolean               | —                              | true     |
+| input-size        | Input box size; refer to the input component's API for details                                 | string                | large / medium / small / mini  | small    |
+| show-stops        | Display breakpoints                                                                            | boolean               | —                              | false    |
+| show-tooltip      | Display tooltip                                                                                | boolean               | —                              | true     |
+| format-tooltip    | Format tooltip message                                                                         | function(value)       | —                              | —        |
+| range             | Enable range selection                                                                         | boolean               | —                              | false    |
+| vertical          | Enable vertical mode                                                                           | boolean               | —                              | false    |
+| height            | Slider height (required in vertical mode)                                                      | string                | —                              | —        |
+| label             | Screen reader label                                                                            | string                | —                              | —        |
+| marks             | Markers (keys must be numbers within `[min, max]`; each marker can have custom styling)        | object                | —                              | —        |
 
-### Events
+### Events  
 
-| Event Name | Description                                                                                                     | Callback Parameters |
-| ---------- | --------------------------------------------------------------------------------------------------------------- | ------------------- |
-| change     | Triggered when the value changes (when dragging with the mouse, it is only triggered after releasing the mouse) | The changed value   |
-| input      | This event overrides the trigger timing of `change`. `input` will also be triggered when the slider is dragged  | The changed value   |
+| Event Name | Description                                                                  | Callback Parameters      |  
+| ---------- | ---------------------------------------------------------------------------- | ------------------------ |  
+| change     | Triggered when the value changes (only after releasing the mouse when dragging) | Updated value           |  
+| input      | Fires continuously while dragging the slider (overrides `change` timing)     | Updated value           |

@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Textarea</h2>
-        <p>Used to input multi-line text information.</p>
+        <h2>Textarea Input Field</h2>
+        <p>Used for inputting multi-line text information</p>
         <h3>Basic Usage</h3>
         <p>
-            The height of the textarea can be controlled by the
+            Text area height can be controlled via the
             <code>rows</code>
-            attribute.
+            property
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -19,13 +19,13 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Textarea with Auto-adaptive Text Height</h3>
+        <h3>Auto-Resizing Textarea</h3>
         <p>
             By setting the
             <code>autosize</code>
-            attribute, the height of the textarea can be automatically adjusted according to the text content. Moreover,
+            property, the height of the text area can automatically adjust based on the text content. Additionally,
             <code>autosize</code>
-            can also be set as an object to specify the minimum and maximum number of rows.
+            can be configured as an object to specify the minimum and maximum number of rows.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -43,11 +43,11 @@
             <code>maxlength</code>
             and
             <code>minlength</code>
-            are native attributes used to limit the character length of the input box, where the character length is counted by the length of the JavaScript string. While using the
+            are native attributes used to restrict the input length. The character count is calculated using JavaScript’s string length. When using the
             <code>maxlength</code>
-            attribute to limit the maximum input length, you can set the
+            attribute to limit the maximum input length, the
             <code>show-word-limit</code>
-            attribute to display the word count.
+            property can be set to display the character count.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -71,21 +71,21 @@
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Allowed Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>type</td>
-                    <td>Type</td>
+                    <td>Input type</td>
                     <td>string</td>
                     <td>
                         text,
                         <a
                             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types"
                             target="_blank">
-                            types of native input
+                            native input types
                         </a>
                     </td>
                     <td>text</td>
@@ -99,10 +99,10 @@
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>maxlength</td>
@@ -120,35 +120,35 @@
                 </tr>
                 <tr>
                     <td>show-word-limit</td>
-                    <td>Whether to display the input word count</td>
+                    <td>Whether to display character count</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder text of the input box</td>
+                    <td>Input placeholder text</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Disabled</td>
+                    <td>Disabled state</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size of the input box</td>
+                    <td>Input field size</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>rows</td>
-                    <td>Number of rows of the input box</td>
+                    <td>Number of text rows</td>
                     <td>number</td>
                     <td>—</td>
                     <td>1</td>
@@ -156,7 +156,10 @@
                 <tr>
                     <td>autosize</td>
                     <td>
-                        Auto-adapt to the content height. An object can be passed in, e.g.,{minRows: 2, maxRows: 6}
+                        Auto-resize height based on content. Can be an object, e.g.,
+                        <code>
+                            {minRows: 2, maxRows: 6}
+                        </code>
                     </td>
                     <td>boolean / object</td>
                     <td>—</td>
@@ -164,14 +167,14 @@
                 </tr>
                 <tr>
                     <td>resize</td>
-                    <td>Control whether it can be resized by the user</td>
+                    <td>Controls whether the textarea can be resized by the user</td>
                     <td>string</td>
                     <td>none, both, horizontal, vertical</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>autocomplete</td>
-                    <td>Native attribute, auto-completion</td>
+                    <td>Native attribute, auto-complete</td>
                     <td>string</td>
                     <td>on, off</td>
                     <td>off</td>
@@ -185,7 +188,7 @@
                 </tr>
                 <tr>
                     <td>readonly</td>
-                    <td>Native attribute, whether it is read-only</td>
+                    <td>Native attribute, read-only mode</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -199,17 +202,17 @@
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The label text associated with the input box</td>
+                    <td>Label text associated with the input field</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>tabindex</td>
-                    <td>The tabindex of the input box</td>
+                    <td>Input field tabindex</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
             </tbody>
         </table>
@@ -219,28 +222,28 @@
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameters</th>
+                    <th>Callback Parameter</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>blur</td>
-                    <td>Triggered when the Input loses focus</td>
+                    <td>Triggers when the Input loses focus</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Triggered when the Input gains focus</td>
+                    <td>Triggers when the Input gains focus</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>change</td>
-                    <td>Triggered only when the input box loses focus or the user presses Enter</td>
+                    <td>Triggers only when the Input loses focus or the user presses Enter</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>input</td>
-                    <td>Triggered when the value of the Input changes</td>
+                    <td>Triggers when the Input value changes</td>
                     <td>VNode.Event</td>
                 </tr>
             </tbody>
@@ -249,25 +252,25 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input gain focus</td>
+                    <td>Focuses the input field</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>blur</td>
-                    <td>Make the input lose focus</td>
+                    <td>Unfocuses the input field</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>select</td>
-                    <td>Select the text in the input</td>
+                    <td>Selects the text in the input</td>
                     <td>—</td>
                 </tr>
             </tbody>

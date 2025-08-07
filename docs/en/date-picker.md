@@ -1,79 +1,84 @@
-## DatePicker
+## DatePicker  
 
-Used to select or input dates.
+A component for selecting or inputting dates  
 
-### Selecting a Day
+### Date Selection  
 
-A basic date-selection control with the "day" as the basic unit.
-The basic unit is specified by the `type` attribute. Shortcut options need to be configured with `shortcuts`, and disabled dates are set through `disabledDate`. This attribute is of function type, and it determines whether a date is selectable by returning a `boolean` value.
-!!!demo1!!!
+Basic date selection control with "day" as the fundamental unit  
 
-### Other Date Units
+The basic unit is specified by the `type` property. Quick options can be configured via `shortcuts`. Disabled dates are set using `disabledDate`, which is a function that returns a `boolean` to determine availability.  
 
-By extending the basic date selection, weeks, months, and years can be selected.
-!!!demo2!!!
+!!!demo1!!!  
 
-### Selecting a Date Range
+### Other Date Units  
 
-A time range can be conveniently selected in one picker.
-!!!demo3!!!
+By extending the basic date picker, week, month, and year selections are supported.  
 
-### Date Format
+!!!demo2!!!  
 
-Use `format` to specify the format of the input box; use `value-format` to specify the format of the bound value.
-By default, the component accepts and returns `Date` objects. The following are the available formatting strings, taking January 2, 2017, 03:04:05 UTC as an example:
+### Date Range Selection  
 
-:::warning
-Please note the case. Internally, `dayjs` is used for time operations and formatting. For detailed format values, please refer to [dayjs](https://dayjs.fenxianglu.cn/).
-:::
+Conveniently select a date range within a single picker.  
 
-### Attributes
+!!!demo3!!!  
 
-| Parameter         | Description                                                                                 | Type                                                | Optional Values                                                     | Default Value |
-| ----------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------- | ------------- |
-| value             | Bound value                                                                                 | string(DatePicker) / Array<string>(DateRangePicker) | —                                                                   | —             |
-| class             | Custom class style                                                                          | string                                              | -                                                                   | -             |
-| readonly          | Completely read-only                                                                        | boolean                                             | —                                                                   | false         |
-| disabled          | Disabled                                                                                    | boolean                                             | —                                                                   | false         |
-| editable          | The text box is editable                                                                    | boolean                                             | —                                                                   | true          |
-| clearable         | Whether to display the clear button                                                         | boolean                                             | —                                                                   | true          |
-| size              | Size of the input box                                                                       | string                                              | large, small, mini                                                  | —             |
-| placeholder       | Placeholder content when not in range selection                                             | string                                              | —                                                                   | —             |
-| start-placeholder | Placeholder content for the start date in range selection                                   | string                                              | —                                                                   | —             |
-| end-placeholder   | Placeholder content for the end date in range selection                                     | string                                              | —                                                                   | —             |
-| type              | Display type                                                                                | string                                              | `year`/`month`/`date`/`week`/`datetime`/`daterange`/`datetimerange` | date          |
-| format            | The format displayed in the input box                                                       | string                                              | See [Date Format](https://dayjs.fenxianglu.cn/)                     | yyyy-MM-dd    |
-| range-separator   | Separator when selecting a range                                                            | string                                              | —                                                                   | '-'           |
-| default-value     | Optional, the time that is displayed by default when the picker is opened                   | string                                              | Follows value-format                                                | —             |
-| value-format      | Optional, the format of the bound value. If not specified, the bound value is a Date object | string                                              | See [Date Format](https://dayjs.fenxianglu.cn/)                     | —             |
-| unlink-panels     | Cancel the linkage between the two date panels in the range picker                          | boolean                                             | —                                                                   | false         |
-| prefix-icon       | The class name of the custom header icon                                                    | string                                              | —                                                                   | jk-icon-date  |
+### Date Format  
 
-### Picker Options
+Use `format` to specify the display format in the input box. Use `value-format` to control the bound value format.  
 
-| Parameter     | Description                                                                                                     | Type           | Optional Values | Default Value |
-| ------------- | --------------------------------------------------------------------------------------------------------------- | -------------- | --------------- | ------------- |
-| shortcuts     | Set shortcut options, need to pass in { text, onClick } object. For usage, refer to the demo or the table below | Object[]       | —               | —             |
-| disabledDate  | Set the disabled state, the parameter is the current date, and it is required to return a Boolean               | Function       | —               | —             |
-| cellClassName | Set the className of the date                                                                                   | Function(Date) | —               | —             |
+By default, the component accepts and returns `Date` objects. Here are the available format strings (using UTC January 2, 2017, 03:04:05 as an example):  
 
-### Shortcuts
+:::warning  
+**Case sensitivity note:** Internally, `dayjs` is used for date operations and formatting. For detailed format values, refer to [dayjs](https://dayjs.fenxianglu.cn/).  
+:::  
 
-| Parameter | Description                                                                                                               | Type     | Optional Values | Default Value |
-| --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | --------------- | ------------- |
-| text      | Title text                                                                                                                | string   | —               | —             |
-| onClick   | This method will pass in a callback. Executing the callback and passing in a new value will perform the setting operation | function | —               | —             |
+### Attributes  
 
-### Events
+| Parameter           | Description                                          | Type                                               | Accepted Values                                                       | Default        |  
+| ------------------- | ---------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------- | -------------- |  
+| value               | Binding value                                        | string(DatePicker) / Array<string>(DateRangePicker) | —                                                                     | —              |  
+| class               | Custom CSS class                                     | string                                             | —                                                                     | —              |  
+| readonly            | Fully read-only                                      | boolean                                            | —                                                                     | false          |  
+| disabled            | Disabled state                                       | boolean                                            | —                                                                     | false          |  
+| editable            | Allow text input in the field                        | boolean                                            | —                                                                     | true           |  
+| clearable           | Whether to show the clear button                     | boolean                                            | —                                                                     | true           |  
+| size                | Input field size                                     | string                                             | large, small, mini                                                    | —              |  
+| placeholder         | Placeholder for non-range selection                  | string                                             | —                                                                     | —              |  
+| start-placeholder   | Placeholder for the start date in range selection    | string                                             | —                                                                     | —              |  
+| end-placeholder     | Placeholder for the end date in range selection      | string                                             | —                                                                     | —              |  
+| type                | Display type                                         | string                                             | `year`/`month`/`date`/`week`/`datetime`/`daterange`/`datetimerange`   | date           |  
+| format              | Display format in input box                          | string                                             | Refer to [Date Format](https://dayjs.fenxianglu.cn/)                  | yyyy-MM-dd     |  
+| range-separator     | Separator in range selection mode                    | string                                             | —                                                                     | '-'            |  
+| default-value       | Optional, default displayed date when opened         | string                                             | Follows `value-format`                                                | —              |  
+| value-format        | Optional, bound value format. Defaults to `Date` obj | string                                             | Refer to [Date Format](https://dayjs.fenxianglu.cn/)                  | —              |  
+| unlink-panels       | Unlink two date panels in range mode                 | boolean                                            | —                                                                     | false          |  
+| prefix-icon         | Custom icon class for the header                     | string                                             | —                                                                     | jk-icon-date   |  
 
-| Event Name | Description                                         | Callback Parameters                                                                                              |
-| ---------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| change     | Triggered when the user confirms the selected value | The component-bound value. The format is consistent with the bound value and can be controlled by `value-format` |
-| blur       | Triggered when the input loses focus                | The component instance                                                                                           |
-| focus      | Triggered when the input gets focus                 | The component instance                                                                                           |
+### Picker Options  
 
-### Methods
+| Parameter        | Description                                                                 | Type            | Accepted Values | Default |  
+| ---------------- | --------------------------------------------------------------------------- | --------------- | --------------- | ------- |  
+| shortcuts        | Quick options configuration (requires `{ text, onClick }` objects). See demo or table below. | Object[]        | —               | —       |  
+| disabledDate     | Sets disabled state (receives current date, returns `boolean`)              | Function        | —               | —       |  
+| cellClassName   | Sets custom class for date cells                                            | Function(Date)  | —               | —       |  
 
-| Method Name | Description              | Parameter |
-| ----------- | ------------------------ | --------- |
-| focus       | Make the input get focus | —         |
+### Shortcuts  
+
+| Parameter | Description                                                                 | Type       | Accepted Values | Default |  
+| --------- | --------------------------------------------------------------------------- | ---------- | --------------- | ------- |  
+| text      | Title text                                                                  | string     | —               | —       |  
+| onClick   | Receives a callback; executing the callback with a new value applies it     | function   | —               | —       |  
+
+### Events  
+
+| Event Name   | Description                               | Callback Parameters                                      |  
+| ------------ | ----------------------------------------- | -------------------------------------------------------- |  
+| change       | Triggered when user confirms selection    | Bound value (format matches binding, affected by `value-format`) |  
+| blur         | Triggered when input loses focus          | Component instance                                       |  
+| focus        | Triggered when input gains focus          | Component instance                                       |  
+
+### Methods  
+
+| Method | Description                  | Parameters |  
+| ------ | ---------------------------- | ---------- |  
+| focus  | Focuses the input field      | —          |

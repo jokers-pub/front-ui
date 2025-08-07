@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Result</h2>
-        <p>Used to provide feedback on the user's operation results or abnormal states.</p>
+        <p>Used to provide feedback on user operations or exception states.</p>
         <h3>Basic Usage</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -51,8 +51,8 @@
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,7 +65,7 @@
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class styles</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>

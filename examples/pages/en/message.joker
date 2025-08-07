@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Message</h2>
+        <h2>Message Prompt</h2>
         <p>
-            It is often used for feedback prompts after active operations. The difference from Notification is that the latter is more used for passive reminders of system-level notifications.
+            Commonly used for feedback prompts after active operations. The key difference from Notification is that the latter is more often used for passive system-level alerts.
         </p>
         <h3>Basic Usage</h3>
         <p>
-            It appears from the top and disappears automatically after 3 seconds. In terms of configuration, it is very similar to Notification. Therefore, some options are not explained in detail here. There is a list of options at the end of the article. You can combine it with the documentation of Notification to understand them.
+            Appears from the top and automatically disappears after 3 seconds. The configuration is very similar to Notification, so some options won't be explained in detail here. A list of options is provided at the end, which can be understood by referring to Notification's documentation.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -25,17 +25,17 @@ export default class extends Component {
         </DemoContainer>
         <h3>Different States</h3>
         <p>
-            Used to display operation feedback of &quot;success, warning, message, error&quot; types. When more properties need to be customized, Message can also accept an object as a parameter. For example, setting the
+            Used to display feedback for operations with &quot;success, warning, message, error&quot; classifications. When more custom properties are needed, Message can also accept an object as a parameter. For example, setting the
             <code>type</code>
             field can define different states, with the default being
             <code>info</code>
-            . At this time, the body content is passed in as the value of
+            . In this case, the main content is passed via the
             <code>message</code>
-            .
+            value.
         </p>
         <blockquote>
             <p>
-                Currently, Message provides 4 commonly used calling methods, including
+                Currently, Message provides 4 commonly used invocation methods, including
                 <code>info</code>
                 ,
                 <code>success</code>
@@ -85,13 +85,13 @@ export default class extends Component {
         </DemoContainer>
         <h3>Closable</h3>
         <p>
-            You can add a close button. By default, the Message cannot be manually closed. If you need a manually closable Message, you can use the
+            A close button can be added. By default, Message cannot be manually closed. If a manually closable Message is needed, use the
             <code>showClose</code>
-            field. In addition, like Notification, Message has a controllable
+            field. Additionally, like Notification, Message has a controllable
             <code>duration</code>
             . Setting it to
             <code>0</code>
-            means it will not be automatically closed, with the default being 3000 milliseconds.
+            means it won't close automatically; the default is 3000 milliseconds.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -138,11 +138,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Text Centered</h3>
+        <h3>Centered Text</h3>
         <p>
             Use the
             <code>center</code>
-            property to center the text horizontally.
+            property to horizontally center the text.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -208,13 +208,13 @@ export default class extends Component {
             <p>
                 Although the
                 <code>message</code>
-                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                property supports passing HTML fragments, dynamically rendering arbitrary HTML on a website is highly dangerous as it can easily lead to
                 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
                 . Therefore, when
                 <code>useHtml</code>
-                is turned on, please ensure that the content of
+                is enabled, ensure the content of
                 <code>message</code>
-                is trustworthy.
+                is trusted.
                 <strong>Never</strong>
                 assign user-submitted content to the
                 <code>message</code>
@@ -225,7 +225,7 @@ export default class extends Component {
             <p>
                 Message provides the
                 <code>closeAll</code>
-                method to clear all messages at specific business times.
+                method, which can be used to clear all messages during specific business scenarios.
             </p>
         </blockquote>
         <h3>Options</h3>
@@ -235,8 +235,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -257,7 +257,7 @@ export default class extends Component {
                 <tr>
                     <td>iconClass</td>
                     <td>
-                        Class name of the custom icon, which will override
+                        Custom icon class name, overrides
                         <code>type</code>
                     </td>
                     <td>string</td>
@@ -267,9 +267,9 @@ export default class extends Component {
                 <tr>
                     <td>useHtml</td>
                     <td>
-                        Whether to treat the
+                        Whether to treat
                         <code>message</code>
-                        property as an HTML fragment
+                        as HTML fragment
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -284,28 +284,28 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>duration</td>
-                    <td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
+                    <td>Display duration in ms. 0 means no auto-close</td>
                     <td>number</td>
                     <td>—</td>
                     <td>3000</td>
                 </tr>
                 <tr>
                     <td>closable</td>
-                    <td>Whether to display the close button</td>
+                    <td>Whether to show a close button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>center</td>
-                    <td>Whether the text is centered</td>
+                    <td>Whether to center the text</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>offset</td>
-                    <td>The offset of the Message from the top of the window</td>
+                    <td>Offset from the top of the window</td>
                     <td>number</td>
                     <td>—</td>
                     <td>20</td>
@@ -316,21 +316,21 @@ export default class extends Component {
         <p>
             Calling
             <code>Message</code>
-            will return the current Message instance. If you need to manually close the instance, you can call its
+            returns the current Message instance. To manually close it, call its
             <code>close</code>
             method.
         </p>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>close</td>
-                    <td>Close the current Message</td>
+                    <td>Closes the current Message</td>
                 </tr>
             </tbody>
         </table>
@@ -338,14 +338,14 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>close</td>
-                    <td>Triggered when the Message is closed</td>
+                    <td>Triggered when Message is closed</td>
                 </tr>
             </tbody>
         </table>

@@ -1,18 +1,16 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Switch</h2>
-        <p>Represents the switch between two mutually opposing states, often used to trigger &quot;on/off&quot;.</p>
+        <p>
+            Represents a toggle between two mutually exclusive states, commonly used to trigger &quot;on/off&quot; actions.
+        </p>
         <h3>Basic Usage</h3>
         <p>
-            Bind
-            <code>value</code>
-            to a variable of the
-            <code>Boolean</code>
-            type. You can use the
+            Bind the value to a Boolean variable. Use the
             <code>activeColor</code>
             and
             <code>inactiveColor</code>
-            attributes to set the background color of the switch.
+            properties to set the background colors of the switch.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -41,11 +39,9 @@ export default class extends Component {
         <p>
             Set the
             <code>disabled</code>
-            attribute, which accepts a
-            <code>Boolean</code>
-            . Setting it to
+            property, which accepts a Boolean value. Setting it to
             <code>true</code>
-            disables the switch.
+            will disable the switch.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -65,7 +61,7 @@ export default class extends Component {
             <code>activeText</code>
             and
             <code>inactiveText</code>
-            attributes to set the text description of the switch.
+            properties to set the text descriptions for the switch states.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -102,17 +98,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Extended Value Types</h3>
         <p>
-            Set the
+            Configure the
             <code>activeValue</code>
             and
             <code>inactiveValue</code>
-            attributes, which can accept values of the
-            <code>Boolean</code>
-            ,
-            <code>String</code>
-            , or
-            <code>Number</code>
-            type.
+            properties to accept values of type Boolean, String, or Number.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -145,42 +135,42 @@ export default class extends Component {
 
 </code></pre>
         </DemoContainer>
-        <h3>Switch Attributes</h3>
+        <h3>Attributes</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether the switch is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class for styling</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>width</td>
-                    <td>The width of the switch (in pixels)</td>
+                    <td>Width of the switch (in pixels)</td>
                     <td>number</td>
                     <td>—</td>
                     <td>40</td>
@@ -188,18 +178,20 @@ export default class extends Component {
                 <tr>
                     <td>activeIconClass</td>
                     <td>
-                        The class name of the icon displayed when the switch is on. Setting this will ignore
+                        Class name for the icon displayed when the switch is on (overrides
                         <code>activeText</code>
+                        )
                     </td>
                     <td>string</td>
-                    <td></td>
+                    <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>inactiveIconClass</td>
                     <td>
-                        The class name of the icon displayed when the switch is off. Setting this will ignore
+                        Class name for the icon displayed when the switch is off (overrides
                         <code>inactiveText</code>
+                        )
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -207,60 +199,56 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>activeText</td>
-                    <td>The text description when the switch is on</td>
+                    <td>Text description when the switch is on</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>inactiveText</td>
-                    <td>The text description when the switch is off</td>
+                    <td>Text description when the switch is off</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>activeValue</td>
-                    <td>The value when the switch is on</td>
+                    <td>Value when the switch is on</td>
                     <td>boolean / string / number</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>inactiveValue</td>
-                    <td>The value when the switch is off</td>
+                    <td>Value when the switch is off</td>
                     <td>boolean / string / number</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>activeColor</td>
-                    <td>The background color when the switch is on</td>
+                    <td>Background color when the switch is on</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>inactiveColor</td>
-                    <td>The background color when the switch is off</td>
+                    <td>Background color when the switch is off</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>
-                        The
-                        <code>name</code>
-                        attribute corresponding to the switch
-                    </td>
+                    <td>Name attribute for the switch</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Switch Events</h3>
+        <h3>Events</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -272,24 +260,24 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The callback function when the state of the switch changes</td>
-                    <td>The changed value</td>
+                    <td>Callback function when switch state changes</td>
+                    <td>New value after change</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Switch Methods</h3>
+        <h3>Methods</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the Switch gain focus</td>
+                    <td>Focuses the Switch component</td>
                     <td>-</td>
                 </tr>
             </tbody>

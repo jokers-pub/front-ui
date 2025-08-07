@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>ColorPicker</h2>
-        <p>Used for color selection, supporting multiple formats.</p>
+        <p>A color picker component that supports multiple color formats.</p>
         <h3>Basic Usage</h3>
         <p>
-            Set the
+            Set the default color display using the
             <code>value</code>
-            variable to display the default value and obtain the selected value through the
+            variable and retrieve the selected color by accessing
             <code>value</code>
             .
         </p>
@@ -38,11 +38,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Select Transparency</h3>
+        <h3>Alpha Channel Selection</h3>
         <p>
-            The ColorPicker supports both ordinary colors and colors with an Alpha channel. You can control whether to support the selection of transparency through the
+            ColorPicker supports both standard colors and colors with Alpha channel (transparency). Toggle alpha channel selection using the
             <code>show-alpha</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -92,31 +92,31 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
@@ -130,14 +130,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>show-alpha</td>
-                    <td>Whether to support transparency selection</td>
+                    <td>Show alpha channel option</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>format</td>
-                    <td>The format for writing colors</td>
+                    <td>Color output format</td>
                     <td>string</td>
                     <td>hex / rgba</td>
                     <td>-</td>
@@ -156,8 +156,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the bound value changes</td>
-                    <td>The current value</td>
+                    <td>Triggered when value changes</td>
+                    <td>Current selected value</td>
                 </tr>
             </tbody>
         </table>

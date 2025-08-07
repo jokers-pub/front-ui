@@ -1,9 +1,9 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Breadcrumb</h2>
-        <p>Displays the page path for returning to previous pages.</p>
+        <p>Displays the page path for navigation back to previous pages.</p>
         <h3>Basic Usage</h3>
-        <p>Basic usage of the breadcrumb.</p>
+        <p>Basic implementation of breadcrumb navigation.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -29,6 +29,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Icon Separator</h3>
+        <p>Breadcrumb with icon-based separators.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -54,6 +55,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Link Functionality</h3>
+        <p>Breadcrumb with clickable links.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -95,7 +97,8 @@ export default class extends Component {
 
 </code></pre>
         </DemoContainer>
-        <h3>Include Icons</h3>
+        <h3>With Icons</h3>
+        <p>Breadcrumb containing icons.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -155,21 +158,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Acceptable Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>separator</td>
-                    <td>Separator</td>
+                    <td>Separator character</td>
                     <td>string</td>
                     <td>-</td>
                     <td>&quot;/&quot;</td>
                 </tr>
                 <tr>
                     <td>separatorClass</td>
-                    <td>Class for the icon separator</td>
+                    <td>Class for icon separator</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>

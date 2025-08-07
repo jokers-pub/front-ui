@@ -1,9 +1,9 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Collapse</h2>
-        <p>Opens or collapses to display content.</p>
+        <h2>Collapse Panel</h2>
+        <p>Expand/Collapse content display</p>
         <h3>Basic Usage</h3>
-        <p>Basic usage of the collapse panel.</p>
+        <p>Basic collapse panel implementation.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div&gt;
@@ -154,14 +154,14 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>The currently active panel (string in accordion mode, otherwise Array)</td>
+                    <td>Currently active panel (string in accordion mode, otherwise Array)</td>
                     <td>string / Array</td>
                     <td>-</td>
                     <td>-</td>
@@ -181,22 +181,16 @@ export default class extends Component {
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameter</th>
+                    <th>Callback Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>change</td>
                     <td>
-                        Triggered when the currently active panel changes (if in accordion mode, the parameter
-                        <code>activeNames</code>
-                        is of type string, otherwise Array)
+                        Triggered when the active panel changes (Returns active panel's name as string in accordion mode, otherwise Array)
                     </td>
-                    <td>
-                        Returns the
-                        <code>name</code>
-                        value of the active panel
-                    </td>
+                    <td>Active panel's name value</td>
                 </tr>
             </tbody>
         </table>
@@ -207,8 +201,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -221,14 +215,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>title</td>
-                    <td>Title</td>
+                    <td>Panel title</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether to disable</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>false</td>

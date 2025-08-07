@@ -1,114 +1,114 @@
 ## Select
 
-When there are too many options, use a dropdown menu to display and select content.
+When there are too many options, use a dropdown menu to display and select content.  
 
-### Basic Usage
+### Basic Usage  
+Basic single selection with broad applicability.  
+The `value` corresponds to the `value` property of the currently selected `jk-option`.  
 
-Basic single-selection widely applicable. The value of `value` is the `value` attribute value of the currently selected `jk-option`.
+!!!demo1!!!  
 
-!!!demo1!!!
+### Disabled Option  
 
-### With Disabled Options
+Set `disabled` to `true` in `jk-option` to disable the option.  
 
-In `jk-option`, set the `disabled` value to `true` to disable the option.
+!!!demo2!!!  
 
-!!!demo2!!!
+### Clearable Single Select  
 
-### Clearable Single-selection
+Includes a clear button to reset the selector to its initial state.  
 
-Contains a clear button to clear the selector to its initial state.
+Set the `clearable` attribute for `jk-select` to enable clearing. Note that `clearable` only applies to single selection.  
 
-Set the `clearable` attribute for `jk-select`, and the selector can be cleared. Note that the `clearable` attribute is only applicable to single-selection.
+!!!demo3!!!  
 
-!!!demo3!!!
+### Multiple Selection Dropdown  
 
-### Multiple-selection Dropdown
+Basic multiple selection with broad applicability, displaying selected items as Tags.  
 
-Basic multiple-selection widely applicable, with selected items displayed as Tags.
+!!!demo4!!!  
 
-!!!demo4!!!
+### Custom Template  
 
-### Custom Template
+Options can be customized.  
 
-You can customize the alternative options.
+!!!demo5!!!  
 
-!!!demo5!!!
+### Grouping  
 
-### Grouping
+Group options for better organization.  
 
-Display alternative options in groups.
+!!!demo6!!!  
 
-!!!demo6!!!
+### Searchable  
 
-### Searchable
+Quickly find options using search functionality.  
 
-You can quickly find options using the search function.
+Enable search functionality by adding the `filterable` attribute. By default, Select filters options whose `label` contains the input value. For custom search logic, provide a `filter-method`. `filter-method` is a `Function` called when the input changes, with the current input value as the parameter.  
 
-Adding the `filterable` attribute enables the search function. By default, Select will find all options whose `label` attribute contains the input value. If you want to use other search logic, you can achieve this by passing in a `filter-method`. `filter-method` is a `Function` that will be called when the input value changes, with the current input value as the parameter.
+!!!demo7!!!  
 
-!!!demo7!!!
+### Searchable Multiple Selection  
 
-### Multiple-selection and Searchable
+!!!demo8!!!  
 
-!!!demo8!!!
+### Sizes  
 
-### Size
+Specify the input size via the `size` attribute. Apart from the default size, medium, small, and mini are also available.  
 
-You can specify the size of the input box through the `size` attribute. Besides the default size, there are also three sizes: medium, small, and mini.
+!!!demo9!!!  
 
-!!!demo9!!!
+### Select Attributes  
 
-### Select Attributes
+| Parameter        | Description                                                                                                          | Type                      | Options            | Default    |  
+|------------------|----------------------------------------------------------------------------------------------------------------------|---------------------------|--------------------|------------|  
+| value            | Bound value                                                                                                          | boolean/string/number     | —                  | —          |  
+| class            | Custom CSS class                                                                                                     | string                    | —                  | —          |  
+| multiple         | Whether multiple selection is enabled                                                                                | boolean                   | —                  | false      |  
+| disabled         | Whether the select is disabled                                                                                       | boolean                   | —                  | false      |  
+| value-key        | Key name for unique identifier for value, required when binding to an object                                         | string                    | —                  | value      |  
+| size             | Input size                                                                                                           | string                    | medium/small/mini  | —          |  
+| clearable        | Whether the selection can be cleared                                                                                 | boolean                   | —                  | false      |  
+| multiple-limit   | Maximum number of selectable items in multiple mode; 0 means unlimited                                               | number                    | —                  | 0          |  
+| name             | Corresponds to the form’s `name` attribute                                                                           | string                    | —                  | —          |  
+| placeholder      | Placeholder text                                                                                                     | string                    | —                  | Select     |  
+| filterable       | Whether search is enabled                                                                                            | boolean                   | —                  | false      |  
+| filter-method    | Custom search method; takes the query text, selected label, and option value, returning `true/false` for visibility  | function                  | —                  | —          |  
+| remote           | Whether to use remote search                                                                                         | boolean                   | —                  | false      |  
+| remote-method    | Remote search method                                                                                                 | function                  | —                  | —          |  
+| loading          | Whether data is being fetched remotely                                                                               | boolean                   | —                  | false      |  
+| loading-text     | Text displayed during remote loading                                                                                 | string                    | —                  | Loading... |  
+| no-match-text    | Text displayed when no matches are found; can also use `slot="empty"`                                                | string                    | —                  | No matches |  
+| no-data-text     | Text displayed when no data is available; can also use `slot="empty"`                                                | string                    | —                  | No data    |  
+| fullWidth        | Whether the width is 100%                                                                                            | boolean                   | —                  | —          |  
+| allowCreate      | Whether new items can be created                                                                                     | boolean                   | —                  | —          |  
+| createText       | Prompt text for creating a new item                                                                                  | string                    | —                  | Create new value |  
 
-| Parameter      | Description                                                                                                                                                                                         | Type                      | Optional Values   | Default Value    |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------- | ---------------- |
-| value          | Bound value                                                                                                                                                                                         | boolean / string / number | —                 | —                |
-| class          | Custom class style                                                                                                                                                                                  | string                    | -                 | -                |
-| multiple       | Whether it is multiple-selection                                                                                                                                                                    | boolean                   | —                 | false            |
-| disabled       | Whether it is disabled                                                                                                                                                                              | boolean                   | —                 | false            |
-| value-key      | The key name used as the unique identifier of the value, required when the bound value is of object type                                                                                            | string                    | —                 | value            |
-| size           | Size of the input box                                                                                                                                                                               | string                    | medium/small/mini | —                |
-| clearable      | Whether the option can be cleared                                                                                                                                                                   | boolean                   | —                 | false            |
-| multiple-limit | The maximum number of items that the user can select in multiple-selection. If it is 0, there is no limit                                                                                           | number                    | —                 | 0                |
-| name           | Used to connect to the `name` attribute in the form                                                                                                                                                 | string                    | —                 | —                |
-| placeholder    | Placeholder                                                                                                                                                                                         | string                    | —                 | Please select    |
-| filterable     | Whether it is searchable                                                                                                                                                                            | boolean                   | —                 | false            |
-| filter-method  | Custom search method. When querying, the keyword, selected label, and option value will be passed into this method. This method returns `true`/`false` to determine whether the option is displayed | function                  | —                 | —                |
-| remote         | Whether it is a remote search                                                                                                                                                                       | boolean                   | —                 | false            |
-| remote-method  | Remote search method                                                                                                                                                                                | function                  | —                 | —                |
-| loading        | Whether data is being fetched remotely                                                                                                                                                              | boolean                   | —                 | false            |
-| loading-text   | The text displayed when loading remotely                                                                                                                                                            | string                    | —                 | Loading...       |
-| no-match-text  | The text displayed when there is no match for the search condition. It can also be set using the `section "empty"`                                                                                  | string                    | —                 | No matching data |
-| no-data-text   | The text displayed when there are no options. It can also be set using the `section "empty"`                                                                                                        | string                    | —                 | No data          |
-| fullWidth      | Whether the width is 100%                                                                                                                                                                           | boolean                   | —                 | -                |
-| allowCreate    | Whether to allow the creation of new items                                                                                                                                                          | boolean                   | —                 | -                |
-| createText     | Text prompt for creating new items                                                                                                                                                                  | string                    | —                 | Create new value |
+### Select Events  
 
-### Select Events
+| Event Name | Description                           | Callback Parameters       |  
+|------------|---------------------------------------|---------------------------|  
+| change     | Triggers when the selected value changes | Current selected value    |  
+| new        | Triggers when creating a new value in single select mode | Query value (input text) |  
 
-| Event Name | Description                                                       | Callback Parameters                           |
-| ---------- | ----------------------------------------------------------------- | --------------------------------------------- |
-| change     | Triggered when the selected value changes                         | The currently selected value                  |
-| new        | Triggered when clicking to create a new value in single-selection | The query value (input value in the text box) |
+### Select Slots  
 
-### Select Sections
+| Name    | Description           |  
+|---------|-----------------------|  
+| default | List of Option components |  
+| empty   | Displayed when no options are available |  
 
-| Name    | Description                    |
-| ------- | ------------------------------ |
-| default | List of Option components      |
-| empty   | List when there are no options |
+### Option Group Attributes  
 
-### Option Group Attributes
+| Parameter | Description                           | Type    | Options | Default |  
+|-----------|---------------------------------------|---------|---------|---------|  
+| label     | Group name                            | string  | —       | —       |  
+| disabled  | Whether all options in the group are disabled | boolean | —       | false   |  
 
-| Parameter | Description                                  | Type    | Optional Values | Default Value |
-| --------- | -------------------------------------------- | ------- | --------------- | ------------- |
-| label     | The group name of the grouping               | string  | —               | —             |
-| disabled  | Whether to disable all options in this group | boolean | —               | false         |
+### Option Attributes  
 
-### Option Attributes
-
-| Parameter | Description                                                               | Type                 | Optional Values | Default Value |
-| --------- | ------------------------------------------------------------------------- | -------------------- | --------------- | ------------- |
-| value     | The value of the option                                                   | string/number/object | —               | —             |
-| label     | The label of the option. If not set, it is the same as `value` by default | string/number        | —               | —             |
-| disabled  | Whether to disable this option                                            | boolean              | —               | false         |
+| Parameter | Description                                      | Type                 | Options | Default |  
+|-----------|--------------------------------------------------|----------------------|---------|---------|  
+| value     | Value of the option                              | string/number/object | —       | —       |  
+| label     | Label of the option; defaults to `value` if omitted | string/number        | —       | —       |  
+| disabled  | Whether the option is disabled                   | boolean              | —       | false   |

@@ -1,14 +1,14 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Dropdown</h2>
-        <p>Displays a dropdown menu through clicking or hovering.</p>
+        <p>A dropdown menu that appears upon clicking or hovering.</p>
         <h3>Basic Usage</h3>
         <p>
-            Use
+            Use the
             <code>Section</code>
-            to set the element that triggers the display of the dropdown menu. By default, it is activated for display through
+            component to define the trigger element for showing the dropdown menu. By default, it is activated via a
             <code>click</code>
-            .
+            event.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -41,11 +41,11 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Split-form</h3>
+        <h3>Split Button Style</h3>
         <p>
             Configure the
             <code>split-button</code>
-            attribute to make the element triggering the dropdown appear as a button group.
+            property to display the trigger element as a button group.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -83,8 +83,8 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Menu Style</h3>
-        <p>You can configure attributes such as the menu item's icon and division to display a more diverse menu.</p>
+        <h3>Menu Styling</h3>
+        <p>Enhance the dropdown menu by configuring properties such as icons and dividers for menu items.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-dropdown split-button&gt;
@@ -102,9 +102,9 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <p>
-            Of course, you can also fill the dropdown menu in a custom way instead of using the
+            You may also choose not to use the
             <code>jk-dropdown-item</code>
-            component.
+            component to populate the dropdown menu and instead customize the content.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -182,13 +182,13 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Disabled</h3>
+        <h3>Disabled State</h3>
         <p>
-            Achieve disabling by setting the
+            Set the
             <code>disabled</code>
-            attribute. This attribute will automatically change the button state in the
+            property to disable the dropdown. This property will automatically update the button state in
             <code>split-button</code>
-            type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.
+            mode. For non-split-button configurations, manage the disabled styling manually.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -206,18 +206,20 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Size</h3>
+        <h3>Sizing</h3>
         <p>
-            By setting the
-            <code>size</code>
-            dimension, you can change the size of the button in the
+            Adjust the button size in
             <code>split-button</code>
-            mode.
-            The available size types include:
+            mode using the
+            <code>size</code>
+            property.
+        </p>
+        <p>
+            Available size options:
             <code>medium</code>
             ,
             <code>small</code>
-            ,
+            , or
             <code>mini</code>
             .
         </p>
@@ -283,7 +285,7 @@ export default class extends Component {
             <code>dropdown-menu</code>
             can also be configured with the
             <code>size</code>
-            attribute to control the size of the dropdown menu.
+            property to control the dropdown menu dimensions.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -349,15 +351,15 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>type</td>
                     <td>
-                        Menu button type, same as the Button component (only valid when
+                        Button type, same as the Button component (effective only when
                         <code>split-button</code>
                         is true)
                     </td>
@@ -368,7 +370,7 @@ export default class extends Component {
                 <tr>
                     <td>size</td>
                     <td>
-                        Menu size, also takes effect on the trigger button when
+                        Menu size, also affects the trigger button when
                         <code>split-button</code>
                         is true
                     </td>
@@ -378,21 +380,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>split-button</td>
-                    <td>The dropdown-triggering element appears as a button group</td>
+                    <td>Displays the trigger element as a button group</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>trigger</td>
-                    <td>The behavior that triggers the dropdown</td>
+                    <td>Trigger method for showing the dropdown</td>
                     <td>string</td>
                     <td>hover, click</td>
                     <td>click</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether to disable the dropdown</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -405,18 +407,18 @@ export default class extends Component {
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameter</th>
+                    <th>Callback Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>click</td>
                     <td>
-                        Callback when clicking the left-hand button when
+                        Callback when clicking the left button in
                         <code>split-button</code>
-                        is true. If it is not
+                        mode (if not in
                         <code>split-button</code>
-                        , it represents the click bubbling handling event of the current internal element
+                        mode, it represents bubble event handling for internal element clicks)
                     </td>
                     <td>—</td>
                 </tr>
@@ -429,8 +431,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -452,7 +454,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>maxHeight</td>
-                    <td>max height</td>
+                    <td>Maximum height</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
@@ -466,21 +468,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>disabled</td>
-                    <td>Disabled</td>
+                    <td>Disabled state</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>divided</td>
-                    <td>Display a dividing line</td>
+                    <td>Displays a divider</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -500,18 +502,18 @@ export default class extends Component {
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameter</th>
+                    <th>Callback Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>open</td>
-                    <td>Menu opened</td>
+                    <td>Fires when menu opens</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>Menu closed</td>
+                    <td>Fires when menu closes</td>
                     <td>—</td>
                 </tr>
             </tbody>

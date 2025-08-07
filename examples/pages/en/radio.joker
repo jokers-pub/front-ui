@@ -1,17 +1,17 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Radio</h2>
-        <p>Used to make a single selection among a set of alternative options.</p>
+        <h2>Radio Button</h2>
+        <p>Single selection from a set of options</p>
         <h3>Basic Usage</h3>
         <p>
-            Since the options are visible by default, the number of options should not be too large. If there are too many options, it is recommended to use the Select selector.
+            Since options are visible by default, they should not be too numerous. If there are excessive options, consider using the Select component instead.
         </p>
         <p>
-            To use the Radio component, use the
+            To use the Radio component, bind a value to the
             <code>value</code>
-            attribute of Radio. The
+            property. The
             <code>value</code>
-            can be
+            can be of type
             <code>String</code>
             ,
             <code>Number</code>
@@ -43,15 +43,15 @@
 </code></pre>
         </DemoContainer>
         <h3>Disabled State</h3>
-        <p>The state where the radio button is unavailable.</p>
+        <p>The disabled state of a radio button.</p>
         <p>
-            Just set the
+            Simply set the
             <code>disabled</code>
-            attribute in the
+            attribute on the
             <code>jk-radio</code>
             element. It accepts a
             <code>Boolean</code>
-            , and
+            value, where
             <code>true</code>
             means disabled.
         </p>
@@ -63,27 +63,27 @@
 </code></pre>
         </DemoContainer>
         <h3>Radio Group</h3>
-        <p>Suitable for scenarios where a selection is made among multiple mutually exclusive options.</p>
+        <p>Used for selecting one mutually exclusive option from multiple choices.</p>
         <p>
-            Combining the parent element
+            Combine the parent element
             <code>jk-radio-group</code>
-            and the child element
+            with child elements
             <code>jk-radio</code>
-            can achieve a radio group. Bind
+            to create a radio group. Bind the
             <code>value</code>
-            on the
+            on
             <code>jk-radio-group</code>
-            and set
+            and set the
             <code>label</code>
-            on the
+            on
             <code>jk-radio</code>
-            . There is no need to bind variables to each
+            . There's no need to bind variables for each
             <code>jk-radio</code>
-            anymore. In addition, a
+            individually. Additionally, a
             <code>change</code>
-            event is provided to respond to changes in the selection, and it will pass in a parameter
+            event is provided to respond to selection changes, which passes the new
             <code>value</code>
-            .
+            as an argument.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -114,13 +114,13 @@ export default class extends Component {
         </DemoContainer>
         <h3>With Border</h3>
         <p>
-            Setting the
+            Set the
             <code>border</code>
-            attribute can render a radio button with a border. The
+            attribute to render radio buttons with borders. The
             <code>size</code>
-            attribute of
-            <code>jk-raido</code>
-            only takes effect when
+            attribute on
+            <code>jk-radio</code>
+            will only take effect when
             <code>border</code>
             is set.
         </p>
@@ -170,13 +170,13 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Button Style</h3>
-        <p>A radio combination with a button style.</p>
+        <p>Radio groups with button styling.</p>
         <p>
-            Just change the
+            Simply replace the
             <code>jk-radio</code>
-            element to the
+            element with
             <code>jk-radio-button</code>
-            element. In addition, Joker-UI also provides the
+            . Additionally, Joker-UI provides the
             <code>size</code>
             attribute.
         </p>
@@ -229,31 +229,31 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The value of Radio</td>
+                    <td>Value of the radio button</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
@@ -267,28 +267,36 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether it is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>border</td>
-                    <td>Whether to display the border</td>
+                    <td>Whether to show a border</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>The size of Radio, only valid when border is true</td>
+                    <td>
+                        Size of the radio button, only effective when
+                        <code>border</code>
+                        is true
+                    </td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>Native name attribute</td>
+                    <td>
+                        Native
+                        <code>name</code>
+                        attribute
+                    </td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -307,8 +315,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when selection changes</td>
+                    <td>The new value after change</td>
                 </tr>
             </tbody>
         </table>
@@ -316,45 +324,53 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The value of Radio</td>
+                    <td>Value of the radio button</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether it is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>The size of Radio, only valid when border is true</td>
+                    <td>
+                        Size of the radio button, only effective when
+                        <code>border</code>
+                        is true
+                    </td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>Native name attribute</td>
+                    <td>
+                        Native
+                        <code>name</code>
+                        attribute
+                    </td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -373,8 +389,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when selection changes</td>
+                    <td>The new value after change</td>
                 </tr>
             </tbody>
         </table>
@@ -382,31 +398,31 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>The size of the radio group, only valid for button-style Radios or Radios with borders</td>
+                    <td>Size of the radio group, only effective for button-style radios or those with borders</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Whether it is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -425,8 +441,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when selection changes</td>
+                    <td>The new value after change</td>
                 </tr>
             </tbody>
         </table>

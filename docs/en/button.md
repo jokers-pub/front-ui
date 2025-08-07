@@ -1,68 +1,81 @@
 ## Button
 
-Commonly used operation buttons.
+Commonly used action buttons.
 
 ### Basic Usage
 
-Basic usage of buttons.
-Use the `type`, `plain`, `round`, and `circle` attributes to define the style of the Button.
-!!! demo1!!!
+Basic button functionality.
+
+Use the `type`, `plain`, `round`, and `circle` attributes to define the Button's style.
+
+!!! demo1 !!!
 
 ### Disabled State
 
-The state where the button is unavailable.
-You can use the `disabled` attribute to define whether the button is available, which accepts a `Boolean` value.
-!!! demo2!!!
+Disabled state of the button.
+
+You can use the `disabled` attribute to define whether the button is available. It accepts a `Boolean` value.
+
+!!! demo2 !!!
 
 ### Text Button
 
 A button without borders and background color. Attribute: `link`
-!!! demo3!!!
+
+!!! demo3 !!!
 
 ### Icon Button
 
-Buttons with icons can enhance recognition (when there is text) or save space (when there is no text).
-To set an icon, simply specify the `icon` attribute. The list of available icons can be referred to in the Joker-UI icon component. If you want to set an icon on the right side of the text, you can use the `<i>` tag to use a custom icon.
+Buttons with icons can enhance recognition (with text) or save space (without text).
+
+To set an icon, simply specify the `icon` attribute. For the list of available icons, refer to Joker-UI's icon component. To place the icon on the right of the text, use the `i` tag for custom icons.
+
 !!!demo4!!!
 
 ### Button Group
 
-Appears in the form of a button group, often used for multiple similar operations.
+Appears as a group of buttons, commonly used for multiple similar actions.
+
 Use the `<jk-button-group>` tag to nest your buttons.
+
 !!!demo5!!!
 
-### Loading State
+### Loading
 
-Performs a data loading operation after clicking the button and displays the loading state on the button.
-To set it to the loading state, just set the `loading` attribute to `true`.
+Perform data loading after clicking the button and display the loading state on the button.
+
+To set the loading state, simply set the `loading` attribute to `true`.
+
 !!!demo6!!!
 
 ### Different Sizes
 
 The Button component provides three sizes in addition to the default value, allowing you to choose the appropriate button size for different scenarios.
-The sizes are: `medium`, `small`, `mini`, which can be configured by setting the `size` attribute.
+
+Sizes include: `medium`, `small`, and `mini`. Configure them by setting the `size` attribute.
+
 !!!demo7!!!
 
 ### Attributes
 
-| Parameter   | Description                           | Type    | Optional Values                             | Default Value |
-| ----------- | ------------------------------------- | ------- | ------------------------------------------- | ------------- |
-| size        | Size                                  | string  | medium / small / mini                       | —             |
-| type        | Type                                  | string  | primary / success / warning / danger / info | —             |
-| plain       | Whether it is a plain button          | boolean | —                                           | false         |
-| class       | Custom class style                    | string  | -                                           | -             |
-| full-width  | Whether the width is 100%             | boolean | -                                           | -             |
-| link        | Whether to use text display           | boolean | —                                           | false         |
-| round       | Whether it is a rounded-corner button | boolean | —                                           | false         |
-| circle      | Whether it is a circular button       | boolean | —                                           | false         |
-| loading     | Whether it is in the loading state    | boolean | —                                           | false         |
-| disabled    | Whether it is in the disabled state   | boolean | —                                           | false         |
-| icon        | Icon class name                       | string  | —                                           | —             |
-| autofocus   | Whether it is focused by default      | boolean | —                                           | false         |
-| native-type | Native type attribute                 | string  | button / submit / reset                     | button        |
+| Attribute     | Description                     | Type      | Valid Values                          | Default |
+| ------------- | ------------------------------- | --------- | ------------------------------------- | ------- |
+| size          | Size                            | string    | medium / small / mini                 | —       |
+| type          | Type                            | string    | primary / success / warning / danger / info | —       |
+| plain         | Whether to use plain style      | boolean   | —                                     | false   |
+| class         | Custom class name               | string    | -                                     | -       |
+| full-width    | Whether to set width to 100%    | boolean   | -                                     | -       |
+| link          | Whether to display as text      | boolean   | —                                     | false   |
+| round         | Whether to use round corners    | boolean   | —                                     | false   |
+| circle        | Whether to use circular shape   | boolean   | —                                     | false   |
+| loading       | Whether to show loading state   | boolean   | —                                     | false   |
+| disabled      | Whether to disable the button   | boolean   | —                                     | false   |
+| icon          | Icon class name                 | string    | —                                     | —       |
+| autofocus     | Whether to focus by default     | boolean   | —                                     | false   |
+| native-type   | Native type attribute           | string    | button / submit / reset               | button  |
 
 ### Events
 
-| Event Name | Description                                  | Parameter   |
-| ---------- | -------------------------------------------- | ----------- |
-| click      | The response event after clicking the button | VNode.Event |
+| Event Name | Description                   | Parameters       |
+| ---------- | ----------------------------- | ---------------- |
+| click      | Triggered on button click     | VNode.Event      |

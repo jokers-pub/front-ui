@@ -19,6 +19,15 @@
             </div>
         }
     </div>
+    <div class="edit-docs">
+        <jk-link
+            icon="jk-icon-edit"
+            type="primary"
+            target="_blank"
+            href="https://github.com/jokers-pub/front-ui/edit/main/docs/@(lang)@(currentRoutePath).md">
+            @(lang === "zh-CN" ? "Github上编辑此文档" : "Edit this document on Github")
+        </jk-link>
+    </div>
 </template>
 <script>
 import { Component } from "@joker.front/core";
@@ -30,14 +39,20 @@ export default class extends Component {
     menus: any[] = [];
     prev: any;
     next: any;
-
+    currentRoutePath = "";
     lang = getLang();
     created() {
-        let currentRoutePath = router.route.value.fullPath;
+        this.currentRoutePath = router.route.value.fullPath;
 
+        if (this.currentRoutePath.startsWith("/cn")) {
+            this.currentRoutePath = this.currentRoutePath.substring(3);
+        }
+        if (this.currentRoutePath.startsWith("/component")) {
+            this.currentRoutePath = this.currentRoutePath.substring("/component".length);
+        }
         this.setMenus();
 
-        let index = this.menus.findIndex((n) => n.path === currentRoutePath);
+        let index = this.menus.findIndex((n) => n.path === router.route.value.fullPath);
         if (index > -1) {
             this.prev = this.menus[index - 1];
         }
@@ -61,7 +76,7 @@ export default class extends Component {
     border-top: solid 1px var(--jk-border-color-base);
     margin-top: 50px;
     padding-top: 20px;
-    padding-bottom: 100px;
+    padding-bottom: 30px;
     font-size: 12px;
     color: var(--jk-color-text-secondary);
 
@@ -78,5 +93,9 @@ export default class extends Component {
     .right {
         text-align: right;
     }
+}
+.edit-docs {
+    font-size: 14px;
+    padding-bottom: 100px;
 }
 </style>

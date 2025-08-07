@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Loading</h2>
-        <p>Display animations while data is being loaded.</p>
-        <h3>Regional Display</h3>
+        <p>Displays animation effects during data loading.</p>
+        <h3>Area Display</h3>
         <p>
-            You can specify the display host of the loading by configuring the
+            You can specify the host element for loading display by configuring the
             <code>target</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -25,15 +25,15 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Full-screen Display</h3>
+        <h3>Fullscreen Display</h3>
         <p>
-            Set
+            Enable fullscreen Loading by setting
             <code>fullscreen</code>
-            or specify
+            or specifying
             <code>target</code>
             as
             <strong>body</strong>
-            to achieve full-screen loading.
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -58,23 +58,23 @@ export default class extends Component {
         </DemoContainer>
         <blockquote>
             <p>
-                Please note that there can only be one full-screen loading. If triggered repeatedly, it will return the previous uncompleted loading operation component.
+                Note: Only one fullscreen Loading can exist at a time. If triggered repeatedly, the previous incomplete Loading operation component will be returned.
             </p>
         </blockquote>
         <p>
-            It should be noted that full-screen loading called as a service is a singleton: if you call full-screen loading again before the previous full-screen loading is closed, a new loading instance will not be created, but the existing full-screen loading instance will be returned:
+            It is important to note that fullscreen Loading called as a service is a singleton: if another fullscreen Loading is called before the previous one is closed, it will not create a new Loading instance; instead, it will return the existing fullscreen Loading instance:
         </p>
-        <pre><code class="language-js">let loading1 = Loading({ fullscreen: true });
-let loading2 = Loading({ fullscreen: true });
-console.log(loading1 === loading2); // true
+        <pre><code class="language-js">let loading1 = Loading({ fullscreen: true });  
+let loading2 = Loading({ fullscreen: true });  
+console.log(loading1 === loading2); // true  
 </code></pre>
         <p>
-            At this time, calling the
+            At this point, calling the
             <code>close</code>
-            method of either of them can close this full-screen loading.
+            method of any of them will close the fullscreen Loading.
         </p>
         <h3>Customization</h3>
-        <p>You can customize the loading text, icon, and background color.</p>
+        <p>Customizable loading text, icon, and background color.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div ref=&quot;target&quot; class=&quot;container&quot;&gt;&lt;/div&gt;
@@ -114,32 +114,32 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>target</td>
                     <td>
-                        The DOM node that the Loading needs to cover. You can pass in a DOM object or a string; if a string is passed in, it will be used as a parameter to
+                        The DOM node that Loading needs to cover. Can be a DOM object or a string. If a string is passed, it will be used as input for
                         <code>document.querySelector</code>
-                        to obtain the corresponding DOM node.
+                        to retrieve the corresponding DOM node.
                     </td>
-                    <td>Element / string / VNode.Node; VNode nodes are supported</td>
+                    <td>Element / string / VNode.Node; supports VNode nodes</td>
                     <td>—</td>
                     <td>document.body</td>
                 </tr>
                 <tr>
                     <td>fullscreen</td>
-                    <td>Whether it is full-screen</td>
+                    <td>Whether to display in fullscreen mode</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>text</td>
-                    <td>The loading text displayed below the loading icon</td>
+                    <td>Loading text displayed below the loading icon</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -153,7 +153,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>customClass</td>
-                    <td>Custom class name of the Loading</td>
+                    <td>Custom class name for Loading</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -164,7 +164,7 @@ export default class extends Component {
         <p>
             Calling
             <code>Loading</code>
-            will return the current Loading instance. If you need to manually close the instance, you can call its
+            will return the current Loading instance. To manually close the instance, you can call its
             <code>close</code>
             method.
         </p>
@@ -178,7 +178,7 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>close</td>
-                    <td>Close the current Loading</td>
+                    <td>Closes the current Loading</td>
                 </tr>
             </tbody>
         </table>

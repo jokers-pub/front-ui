@@ -1,91 +1,91 @@
-## InputNumber
+## InputNumber Counter
 
-Only allows the input of standard numeric values, and the range can be defined.
+Only allows input of standard numeric values within a definable range.
 
 ### Basic Usage
 
-To use it, simply bind a variable to `value` in the `jk-number` element. The initial value of the variable is the default value.
+To use it, simply bind a variable to `value` in the `jk-number` element. The initial value of the variable will be the default value.
 
 !!!demo1!!!
 
 ### Disabled State
 
-The `disabled` attribute accepts a `Boolean`. Setting it to `true` disables the entire component. If you only need to control the value within a certain range, you can set the `min` and `max` attributes. When `min` and `max` are not set, the minimum value is 0.
+The `disabled` property accepts a `Boolean`. Setting it to `true` disables the entire component. If you only need to restrict values within a specific range, you can set the `min` and `max` properties. If `min` and `max` are not set, the minimum value defaults to 0.
 
 !!!demo2!!!
 
 ### Step
 
-Allows the definition of step-by-step control for incrementing and decrementing.
+Allows defining increment/decrement step control.
 
-Setting the `step` attribute can control the step size, which accepts a `Number`.
+Set the `step` property to control the step size. It accepts a `Number`.
 
 !!!demo3!!!
 
 ### Strict Step
 
-The `step-strictly` attribute accepts a `Boolean`. If this attribute is set to `true`, only multiples of the step can be entered.
+The `step-strictly` property accepts a `Boolean`. If set to `true`, only multiples of the step value can be entered.
 
 !!!demo4!!!
 
 ### Precision
 
-Setting the `precision` attribute can control the numerical precision, which accepts a `Number`.
+Set the `precision` property to control the numerical precision. It accepts a `Number`.
 
 !!!demo5!!!
 
-> The value of `precision` must be a non-negative integer and cannot be less than the number of decimal places of `step`.
+> The value of `precision` must be a non-negative integer and should not be less than the number of decimal places in `step`.
 
-### Size
+### Sizes
 
-Three additional sizes of numeric input boxes are provided: `medium`, `small`, and `mini`.
+Additional numeric input box sizes are available: `medium`, `small`, and `mini`.
 
 !!!demo6!!!
 
 ### Button Position
 
-Setting the `controls-position` attribute can control the position of the buttons.
+Set the `controls-position` property to specify the position of the buttons.
 
 !!!demo7!!!
 
 ### No Control Buttons
 
-Setting the `hidden-controls` attribute can control the position of the buttons.
+Set the `hidden-controls` property to hide the control buttons.
 
 !!!demo8!!!
 
 ### Attributes
 
-| Parameter         | Description                                   | Type    | Optional Values | Default Value |
-| ----------------- | --------------------------------------------- | ------- | --------------- | ------------- |
-| value             | Bound value                                   | number  | —               | —             |
-| class             | Custom class style                            | string  | -               | -             |
-| min               | Set the minimum value allowed by the counter  | number  | —               | -Infinity     |
-| max               | Set the maximum value allowed by the counter  | number  | —               | Infinity      |
-| step              | Counter step size                             | number  | —               | 1             |
-| step-strictly     | Whether only multiples of step can be entered | boolean | —               | false         |
-| precision         | Numerical precision                           | number  | —               | —             |
-| size              | Counter size                                  | string  | large, small    | —             |
-| disabled          | Whether to disable the counter                | boolean | —               | false         |
-| hidden-controls   | Whether to hide the control buttons           | boolean | —               | false         |
-| controls-position | Position of the control buttons               | string  | right           | -             |
-| name              | Native attribute                              | string  | —               | —             |
-| label             | The label text associated with the input box  | string  | —               | —             |
-| placeholder       | Default placeholder of the input box          | string  | -               | -             |
-| fullWidth         | Whether the width is 100%                     | boolean | -               | -             |
+| Parameter           | Description                        | Type     | Optional Values     | Default     |
+| ------------------- | ---------------------------------- | -------- | ------------------- | ----------- |
+| value               | Bound value                        | number   | —                   | —           |
+| class               | Custom class style                 | string   | -                   | -           |
+| min                 | Minimum allowed value              | number   | —                   | -Infinity   |
+| max                 | Maximum allowed value              | number   | —                   | Infinity    |
+| step                | Step size                          | number   | —                   | 1           |
+| step-strictly       | Whether to allow only step multiples | boolean  | —                   | false       |
+| precision           | Numerical precision                | number   | —                   | —           |
+| size                | Size of the counter                | string   | large, small        | —           |
+| disabled            | Whether the counter is disabled    | boolean  | —                   | false       |
+| hidden-controls     | Whether to hide control buttons    | boolean  | —                   | false       |
+| controls-position   | Position of control buttons        | string   | right               | -           |
+| name                | Native attribute                   | string   | —                   | —           |
+| label               | Label text associated with input   | string   | —                   | —           |
+| placeholder         | Default placeholder for input      | string   | -                   | -           |
+| fullWidth           | Whether to set width to 100%       | boolean  | -                   | -           |
 
 ### Events
 
-| Event Name | Description                                           | Callback Parameters    |
-| ---------- | ----------------------------------------------------- | ---------------------- |
-| change     | Triggered when the bound value is changed             | currentValue, oldValue |
-| blur       | Triggered when the Input in the component loses focus | VNode.Event            |
-| focus      | Triggered when the Input in the component gains focus | VNode.Event            |
+| Event Name | Description                          | Callback Parameters            |
+| ---------- | ------------------------------------ | ------------------------------ |
+| change     | Triggers when the bound value changes | currentValue, oldValue         |
+| blur       | Triggers when Input loses focus      | VNode.Event                    |
+| focus      | Triggers when Input gains focus      | VNode.Event                    |
 
 ### Methods
 
-| Method Name | Description                  | Parameter |
-| ----------- | ---------------------------- | --------- |
-| blur        | Make the input lose focus    | -         |
-| focus       | Make the input gain focus    | -         |
-| select      | Select the text in the input | —         |
+| Method   | Description                      | Parameters |
+| -------- | -------------------------------- | ---------- |
+| blur     | Makes input lose focus           | -          |
+| focus    | Makes input gain focus           | -          |
+| select   | Selects text in the input        | —          |

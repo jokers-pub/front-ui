@@ -1,19 +1,19 @@
-## Icon
+## Icon  
 
-Provides a set of commonly used icon collections.
+Provides a collection of commonly used icons.  
 
-### Usage
+### Usage  
 
-It can be used directly by setting the class name as `jk-icon-name`. For example:
+Simply apply the class name `jk-icon-name` to use the icons. For example:  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-You can also use the `jk-icon` component and use it by setting the `name` attribute. For example:
+Alternatively, you can use the `jk-icon` component by setting the `name` attribute. For example:  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Icon Collection
+### Icon Library  
 
-> Click on the icon to copy the `class` name.
+> Click on an icon to copy its `class` name.  
 
 !!!demo3!!!

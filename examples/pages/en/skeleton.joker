@@ -1,20 +1,20 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Skeleton</h2>
+        <h2>Skeleton Screen</h2>
         <p>
-            Set a skeleton screen in the position where content needs to be loaded. In some scenarios, it has a better visual effect than Loading.
+            Display skeleton placeholders during content loading for better visual experience than traditional loading indicators in certain scenarios.
         </p>
         <h3>Basic Usage</h3>
-        <p>The basic skeleton effect.</p>
+        <p>Basic skeleton screen effect.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-skeleton /&gt;
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>More Parameters</h3>
+        <h3>Additional Parameters</h3>
         <p>
-            You can configure the number of skeleton screen paragraphs to be closer to the real rendering effect. The first line will be rendered with a 33%-length paragraph head.
+            Configure the number of skeleton paragraphs to better simulate the actual rendering effect. The first line will render a paragraph header with 33% width.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -23,7 +23,7 @@
 </code></pre>
         </DemoContainer>
         <h3>Animation Effect</h3>
-        <p>Display the animation effect.</p>
+        <p>Enable animated loading effect.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-skeleton rows=&quot;6&quot; animated /&gt;
@@ -32,10 +32,10 @@
         </DemoContainer>
         <h3>Custom Styles</h3>
         <p>
-            The layout mode provided by Joker-UI sometimes does not meet the requirements. When you want to use your own defined template, you can set the template through a named section.
+            The layout patterns provided by Joker-UI may not always meet requirements. You can define custom templates by using named slots.
         </p>
         <p>
-            We provide different template units for use. For specific optional values, please refer to the API detailed description. When describing the template, it is recommended to be as close as possible to the real DOM structure to avoid jitter caused by the height difference of the DOM.
+            We provide different template units for use—refer to the API documentation for available options. When designing templates, aim to closely match the actual DOM structure to prevent layout shifts caused by height discrepancies.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">
@@ -57,9 +57,9 @@
         </DemoContainer>
         <h3>Loading State</h3>
         <p>
-            After the Loading is completed, we often need to display the real UI. You can control whether to display the real DOM through the value of
+            After loading completes, the actual UI typically needs to be displayed. Control the rendering of the real DOM using the
             <code>loading</code>
-            . Then, set the UI to be displayed after the loading is completed through the named section.
+            property, and use named slots to define the UI to be shown post-loading.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -98,16 +98,17 @@ export default class extends Component {
 
 </code></pre>
         </DemoContainer>
-        <h3>Rendering Multiple Data</h3>
+        <h3>Rendering Multiple Items</h3>
         <p>
-            Most of the time, the skeleton screen is used to render lists. When we need to render a fake UI while fetching data from the server. The
+            Skeleton screens are commonly used to render lists while waiting for server data. The
             <code>count</code>
-            attribute can be used to control how many fake data are rendered on the page.
+            property determines how many placeholder items are displayed.
         </p>
         <p>
-            Please note that try to keep the size of
+            <strong>Note:</strong>
+            Keep the
             <code>count</code>
-            to a minimum. Even for a fake UI, too many DOM elements will still cause performance problems, and it will also take longer (relatively) to destroy the skeleton screen.
+            value as low as possible. Even placeholder UI elements can impact performance if excessive, and a higher count may prolong teardown time.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -149,11 +150,11 @@ export default class extends Component {
 
 </code></pre>
         </DemoContainer>
-        <h3>Preventing Rendering Jitter</h3>
+        <h3>Preventing Rendering Flicker</h3>
         <p>
-            Sometimes, the API request returns very quickly. Often, just after the skeleton placeholder is rendered, the real data has already arrived, and the user's interface will flash suddenly. At this time, to avoid this situation, the
+            If API responses are extremely fast, the skeleton placeholder may briefly appear before real data loads, causing a flicker effect. Use the
             <code>throttle</code>
-            attribute is needed to solve this problem.
+            property to mitigate this issue.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -200,60 +201,56 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>animated</td>
-                    <td>Whether to use animation</td>
+                    <td>Whether to enable animation</td>
                     <td>boolean</td>
                     <td>true / false</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>count</td>
-                    <td>
-                        How many
-                        <code>template</code>
-                        to render. It is recommended to use the smallest possible number
-                    </td>
+                    <td>Number of template instances to render (keep low)</td>
                     <td>number</td>
                     <td>integer</td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <td>loading</td>
-                    <td>Whether to display the skeleton screen</td>
+                    <td>Whether to display skeleton placeholders</td>
                     <td>boolean</td>
                     <td>true / false</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>rows</td>
-                    <td>The number of skeleton screen paragraphs</td>
+                    <td>Number of skeleton paragraphs</td>
                     <td>number</td>
-                    <td>Positive integer</td>
+                    <td>positive integer</td>
                     <td>4</td>
                 </tr>
                 <tr>
                     <td>throttle</td>
-                    <td>The time to delay the rendering of the placeholder DOM, in milliseconds</td>
+                    <td>Delay (ms) before rendering placeholder DOM</td>
                     <td>number</td>
-                    <td>Positive integer</td>
+                    <td>positive integer</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>style</td>
-                    <td>In-line style sheet</td>
+                    <td>Inline CSS styles</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -267,35 +264,35 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>variant</td>
-                    <td>The style of the currently displayed placeholder element</td>
-                    <td>Enum(string)</td>
+                    <td>Placeholder element style</td>
+                    <td>Enum (string)</td>
                     <td>p / h1 / h3 / text / caption / button / image / circle / rect</td>
                     <td>text</td>
                 </tr>
                 <tr>
                     <td>style</td>
-                    <td>In-line style sheet</td>
+                    <td>Inline CSS styles</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Skeleton Sections</h3>
+        <h3>Skeleton Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -306,11 +303,11 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>Used to display the real UI</td>
+                    <td>Displays actual UI content</td>
                 </tr>
                 <tr>
                     <td>template</td>
-                    <td>Used to display the custom placeholder</td>
+                    <td>Displays custom placeholder UI</td>
                 </tr>
             </tbody>
         </table>

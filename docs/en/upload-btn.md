@@ -1,45 +1,45 @@
-## Upload Button
+## Upload Btn Component  
 
-Provides an interactive button for file selection.
+Provides file selection interaction via button.  
 
-### Basic Usage
+### Basic Usage  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Multiple File Upload
+### Multiple File Upload  
 
-Enable multi-file selection by configuring the `multiple` property.
+Enable multi-file selection by configuring the `multiple` property.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Limit Selection Types
+### File Type Restriction  
 
-You can limit the upload types by configuring the `mimeType` property. This property can accept values of type `string` or `string[]`.
+Restrict uploadable file types via the `mimeType` property, which accepts values of type `string` or `string[]`.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Limit File Size
+### File Size Limitation  
 
-Limit the maximum size of each file by configuring the `maxFileSize` property. The unit is **kb**.
+Configure the `maxFileSize` property to set the maximum file size per upload (unit: **kb**).  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter    | Description                                                                       | Type              | Optional Values | Default Value |
-| ------------ | --------------------------------------------------------------------------------- | ----------------- | --------------- | ------------- |
-| icon         | Button icon                                                                       | string            | —               | —             |
-| btnType      | Button type, corresponding to the `type` of `jk-button`                           | string            | -               | -             |
-| title        | Button text. If the `default` area is specified, setting this property is invalid | string            | —               | —             |
-| btnSize      | Button size, corresponding to the `size` of `jk-button`                           | string            | —               | —             |
-| disabled     | Whether to disable                                                                | boolean           | —               | false         |
-| multiple     | Whether to enable multi-selection                                                 | boolean           | —               | false         |
-| maxFileCount | Maximum number of uploads                                                         | number            | —               | -             |
-| mimeType     | Limit file types, wildcards are supported, e.g., **(image/\*)**                   | string / string[] | —               | —             |
-| maxFileSize  | Maximum size limit for a single file, unit is **kb**                              | number            | —               | -             |
+| Parameter    | Description | Type | Optional Values | Default |  
+| ----------- | ----------- | ---- | -------------- | ------- |  
+| icon        | Button icon | string | — | — |  
+| btnType     | Button type (corresponds to `jk-button`'s type) | string | - | - |  
+| title       | Button text (invalid if slot default is specified) | string | — | — |  
+| btnSize     | Button size (corresponds to `jk-button`'s size) | string | — | — |  
+| disabled    | Disabled state | boolean | — | false |  
+| multiple    | Enable multi-select | boolean | — | false |  
+| maxFileCount | Maximum number of uploads | number | — |  
+| mimeType    | Restrict file types (supports wildcards, e.g., `image/*`) | string / string[] | — | — |  
+| maxFileSize | Maximum file size per upload (unit: **kb**) | number | — |  
 
-### Events
+### Events  
 
-| Event Name | Description                  | Callback Parameters |
-| ---------- | ---------------------------- | ------------------- |
-| change     | Notification of value change | —                   |
+| Event Name | Description | Callback Parameters |  
+| --------- | ----------- | ------------------ |  
+| change    | Triggers on value change | — |

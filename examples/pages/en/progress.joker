@@ -1,14 +1,14 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Progress</h2>
-        <p>Used to show the operation progress, informing users of the current status and expectations.</p>
+        <h2>Progress Bar</h2>
+        <p>Used to display operation progress and inform users of current status and expectations.</p>
         <h3>Linear Progress Bar</h3>
         <p>
-            For the Progress component, setting the
+            The Progress component requires the
             <code>percentage</code>
-            attribute, which is required and must be between 0-100, represents the percentage corresponding to the progress bar. The text content of the progress bar can be specified through the
+            property, which represents the percentage of the progress bar. It must be a value between 0 and 100. The text content of the progress bar can be customized via the
             <code>format</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -43,16 +43,14 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Inner-displayed Percentage</h3>
+        <h3>Internal Percentage Display</h3>
+        <p>The percentage does not occupy additional space, making it suitable for scenarios like file uploads.</p>
         <p>
-            The percentage does not take up additional controls, which is suitable for scenarios such as file uploads.
-        </p>
-        <p>
-            For the Progress component, the height of the progress bar can be changed through the
+            The Progress component allows adjusting the height of the progress bar via the
             <code>stroke-width</code>
-            attribute, and the description of the progress bar can be placed inside the progress bar through the
+            property and placing the description text inside the bar using the
             <code>text-inside</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -83,11 +81,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Custom Color</h3>
         <p>
-            The color of the progress bar can be set through
+            The progress bar color can be set via the
             <code>color</code>
-            .
-            <code>color</code>
-            can accept color strings, functions, and arrays.
+            property, which accepts color strings, functions, or arrays.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -142,11 +138,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Circular Progress Bar</h3>
         <p>
-            The Progress component can use the
+            The Progress component supports circular progress bars by setting the
             <code>type</code>
-            attribute to specify the use of a circular progress bar. In the circular progress bar, the size can also be set through the
+            property. For circular progress bars, the size can be adjusted using the
             <code>width</code>
-            attribute.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -185,11 +181,11 @@ div {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Gauge-shaped Progress Bar</h3>
+        <h3>Dashboard-style Progress Bar</h3>
         <p>
-            Use the
+            A dashboard-style progress bar can be enabled via the
             <code>type</code>
-            attribute to specify the use of a gauge-shaped progress bar.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -237,11 +233,11 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -254,21 +250,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>type</td>
-                    <td>Progress bar type</td>
+                    <td>Type of progress bar</td>
                     <td>string</td>
                     <td>line/circle/dashboard</td>
                     <td>line</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class name for styling</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>strokeWidth</td>
-                    <td>The width of the progress bar, in px</td>
+                    <td>Width of the progress bar in px</td>
                     <td>number</td>
                     <td>—</td>
                     <td>6</td>
@@ -276,7 +272,9 @@ export default class extends Component {
                 <tr>
                     <td>textInside</td>
                     <td>
-                        The progress bar text is displayed inside the progress bar (only available when type = line)
+                        Display text inside the progress bar (only for
+                        <code>type=line</code>
+                        )
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -284,14 +282,18 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>status</td>
-                    <td>The current status of the progress bar</td>
+                    <td>Current status of the progress bar</td>
                     <td>string</td>
                     <td>success/exception/warning</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>color</td>
-                    <td>The background color of the progress bar (will override the status color)</td>
+                    <td>
+                        Background color of the progress bar (overrides
+                        <code>status</code>
+                        color)
+                    </td>
                     <td>string/function/array</td>
                     <td>—</td>
                     <td>''</td>
@@ -299,7 +301,9 @@ export default class extends Component {
                 <tr>
                     <td>width</td>
                     <td>
-                        The width of the circular progress bar canvas (only available when type = circle or dashboard)
+                        Canvas width for circular/dashboard progress bars (
+                        <code>type=circle/dashboard</code>
+                        )
                     </td>
                     <td>number</td>
                     <td>—</td>
@@ -307,35 +311,35 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>showText</td>
-                    <td>Whether to display the text content of the progress bar</td>
+                    <td>Whether to display progress text</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>strokeLinecap</td>
-                    <td>The shape of the two ends of the path for circle/dashboard types</td>
+                    <td>Shape of ends for circle/dashboard types</td>
                     <td>string</td>
                     <td>butt/round/square</td>
                     <td>round</td>
                 </tr>
                 <tr>
                     <td>format</td>
-                    <td>Specify the text content of the progress bar</td>
+                    <td>Custom text formatter function</td>
                     <td>function(percentage)</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>defineBackColor</td>
-                    <td>Specify the base color of the progress bar (supports hex format)</td>
+                    <td>Background color of the progress track (supports HEX format)</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>textColor</td>
-                    <td>Specify the font color of the progress bar (supports hex format)</td>
+                    <td>Text color of the progress bar (supports HEX format)</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>

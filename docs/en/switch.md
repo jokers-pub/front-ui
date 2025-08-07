@@ -1,57 +1,57 @@
-## Switch
+## Switch 
 
-Represents the switch between two mutually opposing states, often used to trigger "on/off".
+Represents a toggle between two mutually exclusive states, commonly used to trigger "on/off" actions.
 
 ### Basic Usage
 
-Bind `value` to a variable of the `Boolean` type. You can use the `activeColor` and `inactiveColor` attributes to set the background color of the switch.
+Bind the value to a Boolean variable. Use the `activeColor` and `inactiveColor` properties to set the background colors of the switch.
 
 !!!demo1!!!
 
 ### Disabled State
 
-Set the `disabled` attribute, which accepts a `Boolean`. Setting it to `true` disables the switch.
+Set the `disabled` property, which accepts a Boolean value. Setting it to `true` will disable the switch.
 
 !!!demo2!!!
 
-### Text Description
+### Text Description 
 
-Use the `activeText` and `inactiveText` attributes to set the text description of the switch.
+Use the `activeText` and `inactiveText` properties to set the text descriptions for the switch states.
 
 !!!demo3!!!
 
-### Extended Value Types
+### Extended Value Types  
 
-Set the `activeValue` and `inactiveValue` attributes, which can accept values of the `Boolean`, `String`, or `Number` type.
+Configure the `activeValue` and `inactiveValue` properties to accept values of type Boolean, String, or Number.
 
 !!!demo4!!!
 
-### Switch Attributes
+### Attributes
 
-| Parameter         | Description                                                                                          | Type                      | Optional Values | Default Value |
-| ----------------- | ---------------------------------------------------------------------------------------------------- | ------------------------- | --------------- | ------------- |
-| value             | Bound value                                                                                          | string / number / boolean | —               | —             |
-| disabled          | Whether to disable                                                                                   | boolean                   | —               | false         |
-| class             | Custom class style                                                                                   | string                    | -               | -             |
-| width             | The width of the switch (in pixels)                                                                  | number                    | —               | 40            |
-| activeIconClass   | The class name of the icon displayed when the switch is on. Setting this will ignore `activeText`    | string                    |                 | —             |
-| inactiveIconClass | The class name of the icon displayed when the switch is off. Setting this will ignore `inactiveText` | string                    | —               | —             |
-| activeText        | The text description when the switch is on                                                           | string                    | —               | —             |
-| inactiveText      | The text description when the switch is off                                                          | string                    | —               | —             |
-| activeValue       | The value when the switch is on                                                                      | boolean / string / number | —               | true          |
-| inactiveValue     | The value when the switch is off                                                                     | boolean / string / number | —               | false         |
-| activeColor       | The background color when the switch is on                                                           | string                    | —               | —             |
-| inactiveColor     | The background color when the switch is off                                                          | string                    | —               | —             |
-| name              | The `name` attribute corresponding to the switch                                                     | string                    | —               | —             |
+| Parameter          | Description                                                  | Type                      | Options | Default  |
+| ------------------ | ------------------------------------------------------------ | ------------------------- | ------- | -------- |
+| value              | Binding value                                                | string / number / boolean | —       | —        |
+| disabled           | Whether the switch is disabled                               | boolean                   | —       | false    |
+| class              | Custom class for styling                                     | string                    | -       | -        |
+| width              | Width of the switch (in pixels)                              | number                    | —       | 40       |
+| activeIconClass    | Class name for the icon displayed when the switch is on (overrides `activeText`) | string                    | —       | —        |
+| inactiveIconClass  | Class name for the icon displayed when the switch is off (overrides `inactiveText`) | string                    | —       | —        |
+| activeText         | Text description when the switch is on                       | string                    | —       | —        |
+| inactiveText       | Text description when the switch is off                      | string                    | —       | —        |
+| activeValue        | Value when the switch is on                                  | boolean / string / number | —       | true     |
+| inactiveValue      | Value when the switch is off                                 | boolean / string / number | —       | false    |
+| activeColor        | Background color when the switch is on                       | string                    | —       | —        |
+| inactiveColor      | Background color when the switch is off                      | string                    | —       | —        |
+| name               | Name attribute for the switch                                | string                    | —       | —        |
 
-### Switch Events
+### Events
 
-| Event Name | Description                                                | Callback Parameters |
-| ---------- | ---------------------------------------------------------- | ------------------- |
-| change     | The callback function when the state of the switch changes | The changed value   |
+| Event Name | Description                                   | Callback Parameters   |
+| ---------- | --------------------------------------------- | --------------------- |
+| change     | Callback function when switch state changes   | New value after change |
 
-### Switch Methods
+### Methods
 
-| Method Name | Description                | Parameter |
-| ----------- | -------------------------- | --------- |
-| focus       | Make the Switch gain focus | -         |
+| Method  | Description                     | Parameters |
+| ------- | ------------------------------- | ---------- |
+| focus   | Focuses the Switch component    | -          |

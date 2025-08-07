@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Scrollbar</h2>
-        <p>Used to replace the browser's native scrollbar.</p>
+        <p>Used to replace native browser scrollbars.</p>
         <h3>Basic Usage</h3>
         <p>
-            Define the height of the scrollbar by setting the
+            Define scrollbar height by setting the
             <code>height</code>
-            attribute. If not set, it will adapt to the height of the parent container.
+            property. If not set, it will adapt based on the parent container height.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -71,9 +71,9 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Set Maximum Dimensions</h3>
+        <h3>Setting Maximum Size</h3>
         <p>
-            You can control the triggering time of the scrollbar by setting the boundary values of the parent container, such as
+            Control scrollbar trigger timing by setting parent container boundary values such as
             <code>max-width</code>
             and
             <code>max-height</code>
@@ -127,11 +127,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Manual Scrolling</h3>
-        <p>
-            By using the
-            <code>scrollTo</code>
-            method, you can manually control the scrolling position of the scrollbar.
-        </p>
+        <p>Use the scrollTo method to manually control the scrollbar position.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-scrollbar ref=&quot;scrollbar&quot; height=&quot;300px&quot; @scroll=&quot;handleScroll&quot;&gt;
@@ -200,7 +196,7 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -213,22 +209,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>wrapClass</td>
-                    <td>
-                        Style extension of the
-                        <code>wrap</code>
-                        element
-                    </td>
+                    <td>Wrap element style extension</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>viewClass</td>
-                    <td>
-                        Style extension of the
-                        <code>view</code>
-                        element
-                    </td>
+                    <td>View element style extension</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
@@ -242,44 +230,42 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>noresize</td>
-                    <td>
-                        Do not respond to container size changes. If the container size will not change, it is best to set this for performance optimization
-                    </td>
+                    <td>Do not respond to container size changes (improves performance if container size is static)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>tag</td>
-                    <td>The output element tag</td>
+                    <td>Output element tag</td>
                     <td>string</td>
                     <td>—</td>
                     <td>div</td>
                 </tr>
                 <tr>
                     <td>height</td>
-                    <td>Custom height. If not set, it defaults to the value of the parent container</td>
+                    <td>Custom height (defaults to parent container value if not set)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>width</td>
-                    <td>Custom width. If not set, it defaults to the value of the parent container</td>
+                    <td>Custom width (defaults to parent container value if not set)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>max-height</td>
-                    <td>Custom maximum height. If not set, it defaults to the value of the parent container</td>
+                    <td>Custom max height (defaults to parent container value if not set)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>max-width</td>
-                    <td>Custom maximum width. If not set, it defaults to the value of the parent container</td>
+                    <td>Custom max width (defaults to parent container value if not set)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
@@ -292,7 +278,7 @@ export default class extends Component {
                 <tr>
                     <th>Section Name</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
@@ -304,15 +290,36 @@ export default class extends Component {
             </tbody>
         </table>
         <h3>Methods</h3>
-        <p>
-            | Method Name | Description                                                                                         | Parameter                             |
-            | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
-            | scrollTo    | Scroll to a position                                                                                | Parameters refer to
-            <code>ScrollToOptions</code>
-            |
-            | scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
-            | Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |
-        </p>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>scrollTo</td>
+                    <td>Scroll to position</td>
+                    <td>
+                        See
+                        <code>ScrollToOptions</code>
+                        for parameters
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollToEl</td>
+                    <td>Scroll to designated element position</td>
+                    <td>HTMLElement</td>
+                </tr>
+                <tr>
+                    <td>update</td>
+                    <td>Recalculate scrollbars (call when internal elements are added/removed)</td>
+                    <td>Execute callback after calculation</td>
+                </tr>
+            </tbody>
+        </table>
         <h3>Events</h3>
         <table class="mkd-table">
             <thead>
@@ -325,13 +332,9 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>scroll</td>
-                    <td>Triggered when the scroll-triggered position changes</td>
+                    <td>Triggered when scroll position changes</td>
                     <td>
-                        {top:number,left:number,x:number,y:number,,isUserScroll?:boolean}, where
-                        <code>x</code>
-                        and
-                        <code>y</code>
-                        represent the progress of the scrollbar in the corresponding direction
+                        {top:number,left:number,x:number,y:number,isUserScroll?:boolean}where x,y represent scrollbar progress by direction
                     </td>
                 </tr>
             </tbody>

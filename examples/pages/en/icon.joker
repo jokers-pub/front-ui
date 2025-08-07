@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Icon</h2>
-        <p>Provides a set of commonly used icon collections.</p>
+        <p>Provides a collection of commonly used icons.</p>
         <h3>Usage</h3>
         <p>
-            It can be used directly by setting the class name as
+            Simply apply the class name
             <code>jk-icon-name</code>
-            . For example:
+            to use the icons. For example:
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -28,9 +28,9 @@
 </code></pre>
         </DemoContainer>
         <p>
-            You can also use the
+            Alternatively, you can use the
             <code>jk-icon</code>
-            component and use it by setting the
+            component by setting the
             <code>name</code>
             attribute. For example:
         </p>
@@ -52,10 +52,10 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Icon Collection</h3>
+        <h3>Icon Library</h3>
         <blockquote>
             <p>
-                Click on the icon to copy the
+                Click on an icon to copy its
                 <code>class</code>
                 name.
             </p>

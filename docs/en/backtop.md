@@ -1,28 +1,30 @@
-## Backtop
+## Backtop 
 
-An operation button to return to the top of the page.
+A button component that returns to the top of the page.
 
 ### Basic Usage
 
-Scroll the page and you can see the button at the bottom-right corner.
-!!! demo1!!!
+Scroll down the page to see the button in the bottom-right corner.
 
-### Custom Display Content
+!!! demo1 !!!
 
-The display area is fixed to a 40px × 40px area, and the content within it can be customized.
-!!! demo2!!!
+### Custom Content
+
+The display area is fixed to a 40px × 40px region, and the content inside can be customized.
+
+!!! demo2 !!!
 
 ### Attributes
 
-| Parameter        | Description                                                                   | Type   | Optional Values | Default Value |
-| ---------------- | ----------------------------------------------------------------------------- | ------ | --------------- | ------------- |
-| target           | The object that triggers the scrolling                                        | string | —               | —             |
-| visibilityHeight | The button appears when the scrolling height reaches this parameter value     | number | —               | 200           |
-| right            | Controls its display position, the distance from the right margin of the page | string | -               | 40px          |
-| bottom           | Controls its display position, the distance from the bottom of the page       | string | —               | 40px          |
+| Parameter         | Description                          | Type   | Options | Default |
+|-------------------|--------------------------------------|--------|---------|---------|
+| target           | Target element that triggers scrolling | string | —       | —       |
+| visibilityHeight | Scroll height threshold to make the button appear | number | —       | 200     |
+| right            | Controls the display position, margin from the right edge of the page | string | -       | 40px    |
+| bottom           | Controls the display position, margin from the bottom of the page | string | —       | 40px    |
 
 ### Events
 
-| Event Name | Description                                    | Callback Parameter |
-| ---------- | ---------------------------------------------- | ------------------ |
-| click      | The event triggered when the button is clicked | Click event        |
+| Event Name | Description               | Callback Parameters |
+|------------|---------------------------|---------------------|
+| click      | Triggers when clicked     | Click event         |

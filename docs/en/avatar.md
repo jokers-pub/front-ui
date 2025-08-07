@@ -1,49 +1,53 @@
-## Avatar
+## Avatar 
 
-Displays user or object information in the form of icons, images, or characters.
+Display user or entity information using icons, images, or characters.
 
-### Basic Usage
+### Basic Usage 
 
-Set the shape and size of the avatar through `shape` and `size`.
-!!! demo1!!!
+Set the shape and size of the avatar using `shape` and `size`.
 
-### Display Types
+!!! demo1 !!!
+
+### Display Types 
 
 Supports three types: icon, image, and character.
-!!! demo2!!!
 
-### Fallback Behavior for Image Loading Failure
+!!! demo2 !!!
 
-When the display type is an image, this is the fallback behavior for image loading failure.
-!!! demo3!!!
+### Fallback Behavior for Failed Image Loading 
 
-### How the Image Fits the Container
+Fallback behavior when the image fails to load when the display type is set to image.
 
-When the display type is an image, use the `fit` attribute to define how the image fits the container, similar to the native `object-fit`.
-!!! demo4!!!
+!!! demo3 !!!
 
-### Attributes
+### How Images Fit the Container 
 
-| Parameter | Description                                                                                                            | Type          | Optional Values                    | Default Value |
-| --------- | ---------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------- | ------------- |
-| icon      | Set the icon type of the avatar, referring to the Icon component                                                       | string        | -                                  | —             |
-| size      | Set the size of the avatar                                                                                             | number/string | number/large/medium/small          | large         |
-| shape     | Set the shape of the avatar                                                                                            | string        | circle/square                      | circle        |
-| src       | The resource address of the image avatar                                                                               | string        | —                                  | -             |
-| srcSet    | A comma-separated list of one or more strings indicating a series of possible images for user agents to use            | string        | —                                  | true          |
-| alt       | The alternative text describing the image                                                                              | string        | —                                  | -             |
-| fit       | When the display type is an image, set how the image fits the container                                                | string        | fill/contain/cover/none/scale-down | cover         |
-| class     | Custom class style                                                                                                     | string        | -                                  | -             |
-| error     | The callback for image avatar loading failure. Returning false will turn off the component's default fallback behavior | function      | -                                  | -             |
+When the display type is image, the `fit` property defines how the image fits the container, similar to the native `object-fit`.
 
-### Events
+!!! demo4 !!!
 
-| Event Name | Description                          | Parameter |
-| ---------- | ------------------------------------ | --------- |
-| click      | Triggered when the avatar is clicked | -         |
+### Attributes 
 
-### Sections
+| Attribute | Description                                                                 | Type          | Accepted Values                     | Default |
+| --------- | -------------------------------------------------------------------------- | ------------- | ----------------------------------- | ------- |
+| icon      | Set the icon type of the avatar; refer to the Icon component               | string        | -                                   | —       |
+| size      | Set the size of the avatar                                                 | number/string | number / large / medium / small     | large   |
+| shape     | Set the shape of the avatar                                                | string        | circle / square                     | circle  |
+| src       | The resource address of the image avatar                                   | string        | —                                   | -       |
+| srcSet    | A comma-separated list of strings indicating possible images for user agent | string        | —                                   | true    |
+| alt       | Alternative text describing the image                                      | string        | —                                   | -       |
+| fit       | When the display type is image, set how the image fits the container       | string        | fill / contain / cover / none / scale-down | cover   |
+| class     | Custom class style                                                        | string        | -                                   | -       |
+| error     | Callback when image loading fails; returning `false` disables the default fallback behavior | function      | -                                   | -       |
 
-| Name    | Description                                   |
-| ------- | --------------------------------------------- |
-| default | Customize the content displayed by the avatar |
+### Events 
+
+| Event Name | Description               | Parameters |
+| ---------- | ------------------------- | ---------- |
+| click      | Triggered when clicked    | -          |
+
+### Slots 
+
+| Slot Name  | Description               |
+| ---------- | ------------------------- |
+| default    | Custom avatar content     |

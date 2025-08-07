@@ -1,38 +1,51 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Tooltip</h2>
-        <p>Often used to display prompt information when the mouse hovers.</p>
+        <p>Commonly used to display hover-over tooltip information.</p>
         <h3>Basic Usage</h3>
         <p>
-            Here we provide 9 different display directions. You can understand them through the following complete examples and choose the effect you want.
+            Here we provide 9 different directional display modes. You can understand and select the desired effect through the following complete examples.
         </p>
         <p>
             Use the
             <code>content</code>
-            attribute to determine the prompt information when hovering. The display effect is determined by the
+            property to define the tooltip information shown on hover. The display effect is determined by the
             <code>placement</code>
-            attribute. The value of the
-            <code>placement</code>
-            attribute is in the format of
-            <code>direction-alignment position</code>
-            . The four directions are
-            <code>top</code>
-            ,
-            <code>left</code>
-            ,
-            <code>right</code>
-            ,
-            <code>bottom</code>
-            , and the three alignment positions are
-            <code>start</code>
-            ,
-            <code>end</code>
-            , with the default being
-            <code>bottom</code>
-            . For example, if
-            <code>placement = &quot;left-end&quot;</code>
-            , the prompt information will appear on the left side of the target element, and the bottom of the prompt information will be aligned with the bottom of the target element.
+            property:
         </p>
+        <ul>
+            <li>
+                The
+                <code>placement</code>
+                property value follows the format:
+                <code>direction-alignment</code>
+                .
+            </li>
+            <li>
+                Four directions:
+                <code>top</code>
+                ,
+                <code>left</code>
+                ,
+                <code>right</code>
+                ,
+                <code>bottom</code>
+                .
+            </li>
+            <li>
+                Three alignment positions:
+                <code>start</code>
+                ,
+                <code>end</code>
+                (default is aligned to
+                <code>bottom</code>
+                ).
+                <br />
+                For example,
+                <code>placement=&quot;left-end&quot;</code>
+                means the tooltip appears to the left of the target element, with the tooltip's bottom aligned to the target element's bottom.
+            </li>
+        </ul>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;box&quot;&gt;
@@ -119,7 +132,7 @@
         </DemoContainer>
         <h3>Themes</h3>
         <p>
-            The Tooltip component offers two different themes:
+            The Tooltip component provides two themes:
             <code>dark</code>
             and
             <code>light</code>
@@ -128,7 +141,7 @@
         <p>
             Change the theme by setting the
             <code>effect</code>
-            attribute, with the default being
+            property, which defaults to
             <code>dark</code>
             .
         </p>
@@ -148,13 +161,13 @@
         </DemoContainer>
         <h3>Manual Control</h3>
         <p>
-            Control whether to activate manually through the
+            Control activation manually via the
             <code>manual</code>
-            attribute, and then freely operate through the
+            property, then freely operate the tooltip using the component's
             <code>show</code>
             and
             <code>hide</code>
-            methods of the component.
+            methods.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -187,14 +200,14 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>More Content</h3>
-        <p>Display multi-line text or set the format of the text content.</p>
+        <h3>Rich Content</h3>
+        <p>Display multiline text or formatted content.</p>
         <p>
-            Use the named section to distribute the
+            Use a named slot (
+            <code>slot=&quot;content&quot;</code>
+            ) to distribute content, replacing the
             <code>content</code>
-            , replacing the
-            <code>content</code>
-            attribute in the
+            attribute in
             <code>tooltip</code>
             .
         </p>
@@ -213,9 +226,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Disabled</h3>
         <p>
-            Set the disabled state of the tooltip through the
+            Set the disabled state of the tooltip by configuring the
             <code>disabled</code>
-            value.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -228,11 +241,11 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Size</h3>
+        <h3>Sizing</h3>
         <p>
-            Set the size of the tooltip through the
+            Configure the tooltip's size using the
             <code>size</code>
-            value.
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -283,11 +296,11 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Maximum Width</h3>
+        <h3>Max Width</h3>
         <p>
-            If the content is too long, you can configure the
+            If the content is too long, set the
             <code>maxWidth</code>
-            to set the maximum width, so that the content can be displayed in multiple lines.
+            property to define a maximum width for multiline display.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -307,94 +320,175 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>effect</td>
-                    <td>The default provided theme</td>
+                    <td>
+                        <code>effect</code>
+                    </td>
+                    <td>Default theme</td>
                     <td>String</td>
-                    <td>dark/light / error</td>
-                    <td>dark</td>
+                    <td>
+                        <code>dark</code>
+                        /
+                        <code>light</code>
+                        /
+                        <code>error</code>
+                    </td>
+                    <td>
+                        <code>dark</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td>content</td>
                     <td>
-                        The content to be displayed. DOM can also be passed in through the section
                         <code>content</code>
                     </td>
+                    <td>
+                        Displayed content (can also be passed via slot
+                        <code>content</code>
+                        as DOM)
+                    </td>
                     <td>String</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
-                    <td>placement</td>
-                    <td>The appearance position of the Tooltip</td>
+                    <td>
+                        <code>placement</code>
+                    </td>
+                    <td>Tooltip's display position</td>
                     <td>String</td>
                     <td>
-                        top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end
+                        <code>top</code>
+                        ,
+                        <code>top-start</code>
+                        ,
+                        <code>top-end</code>
+                        ,
+                        <code>bottom</code>
+                        ,
+                        <code>bottom-start</code>
+                        ,
+                        <code>bottom-end</code>
+                        ,
+                        <code>left</code>
+                        ,
+                        <code>left-start</code>
+                        ,
+                        <code>left-end</code>
+                        ,
+                        <code>right</code>
+                        ,
+                        <code>right-start</code>
+                        ,
+                        <code>right-end</code>
                     </td>
-                    <td>bottom</td>
+                    <td>
+                        <code>bottom</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td>disabled</td>
-                    <td>Whether the Tooltip is available</td>
+                    <td>
+                        <code>disabled</code>
+                    </td>
+                    <td>Whether Tooltip is disabled</td>
                     <td>Boolean</td>
                     <td>—</td>
-                    <td>false</td>
+                    <td>
+                        <code>false</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td>offset</td>
-                    <td>The offset of the appearance position</td>
+                    <td>
+                        <code>offset</code>
+                    </td>
+                    <td>Offset for the display position</td>
                     <td>Number</td>
                     <td>—</td>
-                    <td>0</td>
+                    <td>
+                        <code>0</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td>transition</td>
-                    <td>Define the fade-in animation</td>
+                    <td>
+                        <code>transition</code>
+                    </td>
+                    <td>Transition animation</td>
                     <td>String</td>
                     <td>—</td>
-                    <td>jk-fade-in</td>
-                </tr>
-                <tr>
-                    <td>open-delay</td>
-                    <td>Delay the appearance, in milliseconds</td>
-                    <td>Number</td>
-                    <td>—</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>close-delay</td>
-                    <td>Delay the hiding, in milliseconds (debounce)</td>
-                    <td>Number</td>
-                    <td>—</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>manual</td>
                     <td>
-                        Manual control mode. After setting it to true, the mouseenter and mouseleave events will not take effect
+                        <code>jk-fade-in</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>open-delay</code>
+                    </td>
+                    <td>Delay before appearance (milliseconds)</td>
+                    <td>Number</td>
+                    <td>—</td>
+                    <td>
+                        <code>0</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>close-delay</code>
+                    </td>
+                    <td>Delay before hiding (debounce, milliseconds)</td>
+                    <td>Number</td>
+                    <td>—</td>
+                    <td>
+                        <code>200</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>manual</code>
+                    </td>
+                    <td>
+                        Manual control mode. If
+                        <code>true</code>
+                        ,
+                        <code>mouseenter</code>
+                        and
+                        <code>mouseleave</code>
+                        events are ignored
                     </td>
                     <td>Boolean</td>
                     <td>—</td>
-                    <td>false</td>
+                    <td>
+                        <code>false</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td>size</td>
-                    <td>Size configuration</td>
-                    <td>string</td>
-                    <td>medium、small、mini</td>
-                    <td></td>
+                    <td>
+                        <code>size</code>
+                    </td>
+                    <td>Configuration for size</td>
+                    <td>String</td>
+                    <td>
+                        <code>medium</code>
+                        ,
+                        <code>small</code>
+                        ,
+                        <code>mini</code>
+                    </td>
+                    <td>—</td>
                 </tr>
                 <tr>
-                    <td>maxWidth</td>
+                    <td>
+                        <code>maxWidth</code>
+                    </td>
                     <td>Maximum width</td>
-                    <td>string</td>
-                    <td>-</td>
-                    <td>300px</td>
+                    <td>String</td>
+                    <td>—</td>
+                    <td>
+                        <code>300px</code>
+                    </td>
                 </tr>
             </tbody>
         </table>

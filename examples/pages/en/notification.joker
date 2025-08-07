@@ -1,26 +1,28 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Notification</h2>
-        <p>It floats in the corner of the page to display global notification reminder messages.</p>
+        <p>
+            A notification bubble that appears floating in the corner of the page, displaying global notification messages.
+        </p>
         <h3>Basic Usage</h3>
         <p>
-            A widely applicable notification bar. The Notification component provides a notification function with the
+            A versatile notification bar, the Notification component provides notification functionality through the
             <code>Notification</code>
             method, which accepts an
             <code>options</code>
-            literal parameter. In the simplest case, you can set the
+            literal parameter. At its simplest, you can set the
             <code>title</code>
             and
             <code>message</code>
-            fields to set the title and body of the notification. By default, the Notification component will automatically close after a certain period of time. However, by setting
+            fields to configure the notification's heading and content. By default, the Notification component will automatically close after a certain period, but the
             <code>duration</code>
-            , you can control the time interval for closing. Notably, if set to
+            parameter can be used to control the timeout interval. Notably, setting it to
             <code>0</code>
-            , it will not close automatically. Note:
+            will disable auto-closing. Note:
             <code>duration</code>
             accepts a
             <code>Number</code>
-            with the unit of milliseconds, and the default value is
+            in milliseconds, with a default value of
             <code>4500</code>
             .
         </p>
@@ -50,26 +52,26 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>With 倾向性</h3>
+        <h3>Contextual Notifications</h3>
         <p>
-            Comes with an icon, often used to display system messages of &quot;success, warning, message, error&quot; types.
+            Notifications with icons, typically used to display system messages categorized as &quot;success,&quot; &quot;warning,&quot; &quot;info,&quot; or &quot;error.&quot;
         </p>
         <p>
-            The Notification component has prepared four notification types:
+            The Notification component provides four predefined types:
             <code>success</code>
             ,
             <code>warning</code>
             ,
             <code>info</code>
-            ,
+            , and
             <code>error</code>
-            . Set through the
+            . These can be set via the
             <code>type</code>
-            field, and values other than these will be ignored. At the same time, we have also registered methods for various types of Notification, which can be called directly like
+            field—any other values will be ignored. Additionally, methods are registered for each type, allowing direct invocation (as in
             <code>open3</code>
             and
             <code>open4</code>
-            without passing in the
+            ) without explicitly setting the
             <code>type</code>
             field.
         </p>
@@ -114,21 +116,21 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Custom Pop-up Position</h3>
+        <h3>Custom Position</h3>
         <p>
-            You can make the Notification pop up from any of the four corners of the screen. Use the
+            Notifications can appear from any of the four corners of the screen. Use the
             <code>position</code>
-            property to define the pop-up position of the Notification. Four options are supported:
+            attribute to define the popup location, supporting four options:
             <code>top-right</code>
             ,
             <code>top-left</code>
             ,
             <code>bottom-right</code>
-            ,
+            , and
             <code>bottom-left</code>
-            , with the default being
+            (default:
             <code>top-right</code>
-            .
+            ).
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -174,11 +176,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>With Offset</h3>
+        <h3>Offset</h3>
         <p>
-            Make the Notification offset by some distance. The Notification provides the function of setting the offset. By setting the
+            Apply an offset to adjust the notification's position. The Notification component supports setting an offset distance via the
             <code>offset</code>
-            field, the popped-up message can be offset from the edge of the screen by a certain distance. Note that at the same moment, all Notification instances should have the same offset.
+            field, shifting notifications away from the screen edge. Note: All active Notification instances should share the same offset value at any given time.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -199,17 +201,15 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Using HTML Fragments</h3>
+        <h3>HTML Fragments</h3>
         <p>
             The
             <code>message</code>
-            property supports passing in HTML fragments. Set the
+            attribute supports HTML fragments when the
             <code>useHtml</code>
-            property to
+            property is set to
             <code>true</code>
-            , and
-            <code>message</code>
-            will be treated as an HTML fragment.
+            , treating the content as markup rather than plain text.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -236,24 +236,22 @@ export default class extends Component {
             <p>
                 Although the
                 <code>message</code>
-                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                property supports HTML fragments, dynamically rendering arbitrary HTML on a website is highly dangerous due to the risk of
                 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
-                . Therefore, when
+                . When enabling
                 <code>useHtml</code>
-                is turned on, please ensure that the content of
+                , ensure the
                 <code>message</code>
-                is trustworthy.
-                <strong>Never</strong>
-                assign user-submitted content to the
-                <code>message</code>
-                property.
+                content is trustworthy, and
+                <strong>never</strong>
+                assign user-submitted data to this attribute.
             </p>
         </div>
         <blockquote>
             <p>
-                Message provides the
+                The Notification component provides a
                 <code>closeAll</code>
-                method to clear all messages at specific business times.
+                method to clear all active messages at specific business moments.
             </p>
         </blockquote>
         <h3>Options</h3>
@@ -263,21 +261,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>title</td>
-                    <td>Title</td>
+                    <td>Notification title</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>message</td>
-                    <td>Explanation text</td>
+                    <td>Notification text content</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -285,9 +283,9 @@ export default class extends Component {
                 <tr>
                     <td>useHtml</td>
                     <td>
-                        Whether to treat the
+                        Whether to treat
                         <code>message</code>
-                        property as an HTML fragment
+                        as HTML markup
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -295,7 +293,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>type</td>
-                    <td>Theme style, will be ignored if not in the optional values</td>
+                    <td>Notification type, ignored if not a predefined value</td>
                     <td>string</td>
                     <td>success/warning/info/error</td>
                     <td>—</td>
@@ -303,11 +301,9 @@ export default class extends Component {
                 <tr>
                     <td>iconClass</td>
                     <td>
-                        Class name of the custom icon. If
+                        Custom icon class name (overridden if
                         <code>type</code>
-                        is set,
-                        <code>iconClass</code>
-                        will be overridden
+                        is set)
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -315,49 +311,53 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>customClass</td>
-                    <td>Custom class name</td>
+                    <td>Custom CSS class for the notification</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>duration</td>
-                    <td>Display time in milliseconds. Set to 0 to prevent automatic closure</td>
+                    <td>
+                        Display duration in milliseconds. Set to
+                        <code>0</code>
+                        to disable auto-close
+                    </td>
                     <td>number</td>
                     <td>—</td>
                     <td>4500</td>
                 </tr>
                 <tr>
                     <td>position</td>
-                    <td>Custom pop-up position</td>
+                    <td>Notification popup position</td>
                     <td>string</td>
                     <td>top-right/top-left/bottom-right/bottom-left</td>
                     <td>top-right</td>
                 </tr>
                 <tr>
                     <td>closable</td>
-                    <td>Whether to display the close button</td>
+                    <td>Whether to show the close button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>onClose</td>
-                    <td>Callback function when closing</td>
+                    <td>Callback function when notification closes</td>
                     <td>function</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>onClick</td>
-                    <td>Callback function when clicking the Notification</td>
+                    <td>Callback function when notification is clicked</td>
                     <td>function</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>offset</td>
-                    <td>Offset distance. At the same moment, all Notification instances should have the same offset</td>
+                    <td>Offset distance from the screen edge (consistent for all active instances)</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
@@ -366,23 +366,23 @@ export default class extends Component {
         </table>
         <h3>Methods</h3>
         <p>
-            Calling
+            Invoking
             <code>Notification</code>
-            will return the current Notification instance. If you need to manually close the instance, you can call its
+            returns the current notification instance. To manually close it, call the
             <code>close</code>
             method.
         </p>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>close</td>
-                    <td>Close the current Notification</td>
+                    <td>Closes the current Notification instance</td>
                 </tr>
             </tbody>
         </table>

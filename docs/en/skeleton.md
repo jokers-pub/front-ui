@@ -1,76 +1,76 @@
-## Skeleton
+## Skeleton Screen  
 
-Set a skeleton screen in the position where content needs to be loaded. In some scenarios, it has a better visual effect than Loading.
+Display skeleton placeholders during content loading for better visual experience than traditional loading indicators in certain scenarios.  
 
-### Basic Usage
+### Basic Usage  
 
-The basic skeleton effect.
+Basic skeleton screen effect.  
 
-!!! demo1!!!
+!!! demo1 !!!  
 
-### More Parameters
+### Additional Parameters  
 
-You can configure the number of skeleton screen paragraphs to be closer to the real rendering effect. The first line will be rendered with a 33%-length paragraph head.
+Configure the number of skeleton paragraphs to better simulate the actual rendering effect. The first line will render a paragraph header with 33% width.  
 
-!!! demo2!!!
+!!! demo2 !!!  
 
-### Animation Effect
+### Animation Effect  
 
-Display the animation effect.
+Enable animated loading effect.  
 
-!!! demo3!!!
+!!! demo3 !!!  
 
-### Custom Styles
+### Custom Styles  
 
-The layout mode provided by Joker-UI sometimes does not meet the requirements. When you want to use your own defined template, you can set the template through a named section.
+The layout patterns provided by Joker-UI may not always meet requirements. You can define custom templates by using named slots.  
 
-We provide different template units for use. For specific optional values, please refer to the API detailed description. When describing the template, it is recommended to be as close as possible to the real DOM structure to avoid jitter caused by the height difference of the DOM.
+We provide different template units for use—refer to the API documentation for available options. When designing templates, aim to closely match the actual DOM structure to prevent layout shifts caused by height discrepancies.  
 
-!!! demo4!!!
+!!! demo4 !!!  
 
-### Loading State
+### Loading State  
 
-After the Loading is completed, we often need to display the real UI. You can control whether to display the real DOM through the value of `loading`. Then, set the UI to be displayed after the loading is completed through the named section.
+After loading completes, the actual UI typically needs to be displayed. Control the rendering of the real DOM using the `loading` property, and use named slots to define the UI to be shown post-loading.  
 
-!!! demo5!!!
+!!! demo5 !!!  
 
-### Rendering Multiple Data
+### Rendering Multiple Items  
 
-Most of the time, the skeleton screen is used to render lists. When we need to render a fake UI while fetching data from the server. The `count` attribute can be used to control how many fake data are rendered on the page.
+Skeleton screens are commonly used to render lists while waiting for server data. The `count` property determines how many placeholder items are displayed.  
 
-Please note that try to keep the size of `count` to a minimum. Even for a fake UI, too many DOM elements will still cause performance problems, and it will also take longer (relatively) to destroy the skeleton screen.
+**Note:** Keep the `count` value as low as possible. Even placeholder UI elements can impact performance if excessive, and a higher count may prolong teardown time.  
 
-!!! demo6!!!
+!!! demo6 !!!  
 
-### Preventing Rendering Jitter
+### Preventing Rendering Flicker  
 
-Sometimes, the API request returns very quickly. Often, just after the skeleton placeholder is rendered, the real data has already arrived, and the user's interface will flash suddenly. At this time, to avoid this situation, the `throttle` attribute is needed to solve this problem.
+If API responses are extremely fast, the skeleton placeholder may briefly appear before real data loads, causing a flicker effect. Use the `throttle` property to mitigate this issue.  
 
-!!! demo7!!!
+!!! demo7 !!!  
 
-### Skeleton Attributes
+### Skeleton Attributes  
 
-| Parameter | Description                                                                          | Type    | Optional Values  | Default Value |
-| --------- | ------------------------------------------------------------------------------------ | ------- | ---------------- | ------------- |
-| class     | Custom class style                                                                   | string  | -                | -             |
-| animated  | Whether to use animation                                                             | boolean | true / false     | false         |
-| count     | How many `template` to render. It is recommended to use the smallest possible number | number  | integer          | 1             |
-| loading   | Whether to display the skeleton screen                                               | boolean | true / false     | true          |
-| rows      | The number of skeleton screen paragraphs                                             | number  | Positive integer | 4             |
-| throttle  | The time to delay the rendering of the placeholder DOM, in milliseconds              | number  | Positive integer | 0             |
-| style     | In-line style sheet                                                                  | string  | —                | —             |
+| Parameter  | Description                                        | Type      | Options         | Default |  
+|------------|----------------------------------------------------|-----------|-----------------|---------|  
+| class      | Custom CSS class                                   | string    | —               | —       |  
+| animated   | Whether to enable animation                       | boolean   | true / false    | false   |  
+| count      | Number of template instances to render (keep low) | number    | integer         | 1       |  
+| loading    | Whether to display skeleton placeholders         | boolean   | true / false    | true    |  
+| rows       | Number of skeleton paragraphs                    | number    | positive integer| 4       |  
+| throttle   | Delay (ms) before rendering placeholder DOM      | number    | positive integer| 0       |  
+| style      | Inline CSS styles                                | string    | —               | —       |  
 
-### SkeletonItem Attributes
+### SkeletonItem Attributes  
 
-| Parameter | Description                                              | Type         | Optional Values                                               | Default Value |
-| --------- | -------------------------------------------------------- | ------------ | ------------------------------------------------------------- | ------------- |
-| variant   | The style of the currently displayed placeholder element | Enum(string) | p / h1 / h3 / text / caption / button / image / circle / rect | text          |
-| style     | In-line style sheet                                      | string       | —                                                             | —             |
-| class     | Custom style                                             | string       | —                                                             | —             |
+| Parameter  | Description                      | Type            | Options                                                       | Default |  
+|------------|----------------------------------|-----------------|---------------------------------------------------------------|---------|  
+| variant    | Placeholder element style       | Enum (string)   | p / h1 / h3 / text / caption / button / image / circle / rect | text    |  
+| style      | Inline CSS styles               | string          | —                                                             | —       |  
+| class      | Custom CSS class                | string          | —                                                             | —       |  
 
-### Skeleton Sections
+### Skeleton Slots  
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| default  | Used to display the real UI            |
-| template | Used to display the custom placeholder |
+| Name       | Description                     |  
+|------------|---------------------------------|  
+| default    | Displays actual UI content      |  
+| template   | Displays custom placeholder UI |

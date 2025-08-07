@@ -1,71 +1,83 @@
-## Alert
+## Alert Warning
 
-Used to display important prompt information on the page.
+Used to display important alert messages on the page.  
 
-### Basic Usage
+### Basic Usage  
 
-It is a non-floating element on the page and will not disappear automatically.
-The Alert component provides four themes, specified by the `type` attribute, with the default value being `info`.
-!!! demo1!!!
+Non-floating elements on the page that will not disappear automatically.  
 
-### Themes
+The Alert component provides four themes specified by the `type` property, with the default value being `info`.  
 
-The Alert component offers two different themes: `light` and `dark`.
-Change the theme by setting the `effect` attribute, with the default being `light`.
-!!! demo2!!!
+!!! demo1 !!!  
 
-### Custom Close Button
+### Themes  
 
-Customize the close button to be text or other symbols.
-In the Alert component, you can set whether it is closable, the text of the close button, and the callback function when closing. The `closable` attribute determines whether it is closable, accepting a `boolean` value, with the default being `true`. You can set the `closeText` attribute to replace the close icon on the right. Note: `closeText` must be text. Set the `close` event to set the callback when closing.
-!!! demo3!!!
+The Alert component offers two different themes: `light` and `dark`.  
 
-### With Icon
+Use the `effect` property to change the theme, with the default being `light`.  
 
-Improve readability when indicating a certain state.
-Display the icon of the Alert by setting the `showIcon` attribute, which can more effectively show your display intention to users.
-!!!demo4!!!
+!!! demo2 !!!  
 
-### Center-aligned Text
+### Custom Close Button  
 
-Use the `center` attribute to center the text horizontally.
-!!!demo5!!!
+Customize the close button text or symbol.  
 
-### With Supplementary Text Introduction
+In the Alert component, you can configure whether it can be closed, the text for the close button, and the callback function when closed. The `closable` property determines whether it can be closed, accepting a boolean value (default: `true`). You can set the `closeText` property to replace the default close icon, but note that `closeText` must be a plain string. Use the `close` event to define the callback function upon closing.  
 
-Contains a title and content to explain the warning in more detail.
-In addition to the required `title` attribute, you can set the `description` attribute to help with a better introduction, which we call supplementary text. The supplementary text can only hold single-line text and will be displayed with automatic line breaks.
-!!!demo6!!!
+!!! demo3 !!!  
 
-### With Icon and Supplementary Text Introduction
+### With Icon  
 
-Finally, this is an example with both an icon and supplementary text.
-!!!demo7!!!
+Enhances readability by indicating certain states.  
 
-### Attributes
+Set the `showIcon` property to display an icon in the Alert, which helps users better understand the intent of the message.  
 
-| Parameter   | Description                                                           | Type    | Optional Values            | Default Value |
-| ----------- | --------------------------------------------------------------------- | ------- | -------------------------- | ------------- |
-| title       | Title                                                                 | string  | -                          | —             |
-| type        | Theme                                                                 | string  | success/warning/info/error | info          |
-| description | Supplementary text. Can also be passed in through the default section | string  | —                          | -             |
-| closable    | Whether it is closable                                                | boolean | —                          | true          |
-| center      | Whether the text is centered                                          | boolean | —                          | false         |
-| closeText   | Custom text for the close button                                      | string  | —                          | -             |
-| showIcon    | Whether to display the icon                                           | boolean | —                          | false         |
-| icon        | Change the displayed icon                                             | string  | —                          | -             |
-| effect      | Select the provided theme                                             | string  | light/dark                 | light         |
-| class       | Custom class style                                                    | string  | -                          | -             |
+!!! demo4 !!!  
 
-### Events
+### Centered Text  
 
-| Event Name | Description                            | Parameter |
-| ---------- | -------------------------------------- | --------- |
-| close      | Event triggered when closing the alert | -         |
+Use the `center` property to align text horizontally.  
 
-### Sections
+!!! demo5 !!!  
 
-| Name  | Description          |
-| ----- | -------------------- |
-| -     | Description          |
-| title | Content of the title |
+### With Auxiliary Text  
+
+Includes a title and description for more detailed explanations.  
+
+In addition to the required `title` property, you can use the `description` property to provide supplementary text. Auxiliary text supports single-line content and will wrap automatically.  
+
+!!! demo6 !!!  
+
+### With Icon and Auxiliary Text  
+
+Finally, here's an example featuring both an icon and auxiliary text.  
+
+!!! demo7 !!!  
+
+### Attributes  
+
+| Attribute  | Description | Type | Accepted Values | Default |  
+|------------|------------|------|----------------|---------|  
+| title | Title | string | - | — |  
+| type | Theme | string | success/warning/info/error | info |  
+| description | Auxiliary text. Can also be passed via the default slot. | string | — | - |  
+| closable | Whether the Alert can be closed | boolean | — | true |  
+| center | Whether to center the text | boolean | — | false |  
+| closeText | Custom close button text | string | — | - |  
+| showIcon | Whether to display an icon | boolean | — | false |  
+| icon | Custom icon | string | — | - |  
+| effect | Select theme | string | light/dark | light |  
+| class | Custom CSS class | string | - | - |  
+
+### Events  
+
+| Event Name | Description | Parameters |  
+|------------|------------|------------|  
+| close | Triggered when the Alert is closed | - |  
+
+### Slots  
+
+| Name | Description |  
+|------|------------|  
+| - | Description content |  
+| title | Title content |

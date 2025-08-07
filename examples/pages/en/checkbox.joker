@@ -1,19 +1,21 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Checkbox</h2>
-        <p>Allows multiple selections from a set of options.</p>
+        <h2>Checkbox (Multi-selection Checkbox)</h2>
+        <p>A group of options for multiple selections</p>
         <h3>Basic Usage</h3>
         <p>
-            When used alone, it can represent the switch between two states. The content written in the label is the description after the Checkbox button.
+            Can be used alone to toggle between two states. The content within the tag serves as the description after the Checkbox button.
+        </p>
+        <p>
             In the
             <code>jk-checkbox</code>
             component, define the
             <code>value</code>
-            binding variable. In a single Checkbox, the value of the default binding variable will be of type
+            binding variable. For a single Checkbox, the default bound variable value will be a
             <code>Boolean</code>
-            , and
+            , where
             <code>true</code>
-            when selected.
+            indicates the checked state.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -41,17 +43,17 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Disabled State</h3>
+        <p>The disabled state for checkboxes.</p>
         <p>
-            The state where the checkbox is unavailable.
-            Just set the
+            Simply set the
             <code>disabled</code>
-            attribute in the
+            property on the
             <code>jk-checkbox</code>
             component. It accepts a
             <code>Boolean</code>
-            value, with
+            , where
             <code>true</code>
-            indicating disabled.
+            means disabled.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -62,20 +64,22 @@ export default class extends Component {
         </DemoContainer>
         <h3>Checkbox Group</h3>
         <p>
-            Suitable for scenarios where multiple checkboxes are bound to the same array. The selected items in this group of options are represented by whether they are checked or not.
+            Suitable for scenarios where multiple checkboxes are bound to the same array, indicating the selected items in the group by whether they are checked.
+        </p>
+        <p>
             The
             <code>jk-checkbox-group</code>
-            component can manage multiple checkboxes as a group. You only need to use
-            <code>value</code>
-            to bind an
+            component can manage multiple Checkboxes as a group. Just bind an
             <code>Array</code>
-            -type variable in the Group. The
+            -type variable to the
+            <code>value</code>
+            property of the Group. The
             <code>label</code>
-            attribute of the
+            property of each
             <code>jk-checkbox</code>
-            is the value corresponding to this checkbox. If there is no content in the label, this attribute also serves as the description after the Checkbox button. The
+            corresponds to the value of that checkbox. If there is no content inside the tag, this property also serves as the description after the Checkbox button. The
             <code>label</code>
-            corresponds to the element value in the array. If the specified value exists, it is in the selected state; otherwise, it is not selected.
+            should match the elements in the array—if the specified value exists, the checkbox will be checked; otherwise, it will be unchecked.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -105,7 +109,7 @@ export default class extends Component {
         <p>
             The
             <code>indeterminate</code>
-            attribute is used to represent the indeterminate state of the checkbox, generally used to achieve the effect of &quot;select all&quot;.
+            property represents an indeterminate state for the Checkbox, typically used to implement &quot;select all&quot; functionality.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -146,13 +150,13 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Limit on the Number of Selectable Items</h3>
+        <h3>Limiting the Number of Selectable Items</h3>
         <p>
-            The
+            Using the
             <code>min</code>
             and
             <code>max</code>
-            attributes can be used to limit the number of items that can be checked.
+            properties can restrict the number of items that can be checked.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -175,7 +179,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Button Style</h3>
-        <p>A set of checkboxes in button style.</p>
+        <p>Checkbox groups with button styling.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -234,13 +238,13 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>With Border</h3>
+        <h3>With Borders</h3>
         <p>
             Setting the
             <code>border</code>
-            attribute can render it as a checkbox with a border. The
+            property renders a checkbox with a border. The
             <code>size</code>
-            attribute of the
+            property of
             <code>jk-checkbox</code>
             only takes effect when
             <code>border</code>
@@ -312,7 +316,7 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -332,42 +336,52 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>border</td>
-                    <td>Whether to display a border</td>
+                    <td>Whether to display border</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>The size of the Checkbox, only valid when border is true</td>
+                    <td>
+                        Size of Checkbox (only effective when
+                        <code>border</code>
+                        is
+                        <code>true</code>
+                        )
+                    </td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>Native name attribute</td>
+                    <td>
+                        Native
+                        <code>name</code>
+                        attribute
+                    </td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>indeterminate</td>
-                    <td>Set the indeterminate state, only responsible for style control</td>
+                    <td>Sets indeterminate state (controls styling only)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>—</td>
@@ -386,8 +400,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when the selection state changes</td>
+                    <td>Updated value</td>
                 </tr>
             </tbody>
         </table>
@@ -399,7 +413,7 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -412,21 +426,29 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The value in the selected state (only valid in checkbox-group)</td>
+                    <td>
+                        Value when checked (only effective in
+                        <code>checkbox-group</code>
+                        )
+                    </td>
                     <td>string / number / boolean</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td>Native name attribute</td>
+                    <td>
+                        Native
+                        <code>name</code>
+                        attribute
+                    </td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -445,8 +467,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when the selection state changes</td>
+                    <td>Updated value</td>
                 </tr>
             </tbody>
         </table>
@@ -458,7 +480,7 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -471,30 +493,28 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>
-                        The size of the checkbox group, only valid for button-style checkboxes or checkboxes with borders
-                    </td>
+                    <td>Size of the checkbox group (only effective for button-style or bordered Checkbox)</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>min</td>
-                    <td>The minimum number of checkboxes that can be checked</td>
+                    <td>Minimum number of checkboxes that can be checked</td>
                     <td>number</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>max</td>
-                    <td>The maximum number of checkboxes that can be checked</td>
+                    <td>Maximum number of checkboxes that can be checked</td>
                     <td>number</td>
                     <td>—</td>
                     <td>-</td>
@@ -513,8 +533,8 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>The event triggered when the selection state changes</td>
-                    <td>The changed value</td>
+                    <td>Triggered when the selection state changes</td>
+                    <td>Updated value</td>
                 </tr>
             </tbody>
         </table>

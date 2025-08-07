@@ -1,40 +1,40 @@
-## Popconfirm
+## Popconfirm Bubble Confirmation Dialog
 
-A pop-up bubble confirmation box appears when you click an element.
+Click on an element to trigger a bubble confirmation dialog.
 
 ### Basic Usage
 
-The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the `title` attribute is available.
+The properties of Popconfirm are very similar to those of Popover. Therefore, for duplicate properties, please refer to the Popover documentation. This document does not provide detailed explanations for them. In Popconfirm, only the `title` property is available.
 
 !!!demo1!!!
 
 ### Customization
 
-You can customize the content in Popconfirm.
+You can customize the content within Popconfirm.
 
 !!!demo2!!!
 
 ### Attributes
 
-| Parameter           | Description                     | Type   | Optional Values | Default Value    |
-| ------------------- | ------------------------------- | ------ | --------------- | ---------------- |
-| title               | Title                           | String | —               | —                |
-| confirm-button-text | Text of the confirmation button | String | —               | —                |
-| cancel-button-text  | Text of the cancel button       | String | —               | —                |
-| confirm-button-type | Type of the confirmation button | String | —               | Primary          |
-| cancel-button-type  | Type of the cancel button       | String | —               | Text             |
-| icon                | Icon                            | String | —               | jk-icon-question |
-| icon-color          | Color of the Icon               | String | —               | #f90             |
+| Attribute              | Description            | Type   | Optional Values | Default Value       |
+|------------------------|------------------------|--------|-----------------|---------------------|
+| title                  | Title                  | String | —               | —                   |
+| confirm-button-text    | Confirm button text    | String | —               | —                   |
+| cancel-button-text     | Cancel button text     | String | —               | —                   |
+| confirm-button-type    | Confirm button type    | String | —               | Primary             |
+| cancel-button-type     | Cancel button type     | String | —               | Text                |
+| icon                   | Icon                   | String | —               | jk-icon-question    |
+| icon-color             | Icon color             | String | —               | #f90                |
 
 ### Sections
 
-| Parameter | Description                                              |
-| --------- | -------------------------------------------------------- |
-| default   | The HTML element that triggers the display of Popconfirm |
+| Slot     | Description                              |
+|----------|------------------------------------------|
+| default  | HTML element that triggers Popconfirm display |
 
 ### Events
 
-| Event Name | Description                                       | Callback Parameters |
-| ---------- | ------------------------------------------------- | ------------------- |
-| confirm    | Triggered when the confirmation button is clicked | —                   |
-| cancel     | Triggered when the cancel button is clicked       | —                   |
+| Event Name | Description              | Callback Parameters |
+|------------|--------------------------|---------------------|
+| confirm    | Triggered when the confirm button is clicked | —                   |
+| cancel     | Triggered when the cancel button is clicked  | —                   |

@@ -1,11 +1,17 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Card</h2>
-        <p>Displays information aggregated within a card container.</p>
+        <p>Displays grouped information within a container card.</p>
         <h3>Basic Usage</h3>
+        <p>Includes title, content, and actions.</p>
         <p>
-            Contains a title, content, and actions.
-            The Card component consists of a header and a body section. The header section requires an explicit named section distribution and is optional.
+            The Card component consists of
+            <code>header</code>
+            and
+            <code>body</code>
+            sections. The
+            <code>header</code>
+            section requires a named slot for content distribution and is optional.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -46,7 +52,7 @@
 </code></pre>
         </DemoContainer>
         <h3>Simple Card</h3>
-        <p>A card can have only a content area.</p>
+        <p>A card can contain only the content area.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;card-demo2&quot;&gt;
@@ -76,12 +82,12 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>With Image</h3>
+        <h3>With Images</h3>
+        <p>Configure to display richer content.</p>
         <p>
-            Allows for configuring and defining a more diverse content display.
-            Configure the
+            Use the
             <code>body-style</code>
-            property to customize the style of the body section. We also use the layout component.
+            property to customize the style of the body section. Layout components are also utilized here.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -147,9 +153,9 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Card Shadow</h3>
+        <p>Configure when to display the shadow.</p>
         <p>
-            Allows for configuring the display of the shadow.
-            Set the timing of the card shadow appearance through the
+            Set the shadow display timing via the
             <code>shadow</code>
             property:
             <code>always</code>
@@ -179,19 +185,19 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>header</td>
                     <td>
-                        Set the header, and it can also be passed as DOM through
-                        <code>sections#header</code>
+                        Sets the header, or pass DOM content via
+                        <code>slot#header</code>
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -199,28 +205,28 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>bodyStyle</td>
-                    <td>Set the style of the body</td>
+                    <td>Customizes the body section's style</td>
                     <td>object</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>shadow</td>
-                    <td>Set the timing of shadow display</td>
+                    <td>Configures when shadow is displayed</td>
                     <td>string</td>
                     <td>always / hover / never</td>
                     <td>always</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Set the card class name</td>
+                    <td>Adds custom CSS class name</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Sections</h3>
+        <h3>Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>

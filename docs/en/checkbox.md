@@ -1,91 +1,101 @@
-## Checkbox
+## Checkbox (Multi-selection Checkbox)  
 
-Allows multiple selections from a set of options.
+A group of options for multiple selections  
 
-### Basic Usage
+### Basic Usage  
 
-When used alone, it can represent the switch between two states. The content written in the label is the description after the Checkbox button.
-In the `jk-checkbox` component, define the `value` binding variable. In a single Checkbox, the value of the default binding variable will be of type `Boolean`, and `true` when selected.
-!!!demo1!!!
+Can be used alone to toggle between two states. The content within the tag serves as the description after the Checkbox button.  
 
-### Disabled State
+In the `jk-checkbox` component, define the `value` binding variable. For a single Checkbox, the default bound variable value will be a `Boolean`, where `true` indicates the checked state.  
 
-The state where the checkbox is unavailable.
-Just set the `disabled` attribute in the `jk-checkbox` component. It accepts a `Boolean` value, with `true` indicating disabled.
-!!!demo2!!!
+!!!demo1!!!  
 
-### Checkbox Group
+### Disabled State  
 
-Suitable for scenarios where multiple checkboxes are bound to the same array. The selected items in this group of options are represented by whether they are checked or not.
-The `jk-checkbox-group` component can manage multiple checkboxes as a group. You only need to use `value` to bind an `Array`-type variable in the Group. The `label` attribute of the `jk-checkbox` is the value corresponding to this checkbox. If there is no content in the label, this attribute also serves as the description after the Checkbox button. The `label` corresponds to the element value in the array. If the specified value exists, it is in the selected state; otherwise, it is not selected.
-!!!demo3!!!
+The disabled state for checkboxes.  
 
-### Indeterminate State
+Simply set the `disabled` property on the `jk-checkbox` component. It accepts a `Boolean`, where `true` means disabled.  
 
-The `indeterminate` attribute is used to represent the indeterminate state of the checkbox, generally used to achieve the effect of "select all".
-!!!demo4!!!
+!!!demo2!!!  
 
-### Limit on the Number of Selectable Items
+### Checkbox Group  
 
-The `min` and `max` attributes can be used to limit the number of items that can be checked.
-!!!demo5!!!
+Suitable for scenarios where multiple checkboxes are bound to the same array, indicating the selected items in the group by whether they are checked.  
 
-### Button Style
+The `jk-checkbox-group` component can manage multiple Checkboxes as a group. Just bind an `Array`-type variable to the `value` property of the Group. The `label` property of each `jk-checkbox` corresponds to the value of that checkbox. If there is no content inside the tag, this property also serves as the description after the Checkbox button. The `label` should match the elements in the array—if the specified value exists, the checkbox will be checked; otherwise, it will be unchecked.  
 
-A set of checkboxes in button style.
-!!!demo6!!!
+!!!demo3!!!  
 
-### With Border
+### Indeterminate State  
 
-Setting the `border` attribute can render it as a checkbox with a border. The `size` attribute of the `jk-checkbox` only takes effect when `border` is set.
-!!!demo7!!!
+The `indeterminate` property represents an indeterminate state for the Checkbox, typically used to implement "select all" functionality.  
 
-### Checkbox Attributes
+!!!demo4!!!  
 
-| Parameter     | Description                                                     | Type                      | Optional Values       | Default Value |
-| ------------- | --------------------------------------------------------------- | ------------------------- | --------------------- | ------------- |
-| value         | Bound value                                                     | string / number / boolean | —                     | —             |
-| label         | The value of the Checkbox                                       | string / number / boolean | —                     | —             |
-| class         | Custom class style                                              | string                    | -                     | -             |
-| disabled      | Whether it is disabled                                          | boolean                   | —                     | false         |
-| border        | Whether to display a border                                     | boolean                   | —                     | false         |
-| size          | The size of the Checkbox, only valid when border is true        | string                    | medium / small / mini | —             |
-| name          | Native name attribute                                           | string                    | —                     | —             |
-| indeterminate | Set the indeterminate state, only responsible for style control | boolean                   | —                     | —             |
+### Limiting the Number of Selectable Items  
 
-### Checkbox Events
+Using the `min` and `max` properties can restrict the number of items that can be checked.  
 
-| Event Name | Description                                          | Callback Parameter |
-| ---------- | ---------------------------------------------------- | ------------------ |
-| change     | The event triggered when the selection state changes | The changed value  |
+!!!demo5!!!  
 
-### Checkbox-button Attributes
+### Button Style  
 
-| Parameter | Description                                                    | Type                      | Optional Values | Default Value |
-| --------- | -------------------------------------------------------------- | ------------------------- | --------------- | ------------- |
-| value     | Bound value                                                    | string / number / boolean | —               | —             |
-| label     | The value in the selected state (only valid in checkbox-group) | string / number / boolean | —               | —             |
-| disabled  | Whether it is disabled                                         | boolean                   | —               | false         |
-| name      | Native name attribute                                          | string                    | —               | —             |
+Checkbox groups with button styling.  
 
-### Checkbox-button Events
+!!!demo6!!!  
 
-| Event Name | Description                                          | Callback Parameter |
-| ---------- | ---------------------------------------------------- | ------------------ |
-| change     | The event triggered when the selection state changes | The changed value  |
+### With Borders  
 
-### Checkbox-group Attributes
+Setting the `border` property renders a checkbox with a border. The `size` property of `jk-checkbox` only takes effect when `border` is set.  
 
-| Parameter | Description                                                                                       | Type    | Optional Values       | Default Value |
-| --------- | ------------------------------------------------------------------------------------------------- | ------- | --------------------- | ------------- |
-| value     | Bound value                                                                                       | array   | —                     | []            |
-| size      | The size of the checkbox group, only valid for button-style checkboxes or checkboxes with borders | string  | medium / small / mini | —             |
-| disabled  | Whether it is disabled                                                                            | boolean | —                     | false         |
-| min       | The minimum number of checkboxes that can be checked                                              | number  | —                     | -             |
-| max       | The maximum number of checkboxes that can be checked                                              | number  | —                     | -             |
+!!!demo7!!!  
 
-### Checkbox-group Events
+### Checkbox Attributes  
 
-| Event Name | Description                                          | Callback Parameter |
-| ---------- | ---------------------------------------------------- | ------------------ |
-| change     | The event triggered when the selection state changes | The changed value  |
+| Parameter      | Description                                         | Type                      | Optional Values          | Default |
+|---------------|-----------------------------------------------------|---------------------------|--------------------------|---------|
+| value         | Bound value                                         | string / number / boolean | —                        | —       |
+| label         | The value of the Checkbox                          | string / number / boolean | —                        | —       |
+| class         | Custom CSS class                                    | string                    | —                        | —       |
+| disabled      | Whether disabled                                    | boolean                   | —                        | false   |
+| border        | Whether to display border                           | boolean                   | —                        | false   |
+| size          | Size of Checkbox (only effective when `border` is `true`) | string                    | medium / small / mini    | —       |
+| name          | Native `name` attribute                             | string                    | —                        | —       |
+| indeterminate | Sets indeterminate state (controls styling only)    | boolean                   | —                        | —       |
+
+### Checkbox Events  
+
+| Event Name  | Description                                   | Callback Parameter   |
+|------------|----------------------------------------------|---------------------|
+| change     | Triggered when the selection state changes   | Updated value       |
+
+### Checkbox-button Attributes  
+
+| Parameter  | Description                                             | Type                      | Optional Values | Default |
+|-----------|---------------------------------------------------------|---------------------------|-----------------|---------|
+| value     | Bound value                                             | string / number / boolean | —               | —       |
+| label     | Value when checked (only effective in `checkbox-group`) | string / number / boolean | —               | —       |
+| disabled  | Whether disabled                                        | boolean                   | —               | false   |
+| name      | Native `name` attribute                                 | string                    | —               | —       |
+
+### Checkbox-button Events  
+
+| Event Name  | Description                                   | Callback Parameter   |
+|------------|----------------------------------------------|---------------------|
+| change     | Triggered when the selection state changes   | Updated value       |
+
+### Checkbox-group Attributes  
+
+| Parameter  | Description                                                                 | Type    | Optional Values          | Default |
+|-----------|-----------------------------------------------------------------------------|---------|--------------------------|---------|
+| value     | Bound value                                                                | array   | —                        | []      |
+| size      | Size of the checkbox group (only effective for button-style or bordered Checkbox) | string  | medium / small / mini    | —       |
+| disabled  | Whether disabled                                                           | boolean | —                        | false   |
+| min       | Minimum number of checkboxes that can be checked                           | number  | —                        | -       |
+| max       | Maximum number of checkboxes that can be checked                           | number  | —                        | -       |
+
+### Checkbox-group Events  
+
+| Event Name  | Description                                   | Callback Parameter   |
+|------------|----------------------------------------------|---------------------|
+| change     | Triggered when the selection state changes   | Updated value       |

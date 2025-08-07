@@ -1,30 +1,30 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>MessageBox</h2>
+        <h2>MessageBox Popup</h2>
         <p>
-            A set of modal dialog components implemented by simulating the system's message prompt box, used for message prompts, confirmation messages, and content submission.
+            A modal dialog component that simulates system message prompts, used for displaying messages, confirmations, and submission forms.
         </p>
         <blockquote>
             <p>
-                In terms of scenarios, the role of MessageBox is to beautify the system-built-in
+                In terms of scenarios, MessageBox enhances the native
                 <code>alert</code>
                 ,
                 <code>confirm</code>
                 , and
                 <code>prompt</code>
-                . Therefore, it is suitable for displaying relatively simple content. If you need to pop up more complex content, please use Dialog.
+                dialogs, making it suitable for relatively simple content. For more complex content, use the Dialog component instead.
             </p>
         </blockquote>
-        <h3>Message Prompt</h3>
+        <h3>Message Alert</h3>
         <p>
-            It is triggered when the user performs an operation. This dialog box interrupts the user's operation until the user confirms and acknowledges it before it can be closed.
+            Triggered when a user performs an operation, this dialog interrupts the user's workflow until they acknowledge the message.
         </p>
         <p>
-            Calling the
+            Invoke the
             <code>MessageBox.alert</code>
-            method can open the message prompt. It simulates the system's
+            method to display a message prompt, which simulates the system's
             <code>alert</code>
-            and cannot be closed by pressing ESC or clicking outside the box. In this example, it accepts two parameters,
+            and cannot be closed by pressing ESC or clicking outside the box. This example accepts two parameters:
             <code>message</code>
             and
             <code>title</code>
@@ -56,34 +56,32 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Confirmation Message</h3>
+        <h3>Confirmation Dialog</h3>
+        <p>Used to prompt users to confirm an action and verify whether they intend to proceed.</p>
         <p>
-            This dialog box is used when prompting the user to confirm an action they have triggered and asking whether to perform this operation.
-        </p>
-        <p>
-            Calling the
+            Invoke the
             <code>MessageBox.confirm</code>
-            method can open the message prompt. It simulates the system's
+            method to open the confirmation dialog, which simulates the system's
             <code>confirm</code>
-            . The MessageBox component also has a high degree of customizability. We can pass in
+            . The MessageBox component offers high customizability—we can pass
             <code>options</code>
-            as the third parameter, which is a literal object. The
+            as a third parameter, which is a literal object. The
             <code>type</code>
-            field indicates the message type and can be
+            field specifies the message type, which can be
             <code>success</code>
             ,
             <code>error</code>
             ,
             <code>info</code>
-            , and
+            , or
             <code>warning</code>
-            . Invalid settings will be ignored. Note that the second parameter,
+            . Invalid settings are ignored. Note that the second parameter,
             <code>title</code>
             , must be defined as a
             <code>String</code>
-            type. If it is an
+            type; if it is an
             <code>Object</code>
-            , it will be understood as
+            , it will be interpreted as
             <code>options</code>
             .
         </p>
@@ -173,37 +171,33 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Content Submission</h3>
+        <h3>Submission Prompt</h3>
         <p>
-            It is triggered when the user performs an operation, interrupts the user's operation, and prompts the user to enter information in the dialog box.
+            Triggered when a user performs an operation, this dialog interrupts the workflow to prompt the user for input.
         </p>
         <p>
-            Calling the
+            Invoke the
             <code>MessageBox.prompt</code>
-            method can open the message prompt. It simulates the system's
+            method to open the input prompt, which simulates the system's
             <code>prompt</code>
-            . You can use
+            . The
             <code>validate</code>
-            to define a validation function, which can return
+            function can define validation rules, returning either a
             <code>String</code>
             or
             <code>Boolean</code>
-            . The returned string is equivalent to defining the
-            <code>error prompt</code>
-            field. Returning
+            . A returned string acts as an error message, while
             <code>false</code>
-            will prompt the default error message. For more precise interaction, it is recommended to return a
+            triggers the default error prompt. For precise interaction, it's recommended to return a
             <code>String</code>
-            error prompt text. In addition, you can use the
+            error message. Additionally, the
             <code>inputPlaceholder</code>
-            field to define the placeholder of the input box.
+            field can define the input placeholder text.
         </p>
         <p>
-            Through
+            The
             <code>beforeClose</code>
-            , you can customize operations, such as data submission, etc., and then let the caller decide whether to
-            <code>close</code>
-            the window.
+            callback allows custom operations, such as data submission, leaving the decision to close the window to the caller.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -263,26 +257,26 @@ export default class extends Component {
         <p>
             The
             <code>message</code>
-            property supports passing in HTML fragments. Set the
+            property supports injecting HTML snippets. When the
             <code>useHtml</code>
-            property to
+            property is set to
             <code>true</code>
-            , and
+            ,
             <code>message</code>
-            will be treated as an HTML fragment.
+            is processed as an HTML fragment.
         </p>
         <div class="warning">
             <p>
                 Although the
                 <code>message</code>
-                property supports passing in HTML fragments, dynamically rendering arbitrary HTML on a website is very dangerous because it is prone to
+                property supports HTML fragments, dynamically rendering arbitrary HTML on a website is highly dangerous, as it can lead to
                 <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attacks</a>
-                . Therefore, when
+                . When
                 <code>useHtml</code>
-                is turned on, please ensure that the content of
+                is enabled, ensure the
                 <code>message</code>
-                is trustworthy.
-                <strong>Never</strong>
+                content is trusted—
+                <strong>never</strong>
                 assign user-submitted content to the
                 <code>message</code>
                 property.
@@ -314,11 +308,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Queue Display</h3>
         <p>
-            The display form of
+            The presentation logic of
             <code>MessageBox</code>
-            is consistent with the logic of the browser's message prompt box, and it also uses a queue display in a &quot;first-in-first-out&quot; mode. If there is a scenario where we need it, we provide the
+            follows the same queue-based &quot;first in, first out&quot; pattern as browser-native message prompts. If necessary, the
             <code>MessageBox.closeAll</code>
-            method to close the current pop-up window and clear the queue.
+            method can be used to close all dialogs and clear the queue.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -353,15 +347,23 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Distinguishing Cancellation and Closing</h3>
+        <h3>Differentiating Cancel and Close</h3>
         <p>
-            In some scenarios, clicking the cancel button and clicking the close button have different meanings. By default, when the user triggers cancellation (clicking the cancel button) and triggering closing (clicking the close button or the mask layer, pressing the ESC key), the parameters of the Promise's reject callback and the
+            In some scenarios, clicking the cancel button and closing the dialog (via the close button, mask layer, or pressing ESC) may have different meanings. By default, both actions resolve the Promise's
+            <code>reject</code>
+            callback or
             <code>callback</code>
-            callback are both 'cancel'. If the
+            with the parameter
+            <code>'cancel'</code>
+            . If
             <code>distinguishCancelAndClose</code>
-            property is set to
+            is set to
             <code>true</code>
-            , the parameters of the above two behaviors are 'cancel' and 'close' respectively.
+            , the respective callback parameters will be
+            <code>'cancel'</code>
+            and
+            <code>'close'</code>
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -396,11 +398,11 @@ export default class extends Component {
         </DemoContainer>
         <h3>Centered Layout</h3>
         <p>
-            The content supports a centered layout. Set
+            Content can be center-aligned by setting
             <code>center</code>
             to
             <code>true</code>
-            to enable the centered layout.
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -430,7 +432,7 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Method of Introduction</h3>
+        <h3>Import Method</h3>
         <p>
             Import
             <code>MessageBox</code>
@@ -439,15 +441,7 @@ export default class extends Component {
         <pre><code class="language-javascript">import { MessageBox } from &quot;@joker.front/ui&quot;;
 </code></pre>
         <p>
-            Then the calling methods corresponding to the above four global methods are
-            <code>MessageBox</code>
-            ,
-            <code>MessageBox.alert</code>
-            ,
-            <code>MessageBox.confirm</code>
-            , and
-            <code>MessageBox.prompt</code>
-            in sequence. The calling parameters are the same as those of the global methods.
+            The corresponding global method calls are: MessageBox, MessageBox.alert, MessageBox.confirm, and MessageBox.prompt, with the same parameters as the global methods.
         </p>
         <h3>Options</h3>
         <table class="mkd-table">
@@ -456,21 +450,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
+                    <th>Accepted Values</th>
                     <th>Default Value</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>title</td>
-                    <td>The title of the MessageBox</td>
+                    <td>MessageBox title</td>
                     <td>string</td>
                     <td>—</td>
-                    <td>A friendly reminder</td>
+                    <td>Prompt</td>
                 </tr>
                 <tr>
                     <td>message</td>
-                    <td>The message body content of the MessageBox</td>
+                    <td>MessageBox content</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -478,9 +472,9 @@ export default class extends Component {
                 <tr>
                     <td>useHtml</td>
                     <td>
-                        Whether to treat the
+                        Whether
                         <code>message</code>
-                        property as an HTML fragment
+                        is treated as an HTML fragment
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -488,7 +482,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>type</td>
-                    <td>The message type, used to display the icon</td>
+                    <td>Message type, for icon display</td>
                     <td>string</td>
                     <td>success / info / warning / error</td>
                     <td>—</td>
@@ -496,8 +490,9 @@ export default class extends Component {
                 <tr>
                     <td>iconClass</td>
                     <td>
-                        The class name of the custom icon, which will override
+                        Custom icon class name (overrides
                         <code>type</code>
+                        )
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -505,56 +500,52 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>customClass</td>
-                    <td>The custom class name of the MessageBox</td>
+                    <td>Custom CSS class for MessageBox</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>callback</td>
+                    <td>Fallback callback when Promises are not used</td>
                     <td>
-                        If not using Promise, this parameter can be used to specify the callback after the MessageBox is closed
-                    </td>
-                    <td>
-                        function(action, instance), where the value of
+                        function(action, instance).
                         <code>action</code>
-                        is 'confirm', 'cancel', or 'close', and
+                        can be 'confirm', 'cancel', or 'close';
                         <code>instance</code>
-                        is the MessageBox instance through which you can access the properties and methods on the instance
+                        is the MessageBox instance, providing access to its properties/methods
                     </td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>closable</td>
-                    <td>Whether the MessageBox displays the close button in the upper-right corner</td>
+                    <td>Whether to show the close button in the top-right corner</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>beforeClose</td>
-                    <td>The callback before the MessageBox is closed, which will pause the closing of the instance</td>
+                    <td>Callback before MessageBox closes (pauses closing)</td>
                     <td>
-                        function(action, instance, close), where the value of
+                        function(action, instance, close).
                         <code>action</code>
-                        is 'confirm', 'cancel', or 'close';
+                        as above;
                         <code>instance</code>
-                        is the MessageBox instance through which you can access the properties and methods on the instance;
+                        for properties/methods;
                         <code>close</code>
-                        is used to close the MessageBox instance; the value can be read by accessing
+                        to manually close the dialog;
                         <code>inputValue</code>
-                        in
-                        <code>instance</code>
+                        can be accessed via
+                        <code>instance.inputValue</code>
                     </td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>distinguishCancelAndClose</td>
-                    <td>
-                        Whether to distinguish between cancellation (clicking the cancel button) and closing (clicking the close button or the mask layer, pressing the ESC key)
-                    </td>
+                    <td>Whether to differentiate between cancel (button click) and close (mask/ESC)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -565,11 +556,11 @@ export default class extends Component {
                     <td>boolean</td>
                     <td>—</td>
                     <td>
-                        false (true when called in the
+                        false (true for
                         <code>confirm</code>
                         and
                         <code>prompt</code>
-                        ways)
+                        calls)
                     </td>
                 </tr>
                 <tr>
@@ -581,54 +572,54 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>cancelButtonText</td>
-                    <td>The text content of the cancel button</td>
+                    <td>Cancel button text</td>
                     <td>string</td>
                     <td>—</td>
                     <td>Cancel</td>
                 </tr>
                 <tr>
                     <td>confirmButtonText</td>
-                    <td>The text content of the confirm button</td>
+                    <td>Confirm button text</td>
                     <td>string</td>
                     <td>—</td>
-                    <td>OK</td>
+                    <td>Confirm</td>
                 </tr>
                 <tr>
                     <td>closeOnClickModal</td>
-                    <td>Whether the MessageBox can be closed by clicking the mask</td>
+                    <td>Whether clicking the mask closes MessageBox</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>
-                        true (false when called in the
+                        true (false for
                         <code>alert</code>
-                        way)
+                        calls)
                     </td>
                 </tr>
                 <tr>
                     <td>closeOnPressEscape</td>
-                    <td>Whether the MessageBox can be closed by pressing the ESC key</td>
+                    <td>Whether pressing ESC closes MessageBox</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>
-                        true (false when called in the
+                        true (false for
                         <code>alert</code>
-                        way)
+                        calls)
                     </td>
                 </tr>
                 <tr>
                     <td>showInput</td>
-                    <td>Whether to display the input box</td>
+                    <td>Whether to show an input field</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>
-                        false (true when called in the
+                        false (true for
                         <code>prompt</code>
-                        way)
+                        calls)
                     </td>
                 </tr>
                 <tr>
                     <td>inputPlaceholder</td>
-                    <td>The placeholder of the input box</td>
+                    <td>Input field placeholder</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -636,9 +627,11 @@ export default class extends Component {
                 <tr>
                     <td>validate</td>
                     <td>
-                        The validation function of the input box. It can return a boolean or a string. If a string is returned, the return result will be assigned to the error message, where the parameter in
-                        <code>validate</code>
-                        is the input value of the current text box
+                        Input validation function. Returns
+                        <code>boolean</code>
+                        or
+                        <code>string</code>
+                        (error message). Takes the current input value as an argument.
                     </td>
                     <td>function</td>
                     <td>—</td>
@@ -646,25 +639,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>center</td>
-                    <td>Whether to use a centered layout</td>
+                    <td>Whether to center-align content</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>roundButton</td>
-                    <td>Whether to use rounded-corner buttons</td>
+                    <td>Whether to use rounded buttons</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>id</td>
-                    <td>
-                        If
-                        <code>id</code>
-                        is configured, only one pop-up will appear in the same sequence at the same time
-                    </td>
+                    <td>If configured, only one instance with this ID can appear in the queue at a time</td>
                     <td>string</td>
                     <td>—</td>
                     <td>-</td>
@@ -677,19 +666,19 @@ export default class extends Component {
                 <tr>
                     <th>Method Name</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>close</td>
-                    <td>Close the current message pop-up</td>
+                    <td>Closes the current MessageBox</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>setErrorMsg</td>
-                    <td>Manually configure the error message</td>
-                    <td>errMsg:string</td>
+                    <td>Manually sets an error message</td>
+                    <td>errMsg: string</td>
                 </tr>
             </tbody>
         </table>

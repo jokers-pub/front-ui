@@ -1,49 +1,49 @@
-## Tag
+## Tag  
 
 Used for marking and selection.
 
-### Basic Usage
+### Basic Usage  
 
-The type of the tag is selected by the `type` attribute, and the background color can also be customized through the `color` attribute.
+Use the `type` attribute to specify the tag style. Alternatively, you can customize the background color using the `color` attribute.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Removable Tag
+### Removable Tag  
 
-Setting the `closable` attribute can define whether a tag is removable.
+Set the `closable` attribute to determine whether a tag can be removed.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Different Sizes
+### Different Sizes  
 
-The Tag component provides three sizes in addition to the default size, allowing you to choose the appropriate button size for different scenarios.
+The Tag component offers three additional sizes besides the default one, suitable for different scenarios.  
 
-The additional sizes are: `medium`, `small`, and `mini`, which can be configured by setting the `size` attribute.
+Additional sizes: `medium`, `small`, and `mini`, configured via the `size` attribute.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Different Themes
+### Different Themes  
 
-The Tag component offers three different themes: `dark`, `light`, and `plain`.
+The Tag component provides three themes: `dark`, `light`, and `plain`.  
 
-The theme can be changed by setting the `effect` attribute, with the default being `light`.
+Set the `effect` attribute to switch themes. Defaults to `light`.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter | Description            | Type    | Optional Values             | Default Value |
-| --------- | ---------------------- | ------- | --------------------------- | ------------- |
-| type      | Type                   | string  | success/info/warning/danger | —             |
-| class     | Custom class style     | string  | -                           | -             |
-| closable  | Whether it is closable | boolean | —                           | false         |
-| color     | Background color       | string  | —                           | —             |
-| size      | Size                   | string  | medium / small / mini       | —             |
-| effect    | Theme                  | string  | dark / light / plain        | light         |
+| Attribute | Description            | Type      | Accepted Values                   | Default |
+| --------- | ---------------------- | --------- | --------------------------------- | ------- |
+| type      | Tag type               | string    | success / info / warning / danger | —       |
+| class     | Custom CSS class       | string    | —                                 | —       |
+| closable  | Whether removable      | boolean   | —                                 | false   |
+| color     | Background color       | string    | —                                 | —       |
+| size      | Tag size               | string    | medium / small / mini              | —       |
+| effect    | Theme                  | string    | dark / light / plain              | light   |
 
-### Events
+### Events  
 
-| Event Name | Description                                | Callback Parameters |
-| ---------- | ------------------------------------------ | ------------------- |
-| click      | The event triggered when a Tag is clicked  | —                   |
-| close      | Triggered when the close button is clicked | —                   |
+| Event Name | Description                | Callback Parameters |
+| ---------- | -------------------------- | ------------------- |
+| click      | Triggered when tag is clicked | —                   |
+| close      | Triggered when close button is clicked | —                   |

@@ -1,9 +1,9 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Backtop</h2>
-        <p>An operation button to return to the top of the page.</p>
+        <p>A button component that returns to the top of the page.</p>
         <h3>Basic Usage</h3>
-        <p>Scroll the page and you can see the button at the bottom-right corner.</p>
+        <p>Scroll down the page to see the button in the bottom-right corner.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
@@ -11,8 +11,8 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Custom Display Content</h3>
-        <p>The display area is fixed to a 40px × 40px area, and the content within it can be customized.</p>
+        <h3>Custom Content</h3>
+        <p>The display area is fixed to a 40px × 40px region, and the content inside can be customized.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     Scroll down to see the bottom-right button.
@@ -38,35 +38,35 @@
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>target</td>
-                    <td>The object that triggers the scrolling</td>
+                    <td>Target element that triggers scrolling</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>visibilityHeight</td>
-                    <td>The button appears when the scrolling height reaches this parameter value</td>
+                    <td>Scroll height threshold to make the button appear</td>
                     <td>number</td>
                     <td>—</td>
                     <td>200</td>
                 </tr>
                 <tr>
                     <td>right</td>
-                    <td>Controls its display position, the distance from the right margin of the page</td>
+                    <td>Controls the display position, margin from the right edge of the page</td>
                     <td>string</td>
                     <td>-</td>
                     <td>40px</td>
                 </tr>
                 <tr>
                     <td>bottom</td>
-                    <td>Controls its display position, the distance from the bottom of the page</td>
+                    <td>Controls the display position, margin from the bottom of the page</td>
                     <td>string</td>
                     <td>—</td>
                     <td>40px</td>
@@ -79,13 +79,13 @@
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameter</th>
+                    <th>Callback Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>click</td>
-                    <td>The event triggered when the button is clicked</td>
+                    <td>Triggers when clicked</td>
                     <td>Click event</td>
                 </tr>
             </tbody>

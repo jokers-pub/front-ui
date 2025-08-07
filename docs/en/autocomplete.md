@@ -1,48 +1,51 @@
-## AutoComplete
+## AutoComplete 
 
-Provides corresponding input suggestions based on the input content.
+Provides input suggestions based on entered content.
 
 ### Basic Usage
 
-`autocomplete` is an input box component with input suggestions. `search-load` is a method attribute that returns input suggestions. In this method, when your input suggestion data is ready, you can return it to the `autocomplete` component through `callback(data)`.
+autocomplete is an input component with suggestion capabilities. `search-load` is a method property that returns input suggestions. Within this method, you can pass the prepared suggestion data back to the autocomplete component via `callback(data)` when ready.
+
 !!!demo1!!!
 
 ### Custom Template
 
-You can customize the display of input suggestions.
-Use `section` to customize the template of input suggestions. The parameter is `item`, representing the current input suggestion object.
+Customize the display of input suggestions.
+
+Use `section` to customize the suggestion template. The parameter is `item`, representing the current suggestion object.
+
 !!!demo2!!!
 
-### Autocomplete Attributes
+### Attributes
 
-| Parameter        | Description                                                                                                                        | Type                            | Optional Values | Default Value |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------- | ------------- |
-| placeholder      | Placeholder text of the input box                                                                                                  | string                          | —               | —             |
-| disabled         | Disable                                                                                                                            | boolean                         | —               | false         |
-| value-key        | The key name in the input suggestion object used for display                                                                       | string                          | —               | value         |
-| search-load      | The method to return input suggestions. Only when your input suggestion data is resolved, return it by calling `callback(data:[])` | Function(queryString, callback) | —               | —             |
-| trigger-on-focus | Whether to display the suggestion list when the input box gets focus                                                               | boolean                         | —               | true          |
-| class            | Custom class style                                                                                                                 | string                          | -               | -             |
+| Parameter        | Description                                                                                     | Type                            | Optional Values | Default |
+|------------------|-------------------------------------------------------------------------------------------------|---------------------------------|-----------------|---------|
+| placeholder      | Placeholder text for the input box                                                             | string                          | —               | —       |
+| disabled         | Disable the component                                                                           | boolean                         | —               | false   |
+| value-key        | Key in the suggestion object used for display                                                   | string                          | —               | value   |
+| search-load      | Method to return suggestions. Call `callback(data:[])` when suggestion data is resolved         | Function(queryString, callback) | —               | —       |
+| trigger-on-focus | Whether to show suggestions when input is focused                                               | boolean                         | —               | true    |
+| class            | Custom CSS class                                                                                | string                          | -               | -       |
 
-### Autocomplete Sections
+### Slots
 
-| Name    | Description                                                |
-| ------- | ---------------------------------------------------------- |
-| default | Customize input suggestions, with the parameter `{ item }` |
-| prefix  | Content at the head of the input box                       |
-| suffix  | Content at the tail of the input box                       |
-| prepend | Pre-placed content of the input box                        |
-| append  | Post-placed content of the input box                       |
+| Name    | Description                              |
+|---------|------------------------------------------|
+| default | Custom suggestion template (param: { item }) |
+| prefix  | Content prepended to input box           |
+| suffix  | Content appended to input box            |
+| prepend | Content before input box                 |
+| append  | Content after input box                  |
 
 ### Events
 
-| Event Name | Description                                        | Callback Parameters         |
-| ---------- | -------------------------------------------------- | --------------------------- |
-| select     | Triggered when clicking to select a suggested item | The selected suggested item |
-| change     | Triggered when the value of the Input changes      | (value: string \| number)   |
+| Event Name | Description                         | Callback Param                       |
+|------------|-------------------------------------|--------------------------------------|
+| select     | Triggered when selecting a suggestion | Selected suggestion item             |
+| change     | Triggered when input value changes | (value: string \| number)            |
 
 ### Methods
 
-| Method Name | Description              | Parameter |
-| ----------- | ------------------------ | --------- |
-| focus       | Make the input get focus | -         |
+| Method  | Description               | Param |
+|---------|---------------------------|-------|
+| focus   | Focus the input element   | -     |

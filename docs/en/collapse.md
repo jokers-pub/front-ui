@@ -1,37 +1,38 @@
-## Collapse
+## Collapse Panel  
 
-Opens or collapses to display content.
+Expand/Collapse content display  
 
-### Basic Usage
+### Basic Usage  
 
-Basic usage of the collapse panel.
-!!!demo1!!!
+Basic collapse panel implementation.  
 
-### Accordion Mode
+!!!demo1!!!  
 
-!!!demo2!!!
+### Accordion Mode  
 
-### Custom Title
+!!!demo2!!!  
 
-!!!demo3!!!
+### Custom Title  
 
-### Attributes
+!!!demo3!!!  
 
-| Parameter | Description                                                            | Type           | Optional Values | Default Value |
-| --------- | ---------------------------------------------------------------------- | -------------- | --------------- | ------------- |
-| value     | The currently active panel (string in accordion mode, otherwise Array) | string / Array | -               | -             |
-| accordion | Whether to enable accordion mode                                       | boolean        | -               | false         |
+### Attributes  
 
-### Events
+| Parameter | Description | Type | Accepted Values | Default |  
+|----------|-----------------------------------------------------|----------------|-------------------------------------|---------|  
+| value | Currently active panel (string in accordion mode, otherwise Array) | string / Array | - | - |  
+| accordion | Whether to enable accordion mode | boolean | - | false |  
 
-| Event Name | Description                                                                                                                              | Callback Parameter                           |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| change     | Triggered when the currently active panel changes (if in accordion mode, the parameter `activeNames` is of type string, otherwise Array) | Returns the `name` value of the active panel |
+### Events  
 
-### Item Attributes
+| Event Name | Description | Callback Parameters |  
+|-----------|-----------------------------------------------------|----------------|  
+| change | Triggered when the active panel changes (Returns active panel's name as string in accordion mode, otherwise Array) | Active panel's name value |  
 
-| Parameter | Description            | Type    | Optional Values | Default Value |
-| --------- | ---------------------- | ------- | --------------- | ------------- |
-| name      | Unique identifier      | string  | -               | -             |
-| title     | Title                  | string  | -               | -             |
-| disabled  | Whether it is disabled | boolean | -               | false         |
+### Item Attributes  
+
+| Parameter | Description | Type | Accepted Values | Default |  
+|----------|-----------------------------------------------------|----------------|-------------------------------------|---------|  
+| name | Unique identifier | string | - | - |  
+| title | Panel title | string | - | - |  
+| disabled | Whether to disable | boolean | - | false |

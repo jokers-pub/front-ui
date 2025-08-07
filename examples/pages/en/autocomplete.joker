@@ -1,17 +1,14 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>AutoComplete</h2>
-        <p>Provides corresponding input suggestions based on the input content.</p>
+        <p>Provides input suggestions based on entered content.</p>
         <h3>Basic Usage</h3>
         <p>
-            <code>autocomplete</code>
-            is an input box component with input suggestions.
+            autocomplete is an input component with suggestion capabilities.
             <code>search-load</code>
-            is a method attribute that returns input suggestions. In this method, when your input suggestion data is ready, you can return it to the
-            <code>autocomplete</code>
-            component through
+            is a method property that returns input suggestions. Within this method, you can pass the prepared suggestion data back to the autocomplete component via
             <code>callback(data)</code>
-            .
+            when ready.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -89,13 +86,13 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Custom Template</h3>
+        <p>Customize the display of input suggestions.</p>
         <p>
-            You can customize the display of input suggestions.
             Use
             <code>section</code>
-            to customize the template of input suggestions. The parameter is
+            to customize the suggestion template. The parameter is
             <code>item</code>
-            , representing the current input suggestion object.
+            , representing the current suggestion object.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -163,7 +160,7 @@ p.addr {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Autocomplete Attributes</h3>
+        <h3>Attributes</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -171,27 +168,27 @@ p.addr {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder text of the input box</td>
+                    <td>Placeholder text for the input box</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Disable</td>
+                    <td>Disable the component</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>value-key</td>
-                    <td>The key name in the input suggestion object used for display</td>
+                    <td>Key in the suggestion object used for display</td>
                     <td>string</td>
                     <td>—</td>
                     <td>value</td>
@@ -199,8 +196,9 @@ p.addr {
                 <tr>
                     <td>search-load</td>
                     <td>
-                        The method to return input suggestions. Only when your input suggestion data is resolved, return it by calling
+                        Method to return suggestions. Call
                         <code>callback(data:[])</code>
+                        when suggestion data is resolved
                     </td>
                     <td>Function(queryString, callback)</td>
                     <td>—</td>
@@ -208,21 +206,21 @@ p.addr {
                 </tr>
                 <tr>
                     <td>trigger-on-focus</td>
-                    <td>Whether to display the suggestion list when the input box gets focus</td>
+                    <td>Whether to show suggestions when input is focused</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Autocomplete Sections</h3>
+        <h3>Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -234,27 +232,24 @@ p.addr {
                 <tr>
                     <td>default</td>
                     <td>
-                        Customize input suggestions, with the parameter
-                        <code>
-                            {item}
-                        </code>
+                        Custom suggestion template (param:{item})
                     </td>
                 </tr>
                 <tr>
                     <td>prefix</td>
-                    <td>Content at the head of the input box</td>
+                    <td>Content prepended to input box</td>
                 </tr>
                 <tr>
                     <td>suffix</td>
-                    <td>Content at the tail of the input box</td>
+                    <td>Content appended to input box</td>
                 </tr>
                 <tr>
                     <td>prepend</td>
-                    <td>Pre-placed content of the input box</td>
+                    <td>Content before input box</td>
                 </tr>
                 <tr>
                     <td>append</td>
-                    <td>Post-placed content of the input box</td>
+                    <td>Content after input box</td>
                 </tr>
             </tbody>
         </table>
@@ -264,18 +259,18 @@ p.addr {
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Callback Parameters</th>
+                    <th>Callback Param</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>select</td>
-                    <td>Triggered when clicking to select a suggested item</td>
-                    <td>The selected suggested item</td>
+                    <td>Triggered when selecting a suggestion</td>
+                    <td>Selected suggestion item</td>
                 </tr>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the value of the Input changes</td>
+                    <td>Triggered when input value changes</td>
                     <td>(value: string | number)</td>
                 </tr>
             </tbody>
@@ -284,15 +279,15 @@ p.addr {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Param</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input get focus</td>
+                    <td>Focus the input element</td>
                     <td>-</td>
                 </tr>
             </tbody>

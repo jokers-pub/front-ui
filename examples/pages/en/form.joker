@@ -1,11 +1,9 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Form</h2>
-        <p>
-            A component used to provide interactive functions such as form data collection, validation, and submission.
-        </p>
-        <h3>Typical Forms</h3>
-        <p>It includes various form items, such as input boxes, selectors, switches, radio boxes, checkboxes, etc.</p>
+        <p>A component for collecting, validating, and submitting form data through interactive elements.</p>
+        <h3>Basic Form</h3>
+        <p>Includes various form items such as input fields, selectors, switches, radio buttons, checkboxes, etc.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-form ref=&quot;form&quot; label-width=&quot;120px&quot; @submit=&quot;handleFormSubmit&quot;&gt;
@@ -70,11 +68,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Inline Forms</h3>
+        <h3>Inline Form</h3>
         <p>
             Setting the
             <code>inline</code>
-            attribute can turn the form into an inline form. When vertical space is limited and the form is relatively simple, an inline form can be used.
+            property allows the form to display as an inline form, which is suitable when vertical space is limited and the form is relatively simple.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -103,17 +101,17 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Text Alignment</h3>
+        <h3>Label Alignment</h3>
         <p>
-            The alignment of the title can be set through the
+            The
             <code>label-position</code>
-            attribute. Currently, it supports:
+            property can be used to set label alignment. Currently supported values are
             <code>top</code>
-            ,
+            and
             <code>left</code>
-            . When set to
+            , where
             <code>top</code>
-            , the title will be placed at the top of the form item.
+            will place labels above form items.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -164,9 +162,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Form Validation</h3>
         <p>
-            The Form component provides a form validation function. It has basic validation methods internally, and validation rules can be configured by adding
+            The Form component provides validation functionality with built-in validation methods. Configure validation rules using the
             <code>validate</code>
-            .
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -269,27 +267,27 @@ export default class extends Component {
         </DemoContainer>
         <blockquote>
             <p>
-                Configuring
+                Setting
                 <code>required</code>
                 in
                 <code>form-item</code>
-                is only used to determine whether to display an
+                only controls whether to display the
                 <strong>asterisk</strong>
-                and does not perform any validation operations itself.
+                indicator and does not perform any validation.
             </p>
         </blockquote>
-        <h3>Built-in Rules</h3>
+        <h3>Built-in Validation Rules</h3>
         <p>
-            Common validation rules are provided internally, and
+            Common validation rules are provided internally and can be configured using
             <code>validate</code>
-            is used for configuration.
+            .
         </p>
         <table class="mkd-table">
             <thead>
                 <tr>
                     <th>Rule</th>
                     <th>Description</th>
-                    <th>Value Description</th>
+                    <th>Parameter Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -299,9 +297,9 @@ export default class extends Component {
                     </td>
                     <td>Non-empty validation</td>
                     <td>
-                        Error information can be configured through this attribute. If not set, the error will be prompted according to
+                        Configure error messages via this property. If not set, the
                         <code>placeholder</code>
-                        .
+                        text is used for error prompts.
                     </td>
                 </tr>
                 <tr>
@@ -309,40 +307,40 @@ export default class extends Component {
                         <code>Global.isInt(msg)</code>
                     </td>
                     <td>Positive integer validation</td>
-                    <td>Error prompt</td>
+                    <td>Error message</td>
                 </tr>
                 <tr>
                     <td>
                         <code>Global.isNumber(msg)</code>
                     </td>
                     <td>Numeric validation</td>
-                    <td>Error prompt</td>
+                    <td>Error message</td>
                 </tr>
                 <tr>
                     <td>
                         <code>Global.isPhone(msg)</code>
                     </td>
-                    <td>Mobile phone number format validation</td>
-                    <td>Error prompt</td>
+                    <td>Phone number format validation</td>
+                    <td>Error message</td>
                 </tr>
                 <tr>
                     <td>
                         <code>Global.isEmail(msg)</code>
                     </td>
                     <td>Email format validation</td>
-                    <td>Error prompt</td>
+                    <td>Error message</td>
                 </tr>
                 <tr>
                     <td>
                         <code>Global.isMatched(regex,msg)</code>
                     </td>
-                    <td>Custom regular expression validation</td>
+                    <td>Custom regex validation</td>
                     <td>
-                        {pattern:string,msg:string}, where
+                        {pattern:string,msg:string}-
                         <code>pattern</code>
-                        is a required item used to configure the regular expression rule, and
+                        is mandatory for regex rules,
                         <code>msg</code>
-                        is the error prompt.
+                        for error text.
                     </td>
                 </tr>
                 <tr>
@@ -351,8 +349,8 @@ export default class extends Component {
                     </td>
                     <td>Length validation</td>
                     <td>
-                        <code>（Minimum value, maximum value, error message）</code>
-                        : The maximum and minimum values can be set in the form of an array.
+                        <code>(min, max, errorMsg)</code>
+                        - Array format for min/max length constraints.
                     </td>
                 </tr>
             </tbody>
@@ -418,20 +416,20 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <p>
-            Custom validation rules can be registered through
-            <code>Global method registration</code>
-            . Here is the code of a built-in check method for reference.
+            Custom validation rules can be registered via
+            <code>global method registration</code>
+            . Below is an example of a built-in validation method for reference:
         </p>
         <pre><code class="language-ts">registerGlobalFunction({
     isPhone: (message?: string) =&gt; {
         return (value: any) =&gt; {
             if (!value) return;
             if (value.length !== 11) {
-                return message || &quot;Please enter an 11-digit mobile phone number&quot;;
+                return message || &quot;Please enter an 11-digit phone number&quot;;
             }
 
             if (/^1[3456789]\d{9}$/.test(value) === false) {
-                return message || &quot;The mobile phone number format is incorrect. Please re-enter.&quot;;
+                return message || &quot;Invalid phone number format, please re-enter&quot;;
             }
         };
     }
@@ -439,24 +437,24 @@ export default class extends Component {
 </code></pre>
         <pre><code class="language-html">&lt;input validate=&quot;@Global.isPhone()&quot; /&gt;
 </code></pre>
-        <p>The validation rules are in order:</p>
+        <p>Validation executes in the following order:</p>
         <ol>
             <li>
-                <code>control.beforeValidate()</code>
+                <code>Control.beforeValidate()</code>
             </li>
             <li>
-                <code>control.ctrlValidate</code>
+                <code>Control.ctrlValidate</code>
             </li>
             <li>
-                <code>control.props.validate(Custom validation)</code>
-                Supports arrays for multiple combined validations
+                <code>Control.props.validate</code>
+                (custom validation, supports array-based multi-rule validation)
             </li>
         </ol>
         <h3>Custom Validation</h3>
         <p>
-            Custom validation rules can be configured by setting the
+            Custom validation rules can be configured via the component's
             <code>validate</code>
-            parameter of the component. If the validation fails, return the prompt message. If the return value is empty, it means the validation is successful. This method supports asynchronous validation.
+            parameter. Return an error message on failure, or an empty value on success. Supports asynchronous validation.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -528,20 +526,20 @@ export default class extends Component {
             <p>
                 The
                 <code>status-icon</code>
-                attribute can be used to display the verification process status in the
+                property can be used in
                 <code>input</code>
-                component.
+                components to display validation status indicators.
             </p>
         </blockquote>
-        <h3>Size</h3>
+        <h3>Sizing</h3>
         <p>
-            The size of the overall form control can be set by configuring the
+            Set the size of all form controls using the
             <code>size</code>
-            attribute in
+            property in
             <code>form</code>
-            . If the component already has a private
+            . Note that if a component has its own
             <code>size</code>
-            configured, it cannot be overridden.
+            configured, the form-level setting will be overridden.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -622,11 +620,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Submission</h3>
         <p>
-            The form submission can be achieved by calling the
+            Trigger form submission via the form's
             <code>submit</code>
-            event in the form. It should be noted that the submission process only includes form validation and form value acquisition. If the validation is successful, the
-            <code>submit</code>
-            event will be used to notify the caller and return the form data together.
+            event. This process only handles validation and data collection. If validation succeeds, the event notifies the caller with the form data.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo8)">
             <pre><code class="language-html">&lt;template&gt;
@@ -743,51 +739,68 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <blockquote>
-            <p>
-                During the internal processing of the submit event, the form will set the initiating button (which needs to be a jk-button) to loading during the asynchronous validation process. After the asynchronous validation is successful, the loading is removed and transferred to the submit event for self-handling. Therefore, the caller needs to control the loading during the
-                <code>submission</code>
-                process by themselves, and there is no need to care about the loading during the validation.
-            </p>
+            <p>During submission:</p>
+            <ul>
+                <li>
+                    The form automatically sets the submit button (must be
+                    <code>jk-button</code>
+                    ) to
+                    <code>loading</code>
+                    during async validation.
+                </li>
+                <li>
+                    Callers must manually handle
+                    <code>loading</code>
+                    during the submission phase (validation-phase loading is handled automatically).
+                </li>
+            </ul>
         </blockquote>
-        <h3>Expansion of Form Controls</h3>
+        <h3>Extending Form Controls</h3>
         <p>
-            If you want to add form controls that can be recognized by the
+            For custom form controls to work with
             <code>Form</code>
-            form, the following conditions need to be met:
+            , they must:
         </p>
         <ol>
             <li>
-                When creating, the
+                Register via
                 <code>registerFormCtrl(this)</code>
-                method needs to be called to register the form control.
+                during creation.
             </li>
             <li>
-                The
-                <code>value</code>
-                attribute needs to be configured in the model.
+                Include a
+                <code>model.value</code>
+                property.
             </li>
             <li>
+                Pass
                 <code>props.name</code>
-                needs to be passed in (depending on the usage scenario).
+                (context-dependent).
             </li>
-            <li>The current control is rendered in the jk-form component (depending on the usage scenario).</li>
+            <li>
+                Render within a
+                <code>jk-form</code>
+                component (context-dependent).
+            </li>
         </ol>
-        <p>The following are functional expansions (not mandatory constraints):</p>
+        <p>
+            <strong>Optional Functional Extensions:</strong>
+        </p>
         <ol>
             <li>
-                Trigger the
+                Trigger
                 <code>this.$trigger(&quot;validate&quot;)</code>
-                form validation event at an appropriate time, usually when the content value changes (not mandatory).
+                on value changes (recommended but optional).
             </li>
             <li>
-                If the
+                Implement
                 <code>ctrlValidate</code>
-                method exists in the component, it will execute its own built-in validation when the form performs this item of validation.
+                for custom validation logic.
             </li>
             <li>
-                If the
+                Implement
                 <code>beforeValidate</code>
-                method exists in the component, some pre-data preparation work will be executed before the form performs this item of validation.
+                for pre-validation preparation.
             </li>
         </ol>
         <h3>Form Attributes</h3>
@@ -797,14 +810,14 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
@@ -819,9 +832,9 @@ export default class extends Component {
                 <tr>
                     <td>label-position</td>
                     <td>
-                        The position of the form label. If the value is left or right,
+                        Label alignment. Requires
                         <code>label-width</code>
-                        needs to be set.
+                        if set to left/right.
                     </td>
                     <td>string</td>
                     <td>right/left/top</td>
@@ -830,7 +843,9 @@ export default class extends Component {
                 <tr>
                     <td>label-width</td>
                     <td>
-                        The width of the form label, for example, '50px'. Form-items that are direct children of Form will inherit this value.
+                        Label width (e.g., '50px'). Inherited by child
+                        <code>form-item</code>
+                        elements.
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -838,9 +853,9 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Used to control the size of components within this form</td>
+                    <td>Controls the size of form components</td>
                     <td>string</td>
-                    <td>medium / small / mini</td>
+                    <td>medium/small/mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
@@ -852,7 +867,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>clearErrorMessage</td>
-                    <td>Custom clear error message</td>
+                    <td>Custom error message clearing</td>
                     <td>Function</td>
                     <td>-</td>
                     <td>-</td>
@@ -863,42 +878,34 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>validate</td>
-                    <td>
-                        A method to validate the entire form. The parameter is a callback function. The callback function will be called after the validation is completed and returns a promise.
-                    </td>
-                    <td>
-                        Function(string /string[]). If no parameter is passed, the entire form control will be validated. You can pass in name (string / string[]) to validate the value of the specified control.
-                    </td>
+                    <td>Validates the entire form. Takes a callback function that returns a promise.</td>
+                    <td>Function(string / string[]) - Optional: validate specific fields by passing name(s).</td>
                 </tr>
                 <tr>
                     <td>reset</td>
-                    <td>
-                        Reset the entire form, reset all field values to their initial values and remove the validation results.
-                    </td>
+                    <td>Resets all fields to initial values and clears validation results.</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>getData</td>
                     <td>
-                        Get the current form data. Note that
-                        <strong>the data obtained has not passed form validation</strong>
+                        Retrieves form data
+                        <strong>without validation</strong>
                         .
                     </td>
-                    <td>
-                        Function(string / string[]). If no parameter is passed, the values of the entire form control will be obtained. You can pass in name (string / string[]) to get the values of the specified control.
-                    </td>
+                    <td>Function(string / string[]) - Optionally pass field name(s) to fetch specific values.</td>
                 </tr>
                 <tr>
                     <td>submit</td>
-                    <td>Trigger the form submission operation.</td>
+                    <td>Triggers form submission.</td>
                     <td>-</td>
                 </tr>
             </tbody>
@@ -907,20 +914,20 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>before-submit</td>
-                    <td>Triggered before form submission</td>
+                    <td>Triggered before submission</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>submit</td>
-                    <td>Trigger the form submission operation</td>
+                    <td>Triggered on submission</td>
                     <td>Form data</td>
                 </tr>
             </tbody>
@@ -932,14 +939,14 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
@@ -953,51 +960,47 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>label-width</td>
-                    <td>The width of the form field label, for example, '50px'.</td>
+                    <td>Label width (e.g., '50px')</td>
                     <td>string</td>
                     <td>—</td>
                     <td>80px</td>
                 </tr>
                 <tr>
                     <td>required</td>
-                    <td>
-                        Whether it is required (used to control whether to display an
-                        <strong>asterisk</strong>
-                        and does not participate in the formulation of validation rules)
-                    </td>
+                    <td>Required field indicator (displays asterisk, does not enforce validation)</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>inline</td>
-                    <td>Whether to use an inline layout</td>
+                    <td>Inline layout</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Form-Item Sections</h3>
+        <h3>Form-Item Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>name</th>
+                    <th>Name</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>—</td>
-                    <td>The content of Form Item</td>
+                    <td>Default form item content</td>
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The content of the label text</td>
+                    <td>Custom label content</td>
                 </tr>
                 <tr>
                     <td>error</td>
-                    <td>The content of validation failure</td>
+                    <td>Validation error content</td>
                 </tr>
             </tbody>
         </table>

@@ -2,11 +2,11 @@
     <div ref="container" class="joker-demo-container">
         <h2>Built-in Transition Animations</h2>
         <p>
-            The transition animations applied in some components within Joker-UI can also be used directly by you. Before using them, please read the
-            <code>transition component documentation</code>
+            Joker-UI incorporates transition animations in some components, which you can also use directly. Before using them, please read the
+            <code>Transition Component Documentation</code>
             .
         </p>
-        <h3>Fade (Fade In and Out)</h3>
+        <h3>Fade</h3>
         <p>
             Provides the
             <code>jk-fade-in</code>
@@ -52,9 +52,9 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Zoom (Scale)</h3>
+        <h3>Zoom</h3>
         <p>
-            Provides three effects:
+            Offers three effects:
             <code>jk-zoom-in-center</code>
             ,
             <code>jk-zoom-in-top</code>

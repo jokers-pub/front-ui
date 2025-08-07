@@ -1,123 +1,123 @@
-## Tree
+## Tree Control  
 
-Displays information in a clear hierarchical structure, which can be expanded or collapsed.
+Displays information in a clear hierarchical structure that can be expanded or collapsed.  
 
-### Basic Usage
+### Basic Usage  
 
-Displays a basic tree-shaped structure.
+Basic tree structure display.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Selectable
+### Selectable  
 
-Suitable for scenarios where hierarchical selection is required. This demo also shows dynamic loading.
+Suitable for scenarios requiring hierarchical selection. This demo also demonstrates dynamic loading.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Node Disabling and Selection
+### Node Disabling and Selection  
 
-Setting `disabled` can disable nodes. This property is generally used in combination with `show-checkbox`.
+Nodes can be disabled by setting the `disabled` property, which is typically used in conjunction with `show-checkbox`.  
 
-This example also shows how to get and set selected nodes. If you want to get and set nodes by **key**, it is recommended to configure the corresponding `node-key`.
+This example also demonstrates how to retrieve and set selected nodes. If you want to retrieve or set nodes by their **key**, it is recommended to configure the corresponding `node-key`.  
 
-> If `node-key` is not configured or its value is `undefined`, an internal ID will be generated as the key by default.
+> If `node-key` is not configured or its value is `undefined`, a default internal ID will be generated as the key.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Custom Node Template
+### Custom Node Template  
 
-By using `section`, you can display a custom node template.
+Custom node templates can be rendered using `section`.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Node Filtering
+### Node Filtering  
 
-Filter nodes by keywords. When nodes need to be filtered, call the `filter` method of the Tree instance, with the keyword as the parameter. Note that at this time, `filter-method` needs to be set, with the value being the filtering function. By default, this method will perform character-based filtering queries according to the node's label.
+Nodes can be filtered by keywords. To filter nodes, call the `filter` method of the Tree instance with the keyword as the parameter. Note that `filter-method` must be set, with its value being the filtering function. By default, this method filters nodes based on their `label` property.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Draggable
+### Drag and Drop  
 
-Enable the drag-and-drop function of tree nodes by enabling the `draggable` field, and configure which nodes can be dragged and which nodes can accept dropped nodes.
+Enable dragging of tree nodes by setting the `draggable` property. You can also configure which nodes are draggable and which nodes can receive dragged nodes.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Non-associated Mode
+### Non-Relational Mode  
 
-Enable the non-associated mode by turning on the `check-strictly` field. When checkboxes are displayed, it determines whether to strictly follow the practice of not associating parent and child elements with each other.
+Enable non-relational mode by setting `check-strictly`. In this mode, when checkboxes are displayed, the parent-child relationship is strictly non-associative.  
 
-!!!demo7!!!
+!!!demo7!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter             | Description                                                                                                                                                                          | Type                    | Optional Values | Default Value |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | --------------- | ------------- |
-| data                  | Data to be displayed                                                                                                                                                                 | array                   | —               | —             |
-| class                 | Custom class style                                                                                                                                                                   | string                  | -               | -             |
-| empty-text            | Text to be displayed when the content is empty                                                                                                                                       | String                  | —               | —             |
-| empty-size            | Size of the empty panel                                                                                                                                                              | String                  | —               | —             |
-| node-key              | The property used as a unique identifier for each tree node, which should be unique throughout the tree                                                                              | String                  | —               | —             |
-| load                  | Method for loading subtree data, only takes effect when the `lazy` property is `true`                                                                                                | function(node, resolve) | —               | —             |
-| default-expand-all    | Whether to expand all nodes by default                                                                                                                                               | boolean                 | —               | false         |
-| expand-on-click-node  | Whether to expand or collapse the node when clicking on the node. The default value is `true`. If it is `false`, the node will only expand or collapse when clicking the arrow icon. | boolean                 | —               | true          |
-| check-on-click-node   | Whether to select the node when clicking on the node. The default value is `false`, meaning the node is only selected when clicking the checkbox.                                    | boolean                 | —               | false         |
-| default-expanded-keys | Array of keys of nodes to be expanded by default                                                                                                                                     | array                   | —               | —             |
-| show-checkbox         | Whether the node can be selected                                                                                                                                                     | boolean                 | —               | false         |
-| default-checked-keys  | Array of keys of nodes to be checked by default                                                                                                                                      | array                   | —               | —             |
-| current-node-key      | The currently selected node                                                                                                                                                          | string, number          | —               | —             |
-| filter-method         | The method executed when filtering tree nodes. Return `true` to indicate that the node can be displayed, and `false` to indicate that the node will be hidden                        | Function(node,value)    | —               | —             |
-| indent                | Horizontal indent between adjacent levels of nodes, in pixels                                                                                                                        | number                  | —               | 16            |
-| icon-class            | Custom icon for tree nodes                                                                                                                                                           | string                  | -               | -             |
-| lazy                  | Whether to lazy-load child nodes, needs to be used in combination with the `load` method                                                                                             | boolean                 | —               | false         |
-| labelKey              | Specify the node label as a certain property value of the node object                                                                                                                | string                  | —               | label         |
-| childrenKey           | Specify the subtree as a certain property value of the node object                                                                                                                   | string                  | —               | children      |
-| disabledKey           | Specify whether the node checkbox is disabled as a certain property value of the node object                                                                                         | string                  | —               | disabled      |
-| expandKey             | Specify whether the node is expanded by default as a certain property value of the object                                                                                            | string                  | —               | expand        |
-| isLeafKey             | Specify whether the node is a leaf node, only takes effect when the `lazy` property is specified                                                                                     | string                  | —               | isLeaf        |
-| virtualKey            | Advanced usage: Whether it is a virtual node. Virtual nodes do not participate in the entire checkbox selection process, generally takes effect when selection is enabled.           | string                  | —               | isVirtualNode |
-| draggable             | Whether to enable the drag-and-drop function                                                                                                                                         | boolean                 | —               | —             |
-| checkDraggabled       | Method to check whether a node is allowed to be dragged. It returns `true`/`false` to determine whether the current node can be dragged                                              | function                | —               | —             |
-| checkCanDropIn        | Whether the current node allows dropping in. If dropping in is allowed, the `drapp` event `position` will return `in` to indicate dropping in                                        | function                | —               | —             |
-| check-strictly        | Whether, when checkboxes are displayed, the practice of ensuring that parent and child elements are not associated with each other strictly is followed.                             | boolean                 | -               | false         |
+| Attribute             | Description                                                                                                                                                     | Type                      | Options | Default        |  
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------- | -------------- |  
+| data                  | Display data                                                                                                                                                    | array                     | —       | —              |  
+| class                 | Custom class style                                                                                                                                              | string                    | —       | —              |  
+| empty-text            | Text displayed when content is empty                                                                                                                            | string                    | —       | —              |  
+| empty-size            | Size for empty panel                                                                                                                                            | string                    | —       | —              |  
+| node-key              | Unique identifier for each tree node, must be unique across the entire tree                                                                                     | string                    | —       | —              |  
+| load                  | Method for loading subtree data, only takes effect when `lazy` is set to `true`                                                                                 | function(node, resolve)   | —       | —              |  
+| default-expand-all    | Whether to expand all nodes by default                                                                                                                          | boolean                   | —       | false          |  
+| expand-on-click-node  | Whether to expand or collapse nodes when clicking on a node. Default is `true`. If set to `false`, nodes will only expand or collapse when clicking the arrow icon. | boolean                   | —       | true           |  
+| check-on-click-node   | Whether to select a node when clicking on it. Default is `false`, meaning nodes are only selected when clicking the checkbox.                                   | boolean                   | —       | false          |  
+| default-expanded-keys | Array of keys for nodes expanded by default                                                                                                                     | array                     | —       | —              |  
+| show-checkbox         | Whether nodes are selectable                                                                                                                                    | boolean                   | —       | false          |  
+| default-checked-keys  | Array of keys for nodes checked by default                                                                                                                      | array                     | —       | —              |  
+| current-node-key      | Currently selected node                                                                                                                                         | string, number            | —       | —              |  
+| filter-method         | Function executed when filtering tree nodes. Returns `true` if the node should be displayed, `false` if it should be hidden.                                    | Function(node, value)     | —       | —              |  
+| indent                | Horizontal indentation between adjacent nodes in pixels                                                                                                         | number                    | —       | 16             |  
+| icon-class            | Custom icon for tree nodes                                                                                                                                      | string                    | —       | —              |  
+| lazy                  | Whether to lazily load child nodes. Must be used with the `load` method.                                                                                        | boolean                   | —       | false          |  
+| labelKey              | Specifies which property of the node object serves as the node label                                                                                            | string                    | —       | label          |  
+| childrenKey           | Specifies which property of the node object contains the subtree                                                                                                | string                    | —       | children       |  
+| disabledKey           | Specifies which property of the node object determines if the checkbox is disabled                                                                              | string                    | —       | disabled       |  
+| expandKey             | Specifies which property of the node object determines if the node is expanded by default                                                                       | string                    | —       | expand         |  
+| isLeafKey             | Specifies which property of the node object determines if it is a leaf node. Only takes effect when `lazy` is specified.                                        | string                    | —       | isLeaf         |  
+| virtualKey            | Advanced usage: Whether the node is virtual. Virtual nodes do not participate in the checkbox selection process. Typically used when selection is enabled.       | string                    | —       | isVirtualNode  |  
+| draggable             | Whether to enable drag-and-drop functionality                                                                                                                   | boolean                   | —       | —              |  
+| checkDraggabled       | Method to check if a node can be dragged. Returns `true`/`false` to determine whether the current node is draggable.                                            | function                  | —       | —              |  
+| checkCanDropIn        | Method to check if a node can receive a dragged node. If allowed, the `drop` event's `position` will return `in` to indicate an inner drop.                     | function                  | —       | —              |  
+| check-strictly        | Whether to strictly enforce non-associative parent-child relationships when checkboxes are displayed.                                                           | boolean                   | —       | false          |  
 
-### Methods
+### Methods  
 
-The `Tree` internally uses the `Node`-type object to wrap the data passed in by the user to save the current state of the node.
-The `Tree` has the following methods:
+The `Tree` internally uses `Node`-type objects to wrap user-provided data, maintaining the state of each node.  
+The `Tree` has the following methods:  
 
-| Method Name     | Description                                                                                                                                                                                      | Parameters                                                                                                                                                                                                           |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| filter          | Perform filtering operations on tree nodes                                                                                                                                                       |                                                                                                                                                                                                                      |
-| getCheckedNodes | If the node can be selected (i.e., `show-checkbox` is `true`), return an array of currently selected nodes                                                                                       | (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of `false`; 2. Whether to include half-checked nodes, with the default value of `false` |
-| getCheckedKeys  | If the node can be selected (i.e., `show-checkbox` is `true`), return an array of keys of currently selected nodes                                                                               | (leafOnly, includeHalfChecked) Accepts two boolean-type parameters: 1. Whether it is only leaf nodes, with the default value of `false`; 2. Whether to include half-checked nodes, with the default value of `false` |
-| setCheckedKeys  | Set the currently checked nodes through keys. Using this method requires setting the `node-key` property                                                                                         | (keys, leafOnly) Accepts two parameters: 1. An array of keys of checked nodes; 2. A boolean-type parameter. If it is `true`, only the selection state of leaf nodes will be set, with the default value of `false`   |
-| checkNode       | Set the selection state of a node. Two parameters: 1. The key or `TreeNode` of the checked node; 2. A boolean-type parameter indicating whether the node is selected                             |
-| getCurrentNode  | Get the currently selected node                                                                                                                                                                  | —                                                                                                                                                                                                                    |
-| setCurrentNode  | Set the current selection state of a certain node through `node`                                                                                                                                 | Can pass in `TreeNode` or the node key. If `undefined` is passed in, it means canceling the selection                                                                                                                |
-| getNodeByKey    | Get a node according to the node key                                                                                                                                                             | key                                                                                                                                                                                                                  |
-| removeNode      | Delete a node in the `Tree`                                                                                                                                                                      | Can pass in `TreeNode` or the node key                                                                                                                                                                               |
-| appendNode      | Pass in node data to mount a new node in the `root`. If you need to add a node under a certain node, you can first get that node and then call the `insterChild` method of the node for addition | -                                                                                                                                                                                                                    |
-| checkedAll      | Check all nodes                                                                                                                                                                                  | -                                                                                                                                                                                                                    |
-| clearChecked    | Uncheck all nodes                                                                                                                                                                                | -                                                                                                                                                                                                                    |
-| collapseNode    | Collapse a node                                                                                                                                                                                  | Needs to pass in the `TreeNode` to be operated on                                                                                                                                                                    |
-| expandNode      | Expand a node                                                                                                                                                                                    | Needs to pass in the `TreeNode` to be operated on                                                                                                                                                                    |
-| getAllNodeData  | Get all `NodeData` and organize them by `childrens` hierarchy                                                                                                                                    | -                                                                                                                                                                                                                    |
-| getNode         | Get specified nodes according to conditions                                                                                                                                                      | (node:TreeNode)=>boolean/void                                                                                                                                                                                        |
-| reload          | Re-render                                                                                                                                                                                        |                                                                                                                                                                                                                      |
+| Method Name         | Description                                                                                                                                                                                                                  | Parameters                                                                                                                                                                |  
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
+| filter              | Filters tree nodes                                                                                                                                                                                                           | —                                                                                                                                                                         |  
+| getCheckedNodes     | If nodes are selectable (i.e., `show-checkbox` is `true`), returns an array of currently selected nodes.                                                                                                                      | (leafOnly, includeHalfChecked) Accepts two `boolean` parameters: 1. Whether to include only leaf nodes (default: `false`). 2. Whether to include half-checked nodes (default: `false`). |  
+| getCheckedKeys      | If nodes are selectable (i.e., `show-checkbox` is `true`), returns an array of keys of currently selected nodes.                                                                                                              | (leafOnly, includeHalfChecked) Accepts two `boolean` parameters: 1. Whether to include only leaf nodes (default: `false`). 2. Whether to include half-checked nodes (default: `false`). |  
+| setCheckedKeys      | Sets the currently checked nodes by their keys. Requires `node-key` to be configured.                                                                                                                                        | (keys, leafOnly) Accepts two parameters: 1. Array of keys for checked nodes. 2. `boolean` parameter (`true` to check only leaf nodes, default: `false`).                  |  
+| checkNode           | Sets the checked state of a node. Accepts two parameters: 1. The node key or `TreeNode`. 2. `boolean` indicating whether the node is checked.                                                                                  | —                                                                                                                                                                         |  
+| getCurrentNode      | Gets the currently selected node.                                                                                                                                                                                            | —                                                                                                                                                                         |  
+| setCurrentNode      | Sets the current selected state of a node by its `TreeNode` or key. Pass `undefined` to cancel selection.                                                                                                                    | Accepts either a `TreeNode` or node key. Pass `undefined` to deselect.                                                                                                    |  
+| getNodeByKey        | Retrieves a node by its key.                                                                                                                                                                                                 | key                                                                                                                                                                       |  
+| removeNode          | Removes a node from the tree.                                                                                                                                                                                                | Accepts either a `TreeNode` or node key.                                                                                                                                  |  
+| appendNode          | Appends a new node to the root by providing node data. To add under a specific node, first retrieve that node, then call its `insertChild` method.                                                                           | —                                                                                                                                                                         |  
+| checkedAll          | Checks all nodes.                                                                                                                                                                                                            | —                                                                                                                                                                         |  
+| clearChecked        | Unchecks all nodes.                                                                                                                                                                                                          | —                                                                                                                                                                         |  
+| collapseNode        | Collapses a node.                                                                                                                                                                                                            | Requires the target `TreeNode` as input.                                                                                                                                  |  
+| expandNode          | Expands a node.                                                                                                                                                                                                              | Requires the target `TreeNode` as input.                                                                                                                                  |  
+| getAllNodeData      | Retrieves all node data, organized hierarchically with `children`.                                                                                                                                                           | —                                                                                                                                                                         |  
+| getNode             | Retrieves a specific node based on conditions.                                                                                                                                                                               | (node: TreeNode) => boolean/void                                                                                                                                          |  
+| reload              | Re-renders the tree.                                                                                                                                                                                                         | —                                                                                                                                                                         |  
 
-### Events
+### Events  
 
-| Event Name       | Description                                              | Callback Parameters                                                                                          |
-| ---------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| node-contextmenu | Triggered when a node is right-clicked with the mouse    | Parameter is `TreeNode`                                                                                      |
-| check            | Triggered when the checkbox is clicked                   | Parameter is `TreeNode`. You can determine the selection state by getting the `checked` property of the node |
-| current-change   | Event triggered when the currently selected node changes | Parameter is `TreeNode`                                                                                      |
-| node-expand      | Event triggered when a node is expanded                  | Parameter is `TreeNode`                                                                                      |
-| node-collapse    | Event triggered when a node is closed                    | Parameter is `TreeNode`                                                                                      |
-| drop             | Triggered after the node dragging is completed           | Parameter is {dragNode: dragged node, dropNode: dropped-into node, position: position (prev, next, in)}      |
+| Event Name         | Description                                                                                           | Callback Parameters                                                                                              |  
+| ------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |  
+| node-contextmenu   | Triggered when a node is right-clicked.                                                              | Parameter is `TreeNode`.                                                                                       |  
+| check              | Triggered when a checkbox is clicked.                                                                | Parameter is `TreeNode`. The node's `checked` property indicates its selection state.                           |  
+| current-change     | Triggered when the current selected node changes.                                                    | Parameter is `TreeNode`.                                                                                       |  
+| node-expand        | Triggered when a node is expanded.                                                                   | Parameter is `TreeNode`.                                                                                       |  
+| node-collapse      | Triggered when a node is collapsed.                                                                  | Parameter is `TreeNode`.                                                                                       |  
+| drop               | Triggered after a node is dragged and dropped.                                                       | Parameter is `{dragNode: dragged node, dropNode: target node, position: position (prev, next, in)}`.           |  
 
-### Scoped Sections
+### Scoped Sections  
 
-| Name | Description                                                          |
-| ---- | -------------------------------------------------------------------- |
-| —    | Custom content of the tree node, with the parameter being `TreeNode` |
+| Name  | Description                                   |  
+| ----- | -------------------------------------------- |  
+| —     | Custom content for tree nodes. Parameter is `TreeNode`. |

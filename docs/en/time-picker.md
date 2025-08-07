@@ -1,90 +1,91 @@
-## TimePicker
+## TimePicker  
 
-Used to select or input time.
+A component for selecting or inputting time  
 
-### Fixed Time Points
+### Fixed Time Points  
 
-Provides several fixed time points for users to choose from.
+Provides several fixed time points for users to choose  
 
-Use the `jk-time-select` tag, and specify the optional start time, end time, and step through `start`, `end`, and `step` respectively.
+Use the `jk-time-select` tag, where `start`, `end`, and `step` specify the selectable start time, end time, and time interval respectively.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Fixed Time Range
+### Fixed Time Range  
 
-If the start time is selected first, the state of the options in the end time will change accordingly.
+If the start time is selected first, the state of available end times will change accordingly.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Arbitrary Time Point
+### Arbitrary Time Points  
 
-You can select any time. Use the `jk-time-picker` tag and limit the selectable time range through `minTime`/`maxTime`. You can control whether to display seconds by configuring `format`.
+Allows selecting any time point. Use the `jk-time-picker` tag and restrict the selectable time range via `minTime`/`maxTime`.  
+The `format` property can be configured to control whether seconds are displayed.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Arbitrary Time Range
+### Arbitrary Time Range  
 
-You can select any time range.
+Allows selecting any time range.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Disabled
+### Disabled  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Size
+### Sizes  
 
-Refer to the `input` size attribute.
+Refer to the `input` component's `size` property.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter         | Description                                                             | Type    | Optional Values                  | Default Value |
-| ----------------- | ----------------------------------------------------------------------- | ------- | -------------------------------- | ------------- |
-| value             | Bound value                                                             | string  | —                                | —             |
-| class             | Custom class style                                                      | string  | -                                | -             |
-| readonly          | Completely read-only                                                    | boolean | —                                | false         |
-| disabled          | Disabled                                                                | boolean | —                                | false         |
-| editable          | The text box is editable                                                | boolean | —                                | true          |
-| clearable         | Whether to display the clear button                                     | boolean | —                                | true          |
-| size              | Size of the input box                                                   | string  | medium / small / mini            | —             |
-| placeholder       | Placeholder content when not in range selection                         | string  | —                                | —             |
-| start-placeholder | Placeholder content for the start date in range selection               | string  | —                                | —             |
-| end-placeholder   | Placeholder content for the end date in range selection                 | string  | —                                | —             |
-| range             | Whether it is a time range selection, only valid for `<jk-time-picker>` | boolean | —                                | false         |
-| range-separator   | Separator when selecting a range                                        | string  | -                                | '-'           |
-| value-format      | Optional, the format of the bound value                                 | string  | -                                | —             |
-| default-value     | Optional, the time displayed by default when the picker is opened       | string  | In line with the `format` format | —             |
-| prefix-icon       | Class name of the custom header icon                                    | string  | —                                | el-icon-time  |
+| Parameter          | Description                                           | Type     | Acceptable Values       | Default      |  
+| ------------------ | ----------------------------------------------------- | -------- | ----------------------- | ------------ |  
+| value              | Binding value                                         | string   | —                       | —            |  
+| class              | Custom CSS class                                      | string   | —                       | —            |  
+| readonly           | Fully read-only                                       | boolean  | —                       | false        |  
+| disabled           | Disabled                                              | boolean  | —                       | false        |  
+| editable           | Allows text input                                     | boolean  | —                       | true         |  
+| clearable          | Whether to show the clear button                      | boolean  | —                       | true         |  
+| size               | Input size                                            | string   | medium / small / mini   | —            |  
+| placeholder        | Placeholder for non-range selection                   | string   | —                       | —            |  
+| start-placeholder  | Placeholder for start time in range selection         | string   | —                       | —            |  
+| end-placeholder    | Placeholder for end time in range selection           | string   | —                       | —            |  
+| range              | Whether to enable time range selection (only for `<jk-time-picker>`) | boolean | — | false |  
+| range-separator    | Separator for range selection                         | string   | —                       | '-'          |  
+| value-format       | Optional, format of the binding value                 | string   | —                       | —            |  
+| default-value      | Optional, default displayed time when picker opens    | string   | Must match `format`     | —            |  
+| prefix-icon        | Custom icon class for the header                      | string   | —                       | el-icon-time |  
 
-### Time Select Options
+### Time Select Options  
 
-| Parameter | Description                                                        | Type   | Optional Values | Default Value |
-| --------- | ------------------------------------------------------------------ | ------ | --------------- | ------------- |
-| start     | Start time                                                         | string | —               | 09:00         |
-| end       | End time                                                           | string | —               | 18:00         |
-| step      | Interval time                                                      | string | —               | 00:30         |
-| minTime   | Minimum time, time periods less than this time will be disabled    | string | —               | 00:00         |
-| maxTime   | Maximum time, time periods greater than this time will be disabled | string | —               | —             |
+| Parameter | Description                                   | Type   | Acceptable Values | Default |  
+| --------- | -------------------------------------------- | ------ | ----------------- | ------- |  
+| start     | Start time                                   | string | —                 | 09:00   |  
+| end       | End time                                     | string | —                 | 18:00   |  
+| step      | Time interval                                | string | —                 | 00:30   |  
+| minTime   | Minimum time; time slots before this are disabled | string | —      | 00:00   |  
+| maxTime   | Maximum time; time slots after this are disabled  | string | —      | —       |  
 
-### Time Picker Options
+### Time Picker Options  
 
-| Parameter       | Description                                                                                                             | Type           | Optional Values                           | Default Value |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------- | ----------------------------------------- | ------------- |
-| selectableRange | Selectable time periods, such as `'18:30:00-20:30:00'` or pass in an array `['09:30:00-12:00:00', '14:30:00-18:30:00']` | string / array | —                                         | —             |
-| format          | Time formatting                                                                                                         | string         | Hours: `HH`, minutes: `mm`, seconds: `ss` | 'HH:mm:ss'    |
+| Parameter         | Description                                                                 | Type           | Acceptable Values               | Default      |  
+| ----------------- | --------------------------------------------------------------------------- | -------------- | ------------------------------- | ------------ |  
+| selectableRange   | Selectable time ranges, e.g., `'18:30:00 - 20:30:00'` or array `['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']` | string / array | — | — |  
+| format            | Time formatting                                                             | string         | Hours: `HH`, Minutes: `mm`, Seconds: `ss` | 'HH:mm:ss' |  
 
-### Events
+### Events  
 
-| Event Name | Description                                         | Parameters            |
-| ---------- | --------------------------------------------------- | --------------------- |
-| change     | Triggered when the user confirms the selected value | Component bound value |
-| blur       | Triggered when the input loses focus                | Component instance    |
-| focus      | Triggered when the input gains focus                | Component instance    |
+| Event   | Description                         | Parameters        |  
+| ------- | ----------------------------------- | ----------------- |  
+| change  | Triggered when user confirms value  | Component binding value |  
+| blur    | Triggered when input loses focus    | Component instance |  
+| focus   | Triggered when input gains focus    | Component instance |  
 
-### Methods
+### Methods  
 
-| Method Name | Description               | Parameter |
-| ----------- | ------------------------- | --------- |
-| focus       | Make the input gain focus | -         |
+| Method | Description               | Parameters |  
+| ------ | ------------------------- | ---------- |  
+| focus  | Focuses the input element | —          |

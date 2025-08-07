@@ -59,6 +59,8 @@ import { MENUS_EN, MENUS_ZH_CN } from "../datas/menu";
 import "@docsearch/css";
 import { getLang } from "../utils";
 import { getNavData } from "../datas/nav";
+let description = "";
+
 export default class extends Component {
     model = {
         navIsOpen: false,
@@ -90,8 +92,15 @@ export default class extends Component {
         router.push(path);
         e.preventDefault();
     }
-
+    metaDescription: HTMLMetaElement | null = null;
     created() {
+        // 获取 description 元标签
+        this.metaDescription = document.querySelector('meta[name="description"]');
+
+        // 检查是否存在该标签，如果存在则获取其 content 属性值
+        if (this.metaDescription && !description) {
+            description = this.metaDescription.getAttribute("content") || "";
+        }
         this.$watch(
             () => router.route.value,
             () => {
@@ -120,10 +129,14 @@ export default class extends Component {
             this.lang === "zh-CN"
                 ? "Joker UI 领先的快速网站搭建工具"
                 : "Joker UI - The Leading Rapid Website Building Tool";
+        this.metaDescription?.setAttribute("content", description);
         for (let group of menus) {
             for (let item of group.children) {
                 if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
+                    if (item.description) {
+                        this.metaDescription?.setAttribute("content", item.description);
+                    }
                     return;
                 }
             }

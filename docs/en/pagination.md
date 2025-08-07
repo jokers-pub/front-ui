@@ -1,86 +1,86 @@
-## Pagination
+## Pagination  
 
-When there is too much data, use pagination to break down the data.
+When the amount of data is too large, use pagination to split the data.
 
-### Basic Usage
+### Basic Usage  
 
-Set `layout` to indicate the content to be displayed, separated by commas. The layout elements will be displayed in sequence.
+Set `layout` to specify the elements to be displayed, separated by commas. The layout components will be displayed in order.  
 
--   `prev` represents the previous page.
--   `next` is the next page.
--   `pager` represents the page number list.
--   `jumper` is for jumping to a specified page number.
--   `total` represents the total number of items.
--   `sizes` is used to set the number of page numbers displayed per page.
+- `prev` for the previous page  
+- `next` for the next page  
+- `pager` for the page number list  
+- `jumper` for jumping to a specific page  
+- `total` for the total number of entries  
+- `sizes` for setting the number of items displayed per page  
 
-> In addition, a special layout symbol `->` is provided. Elements after `->` will be displayed on the right.
+> Additionally, a special layout symbol `->` is provided. Elements after `->` will be aligned to the right.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Set the Maximum Number of Page Number Buttons
+### Set Maximum Page Button Count  
 
-By default, when the total number of pages exceeds 7, Pagination will collapse the extra page number buttons. The maximum number of page number buttons can be set through the `pager-count` attribute.
+By default, when the total number of pages exceeds 7, the Pagination component will collapse excess page buttons. The maximum number of page buttons can be set via the `pager-count` property.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Display the Total Number of Items
+### Display Total Number of Entries  
 
-By configuring the layout and adding `total`, the total number of items can be displayed.
+Configure the layout by adding `total` to show the total number of entries.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Set the Number of Items per Page
+### Set Items Per Page  
 
-By configuring the layout and adding `sizes`, the configuration of the number of items per page can be displayed.
+Configure the layout by adding `sizes` to display options for the number of items per page.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Display the Direct Jump
+### Display Quick Jumper  
 
-By configuring the layout and adding `jumper`, the direct jump function can be displayed.
+Configure the layout by adding `jumper` to enable the quick jump functionality.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Hide Pagination When There is Only One Page
+### Hide Pagination When Only One Page Exists  
 
-Configure `hide-on-single-page` to determine whether to hide the pagination when there is less than one page.
+Configure `hide-on-single-page` to hide pagination when there is only one page.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Small-Sized Pagination
+### Small-Size Pagination  
 
-Configure `small` to display small-sized pagination.
+Configure `small` to display pagination in a compact size.  
 
-!!!demo7!!!
+!!!demo7!!!  
 
-### Pagination with Background Color
+### Pagination with Background Color  
 
-Configure `background` to display pagination with a background color. The background color follows the main color rule.
+Configure `background` to enable pagination with a colored background, following the primary color scheme.  
 
-!!!demo8!!!
+!!!demo8!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter           | Description                                                                                                                                                                                                  | Type     | Optional Values                                                      | Default Value                          |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------- | -------------------------------------- |
-| small               | Whether to use the small-sized pagination style                                                                                                                                                              | boolean  | —                                                                    | false                                  |
-| class               | Custom class style                                                                                                                                                                                           | string   | -                                                                    | -                                      |
-| background          | Whether to add a background color to the pagination buttons                                                                                                                                                  | boolean  | —                                                                    | false                                  |
-| page-size           | The number of items displayed per page                                                                                                                                                                       | number   | —                                                                    | 10                                     |
-| total               | The total number of items                                                                                                                                                                                    | number   | —                                                                    | —                                      |
-| page-count          | The total number of pages. Setting either `total` or `page-count` can achieve the function of displaying page numbers; if you want to support changes in `page-sizes`, you need to use the `total` attribute | Number   | —                                                                    | —                                      |
-| pager-count         | The number of page number buttons. When the total number of pages exceeds this value, it will be collapsed                                                                                                   | number   | Odd numbers greater than or equal to 5 and less than or equal to 21  | 7                                      |
-| current-page        | The current page number, supports the `.sync` modifier                                                                                                                                                       | number   | —                                                                    | 1                                      |
-| layout              | The component layout, with sub-component names separated by commas                                                                                                                                           | string[] | `sizes`, `prev`, `pager`, `next`, `jumper`, `->`, `total`, `section` | 'prev, pager, next, jumper, ->, total' |
-| page-sizes          | The option settings for the number-of-items-per-page selector                                                                                                                                                | number[] | —                                                                    | [10, 20, 30, 40, 50, 100]              |
-| prev-text           | The text for the previous page instead of the icon                                                                                                                                                           | string   | —                                                                    | —                                      |
-| next-text           | The text for the next page instead of the icon                                                                                                                                                               | string   | —                                                                    | —                                      |
-| disabled            | Whether to disable                                                                                                                                                                                           | boolean  | —                                                                    | false                                  |
-| hide-on-single-page | Whether to hide when there is only one page                                                                                                                                                                  | boolean  | —                                                                    | -                                      |
+| Parameter           | Description                                                                                                        | Type     | Accepted Values                                                   | Default Value                          |  
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------- | -------------------------------------- |  
+| small               | Whether to use small pagination style                                                                              | boolean  | —                                                                 | false                                  |  
+| class               | Custom class styles                                                                                                | string   | -                                                                 | -                                      |  
+| background          | Whether to add a background color to pagination buttons                                                            | boolean  | —                                                                 | false                                  |  
+| page-size           | Number of items displayed per page                                                                                 | number   | —                                                                 | 10                                     |  
+| total               | Total number of entries                                                                                            | number   | —                                                                 | —                                      |  
+| page-count          | Total page count. Either `total` or `page-count` can be set to enable pagination. If `page-sizes` is needed, use `total` | Number   | —                                                                 | —                                      |  
+| pager-count         | Number of page buttons to display. Excess buttons are collapsed when the total pages exceed this value.            | number   | Odd number ≥5 and ≤21                                             | 7                                      |  
+| current-page        | Current page number                                                                                                | number   | —                                                                 | 1                                      |  
+| layout              | Component layout, with child component names separated by commas                                                   | string[] | `sizes`, `prev`, `pager`, `next`, `jumper`, `->`, `total`, `section` | 'prev, pager, next, jumper, ->, total' |  
+| page-sizes          | Options for the page size selector                                                                                 | number[] | —                                                                 | [10, 20, 30, 40, 50, 100]              |  
+| prev-text           | Custom text to replace the default prev icon                                                                       | string   | —                                                                 | —                                      |  
+| next-text           | Custom text to replace the default next icon                                                                       | string   | —                                                                 | —                                      |  
+| disabled            | Whether pagination is disabled                                                                                     | boolean  | —                                                                 | false                                  |  
+| hide-on-single-page | Whether to hide pagination when there is only one page                                                             | boolean  | —                                                                 | -                                      |  
 
-### Events
+### Events  
 
-| Event Name  | Description                              | Callback Parameters      |
-| ----------- | ---------------------------------------- | ------------------------ |
-| size-change | Triggered when the `pageSize` changes    | Number of items per page |
-| change      | Triggered when the `currentPage` changes | Current page             |
+| Event Name   | Description                                      | Callback Parameters  |  
+| -----------  | ------------------------------------------------ | -------------------- |  
+| size-change  | Triggered when pageSize changes                 | New page size        |  
+| change       | Triggered when currentPage changes              | Current page number  |

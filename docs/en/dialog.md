@@ -1,74 +1,79 @@
-## Dialog
+## Dialog  
 
-Informs users and hosts relevant operations while maintaining the current page state.
+Displays a dialog window while preserving current page state to present information and handle related operations.
 
-### Basic Usage
+### Basic Usage  
 
-The Dialog pops up a dialog box, which is suitable for scenarios that require more customization.
-You need to use the component's `open`/`close` methods to set whether the pop-up is displayed. The Dialog consists of two parts: `body` and `footer`. The `footer` requires a `section` named `footer`. The `title` attribute is used to define the title. It is optional, and the default value is empty. Finally, this example also shows the usage of `before-close`.
-!!!demo1!!!
+The Dialog component creates a customizable pop-up dialog for scenarios requiring higher flexibility.  
 
-> `before-close` only takes effect when the user closes the Dialog by clicking the close icon or the mask.
+Control the dialog's visibility using the `open`/`close` component methods. A Dialog consists of two sections: `body` and `footer`, where the footer must be a named `section` with the slot name `footer`. The `title` property defines an optional header title (default: empty). This example also demonstrates the usage of `before-close`.  
 
-### Nested Dialogs
+!!!demo1!!!  
 
-If you need to nest one Dialog inside another, you need to set the `append-to` property to `body`.
-Normally, we do not recommend using nested Dialogs. If you need to display multiple Dialogs on the page at the same time, you can place them at the same level. For scenarios where nested Dialogs are indeed necessary, we provide the `append-to` property. **Refer to the core's description of append-to**. Set this property of the inner Dialog to `body`, and it will be inserted into the `body` element, ensuring the correct hierarchical relationship between the inner and outer Dialogs and the mask.
-!!!demo2!!!
+> `before-close` only takes effect when the user closes the Dialog by clicking the close icon or the modal backdrop.  
 
-> `append-to` only affects the DOM output interface and does not affect the VNode data structure. It is still created according to the data structure during development and also follows the parent-child component destruction mechanism, so there is no need for excessive intervention.
+### Nested Dialog  
 
-### Centered Layout
+To nest a Dialog inside another Dialog, set the `append-to` property to `body`.  
 
-The title and the bottom can be horizontally centered. Setting `center` to `true` will center the title and the bottom. `center` only affects the title and the bottom areas. The content of the Dialog is arbitrary, and in some cases, the content is not suitable for a centered layout. If you need the content to be horizontally centered as well, please add CSS to it yourself.
-!!!demo3!!!
+Nested Dialogs are generally discouraged. If multiple Dialogs must coexist, keep them at the same hierarchy level. For unavoidable nesting, the `append-to` property ensures proper layering by appending the inner Dialog to the `<body>` element. **Refer to core documentation for details on `append-to`**.  
 
-> The content of the Dialog is lazily rendered. That is, before it is opened for the first time, the default `section` passed in will not be rendered to the DOM. Therefore, if you need to perform DOM operations or obtain the corresponding component through `ref`, please do so in the `open` event callback.
+!!!demo2!!!  
 
-### Movable Window
+> Note: `append-to` only affects DOM output structure, not the VNode hierarchy. The component still follows the development-time parent-child lifecycle and destruction mechanisms without requiring manual intervention.  
 
-We can enable the `draggable` property of the window component to activate the free movement function of the window.
+### Centered Layout  
 
-!!!demo4!!!
+Enable horizontal centering for the header and footer by setting `center` to `true`. Note: `center` only applies to these sections. Dialog content can be freely structured; for centering content, apply custom CSS as needed.  
 
-### Attributes
+!!!demo3!!!  
 
-| Parameter             | Description                                                                                        | Type                                                   | Optional Values | Default Value |
-| --------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------- | ------------- |
-| title                 | The title of the Dialog, which can also be passed in through a named section (see the table below) | string                                                 | —               | —             |
-| width                 | The width of the Dialog                                                                            | string                                                 | —               | 50%           |
-| fullscreen            | Whether it is a full-screen Dialog                                                                 | boolean                                                | —               | false         |
-| modal                 | Whether a mask layer is needed                                                                     | boolean                                                | —               | true          |
-| custom-class          | The custom class name of the Dialog                                                                | string                                                 | —               | —             |
-| close-on-click-modal  | Whether the Dialog can be closed by clicking the modal                                             | boolean                                                | —               | false         |
-| close-on-press-escape | Whether the Dialog can be closed by pressing the ESC key                                           | boolean                                                | —               | true          |
-| closable              | Whether to display the close button                                                                | boolean                                                | —               | true          |
-| before-close          | The callback before closing, which will pause the closing of the Dialog                            | function(done), where done is used to close the Dialog | —               | —             |
-| center                | Whether to use a centered layout for the header and the bottom                                     | boolean                                                | —               | false         |
-| destroyOnClose        | Whether to destroy the interior when closing                                                       | boolean                                                | —               | true          |
-| draggable             | Whether to enable drag-and-drop movement                                                           | boolean                                                | —               | false         |
-| allowOutOfBounds      | Whether dragging is allowed to move beyond the boundary range                                      | boolean                                                | —               | false         |
+> Dialog content is lazily rendered—default slots are not mounted to the DOM until the first opening. For DOM operations or `ref` access, perform them in the `open` event callback.  
 
-### Sections
+### Draggable Dialog  
 
-| name    | Description                                     |
-| ------- | ----------------------------------------------- |
-| default | The content of the Dialog                       |
-| title   | The content of the Dialog title area            |
-| footer  | The content of the Dialog button operation area |
+Enable free dragging by setting the `draggable` property.  
 
-### Methods
+!!!demo4!!!  
 
-| Method Name | Description      | Method Parameter |
-| ----------- | ---------------- | ---------------- |
-| open        | Open the window  | —                |
-| close       | Close the window | —                |
+### Attributes  
 
-### Events
+| Parameter               | Description                                                                 | Type                      | Options | Default   |  
+|-------------------------|-----------------------------------------------------------------------------|---------------------------|---------|-----------|  
+| title                   | Dialog title (can also be set via named slot, see below)                   | string                    | —       | —         |  
+| width                   | Dialog width                                                               | string                    | —       | 50%       |  
+| fullscreen              | Whether the Dialog is fullscreen                                           | boolean                   | —       | false     |  
+| modal                   | Whether a modal backdrop is shown                                          | boolean                   | —       | true      |  
+| custom-class            | Custom CSS class for Dialog                                                | string                    | —       | —         |  
+| close-on-click-modal    | Whether clicking the backdrop closes the Dialog                            | boolean                   | —       | false     |  
+| close-on-press-escape   | Whether pressing ESC closes the Dialog                                     | boolean                   | —       | true      |  
+| closable                | Whether to show the close button                                           | boolean                   | —       | true      |  
+| before-close            | Callback before closing (halts closing until `done` is called)             | function(done)            | —       | —         |  
+| center                  | Whether to center header and footer                                        | boolean                   | —       | false     |  
+| destroyOnClose          | Whether to destroy inner content on close                                  | boolean                   | —       | true      |  
+| draggable               | Whether dragging is enabled                                                | boolean                   | —       | false     |  
+| allowOutOfBounds        | Whether dragging outside viewport is allowed                               | boolean                   | —       | false     |  
 
-| Event Name | Description                                         | Callback Parameter |
-| ---------- | --------------------------------------------------- | ------------------ |
-| open       | The callback when the Dialog is opened              | —                  |
-| opened     | The callback when the Dialog opening animation ends | —                  |
-| close      | The callback when the Dialog is closed              | —                  |
-| closed     | The callback when the Dialog closing animation ends | —                  |
+### Slots  
+
+| Name     | Description                      |  
+|----------|----------------------------------|  
+| default  | Main content of the Dialog       |  
+| title    | Content for the title section    |  
+| footer   | Content for the action buttons   |  
+
+### Methods  
+
+| Method  | Description          | Parameters |  
+|---------|----------------------|------------|  
+| open    | Opens the Dialog     | —          |  
+| close   | Closes the Dialog    | —          |  
+
+### Events  
+
+| Event   | Description                          | Parameters |  
+|---------|--------------------------------------|------------|  
+| open    | Triggered when Dialog opens          | —          |  
+| opened  | Triggered after opening animation    | —          |  
+| close   | Triggered when Dialog closes         | —          |  
+| closed  | Triggered after closing animation    | —          |

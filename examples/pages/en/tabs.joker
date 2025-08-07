@@ -1,9 +1,9 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Tabs</h2>
-        <p>Separate data sets that are related in content but belong to different categories.</p>
+        <p>Separates content into distinct yet related data categories.</p>
         <h3>Basic Usage</h3>
-        <p>Basic and simple tab pages.</p>
+        <p>Basic and concise tabs configuration.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-tabs&gt;
@@ -56,11 +56,11 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Position</h3>
+        <h3>Placement</h3>
         <p>
-            You can set the position of the tabs through
+            Tab position can be configured via the
             <code>position</code>
-            .
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -110,13 +110,13 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Custom Tab Page Title</h3>
+        <h3>Custom Tab Title</h3>
         <p>
-            You can customize the tab title through the
+            Use the
             <strong>label</strong>
-            section in
+            slot in
             <code>jk-tab-panel</code>
-            .
+            to customize tab headers.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -152,9 +152,9 @@ export default class extends Component {
         </DemoContainer>
         <h3>Card Style</h3>
         <p>
-            You can enable the card style by configuring
+            Enable card-style appearance by configuring the
             <code>card</code>
-            .
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -211,43 +211,38 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>
-                        The default selected tab value, corresponding to the
-                        <code>name</code>
-                        in
-                        <code>tab-panel</code>
-                    </td>
+                    <td>Default active tab value (matches tab-panel name)</td>
                     <td>string</td>
                     <td>-</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>card</td>
-                    <td>Card theme</td>
+                    <td>Card styling theme</td>
                     <td>boolean</td>
                     <td>-</td>
-                    <td>-</td>
+                    <td>false</td>
                 </tr>
                 <tr>
                     <td>position</td>
-                    <td>Tab position</td>
+                    <td>Tab positioning</td>
                     <td>string</td>
                     <td>top/bottom/right/left</td>
                     <td>top</td>
                 </tr>
                 <tr>
                     <td>fullHeight</td>
-                    <td>When enabled, the height of the content area will be automatically filled</td>
+                    <td>Enables automatic full-height content expansion</td>
                     <td>boolean</td>
                     <td>-</td>
-                    <td>-</td>
+                    <td>false</td>
                 </tr>
             </tbody>
         </table>
@@ -263,13 +258,13 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the selected tab changes</td>
-                    <td>Tab item information</td>
+                    <td>Triggered when active tab changes</td>
+                    <td>Tab item info</td>
                 </tr>
                 <tr>
                     <td>click</td>
-                    <td>Triggered when a tab is clicked</td>
-                    <td>Tab item information</td>
+                    <td>Triggered when tab is clicked</td>
+                    <td>Tab item info</td>
                 </tr>
             </tbody>
         </table>

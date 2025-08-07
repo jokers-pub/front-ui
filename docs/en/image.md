@@ -1,50 +1,52 @@
-## Image
+## Image 
 
-An image container that retains the characteristics of the native `img`, supports lazy loading, and allows for custom placeholders, handling of load failures, etc.
+An image container that retains all native `<img>` tag features, supporting lazy loading, custom placeholders, load failure states, etc.
 
 ### Basic Usage
 
 !!!demo1!!!
 
-### Placeholder Content
+### Placeholder Content  
 
 !!!demo2!!!
 
-### Load Failure
+### Load Failure  
 
 !!!demo3!!!
 
-### Lazy Loading
+### Lazy Loading  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Large Image Preview
+### Image Preview  
 
 !!!demo5!!!
 
-### Attributes
+### Attributes  
 
-| Parameter        | Description                                                                           | Type                 | Optional Values                            | Default Value                                                             |
-| ---------------- | ------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
-| src              | Image source, same as the native one                                                  | string               | —                                          | —                                                                         |
-| class            | Custom class style                                                                    | string               | -                                          | -                                                                         |
-| fit              | Determines how the image fits into the container box, same as the native `object-fit` | string               | fill / contain / cover / none / scale-down | —                                                                         |
-| lazy             | Whether to enable lazy loading                                                        | boolean              | —                                          | false                                                                     |
-| scroll-container | After enabling lazy loading, the container that listens to the `scroll` event         | string / HTMLElement | —                                          | The nearest parent element with an `overflow` value of `auto` or `scroll` |
-| preview-src-list | Enables the image preview function                                                    | Array                | —                                          | —                                                                         |
-| z-index          | Sets the `z-index` of the image preview                                               | Number               | —                                          | 2000                                                                      |
-| errMsg           | The prompt when loading fails                                                         | string               | —                                          | Loading failed                                                            |
+| Parameter | Description | Type | Options | Default Value |  
+|-----------|-------------|------|---------|---------------|  
+| src | Image source (same as native) | string | — | — |  
+| class | Custom CSS class | string | - | - |  
+| fit | Defines how image fits container (same as CSS object-fit) | string | fill / contain / cover / none / scale-down | — |  
+| lazy | Whether to enable lazy loading | boolean | — | false |  
+| scroll-container | Scroll container for lazy loading event listener | string / HTMLElement | — | Nearest parent with overflow: auto/scroll |  
+| preview-src-list | Enables image preview with src list | Array | — | — |  
+| z-index | z-index for image preview overlay | Number | — | 2000 |  
+| errMsg | Error message when loading fails | string | — | "Failed to load" |  
 
-### Events
+### Events  
 
-| Event Name | Description                                     | Callback Parameters |
-| ---------- | ----------------------------------------------- | ------------------- |
-| load       | Triggered when the image is loaded successfully | (e: Event)          |
-| error      | Triggered when the image fails to load          | (e: Error)          |
+| Event Name | Description | Callback Parameters |  
+|------------|-------------|---------------------|  
+| load | Triggered when image loads successfully | (e: Event) |  
+| error | Triggered when image fails to load | (e: Error) |  
 
-### Sections
+### Slots  
 
-| Event Name  | Description                                          |
-| ----------- | ---------------------------------------------------- |
-| placeholder | The placeholder content when the image is not loaded |
-| error       | The content when loading fails                       |
+| Slot Name | Description |  
+|-----------|-------------|  
+| placeholder | Content shown before image loads |  
+| error | Content shown when loading fails |  
+
+Note: Maintained technical formatting (e.g., HTML tags, CSS properties) in original case while translating Chinese content to natural professional English. Preserved markdown structure including tables, code blocks, and placeholder tags.

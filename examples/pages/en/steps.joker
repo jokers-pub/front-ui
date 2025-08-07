@@ -2,22 +2,22 @@
     <div ref="container" class="joker-demo-container">
         <h2>Steps</h2>
         <p>
-            A step-by-step navigation bar that guides users to complete tasks according to a process. The steps can be set according to the actual application scenario, and the number of steps should not be less than 2.
+            A step navigation bar that guides users through a process to complete tasks. The number of steps can be configured based on actual application scenarios, with a minimum of 2 steps required.
         </p>
         <h3>Basic Usage</h3>
-        <p>A simple step bar.</p>
+        <p>Simple step bar.</p>
         <p>
             Set the
             <code>active</code>
-            attribute, which accepts a
+            property, which accepts a
             <code>Number</code>
-            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            indicating the step's index, starting from 0. For fixed-width step bars, the
             <code>space</code>
-            attribute, which accepts a
+            property can be set, which accepts a
             <code>Number</code>
-            in units of px. If not set, it will be adaptive. Set the
+            (unit: px). If not set, it will be adaptive. The
             <code>finishStatus</code>
-            attribute to change the status of completed steps.
+            property can be used to modify the status of completed steps.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -45,16 +45,10 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Step Bar with Status</h3>
-        <p>Each step shows the status of that step.</p>
+        <h3>Steps with Status</h3>
+        <p>Each step displays its current status.</p>
         <p>
-            You can also use the named slot
-            <code>title</code>
-            , and use the
-            <code>sections</code>
-            method to replace the attribute settings. There is a list of all
-            <code>sections name</code>
-            at the end of this document for reference.
+            You can also use named slots (sections) to replace property settings. All available slot names are listed at the end of this documentation.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -66,8 +60,8 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Step Bar with Descriptions</h3>
-        <p>Each step has its corresponding step-status description.</p>
+        <h3>Steps with Descriptions</h3>
+        <p>Each step has a corresponding status description.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-steps active=&quot;1&quot;&gt;
@@ -78,20 +72,20 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Centered Step Bar</h3>
+        <h3>Centered Steps</h3>
         <p>Both the title and description will be centered.</p>
         <p>
             Set the
             <code>active</code>
-            attribute, which accepts a
+            property, which accepts a
             <code>Number</code>
-            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            indicating the step's index, starting from 0. For fixed-width step bars, the
             <code>space</code>
-            attribute, which accepts a
+            property can be set, which accepts a
             <code>Number</code>
-            in units of px. If not set, it will be adaptive. Set the
+            (unit: px). If not set, it will be adaptive. The
             <code>finishStatus</code>
-            attribute to change the status of completed steps.
+            property can be used to modify the status of completed steps.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -104,14 +98,12 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Step Bar with Icons</h3>
-        <p>Various custom icons can be enabled within the step bar.</p>
+        <h3>Steps with Icons</h3>
+        <p>Custom icons can be enabled within steps.</p>
         <p>
-            Set the icon through the
+            Use the
             <code>icon</code>
-            attribute. The types of icons can refer to the documentation of the Icon component. In addition, custom icons can also be used through named
-            <code>sections</code>
-            .
+            property to set the icon. For icon types, refer to the Icon component documentation. Additionally, custom icons can be used via named slots.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
@@ -123,16 +115,16 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Vertical Step Bar</h3>
-        <p>A step bar in the vertical direction.</p>
+        <h3>Vertical Steps</h3>
+        <p>Steps displayed vertically.</p>
         <p>
-            Just set the
+            Simply set the
             <code>direction</code>
-            attribute to
-            <code>vertical</code>
-            in the
+            property of the
             <code>jk-steps</code>
-            element.
+            element to
+            <code>vertical</code>
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -146,11 +138,11 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Simple-style Step Bar</h3>
+        <h3>Simple-Style Steps</h3>
         <p>
-            Set
+            Set the
             <code>simple</code>
-            to apply the simple style. Under this condition,
+            property to apply a minimalist style. In this case,
             <code>alignCenter</code>
             ,
             <code>description</code>
@@ -158,20 +150,20 @@ export default class extends Component {
             <code>direction</code>
             , and
             <code>space</code>
-            will all be invalid.
+            properties become ineffective.
         </p>
         <p>
             Set the
             <code>active</code>
-            attribute, which accepts a
+            property, which accepts a
             <code>Number</code>
-            indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the
+            indicating the step's index, starting from 0. For fixed-width step bars, the
             <code>space</code>
-            attribute, which accepts a
+            property can be set, which accepts a
             <code>Number</code>
-            in units of px. If not set, it will be adaptive. Set the
+            (unit: px). If not set, it will be adaptive. The
             <code>finishStatus</code>
-            attribute to change the status of completed steps.
+            property can be used to modify the status of completed steps.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -197,22 +189,20 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>space</td>
-                    <td>
-                        The spacing between each step. If not filled, the spacing will be adaptive. Supports percentages.
-                    </td>
+                    <td>Spacing between steps (supports percentage). If not specified, it auto-adapts.</td>
                     <td>number / string</td>
                     <td>—</td>
                     <td>—</td>
@@ -221,26 +211,26 @@ export default class extends Component {
                     <td>direction</td>
                     <td>Display direction</td>
                     <td>string</td>
-                    <td>vertical/horizontal</td>
+                    <td>vertical / horizontal</td>
                     <td>horizontal</td>
                 </tr>
                 <tr>
                     <td>active</td>
-                    <td>Set the currently active step</td>
+                    <td>Sets the currently active step</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>alignCenter</td>
-                    <td>Perform centered alignment</td>
+                    <td>Aligns steps to center</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>simple</td>
-                    <td>Whether to apply the simple style</td>
+                    <td>Whether to apply simple style</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -255,13 +245,13 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>title</td>
-                    <td>Title</td>
+                    <td>Step title</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -275,16 +265,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>icon</td>
-                    <td>Icon</td>
-                    <td>
-                        Pass in the full class name of the icon to customize the icon, and it also supports being written in the Section way
-                    </td>
+                    <td>Icon (supports slot usage)</td>
+                    <td>either icon class name (refer to Icon docs) or slot usage</td>
                     <td>string</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Step Sections</h3>
+        <h3>Step Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>

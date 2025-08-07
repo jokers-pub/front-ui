@@ -1,19 +1,19 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>DatePicker</h2>
-        <p>Used to select or input dates.</p>
-        <h3>Selecting a Day</h3>
+        <p>A component for selecting or inputting dates</p>
+        <h3>Date Selection</h3>
+        <p>Basic date selection control with &quot;day&quot; as the fundamental unit</p>
         <p>
-            A basic date-selection control with the &quot;day&quot; as the basic unit.
             The basic unit is specified by the
             <code>type</code>
-            attribute. Shortcut options need to be configured with
+            property. Quick options can be configured via
             <code>shortcuts</code>
-            , and disabled dates are set through
+            . Disabled dates are set using
             <code>disabledDate</code>
-            . This attribute is of function type, and it determines whether a date is selectable by returning a
+            , which is a function that returns a
             <code>boolean</code>
-            value.
+            to determine availability.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -73,7 +73,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Other Date Units</h3>
-        <p>By extending the basic date selection, weeks, months, and years can be selected.</p>
+        <p>By extending the basic date picker, week, month, and year selections are supported.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
@@ -124,8 +124,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Selecting a Date Range</h3>
-        <p>A time range can be conveniently selected in one picker.</p>
+        <h3>Date Range Selection</h3>
+        <p>Conveniently select a date range within a single picker.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demoContainer&quot;&gt;
@@ -224,18 +224,21 @@ export default class extends Component {
         <p>
             Use
             <code>format</code>
-            to specify the format of the input box; use
+            to specify the display format in the input box. Use
             <code>value-format</code>
-            to specify the format of the bound value.
+            to control the bound value format.
+        </p>
+        <p>
             By default, the component accepts and returns
             <code>Date</code>
-            objects. The following are the available formatting strings, taking January 2, 2017, 03:04:05 UTC as an example:
+            objects. Here are the available format strings (using UTC January 2, 2017, 03:04:05 as an example):
         </p>
         <div class="warning">
             <p>
-                Please note the case. Internally,
+                <strong>Case sensitivity note:</strong>
+                Internally,
                 <code>dayjs</code>
-                is used for time operations and formatting. For detailed format values, please refer to
+                is used for date operations and formatting. For detailed format values, refer to
                 <a href="https://dayjs.fenxianglu.cn/" target="_blank">dayjs</a>
                 .
             </p>
@@ -247,77 +250,77 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string(DatePicker) / Array&lt;string&gt;(DateRangePicker)</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>readonly</td>
-                    <td>Completely read-only</td>
+                    <td>Fully read-only</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Disabled</td>
+                    <td>Disabled state</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>editable</td>
-                    <td>The text box is editable</td>
+                    <td>Allow text input in the field</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>clearable</td>
-                    <td>Whether to display the clear button</td>
+                    <td>Whether to show the clear button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size of the input box</td>
+                    <td>Input field size</td>
                     <td>string</td>
                     <td>large, small, mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder content when not in range selection</td>
+                    <td>Placeholder for non-range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>start-placeholder</td>
-                    <td>Placeholder content for the start date in range selection</td>
+                    <td>Placeholder for the start date in range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>end-placeholder</td>
-                    <td>Placeholder content for the end date in range selection</td>
+                    <td>Placeholder for the end date in range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -345,48 +348,55 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>format</td>
-                    <td>The format displayed in the input box</td>
+                    <td>Display format in input box</td>
                     <td>string</td>
                     <td>
-                        See
+                        Refer to
                         <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a>
                     </td>
                     <td>yyyy-MM-dd</td>
                 </tr>
                 <tr>
                     <td>range-separator</td>
-                    <td>Separator when selecting a range</td>
+                    <td>Separator in range selection mode</td>
                     <td>string</td>
                     <td>—</td>
                     <td>'-'</td>
                 </tr>
                 <tr>
                     <td>default-value</td>
-                    <td>Optional, the time that is displayed by default when the picker is opened</td>
+                    <td>Optional, default displayed date when opened</td>
                     <td>string</td>
-                    <td>Follows value-format</td>
+                    <td>
+                        Follows
+                        <code>value-format</code>
+                    </td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>value-format</td>
-                    <td>Optional, the format of the bound value. If not specified, the bound value is a Date object</td>
+                    <td>
+                        Optional, bound value format. Defaults to
+                        <code>Date</code>
+                        obj
+                    </td>
                     <td>string</td>
                     <td>
-                        See
+                        Refer to
                         <a href="https://dayjs.fenxianglu.cn/" target="_blank">Date Format</a>
                     </td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>unlink-panels</td>
-                    <td>Cancel the linkage between the two date panels in the range picker</td>
+                    <td>Unlink two date panels in range mode</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>prefix-icon</td>
-                    <td>The class name of the custom header icon</td>
+                    <td>Custom icon class for the header</td>
                     <td>string</td>
                     <td>—</td>
                     <td>jk-icon-date</td>
@@ -400,15 +410,19 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>shortcuts</td>
                     <td>
-                        Set shortcut options, need to pass in{text, onClick}object. For usage, refer to the demo or the table below
+                        Quick options configuration (requires
+                        <code>
+                            {text, onClick}
+                        </code>
+                        objects). See demo or table below.
                     </td>
                     <td>Object[]</td>
                     <td>—</td>
@@ -417,7 +431,9 @@ export default class extends Component {
                 <tr>
                     <td>disabledDate</td>
                     <td>
-                        Set the disabled state, the parameter is the current date, and it is required to return a Boolean
+                        Sets disabled state (receives current date, returns
+                        <code>boolean</code>
+                        )
                     </td>
                     <td>Function</td>
                     <td>—</td>
@@ -425,7 +441,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>cellClassName</td>
-                    <td>Set the className of the date</td>
+                    <td>Sets custom class for date cells</td>
                     <td>Function(Date)</td>
                     <td>—</td>
                     <td>—</td>
@@ -439,8 +455,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -453,9 +469,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>onClick</td>
-                    <td>
-                        This method will pass in a callback. Executing the callback and passing in a new value will perform the setting operation
-                    </td>
+                    <td>Receives a callback; executing the callback with a new value applies it</td>
                     <td>function</td>
                     <td>—</td>
                     <td>—</td>
@@ -474,21 +488,22 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the user confirms the selected value</td>
+                    <td>Triggered when user confirms selection</td>
                     <td>
-                        The component-bound value. The format is consistent with the bound value and can be controlled by
+                        Bound value (format matches binding, affected by
                         <code>value-format</code>
+                        )
                     </td>
                 </tr>
                 <tr>
                     <td>blur</td>
-                    <td>Triggered when the input loses focus</td>
-                    <td>The component instance</td>
+                    <td>Triggered when input loses focus</td>
+                    <td>Component instance</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Triggered when the input gets focus</td>
-                    <td>The component instance</td>
+                    <td>Triggered when input gains focus</td>
+                    <td>Component instance</td>
                 </tr>
             </tbody>
         </table>
@@ -496,15 +511,15 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input get focus</td>
+                    <td>Focuses the input field</td>
                     <td>—</td>
                 </tr>
             </tbody>

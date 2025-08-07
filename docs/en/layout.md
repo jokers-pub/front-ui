@@ -1,72 +1,72 @@
-## Layout
+## Layout  
 
-Create layouts quickly and easily through the basic 24-column system.
+Quickly and easily create layouts using a 24-column grid system.
 
-### Basic Layout
+### Basic Layout  
 
-Create a basic grid layout using a single column.
+Create a foundational grid layout using a single column.
 
-By using the `row` and `col` components, and through the `span` attribute of the `col` component, we can freely combine layouts.
+By utilizing the `row` and `col` components and specifying the `span` property of the `col` component, you can freely combine layouts.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Column Spacing
+### Column Gutter  
 
-There is a spacing between columns.
+Add spacing between columns.  
 
-The `row` component provides the `gutter` attribute to specify the spacing between each column, with a default spacing of 0.
+The `row` component provides a `gutter` property to define the spacing between columns, with a default value of 0.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Mixed Layout
+### Mixed Layout  
 
-Arbitrarily expand and combine through the basic 1/24 columns to form a more complex mixed layout.
+Combine and extend the basic 1/24 columns to create complex mixed layouts.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Column Offset
+### Column Offset  
 
-Supports offsetting a specified number of columns.
+Support for offsetting specified columns.  
 
-By setting the `offset` attribute of the `col` component, you can specify the number of columns to offset, optimizing the layout effect.
+The `offset` property of the `col` component allows you to specify the number of columns to offset, optimizing layout flexibility.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Alignment
+### Alignment  
 
-Use `flex` layout for flexible alignment of columns.
+Use **flex** layout for flexible column alignment.  
 
-Assigning the `type` attribute as 'flex' enables the flex layout. You can use the `justify` attribute to specify values such as `start`, `center`, `end`, `space-between`, `space-around` to flexibly define the layout of child elements.
+By setting the `type` property to `'flex'`, you enable flexbox layout. The `justify` property can be used to define horizontal alignment with values such as `start`, `center`, `end`, `space-between`, or `space-around`.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Responsive Layout
+### Responsive Layout  
 
-Referencing the responsive design of Bootstrap, five responsive sizes are preset: `xs`, `sm`, `md`, `lg`, and `xl`.
+Following Bootstrap’s responsive design approach, we preset five responsive breakpoints: `xs`, `sm`, `md`, `lg`, and `xl`.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Row Attributes
+### Row Attributes  
 
-| Parameter | Description                                         | Type   | Optional Values                                     | Default Value |
-| --------- | --------------------------------------------------- | ------ | --------------------------------------------------- | ------------- |
-| gutter    | Grid spacing                                        | number | —                                                   | 0             |
-| type      | Layout mode, 'flex' is available in modern browsers | string | —                                                   | —             |
-| justify   | Horizontal arrangement in flex layout               | string | start / end / center / space-around / space-between | start         |
-| align     | Vertical arrangement in flex layout                 | string | top / middle / bottom                               | —             |
-| tag       | Custom element tag                                  | string | \*                                                  | div           |
+| Parameter | Description                                  | Type   | Accepted Values                                      | Default |
+| --------- | ------------------------------------------- | ------ | ---------------------------------------------------- | ------- |
+| gutter    | Grid spacing                                | number | —                                                    | 0       |
+| type      | Layout mode, optional `flex` for modern browsers | string | —                                                   | —       |
+| justify   | Horizontal alignment in flex layout         | string | `start` / `end` / `center` / `space-around` / `space-between` | `start` |
+| align     | Vertical alignment in flex layout           | string | `top` / `middle` / `bottom`                         | —       |
+| tag       | Custom HTML tag                             | string | \*                                                  | `div`   |
 
-### Col Attributes
+### Col Attributes  
 
-| Parameter | Description                                                   | Type                                         | Optional Values | Default Value |
-| --------- | ------------------------------------------------------------- | -------------------------------------------- | --------------- | ------------- |
-| span      | The number of columns occupied by the grid                    | number                                       | —               | 24            |
-| offset    | The number of grid-spaced cells on the left side of the grid  | number                                       | —               | 0             |
-| push      | The number of cells the grid moves to the right               | number                                       | —               | 0             |
-| pull      | The number of cells the grid moves to the left                | number                                       | —               | 0             |
-| xs        | Responsive grid number or grid attribute object for `<768px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
-| sm        | Responsive grid number or grid attribute object for `≥768px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
-| md        | Responsive grid number or grid attribute object for `≥992px`  | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
-| lg        | Responsive grid number or grid attribute object for `≥1200px` | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
-| xl        | Responsive grid number or grid attribute object for `≥1920px` | number / object (e.g., {span: 4, offset: 4}) | —               | —             |
-| tag       | Custom element tag                                            | string                                       | \*              | div           |
+| Parameter | Description                                   | Type                                        | Accepted Values                            | Default |
+| --------- | -------------------------------------------- | ------------------------------------------- | ------------------------------------------ | ------- |
+| span      | Number of columns the grid occupies          | number                                      | —                                          | 24      |
+| offset    | Number of columns to offset on the left      | number                                      | —                                          | 0       |
+| push      | Number of columns to move to the right       | number                                      | —                                          | 0       |
+| pull      | Number of columns to move to the left        | number                                      | —                                          | 0       |
+| xs        | `<768px` Responsive columns or column props  | number / object (e.g., `{span: 4, offset: 4}`) | —                                          | —       |
+| sm        | `≥768px` Responsive columns or column props  | number / object (e.g., `{span: 4, offset: 4}`) | —                                          | —       |
+| md        | `≥992px` Responsive columns or column props  | number / object (e.g., `{span: 4, offset: 4}`) | —                                          | —       |
+| lg        | `≥1200px` Responsive columns or column props | number / object (e.g., `{span: 4, offset: 4}`) | —                                          | —       |
+| xl        | `≥1920px` Responsive columns or column props | number / object (e.g., `{span: 4, offset: 4}`) | —                                          | —       |
+| tag       | Custom HTML tag                              | string                                      | \*                                        | `div`   |

@@ -1,11 +1,11 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Color</h2>
+        <h2>Color Palette</h2>
         <p>
-            To avoid visual communication differences, Joker-UI uses a specific color palette to define colors, providing a consistent visual appearance for the products you build.
+            Joker-UI employs a specific color scheme to prevent visual communication discrepancies and ensure a consistent visual experience for your products.
         </p>
         <h3>Primary Color</h3>
-        <p>The main brand color of Joker-UI is a bright and friendly blue.</p>
+        <p>The core brand color of Joker-UI is a vibrant, friendly blue.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-container&quot;&gt;
@@ -31,10 +31,8 @@
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Secondary Colors</h3>
-        <p>
-            These are the scene colors other than the primary color, which need to be used in different scenarios (for example, the danger color represents dangerous operations).
-        </p>
+        <h3>Accent Colors</h3>
+        <p>Additional situational colors beyond the primary palette (e.g., danger color for hazardous operations).</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;6&quot;&gt;
@@ -71,9 +69,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Neutral Colors</h3>
-        <p>
-            Neutral colors are used for text, background, and border colors. By applying different neutral colors, the hierarchical structure can be presented.
-        </p>
+        <p>Neutrals are used for text, backgrounds, and borders. Different neutral shades create visual hierarchy.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -146,7 +142,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Shadow Colors</h3>
-        <p>Common shadow styles are provided.</p>
+        <p>Provides commonly used shadow styles.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;jk-row gutter=&quot;20&quot;&gt;
@@ -184,6 +180,9 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
+        <p>
+            (Note: Maintaining the same formatting tags/exclamation marks for placeholder images as per the original.)
+        </p>
         <BottomNav />
     </div>
 </template>

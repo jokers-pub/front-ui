@@ -1,60 +1,60 @@
-## Scrollbar
+## Scrollbar 
 
-Used to replace the browser's native scrollbar.
+Used to replace native browser scrollbars.
 
-### Basic Usage
+### Basic Usage 
 
-Define the height of the scrollbar by setting the `height` attribute. If not set, it will adapt to the height of the parent container.
+Define scrollbar height by setting the `height` property. If not set, it will adapt based on the parent container height.
 
 !!!demo1!!!
 
-### Horizontal Scrolling
+### Horizontal Scrolling 
 
 !!!demo2!!!
 
-### Set Maximum Dimensions
+### Setting Maximum Size 
 
-You can control the triggering time of the scrollbar by setting the boundary values of the parent container, such as `max-width` and `max-height`.
+Control scrollbar trigger timing by setting parent container boundary values such as `max-width` and `max-height`.
 
 !!!demo3!!!
 
-### Manual Scrolling
+### Manual Scrolling 
 
-By using the `scrollTo` method, you can manually control the scrolling position of the scrollbar.
+Use the scrollTo method to manually control the scrollbar position.
 
 !!!demo4!!!
 
-### Attributes
+### Attributes 
 
-| Parameter  | Description                                                                                                                          | Type    | Optional Values | Default Value |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------- | --------------- | ------------- |
-| native     | Whether to use native interaction                                                                                                    | boolean | —               | false         |
-| wrapClass  | Style extension of the `wrap` element                                                                                                | string  | —               | -             |
-| viewClass  | Style extension of the `view` element                                                                                                | string  | —               | -             |
-| class      | Root style extension                                                                                                                 | string  | —               | -             |
-| noresize   | Do not respond to container size changes. If the container size will not change, it is best to set this for performance optimization | boolean | —               | false         |
-| tag        | The output element tag                                                                                                               | string  | —               | div           |
-| height     | Custom height. If not set, it defaults to the value of the parent container                                                          | string  | —               | -             |
-| width      | Custom width. If not set, it defaults to the value of the parent container                                                           | string  | —               | -             |
-| max-height | Custom maximum height. If not set, it defaults to the value of the parent container                                                  | string  | —               | -             |
-| max-width  | Custom maximum width. If not set, it defaults to the value of the parent container                                                   | string  | —               | -             |
+| Parameter | Description | Type | Optional Values | Default |
+|-----------|-------------|------|----------------|---------|
+| native | Whether to use native interaction | boolean | — | false |
+| wrapClass | Wrap element style extension | string | — | - |
+| viewClass | View element style extension | string | — | - |
+| class | Root style extension | string | — | - |
+| noresize | Do not respond to container size changes (improves performance if container size is static) | boolean | — | false |
+| tag | Output element tag | string | — | div |
+| height | Custom height (defaults to parent container value if not set) | string | — | - |
+| width | Custom width (defaults to parent container value if not set) | string | — | - |  
+| max-height | Custom max height (defaults to parent container value if not set) | string | — | - |
+| max-width | Custom max width (defaults to parent container value if not set) | string | — | - |
 
-### Sections
+### Sections 
 
-| Section Name | Description     | Parameter |
-| ------------ | --------------- | --------- |
-| default      | Default content | -         |
+| Section Name | Description | Parameters |
+|--------------|-------------|------------|
+| default | Default content | - |
 
-### Methods
+### Methods 
 
-| Method Name | Description                                                                                         | Parameter                             |
-| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------- |
-| scrollTo    | Scroll to a position                                                                                | Parameters refer to `ScrollToOptions` |
-| scrollToEl  | Scroll to the position of a specified element                                                       | HTMLElement                           |
-| Update      | Recalculate scrolling (call this method to recalculate when internal elements are added or removed) | CallBack                              | Executed after the calculation is completed |
+| Method Name | Description | Parameters |
+|-------------|-------------|------------|
+| scrollTo | Scroll to position | See `ScrollToOptions` for parameters |
+| scrollToEl | Scroll to designated element position | HTMLElement |
+| update | Recalculate scrollbars (call when internal elements are added/removed) | Execute callback after calculation |
 
-### Events
+### Events 
 
-| Event Name | Description                                          | Callback Parameters                                                                                                                                         |
-| ---------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scroll     | Triggered when the scroll-triggered position changes | {top:number,left:number,x:number,y:number,,isUserScroll?:boolean}, where `x` and `y` represent the progress of the scrollbar in the corresponding direction |
+| Event Name | Description | Callback Parameters |
+|------------|-------------|----------------------|
+| scroll | Triggered when scroll position changes | {top:number,left:number,x:number,y:number,isUserScroll?:boolean} where x,y represent scrollbar progress by direction |

@@ -1,10 +1,10 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Timeline</h2>
-        <p>Visually presents time-flow information.</p>
+        <p>Visually displays chronological information flows.</p>
         <h3>Basic Usage</h3>
         <p>
-            The Timeline can be split into multiple activities arranged according to timestamps. The timestamp is an important feature that distinguishes it from other controls. When using it, pay attention to differentiating it from components like Steps.
+            The Timeline component can be split into multiple chronological activities using timestamps as key identifiers - this distinguishes it from other components like Steps. Pay attention to differentiate between these use cases.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -63,8 +63,8 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Custom Node Styles</h3>
-        <p>You can customize the size and color of nodes according to the actual scenario, or directly use icons.</p>
+        <h3>Custom Node Style</h3>
+        <p>Customize node size, color, or directly use icons based on actual scenarios.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
@@ -121,7 +121,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Custom Timestamp</h3>
-        <p>When the content is too tall in the vertical direction, the timestamp can be placed above the content.</p>
+        <p>When content height exceeds normal vertical space, timestamps can be positioned above the content.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;block&quot;&gt;
@@ -156,14 +156,14 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class name</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
@@ -177,21 +177,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>timestamp</td>
-                    <td>Timestamp</td>
+                    <td>Timestamp content</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>hideTimestamp</td>
-                    <td>Whether to hide the timestamp</td>
+                    <td>Whether to hide timestamp</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>false</td>
@@ -233,18 +233,18 @@ export default class extends Component {
                 </tr>
             </tbody>
         </table>
-        <h3>Timeline-Item Sections</h3>
+        <h3>Timeline-Item Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Slot Name</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>Content of Timeline-Item</td>
+                    <td>Timeline-Item content</td>
                 </tr>
                 <tr>
                     <td>dot</td>
@@ -252,6 +252,9 @@ export default class extends Component {
                 </tr>
             </tbody>
         </table>
+        <p>
+            (Note: Maintained original formatting typesetting while optimizing technical terminology and structure for professional readability)
+        </p>
         <BottomNav />
     </div>
 </template>

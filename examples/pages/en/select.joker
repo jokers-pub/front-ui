@@ -4,11 +4,13 @@
         <p>When there are too many options, use a dropdown menu to display and select content.</p>
         <h3>Basic Usage</h3>
         <p>
-            Basic single-selection widely applicable. The value of
+            Basic single selection with broad applicability.
+            <br />
+            The
             <code>value</code>
-            is the
+            corresponds to the
             <code>value</code>
-            attribute value of the currently selected
+            property of the currently selected
             <code>jk-option</code>
             .
         </p>
@@ -41,14 +43,14 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>With Disabled Options</h3>
+        <h3>Disabled Option</h3>
         <p>
-            In
-            <code>jk-option</code>
-            , set the
+            Set
             <code>disabled</code>
-            value to
+            to
             <code>true</code>
+            in
+            <code>jk-option</code>
             to disable the option.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
@@ -72,16 +74,16 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Clearable Single-selection</h3>
-        <p>Contains a clear button to clear the selector to its initial state.</p>
+        <h3>Clearable Single Select</h3>
+        <p>Includes a clear button to reset the selector to its initial state.</p>
         <p>
             Set the
             <code>clearable</code>
             attribute for
             <code>jk-select</code>
-            , and the selector can be cleared. Note that the
+            to enable clearing. Note that
             <code>clearable</code>
-            attribute is only applicable to single-selection.
+            only applies to single selection.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -96,8 +98,8 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Multiple-selection Dropdown</h3>
-        <p>Basic multiple-selection widely applicable, with selected items displayed as Tags.</p>
+        <h3>Multiple Selection Dropdown</h3>
+        <p>Basic multiple selection with broad applicability, displaying selected items as Tags.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
@@ -131,7 +133,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Custom Template</h3>
-        <p>You can customize the alternative options.</p>
+        <p>Options can be customized.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -151,7 +153,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Grouping</h3>
-        <p>Display alternative options in groups.</p>
+        <p>Group options for better organization.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -184,19 +186,19 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Searchable</h3>
-        <p>You can quickly find options using the search function.</p>
+        <p>Quickly find options using search functionality.</p>
         <p>
-            Adding the
+            Enable search functionality by adding the
             <code>filterable</code>
-            attribute enables the search function. By default, Select will find all options whose
+            attribute. By default, Select filters options whose
             <code>label</code>
-            attribute contains the input value. If you want to use other search logic, you can achieve this by passing in a
+            contains the input value. For custom search logic, provide a
             <code>filter-method</code>
             .
             <code>filter-method</code>
             is a
             <code>Function</code>
-            that will be called when the input value changes, with the current input value as the parameter.
+            called when the input changes, with the current input value as the parameter.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -271,7 +273,7 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Multiple-selection and Searchable</h3>
+        <h3>Searchable Multiple Selection</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo8)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;container&quot;&gt;
@@ -355,11 +357,11 @@ export default class extends Component {
 &lt;/style&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Size</h3>
+        <h3>Sizes</h3>
         <p>
-            You can specify the size of the input box through the
+            Specify the input size via the
             <code>size</code>
-            attribute. Besides the default size, there are also three sizes: medium, small, and mini.
+            attribute. Apart from the default size, medium, small, and mini are also available.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo9)">
             <pre><code class="language-html">&lt;template&gt;
@@ -437,67 +439,63 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
                     <td>Bound value</td>
-                    <td>boolean / string / number</td>
+                    <td>boolean/string/number</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>multiple</td>
-                    <td>Whether it is multiple-selection</td>
+                    <td>Whether multiple selection is enabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is disabled</td>
+                    <td>Whether the select is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>value-key</td>
-                    <td>
-                        The key name used as the unique identifier of the value, required when the bound value is of object type
-                    </td>
+                    <td>Key name for unique identifier for value, required when binding to an object</td>
                     <td>string</td>
                     <td>—</td>
                     <td>value</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size of the input box</td>
+                    <td>Input size</td>
                     <td>string</td>
                     <td>medium/small/mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>clearable</td>
-                    <td>Whether the option can be cleared</td>
+                    <td>Whether the selection can be cleared</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>multiple-limit</td>
-                    <td>
-                        The maximum number of items that the user can select in multiple-selection. If it is 0, there is no limit
-                    </td>
+                    <td>Maximum number of selectable items in multiple mode; 0 means unlimited</td>
                     <td>number</td>
                     <td>—</td>
                     <td>0</td>
@@ -505,9 +503,9 @@ export default class extends Component {
                 <tr>
                     <td>name</td>
                     <td>
-                        Used to connect to the
+                        Corresponds to the form’s
                         <code>name</code>
-                        attribute in the form
+                        attribute
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -515,14 +513,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder</td>
+                    <td>Placeholder text</td>
                     <td>string</td>
                     <td>—</td>
-                    <td>Please select</td>
+                    <td>Select</td>
                 </tr>
                 <tr>
                     <td>filterable</td>
-                    <td>Whether it is searchable</td>
+                    <td>Whether search is enabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -530,11 +528,9 @@ export default class extends Component {
                 <tr>
                     <td>filter-method</td>
                     <td>
-                        Custom search method. When querying, the keyword, selected label, and option value will be passed into this method. This method returns
-                        <code>true</code>
-                        /
-                        <code>false</code>
-                        to determine whether the option is displayed
+                        Custom search method; takes the query text, selected label, and option value, returning
+                        <code>true/false</code>
+                        for visibility
                     </td>
                     <td>function</td>
                     <td>—</td>
@@ -542,7 +538,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>remote</td>
-                    <td>Whether it is a remote search</td>
+                    <td>Whether to use remote search</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -563,7 +559,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>loading-text</td>
-                    <td>The text displayed when loading remotely</td>
+                    <td>Text displayed during remote loading</td>
                     <td>string</td>
                     <td>—</td>
                     <td>Loading...</td>
@@ -571,18 +567,18 @@ export default class extends Component {
                 <tr>
                     <td>no-match-text</td>
                     <td>
-                        The text displayed when there is no match for the search condition. It can also be set using the
-                        <code>section &quot;empty&quot;</code>
+                        Text displayed when no matches are found; can also use
+                        <code>slot=&quot;empty&quot;</code>
                     </td>
                     <td>string</td>
                     <td>—</td>
-                    <td>No matching data</td>
+                    <td>No matches</td>
                 </tr>
                 <tr>
                     <td>no-data-text</td>
                     <td>
-                        The text displayed when there are no options. It can also be set using the
-                        <code>section &quot;empty&quot;</code>
+                        Text displayed when no data is available; can also use
+                        <code>slot=&quot;empty&quot;</code>
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -593,18 +589,18 @@ export default class extends Component {
                     <td>Whether the width is 100%</td>
                     <td>boolean</td>
                     <td>—</td>
-                    <td>-</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>allowCreate</td>
-                    <td>Whether to allow the creation of new items</td>
+                    <td>Whether new items can be created</td>
                     <td>boolean</td>
                     <td>—</td>
-                    <td>-</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>createText</td>
-                    <td>Text prompt for creating new items</td>
+                    <td>Prompt text for creating a new item</td>
                     <td>string</td>
                     <td>—</td>
                     <td>Create new value</td>
@@ -623,17 +619,17 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the selected value changes</td>
-                    <td>The currently selected value</td>
+                    <td>Triggers when the selected value changes</td>
+                    <td>Current selected value</td>
                 </tr>
                 <tr>
                     <td>new</td>
-                    <td>Triggered when clicking to create a new value in single-selection</td>
-                    <td>The query value (input value in the text box)</td>
+                    <td>Triggers when creating a new value in single select mode</td>
+                    <td>Query value (input text)</td>
                 </tr>
             </tbody>
         </table>
-        <h3>Select Sections</h3>
+        <h3>Select Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -648,7 +644,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>empty</td>
-                    <td>List when there are no options</td>
+                    <td>Displayed when no options are available</td>
                 </tr>
             </tbody>
         </table>
@@ -659,21 +655,21 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>label</td>
-                    <td>The group name of the grouping</td>
+                    <td>Group name</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable all options in this group</td>
+                    <td>Whether all options in the group are disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -687,14 +683,14 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>The value of the option</td>
+                    <td>Value of the option</td>
                     <td>string/number/object</td>
                     <td>—</td>
                     <td>—</td>
@@ -702,9 +698,9 @@ export default class extends Component {
                 <tr>
                     <td>label</td>
                     <td>
-                        The label of the option. If not set, it is the same as
+                        Label of the option; defaults to
                         <code>value</code>
-                        by default
+                        if omitted
                     </td>
                     <td>string/number</td>
                     <td>—</td>
@@ -712,7 +708,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable this option</td>
+                    <td>Whether the option is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>

@@ -2,12 +2,12 @@
     <div ref="container" class="joker-demo-container">
         <h2>Drawer</h2>
         <p>
-            The Drawer component provides almost the same API as the
+            The Drawer component provides an API nearly identical to
             <code>Dialog</code>
-            , but offers a different UI experience.
+            , but delivers a distinct UI experience.
         </p>
         <h3>Basic Usage</h3>
-        <p>Pops up a sidebar that can be displayed from multiple directions.</p>
+        <p>Displays a sidebar that can slide in from multiple directions.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -41,11 +41,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Multi-layer Nesting</h3>
+        <h3>Multi-level Nesting</h3>
         <p>
-            Supports multi-layer nesting, and the
+            Supports multi-level nesting. The component automatically manages
             <code>z-index</code>
-            is automatically controlled within the component.
+            .
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -80,8 +80,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Options</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,7 +108,7 @@ export default class extends Component {
                 </tr>
             </tbody>
         </table>
-        <h3>Sections</h3>
+        <h3>Slots</h3>
         <table class="mkd-table">
             <thead>
                 <tr>
@@ -131,22 +131,22 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
-                    <th>Return Value</th>
+                    <th>Parameters</th>
+                    <th>Returns</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>open</td>
-                    <td>Open</td>
+                    <td>Open the drawer</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>Close</td>
+                    <td>Close the drawer</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
@@ -156,24 +156,59 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>open</td>
-                    <td>Opening</td>
+                    <td>Emitted when opened</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>Closing</td>
+                    <td>Emitted when closed</td>
                     <td>-</td>
                 </tr>
             </tbody>
         </table>
+        <p>Note: The translation maintains all the original structure, including marks like &quot;!!! demo1</p>
+        <pre><code class="language-html">&lt;template&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-radio-group @change=&quot;handleRadioChange&quot; value=&quot;@model.direction&quot;&gt;
+            &lt;jk-radio value=&quot;left&quot;&gt;Left to right&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;top&quot;&gt;Top to bottom&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;right&quot;&gt;Right to left&lt;/jk-radio&gt;
+            &lt;jk-radio value=&quot;bottom&quot;&gt;Bottom to top&lt;/jk-radio&gt;
+        &lt;/jk-radio-group&gt;
+    &lt;/DemoRow&gt;
+    &lt;jk-button @click=&quot;handleOpen&quot;&gt;Pop up&lt;/jk-button&gt;
+    &lt;jk-drawer ref=&quot;drawer&quot; direction=&quot;@model.direction&quot; title=&quot;I'm the title&quot;&gt;I'm the content.&lt;/jk-drawer&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { VNode } from &quot;@joker.front/core&quot;;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        direction: &quot;left&quot;
+    };
+
+    handleRadioChange(e: VNode.Event&lt;string&gt;) {
+        this.model.direction = e.data;
+    }
+
+    handleOpen() {
+        this.$getRef(&quot;drawer&quot;)?.component.open();
+    }
+}
+&lt;/script&gt;
+</code></pre>
+        <DemoContainer component="@(components.DEMO_JOKER_)">
+            <p>&quot; for placeholder content, while ensuring technical accuracy and readability in English.</p>
+        </DemoContainer>
         <BottomNav />
     </div>
 </template>

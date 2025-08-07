@@ -1,10 +1,10 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>Button</h2>
-        <p>Commonly used operation buttons.</p>
+        <p>Commonly used action buttons.</p>
         <h3>Basic Usage</h3>
+        <p>Basic button functionality.</p>
         <p>
-            Basic usage of buttons.
             Use the
             <code>type</code>
             ,
@@ -13,7 +13,7 @@
             <code>round</code>
             , and
             <code>circle</code>
-            attributes to define the style of the Button.
+            attributes to define the Button's style.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -55,11 +55,11 @@
 </code></pre>
         </DemoContainer>
         <h3>Disabled State</h3>
+        <p>Disabled state of the button.</p>
         <p>
-            The state where the button is unavailable.
             You can use the
             <code>disabled</code>
-            attribute to define whether the button is available, which accepts a
+            attribute to define whether the button is available. It accepts a
             <code>Boolean</code>
             value.
         </p>
@@ -106,13 +106,13 @@
 </code></pre>
         </DemoContainer>
         <h3>Icon Button</h3>
+        <p>Buttons with icons can enhance recognition (with text) or save space (without text).</p>
         <p>
-            Buttons with icons can enhance recognition (when there is text) or save space (when there is no text).
             To set an icon, simply specify the
             <code>icon</code>
-            attribute. The list of available icons can be referred to in the Joker-UI icon component. If you want to set an icon on the right side of the text, you can use the
-            <code>&lt;i&gt;</code>
-            tag to use a custom icon.
+            attribute. For the list of available icons, refer to Joker-UI's icon component. To place the icon on the right of the text, use the
+            <code>i</code>
+            tag for custom icons.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -128,8 +128,8 @@
 </code></pre>
         </DemoContainer>
         <h3>Button Group</h3>
+        <p>Appears as a group of buttons, commonly used for multiple similar actions.</p>
         <p>
-            Appears in the form of a button group, often used for multiple similar operations.
             Use the
             <code>&lt;jk-button-group&gt;</code>
             tag to nest your buttons.
@@ -155,10 +155,10 @@
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Loading State</h3>
+        <h3>Loading</h3>
+        <p>Perform data loading after clicking the button and display the loading state on the button.</p>
         <p>
-            Performs a data loading operation after clicking the button and displays the loading state on the button.
-            To set it to the loading state, just set the
+            To set the loading state, simply set the
             <code>loading</code>
             attribute to
             <code>true</code>
@@ -178,13 +178,15 @@
         <h3>Different Sizes</h3>
         <p>
             The Button component provides three sizes in addition to the default value, allowing you to choose the appropriate button size for different scenarios.
-            The sizes are:
+        </p>
+        <p>
+            Sizes include:
             <code>medium</code>
             ,
             <code>small</code>
-            ,
+            , and
             <code>mini</code>
-            , which can be configured by setting the
+            . Configure them by setting the
             <code>size</code>
             attribute.
         </p>
@@ -209,11 +211,11 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Valid Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -233,56 +235,56 @@
                 </tr>
                 <tr>
                     <td>plain</td>
-                    <td>Whether it is a plain button</td>
+                    <td>Whether to use plain style</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom class name</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>full-width</td>
-                    <td>Whether the width is 100%</td>
+                    <td>Whether to set width to 100%</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>link</td>
-                    <td>Whether to use text display</td>
+                    <td>Whether to display as text</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>round</td>
-                    <td>Whether it is a rounded-corner button</td>
+                    <td>Whether to use round corners</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>circle</td>
-                    <td>Whether it is a circular button</td>
+                    <td>Whether to use circular shape</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>loading</td>
-                    <td>Whether it is in the loading state</td>
+                    <td>Whether to show loading state</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether it is in the disabled state</td>
+                    <td>Whether to disable the button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -296,7 +298,7 @@
                 </tr>
                 <tr>
                     <td>autofocus</td>
-                    <td>Whether it is focused by default</td>
+                    <td>Whether to focus by default</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -316,13 +318,13 @@
                 <tr>
                     <th>Event Name</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>click</td>
-                    <td>The response event after clicking the button</td>
+                    <td>Triggered on button click</td>
                     <td>VNode.Event</td>
                 </tr>
             </tbody>

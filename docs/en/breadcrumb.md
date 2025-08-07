@@ -1,27 +1,34 @@
 ## Breadcrumb
 
-Displays the page path for returning to previous pages.
+Displays the page path for navigation back to previous pages.
 
 ### Basic Usage
 
-Basic usage of the breadcrumb.
+Basic implementation of breadcrumb navigation.
+
 !!!demo1!!!
 
 ### Icon Separator
+
+Breadcrumb with icon-based separators.
 
 !!!demo2!!!
 
 ### Link Functionality
 
+Breadcrumb with clickable links.
+
 !!!demo3!!!
 
-### Include Icons
+### With Icons
+
+Breadcrumb containing icons.
 
 !!!demo4!!!
 
 ### Attributes
 
-| Parameter      | Description                  | Type   | Optional Values | Default Value |
-| -------------- | ---------------------------- | ------ | --------------- | ------------- |
-| separator      | Separator                    | string | -               | "/"           |
-| separatorClass | Class for the icon separator | string | -               | -             |
+| Parameter | Description | Type | Acceptable Values | Default |
+| ------ | ------------------------------------------------------------ | ------------- | ------------------------------------------- | ------ |
+| separator | Separator character | string | - | "/" |
+| separatorClass | Class for icon separator | string | - | - |

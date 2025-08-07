@@ -1,12 +1,12 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Popconfirm</h2>
-        <p>A pop-up bubble confirmation box appears when you click an element.</p>
+        <h2>Popconfirm Bubble Confirmation Dialog</h2>
+        <p>Click on an element to trigger a bubble confirmation dialog.</p>
         <h3>Basic Usage</h3>
         <p>
-            The attributes of Popconfirm are quite similar to those of Popover. Therefore, for duplicate attributes, please refer to the Popover documentation and they will not be elaborated in this document. In Popconfirm, only the
+            The properties of Popconfirm are very similar to those of Popover. Therefore, for duplicate properties, please refer to the Popover documentation. This document does not provide detailed explanations for them. In Popconfirm, only the
             <code>title</code>
-            attribute is available.
+            property is available.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -30,7 +30,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Customization</h3>
-        <p>You can customize the content in Popconfirm.</p>
+        <p>You can customize the content within Popconfirm.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">```html
 &lt;template&gt;
@@ -50,7 +50,7 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
@@ -67,28 +67,28 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>confirm-button-text</td>
-                    <td>Text of the confirmation button</td>
+                    <td>Confirm button text</td>
                     <td>String</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>cancel-button-text</td>
-                    <td>Text of the cancel button</td>
+                    <td>Cancel button text</td>
                     <td>String</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>confirm-button-type</td>
-                    <td>Type of the confirmation button</td>
+                    <td>Confirm button type</td>
                     <td>String</td>
                     <td>—</td>
                     <td>Primary</td>
                 </tr>
                 <tr>
                     <td>cancel-button-type</td>
-                    <td>Type of the cancel button</td>
+                    <td>Cancel button type</td>
                     <td>String</td>
                     <td>—</td>
                     <td>Text</td>
@@ -102,7 +102,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>icon-color</td>
-                    <td>Color of the Icon</td>
+                    <td>Icon color</td>
                     <td>String</td>
                     <td>—</td>
                     <td>#f90</td>
@@ -113,14 +113,14 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Slot</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>default</td>
-                    <td>The HTML element that triggers the display of Popconfirm</td>
+                    <td>HTML element that triggers Popconfirm display</td>
                 </tr>
             </tbody>
         </table>
@@ -136,7 +136,7 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>confirm</td>
-                    <td>Triggered when the confirmation button is clicked</td>
+                    <td>Triggered when the confirm button is clicked</td>
                     <td>—</td>
                 </tr>
                 <tr>

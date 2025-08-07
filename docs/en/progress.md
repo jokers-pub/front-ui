@@ -1,53 +1,53 @@
-## Progress
+## Progress Bar
 
-Used to show the operation progress, informing users of the current status and expectations.
+Used to display operation progress and inform users of current status and expectations.
 
-### Linear Progress Bar
+### Linear Progress Bar  
 
-For the Progress component, setting the `percentage` attribute, which is required and must be between 0-100, represents the percentage corresponding to the progress bar. The text content of the progress bar can be specified through the `format` attribute.
+The Progress component requires the `percentage` property, which represents the percentage of the progress bar. It must be a value between 0 and 100. The text content of the progress bar can be customized via the `format` property.
 
 !!!demo1!!!
 
-### Inner-displayed Percentage
+### Internal Percentage Display  
 
-The percentage does not take up additional controls, which is suitable for scenarios such as file uploads.
+The percentage does not occupy additional space, making it suitable for scenarios like file uploads.  
 
-For the Progress component, the height of the progress bar can be changed through the `stroke-width` attribute, and the description of the progress bar can be placed inside the progress bar through the `text-inside` attribute.
+The Progress component allows adjusting the height of the progress bar via the `stroke-width` property and placing the description text inside the bar using the `text-inside` property.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Custom Color
+### Custom Color  
 
-The color of the progress bar can be set through `color`. `color` can accept color strings, functions, and arrays.
+The progress bar color can be set via the `color` property, which accepts color strings, functions, or arrays.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Circular Progress Bar
+### Circular Progress Bar  
 
-The Progress component can use the `type` attribute to specify the use of a circular progress bar. In the circular progress bar, the size can also be set through the `width` attribute.
+The Progress component supports circular progress bars by setting the `type` property. For circular progress bars, the size can be adjusted using the `width` property.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Gauge-shaped Progress Bar
+### Dashboard-style Progress Bar  
 
-Use the `type` attribute to specify the use of a gauge-shaped progress bar.
+A dashboard-style progress bar can be enabled via the `type` property.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter       | Description                                                                                    | Type                  | Optional Values           | Default Value |
-| --------------- | ---------------------------------------------------------------------------------------------- | --------------------- | ------------------------- | ------------- |
-| percentage      | Percentage (required)                                                                          | number                | 0-100                     | 0             |
-| type            | Progress bar type                                                                              | string                | line/circle/dashboard     | line          |
-| class           | Custom class style                                                                             | string                | -                         | -             |
-| strokeWidth     | The width of the progress bar, in px                                                           | number                | —                         | 6             |
-| textInside      | The progress bar text is displayed inside the progress bar (only available when type = line)   | boolean               | —                         | false         |
-| status          | The current status of the progress bar                                                         | string                | success/exception/warning | -             |
-| color           | The background color of the progress bar (will override the status color)                      | string/function/array | —                         | ''            |
-| width           | The width of the circular progress bar canvas (only available when type = circle or dashboard) | number                | —                         | 126           |
-| showText        | Whether to display the text content of the progress bar                                        | boolean               | -                         | true          |
-| strokeLinecap   | The shape of the two ends of the path for circle/dashboard types                               | string                | butt/round/square         | round         |
-| format          | Specify the text content of the progress bar                                                   | function(percentage)  | -                         | -             |
-| defineBackColor | Specify the base color of the progress bar (supports hex format)                               | string                | -                         | -             |
-| textColor       | Specify the font color of the progress bar (supports hex format)                               | string                | -                         | -             |
+| Attribute       | Description                                                                 | Type                    | Accepted Values              | Default |
+|----------------|---------------------------------------------------------------------------|------------------------|----------------------------|---------|
+| percentage     | Percentage (required)                                                     | number                | 0-100                      | 0       |
+| type           | Type of progress bar                                                      | string                | line/circle/dashboard      | line    |
+| class          | Custom class name for styling                                             | string                | -                          | -       |
+| strokeWidth    | Width of the progress bar in px                                           | number                | —                          | 6       |
+| textInside     | Display text inside the progress bar (only for `type=line`)               | boolean               | —                          | false   |
+| status         | Current status of the progress bar                                        | string                | success/exception/warning  | -       |
+| color          | Background color of the progress bar (overrides `status` color)           | string/function/array | —                          | ''      |
+| width          | Canvas width for circular/dashboard progress bars (`type=circle/dashboard`) | number                | —                          | 126     |
+| showText       | Whether to display progress text                                          | boolean               | -                          | true    |
+| strokeLinecap  | Shape of ends for circle/dashboard types                                  | string                | butt/round/square          | round   |
+| format         | Custom text formatter function                                            | function(percentage)  | -                          | -       |
+| defineBackColor | Background color of the progress track (supports HEX format)             | string                | -                          | -       |
+| textColor      | Text color of the progress bar (supports HEX format)                     | string                | -                          | -       |

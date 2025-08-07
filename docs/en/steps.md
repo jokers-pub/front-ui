@@ -1,84 +1,84 @@
-## Steps
+## Steps  
 
-A step-by-step navigation bar that guides users to complete tasks according to a process. The steps can be set according to the actual application scenario, and the number of steps should not be less than 2.
+A step navigation bar that guides users through a process to complete tasks. The number of steps can be configured based on actual application scenarios, with a minimum of 2 steps required.  
 
-### Basic Usage
+### Basic Usage  
 
-A simple step bar.
+Simple step bar.  
 
-Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
+Set the `active` property, which accepts a `Number` indicating the step's index, starting from 0. For fixed-width step bars, the `space` property can be set, which accepts a `Number` (unit: px). If not set, it will be adaptive. The `finishStatus` property can be used to modify the status of completed steps.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Step Bar with Status
+### Steps with Status  
 
-Each step shows the status of that step.
+Each step displays its current status.  
 
-You can also use the named slot `title`, and use the `sections` method to replace the attribute settings. There is a list of all `sections name` at the end of this document for reference.
+You can also use named slots (sections) to replace property settings. All available slot names are listed at the end of this documentation.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Step Bar with Descriptions
+### Steps with Descriptions  
 
-Each step has its corresponding step-status description.
+Each step has a corresponding status description.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Centered Step Bar
+### Centered Steps  
 
-Both the title and description will be centered.
+Both the title and description will be centered.  
 
-Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
+Set the `active` property, which accepts a `Number` indicating the step's index, starting from 0. For fixed-width step bars, the `space` property can be set, which accepts a `Number` (unit: px). If not set, it will be adaptive. The `finishStatus` property can be used to modify the status of completed steps.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Step Bar with Icons
+### Steps with Icons  
 
-Various custom icons can be enabled within the step bar.
+Custom icons can be enabled within steps.  
 
-Set the icon through the `icon` attribute. The types of icons can refer to the documentation of the Icon component. In addition, custom icons can also be used through named `sections`.
+Use the `icon` property to set the icon. For icon types, refer to the Icon component documentation. Additionally, custom icons can be used via named slots.  
 
-!!!demo5!!!
+!!!demo5!!!  
 
-### Vertical Step Bar
+### Vertical Steps  
 
-A step bar in the vertical direction.
+Steps displayed vertically.  
 
-Just set the `direction` attribute to `vertical` in the `jk-steps` element.
+Simply set the `direction` property of the `jk-steps` element to `vertical`.  
 
-!!!demo6!!!
+!!!demo6!!!  
 
-### Simple-style Step Bar
+### Simple-Style Steps  
 
-Set `simple` to apply the simple style. Under this condition, `alignCenter`, `description`, `direction`, and `space` will all be invalid.
+Set the `simple` property to apply a minimalist style. In this case, `alignCenter`, `description`, `direction`, and `space` properties become ineffective.  
 
-Set the `active` attribute, which accepts a `Number` indicating the index of the step, starting from 0. When a step bar with a fixed width is needed, set the `space` attribute, which accepts a `Number` in units of px. If not set, it will be adaptive. Set the `finishStatus` attribute to change the status of completed steps.
+Set the `active` property, which accepts a `Number` indicating the step's index, starting from 0. For fixed-width step bars, the `space` property can be set, which accepts a `Number` (unit: px). If not set, it will be adaptive. The `finishStatus` property can be used to modify the status of completed steps.  
 
-!!!demo7!!!
+!!!demo7!!!  
 
-### Steps Attributes
+### Steps Attributes  
 
-| Parameter   | Description                                                                                       | Type            | Optional Values     | Default Value |
-| ----------- | ------------------------------------------------------------------------------------------------- | --------------- | ------------------- | ------------- |
-| class       | Custom class style                                                                                | string          | -                   | -             |
-| space       | The spacing between each step. If not filled, the spacing will be adaptive. Supports percentages. | number / string | —                   | —             |
-| direction   | Display direction                                                                                 | string          | vertical/horizontal | horizontal    |
-| active      | Set the currently active step                                                                     | number          | —                   | 0             |
-| alignCenter | Perform centered alignment                                                                        | boolean         | —                   | false         |
-| simple      | Whether to apply the simple style                                                                 | boolean         | —                   | false         |
+| Parameter     | Description                                                  | Type             | Optional Values         | Default      |  
+| ------------- | ------------------------------------------------------------ | ---------------- | ----------------------- | ------------ |  
+| class         | Custom CSS class                                             | string           | -                       | -            |  
+| space         | Spacing between steps (supports percentage). If not specified, it auto-adapts. | number / string  | —                       | —            |  
+| direction     | Display direction                                             | string           | vertical / horizontal   | horizontal   |  
+| active        | Sets the currently active step                               | number           | —                       | 0            |  
+| alignCenter   | Aligns steps to center                                       | boolean          | —                       | false        |  
+| simple        | Whether to apply simple style                                | boolean          | —                       | false        |  
 
-### Step Attributes
+### Step Attributes  
 
-| Parameter   | Description      | Type                                                                                                                 | Optional Values | Default Value |
-| ----------- | ---------------- | -------------------------------------------------------------------------------------------------------------------- | --------------- | ------------- |
-| title       | Title            | string                                                                                                               | —               | —             |
-| description | Descriptive text | string                                                                                                               | -               | -             |
-| icon        | Icon             | Pass in the full class name of the icon to customize the icon, and it also supports being written in the Section way | string          | -             |
+| Parameter     | Description                | Type                                                      | Optional Values | Default |  
+| ------------- | -------------------------- | --------------------------------------------------------- | --------------- | ------- |  
+| title         | Step title                 | string                                                    | —               | —       |  
+| description   | Descriptive text           | string                                                    | -               | -       |  
+| icon          | Icon (supports slot usage) | either icon class name (refer to Icon docs) or slot usage | string          | -       |  
 
-### Step Sections
+### Step Slots  
 
-| Name        | Description             |
-| ----------- | ----------------------- |
-| icon        | Custom icon             |
-| title       | Custom title            |
-| description | Custom descriptive text |
+| Name          | Description                  |  
+| ------------- | ---------------------------- |  
+| icon          | Custom icon                  |  
+| title         | Custom title                 |  
+| description   | Custom descriptive text      |

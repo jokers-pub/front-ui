@@ -4,9 +4,9 @@
         <p>Used for marking and selection.</p>
         <h3>Basic Usage</h3>
         <p>
-            The type of the tag is selected by the
+            Use the
             <code>type</code>
-            attribute, and the background color can also be customized through the
+            attribute to specify the tag style. Alternatively, you can customize the background color using the
             <code>color</code>
             attribute.
         </p>
@@ -33,9 +33,9 @@
         </DemoContainer>
         <h3>Removable Tag</h3>
         <p>
-            Setting the
+            Set the
             <code>closable</code>
-            attribute can define whether a tag is removable.
+            attribute to determine whether a tag can be removed.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -60,16 +60,16 @@
         </DemoContainer>
         <h3>Different Sizes</h3>
         <p>
-            The Tag component provides three sizes in addition to the default size, allowing you to choose the appropriate button size for different scenarios.
+            The Tag component offers three additional sizes besides the default one, suitable for different scenarios.
         </p>
         <p>
-            The additional sizes are:
+            Additional sizes:
             <code>medium</code>
             ,
             <code>small</code>
             , and
             <code>mini</code>
-            , which can be configured by setting the
+            , configured via the
             <code>size</code>
             attribute.
         </p>
@@ -94,7 +94,7 @@
         </DemoContainer>
         <h3>Different Themes</h3>
         <p>
-            The Tag component offers three different themes:
+            The Tag component provides three themes:
             <code>dark</code>
             ,
             <code>light</code>
@@ -103,9 +103,9 @@
             .
         </p>
         <p>
-            The theme can be changed by setting the
+            Set the
             <code>effect</code>
-            attribute, with the default being
+            attribute to switch themes. Defaults to
             <code>light</code>
             .
         </p>
@@ -169,31 +169,31 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Parameter</th>
+                    <th>Attribute</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Accepted Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>type</td>
-                    <td>Type</td>
+                    <td>Tag type</td>
                     <td>string</td>
-                    <td>success/info/warning/danger</td>
+                    <td>success / info / warning / danger</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>closable</td>
-                    <td>Whether it is closable</td>
+                    <td>Whether removable</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -207,7 +207,7 @@
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size</td>
+                    <td>Tag size</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
@@ -233,12 +233,12 @@
             <tbody>
                 <tr>
                     <td>click</td>
-                    <td>The event triggered when a Tag is clicked</td>
+                    <td>Triggered when tag is clicked</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>close</td>
-                    <td>Triggered when the close button is clicked</td>
+                    <td>Triggered when close button is clicked</td>
                     <td>—</td>
                 </tr>
             </tbody>

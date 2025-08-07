@@ -1,72 +1,82 @@
 ## Dropdown
 
-Displays a dropdown menu through clicking or hovering.
+A dropdown menu that appears upon clicking or hovering.
 
-### Basic Usage
+### Basic Usage  
 
-Use `Section` to set the element that triggers the display of the dropdown menu. By default, it is activated for display through `click`.
-!!!demo1!!!
+Use the `Section` component to define the trigger element for showing the dropdown menu. By default, it is activated via a `click` event.  
 
-### Split-form
+!!!demo1!!!  
 
-Configure the `split-button` attribute to make the element triggering the dropdown appear as a button group.
-!!!demo2!!!
+### Split Button Style  
 
-### Menu Style
+Configure the `split-button` property to display the trigger element as a button group.  
 
-You can configure attributes such as the menu item's icon and division to display a more diverse menu.
-!!!demo3!!!
-Of course, you can also fill the dropdown menu in a custom way instead of using the `jk-dropdown-item` component.
-!!!demo4!!!
+!!!demo2!!!  
 
-### Disabled
+### Menu Styling  
 
-Achieve disabling by setting the `disabled` attribute. This attribute will automatically change the button state in the `split-button` type. If it is not in the split-button mode, please manage and set the disabled style of the content yourself.
-!!!demo5!!!
+Enhance the dropdown menu by configuring properties such as icons and dividers for menu items.  
 
-### Size
+!!!demo3!!!  
 
-By setting the `size` dimension, you can change the size of the button in the `split-button` mode.
-The available size types include: `medium`, `small`, `mini`.
-!!!demo6!!!
-The `dropdown-menu` can also be configured with the `size` attribute to control the size of the dropdown menu.
-!!!demo7!!!
+You may also choose not to use the `jk-dropdown-item` component to populate the dropdown menu and instead customize the content.  
 
-### Dropdown Attributes
+!!!demo4!!!  
 
-| Parameter    | Description                                                                             | Type    | Optional Values       | Default Value |
-| ------------ | --------------------------------------------------------------------------------------- | ------- | --------------------- | ------------- |
-| type         | Menu button type, same as the Button component (only valid when `split-button` is true) | string  | —                     | primary       |
-| size         | Menu size, also takes effect on the trigger button when `split-button` is true          | string  | medium / small / mini | —             |
-| split-button | The dropdown-triggering element appears as a button group                               | boolean | —                     | false         |
-| trigger      | The behavior that triggers the dropdown                                                 | string  | hover, click          | click         |
-| disabled     | Whether it is disabled                                                                  | boolean | —                     | false         |
+### Disabled State  
 
-### Dropdown Events
+Set the `disabled` property to disable the dropdown. This property will automatically update the button state in `split-button` mode. For non-split-button configurations, manage the disabled styling manually.  
 
-| Event Name | Description                                                                                                                                                                           | Callback Parameter |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| click      | Callback when clicking the left-hand button when `split-button` is true. If it is not `split-button`, it represents the click bubbling handling event of the current internal element | —                  |
+!!!demo5!!!  
 
-### Dropdown Menu Attributes
+### Sizing  
 
-| Parameter | Description   | Type   | Optional Values                                                                                           | Default Value |
-| --------- | ------------- | ------ | --------------------------------------------------------------------------------------------------------- | ------------- |
-| size      | Menu size     | string | medium / small / mini                                                                                     | -             |
-| placement | Menu position | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start  |
-| maxHeight | max height    | string | -                                                                                                         | -             |
+Adjust the button size in `split-button` mode using the `size` property.  
 
-### Dropdown Menu Item Attributes
+Available size options: `medium`, `small`, or `mini`.  
 
-| Parameter | Description             | Type    | Optional Values | Default Value |
-| --------- | ----------------------- | ------- | --------------- | ------------- |
-| disabled  | Disabled                | boolean | —               | false         |
-| divided   | Display a dividing line | boolean | —               | false         |
-| icon      | Icon class name         | string  | —               | —             |
+!!!demo6!!!  
 
-### Dropdown Menu Events
+The `dropdown-menu` can also be configured with the `size` property to control the dropdown menu dimensions.  
 
-| Event Name | Description | Callback Parameter |
-| ---------- | ----------- | ------------------ |
-| open       | Menu opened | —                  |
-| close      | Menu closed | —                  |
+!!!demo7!!!  
+
+### Dropdown Attributes  
+
+| Parameter       | Description                                                                 | Type     | Accepted Values          | Default  |
+| --------------- | --------------------------------------------------------------------------- | -------- | ------------------------ | -------- |
+| type            | Button type, same as the Button component (effective only when `split-button` is true) | string   | —                        | primary |
+| size            | Menu size, also affects the trigger button when `split-button` is true      | string   | medium / small / mini    | —        |
+| split-button    | Displays the trigger element as a button group                              | boolean  | —                        | false   |
+| trigger         | Trigger method for showing the dropdown                                     | string   | hover, click             | click    |
+| disabled        | Whether to disable the dropdown                                             | boolean  | —                        | false   |
+
+### Dropdown Events  
+
+| Event Name   | Description                                                                                       | Callback Parameters |
+| ------------ | ------------------------------------------------------------------------------------------------- | -------------------- |
+| click        | Callback when clicking the left button in `split-button` mode (if not in `split-button` mode, it represents bubble event handling for internal element clicks) | — |
+
+### Dropdown Menu Attributes  
+
+| Parameter   | Description           | Type   | Accepted Values                                                                                                           | Default        |
+| ----------- | --------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| size        | Menu size            | string | medium / small / mini                                                                                                    | -              |
+| placement   | Menu position        | string | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom-start |
+| maxHeight   | Maximum height       | string | -                                                                                                                       | -              |
+
+### Dropdown Menu Item Attributes  
+
+| Parameter   | Description            | Type     | Accepted Values | Default |
+| ----------- | ----------------------- | -------- | --------------- | ------- |
+| disabled    | Disabled state          | boolean  | —               | false   |
+| divided     | Displays a divider      | boolean  | —               | false   |
+| icon        | Icon class name        | string   | —               | —       |
+
+### Dropdown Menu Events  
+
+| Event Name   | Description       | Callback Parameters |
+| ------------ | ----------------- | -------------------- |
+| open         | Fires when menu opens | —                   |
+| close        | Fires when menu closes | —                   |

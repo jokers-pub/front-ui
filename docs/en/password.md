@@ -1,42 +1,42 @@
-## Password
+## Password  
 
-Password input box
+Password input field  
 
-### Basic Usage
+### Basic Usage  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Input Box with Icon
+### Input with Icon  
 
-Mark the input type with an icon.
+Input field with icon indicator  
 
-You can add an icon to the head of the password component through the `prefix-icon` property.
+You can add an icon at the beginning of the Password component using the `prefix-icon` property.  
 
-!!!demo2!!!
+!!!demo2!!!  
 
-### Size
+### Sizes  
 
-You can specify the size of the input box through the `size` property. Besides the default size, there are also three sizes: medium, small, and mini.
+The size of the input field can be specified using the `size` property. In addition to the default size, medium, small, and mini sizes are also available.  
 
-!!!demo3!!!
+!!!demo3!!!  
 
-### Input Length Limit
+### Input Length Limit  
 
-`maxlength` and `minlength` are native attributes used to limit the character length of the input box.
+`maxlength` and `minlength` are native attributes used to restrict the number of characters in the input field.  
 
-!!!demo4!!!
+!!!demo4!!!  
 
-### Attributes
+### Attributes  
 
-| Parameter   | Description                            | Type            | Optional Values       | Default Value |
-| ----------- | -------------------------------------- | --------------- | --------------------- | ------------- |
-| value       | Bound value                            | string / number | —                     | —             |
-| class       | Custom class style                     | string          | -                     | -             |
-| name        | Native attribute                       | string          | —                     | —             |
-| size        | Size of the input box                  | string          | medium / small / mini | —             |
-| maxlength   | Native attribute, maximum input length | number          | —                     | —             |
-| minlength   | Native attribute, minimum input length | number          | —                     | —             |
-| placeholder | Placeholder text of the input box      | string          | —                     | —             |
-| prefix-icon | Icon at the head of the input box      | string          | —                     | —             |
-| autofocus   | Native attribute, auto-focus           | boolean         | true, false           | false         |
-| tabindex    | The tabindex of the input box          | string          | -                     | -             |
+| Attribute     | Description                  | Type            | Options               | Default |  
+| ------------ | ---------------------------- | --------------- | --------------------- | ------- |  
+| value        | Bound value                  | string / number | —                     | —       |  
+| class        | Custom CSS class             | string          | -                     | -       |  
+| name         | Native attribute             | string          | —                     | —       |  
+| size         | Input field size             | string          | medium / small / mini | —       |  
+| maxlength    | Native attribute, max input length | number          | —                     | —       |  
+| minlength    | Native attribute, min input length | number          | —                     | —       |  
+| placeholder  | Input field placeholder text | string          | —                     | —       |  
+| prefix-icon1 | Icon at the beginning of the input field | string          | —                     | —       |  
+| autofocus1   | Native attribute, auto-focus | boolean         | true, false           | false   |  
+| tabindex     | Input field tabindex         | string          | -                     | -       |

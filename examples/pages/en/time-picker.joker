@@ -1,19 +1,19 @@
 <template>
     <div ref="container" class="joker-demo-container">
         <h2>TimePicker</h2>
-        <p>Used to select or input time.</p>
+        <p>A component for selecting or inputting time</p>
         <h3>Fixed Time Points</h3>
-        <p>Provides several fixed time points for users to choose from.</p>
+        <p>Provides several fixed time points for users to choose</p>
         <p>
             Use the
             <code>jk-time-select</code>
-            tag, and specify the optional start time, end time, and step through
+            tag, where
             <code>start</code>
             ,
             <code>end</code>
             , and
             <code>step</code>
-            respectively.
+            specify the selectable start time, end time, and time interval respectively.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -22,7 +22,7 @@
 </code></pre>
         </DemoContainer>
         <h3>Fixed Time Range</h3>
-        <p>If the start time is selected first, the state of the options in the end time will change accordingly.</p>
+        <p>If the start time is selected first, the state of available end times will change accordingly.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -57,17 +57,19 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Arbitrary Time Point</h3>
+        <h3>Arbitrary Time Points</h3>
         <p>
-            You can select any time. Use the
+            Allows selecting any time point. Use the
             <code>jk-time-picker</code>
-            tag and limit the selectable time range through
+            tag and restrict the selectable time range via
             <code>minTime</code>
             /
             <code>maxTime</code>
-            . You can control whether to display seconds by configuring
-            <code>format</code>
             .
+            <br />
+            The
+            <code>format</code>
+            property can be configured to control whether seconds are displayed.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo3)">
             <pre><code class="language-html">&lt;template&gt;
@@ -86,7 +88,7 @@ export default class extends Component {
 </code></pre>
         </DemoContainer>
         <h3>Arbitrary Time Range</h3>
-        <p>You can select any time range.</p>
+        <p>Allows selecting any time range.</p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;DemoRow&gt;
@@ -119,11 +121,13 @@ export default class extends Component {
 &lt;/template&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Size</h3>
+        <h3>Sizes</h3>
         <p>
             Refer to the
             <code>input</code>
-            size attribute.
+            component's
+            <code>size</code>
+            property.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo6)">
             <pre><code class="language-html">&lt;template&gt;
@@ -173,28 +177,28 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Acceptable Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>value</td>
-                    <td>Bound value</td>
+                    <td>Binding value</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>class</td>
-                    <td>Custom class style</td>
+                    <td>Custom CSS class</td>
                     <td>string</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>—</td>
+                    <td>—</td>
                 </tr>
                 <tr>
                     <td>readonly</td>
-                    <td>Completely read-only</td>
+                    <td>Fully read-only</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -208,42 +212,42 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>editable</td>
-                    <td>The text box is editable</td>
+                    <td>Allows text input</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>clearable</td>
-                    <td>Whether to display the clear button</td>
+                    <td>Whether to show the clear button</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>true</td>
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Size of the input box</td>
+                    <td>Input size</td>
                     <td>string</td>
                     <td>medium / small / mini</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Placeholder content when not in range selection</td>
+                    <td>Placeholder for non-range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>start-placeholder</td>
-                    <td>Placeholder content for the start date in range selection</td>
+                    <td>Placeholder for start time in range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>end-placeholder</td>
-                    <td>Placeholder content for the end date in range selection</td>
+                    <td>Placeholder for end time in range selection</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -251,8 +255,9 @@ export default class extends Component {
                 <tr>
                     <td>range</td>
                     <td>
-                        Whether it is a time range selection, only valid for
+                        Whether to enable time range selection (only for
                         <code>&lt;jk-time-picker&gt;</code>
+                        )
                     </td>
                     <td>boolean</td>
                     <td>—</td>
@@ -260,32 +265,31 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>range-separator</td>
-                    <td>Separator when selecting a range</td>
+                    <td>Separator for range selection</td>
                     <td>string</td>
-                    <td>-</td>
+                    <td>—</td>
                     <td>'-'</td>
                 </tr>
                 <tr>
                     <td>value-format</td>
-                    <td>Optional, the format of the bound value</td>
+                    <td>Optional, format of the binding value</td>
                     <td>string</td>
-                    <td>-</td>
+                    <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>default-value</td>
-                    <td>Optional, the time displayed by default when the picker is opened</td>
+                    <td>Optional, default displayed time when picker opens</td>
                     <td>string</td>
                     <td>
-                        In line with the
+                        Must match
                         <code>format</code>
-                        format
                     </td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>prefix-icon</td>
-                    <td>Class name of the custom header icon</td>
+                    <td>Custom icon class for the header</td>
                     <td>string</td>
                     <td>—</td>
                     <td>el-icon-time</td>
@@ -299,8 +303,8 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Acceptable Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -320,21 +324,21 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>step</td>
-                    <td>Interval time</td>
+                    <td>Time interval</td>
                     <td>string</td>
                     <td>—</td>
                     <td>00:30</td>
                 </tr>
                 <tr>
                     <td>minTime</td>
-                    <td>Minimum time, time periods less than this time will be disabled</td>
+                    <td>Minimum time; time slots before this are disabled</td>
                     <td>string</td>
                     <td>—</td>
                     <td>00:00</td>
                 </tr>
                 <tr>
                     <td>maxTime</td>
-                    <td>Maximum time, time periods greater than this time will be disabled</td>
+                    <td>Maximum time; time slots after this are disabled</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -348,18 +352,18 @@ export default class extends Component {
                     <th>Parameter</th>
                     <th>Description</th>
                     <th>Type</th>
-                    <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Acceptable Values</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>selectableRange</td>
                     <td>
-                        Selectable time periods, such as
-                        <code>'18:30:00-20:30:00'</code>
-                        or pass in an array
-                        <code>['09:30:00-12:00:00', '14:30:00-18:30:00']</code>
+                        Selectable time ranges, e.g.,
+                        <code>'18:30:00 - 20:30:00'</code>
+                        or array
+                        <code>['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']</code>
                     </td>
                     <td>string / array</td>
                     <td>—</td>
@@ -372,9 +376,9 @@ export default class extends Component {
                     <td>
                         Hours:
                         <code>HH</code>
-                        , minutes:
+                        , Minutes:
                         <code>mm</code>
-                        , seconds:
+                        , Seconds:
                         <code>ss</code>
                     </td>
                     <td>'HH:mm:ss'</td>
@@ -385,7 +389,7 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Event Name</th>
+                    <th>Event</th>
                     <th>Description</th>
                     <th>Parameters</th>
                 </tr>
@@ -393,17 +397,17 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the user confirms the selected value</td>
-                    <td>Component bound value</td>
+                    <td>Triggered when user confirms value</td>
+                    <td>Component binding value</td>
                 </tr>
                 <tr>
                     <td>blur</td>
-                    <td>Triggered when the input loses focus</td>
+                    <td>Triggered when input loses focus</td>
                     <td>Component instance</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Triggered when the input gains focus</td>
+                    <td>Triggered when input gains focus</td>
                     <td>Component instance</td>
                 </tr>
             </tbody>
@@ -412,16 +416,16 @@ export default class extends Component {
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input gain focus</td>
-                    <td>-</td>
+                    <td>Focuses the input element</td>
+                    <td>—</td>
                 </tr>
             </tbody>
         </table>

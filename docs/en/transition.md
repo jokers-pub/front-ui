@@ -1,15 +1,15 @@
-## Built-in Transition Animations
+## Built-in Transition Animations  
 
-The transition animations applied in some components within Joker-UI can also be used directly by you. Before using them, please read the `transition component documentation`.
+Joker-UI incorporates transition animations in some components, which you can also use directly. Before using them, please read the `Transition Component Documentation`.  
 
-### Fade (Fade In and Out)
+### Fade  
 
-Provides the `jk-fade-in` effect.
+Provides the `jk-fade-in` effect.  
 
-!!!demo1!!!
+!!!demo1!!!  
 
-### Zoom (Scale)
+### Zoom  
 
-Provides three effects: `jk-zoom-in-center`, `jk-zoom-in-top`, and `jk-zoom-in-bottom`.
+Offers three effects: `jk-zoom-in-center`, `jk-zoom-in-top`, and `jk-zoom-in-bottom`.  
 
 !!!demo2!!!

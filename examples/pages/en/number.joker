@@ -1,14 +1,14 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>InputNumber</h2>
-        <p>Only allows the input of standard numeric values, and the range can be defined.</p>
+        <h2>InputNumber Counter</h2>
+        <p>Only allows input of standard numeric values within a definable range.</p>
         <h3>Basic Usage</h3>
         <p>
             To use it, simply bind a variable to
             <code>value</code>
             in the
             <code>jk-number</code>
-            element. The initial value of the variable is the default value.
+            element. The initial value of the variable will be the default value.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -22,19 +22,19 @@
         <p>
             The
             <code>disabled</code>
-            attribute accepts a
+            property accepts a
             <code>Boolean</code>
             . Setting it to
             <code>true</code>
-            disables the entire component. If you only need to control the value within a certain range, you can set the
+            disables the entire component. If you only need to restrict values within a specific range, you can set the
             <code>min</code>
             and
             <code>max</code>
-            attributes. When
+            properties. If
             <code>min</code>
             and
             <code>max</code>
-            are not set, the minimum value is 0.
+            are not set, the minimum value defaults to 0.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo2)">
             <pre><code class="language-html">&lt;template&gt;
@@ -53,11 +53,11 @@
 </code></pre>
         </DemoContainer>
         <h3>Step</h3>
-        <p>Allows the definition of step-by-step control for incrementing and decrementing.</p>
+        <p>Allows defining increment/decrement step control.</p>
         <p>
-            Setting the
+            Set the
             <code>step</code>
-            attribute can control the step size, which accepts a
+            property to control the step size. It accepts a
             <code>Number</code>
             .
         </p>
@@ -75,11 +75,11 @@
         <p>
             The
             <code>step-strictly</code>
-            attribute accepts a
+            property accepts a
             <code>Boolean</code>
-            . If this attribute is set to
+            . If set to
             <code>true</code>
-            , only multiples of the step can be entered.
+            , only multiples of the step value can be entered.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -93,9 +93,9 @@
         </DemoContainer>
         <h3>Precision</h3>
         <p>
-            Setting the
+            Set the
             <code>precision</code>
-            attribute can control the numerical precision, which accepts a
+            property to control the numerical precision. It accepts a
             <code>Number</code>
             .
         </p>
@@ -113,14 +113,14 @@
             <p>
                 The value of
                 <code>precision</code>
-                must be a non-negative integer and cannot be less than the number of decimal places of
+                must be a non-negative integer and should not be less than the number of decimal places in
                 <code>step</code>
                 .
             </p>
         </blockquote>
-        <h3>Size</h3>
+        <h3>Sizes</h3>
         <p>
-            Three additional sizes of numeric input boxes are provided:
+            Additional numeric input box sizes are available:
             <code>medium</code>
             ,
             <code>small</code>
@@ -157,9 +157,9 @@
         </DemoContainer>
         <h3>Button Position</h3>
         <p>
-            Setting the
+            Set the
             <code>controls-position</code>
-            attribute can control the position of the buttons.
+            property to specify the position of the buttons.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo7)">
             <pre><code class="language-html">&lt;template&gt;
@@ -188,9 +188,9 @@
         </DemoContainer>
         <h3>No Control Buttons</h3>
         <p>
-            Setting the
+            Set the
             <code>hidden-controls</code>
-            attribute can control the position of the buttons.
+            property to hide the control buttons.
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo8)">
             <pre><code class="language-html">&lt;template&gt;
@@ -264,7 +264,7 @@
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -284,28 +284,28 @@
                 </tr>
                 <tr>
                     <td>min</td>
-                    <td>Set the minimum value allowed by the counter</td>
+                    <td>Minimum allowed value</td>
                     <td>number</td>
                     <td>—</td>
                     <td>-Infinity</td>
                 </tr>
                 <tr>
                     <td>max</td>
-                    <td>Set the maximum value allowed by the counter</td>
+                    <td>Maximum allowed value</td>
                     <td>number</td>
                     <td>—</td>
                     <td>Infinity</td>
                 </tr>
                 <tr>
                     <td>step</td>
-                    <td>Counter step size</td>
+                    <td>Step size</td>
                     <td>number</td>
                     <td>—</td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <td>step-strictly</td>
-                    <td>Whether only multiples of step can be entered</td>
+                    <td>Whether to allow only step multiples</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -319,28 +319,28 @@
                 </tr>
                 <tr>
                     <td>size</td>
-                    <td>Counter size</td>
+                    <td>Size of the counter</td>
                     <td>string</td>
                     <td>large, small</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable the counter</td>
+                    <td>Whether the counter is disabled</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>hidden-controls</td>
-                    <td>Whether to hide the control buttons</td>
+                    <td>Whether to hide control buttons</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>controls-position</td>
-                    <td>Position of the control buttons</td>
+                    <td>Position of control buttons</td>
                     <td>string</td>
                     <td>right</td>
                     <td>-</td>
@@ -354,21 +354,21 @@
                 </tr>
                 <tr>
                     <td>label</td>
-                    <td>The label text associated with the input box</td>
+                    <td>Label text associated with input</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
                 <tr>
                     <td>placeholder</td>
-                    <td>Default placeholder of the input box</td>
+                    <td>Default placeholder for input</td>
                     <td>string</td>
                     <td>-</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>fullWidth</td>
-                    <td>Whether the width is 100%</td>
+                    <td>Whether to set width to 100%</td>
                     <td>boolean</td>
                     <td>-</td>
                     <td>-</td>
@@ -387,17 +387,17 @@
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Triggered when the bound value is changed</td>
+                    <td>Triggers when the bound value changes</td>
                     <td>currentValue, oldValue</td>
                 </tr>
                 <tr>
                     <td>blur</td>
-                    <td>Triggered when the Input in the component loses focus</td>
+                    <td>Triggers when Input loses focus</td>
                     <td>VNode.Event</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Triggered when the Input in the component gains focus</td>
+                    <td>Triggers when Input gains focus</td>
                     <td>VNode.Event</td>
                 </tr>
             </tbody>
@@ -406,25 +406,25 @@
         <table class="mkd-table">
             <thead>
                 <tr>
-                    <th>Method Name</th>
+                    <th>Method</th>
                     <th>Description</th>
-                    <th>Parameter</th>
+                    <th>Parameters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>blur</td>
-                    <td>Make the input lose focus</td>
+                    <td>Makes input lose focus</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>focus</td>
-                    <td>Make the input gain focus</td>
+                    <td>Makes input gain focus</td>
                     <td>-</td>
                 </tr>
                 <tr>
                     <td>select</td>
-                    <td>Select the text in the input</td>
+                    <td>Selects text in the input</td>
                     <td>—</td>
                 </tr>
             </tbody>

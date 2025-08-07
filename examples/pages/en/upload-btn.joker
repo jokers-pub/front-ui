@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="joker-demo-container">
-        <h2>Upload Button</h2>
-        <p>Provides an interactive button for file selection.</p>
+        <h2>Upload Btn Component</h2>
+        <p>Provides file selection interaction via button.</p>
         <h3>Basic Usage</h3>
         <DemoContainer component="@(components.DEMO_JOKER_demo1)">
             <pre><code class="language-html">&lt;template&gt;
@@ -46,11 +46,11 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Limit Selection Types</h3>
+        <h3>File Type Restriction</h3>
         <p>
-            You can limit the upload types by configuring the
+            Restrict uploadable file types via the
             <code>mimeType</code>
-            property. This property can accept values of type
+            property, which accepts values of type
             <code>string</code>
             or
             <code>string[]</code>
@@ -74,13 +74,13 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
-        <h3>Limit File Size</h3>
+        <h3>File Size Limitation</h3>
         <p>
-            Limit the maximum size of each file by configuring the
+            Configure the
             <code>maxFileSize</code>
-            property. The unit is
+            property to set the maximum file size per upload (unit:
             <strong>kb</strong>
-            .
+            ).
         </p>
         <DemoContainer component="@(components.DEMO_JOKER_demo4)">
             <pre><code class="language-html">&lt;template&gt;
@@ -108,7 +108,7 @@ export default class extends Component {
                     <th>Description</th>
                     <th>Type</th>
                     <th>Optional Values</th>
-                    <th>Default Value</th>
+                    <th>Default</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,10 +122,9 @@ export default class extends Component {
                 <tr>
                     <td>btnType</td>
                     <td>
-                        Button type, corresponding to the
-                        <code>type</code>
-                        of
+                        Button type (corresponds to
                         <code>jk-button</code>
+                        's type)
                     </td>
                     <td>string</td>
                     <td>-</td>
@@ -133,11 +132,7 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>title</td>
-                    <td>
-                        Button text. If the
-                        <code>default</code>
-                        area is specified, setting this property is invalid
-                    </td>
+                    <td>Button text (invalid if slot default is specified)</td>
                     <td>string</td>
                     <td>—</td>
                     <td>—</td>
@@ -145,10 +140,9 @@ export default class extends Component {
                 <tr>
                     <td>btnSize</td>
                     <td>
-                        Button size, corresponding to the
-                        <code>size</code>
-                        of
+                        Button size (corresponds to
                         <code>jk-button</code>
+                        's size)
                     </td>
                     <td>string</td>
                     <td>—</td>
@@ -156,14 +150,14 @@ export default class extends Component {
                 </tr>
                 <tr>
                     <td>disabled</td>
-                    <td>Whether to disable</td>
+                    <td>Disabled state</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
                 </tr>
                 <tr>
                     <td>multiple</td>
-                    <td>Whether to enable multi-selection</td>
+                    <td>Enable multi-select</td>
                     <td>boolean</td>
                     <td>—</td>
                     <td>false</td>
@@ -173,13 +167,14 @@ export default class extends Component {
                     <td>Maximum number of uploads</td>
                     <td>number</td>
                     <td>—</td>
-                    <td>-</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>mimeType</td>
                     <td>
-                        Limit file types, wildcards are supported, e.g.,
-                        <strong>(image/*)</strong>
+                        Restrict file types (supports wildcards, e.g.,
+                        <code>image/*</code>
+                        )
                     </td>
                     <td>string / string[]</td>
                     <td>—</td>
@@ -188,12 +183,13 @@ export default class extends Component {
                 <tr>
                     <td>maxFileSize</td>
                     <td>
-                        Maximum size limit for a single file, unit is
+                        Maximum file size per upload (unit:
                         <strong>kb</strong>
+                        )
                     </td>
                     <td>number</td>
                     <td>—</td>
-                    <td>-</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -209,7 +205,7 @@ export default class extends Component {
             <tbody>
                 <tr>
                     <td>change</td>
-                    <td>Notification of value change</td>
+                    <td>Triggers on value change</td>
                     <td>—</td>
                 </tr>
             </tbody>

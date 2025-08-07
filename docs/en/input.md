@@ -1,6 +1,6 @@
-## Input
+## Input Component
 
-Used to input characters via mouse or keyboard.
+Accepts text input via mouse or keyboard
 
 ### Basic Usage
 
@@ -8,91 +8,91 @@ Used to input characters via mouse or keyboard.
 
 ### Disabled State
 
-Specify whether to disable the input component through the `disabled` attribute.
+Disable the input component using the `disabled` property
 
 !!!demo2!!!
 
-### Clearable
+### Clearable 
 
-Adding the `clearable` attribute gives you a clearable input box.
+Use the `clearable` property to create an input with clear functionality
 
 !!!demo3!!!
 
-### Input Box with Icon
+### Input with Icons
 
-Use an icon to mark the input type.
+Input with icon indicators  
 
-You can add icons to the front and end of the input component through the `prefix-icon` and `suffix-icon` attributes, or you can place the icon through `section`.
+Display icons at the beginning or end of input using the `prefix-icon` and `suffix-icon` properties. Icons can also be placed via the `section` slot.
 
 !!!demo4!!!
 
-### Composite Input Box
+### Composite Input  
 
-It can have pre-or post-elements, usually labels or buttons.
+Add prefix or suffix elements, typically labels or buttons  
 
-You can use `section` to specify the pre-or post-content in the input.
+Use the `section` slot to prepend or append content to the input.  
 
 !!!demo5!!!
 
-### Size
+### Sizes
 
-You can specify the size of the input box through the `size` attribute. Besides the default size, there are also three sizes: medium, small, and mini.
+Set input size via the `size` property. Options include medium, small and mini in addition to the default size.
 
 !!!demo6!!!
 
-### Input Length Limit
+### Input Length Limits
 
-`maxlength` and `minlength` are native attributes used to limit the character length of the input box. The character length is counted by the length of the JavaScript string. For input boxes of type `text` or `textarea`, while using the `maxlength` attribute to limit the maximum input length, you can set the `show-word-limit` attribute to display the word count.
+`maxlength` and `minlength` are native attributes that limit input length, where length is calculated via JavaScript string length counting. For text/textarea inputs, enable the word count display using `show-word-limit` when restricting max length with `maxlength`.
 
 !!!demo7!!!
 
-### Input Attributes
+### Input Attributes  
 
-| Parameter       | Description                                  | Type            | Optional Values                                                                                                          | Default Value |
-| --------------- | -------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| type            | Type                                         | string          | text, [native input type values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text          |
-| value           | Bound value                                  | string / number | —                                                                                                                        | —             |
-| class           | Custom class style                           | string          | -                                                                                                                        | -             |
-| maxlength       | Native attribute, maximum input length       | number          | —                                                                                                                        | —             |
-| minlength       | Native attribute, minimum input length       | number          | —                                                                                                                        | —             |
-| show-word-limit | Whether to display the input word count      | boolean         | —                                                                                                                        | false         |
-| placeholder     | Placeholder text of the input box            | string          | —                                                                                                                        | —             |
-| clearable       | Whether it is clearable                      | boolean         | —                                                                                                                        | false         |
-| disabled        | Disabled                                     | boolean         | —                                                                                                                        | false         |
-| size            | Size of the input box                        | string          | medium / small / mini                                                                                                    | —             |
-| prefix-icon     | Icon at the head of the input box            | string          | —                                                                                                                        | —             |
-| suffix-icon     | Icon at the end of the input box             | string          | —                                                                                                                        | —             |
-| autocomplete    | Native attribute, auto-complete              | string          | on, off                                                                                                                  | off           |
-| name            | Native attribute                             | string          | —                                                                                                                        | —             |
-| readonly        | Native attribute, whether it is read-only    | boolean         | —                                                                                                                        | false         |
-| autofocus       | Native attribute, auto-focus                 | boolean         | true, false                                                                                                              | false         |
-| label           | The label text associated with the input box | string          | —                                                                                                                        | —             |
-| tabindex        | The tabindex of the input box                | string          | -                                                                                                                        | -             |
-| status-icon     | Whether to display the validation status     | boolean         | -                                                                                                                        | -             |
+| Parameter | Description | Type | Options | Default |  
+|-----------|-------------|------|---------|---------|
+| type | Input type | string | text, [native input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text |
+| value | Binding value | string/number | — | — |
+| class | Custom CSS class | string | - | - |  
+| maxlength | Native attribute, max input length | number | — | — |  
+| minlength | Native attribute, min input length | number | — | — |  
+| show-word-limit | Show word count | boolean | — | false |  
+| placeholder | Input placeholder | string | — | — |  
+| clearable | Clearable | boolean | — | false |  
+| disabled | Disabled | boolean | — | false |  
+| size | Input size | string | medium/small/mini | — |  
+| prefix-icon | Prefix icon | string | — | — |  
+| suffix-icon | Suffix icon | string | — | — |  
+| autocomplete | Native autocomplete | string | on/off | off |  
+| name | Native name | string | — | — |  
+| readonly | Readonly | boolean | — | false |  
+| autofocus | Autofocus | boolean | true/false | false |  
+| label | Associated label text | string | — | — |  
+| tabindex | Tab index | string | - | - |  
+| status-icon | Show validation icon | boolean | - | - |  
 
-### Input Sections
+### Input Slots  
 
-| name    | Description                          |
-| ------- | ------------------------------------ |
-| prefix  | Content at the head of the input box |
-| suffix  | Content at the end of the input box  |
-| prepend | Pre-content of the input box         |
-| append  | Post-content of the input box        |
+| Name | Description |  
+|-------|-------------|  
+| prefix | Content prepended to input |  
+| suffix | Content appended to input |  
+| prepend | Content placed before input |  
+| append | Content placed after input |  
 
-### Input Events
+### Input Events  
 
-| Event Name | Description                                                                     | Callback Parameters |
-| ---------- | ------------------------------------------------------------------------------- | ------------------- |
-| blur       | Triggered when the Input loses focus                                            | VNode.Event         |
-| focus      | Triggered when the Input gains focus                                            | VNode.Event         |
-| change     | Triggered only when the input box loses focus or the user presses Enter         | VNode.Event         |
-| input      | Triggered when the value of the Input changes                                   | VNode.Event         |
-| clear      | Triggered when clicking the clear button generated by the `clearable` attribute | VNode.Event         |
+| Event | Description | Parameters |  
+|-------|-------------|------------|  
+| blur | Triggers when input loses focus | VNode.Event |  
+| focus | Triggers when input gets focus | VNode.Event |  
+| change | Only triggers when input loses focus or user presses enter | VNode.Event |  
+| input | Triggers when input value changes | VNode.Event |  
+| clear | Triggers when clear button (via `clearable`) is clicked | VNode.Event |  
 
-### Input Methods
+### Input Methods  
 
-| Method Name | Description                  | Parameter |
-| ----------- | ---------------------------- | --------- |
-| focus       | Make the input gain focus    | —         |
-| blur        | Make the input lose focus    | —         |
-| select      | Select the text in the input | —         |
+| Method | Description | Params |  
+|--------|-------------|--------|  
+| focus | Focus the input | — |  
+| blur | Blur the input | — |  
+| select | Select input text | — |
