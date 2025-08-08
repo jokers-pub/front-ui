@@ -135,7 +135,7 @@ export default class extends Component {
                 if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
                     if (item.description) {
-                        this.metaDescription?.setAttribute("content", item.description);
+                        this.metaDescription?.setAttribute("content", item.description + " | " + description);
                     }
                     return;
                 }
