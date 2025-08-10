@@ -3,7 +3,7 @@
     <jk-button link disabled>Text Button</jk-button>
     <jk-button link type="success">Text Button</jk-button>
     <jk-button link type="success" disabled>Text Button</jk-button>
-    <jk-button link type="warning">文字按钮</jk-button>
+    <jk-button link type="warning">Text Button</jk-button>
     <jk-button link type="warning" disabled>Text Button</jk-button>
     <jk-button link type="danger">Text Button</jk-button>
     <jk-button link type="danger" disabled>Text Button</jk-button>
