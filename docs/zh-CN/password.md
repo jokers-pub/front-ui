@@ -28,15 +28,15 @@
 
 ### Attributes
 
-| 参数         | 说明                   | 类型            | 可选值                | 默认值 |
-| ------------ | ---------------------- | --------------- | --------------------- | ------ |
-| value        | 绑定值                 | string / number | —                     | —      |
-| class        | 自定义 class 样式      | string          | -                     | -      |
-| name         | 原生属性               | string          | —                     | —      |
-| size         | 输入框尺寸             | string          | medium / small / mini | —      |
-| maxlength    | 原生属性，最大输入长度 | number          | —                     | —      |
-| minlength    | 原生属性，最小输入长度 | number          | —                     | —      |
-| placeholder  | 输入框占位文本         | string          | —                     | —      |
-| prefix-icon1 | 输入框头部图标         | string          | —                     | —      |
-| autofocus1   | 原生属性，自动获取焦点 | boolean         | true, false           | false  |
-| tabindex     | 输入框的 tabindex      | string          | -                     | -      |
+| 参数        | 说明                   | 类型            | 可选值                | 默认值 |
+| ----------- | ---------------------- | --------------- | --------------------- | ------ |
+| value       | 绑定值                 | string / number | —                     | —      |
+| class       | 自定义 class 样式      | string          | -                     | -      |
+| name        | 原生属性               | string          | —                     | —      |
+| size        | 输入框尺寸             | string          | medium / small / mini | —      |
+| maxlength   | 原生属性，最大输入长度 | number          | —                     | —      |
+| minlength   | 原生属性，最小输入长度 | number          | —                     | —      |
+| placeholder | 输入框占位文本         | string          | —                     | —      |
+| prefix-icon | 输入框头部图标         | string          | —                     | —      |
+| autofocus   | 原生属性，自动获取焦点 | boolean         | true, false           | false  |
+| tabindex    | 输入框的 tabindex      | string          | -                     | -      |
