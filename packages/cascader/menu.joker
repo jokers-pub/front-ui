@@ -31,7 +31,7 @@ import JokerNode from "./node.joker";
 
 export default class extends Component<{
     nodes: Array<any>;
-    leave: number;
+
     noDataText: string;
     expandTrigger: string;
     lazy: boolean;
