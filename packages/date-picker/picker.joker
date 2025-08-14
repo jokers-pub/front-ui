@@ -302,6 +302,8 @@ export default class extends FormCtrl<{
     }
 
     show() {
+        if (this.props.disabled || this.props.readonly) return;
+
         this.inputWidth = this.inputReference.getBoundingClientRect().width;
 
         Promise.resolve().then(() => {
