@@ -183,12 +183,14 @@ export default class extends Component<{
                     cell.type = "today";
                 }
 
-                //前两行处理非本月
                 if (i === 0 || i === 1) {
                     if (j + i * 7 >= day) {
                         cell.text = count++;
                     } else {
-                        cell.text = dateCountOfLastMonth - (7 - (j % 7)) + 1 + i * 7;
+                        const dayOfWeek = i * 7 + j;
+                        const daysBeforeFirstDay = day - 1;
+                        const offset = daysBeforeFirstDay - dayOfWeek;
+                        cell.text = dateCountOfLastMonth - offset;
                         cell.type = "prev-month";
                     }
                 } else {
