@@ -2,51 +2,56 @@
 
 A component for collecting, validating, and submitting form data through interactive elements.
 
-### Basic Form 
+### Basic Form
 
 Includes various form items such as input fields, selectors, switches, radio buttons, checkboxes, etc.
 
 !!!demo1!!!
 
-### Inline Form  
+### Inline Form
 
 Setting the `inline` property allows the form to display as an inline form, which is suitable when vertical space is limited and the form is relatively simple.
 
 !!!demo2!!!
 
-### Label Alignment  
+### Label Alignment
 
 The `label-position` property can be used to set label alignment. Currently supported values are `top` and `left`, where `top` will place labels above form items.
 
 !!!demo3!!!
 
-### Form Validation  
+### Form Validation
 
 The Form component provides validation functionality with built-in validation methods. Configure validation rules using the `validate` property.
 
 !!!demo4!!!
 
-> Setting `required` in `form-item` only controls whether to display the **asterisk** indicator and does not perform any validation.  
+> Setting `required` in `form-item` only controls whether to display the **asterisk** indicator and does not perform any validation.
 
-### Built-in Validation Rules  
+### Built-in Validation Rules
 
-Common validation rules are provided internally and can be configured using `validate`.  
+Common validation rules are provided internally and can be configured using `validate`.
 
-| Rule | Description | Parameter Details |  
-|------|-------------|-------------------|  
-| `Global.isRequired(msg)` | Non-empty validation | Configure error messages via this property. If not set, the `placeholder` text is used for error prompts. |  
-| `Global.isInt(msg)` | Positive integer validation | Error message |  
-| `Global.isNumber(msg)` | Numeric validation | Error message |  
-| `Global.isPhone(msg)` | Phone number format validation | Error message |  
-| `Global.isEmail(msg)` | Email format validation | Error message |  
-| `Global.isMatched(regex,msg)` | Custom regex validation | {pattern:string,msg:string} - `pattern` is mandatory for regex rules, `msg` for error text. |  
-| `Global.isLengthInRange(min,max,msg)` | Length validation | `(min, max, errorMsg)` - Array format for min/max length constraints. |  
+| Rule                                  | Description                    | Parameter Details                                                                                         |
+| ------------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `Global.isRequired(msg)`              | Non-empty validation           | Configure error messages via this property. If not set, the `placeholder` text is used for error prompts. |
+| `Global.isInt(msg)`                   | Positive integer validation    | Error message                                                                                             |
+| `Global.isNumber(msg)`                | Numeric validation             | Error message                                                                                             |
+| `Global.isPhone(msg)`                 | Phone number format validation | Error message                                                                                             |
+| `Global.isEmail(msg)`                 | Email format validation        | Error message                                                                                             |
+| `Global.isMatched(regex,msg)`         | Custom regex validation        | {pattern:string,msg:string} - `pattern` is mandatory for regex rules, `msg` for error text.               |
+| `Global.isLengthInRange(min,max,msg)` | Length validation              | `(min, max, errorMsg)` - Array format for min/max length constraints.                                     |
 
 !!!demo5!!!
 
 Custom validation rules can be registered via `global method registration`. Below is an example of a built-in validation method for reference:
 
 ```ts
+import { registerValidateAll } from "@joker.front/app-ui";
+
+//Register UI Validate
+registerValidateAll();
+
 registerGlobalFunction({
     isPhone: (message?: string) => {
         return (value: any) => {
@@ -67,90 +72,94 @@ registerGlobalFunction({
 <input validate="@Global.isPhone()" />
 ```
 
-Validation executes in the following order:  
-1. `Control.beforeValidate()`  
-2. `Control.ctrlValidate`  
-3. `Control.props.validate` (custom validation, supports array-based multi-rule validation)  
+Validation executes in the following order:
 
-### Custom Validation  
+1. `Control.beforeValidate()`
+2. `Control.ctrlValidate`
+3. `Control.props.validate` (custom validation, supports array-based multi-rule validation)
 
-Custom validation rules can be configured via the component's `validate` parameter. Return an error message on failure, or an empty value on success. Supports asynchronous validation.  
+### Custom Validation
 
-!!!demo6!!!  
+Custom validation rules can be configured via the component's `validate` parameter. Return an error message on failure, or an empty value on success. Supports asynchronous validation.
 
-> The `status-icon` property can be used in `input` components to display validation status indicators.  
+!!!demo6!!!
 
-### Sizing  
+> The `status-icon` property can be used in `input` components to display validation status indicators.
 
-Set the size of all form controls using the `size` property in `form`. Note that if a component has its own `size` configured, the form-level setting will be overridden.  
+### Sizing
 
-!!!demo7!!!  
+Set the size of all form controls using the `size` property in `form`. Note that if a component has its own `size` configured, the form-level setting will be overridden.
 
-### Submission  
+!!!demo7!!!
 
-Trigger form submission via the form's `submit` event. This process only handles validation and data collection. If validation succeeds, the event notifies the caller with the form data.  
+### Submission
 
-!!!demo8!!!  
+Trigger form submission via the form's `submit` event. This process only handles validation and data collection. If validation succeeds, the event notifies the caller with the form data.
 
-> During submission:  
-> - The form automatically sets the submit button (must be `jk-button`) to `loading` during async validation.  
-> - Callers must manually handle `loading` during the submission phase (validation-phase loading is handled automatically).  
+!!!demo8!!!
 
-### Extending Form Controls  
+> During submission:
+>
+> - The form automatically sets the submit button (must be `jk-button`) to `loading` during async validation.
+> - Callers must manually handle `loading` during the submission phase (validation-phase loading is handled automatically).
 
-For custom form controls to work with `Form`, they must:  
-1. Register via `registerFormCtrl(this)` during creation.  
-2. Include a `model.value` property.  
-3. Pass `props.name` (context-dependent).  
-4. Render within a `jk-form` component (context-dependent).  
+### Extending Form Controls
 
-**Optional Functional Extensions:**  
-1. Trigger `this.$trigger("validate")` on value changes (recommended but optional).  
-2. Implement `ctrlValidate` for custom validation logic.  
-3. Implement `beforeValidate` for pre-validation preparation.  
+For custom form controls to work with `Form`, they must:
 
-### Form Attributes  
+1. Register via `registerFormCtrl(this)` during creation.
+2. Include a `model.value` property.
+3. Pass `props.name` (context-dependent).
+4. Render within a `jk-form` component (context-dependent).
 
-| Parameter | Description | Type | Options | Default |  
-|-----------|-------------|------|---------|---------|  
-| class | Custom CSS class | string | - | - |  
-| inline | Inline form mode | boolean | — | false |  
-| label-position | Label alignment. Requires `label-width` if set to left/right. | string | right/left/top | right |  
-| label-width | Label width (e.g., '50px'). Inherited by child `form-item` elements. | string | — | 80px |  
-| size | Controls the size of form components | string | medium/small/mini | — |  
-| showErrorMessage | Custom error message display | Function | - | - |  
-| clearErrorMessage | Custom error message clearing | Function | - | - |  
+**Optional Functional Extensions:**
 
-### Form Methods  
+1. Trigger `this.$trigger("validate")` on value changes (recommended but optional).
+2. Implement `ctrlValidate` for custom validation logic.
+3. Implement `beforeValidate` for pre-validation preparation.
 
-| Method | Description | Parameters |  
-|--------|-------------|------------|  
-| validate | Validates the entire form. Takes a callback function that returns a promise. | Function(string / string[]) - Optional: validate specific fields by passing name(s). |  
-| reset | Resets all fields to initial values and clears validation results. | — |  
-| getData | Retrieves form data **without validation**. | Function(string / string[]) - Optionally pass field name(s) to fetch specific values. |  
-| submit | Triggers form submission. | - |  
+### Form Attributes
 
-### Form Events  
+| Parameter         | Description                                                          | Type     | Options           | Default |
+| ----------------- | -------------------------------------------------------------------- | -------- | ----------------- | ------- |
+| class             | Custom CSS class                                                     | string   | -                 | -       |
+| inline            | Inline form mode                                                     | boolean  | —                 | false   |
+| label-position    | Label alignment. Requires `label-width` if set to left/right.        | string   | right/left/top    | right   |
+| label-width       | Label width (e.g., '50px'). Inherited by child `form-item` elements. | string   | —                 | 80px    |
+| size              | Controls the size of form components                                 | string   | medium/small/mini | —       |
+| showErrorMessage  | Custom error message display                                         | Function | -                 | -       |
+| clearErrorMessage | Custom error message clearing                                        | Function | -                 | -       |
 
-| Event | Description | Parameters |  
-|-------|-------------|------------|  
-| before-submit | Triggered before submission | - |  
-| submit | Triggered on submission | Form data |  
+### Form Methods
 
-### Form-Item Attributes  
+| Method   | Description                                                                  | Parameters                                                                            |
+| -------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| validate | Validates the entire form. Takes a callback function that returns a promise. | Function(string / string[]) - Optional: validate specific fields by passing name(s).  |
+| reset    | Resets all fields to initial values and clears validation results.           | —                                                                                     |
+| getData  | Retrieves form data **without validation**.                                  | Function(string / string[]) - Optionally pass field name(s) to fetch specific values. |
+| submit   | Triggers form submission.                                                    | -                                                                                     |
 
-| Parameter | Description | Type | Options | Default |  
-|-----------|-------------|------|---------|---------|  
-| class | Custom CSS class | string | - | - |  
-| label | Label text | string | — | — |  
-| label-width | Label width (e.g., '50px') | string | — | 80px |  
-| required | Required field indicator (displays asterisk, does not enforce validation) | boolean | — | false |  
-| inline | Inline layout | boolean | — | false |  
+### Form Events
 
-### Form-Item Slots  
+| Event         | Description                 | Parameters |
+| ------------- | --------------------------- | ---------- |
+| before-submit | Triggered before submission | -          |
+| submit        | Triggered on submission     | Form data  |
 
-| Name | Description |  
-|------|-------------|  
-| — | Default form item content |  
-| label | Custom label content |  
-| error | Validation error content |
+### Form-Item Attributes
+
+| Parameter   | Description                                                               | Type    | Options | Default |
+| ----------- | ------------------------------------------------------------------------- | ------- | ------- | ------- |
+| class       | Custom CSS class                                                          | string  | -       | -       |
+| label       | Label text                                                                | string  | —       | —       |
+| label-width | Label width (e.g., '50px')                                                | string  | —       | 80px    |
+| required    | Required field indicator (displays asterisk, does not enforce validation) | boolean | —       | false   |
+| inline      | Inline layout                                                             | boolean | —       | false   |
+
+### Form-Item Slots
+
+| Name  | Description               |
+| ----- | ------------------------- |
+| —     | Default form item content |
+| label | Custom label content      |
+| error | Validation error content  |

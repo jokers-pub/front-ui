@@ -47,6 +47,11 @@ Form 组件提供了表单验证的功能，内部提供了基础的验证方法
 可通过通过`全局方法注册`来自定义校验规则。下面是一个内置的检查方法代码，可以参考
 
 ```ts
+import { registerValidateAll } from "@joker.front/app-ui";
+
+//注册UI库提供的所有校验方法
+registerValidateAll();
+
 registerGlobalFunction({
     isPhone: (message?: string) => {
         return (value: any) => {
