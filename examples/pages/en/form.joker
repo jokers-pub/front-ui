@@ -420,7 +420,12 @@ export default class extends Component {
             <code>global method registration</code>
             . Below is an example of a built-in validation method for reference:
         </p>
-        <pre><code class="language-ts">registerGlobalFunction({
+        <pre><code class="language-ts">import { registerValidateAll } from &quot;@joker.front/app-ui&quot;;
+
+//Register UI Validate
+registerValidateAll();
+
+registerGlobalFunction({
     isPhone: (message?: string) =&gt; {
         return (value: any) =&gt; {
             if (!value) return;

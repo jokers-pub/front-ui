@@ -420,7 +420,12 @@ export default class extends Component {
             <code>全局方法注册</code>
             来自定义校验规则。下面是一个内置的检查方法代码，可以参考
         </p>
-        <pre><code class="language-ts">registerGlobalFunction({
+        <pre><code class="language-ts">import { registerValidateAll } from &quot;@joker.front/app-ui&quot;;
+
+//注册UI库提供的所有校验方法
+registerValidateAll();
+
+registerGlobalFunction({
     isPhone: (message?: string) =&gt; {
         return (value: any) =&gt; {
             if (!value) return;

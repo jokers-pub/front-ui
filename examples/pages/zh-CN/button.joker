@@ -96,7 +96,7 @@
     &lt;jk-button link disabled&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;success&quot;&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;success&quot; disabled&gt;Text Button&lt;/jk-button&gt;
-    &lt;jk-button link type=&quot;warning&quot;&gt;文字按钮&lt;/jk-button&gt;
+    &lt;jk-button link type=&quot;warning&quot;&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;warning&quot; disabled&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;danger&quot;&gt;Text Button&lt;/jk-button&gt;
     &lt;jk-button link type=&quot;danger&quot; disabled&gt;Text Button&lt;/jk-button&gt;

@@ -1,0 +1,28 @@
+<template>
+    <div class="demo" @click="handleClick">Click Me</div>
+    <jk-upload-btn ref="uploadBtn" hidden @change="handleChange" />
+</template>
+<script>
+import { Component, VNode } from "@joker.front/core";
+import { Message } from "../../../src";
+
+export default class extends Component {
+    handleClick() {
+        this.$getRef("uploadBtn")?.component.selectFile();
+    }
+    handleChange(e: VNode.Event<Array<File>>) {
+        Message(`You have selected ${e.data.length} files.`);
+    }
+}
+</script>
+<style scoped lang="scss">
+.demo {
+    height: 100px;
+    width: 100px;
+    background: red;
+    color: #fff;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+</style>

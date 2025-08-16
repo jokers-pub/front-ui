@@ -100,6 +100,43 @@ export default class extends Component {
 &lt;/script&gt;
 </code></pre>
         </DemoContainer>
+        <h3>自定义上传展示</h3>
+        <p>
+            使用
+            <code>hidden</code>
+            隐藏上传按钮，通过方法调用实现自定义上传。
+        </p>
+        <DemoContainer component="@(components.DEMO_JOKER_demo5)">
+            <pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;demo&quot; @click=&quot;handleClick&quot;&gt;Click Me&lt;/div&gt;
+    &lt;jk-upload-btn ref=&quot;uploadBtn&quot; hidden @change=&quot;handleChange&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
+
+export default class extends Component {
+    handleClick() {
+        this.$getRef(&quot;uploadBtn&quot;)?.component.selectFile();
+    }
+    handleChange(e: VNode.Event&lt;Array&lt;File&gt;&gt;) {
+        Message(`You have selected ${e.data.length} files.`);
+    }
+}
+&lt;/script&gt;
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.demo {
+    height: 100px;
+    width: 100px;
+    background: red;
+    color: #fff;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+&lt;/style&gt;
+</code></pre>
+        </DemoContainer>
         <h3>Attributes</h3>
         <table class="mkd-table">
             <thead>
@@ -181,6 +218,13 @@ export default class extends Component {
                     <td>—</td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>hidden</td>
+                    <td>隐藏按钮，仅提供方法调用</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
         <h3>Events</h3>
@@ -200,6 +244,28 @@ export default class extends Component {
                 </tr>
             </tbody>
         </table>
+        <h3>Methods</h3>
+        <table class="mkd-table">
+            <thead>
+                <tr>
+                    <th>方法名称</th>
+                    <th>说明</th>
+                    <th>参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>selectFile</td>
+                    <td>打开选择文件窗口</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>reloadUpload</td>
+                    <td>重置文件上传数据（用于相同文件选择时的索引重置）</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
         <BottomNav />
     </div>
 </template>
@@ -208,6 +274,7 @@ export default class extends Component {
 import { Component } from "@joker.front/core";
 import hljs from "highlight.js/lib/common";
 import BottomNav from "../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo5 from "../../components/upload-btn/demo5.joker";
 import DEMO_JOKER_demo4 from "../../components/upload-btn/demo4.joker";
 import DEMO_JOKER_demo3 from "../../components/upload-btn/demo3.joker";
 import DEMO_JOKER_demo2 from "../../components/upload-btn/demo2.joker";
@@ -215,6 +282,7 @@ import DEMO_JOKER_demo1 from "../../components/upload-btn/demo1.joker";
 export default class extends Component {
     components = {
         BottomNav,
+        DEMO_JOKER_demo5,
         DEMO_JOKER_demo4,
         DEMO_JOKER_demo3,
         DEMO_JOKER_demo2,
