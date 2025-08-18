@@ -125,7 +125,7 @@ export default class extends Component<{
     }
 
     showTooltip() {
-        if (!this.model.expectedState || !this.props.content) return;
+        if (!this.model.expectedState || (!this.props.content && !this.$sections.content)) return;
 
         clearTimeout(this.timeout);
 
