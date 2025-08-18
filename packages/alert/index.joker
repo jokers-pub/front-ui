@@ -105,6 +105,9 @@ export default class extends Component<{
     display: flex;
     align-items: center;
     transition: opacity 0.2s;
+    .jk-alert-icon.is-big {
+        font-size: 20px;
+    }
     &.jk-alert-success {
         &.is-light {
             background-color: #f0f9eb;
