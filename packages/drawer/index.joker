@@ -2,6 +2,7 @@
     @if(model.visible) {
         <div class="jk-drawer" style="@({ zIndex: model.zindex })" @click.self="close">
             <div
+                ref="container"
                 class="container @('direction-'+props.direction)"
                 style="@containerStyle"
                 transition-name="drawer-fade">
@@ -69,9 +70,11 @@ export default class extends Component<{
     }
 
     close() {
-        this.model.visible = false;
+        this.$nodeTransition("container", "leave", "drawer-fade", () => {
+            this.model.visible = false;
 
-        this.$trigger("close");
+            this.$trigger("close");
+        });
     }
 }
 </script>
@@ -97,7 +100,9 @@ export default class extends Component<{
         outline: none;
         height: 100%;
         width: 100%;
-        box-shadow: 0 1px 3px rgba(31, 35, 40, 0.12), 0 8px 24px rgba(66, 74, 83, 0.12);
+        box-shadow:
+            0 1px 3px rgba(31, 35, 40, 0.12),
+            0 8px 24px rgba(66, 74, 83, 0.12);
 
         .header {
             display: flex;
