@@ -22,13 +22,6 @@ export default class extends Component<{
     class: string;
 }> {
     name = componentName("badge");
-    propsOption = {
-        type: {
-            validator(val: string) {
-                return ["primary", "success", "warning", "info", "danger"].includes(val);
-            }
-        }
-    };
 
     get content() {
         if (this.props.isDot) return;
