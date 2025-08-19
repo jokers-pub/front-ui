@@ -4,7 +4,7 @@
         <sup
             style="@(!props.hidden && (content || content === 0 || props.isDot) ? 'display:inline-block' : 'display:none')"
             text="@content"
-            class="@(['content', 'content-' + props.type, { 'is-fixed': $sections.default, 'is-dot': props.isDot }])">
+            class="@(['content', 'content-' + props.type, { 'is-dot': props.isDot }])">
             @content
         </sup>
     </div>
@@ -53,21 +53,18 @@ export default class extends Component<{
         text-align: center;
         white-space: nowrap;
         border: 1px solid #fff;
-        &.is-fixed {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            right: 10px;
-            transform: translateY(-50%) translateX(100%);
-            &.is-dot {
-                right: 5px;
-            }
-        }
+
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 10px;
+        transform: translateY(-50%) translateX(100%);
+
         &.is-dot {
             height: 8px;
             width: 8px;
             padding: 0;
-            right: 0;
+            right: 5px;
             border-radius: 50%;
         }
         &.content-primary {
