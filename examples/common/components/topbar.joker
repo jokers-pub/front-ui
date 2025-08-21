@@ -76,7 +76,7 @@ export default class extends Component {
         if (currentRoute.fullPath.substring(1).split("/")[0] === "" && (path === "/index" || path === "/en/index"))
             return "active";
 
-        if (path.startsWith("/en")) {
+        if (currentRoute.fullPath.startsWith("/en")) {
             return path.substring(1).split("/").filter(Boolean)[1] === currentRoute.fullPath.substring(1).split("/")[1]
                 ? "active"
                 : "";
