@@ -53,7 +53,7 @@
         "@docsearch/css": "^3.9.0",
         "@docsearch/js": "^3.9.0",
         "@joker.front/cli": "^1.1.157",
-        "@joker.front/core": "^1.3.85",
+        "@joker.front/core": "^1.3.86",
         "@joker.front/prettier-plugin": "^1.1.33",
         "@joker.front/router": "^1.0.49",
         "@joker.front/shared": "^1.5.32",
