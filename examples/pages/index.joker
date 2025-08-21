@@ -12,11 +12,11 @@
                 @(lang === "zh-CN" ? "Joker UI组件库是一个精心设计和编码的项目，旨在为开发者提供一系列高效、易用且美观的用户界面组件" : "The Joker UI component library is a meticulously designed and coded project, aiming to provide developers with a series of efficient, easy-to-use, and aesthetically pleasing user interface components")
             </p>
             <div class="nav-btns">
-                <a href="@(lang === "zh-CN"?"/cn":"")/component/start">
+                <a href="@(lang === "zh-CN"?"":"/en")/component/start">
                     @(lang === "zh-CN" ? "快速起步" : "Get Started")
                     <i class="jk-icon-right" />
                 </a>
-                <a href="https://jokers.pub@(lang === "zh-CN"?"/cn":"")" target="_blank" class="t1">
+                <a href="https://jokers.pub@(lang === "zh-CN"?"":"/en")" target="_blank" class="t1">
                     @(lang === "zh-CN" ? "Joker 全家桶" : "Joker Suite")
                 </a>
                 <a href="https://viscode.jokers.pub" target="_blank" class="t2">

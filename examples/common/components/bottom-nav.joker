@@ -44,7 +44,7 @@ export default class extends Component {
     created() {
         this.currentRoutePath = router.route.value.fullPath;
 
-        if (this.currentRoutePath.startsWith("/cn")) {
+        if (this.currentRoutePath.startsWith("/en")) {
             this.currentRoutePath = this.currentRoutePath.substring(3);
         }
         if (this.currentRoutePath.startsWith("/component")) {
