@@ -16,7 +16,7 @@ export type PropsOption = Partial<{
 
 import { Component } from "@joker.front/core";
 import JokerMessage from "./index.joker";
-import { remove, removeFilter } from "@joker.front/shared";
+import { removeFilter } from "@joker.front/shared";
 
 let seed = 0;
 
@@ -32,6 +32,10 @@ function Notification(option: string | PropsOption) {
     option ??= {};
 
     option.id ||= `message` + seed++;
+
+    //若携带id 则统一队列中只会弹出一次
+    if (option.id && allInstances.some((n) => n.instance.id === option.id)) return;
+
     option.offset ||= 20;
     let position = option.position || "top-right";
     let instances = allInstances.filter((m) => m.position === position).map((m) => m.instance);
