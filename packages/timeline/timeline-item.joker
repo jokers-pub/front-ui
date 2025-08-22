@@ -64,6 +64,7 @@ export default class extends Component<{
         padding-left: 28px;
         top: -3px;
         .content {
+            line-height: 28px;
             color: var(--jk-color-text-regular);
         }
         .timestamp {
@@ -152,6 +153,11 @@ export default class extends Component<{
             left: 1px;
             width: 8px;
             height: 8px;
+        }
+        .wrapper {
+            .content {
+                line-height: 24px;
+            }
         }
     }
 }

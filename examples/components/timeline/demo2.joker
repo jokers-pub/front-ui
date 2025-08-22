@@ -9,7 +9,9 @@
                     color="@activity.color"
                     size="@activity.size"
                     timestamp="@activity.timestamp">
-                    @activity.content
+                    <jk-link>
+                        @activity.content
+                    </jk-link>
                 </jk-timeline-item>
             }
         </jk-timeline>
