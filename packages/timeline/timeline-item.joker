@@ -1,5 +1,5 @@
 <template>
-    <li class="@(['jk-timeline-item', props.size])">
+    <li class="@(['jk-timeline-item', props.size, props.class])">
         <div class="tail"></div>
         @if(!$sections.dot) {
             <div class="@(['node', props.type])" style="@(props.color ? 'background-color:' + props.color : '')">
@@ -34,6 +34,7 @@
 import { Component } from "@joker.front/core";
 
 export default class extends Component<{
+    class: any;
     timestamp: string;
     hideTimestamp: boolean;
     placement: string;
