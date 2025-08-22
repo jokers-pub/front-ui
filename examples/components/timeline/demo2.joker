@@ -46,6 +46,26 @@ export default class extends Component {
             content: "Nodes with default styles",
             timestamp: "2018-04-03 20:46",
             size: "mini"
+        },
+        {
+            content: "Support custom colors",
+
+            color: "#0bbd87"
+        },
+        {
+            content: "Support custom sizes",
+
+            size: "large"
+        },
+        {
+            content: "Nodes with default styles",
+
+            size: "small"
+        },
+        {
+            content: "Nodes with default styles",
+
+            size: "mini"
         }
     ];
 }

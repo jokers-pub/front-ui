@@ -1,10 +1,8 @@
 <template>
-    <li class="jk-timeline-item">
+    <li class="@(['jk-timeline-item', props.size])">
         <div class="tail"></div>
         @if(!$sections.dot) {
-            <div
-                class="@(['node', props.size, props.type])"
-                style="@(props.color ? 'background-color:' + props.color : '')">
+            <div class="@(['node', props.type])" style="@(props.color ? 'background-color:' + props.color : '')">
                 @if(props.icon) {
                     <i class="icon @props.icon"></i>
                 }
@@ -16,7 +14,7 @@
             </div>
         }
         <div class="wrapper">
-            @if(!props.hideTimestamp && props.placement === "top") {
+            @if(!props.hideTimestamp && props.placement === "top" && props.timestamp) {
                 <div class="timestamp is-top">
                     @props.timestamp
                 </div>
@@ -24,7 +22,7 @@
             <div class="content">
                 @RenderSection()
             </div>
-            @if(!props.hideTimestamp && props.placement === "bottom") {
+            @if(!props.hideTimestamp && props.placement === "bottom" && props.timestamp) {
                 <div class="timestamp is-bottom">
                     @props.timestamp
                 </div>
@@ -99,26 +97,7 @@ export default class extends Component<{
             color: var(--jk-background-color-default);
             font-size: 13px;
         }
-        &.normal {
-            left: -1px;
-            width: 12px;
-            height: 12px;
-        }
-        &.large {
-            left: -2px;
-            width: 14px;
-            height: 14px;
-        }
-        &.small {
-            left: 0px;
-            width: 10px;
-            height: 10px;
-        }
-        &.mini {
-            left: 1px;
-            width: 8px;
-            height: 8px;
-        }
+
         &.primary {
             background-color: var(--jk-color-primary);
         }
@@ -144,6 +123,35 @@ export default class extends Component<{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    &.normal {
+        .node {
+            left: -1px;
+            width: 12px;
+            height: 12px;
+        }
+    }
+    &.large {
+        .node {
+            left: -2px;
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &.small {
+        .node {
+            left: 0px;
+            width: 10px;
+            height: 10px;
+        }
+    }
+    &.mini {
+        .node {
+            left: 1px;
+            width: 8px;
+            height: 8px;
+        }
     }
 }
 </style>
