@@ -1,5 +1,5 @@
 <template>
-    <div class="jk-button-group">
+    <div class="@(['jk-button-group', props.fullWidth && 'is-fullwidth', props.class])">
         @RenderSection()
     </div>
 </template>
@@ -10,7 +10,13 @@
     @include mixins.clearfix;
     display: inline-block;
     vertical-align: middle;
+    &.is-fullwidth {
+        display: flex;
 
+        :deep(> .jk-button) {
+            flex: 1 0 auto;
+        }
+    }
     :deep(> .jk-button) {
         float: left;
         position: relative;
