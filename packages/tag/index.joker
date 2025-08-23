@@ -121,6 +121,9 @@ export default class extends Component<{
     box-sizing: border-box;
     white-space: nowrap;
     cursor: default;
+    & + & {
+        margin-left: 5px;
+    }
     > .jk-tag-close {
         border-radius: 50%;
         text-align: center;
