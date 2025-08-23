@@ -18,6 +18,14 @@
         ])"
         @mouseenter="handleHover(true)"
         @mouseleave="handleHover(false)">
+        @if($sections.prefix || props.prefixIcon) {
+            <span class="prefix">
+                @RenderSection("prefix")
+                @if(props.prefixIcon) {
+                    <i class="@props.prefixIcon"></i>
+                }
+            </span>
+        }
         @if($sections.prepend) {
             <div class="prepend">
                 @RenderSection("prepend")
@@ -45,14 +53,6 @@
             @compositionend="handleCompositionEnd"
             type="@props.type"
         />
-        @if($sections.prefix || props.prefixIcon) {
-            <span class="prefix">
-                @RenderSection("prefix")
-                @if(props.prefixIcon) {
-                    <i class="@props.prefixIcon"></i>
-                }
-            </span>
-        }
         @if(suffixVisable) {
             <span class="suffix">
                 @if(!showClear || !isWordLimitVisible) {
