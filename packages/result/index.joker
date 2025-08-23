@@ -48,8 +48,8 @@ import IconInfo from "./icon-info.joker";
 
 const IconMap: Record<string, string> = {
     success: "jk-icon-success",
-    warning: "jk-icon-error",
-    error: "jk-icon-warning",
+    warning: "jk-icon-warning",
+    error: "jk-icon-error",
     info: "jk-icon-info"
 };
 
