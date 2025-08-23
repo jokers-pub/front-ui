@@ -1,7 +1,7 @@
 const path = require("node:path");
 //demo构建
 module.exports = {
-    publicDir: "./examples/public",
+    publicDir: "./public",
     build: {
         // 多入口配置
         rollupOptions: {
