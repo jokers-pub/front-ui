@@ -138,8 +138,8 @@ export default class extends Component<{ title: string; icon: string; descriptio
                 typeof this.space === "number"
                     ? this.space + "px"
                     : this.space
-                    ? this.space
-                    : 100 / (len - (this.isCenter ? 0 : 1)) + "%";
+                      ? this.space
+                      : 100 / (len - (this.isCenter ? 0 : 1)) + "%";
 
             style += "flex-basis:" + space;
             if (this.isVertical) return style;
@@ -319,6 +319,7 @@ export default class extends Component<{ title: string; icon: string; descriptio
         .head {
             flex-grow: 0;
             width: 24px;
+            text-align: center;
         }
         .main {
             padding-left: 10px;
@@ -332,7 +333,7 @@ export default class extends Component<{ title: string; icon: string; descriptio
             width: 2px;
             top: 0;
             bottom: 0;
-            left: 8px;
+            left: 11px;
         }
         .icon.is-icon {
             width: 24px;
