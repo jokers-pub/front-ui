@@ -77,7 +77,9 @@ export default class extends Component {
                     color=&quot;@activity.color&quot;
                     size=&quot;@activity.size&quot;
                     timestamp=&quot;@activity.timestamp&quot;&gt;
-                    @activity.content
+                    &lt;jk-link&gt;
+                        @activity.content
+                    &lt;/jk-link&gt;
                 &lt;/jk-timeline-item&gt;
             }
         &lt;/jk-timeline&gt;
@@ -113,6 +115,26 @@ export default class extends Component {
         {
             content: &quot;Nodes with default styles&quot;,
             timestamp: &quot;2018-04-03 20:46&quot;,
+            size: &quot;mini&quot;
+        },
+        {
+            content: &quot;Support custom colors&quot;,
+
+            color: &quot;#0bbd87&quot;
+        },
+        {
+            content: &quot;Support custom sizes&quot;,
+
+            size: &quot;large&quot;
+        },
+        {
+            content: &quot;Nodes with default styles&quot;,
+
+            size: &quot;small&quot;
+        },
+        {
+            content: &quot;Nodes with default styles&quot;,
+
             size: &quot;mini&quot;
         }
     ];
