@@ -42,7 +42,8 @@ export default class extends Component<{
     cursor: pointer;
     outline: none;
     color: var(--jk-color-regular);
-
+    display: flex;
+    align-items: center;
     &:not(.is-disabled):hover,
     &:focus {
         background-color: var(--jk-background-color-base);

@@ -35,7 +35,7 @@
         "README.md"
     ],
     "scripts": {
-        "demo": "joker --open=/examples/index.html",
+        "demo": "joker --open=/examples/index.html --port=8777",
         "build": "joker build --config=build.config.js --sourcemap=true",
         "build:prod": "joker build --config=build.config.js",
         "build:lowcode": "joker build --config=build.lowcode.config.js",
