@@ -16,12 +16,12 @@
         <jk-button type="danger" plain>Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
-        <jk-button round>Round Button</jk-button>
-        <jk-button type="primary" round>Primary Button</jk-button>
-        <jk-button type="success" round>Success Button</jk-button>
-        <jk-button type="info" round>Info Button</jk-button>
-        <jk-button type="warning" round>Warning Button</jk-button>
-        <jk-button type="danger" round>Danger Button</jk-button>
+        <jk-button round size="small">Round Button</jk-button>
+        <jk-button type="primary" round size="small">Primary Button</jk-button>
+        <jk-button type="success" round size="small">Success Button</jk-button>
+        <jk-button type="info" round size="small">Info Button</jk-button>
+        <jk-button type="warning" round size="small">Warning Button</jk-button>
+        <jk-button type="danger" round size="small">Danger Button</jk-button>
     </DemoRow>
     <DemoRow>
         <jk-button icon="jk-icon-search" circle></jk-button>
