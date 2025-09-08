@@ -53,7 +53,7 @@ export default class extends Component<{
         if (!store) return [];
 
         let column = store.getColumn(this.props.key!) as ColumnType;
-        let result: Map<string, any> = new Map();
+        let result: Map<any, any> = new Map();
         if (column) {
             if (column.filter) {
                 if (Array.isArray(column.filter)) {
@@ -61,7 +61,7 @@ export default class extends Component<{
                         if (typeof n === "object") {
                             result.set(n.value, n.text);
                         } else if (typeof n === "boolean") {
-                            result.set(n.toString(), n ? getValueByLang("yes") : getValueByLang("no"));
+                            result.set(n, n ? getValueByLang("yes") : getValueByLang("no"));
                         } else {
                             result.set(n, n);
                         }
