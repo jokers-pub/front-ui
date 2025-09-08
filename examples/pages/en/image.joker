@@ -265,13 +265,6 @@ export default class extends Component {
                     <td>—</td>
                 </tr>
                 <tr>
-                    <td>z-index</td>
-                    <td>z-index for image preview overlay</td>
-                    <td>Number</td>
-                    <td>—</td>
-                    <td>2000</td>
-                </tr>
-                <tr>
                     <td>errMsg</td>
                     <td>Error message when loading fails</td>
                     <td>string</td>

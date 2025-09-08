@@ -261,13 +261,6 @@ export default class extends Component {
                     <td>—</td>
                 </tr>
                 <tr>
-                    <td>z-index</td>
-                    <td>设置图片预览的 z-index</td>
-                    <td>Number</td>
-                    <td>—</td>
-                    <td>2000</td>
-                </tr>
-                <tr>
                     <td>errMsg</td>
                     <td>加载错误时的提示</td>
                     <td>string</td>

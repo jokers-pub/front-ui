@@ -291,11 +291,13 @@ tr {
         &.fixed-left {
             position: sticky;
             left: 0;
+            z-index: 1;
         }
 
         &.fixed-right {
             position: sticky;
             right: 0;
+            z-index: 1;
         }
 
         &.expand-cell {

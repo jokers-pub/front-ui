@@ -286,7 +286,7 @@ export default class extends Component {
     position: sticky;
     top: 0px;
     background-color: var(--jk-background-color-default);
-    z-index: 1;
+    z-index: 2;
     th {
         text-align: left;
         box-sizing: border-box;
@@ -389,7 +389,7 @@ export default class extends Component {
             &.fixed-left,
             &.fixed-right {
                 border-color: transparent;
-
+                z-index: 1;
                 outline: solid 1px var(--jk-border-color-lighter);
             }
 
