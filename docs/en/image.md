@@ -33,7 +33,6 @@ An image container that retains all native `<img>` tag features, supporting lazy
 | scroll-container | Scroll container for lazy loading event listener          | string / HTMLElement | —                                          | Nearest parent with overflow: auto/scroll |
 | preview          | Enables image preview                                     | boolean              | —                                          | —                                         |
 | preview-src-list | Enables image preview with src list                       | Array                | —                                          | —                                         |
-| z-index          | z-index for image preview overlay                         | Number               | —                                          | 2000                                      |
 | errMsg           | Error message when loading fails                          | string               | —                                          | "Failed to load"                          |
 
 ### Events

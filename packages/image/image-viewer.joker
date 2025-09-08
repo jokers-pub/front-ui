@@ -42,19 +42,20 @@
 <script>
 import { Component, VNode } from "@joker.front/core";
 import { isFirefox, rafThrottle } from "../utils/index";
+import { zIndexManage } from "../utils/zindex";
 
 let mousewheelEventName = isFirefox() ? "DOMMouseScroll" : "mousewheel";
 
 export default class extends Component<{
     urlList: Array<string>;
-    zIndex: number;
+
     onSwitch: Function;
     onClose: Function;
     maskClosable: boolean;
 }> {
     propsOption = {
         urlList: [],
-        zIndex: 2000,
+
         maskClosable: true
     };
 
@@ -123,20 +124,18 @@ export default class extends Component<{
             "margin-top": `${offsetY}px`,
             maxWidth: "",
             maxHeight: "",
-            visibility:"visible"
+            visibility: "visible"
         };
 
         if (this.model.mode.includes("full")) {
             style.maxWidth = style.maxHeight = "100%";
         }
-        if(this.model.loading){
+        if (this.model.loading) {
             style.visibility = "hidden";
         }
         return style;
     }
-    get viewerZIndex() {
-        return this.props.zIndex > 2000 ? this.props.zIndex : 2000;
-    }
+    viewerZIndex = zIndexManage.nextZIndex();
 
     get changeDisabled() {
         return !this.model.infinite && this.model.index === 0 ? "is-disabled" : "";
