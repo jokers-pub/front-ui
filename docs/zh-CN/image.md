@@ -31,7 +31,8 @@
 | fit              | 确定图片如何适应容器框，同原生 object-fit | string               | fill / contain / cover / none / scale-down | —                                              |
 | lazy             | 是否开启懒加载                            | boolean              | —                                          | false                                          |
 | scroll-container | 开启懒加载后，监听 scroll 事件的容器      | string / HTMLElement | —                                          | 最近一个 overflow 值为 auto 或 scroll 的父元素 |
-| preview-src-list | 开启图片预览功能                          | Array                | —                                          | —                                              |
+| preview          | 开启图片预览功能                          | boolean              | —                                          | —                                              |
+| preview-src-list | 自定义图片预览列表                        | Array                | —                                          | —                                              |
 | z-index          | 设置图片预览的 z-index                    | Number               | —                                          | 2000                                           |
 | errMsg           | 加载错误时的提示                          | string               | —                                          | 加载失败                                       |
 

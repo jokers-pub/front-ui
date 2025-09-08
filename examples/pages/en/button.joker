@@ -34,12 +34,12 @@
         &lt;jk-button type=&quot;danger&quot; plain&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
-        &lt;jk-button round&gt;Round Button&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;primary&quot; round&gt;Primary Button&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;success&quot; round&gt;Success Button&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;info&quot; round&gt;Info Button&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;warning&quot; round&gt;Warning Button&lt;/jk-button&gt;
-        &lt;jk-button type=&quot;danger&quot; round&gt;Danger Button&lt;/jk-button&gt;
+        &lt;jk-button round size=&quot;small&quot;&gt;Round Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;primary&quot; round size=&quot;small&quot;&gt;Primary Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;success&quot; round size=&quot;small&quot;&gt;Success Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;info&quot; round size=&quot;small&quot;&gt;Info Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;warning&quot; round size=&quot;small&quot;&gt;Warning Button&lt;/jk-button&gt;
+        &lt;jk-button type=&quot;danger&quot; round size=&quot;small&quot;&gt;Danger Button&lt;/jk-button&gt;
     &lt;/DemoRow&gt;
     &lt;DemoRow&gt;
         &lt;jk-button icon=&quot;jk-icon-search&quot; circle&gt;&lt;/jk-button&gt;

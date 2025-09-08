@@ -11,7 +11,7 @@
                 &lt;p class=&quot;demonstration&quot;&gt;
                     @fit
                 &lt;/p&gt;
-                &lt;jk-image style=&quot;width: 100px; height: 100px&quot; src=&quot;@model.url&quot; fit=&quot;@fit&quot;&gt;&lt;/jk-image&gt;
+                &lt;jk-image style=&quot;width: 100px; height: 100px&quot; src=&quot;@model.url&quot; fit=&quot;@fit&quot; preview&gt;&lt;/jk-image&gt;
             &lt;/div&gt;
         }
     &lt;/div&gt;
@@ -173,7 +173,11 @@ export default class extends Component {
         <DemoContainer component="@(components.DEMO_JOKER_demo5)">
             <pre><code class="language-html">&lt;template&gt;
     &lt;div class=&quot;demo-image__preview&quot;&gt;
-        &lt;jk-image style=&quot;width: 100px; height: 100px&quot; src=&quot;@model.url&quot; preview-src-list=&quot;@model.srcList&quot;&gt;&lt;/jk-image&gt;
+        &lt;jk-image
+            style=&quot;width: 100px; height: 100px&quot;
+            src=&quot;@model.url&quot;
+            preview
+            preview-src-list=&quot;@model.srcList&quot;&gt;&lt;/jk-image&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -184,11 +188,11 @@ export default class extends Component {
     model = {
         url: &quot;https://picsum.photos/200/300?random=3&quot;,
         srcList: [
-            'https://picsum.photos/600/1000?random=1',
-            'https://picsum.photos/800/1000?random=1',
-            'https://picsum.photos/1000/1000?random=1',
-            'https://picsum.photos/1200/1000?random=1',
-            'https://picsum.photos/1400/1000?random=1',
+            &quot;https://picsum.photos/600/1000?random=1&quot;,
+            &quot;https://picsum.photos/800/1000?random=1&quot;,
+            &quot;https://picsum.photos/1000/1000?random=1&quot;,
+            &quot;https://picsum.photos/1200/1000?random=1&quot;,
+            &quot;https://picsum.photos/1400/1000?random=1&quot;
         ]
     };
 }
@@ -243,8 +247,15 @@ export default class extends Component {
                     <td>最近一个 overflow 值为 auto 或 scroll 的父元素</td>
                 </tr>
                 <tr>
-                    <td>preview-src-list</td>
+                    <td>preview</td>
                     <td>开启图片预览功能</td>
+                    <td>boolean</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>preview-src-list</td>
+                    <td>自定义图片预览列表</td>
                     <td>Array</td>
                     <td>—</td>
                     <td>—</td>

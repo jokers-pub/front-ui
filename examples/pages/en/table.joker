@@ -887,6 +887,7 @@ export default class extends Component {
     &lt;jk-table data=&quot;@tableData&quot; default-sort=&quot;date&quot; default-sort-order=&quot;descending&quot;&gt;
         &lt;jk-table-column label=&quot;Date&quot; key=&quot;date&quot; width=&quot;180&quot; sortable filter /&gt;
         &lt;jk-table-column label=&quot;Name&quot; key=&quot;name&quot; width=&quot;180&quot; /&gt;
+        &lt;jk-table-column label=&quot;Login&quot; key=&quot;isLogin&quot; filter /&gt;
         &lt;jk-table-column label=&quot;Address&quot; key=&quot;address&quot; /&gt;
         &lt;jk-table-column
             label=&quot;Balance&quot;
@@ -906,9 +907,9 @@ import { Component } from &quot;@joker.front/core&quot;;
 
 export default class extends Component {
     tableData = [
-        { name: &quot;Zhang San&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 1000 },
-        { name: &quot;Li Si&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 10 },
-        { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 300 },
+        { name: &quot;Zhang San&quot;, date: &quot;2023-11-02&quot;, address: &quot;Jinan, Shandong Province&quot;, isLogin: true, money: 1000 },
+        { name: &quot;Li Si&quot;, date: &quot;2023-11-01&quot;, address: &quot;Jinan, Shandong Province&quot;, isLogin: true, money: 10 },
+        { name: &quot;Li Mei&quot;, date: &quot;2023-11-03&quot;, address: &quot;Jinan, Shandong Province&quot;, isLogin: false, money: 300 },
         { name: &quot;Wang Wu&quot;, date: &quot;2023-11-04&quot;, address: &quot;Jinan, Shandong Province&quot;, money: 11.9 }
     ];
     customFilter(row: any, filters: number[]) {

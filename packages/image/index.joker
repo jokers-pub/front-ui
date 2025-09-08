@@ -58,7 +58,8 @@ export default class extends Component<{
     propsOption = {
         errMsg: getValueByLang("imgLoadError"),
         scrollContainer: {},
-        previewSrcList: [],
+        previewSrcList: [this.props.src],
+
         zIndex: 2000
     };
 
@@ -110,8 +111,7 @@ export default class extends Component<{
     }
 
     get preview() {
-        let { previewSrcList } = this.props;
-        return Array.isArray(previewSrcList) && previewSrcList.length > 0;
+        return this.props.preview;
     }
 
     getImageStyle(fit: string) {

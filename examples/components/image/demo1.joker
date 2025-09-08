@@ -5,7 +5,7 @@
                 <p class="demonstration">
                     @fit
                 </p>
-                <jk-image style="width: 100px; height: 100px" src="@model.url" fit="@fit"></jk-image>
+                <jk-image style="width: 100px; height: 100px" src="@model.url" fit="@fit" preview></jk-image>
             </div>
         }
     </div>
