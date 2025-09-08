@@ -60,6 +60,8 @@ export default class extends Component<{
                     column.filter.forEach((n) => {
                         if (typeof n === "object") {
                             result.set(n.value, n.text);
+                        } else if (typeof n === "boolean") {
+                            result.set(n.toString(), n ? getValueByLang("yes") : getValueByLang("no"));
                         } else {
                             result.set(n, n);
                         }

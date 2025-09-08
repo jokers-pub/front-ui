@@ -18,6 +18,8 @@ export const LANG_EN = {
     confirm: "Confirm",
     start: "Start",
     end: "End",
+    yes: "Yes",
+    no: "No",
     emptyText: "No data",
     submiting: "Submitting. Please do not operate.",
     reset: "Reset",

@@ -18,6 +18,8 @@ export const LANG_ZH_CN = {
     confirm: "确定",
     start: "开始",
     end: "结束",
+    yes: "是",
+    no: "否",
     emptyText: "暂无数据",
     submiting: "正在提交中，请勿操作",
     reset: "重置",
