@@ -54,6 +54,7 @@ export default class extends Component<{
 
         let column = store.getColumn(this.props.key!) as ColumnType;
         let result: Map<any, any> = new Map();
+
         if (column) {
             if (column.filter) {
                 if (Array.isArray(column.filter)) {
@@ -70,7 +71,11 @@ export default class extends Component<{
                     //补充方案，使用所有列数据
                     store.data.originalTableData?.forEach((n) => {
                         let val = n[this.props.key!];
-                        result.set(val, val);
+                        if (typeof val === "boolean") {
+                            result.set(val, val ? getValueByLang("yes") : getValueByLang("no"));
+                        } else {
+                            result.set(val, val);
+                        }
                     });
                 }
             }

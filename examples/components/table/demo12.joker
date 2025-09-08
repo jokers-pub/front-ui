@@ -2,6 +2,7 @@
     <jk-table data="@tableData" default-sort="date" default-sort-order="descending">
         <jk-table-column label="Date" key="date" width="180" sortable filter />
         <jk-table-column label="Name" key="name" width="180" />
+        <jk-table-column label="Login" key="isLogin" filter />
         <jk-table-column label="Address" key="address" />
         <jk-table-column
             label="Balance"
@@ -21,9 +22,9 @@ import { Component } from "@joker.front/core";
 
 export default class extends Component {
     tableData = [
-        { name: "Zhang San", date: "2023-11-02", address: "Jinan, Shandong Province", money: 1000 },
-        { name: "Li Si", date: "2023-11-01", address: "Jinan, Shandong Province", money: 10 },
-        { name: "Li Mei", date: "2023-11-03", address: "Jinan, Shandong Province", money: 300 },
+        { name: "Zhang San", date: "2023-11-02", address: "Jinan, Shandong Province", isLogin: true, money: 1000 },
+        { name: "Li Si", date: "2023-11-01", address: "Jinan, Shandong Province", isLogin: true, money: 10 },
+        { name: "Li Mei", date: "2023-11-03", address: "Jinan, Shandong Province", isLogin: false, money: 300 },
         { name: "Wang Wu", date: "2023-11-04", address: "Jinan, Shandong Province", money: 11.9 }
     ];
     customFilter(row: any, filters: number[]) {
