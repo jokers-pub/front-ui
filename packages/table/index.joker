@@ -397,5 +397,10 @@ export default class extends Component<{
             padding: 6px 0;
         }
     }
+
+    :deep(> .jk-scrollbar > .jk-scrollbar-bar) {
+        //冻结表头列时 header zindex:2
+        z-index: 2;
+    }
 }
 </style>
