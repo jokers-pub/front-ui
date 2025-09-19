@@ -201,9 +201,9 @@ export default class extends FormCtrl<{
 
     clear() {
         this.model.userInput = null;
+        this.value = undefined;
         this.$trigger("input", undefined);
         this.$trigger("change", undefined);
-        this.value = undefined;
     }
     focus() {
         this.$getRef("input")?.component.focus();
@@ -340,11 +340,10 @@ export default class extends FormCtrl<{
         if (oldVal === newVal) return;
 
         this.model.userInput = null;
-
+        this.value = newVal;
         this.$trigger("input", newVal);
         this.$trigger("change", newVal);
 
-        this.value = newVal;
         this.triggerValidate();
     }
 }
