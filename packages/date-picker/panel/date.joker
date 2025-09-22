@@ -337,8 +337,6 @@ export default class extends PickerPanel<{
 
     handleTimeChange(e: VNode.Event<string>) {
         this.model.date = setTime(this.model.date, e.data);
-
-        this.triggerChange(this.model.date);
     }
 
     handleConfirm() {
