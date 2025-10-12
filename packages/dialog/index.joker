@@ -206,7 +206,7 @@ export default class extends Component<{
         margin: 0px auto;
         background: var(--jk-background-color-default);
         border-radius: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        box-shadow: var(--jk-box-shadow-dark);
         box-sizing: border-box;
         width: 50%;
         display: flex;
