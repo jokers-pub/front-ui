@@ -93,7 +93,7 @@ export default class extends Component<{
     padding: 10px 0;
     position: fixed;
     border: solid 1px var(--jk-border-color-lighter);
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: var(--jk-box-shadow-light);
     font-size: 14px;
     color: var(--jk-color-text-regular);
