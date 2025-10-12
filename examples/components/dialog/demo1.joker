@@ -3,7 +3,7 @@
         <jk-button @click="open">Click to open Dialog</jk-button>
         <jk-button @click="open1">Full-screen window</jk-button>
         <jk-button @click="open2">Window with extremely long content</jk-button>
-        <jk-dialog ref="dialog" title="Basic display" width="30%" before-close="@dialogBeforeClose">
+        <jk-dialog ref="dialog" width="30%" before-close="@dialogBeforeClose">
             <p>I'm the content inside the dialog.</p>
             <jk-select>
                 <jk-option label="Option 1" value="1"></jk-option>
@@ -21,8 +21,7 @@
         <ul>
             @for(let i = 0; i < 100; i++) {
                 <li>
-                    I'm line @(i)
-                    .
+                    I'm line @(i).
                 </li>
             }
         </ul>

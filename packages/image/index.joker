@@ -2,7 +2,11 @@
     <div class="@(['jk-image', props.class])" style="@props.style" ref="imageCon">
         @if(model.loading) {
             <div class="placeholder">
-                @RenderSection("placeholder")
+                @if($sections.placeholder) {
+                    @RenderSection("placeholder")
+                }
+                else {
+                }
             </div>
         }
         else if(model.error) {
@@ -158,7 +162,7 @@ export default class extends Component<{
     handleLoad(img: HTMLImageElement) {
         this.model.imageWidth = img.width;
         this.model.imageHeight = img.height;
-        this.model.loading = false;
+        // this.model.loading = false;
         this.model.error = false;
         this.$trigger("load");
     }

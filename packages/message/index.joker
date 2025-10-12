@@ -117,16 +117,22 @@ export default class extends Component<PropsOption> {
 
 <style scoped lang="scss">
 .jk-message {
-    min-width: 380px;
+    max-width: 380px;
     box-sizing: border-box;
-    border: solid 1px var(--jk-border-color-lighter);
-    border-radius: 4px;
     position: fixed;
     left: 50%;
     top: 20px;
     transform: translateX(-50%);
     background-color: var(--jk-message-background-color);
-    transition: opacity 0.3s, transform 0.4s, top 0.4s;
+    border-radius: 8px;
+    box-shadow:
+        0 6px 16px 0 rgba(0, 0, 0, 0.08),
+        0 3px 6px -4px rgba(0, 0, 0, 0.12),
+        0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    transition:
+        opacity 0.3s,
+        transform 0.4s,
+        top 0.4s;
     overflow: hidden;
     padding: 15px 15px 15px 20px;
     display: flex;
@@ -158,13 +164,9 @@ export default class extends Component<PropsOption> {
     }
 
     .close {
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        transform: translateY(-50%);
         cursor: pointer;
         color: var(--jk-color-text-placeholder);
-        font-size: 16px;
+        font-size: 14px;
 
         &:focus {
             outline-width: 0;
@@ -176,37 +178,24 @@ export default class extends Component<PropsOption> {
     }
 
     &.info {
-        .content,
         .icon {
-            color: var(--jk-color-info);
+            color: var(--jk-color-primary);
         }
     }
 
     &.success {
-        background-color: var(--jk-color-success-light-9);
-        border-color: var(--jk-color-success-light-8);
-
-        .content,
         .icon {
             color: var(--jk-color-success);
         }
     }
 
     &.warning {
-        background-color: var(--jk-color-warning-light-9);
-        border-color: var(--jk-color-warning-light-8);
-
-        .content,
         .icon {
             color: var(--jk-color-warning);
         }
     }
 
     &.error {
-        background-color: var(--jk-color-danger-light-9);
-        border-color: var(--jk-color-danger-light-8);
-
-        .content,
         .icon {
             color: var(--jk-color-danger);
         }
