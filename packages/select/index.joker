@@ -339,7 +339,7 @@ export default class extends FormCtrl<{
     }
     hide() {
         if (!this.model.showPanel) return;
-
+        this.clearOptionHover();
         this.model.showPanel = false;
         this.dropMenuShowOnFocus = false;
         this.blur();
@@ -807,7 +807,7 @@ export default class extends FormCtrl<{
     }
     &:hover {
         :deep(.jk-input:not(.is-disabled) input) {
-            border-color: var(--jk-border-color-hover);
+            border-color: var(--jk-color-primary);
         }
     }
 

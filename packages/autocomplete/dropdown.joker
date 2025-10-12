@@ -81,7 +81,7 @@ export default class extends Component<{}> {
 <style lang="scss" scoped>
 .jk-autocomplete-dropdown {
     border: solid 1px var(--jk-border-color-light);
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: var(--jk-background-color-default);
     box-shadow: var(--jk-box-shadow-light);
     box-sizing: border-box;

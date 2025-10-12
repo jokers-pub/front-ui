@@ -7,7 +7,7 @@
                     @RenderSection("label")
                 </div>
             }
-            else {
+            else if(props.label || props.tip) {
                 <label style="@labelStyle">
                     @props.label
                     @if(props.tip) {
@@ -20,16 +20,16 @@
         }
         <div class="content">
             @RenderSection()
-            @if(model.errorMessage) {
-                @if($sections.error) {
-                    @RenderSection("error", model.errorMessage)
-                }
-                else {
-                    <div class="error">
+            <div class="error">
+                @if(model.errorMessage) {
+                    @if($sections.error) {
+                        @RenderSection("error", model.errorMessage)
+                    }
+                    else {
                         @model.errorMessage
-                    </div>
+                    }
                 }
-            }
+            </div>
         </div>
     </div>
 </template>
@@ -100,7 +100,6 @@ export default class extends Component<{
 @use "../../theme/mixins.scss";
 
 .jk-form-item {
-    margin-bottom: 15px;
     text-align: left;
     display: flex;
     :deep(.jk-form-item) {
@@ -134,6 +133,7 @@ export default class extends Component<{
             font-size: 12px;
             line-height: 1;
             padding-top: 4px;
+            min-height: 15px;
         }
     }
 
@@ -218,6 +218,7 @@ export default class extends Component<{
         > .label {
             text-align: left;
             padding: 0;
+            line-height: 30px;
         }
         > .content {
             flex: none;

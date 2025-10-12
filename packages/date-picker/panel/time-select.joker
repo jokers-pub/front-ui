@@ -178,7 +178,7 @@ export default class extends PickerPanel<{
     border: 1px solid var(--jk-border-color-light);
     box-shadow: var(--jk-box-shadow-light);
     background: var(--jk-background-color-default);
-    border-radius: 4px;
+    border-radius: 8px;
     line-height: 30px;
     margin: 5px 0;
 
@@ -191,10 +191,11 @@ export default class extends PickerPanel<{
         padding: 8px 10px;
         font-size: 14px;
         line-height: 20px;
-
+        margin: 5px;
+        border-radius: 5px;
         &.is-selected:not(.is-disabled) {
             color: var(--jk-color-primary);
-            font-weight: bold;
+            background-color: var(--jk-color-primary-light-9);
         }
 
         &.is-disabled {
@@ -204,7 +205,7 @@ export default class extends PickerPanel<{
 
         &:hover {
             background-color: var(--jk-background-color-base);
-            font-weight: bold;
+
             cursor: pointer;
         }
     }

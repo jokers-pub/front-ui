@@ -252,7 +252,7 @@ export default class extends Component<PropsOption> {
         width: 420px;
         padding-bottom: 10px;
         background-color: var(--jk-background-color-default);
-        border-radius: 4px;
+        border-radius: 10px;
         border: solid 1px var(--jk-border-color-lighter);
         font-size: 18px;
         box-shadow: var(--jk-box-shadow-light);

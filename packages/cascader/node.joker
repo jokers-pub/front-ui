@@ -151,11 +151,14 @@ export default class extends Component<{
     padding: 0 30px 0 20px;
     height: 34px;
     line-height: 34px;
+    margin: 0 5px;
+    border-radius: 5px;
     outline: none;
 
     &.in-active-path,
     &.is-active {
         color: var(--jk-color-primary);
+        background-color: var(--jk-color-primary-light-9);
         font-weight: bold;
     }
 

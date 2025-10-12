@@ -15,7 +15,9 @@
     </div>
 </template>
 <style lang="scss" scoped>
-:deep(.demo-container .jk-number) {
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-number) {
+        margin-right: 15px;
+    }
 }
 </style>

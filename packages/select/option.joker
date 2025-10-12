@@ -128,12 +128,14 @@ export default class extends Component<{
 .jk-select-dropdown-item {
     font-size: 14px;
     padding: 0 40px 0 20px;
+    margin: 0 5px;
     position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--jk-color-text-regular);
     line-height: 34px;
+    border-radius: 5px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -150,7 +152,7 @@ export default class extends Component<{
     }
     &.selected {
         color: var(--jk-color-primary);
-        background-color: var(--jk-background-color-default);
+        background-color: var(--jk-color-primary-light-9);
 
         &.hover {
             background-color: var(--jk-background-color-base);

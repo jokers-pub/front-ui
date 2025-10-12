@@ -171,7 +171,8 @@ export default class extends Component<{
     font-weight: 500;
     user-select: none;
     padding: 12px 20px;
-    @include set-size(12px, 20px, 14px, 4px);
+
+    @include set-size(12px, 20px, 14px, 6px);
 
     & + & {
         margin-left: 10px;
@@ -298,21 +299,21 @@ export default class extends Component<{
     }
 
     &.medium {
-        @include set-size(10px, 20px, 14px, 4px);
+        @include set-size(10px, 20px, 14px, 6px);
         &.is-circle {
             padding: 10px;
         }
     }
 
     &.small {
-        @include set-size(9px, 15px, 12px, 3px);
+        @include set-size(9px, 15px, 12px, 6px);
         &.is-circle {
             padding: 9px;
         }
     }
 
     &.mini {
-        @include set-size(7px, 15px, 12px, 3px);
+        @include set-size(7px, 15px, 12px, 4px);
         &.is-circle {
             padding: 7px;
         }

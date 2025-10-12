@@ -19,11 +19,13 @@
     </div>
 </template>
 <style lang="scss" scoped>
-.demo-row {
-    margin-bottom: 10px;
-}
-:deep(.demo-container .jk-input) {
-    width: 180px;
-    margin-right: 15px;
+.demo-container {
+    .demo-row {
+        margin-bottom: 10px;
+    }
+    :deep(.jk-input) {
+        width: 180px;
+        margin-right: 15px;
+    }
 }
 </style>

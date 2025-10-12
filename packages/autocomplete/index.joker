@@ -437,7 +437,8 @@ export default class extends FormCtrl<{
     line-height: 34px;
     box-sizing: border-box;
     cursor: pointer;
-
+    margin: 0 5px;
+    border-radius: 5px;
     &.is-hover {
         background-color: var(--jk-background-color-base);
     }

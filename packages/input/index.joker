@@ -234,12 +234,11 @@ export default class extends FormCtrl<{
     handleBlur(e: VNode.Event) {
         this.model.focused = false;
         this.$trigger("blur", this.value, e);
-
-        this.triggerValidate();
     }
 
     handleChange(e: VNode.Event) {
         this.$trigger("change", e.event.target.value);
+        this.triggerValidate();
     }
 
     handleInput(e: VNode.Event) {
@@ -443,12 +442,13 @@ export default class extends FormCtrl<{
         }
 
         &:hover {
-            border-color: var(--jk-border-color-hover);
+            border-color: var(--jk-color-primary);
         }
 
         &:focus {
             outline: none;
             border-color: var(--jk-color-primary);
+            box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
         }
     }
 
@@ -597,11 +597,8 @@ export default class extends FormCtrl<{
     }
 
     &.is-error {
-        input {
-            &,
-            &:focus {
-                border-color: var(--jk-color-danger);
-            }
+        input:not(:focus) {
+            border-color: var(--jk-color-danger);
         }
     }
 }
