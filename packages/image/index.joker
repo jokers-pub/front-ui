@@ -162,7 +162,7 @@ export default class extends Component<{
     handleLoad(img: HTMLImageElement) {
         this.model.imageWidth = img.width;
         this.model.imageHeight = img.height;
-        // this.model.loading = false;
+        this.model.loading = false;
         this.model.error = false;
         this.$trigger("load");
     }
@@ -179,22 +179,37 @@ export default class extends Component<{
             this.removeLazyLoadListener();
         }
     }
+    observer: any;
     addLazyLoadListener() {
-        let { scrollContainer } = this.props;
-        let _scrollContainer = null;
-        if (isHtmlElement(scrollContainer)) {
-            _scrollContainer = scrollContainer;
-        } else if (typeof scrollContainer === "string") {
-            _scrollContainer = document.querySelector(scrollContainer);
-        } else if (this.$getRef("imageCon").output) {
-            _scrollContainer = getScrollContainer(this.$getRef("imageCon").output);
+        let container = this.$getRef("imageCon").output;
+
+        // 检查是否已经有观察者实例
+        if (this.observer) {
+            this.observer.disconnect();
         }
-        if (_scrollContainer) {
-            this._scrollContainer = _scrollContainer;
-            this._lazyLoadHandler = throttle(200, this.handleLazyLoad.bind(this));
-            this._scrollContainer.addEventListener("scroll", this._lazyLoadHandler);
-            this.handleLazyLoad();
-        }
+
+        // 创建IntersectionObserver实例
+        this.observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // 当元素进入视口
+                    if (entry.isIntersecting) {
+                        this.model.show = true;
+                        this.loadImage(); // 加载图片
+                        this.observer.unobserve(container); // 停止观察
+                    }
+                });
+            },
+            {
+                // 配置选项：提前50px开始加载
+                rootMargin: "50px 0px",
+                // 可见比例达到1%即触发
+                threshold: 0.01
+            }
+        );
+
+        // 开始观察图片容器
+        this.observer.observe(container);
     }
     removeLazyLoadListener() {
         let { _scrollContainer, _lazyLoadHandler } = this;
