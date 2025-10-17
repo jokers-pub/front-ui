@@ -53,7 +53,7 @@
                 placeholder="@props.placeholder"
                 value="@displayValue"
                 clearable="@props.clearable"
-                forceShowClearable="@(!(props.readonly || props.disabled))"
+                forceShowClearable="@(props.clearable && !(props.readonly || props.disabled))"
                 @focus="handleFocus"
                 error="@isError"
                 @input="handleInput"

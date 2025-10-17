@@ -8,6 +8,7 @@
             shortcuts="@shortcuts"
             format="YYYY-MM-DD"
             value="2023-09-27"
+            clearable="@false"
             disabledDate="@disabledDate"></jk-date-picker>
     </DemoRow>
     <DemoRow>
