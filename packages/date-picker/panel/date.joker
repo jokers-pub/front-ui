@@ -243,7 +243,7 @@ export default class extends PickerPanel<{
 
         if (val instanceof Date) date = val;
         else {
-            date = parseAsFormatAndType(val, this.props.format, this.props.type!);
+            date = parseAsFormatAndType(val, this.props.valueFormat, this.props.type!);
         }
         if (date && !isNaN(date.getTime())) {
             if (this.props.disabledDate?.(date)) return false;

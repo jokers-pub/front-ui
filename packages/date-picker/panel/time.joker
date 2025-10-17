@@ -90,11 +90,11 @@ export default class extends PickerPanel<{
     }
 
     get showSeconds() {
-        return this.props.format?.includes("ss");
+        return this.props.valueFormat?.includes("ss");
     }
 
     isValidValue(val: string) {
-        return validateTimeInRange(val, this.props.format!, this.props.selectableRange);
+        return validateTimeInRange(val, this.props.valueFormat!, this.props.selectableRange);
     }
 
     handleChange(e: VNode.Event<TimeMode>) {

@@ -171,8 +171,8 @@ export default class extends PickerPanel<{
     isValidValue(val: [string | TimeMode, string | TimeMode]) {
         return (
             Array.isArray(val) &&
-            validateTimeInRange(val[0], this.props.format!, this.model.minSelectableRange) &&
-            validateTimeInRange(val[1], this.props.format!, this.model.maxSelectableRange)
+            validateTimeInRange(val[0], this.props.valueFormat!, this.model.minSelectableRange) &&
+            validateTimeInRange(val[1], this.props.valueFormat!, this.model.maxSelectableRange)
         );
     }
 
