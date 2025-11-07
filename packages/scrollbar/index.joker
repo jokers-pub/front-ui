@@ -4,7 +4,7 @@ import { scrollIntoView } from "../utils/scrollbar";
 import { addResizeListener, removeResizeListener } from "../utils/resize-event";
 import { componentName } from "../utils";
 import JokerBar from "./bar.joker";
-
+import { debounce } from "@joker.front/shared";
 export default class extends Component<{
     wrapClass: string;
     viewClass: string;
@@ -50,7 +50,7 @@ export default class extends Component<{
                             style: "@wrapStyle",
                             ref: "wrap",
                             class: "warp @(props.wrapClass||'')",
-                            "@scroll": "handleScroll(true)"
+                            "@scroll": "handleScroll"
                         },
                         [
                             createElement(
@@ -139,7 +139,7 @@ export default class extends Component<{
         }
     }
 
-    handleScroll(e?: VNode.Event, isUserScroll?: boolean) {
+    handleScroll(e?: VNode.Event) {
         let wrap = this.wrapEl;
 
         if (wrap) {
@@ -149,9 +149,9 @@ export default class extends Component<{
             this.$trigger("scroll", {
                 top: wrap.scrollTop,
                 left: wrap.scrollLeft,
-                y: wrap.scrollTop / (wrap.scrollHeight - wrap.clientHeight),
-                x: wrap.scrollLeft / (wrap.scrollWidth - wrap.clientWidth),
-                isUserScroll
+                y: wrap.scrollTop / (wrap.scrollHeight - wrap.clientHeight) || 0,
+                x: wrap.scrollLeft / (wrap.scrollWidth - wrap.clientWidth) || 0,
+                isUserScroll: !this.triggerForCall
             });
         }
     }
@@ -162,19 +162,26 @@ export default class extends Component<{
     handleMouseLeave() {
         this.$trigger("mouseleave");
     }
-
+    triggerForCall = false;
+    cancelTriggerForCall = debounce(200, () => {
+        this.triggerForCall = false;
+    });
     scrollToEl(el: HTMLElement) {
         let wrapEl = this.wrapEl;
         if (wrapEl) {
+            this.triggerForCall = true;
             scrollIntoView(wrapEl, el);
             this.handleScroll();
+            this.cancelTriggerForCall();
         }
     }
 
     scrollTo(option?: ScrollToOptions) {
         let wrapEl: HTMLElement | undefined = this.wrapEl;
         if (wrapEl) {
+            this.triggerForCall = true;
             wrapEl.scrollTo(option);
+            this.cancelTriggerForCall();
         }
     }
 }
