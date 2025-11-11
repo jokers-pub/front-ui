@@ -95,9 +95,11 @@ p {
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style lang=&quot;scss&quot; scoped&gt;
-:deep(.demo-container .jk-input) {
-    width: 180px;
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-input) {
+        width: 180px;
+        margin-right: 15px;
+    }
 }
 &lt;/style&gt;
 </code></pre>
@@ -149,9 +151,11 @@ p {
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style lang=&quot;scss&quot; scoped&gt;
-:deep(.demo-container .jk-input) {
-    width: 180px;
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-input) {
+        width: 180px;
+        margin-right: 15px;
+    }
 }
 &lt;/style&gt;
 </code></pre>

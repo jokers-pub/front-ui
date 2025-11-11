@@ -145,8 +145,10 @@
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style lang=&quot;scss&quot; scoped&gt;
-:deep(.demo-container .jk-number) {
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-number) {
+        margin-right: 15px;
+    }
 }
 &lt;/style&gt;
 
@@ -176,8 +178,10 @@
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style lang=&quot;scss&quot; scoped&gt;
-:deep(.demo-container .jk-number) {
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-number) {
+        margin-right: 15px;
+    }
 }
 &lt;/style&gt;
 
@@ -247,8 +251,10 @@
     &lt;/div&gt;
 &lt;/template&gt;
 &lt;style lang=&quot;scss&quot; scoped&gt;
-:deep(.demo-container .jk-number) {
-    margin-right: 15px;
+.demo-container {
+    :deep(.jk-number) {
+        margin-right: 15px;
+    }
 }
 &lt;/style&gt;
 </code></pre>

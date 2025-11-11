@@ -26,12 +26,21 @@
             shortcuts=&quot;@shortcuts&quot;
             format=&quot;YYYY-MM-DD&quot;
             value=&quot;2023-09-27&quot;
+            clearable=&quot;@false&quot;
             disabledDate=&quot;@disabledDate&quot;&gt;&lt;/jk-date-picker&gt;
+    &lt;/DemoRow&gt;
+    &lt;DemoRow&gt;
+        &lt;jk-date-picker
+            placeholder=&quot;选择日期&quot;
+            value-format=&quot;YYYYMMDD&quot;
+            value=&quot;20230901&quot;
+            @change=&quot;handleChange&quot;&gt;&lt;/jk-date-picker&gt;
     &lt;/DemoRow&gt;
 &lt;/template&gt;
 
 &lt;script&gt;
-import { Component } from &quot;@joker.front/core&quot;;
+import { Component, VNode } from &quot;@joker.front/core&quot;;
+import { Message } from &quot;../../../src&quot;;
 
 export default class extends Component {
     shortcuts = [
@@ -67,6 +76,10 @@ export default class extends Component {
 
     getDateValue(date: Date) {
         return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    handleChange(e: VNode.Event&lt;string&gt;) {
+        Message(e.data);
     }
 }
 &lt;/script&gt;
