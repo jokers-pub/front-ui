@@ -16,11 +16,12 @@ Drawer 组件提供了与 `Dialog` 几乎相同的 API，但在 UI 上带来了�
 
 ### Attributes
 
-| 参数      | 说明     | 类型   | 可选值                | 默认值 |
-| --------- | -------- | ------ | --------------------- | ------ |
-| direction | 展开方向 | string | left/top/right/bottom | right  |
-| size      | 展开尺寸 | string | -                     | 30%    |
-| title     | 标题     | string | -                     | -      |
+| 参数          | 说明                    | 类型    | 可选值                | 默认值 |
+| ------------- | ----------------------- | ------- | --------------------- | ------ |
+| direction     | 展开方向                | string  | left/top/right/bottom | right  |
+| size          | 展开尺寸                | string  | -                     | 30%    |
+| title         | 标题                    | string  | -                     | -      |
+| noBodyPadding | 是否取消body区域padding | boolean | -                     | -      |
 
 ### Sections
 

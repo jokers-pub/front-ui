@@ -15,7 +15,7 @@
                     }
                     <button class="close" @click="close"><i class="jk-icon-close" /></button>
                 </div>
-                <div class="body">
+                <div class="body @(props.noBodyPadding?'no-padding':'')">
                     @RenderSection()
                 </div>
             </div>
@@ -30,6 +30,7 @@ export default class extends Component<{
     title: string;
     direction: string;
     size: string;
+    noBodyPadding: boolean;
 }> {
     propsOption = {
         size: "30%",
@@ -139,6 +140,10 @@ export default class extends Component<{
             flex: 1;
             padding: 20px;
             overflow: auto;
+
+            &.no-padding {
+                padding: 0;
+            }
         }
 
         &.direction-left {
