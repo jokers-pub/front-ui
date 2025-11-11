@@ -25,11 +25,10 @@ Supports multi-level nesting. The component automatically manages `z-index`.
 
 ### Slots
 
-x
-| Name | Description |
+| Name    | Description  |
 | ------- | ------------ |
 | default | Content area |
-| title | Title area |
+| title   | Title area   |
 
 ### Methods
 
