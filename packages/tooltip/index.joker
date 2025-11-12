@@ -179,7 +179,7 @@ export default class extends Component<{
     word-wrap: break-word;
     font-size: 14px;
     border-radius: 6px;
-    text-align: start;
+    text-align: center;
     text-decoration: none;
     word-wrap: break-word;
     box-shadow:

@@ -459,6 +459,7 @@ export default class extends FormCtrl<{
 
     &.is-vertical {
         position: relative;
+        display: block;
         .runway {
             width: 6px;
             height: 100%;
