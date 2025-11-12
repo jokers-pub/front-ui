@@ -112,7 +112,7 @@ export default class extends Component<{
     }
 
     handleMouseLeave() {
-        this.model.hovering = true;
+        this.model.hovering = false;
         this.hideToolTip();
     }
 
