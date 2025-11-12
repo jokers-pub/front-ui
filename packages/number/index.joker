@@ -454,7 +454,7 @@ export default class extends FormCtrl<{
         .decrease {
             width: 32px;
             font-size: 13px;
-
+            height: 30px;
             [class*="jk-icon"] {
                 transform: scale(0.9);
             }
@@ -483,7 +483,8 @@ export default class extends FormCtrl<{
         .decrease {
             width: 28px;
             font-size: 12px;
-
+            height: 26px;
+            line-height: 26px;
             [class*="jk-icon"] {
                 transform: scale(0.8);
             }
