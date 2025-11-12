@@ -1,12 +1,15 @@
 <template>
     <div
-        class="@({
-            'jk-slider-button-wrapper': true,
-            'is-hover': model.hovering,
-            'is-dragging': model.dragging,
-            'is-vertical': props.vertical,
-            'is-disabled': props.disabled
-        })"
+        class="@([
+            {
+                'jk-slider-button-wrapper': true,
+                'is-hover': model.hovering,
+                'is-dragging': model.dragging,
+                'is-vertical': props.vertical,
+                'is-disabled': props.disabled
+            },
+            props.size
+        ])"
         style="@wrapperStyle"
         ref="button"
         tabindex="0"
@@ -20,7 +23,12 @@
         @keydown.right="handleRightKeyDown"
         @keydown.down.prevent="handleLeftKeyDown"
         @keydown.up.prevent="handleRightKeyDown">
-        <JokerToolTip placement="top" ref="tooltip" disabled="@(!props.showTooltip)" content="@formatValue">
+        <JokerToolTip
+            placement="top"
+            size="@props.size"
+            ref="tooltip"
+            disabled="@(!props.showTooltip)"
+            content="@formatValue">
             <div class="@({ button: true, 'is-hover': model.hovering, 'is-dragging': model.dragging })"></div>
         </JokerToolTip>
     </div>
@@ -39,6 +47,7 @@ export default class extends Component<{
     min: number;
     step: number;
     precision: number;
+    size: string;
 }> {
     model = {
         hovering: false,
@@ -107,6 +116,7 @@ export default class extends Component<{
     }
 
     handleMouseEnter() {
+        if (this.model.dragging) return;
         this.model.hovering = true;
         this.showToolTip();
     }
@@ -317,6 +327,36 @@ export default class extends Component<{
         top: auto;
         left: -15px;
         transform: translateY(50%);
+    }
+
+    &.medium {
+        height: 34px;
+        width: 34px;
+
+        .button {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    &.small {
+        height: 32px;
+        width: 32px;
+        top: -14px;
+        .button {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    &.mini {
+        height: 30px;
+        width: 30px;
+        top: -14px;
+        .button {
+            width: 10px;
+            height: 10px;
+        }
     }
 }
 </style>

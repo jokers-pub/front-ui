@@ -54,7 +54,11 @@ export class Popper {
 
     public updateCallbacks = useCallbacks<(data: DataType) => void>();
 
-    constructor(private reference: HTMLElement, private popper: HTMLElement, options?: Partial<typeof DefaultOptions>) {
+    constructor(
+        private reference: HTMLElement,
+        private popper: HTMLElement,
+        options?: Partial<typeof DefaultOptions>
+    ) {
         this.option = Object.assign({}, DefaultOptions, options);
 
         this.popper.setAttribute("x-placement", this.option.placement);

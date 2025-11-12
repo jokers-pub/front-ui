@@ -1,23 +1,19 @@
 <template>
     <div class="row">
         <span>Default:</span>
-        <jk-slider></jk-slider>
+        <jk-slider value="30" show-input />
     </div>
     <div class="row">
-        <span>Default value:</span>
-        <jk-slider value="30"></jk-slider>
+        <span>Medium:</span>
+        <jk-slider value="30" size="medium" show-input />
     </div>
     <div class="row">
-        <span>Hide Tooltip:</span>
-        <jk-slider value="30" showTooltip="@false"></jk-slider>
+        <span>Small:</span>
+        <jk-slider value="30" size="small" show-input />
     </div>
     <div class="row">
-        <span>Format Tooltip:</span>
-        <jk-slider value="30" formatTooltip="@formatTooltip"></jk-slider>
-    </div>
-    <div class="row">
-        <span>Default value:</span>
-        <jk-slider value="30" disabled></jk-slider>
+        <span>Mini:</span>
+        <jk-slider value="30" size="mini" show-input />
     </div>
 </template>
 <script>

@@ -22,8 +22,8 @@
     </template>
 </template>
 <script>
-import { Component, VNode } from "@joker.front/core";
-import { debounce, guid, isEmptyStr, logger } from "@joker.front/shared";
+import { Component } from "@joker.front/core";
+import { debounce, guid, logger } from "@joker.front/shared";
 import { LOGTAG } from "../config";
 import { Popper } from "../utils/popper";
 
@@ -175,7 +175,7 @@ export default class extends Component<{
     padding: 6px 8px;
     z-index: var.$index-popper;
     line-height: 1.2;
-    min-width: 10px;
+    min-width: 16px;
     word-wrap: break-word;
     font-size: 14px;
     border-radius: 6px;

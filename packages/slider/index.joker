@@ -1,6 +1,6 @@
 <template>
     <div
-        class="@(['jk-slider', props.class, { 'is-vertical': props.vertical }])"
+        class="@(['jk-slider', props.class, { 'is-vertical': props.vertical }, props.size])"
         role="slider"
         aria-valuemin="@props.min"
         aria-valuemax="@props.max"
@@ -8,18 +8,6 @@
         aria-label="@(props.label || '滑动区间' + props.min + '到' + props.max)"
         aria-orientation="@(props.vertical ? 'vertical' : 'horizontal')"
         aria-disabled="@props.disabled">
-        @if(props.showInput && !props.range && !props.vertical) {
-            <JokerInputNumber
-                value="@model.startValue"
-                ref="input"
-                @change="handleInputChange"
-                step="@props.step"
-                disabled="@props.disabled"
-                controls="@props.showInputControls"
-                min="@props.min"
-                max="@props.max"
-                size="@props.inputSize"></JokerInputNumber>
-        }
         <div
             class="@([
                 'runway',
@@ -37,6 +25,7 @@
                 max="@props.max"
                 min="@props.min"
                 step="@props.step"
+                size="@props.size"
                 precision="@precision"
                 formatTooltip="@props.formatTooltip"
                 ref="startButton"
@@ -50,6 +39,7 @@
                     disabled="@props.disabled"
                     max="@props.max"
                     min="@props.min"
+                    size="@props.size"
                     step="@props.step"
                     precision="@precision"
                     formatTooltip="@props.formatTooltip"
@@ -75,6 +65,18 @@
                 </div>
             }
         </div>
+        @if(props.showInput && !props.range && !props.vertical) {
+            <JokerInputNumber
+                value="@model.startValue"
+                ref="input"
+                @change="handleInputChange"
+                step="@props.step"
+                disabled="@props.disabled"
+                controls="@props.showInputControls"
+                min="@props.min"
+                max="@props.max"
+                size="@(props.inputSize || props.size === 'mini' ? 'mini' : 'small')"></JokerInputNumber>
+        }
     </div>
 </template>
 <script>
@@ -94,6 +96,7 @@ export default class extends FormCtrl<{
     value: number | Array<any>;
     showInput: boolean;
     showInputControls: boolean;
+    size: string;
     inputSize: string;
     showStops: boolean;
     showTooltip: boolean;
@@ -120,7 +123,6 @@ export default class extends FormCtrl<{
         },
         value: 0,
         showInputControls: true,
-        inputSize: "small",
         showTooltip: true,
         formatTooltip: Function
     };
@@ -405,13 +407,12 @@ export default class extends FormCtrl<{
 </script>
 
 <style scoped lang="scss">
-@use "../../theme/mixins.scss";
-
 .jk-slider {
-    @include mixins.clearfix;
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
     .runway {
-        width: 100%;
+        flex: 1;
         height: 6px;
         margin: 16px 0;
         background-color: var(--jk-border-color-light);
@@ -419,11 +420,6 @@ export default class extends FormCtrl<{
         position: relative;
         cursor: pointer;
         vertical-align: middle;
-
-        &.show-input {
-            margin-right: 160px;
-            width: auto;
-        }
 
         &.is-disabled {
             cursor: default;
@@ -451,11 +447,6 @@ export default class extends FormCtrl<{
         }
 
         .marks {
-            top: 0;
-            left: 12px;
-            width: 18px;
-            height: 100%;
-
             .mark {
                 position: absolute;
                 transform: translateX(-50%);
@@ -491,21 +482,82 @@ export default class extends FormCtrl<{
         }
     }
 
-    :deep(.jk-number) {
-        float: right;
-        margin-top: 3px;
-        width: 130px;
-
-        &.mini {
-            margin-top: 5px;
+    &.medium {
+        .runway {
+            height: 4px;
+            margin: 12px 0;
+        }
+        .bar {
+            height: 4px;
+        }
+        .stop {
+            height: 4px;
+            width: 4px;
         }
 
-        &.medium {
-            margin-top: 0;
-        }
+        &.is-vertical {
+            .runway {
+                width: 4px;
+                height: 100%;
+                margin: 0 12px;
 
-        &.large {
-            margin-top: -2px;
+                .bar {
+                    width: 4px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    &.small {
+        .runway {
+            height: 4px;
+            margin: 10px 0;
+        }
+        .bar {
+            height: 4px;
+        }
+        .stop {
+            height: 4px;
+            width: 4px;
+        }
+        &.is-vertical {
+            .runway {
+                width: 4px;
+                height: 100%;
+                margin: 0 10px;
+
+                .bar {
+                    width: 4px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    &.mini {
+        .runway {
+            height: 2px;
+            margin: 10px 0;
+        }
+        .bar {
+            height: 2px;
+        }
+        .stop {
+            height: 2px;
+            width: 2px;
+        }
+        &.is-vertical {
+            .runway {
+                width: 2px;
+                height: 100%;
+                margin: 0 10px;
+
+                .bar {
+                    width: 2px;
+                    height: auto;
+                }
+            }
         }
     }
 }

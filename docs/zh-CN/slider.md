@@ -40,6 +40,12 @@
 
 !!!demo6!!!
 
+### 尺寸
+
+设置 `size` 属性可以调整组件尺寸，它同样影响input输入框的尺寸。
+
+!!!demo7!!!
+
 ### Attributes
 
 | 参数                | 说明                                                                                    | 类型                 | 可选值                        | 默认值 |
@@ -52,6 +58,7 @@
 | step                | 步长                                                                                    | number               | —                             | 1      |
 | show-input          | 是否显示输入框，仅在非范围选择时有效                                                    | boolean              | —                             | false  |
 | show-input-controls | 在显示输入框的情况下，是否显示输入框的控制按钮                                          | boolean              | —                             | true   |
+| size                | 滑块尺寸                                                                                | string               | medium / small / mini         | small  |
 | input-size          | 输入框的尺寸，具体请参考 input API                                                      | string               | large / medium / small / mini | small  |
 | show-stops          | 是否显示间断点                                                                          | boolean              | —                             | false  |
 | show-tooltip        | 是否显示 tooltip                                                                        | boolean              | —                             | true   |
