@@ -88,7 +88,6 @@ export default class extends Component<{
             () => {
                 //@ts-ignore
                 if (this.props.content !== undefined && this.props.content !== null && this.props.content !== 0) {
-                    this.model.show = false;
                     this.hide();
                     return;
                 }
@@ -132,7 +131,7 @@ export default class extends Component<{
 
     showTooltip() {
         if (!this.model.expectedState || (!this.props.content && !this.$sections.content)) return;
-
+        if (this.model.show) return;
         clearTimeout(this.timeout);
 
         this.timeout = setTimeout(async () => {
