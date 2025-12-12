@@ -71,6 +71,7 @@ export default class extends Component<{
     }
 
     close() {
+        if (!this.model.visible) return;
         this.$nodeTransition("container", "leave", "drawer-fade", () => {
             this.model.visible = false;
 
