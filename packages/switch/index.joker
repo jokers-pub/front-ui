@@ -67,7 +67,7 @@ export default class extends FormCtrl<{
     };
 
     created() {
-        if (!~[this.props.activeValue, this.props.inactiveValue].indexOf(this.model.value)) {
+        if (![this.props.activeValue, this.props.inactiveValue].includes(this.model.value)) {
             this.$trigger("change", this.props.inactiveValue);
         }
     }
