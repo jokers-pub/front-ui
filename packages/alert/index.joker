@@ -26,7 +26,7 @@
                 </p>
             }
             @if(props.closable) {
-                <i class="jk-alert-closebtn    @(props.closeText?'is-customed':'jk-icon-close')" @click="close()">
+                <i class="jk-alert-closebtn @(props.closeText?'is-customed':'jk-icon-close')" @click="close()">
                     @props.closeText
                 </i>
             }
@@ -196,6 +196,10 @@ export default class extends Component<{
                 font-style: normal;
                 font-size: 13px;
                 top: 9px;
+            }
+
+            &:hover {
+                color: var(--jk-color-text-primary);
             }
         }
         .jk-alert-description {
