@@ -46,7 +46,7 @@ export default class extends Component<{
             type: Number,
             default: 0
         },
-        placement: "bottom",
+        placement: "top",
         offset: {
             type: Number,
             default: 0
