@@ -207,14 +207,16 @@ export default class extends Component<PropsOption> {
 
         .close {
             position: absolute;
-            top: 18px;
+            top: 10px;
             right: 15px;
             cursor: pointer;
             color: var(--jk-color-text-secondary);
             font-size: 16px;
-
+            padding: 5px;
+            border-radius: 5px;
             &:hover {
-                color: var(--jk-color-text-regular);
+                background: var(--jk-background-color-base);
+                color: var(--jk-color-text-primary);
             }
         }
     }
