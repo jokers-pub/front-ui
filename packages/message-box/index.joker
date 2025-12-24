@@ -274,13 +274,14 @@ export default class extends Component<PropsOption> {
 
             .header-close {
                 position: absolute;
-                top: 15px;
+                top: 10px;
                 right: 15px;
-                padding: 0;
+                padding: 5px;
                 border: none;
                 outline: none;
                 background: transparent;
                 font-size: 16px;
+                border-radius: 5px;
                 cursor: pointer;
 
                 .jk-icon-close {
@@ -289,8 +290,9 @@ export default class extends Component<PropsOption> {
 
                 &:focus,
                 &:hover {
+                    background: var(--jk-background-color-base);
                     .jk-icon-close {
-                        color: var(--jk-color-primary);
+                        color: var(--jk-color-text-primary);
                     }
                 }
             }
