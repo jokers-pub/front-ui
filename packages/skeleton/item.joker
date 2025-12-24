@@ -1,18 +1,22 @@
 <template>
     <div class="@(['jk-skeleton-item', props.variant, props.class])" style="@props.style">
         @if(props.variant === "image") {
-            <jk-img-placeholder />
+            <JokerImagePlaceholder />
         }
     </div>
 </template>
 <script>
 import { Component } from "@joker.front/core";
+import JokerImagePlaceholder from "./img-placeholder.joker";
 
 export default class extends Component<{
     variant: string;
     class: string;
     style: string;
 }> {
+    components = {
+        JokerImagePlaceholder
+    };
     propsOption = {
         variant: "text"
     };

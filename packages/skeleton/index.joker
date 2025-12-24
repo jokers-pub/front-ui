@@ -8,7 +8,7 @@
                     }
                     else {
                         @for(let item = 0; item < props.rows; item++) {
-                            <jk-skeleton-item class="@getClassStr(item)" variant="p" />
+                            <JokerSkeletonItem class="@getClassStr(item)" variant="p" />
                         }
                     }
                 }
@@ -21,6 +21,7 @@
 </template>
 <script>
 import { Component } from "@joker.front/core";
+import JokerSkeletonItem from "./item.joker";
 
 export default class extends Component<{
     animated: boolean;
@@ -44,6 +45,9 @@ export default class extends Component<{
         }
     };
 
+    components = {
+        JokerSkeletonItem
+    };
     model = {
         uiLoading: false
     };
